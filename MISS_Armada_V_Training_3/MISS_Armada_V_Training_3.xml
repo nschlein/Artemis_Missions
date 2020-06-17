@@ -1,0 +1,1029 @@
+<!-- Mission ARMADA V Training 3 -->
+<!-- A Special Advanced Training Mission for Artemis Armada V -->
+<mission_data version="2.7.5x" background_id_arme="" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <mission_description>  Advanced Training for Artemis Armada V.^^Intended for a full crew of 6-8 in Artemis 2.7.5 playing any TSN ship.^^Learn to defeat a Kralien Inquisitor.</mission_description>
+  <!-- all the things that exist at the start of the mission -->
+  <start>
+    <!-- Players start near center of the 100,000 x 100,000 sector -->
+    <set_player_carried_type player_slot="0" bay_slot="0" name="Dagger" raceKeys="TSN player" hullKeys="TSN Shuttle"/>
+    <set_player_carried_type player_slot="0" bay_slot="1" name="Phantom" raceKeys="TSN player" hullKeys="TSN Fighter"/>
+    <set_player_carried_type player_slot="0" bay_slot="2" name="Basilisk" raceKeys="TSN player" hullKeys="TSN Bomber"/>
+    <!-- create type="player" name="Artemis" player_slot="0" x="69055.0" y="0.0" z="35951.0" angle="165" raceKeys="TSN player" warp="yes" jump="no"/-->
+    <set_object_property property="nebulaIsOpaque" value="1"/>
+    <set_object_property property="sensorSetting" value="4"/>
+    <create type="player" player_slot="0" x="69055.0" y="0.0" z="35951.0" angle="165" accent_color="30" hullID="1" warp="yes" jump="no"/>
+    <create type="station" x="30000" y="0" z="30000" name="DS1" raceKeys="USFP friendly" hullKeys="Civilian Base"/>
+    <create type="station" x="50000" y="0" z="40000" name="DS2" raceKeys="USFP friendly" hullKeys="Science Base"/>
+    <create type="station" x="60000" y="0" z="80000" name="DS3" raceKeys="USFP friendly" hullKeys="Civilian Base"/>
+    <set_player_station_carried name="DS1" raceKeys="TSN player" hullKeys="singleseat bomber" singleSeatName="Barnstormer"/>
+    <set_player_station_carried name="DS1" raceKeys="TSN player" hullKeys="singleseat fighter" singleSeatName="Wheeler"/>
+    <set_player_station_carried name="DS1" raceKeys="TSN player" hullKeys="singleseat bomber" singleSeatName="Bricklayer"/>
+    <set_ship_text name="DS2" race="Research Lab"/>
+    <set_player_station_carried name="DS1" raceKeys="TSN player" hullKeys="singleseat fighter" singleSeatName="Arrowhead"/>
+    <set_player_station_carried name="DS3" raceKeys="TSN player" hullKeys="singleseat fighter" singleSeatName="Jack Knife"/>
+    <set_player_station_carried name="DS3" raceKeys="TSN player" hullKeys="singleseat fighter" singleSeatName="Checkers"/>
+    <set_player_station_carried name="DS3" raceKeys="TSN player" hullKeys="singleseat fighter" singleSeatName="Sundance"/>
+    <set_player_station_carried name="DS3" raceKeys="TSN player" hullKeys="singleseat fighter" singleSeatName="Kingfisher"/>
+    <set_player_station_carried name="DS2" raceKeys="TSN player" hullKeys="singleseat bomber" singleSeatName="Badger"/>
+    <set_player_station_carried name="DS2" raceKeys="TSN player" hullKeys="singleseat fighter" singleSeatName="Marshal"/>
+    <set_player_station_carried name="DS2" raceKeys="TSN player" hullKeys="singleseat fighter" singleSeatName="Cuda"/>
+    <set_player_station_carried name="DS2" raceKeys="TSN player" hullKeys="singleseat bomber" singleSeatName="Banshee"/>
+    <set_object_property property="musicObjectMasterVolume" value=".1"/>
+    <create type="enemy" x="50055.0" y="0.0" z="35951.0" angle="165" name="Q20" raceKeys="Arvonian" hullKeys="Carrier" fleetnumber="91"/>
+    <create type="enemy" x="55055.0" y="0.0" z="45951.0" angle="165" name="Q80" raceKeys="Arvonian" hullKeys="Carrier" fleetnumber="92"/>
+    <create type="enemy" x="49055.0" y="0.0" z="39951.0" angle="165" name="Q40" raceKeys="Arvonian" hullKeys="Carrier" fleetnumber="91"/>
+    <create type="enemy" x="54055.0" y="0.0" z="46951.0" angle="165" name="Q60" raceKeys="Arvonian" hullKeys="Carrier" fleetnumber="92"/>
+    <create type="neutral" x="23500.0" y="000.0" z="54300.0" angle="280" name="Montreal" raceKeys="Terran friendly" hullKeys="Destroyer medium"/>
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Montreal"/>
+    <set_ship_text name="Montreal" race="TSN" hailtext="We are in trouble! What should we do?"/>
+    <create type="enemy" x="10500.0" y="0.0" z="80000.0" angle="90" name="X12" raceKeys="Skaraan enemy" hullKeys="large Executor" fleetnumber="49"/>
+    <set_special name="X12" clear="yes" ability="Tractor"/>
+    <set_special name="X12" ship="-1" captain="5" ability="Warp"/>
+
+    <create type="Anomaly" name="01" pickupType="0" x="57511.0" y="0.0" z="65063.0"/>
+    <create type="Anomaly" name="02" pickupType="0" x="88469.0" y="0.0" z="46936.0"/>
+    <create type="Anomaly" name="03" pickupType="0" x="63341.0" y="0.0" z="38936.0"/>
+    <create type="Anomaly" name="04" pickupType="0" x="44064.0" y="0.0" z="31659.0"/>
+    <create type="Anomaly" name="05" pickupType="0" x="89766.0" y="0.0" z="71617.0"/>
+    <create type="Anomaly" name="06" pickupType="0" x="53958.0" y="0.0" z="63702.0"/>
+    <create type="Anomaly" name="07" pickupType="0" x="58681.0" y="0.0" z="57574.0"/>
+    <create type="Anomaly" name="08" pickupType="0" x="56256.0" y="0.0" z="56255.0"/>
+    <create type="Anomaly" name="11" pickupType="1" x="67362.0" y="0.0" z="65574.0"/>
+
+    <set_side_value value="2" name="Q20"/>
+    <set_side_value value="2" name="Q80"/>
+    <set_side_value value="2" name="Q40"/>
+    <set_side_value value="2" name="Q60"/>
+    <set_skybox_index index="16"/>
+    <set_difficulty_level value="5"/>
+    <big_message title="ARMADA V ADVANCED BATTLE DRILL" subtitle1="BY MIKE SUBSTELNY" subtitle2="a training mission"/>
+  </start>
+
+  <event name="Create Kralien Inquisitor">
+    <if_variable name="Spawn_Inquisitor" comparator="EQUALS" value="0"/>
+    <if_variable name="IQ" comparator="EQUALS" value="0"/>
+    <set_variable name="Spawn_Inquisitor" value="1" integer="yes"/>
+    <incoming_comms_text from="DS1" type="STATION">
+      A Kralien Inquisitor has entered the sector. Your mission is to defeat it as efficiently as possible.
+    </incoming_comms_text>
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Q20"/>
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Q80"/>
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Q40"/>
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Q60"/>
+    <create type="enemy" x="20300.0" y="0.0" z="52300.0" angle="345" name="K00" raceKeys="Kralien enemy" hullKeys="small Cruiser" fleetnumber="68"/>
+    <create type="enemy" x="20300.0" y="0.0" z="52000.0" angle="345" name="K01" raceKeys="Kralien enemy" hullKeys="small Cruiser" fleetnumber="68"/>
+    <create type="enemy" x="20000.0" y="0.0" z="52000.0" angle="345" name="K02" raceKeys="Kralien enemy" hullKeys="small Cruiser" fleetnumber="68"/>
+    <create type="enemy" x="30000.0" y="0.0" z="57000.0" angle="300" name="K04" raceKeys="Kralien enemy" hullKeys="medium Battleship" fleetnumber="69"/>
+    <create type="enemy" x="30700.0" y="0.0" z="57000.0" angle="300" name="K05" raceKeys="Kralien enemy" hullKeys="medium Battleship" fleetnumber="69"/>
+    <create type="enemy" x="30300.0" y="0.0" z="57000.0" angle="300" name="K06" raceKeys="Kralien enemy" hullKeys="medium Battleship" fleetnumber="69"/>
+    <create type="enemy" x="30000.0" y="0.0" z="52300.0" angle="300" name="K07" raceKeys="Kralien enemy" hullKeys="large Dreadnought" fleetnumber="67"/>
+    <create type="enemy" x="29700.0" y="0.0" z="52000.0" angle="300" name="K08" raceKeys="Kralien enemy" hullKeys="large Dreadnought" fleetnumber="67"/>
+    <create type="enemy" x="30300.0" y="0.0" z="52100.0" angle="300" name="K09" raceKeys="Kralien enemy" hullKeys="large Dreadnought" fleetnumber="67"/>
+
+    <create type="enemy" x="22000.0" y="200.0" z="55300.0" angle="345" name="Inquisitor" raceKeys="Ximni" hullKeys="Battleship" fleetnumber="81"/>
+    <set_special name="Inquisitor" ship="0" captain="5" ability="Tractor"/>
+    <set_object_property property="shieldMaxStateFront" value="800" name="Inquisitor"/>
+    <set_object_property property="shieldMaxStateBack" value="800" name="Inquisitor"/>
+    <set_object_property property="shieldStateFront" value="800" name="Inquisitor"/>
+    <set_object_property property="shieldStateBack" value="800" name="Inquisitor"/>
+    <set_timer name="Turret1" seconds="5"/>
+    <set_timer name="Turret2" seconds="4"/>
+    <set_timer name="Turret3" seconds="3"/>
+    <set_timer name="Turret4" seconds="2"/>
+    <set_special name="Inquisitor" ability="ShldDrain"/>
+    <set_special name="Inquisitor" ability="ShldVamp"/>
+    <set_ship_text name="Inquisitor" race="Kralien" class="Battlewagon" desc="Enormous supership displacing 2,548 kilotons with a crew of 1,248" scan_desc="Equiped with four self-regenerating defensive turrets."/>
+    <create type="genericMesh" x="300.0" y="200.0" z="100.0" angle="90" name="i" meshFileName="dat\ENE_RoundC.dxs" textureFileName="dat/drone3_glow.png" hullRace="Kralien" hullType="Battlewagon Outer Hull" fakeShieldsFront="800" fakeShieldsRear="800" hasFakeShldFreq="0" colorRed="0.0" colorGreen="0.0" colorBlue="0.0"/>
+    <set_object_property property="pushRadius" value="0.0" name="i"/>
+    <set_object_property property="artScale" value="4.0" name="i"/>
+    <set_variable name="IQ" value="1.0" integer="yes"/>
+    <create type="enemy" x="78500" y="-500" z="38000" angle="20" name="BB01" raceKeys="Kralien" hullKeys="Battleship" fleetnumber="81"/>
+    <set_relative_position name2="BB01" distance="2500" angle="10" name1="Inquisitor"/>
+    <create type="enemy" x="78500" y="-500" z="38000" angle="340" name="BB02" raceKeys="Kralien" hullKeys="Battleship" fleetnumber="81"/>
+    <set_relative_position name2="BB02" distance="2500" angle="350" name1="Inquisitor"/>
+    <set_timer name="Storm_timer" seconds="10"/>
+  </event>
+  
+ <!-- * * * Cosmic Storm Code * * * -->
+  <event name="Create Cosmic Storm">
+    <if_variable name="Storm" comparator="=" value="0"/>
+    <if_timer_finished name="Storm_timer"/>
+    <create type ="genericMesh" meshFileName="dat/asteroid.dxs" textureFileName="dat/electricNoise2.png" colorBlue="1" x="88000.0" y="0.0" z="68000.0" angle="90" name="Cosmic Storm" hullRace="Category 5"/>
+    <set_object_property name="Cosmic Storm" property="artScale" value=".01"/>
+    <get_object_property name="Cosmic Storm" property="positionX" variable="Stormx"/>
+    <get_object_property name="Cosmic Storm" property="positionZ" variable="Stormz"/>
+    <set_object_property name="Cosmic Storm" property="deltaX" value="50"/>
+    <set_object_property name="Cosmic Storm" property="deltaZ" value="50"/>
+    <set_variable name="Storm" value="1" integer="yes"/>
+    <set_variable name="StormIntensity" value="5" integer="yes"/>
+    <set_timer name="L1_timer" seconds="1"/>
+    <set_timer name="L2_timer" seconds="3"/>
+    <set_timer name="L3_timer" seconds="5"/>
+    <set_timer name="Storm_timer" seconds="5"/>
+  </event>
+  <event name="Initiate Storm X">
+    <if_variable name="Storm" comparator="EQUALS" value="1.0"/>
+    <if_object_property property="positionX" name="Cosmic Storm" comparator="GREATER" value="50000"/>
+    <set_object_property name="Cosmic Storm" property="deltaX" value="-50"/>
+    <set_variable name="Storm" value="2" integer="yes"/>
+  </event>
+  <event name="Initiate Storm Z">
+    <if_variable name="Storm" comparator="LESS" value="3.0"/>
+    <if_object_property property="positionZ" name="Cosmic Storm" comparator="GREATER" value="50000"/>
+    <set_object_property name="Cosmic Storm" property="deltaZ" value="-50"/>
+    <set_variable name="Storm" value="3" integer="yes"/>
+  </event>
+  <event name="Initiate Storm Ready">
+    <if_variable name="Storm" comparator="GREATER" value="0.0"/>
+    <if_variable name="Storm" comparator="LESS" value="4.0"/>
+    <set_variable name="Storm" value="5" integer="yes"/>
+  </event>
+ <event name="Storm Limit">
+    <if_variable name="StormIntensity" comparator="GREATER" value="10"/>
+    <set_variable name="StormIntensity" value="9" integer="yes"/>
+  </event>
+  <event name="Spawn Lightning 1">
+    <if_not_exists name="z"/>
+    <if_timer_finished name="L1_timer"/>
+    <set_variable name="NewA" randomFloatLow="0" randomFloatHigh="360"/>
+    <!-- create type="enemy" x="50420" y="-100" z="50010" angle="NewA" name="z" raceKeys="Kralien" hullKeys="Dreadnought"/-->
+    <create type="monster" monsterType="0" age="1" x="51990" y="0" z="51010" angle="145" name="z"/>
+    <set_variable name="NewA" randomFloatLow="0" randomFloatHigh="360"/>
+    <set_relative_position name2="z" name1="Cosmic Storm" angle="NewA" distance="400*StormIntensity"/>
+    <set_timer name="L1_timer" seconds="1"/>
+  </event>
+  <event name="Delete Lightning 1">
+    <if_timer_finished name="L1_timer"/>
+    <if_exists name="z"/>
+    <destroy name="z"/>
+    <set_timer name="L1_timer" seconds="10-StormIntensity"/>
+ </event>
+ <event name="Delete Lightning 2">
+    <if_timer_finished name="L2_timer"/>
+    <if_exists name="w"/>
+    <destroy name="w"/>
+    <set_timer name="L2_timer" seconds="11-StormIntensity"/>
+  </event>
+  <event name="Spawn Lightning 2">
+    <if_not_exists name="w"/>
+    <if_timer_finished name="L2_timer"/>
+    <set_variable name="NewA" randomFloatLow="0" randomFloatHigh="360"/>
+    <create type="monster" monsterType="0" age="1" x="51990" y="0" z="51010" angle="145" name="w"/>
+    <set_variable name="NewA" randomFloatLow="0" randomFloatHigh="360"/>
+    <set_relative_position name2="w" name1="Cosmic Storm" angle="NewA" distance="480*StormIntensity"/>
+    <set_timer name="L2_timer" seconds="1"/>
+  </event>
+  <event name="Delete Lightning 3">
+    <if_timer_finished name="L3_timer"/>
+    <if_exists name="7"/>
+    <destroy name="7"/>
+    <set_timer name="L3_timer" seconds="12-StormIntensity"/>
+  </event>
+  <event name="Spawn Lightning 3">
+    <if_not_exists name="7"/>
+    <if_timer_finished name="L3_timer"/>
+    <set_variable name="NewA" randomFloatLow="0" randomFloatHigh="360"/>
+    <create type="monster" monsterType="0" age="1" x="51990" y="0" z="51010" angle="145" name="7"/>
+    <set_variable name="NewA" randomFloatLow="0" randomFloatHigh="360"/>
+    <set_relative_position name2="7" name1="Cosmic Storm" angle="NewA" distance="520*StormIntensity"/>
+    <set_timer name="L3_timer" seconds="1"/>
+ </event>
+ <!-- *********************************************************************************/-->
+
+    <event name="Move Nebula 1">
+    <if_timer_finished name="Storm_timer"/>
+    <if_exists name="Cosmic Storm"/>
+    <get_object_property name="Cosmic Storm" property="positionX" variable="Stormx"/>
+    <get_object_property name="Cosmic Storm" property="positionZ" variable="Stormz"/>
+    <destroy_near type="nebulas" radius="3000*StormIntensity" centerX="Stormx" centerY="0" centerZ="Stormz"/>
+    <create count="StormIntensity" type="nebulas" nebType="2" startX="Stormx" startY="0" startZ="Stormz" radius="600*StormIntensity" randomRange="1000"/>
+    <create count="StormIntensity*2" type="nebulas" nebType="3" startX="Stormx" startY="0" startZ="Stormz" radius="1200*StormIntensity" randomRange="1000"/>
+    <create count="StormIntensity*3" type="nebulas" nebType="1" startX="Stormx" startY="0" startZ="Stormz" radius="1800*StormIntensity" randomRange="1000"/>
+    <set_variable name="DeltaIntensity" randomIntLow="-1" randomIntHigh="+1"/>
+    <set_variable name="StormIntensity" value="StormIntensity+DeltaIntensity"/>
+    <set_variable name="DeltaDX" randomFloatLow="-1" randomFloatHigh="+1"/>
+    <set_variable name="DeltaDZ" randomFloatLow="-1" randomFloatHigh="+1"/>
+    <addto_object_property name="Cosmic Storm" property="deltaX" value="DeltaDX"/>
+    <addto_object_property name="Cosmic Storm" property="deltaZ" value="DeltaDZ"/>
+    <set_timer name="Storm_timer" seconds="45"/>
+    <!--  Change Storm Course and Intensity Here /-->
+    <!-- get_object_property name="Cosmic Storm" property="deltaX" variable="StormDeltax"/>
+    <set_object_property name="Cosmic Storm" property="deltaX" value="StormDeltax-100"/-->
+  </event>
+<!-- Delete Storm /-->
+<event name="Delete Storm">
+    <if_exists name="Cosmic Storm"/>
+    <if_variable name="StormIntensity" comparator="LESS" value="1"/>
+    <get_object_property name="Cosmic Storm" property="positionX" variable="Stormx"/>
+    <get_object_property name="Cosmic Storm" property="positionZ" variable="Stormz"/>
+    <destroy_near type="nebulas" radius="3500*StormIntensity" centerX="Stormx" centerY="0" centerZ="Stormz"/>
+    <destroy name="w"/>
+    <destroy name="z"/>
+    <destroy name="7"/>
+    <destroy name="Cosmic Storm"/>
+    <set_variable name="Storm" value="0" integer="yes"/>
+  </event>
+
+<event name="Storm Spins Player 01">
+   <if_exists name="z"/>
+   <!-- if_distance name1="z" player_slot="0" comparator="LESS" value ="2500*StormIntensity"/-->
+   <if_distance player_slot1="0" name2="z" comparator="LESS" value="5000"/>
+   <addto_object_property player_slot="0" property="angle" value="0.02"/>
+   <addto_object_property player_slot="0" property="pitch" value="0.01"/>
+   <addto_object_property player_slot="0" property="roll" value="0.01"/>
+</event>
+<event name="Storm Spins Player 02">
+   <if_exists name="7"/>
+   <if_distance player_slot1="0" name2="7" comparator="LESS" value="6000"/>
+   <addto_object_property player_slot="0" property="angle" value="-0.02"/>
+   <addto_object_property player_slot="0" property="pitch" value="-0.01"/>
+   <addto_object_property player_slot="0" property="roll" value="-0.01"/>
+</event>
+<event name="Storm Spins Player 03">
+   <if_exists name="w"/>
+   <if_distance player_slot1="0" name2="w" comparator="LESS" value="7000"/>
+   <addto_object_property player_slot="0" property="angle" value="0.02"/>
+   <addto_object_property player_slot="0" property="pitch" value="-0.01"/>
+   <addto_object_property player_slot="0" property="roll" value="0.01"/>
+</event>
+<event name="Storm Spins Player 11">
+   <if_exists name="z"/>
+   <if_distance player_slot1="1" name2="z" comparator="LESS" value="5000"/>
+   <addto_object_property player_slot="1" property="angle" value="0.02"/>
+   <addto_object_property player_slot="1" property="pitch" value="0.01"/>
+   <addto_object_property player_slot="1" property="roll" value="0.01"/>
+</event>
+<event name="Storm Spins Player 12">
+   <if_exists name="7"/>
+   <if_distance player_slot1="1" name2="7" comparator="LESS" value="6000"/>
+   <addto_object_property player_slot="1" property="angle" value="-0.02"/>
+   <addto_object_property player_slot="1" property="pitch" value="-0.01"/>
+   <addto_object_property player_slot="1" property="roll" value="-0.01"/>
+</event>
+<event name="Storm Spins Player 13">
+   <if_exists name="w"/>
+   <if_distance player_slot1="1" name2="w" comparator="LESS" value="7000"/>
+   <addto_object_property player_slot="1" property="angle" value="0.02"/>
+   <addto_object_property player_slot="1" property="pitch" value="-0.01"/>
+   <addto_object_property player_slot="1" property="roll" value="0.01"/>
+</event>
+<event name="Storm Spins Player 21">
+   <if_exists name="z"/>
+   <if_distance player_slot1="2" name2="z" comparator="LESS" value="5000"/>
+   <addto_object_property player_slot="2" property="angle" value="0.02"/>
+   <addto_object_property player_slot="2" property="pitch" value="0.01"/>
+   <addto_object_property player_slot="2" property="roll" value="0.01"/>
+</event>
+<event name="Storm Spins Player 22">
+   <if_exists name="7"/>
+   <if_distance player_slot1="2" name2="7" comparator="LESS" value="6000"/>
+   <addto_object_property player_slot="2" property="angle" value="-0.02"/>
+   <addto_object_property player_slot="2" property="pitch" value="-0.01"/>
+   <addto_object_property player_slot="2" property="roll" value="-0.01"/>
+</event>
+<event name="Storm Spins Player 23">
+   <if_exists name="w"/>
+   <if_distance player_slot1="2" name2="w" comparator="LESS" value="7000"/>
+   <addto_object_property player_slot="2" property="angle" value="0.02"/>
+   <addto_object_property player_slot="2" property="pitch" value="-0.01"/>
+   <addto_object_property player_slot="2" property="roll" value="0.01"/>
+</event>
+<event name="Storm Spins Player 31">
+   <if_exists name="z"/>
+   <if_distance player_slot1="3" name2="z" comparator="LESS" value="5000"/>
+   <addto_object_property player_slot="3" property="angle" value="0.02"/>
+   <addto_object_property player_slot="3" property="pitch" value="0.01"/>
+   <addto_object_property player_slot="3" property="roll" value="0.01"/>
+</event>
+<event name="Storm Spins Player 32">
+   <if_exists name="7"/>
+   <if_distance player_slot1="3" name2="7" comparator="LESS" value="6000"/>
+   <addto_object_property player_slot="3" property="angle" value="-0.02"/>
+   <addto_object_property player_slot="3" property="pitch" value="-0.01"/>
+   <addto_object_property player_slot="3" property="roll" value="-0.01"/>
+</event>
+<event name="Storm Spins Player 33">
+   <if_exists name="w"/>
+   <if_distance player_slot1="3" name2="w" comparator="LESS" value="7000"/>
+   <addto_object_property player_slot="3" property="angle" value="0.02"/>
+   <addto_object_property player_slot="3" property="pitch" value="-0.01"/>
+   <addto_object_property player_slot="3" property="roll" value="0.01"/>
+</event>
+<event name="Storm Spins Player 41">
+   <if_exists name="z"/>
+   <if_distance player_slot1="4" name2="z" comparator="LESS" value="5000"/>
+   <addto_object_property player_slot="4" property="angle" value="0.02"/>
+   <addto_object_property player_slot="4" property="pitch" value="0.01"/>
+   <addto_object_property player_slot="4" property="roll" value="0.01"/>
+</event>
+<event name="Storm Spins Player 42">
+   <if_exists name="7"/>
+   <if_distance player_slot1="4" name2="7" comparator="LESS" value="6000"/>
+   <addto_object_property player_slot="4" property="angle" value="-0.02"/>
+   <addto_object_property player_slot="4" property="pitch" value="-0.01"/>
+   <addto_object_property player_slot="4" property="roll" value="-0.01"/>
+</event>
+<event name="Storm Spins Player 43">
+   <if_exists name="w"/>
+   <if_distance player_slot1="4" name2="w" comparator="LESS" value="7000"/>
+   <addto_object_property player_slot="4" property="angle" value="0.02"/>
+   <addto_object_property player_slot="4" property="pitch" value="-0.01"/>
+   <addto_object_property player_slot="4" property="roll" value="0.01"/>
+</event>
+<event name="Storm Spins Player 51">
+   <if_exists name="z"/>
+   <if_distance player_slot1="5" name2="z" comparator="LESS" value="5000"/>
+   <addto_object_property player_slot="5" property="angle" value="0.02"/>
+   <addto_object_property player_slot="5" property="pitch" value="0.01"/>
+   <addto_object_property player_slot="5" property="roll" value="0.01"/>
+</event>
+<event name="Storm Spins Player 52">
+   <if_exists name="7"/>
+   <if_distance player_slot1="5" name2="7" comparator="LESS" value="6000"/>
+   <addto_object_property player_slot="5" property="angle" value="-0.02"/>
+   <addto_object_property player_slot="5" property="pitch" value="-0.01"/>
+   <addto_object_property player_slot="5" property="roll" value="-0.01"/>
+</event>
+<event name="Storm Spins Player 53">
+   <if_exists name="w"/>
+   <if_distance player_slot1="5" name2="w" comparator="LESS" value="7000"/>
+   <addto_object_property player_slot="5" property="angle" value="0.02"/>
+   <addto_object_property player_slot="5" property="pitch" value="-0.01"/>
+   <addto_object_property player_slot="5" property="roll" value="0.01"/>
+</event>
+<event name="Storm Spins Player 61">
+   <if_exists name="z"/>
+   <if_distance player_slot1="6" name2="z" comparator="LESS" value="5000"/>
+   <addto_object_property player_slot="6" property="angle" value="0.02"/>
+   <addto_object_property player_slot="6" property="pitch" value="0.01"/>
+   <addto_object_property player_slot="6" property="roll" value="0.01"/>
+</event>
+<event name="Storm Spins Player 62">
+   <if_exists name="7"/>
+   <if_distance player_slot1="6" name2="7" comparator="LESS" value="6000"/>
+   <addto_object_property player_slot="6" property="angle" value="-0.02"/>
+   <addto_object_property player_slot="6" property="pitch" value="-0.01"/>
+   <addto_object_property player_slot="6" property="roll" value="-0.01"/>
+</event>
+<event name="Storm Spins Player 63">
+   <if_exists name="w"/>
+   <if_distance player_slot1="6" name2="w" comparator="LESS" value="7000"/>
+   <addto_object_property player_slot="6" property="angle" value="0.02"/>
+   <addto_object_property player_slot="6" property="pitch" value="-0.01"/>
+   <addto_object_property player_slot="6" property="roll" value="0.01"/>
+</event>
+<event name="Storm Spins Player 71">
+   <if_exists name="z"/>
+   <if_distance player_slot1="7" name2="z" comparator="LESS" value="5000"/>
+   <addto_object_property player_slot="7" property="angle" value="0.02"/>
+   <addto_object_property player_slot="7" property="pitch" value="0.01"/>
+   <addto_object_property player_slot="7" property="roll" value="0.01"/>
+</event>
+<event name="Storm Spins Player 72">
+   <if_exists name="7"/>
+   <if_distance player_slot1="7" name2="7" comparator="LESS" value="6000"/>
+   <addto_object_property player_slot="7" property="angle" value="-0.02"/>
+   <addto_object_property player_slot="7" property="pitch" value="-0.01"/>
+   <addto_object_property player_slot="7" property="roll" value="-0.01"/>
+</event>
+<event name="Storm Spins Player 73">
+   <if_exists name="w"/>
+   <if_distance player_slot1="7" name2="w" comparator="LESS" value="7000"/>
+   <addto_object_property player_slot="7" property="angle" value="0.02"/>
+   <addto_object_property player_slot="7" property="pitch" value="-0.01"/>
+   <addto_object_property player_slot="7" property="roll" value="0.01"/>
+</event>
+
+
+  <event name="Dissipate Storm +X">
+    <if_exists name="Cosmic Storm"/>
+    <if_object_property property="positionX" name="Cosmic Storm" comparator="GREATER" value="91000"/>
+    <set_variable name="StormIntensity" value="StormIntensity-1" integer="yes"/>
+  </event>
+  <event name="Dissipate Storm -X">
+    <if_exists name="Cosmic Storm"/>
+    <if_object_property property="positionX" name="Cosmic Storm" comparator="LESS" value="9000"/>
+    <set_variable name="StormIntensity" value="StormIntensity-1" integer="yes"/>
+  </event>
+   <event name="Dissipate Storm +Z">
+    <if_exists name="Cosmic Storm"/>
+    <if_object_property property="positionZ" name="Cosmic Storm" comparator="GREATER" value="91000"/>
+    <set_variable name="StormIntensity" value="StormIntensity-1" integer="yes"/>
+  </event>
+  <event name="Dissipate Storm -Z">
+    <if_exists name="Cosmic Storm"/>
+    <if_object_property property="positionZ" name="Cosmic Storm" comparator="LESS" value="9000"/>
+    <set_variable name="StormIntensity" value="StormIntensity-1" integer="yes"/>
+  </event>
+
+<!-- *********************************************************************************/-->
+   <!-- Nebula Effects -->
+    <event name="Nebula Blue=Heat 0">
+    <if_in_nebula  player_slot="0" compare="2"/>
+    <addto_object_property value="0.001" property="systemCurHeatBeam" player_slot="0"/>
+    <addto_object_property value="0.001" property="systemCurHeatTorpedo" player_slot="0"/>
+    <addto_object_property value="0.001" property="systemCurHeatTactical" player_slot="0"/>
+    <addto_object_property value="0.001" property="systemCurHeatTurning" player_slot="0"/>
+    <addto_object_property value="0.001" property="systemCurHeatImpulse" player_slot="0"/>
+    <addto_object_property value="0.001" property="systemCurHeatWarp" player_slot="0"/>
+    <addto_object_property value="0.001" property="systemCurHeatFrontShield" player_slot="0"/>
+    <addto_object_property value="0.001" property="systemCurHeatBackShield" player_slot="0"/>
+  </event>
+  <event name="Nebula Yellow=Erode Shields 0">
+    <if_in_nebula player_slot="0" compare="3"/>
+    <addto_object_property value="-0.1" property="shieldStateFront" player_slot="0"/>
+    <addto_object_property value="-0.1" property="shieldStateBack" player_slot="0"/>
+  </event>
+ <event name="Nebula Blue=Heat 1">
+    <if_in_nebula  player_slot="1" compare="2"/>
+    <addto_object_property value="0.001" property="systemCurHeatBeam" player_slot="1"/>
+    <addto_object_property value="0.001" property="systemCurHeatTorpedo" player_slot="1"/>
+    <addto_object_property value="0.001" property="systemCurHeatTactical" player_slot="1"/>
+    <addto_object_property value="0.001" property="systemCurHeatTurning" player_slot="1"/>
+    <addto_object_property value="0.001" property="systemCurHeatImpulse" player_slot="1"/>
+    <addto_object_property value="0.001" property="systemCurHeatWarp" player_slot="1"/>
+    <addto_object_property value="0.001" property="systemCurHeatFrontShield" player_slot="1"/>
+    <addto_object_property value="0.001" property="systemCurHeatBackShield" player_slot="1"/>
+  </event>
+  <event name="Nebula Yellow=Erode Shields 1">
+    <if_in_nebula player_slot="1" compare="3"/>
+    <addto_object_property value="-0.1" property="shieldStateFront" player_slot="1"/>
+    <addto_object_property value="-0.1" property="shieldStateBack" player_slot="1"/>
+  </event>
+   <event name="Nebula Blue=Heat 2">
+    <if_in_nebula  player_slot="2" compare="2"/>
+    <addto_object_property value="0.001" property="systemCurHeatBeam" player_slot="2"/>
+    <addto_object_property value="0.001" property="systemCurHeatTorpedo" player_slot="2"/>
+    <addto_object_property value="0.001" property="systemCurHeatTactical" player_slot="2"/>
+    <addto_object_property value="0.001" property="systemCurHeatTurning" player_slot="2"/>
+    <addto_object_property value="0.001" property="systemCurHeatImpulse" player_slot="2"/>
+    <addto_object_property value="0.001" property="systemCurHeatWarp" player_slot="2"/>
+    <addto_object_property value="0.001" property="systemCurHeatFrontShield" player_slot="2"/>
+    <addto_object_property value="0.001" property="systemCurHeatBackShield" player_slot="2"/>
+  </event>
+  <event name="Nebula Yellow=Erode Shields 2">
+    <if_in_nebula player_slot="2" compare="3"/>
+    <addto_object_property value="-0.1" property="shieldStateFront" player_slot="2"/>
+    <addto_object_property value="-0.1" property="shieldStateBack" player_slot="2"/>
+  </event>
+ <event name="Nebula Blue=Heat 3">
+    <if_in_nebula  player_slot="3" compare="2"/>
+    <addto_object_property value="0.001" property="systemCurHeatBeam" player_slot="3"/>
+    <addto_object_property value="0.001" property="systemCurHeatTorpedo" player_slot="3"/>
+    <addto_object_property value="0.001" property="systemCurHeatTactical" player_slot="3"/>
+    <addto_object_property value="0.001" property="systemCurHeatTurning" player_slot="3"/>
+    <addto_object_property value="0.001" property="systemCurHeatImpulse" player_slot="3"/>
+    <addto_object_property value="0.001" property="systemCurHeatWarp" player_slot="3"/>
+    <addto_object_property value="0.001" property="systemCurHeatFrontShield" player_slot="3"/>
+    <addto_object_property value="0.001" property="systemCurHeatBackShield" player_slot="3"/>
+  </event>
+  <event name="Nebula Yellow=Erode Shields 3">
+    <if_in_nebula player_slot="3" compare="3"/>
+    <addto_object_property value="-0.1" property="shieldStateFront" player_slot="3"/>
+    <addto_object_property value="-0.1" property="shieldStateBack" player_slot="3"/>
+  </event>
+   <event name="Nebula Blue=Heat 4">
+    <if_in_nebula  player_slot="4" compare="2"/>
+    <addto_object_property value="0.001" property="systemCurHeatBeam" player_slot="4"/>
+    <addto_object_property value="0.001" property="systemCurHeatTorpedo" player_slot="4"/>
+    <addto_object_property value="0.001" property="systemCurHeatTactical" player_slot="4"/>
+    <addto_object_property value="0.001" property="systemCurHeatTurning" player_slot="4"/>
+    <addto_object_property value="0.001" property="systemCurHeatImpulse" player_slot="4"/>
+    <addto_object_property value="0.001" property="systemCurHeatWarp" player_slot="4"/>
+    <addto_object_property value="0.001" property="systemCurHeatFrontShield" player_slot="4"/>
+    <addto_object_property value="0.001" property="systemCurHeatBackShield" player_slot="4"/>
+  </event>
+  <event name="Nebula Yellow=Erode Shields 4">
+    <if_in_nebula player_slot="4" compare="3"/>
+    <addto_object_property value="-0.1" property="shieldStateFront" player_slot="4"/>
+    <addto_object_property value="-0.1" property="shieldStateBack" player_slot="4"/>
+  </event>
+   <event name="Nebula Blue=Heat 5">
+    <if_in_nebula  player_slot="5" compare="2"/>
+    <addto_object_property value="0.001" property="systemCurHeatBeam" player_slot="5"/>
+    <addto_object_property value="0.001" property="systemCurHeatTorpedo" player_slot="5"/>
+    <addto_object_property value="0.001" property="systemCurHeatTactical" player_slot="5"/>
+    <addto_object_property value="0.001" property="systemCurHeatTurning" player_slot="5"/>
+    <addto_object_property value="0.001" property="systemCurHeatImpulse" player_slot="5"/>
+    <addto_object_property value="0.001" property="systemCurHeatWarp" player_slot="5"/>
+    <addto_object_property value="0.001" property="systemCurHeatFrontShield" player_slot="5"/>
+    <addto_object_property value="0.001" property="systemCurHeatBackShield" player_slot="5"/>
+  </event>
+  <event name="Nebula Yellow=Erode Shields 5">
+    <if_in_nebula player_slot="5" compare="3"/>
+    <addto_object_property value="-0.1" property="shieldStateFront" player_slot="5"/>
+    <addto_object_property value="-0.1" property="shieldStateBack" player_slot="5"/>
+  </event>
+   <event name="Nebula Blue=Heat 6">
+    <if_in_nebula  player_slot="6" compare="2"/>
+    <addto_object_property value="0.001" property="systemCurHeatBeam" player_slot="6"/>
+    <addto_object_property value="0.001" property="systemCurHeatTorpedo" player_slot="6"/>
+    <addto_object_property value="0.001" property="systemCurHeatTactical" player_slot="6"/>
+    <addto_object_property value="0.001" property="systemCurHeatTurning" player_slot="6"/>
+    <addto_object_property value="0.001" property="systemCurHeatImpulse" player_slot="6"/>
+    <addto_object_property value="0.001" property="systemCurHeatWarp" player_slot="6"/>
+    <addto_object_property value="0.001" property="systemCurHeatFrontShield" player_slot="6"/>
+    <addto_object_property value="0.001" property="systemCurHeatBackShield" player_slot="6"/>
+  </event>
+  <event name="Nebula Yellow=Erode Shields 6">
+    <if_in_nebula player_slot="6" compare="3"/>
+    <addto_object_property value="-0.1" property="shieldStateFront" player_slot="6"/>
+    <addto_object_property value="-0.1" property="shieldStateBack" player_slot="6"/>
+  </event>
+   <event name="Nebula Blue=Heat 7">
+    <if_in_nebula  player_slot="7" compare="2"/>
+    <addto_object_property value="0.001" property="systemCurHeatBeam" player_slot="7"/>
+    <addto_object_property value="0.001" property="systemCurHeatTorpedo" player_slot="7"/>
+    <addto_object_property value="0.001" property="systemCurHeatTactical" player_slot="7"/>
+    <addto_object_property value="0.001" property="systemCurHeatTurning" player_slot="7"/>
+    <addto_object_property value="0.001" property="systemCurHeatImpulse" player_slot="7"/>
+    <addto_object_property value="0.001" property="systemCurHeatWarp" player_slot="7"/>
+    <addto_object_property value="0.001" property="systemCurHeatFrontShield" player_slot="7"/>
+    <addto_object_property value="0.001" property="systemCurHeatBackShield" player_slot="7"/>
+  </event>
+  <event name="Nebula Yellow=Erode Shields 7">
+    <if_in_nebula player_slot="7" compare="3"/>
+    <addto_object_property value="-0.1" property="shieldStateFront" player_slot="7"/>
+    <addto_object_property value="-0.1" property="shieldStateBack" player_slot="7"/>
+  </event>
+
+
+
+  <!-- event name="END MISSION Failure">
+     <if_not_exists player_slot="0"/>
+     <if_exists name="Turret1"/>
+    <if_variable name="terminate" comparator="EQUALS" value="0.0"/>
+     <big_message title="Mission Failed" subtitle1="You made a valiant effort but in the end" subtitle2="your ship was overwhelmed."/>
+    <set_timer name="endint_timer" seconds="800"/>
+    <set_variable name="terminate" value="1.0" integer="yes"/>
+  </event-->
+  <event name="END MISSION Success">
+    <if_not_exists name="Inquisitor"/>
+    <if_variable name="terminate" comparator="EQUALS" value="0.0"/>
+     <big_message title="VICTORY!" subtitle1="Your crew saved the day." subtitle2="You have found a solution to the puzzle."/>
+    <set_timer name="endint_timer" seconds="10"/>
+    <set_variable name="terminate" value="1.0" integer="yes"/>
+    <play_sound_now filename=".\dat\Missions\MISS_Armada_V_Training_3\Fanfare.wav"/>
+  </event>
+  <event name="TERMINATE">
+    <if_variable name="terminate" comparator="EQUALS" value="1"/>
+    <if_variable name="gameOver" comparator="NOT" value="1"/>
+    <if_timer_finished name="endint_timer"/>
+    <end_mission/>
+    <set_variable name="gameOver" value="1"/>
+  </event>
+  <event name="Destroy Kralien Boss">
+    <if_not_exists name="Inquisitor"/>
+    <if_variable name="IQ" comparator="EQUALS" value="1.0"/>
+    <destroy name="Turret1"/>
+    <destroy name="Turret2"/>
+    <destroy name="Turret3"/>
+    <destroy name="Turret4"/>
+    <set_variable name="IQ" value="0" integer="yes"/>
+  </event>
+  <event name="Maintain K Boss T1">
+    <if_exists name="Inquisitor"/>
+    <if_not_exists name="Turret1"/>
+    <if_timer_finished name="Turret1"/>
+    <create type="enemy" x="150.0" y="250.0" z="350.0" angle="0" name="Turret1" raceKeys="Kralien" hullKeys="Dreadnought" sideValue="1" fleetnumber="81"/>
+    <set_object_property property="surrenderChance" value="0.0" name="Turret1"/>
+    <set_special name="Turret1" ship="0" captain="1" ability="AntiTorp"/>
+    <set_special name="Turret1" ship="0" captain="1" ability="AntiMine"/>
+    <set_special name="Turret1" ship="0" captain="1" ability="Tractor"/>
+    <set_special name="Turret1" ship="0" captain="1" ability="Drones"/>
+    <set_ship_text name="Turret1" race="Kralien" class="Turret" desc="Self-regenerating defensive turret" scan_desc="Equiped with anti-torp and drone rack."/>
+    <set_variable name="Turret1" value="0.0" integer="yes"/>
+    <set_object_property property="tauntImmunityIndex" value="2" name="Turret1"/>
+  </event>
+  <event name="Regenerate K Boss T1">
+    <if_exists name="Inquisitor"/>
+    <if_not_exists name="Turret1"/>
+    <if_variable name="Turret1" comparator="EQUALS" value="0.0"/>
+    <set_timer name="Turret1" seconds="15"/>
+    <set_variable name="Turret1" value="1.0" integer="yes"/>
+  </event>
+  <event name="Maintain K Boss T2">
+    <if_exists name="Inquisitor"/>
+    <if_not_exists name="Turret2"/>
+    <if_timer_finished name="Turret2"/>
+    <create type="enemy" x="150.0" y="250.0" z="350.0" angle="0" name="Turret2" raceKeys="Kralien" hullKeys="Dreadnought" sideValue="1" fleetnumber="81"/>
+    <set_object_property property="surrenderChance" value="0.0" name="Turret2"/>
+    <set_special name="Turret2" ship="0" captain="1" ability="AntiTorp"/>
+    <set_special name="Turret2" ship="0" captain="1" ability="AntiMine"/>
+    <set_special name="Turret2" ship="0" captain="1" ability="Tractor"/>
+    <set_special name="Turret2" ship="0" captain="1" ability="Drones"/>
+    <set_ship_text name="Turret2" race="Kralien" class="Turret" desc="Self-regenerating defensive turret" scan_desc="Equiped with anti-torp and drone rack."/>
+    <set_variable name="Turret2" value="0.0" integer="yes"/>
+  </event>
+  <event name="Regenerate K Boss T2">
+    <if_exists name="Inquisitor"/>
+    <if_not_exists name="Turret2"/>
+    <if_variable name="Turret2" comparator="EQUALS" value="0.0"/>
+    <set_timer name="Turret2" seconds="15"/>
+    <set_variable name="Turret2" value="1.0" integer="yes"/>
+    <set_object_property property="tauntImmunityIndex" value="2" name="Turret2"/>
+  </event>
+  <event name="Maintain K Boss T3">
+    <if_exists name="Inquisitor"/>
+    <if_not_exists name="Turret3"/>
+    <if_timer_finished name="Turret3"/>
+    <create type="enemy" x="150.0" y="250.0" z="350.0" angle="0" name="Turret3" raceKeys="Kralien" hullKeys="Dreadnought" sideValue="1" fleetnumber="81"/>
+    <set_object_property property="surrenderChance" value="0.0" name="Turret3"/>
+    <set_special name="Turret3" ship="0" captain="1" ability="AntiTorp"/>
+    <set_special name="Turret3" ship="0" captain="1" ability="AntiMine"/>
+    <set_special name="Turret3" ship="0" captain="1" ability="Tractor"/>
+    <set_special name="Turret3" ship="0" captain="1" ability="Drones"/>
+    <set_ship_text name="Turret3" race="Kralien" class="Turret" desc="Self-regenerating defensive turret" scan_desc="Equiped with anti-torp and drone rack."/>
+    <set_variable name="Turret3" value="0.0" integer="yes"/>
+  </event>
+  <event name="Regenerate K Boss T3">
+    <if_exists name="Inquisitor"/>
+    <if_not_exists name="Turret3"/>
+    <if_variable name="Turret3" comparator="EQUALS" value="0.0"/>
+    <set_timer name="Turret3" seconds="15"/>
+    <set_variable name="Turret3" value="1.0" integer="yes"/>
+    <set_object_property property="tauntImmunityIndex" value="2" name="Turret3"/>
+  </event>
+  <event name="Maintain K Boss T4">
+    <if_exists name="Inquisitor"/>
+    <if_not_exists name="Turret4"/>
+    <if_timer_finished name="Turret4"/>
+    <create type="enemy" x="150.0" y="250.0" z="350.0" angle="0" name="Turret4" raceKeys="Kralien" hullKeys="Dreadnought" sideValue="1" fleetnumber="81"/>
+    <set_object_property property="surrenderChance" value="0.0" name="Turret4"/>
+    <set_special name="Turret4" ship="0" captain="1" ability="AntiTorp"/>
+    <set_special name="Turret4" ship="0" captain="1" ability="AntiMine"/>
+    <set_special name="Turret4" ship="0" captain="1" ability="Tractor"/>
+    <set_special name="Turret4" ship="0" captain="1" ability="Drones"/>
+    <set_ship_text name="Turret4" race="Kralien" class="Turret" desc="Self-regenerating defensive turret" scan_desc="Equiped with anti-torp and drone rack."/>
+    <set_variable name="Turret4" value="0.0" integer="yes"/>
+  </event>
+  <event name="Regenerate K Boss T4">
+    <if_exists name="Inquisitor"/>
+    <if_not_exists name="Turret4"/>
+    <if_variable name="Turret4" comparator="EQUALS" value="0.0"/>
+    <set_timer name="Turret4" seconds="15"/>
+    <set_variable name="Turret4" value="1.0" integer="yes"/>
+    <set_object_property property="tauntImmunityIndex" value="2" name="Turret4"/>
+  </event>
+  <event name="Maintain Kralien Boss Main">
+    <if_exists name="Inquisitor"/>
+    <set_relative_position name2="i" distance="50" angle="0" name1="Inquisitor"/>
+    <copy_object_property property="angle" name1="Inquisitor" name2="i"/>
+    <set_relative_position name2="Turret1" distance="400" angle="45" name1="Inquisitor"/>
+    <set_relative_position name2="Turret2" distance="400" angle="315" name1="Inquisitor"/>
+    <set_relative_position name2="Turret3" distance="400" angle="135" name1="Inquisitor"/>
+    <set_relative_position name2="Turret4" distance="400" angle="235" name1="Inquisitor"/>
+    <set_object_property property="topSpeed" value="1.1" name="Inquisitor"/>
+    <set_object_property property="topSpeed" value="0.0" name="Turret4"/>
+    <set_object_property property="topSpeed" value="0.0" name="Turret3"/>
+    <set_object_property property="topSpeed" value="0.0" name="Turret2"/>
+    <set_object_property property="topSpeed" value="0.0" name="Turret1"/>
+    <set_object_property property="surrenderChance" value="2" name="Inquisitor"/>
+  </event>
+  <event name="Surrender Turret1">
+    <if_exists name="Inquisitor"/>
+    <if_object_property property="hasSurrendered" name="Turret1" comparator="EQUALS" value="0.0"/>
+    <if_object_property property="hasSurrendered" name="Inquisitor" comparator="EQUALS" value="1.0"/>
+    <set_object_property property="hasSurrendered" value="1" name="Turret1"/>
+  </event>
+  <event name="Surrender Turret2">
+    <if_exists name="Inquisitor"/>
+    <if_object_property property="hasSurrendered" name="Turret2" comparator="EQUALS" value="0.0"/>
+    <if_object_property property="hasSurrendered" name="Inquisitor" comparator="EQUALS" value="1.0"/>
+    <set_object_property property="hasSurrendered" value="1" name="Turret2"/>
+  </event>
+  <event name="Surrender Turret3">
+    <if_exists name="Inquisitor"/>
+    <if_object_property property="hasSurrendered" name="Turret3" comparator="EQUALS" value="0.0"/>
+    <if_object_property property="hasSurrendered" name="Inquisitor" comparator="EQUALS" value="1.0"/>
+    <set_object_property property="hasSurrendered" value="1" name="Turret3"/>
+  </event>
+  <event name="Surrender Turret4">
+    <if_exists name="Inquisitor"/>
+    <if_object_property property="hasSurrendered" name="Turret4" comparator="EQUALS" value="0.0"/>
+    <if_object_property property="hasSurrendered" name="Inquisitor" comparator="EQUALS" value="1.0"/>
+    <set_object_property property="hasSurrendered" value="1" name="Turret4"/>
+  </event>
+
+  <event name="UnSurrender Turret1">
+    <if_exists name="Inquisitor"/>
+    <if_object_property property="hasSurrendered" name="Turret1" comparator="EQUALS" value="1"/>
+    <if_object_property property="hasSurrendered" name="Inquisitor" comparator="EQUALS" value="0"/>
+    <set_object_property property="hasSurrendered" value="0" name="Turret1"/>
+  </event>
+  <event name="Surrender Turret2">
+    <if_exists name="Inquisitor"/>
+    <if_object_property property="hasSurrendered" name="Turret2" comparator="EQUALS" value="1"/>
+    <if_object_property property="hasSurrendered" name="Inquisitor" comparator="EQUALS" value="0"/>
+    <set_object_property property="hasSurrendered" value="0" name="Turret2"/>
+  </event>
+  <event name="Surrender Turret3">
+    <if_exists name="Inquisitor"/>
+    <if_object_property property="hasSurrendered" name="Turret3" comparator="EQUALS" value="1"/>
+    <if_object_property property="hasSurrendered" name="Inquisitor" comparator="EQUALS" value="0"/>
+    <set_object_property property="hasSurrendered" value="0" name="Turret3"/>
+  </event>
+  <event name="Surrender Turret4">
+    <if_exists name="Inquisitor"/>
+    <if_object_property property="hasSurrendered" name="Turret4" comparator="EQUALS" value="1"/>
+    <if_object_property property="hasSurrendered" name="Inquisitor" comparator="EQUALS" value="0"/>
+    <set_object_property property="hasSurrendered" value="0" name="Turret4"/>
+  </event>
+  
+   <event name="Drain Energy Slot 1-1">
+    <if_distance player_slot1="0" name2="Inquisitor" comparator="LESS" value="2200"/>
+    <addto_object_property player_slot="0" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 1-2">
+    <if_distance player_slot1="0" name2="Inquisitor" comparator="LESS" value="2000"/>
+    <addto_object_property player_slot="0" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 1-3">
+    <if_distance player_slot1="0" name2="Inquisitor" comparator="LESS" value="1800"/>
+    <addto_object_property player_slot="0" property="energy" value="-1"/>
+ </event>
+
+  <event name="Drain Energy Slot 1-4">
+    <if_distance player_slot1="0" name2="Inquisitor" comparator="LESS" value="1600"/>
+    <addto_object_property player_slot="0" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 1-5">
+    <if_distance player_slot1="0" name2="Inquisitor" comparator="LESS" value="1400"/>
+    <addto_object_property player_slot="0" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 1-6">
+    <if_distance player_slot1="0" name2="Inquisitor" comparator="LESS" value="1200"/>
+    <addto_object_property player_slot="0" property="energy" value="-1"/>
+ </event>
+
+  <event name="Drain Energy Slot 1-6">
+    <if_distance player_slot1="0" name2="Inquisitor" comparator="LESS" value="1000"/>
+    <addto_object_property player_slot="0" property="energy" value="-2"/>
+ </event>
+
+<event name="Drain Energy Slot 2-1">
+    <if_distance player_slot1="1" name2="Inquisitor" comparator="LESS" value="2200"/>
+    <addto_object_property player_slot="1" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 2-2">
+    <if_distance player_slot1="1" name2="Inquisitor" comparator="LESS" value="2000"/>
+    <addto_object_property player_slot="1" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 2-3">
+    <if_distance player_slot1="1" name2="Inquisitor" comparator="LESS" value="1800"/>
+    <addto_object_property player_slot="1" property="energy" value="-1"/>
+ </event>
+
+  <event name="Drain Energy Slot 2-4">
+    <if_distance player_slot1="1" name2="Inquisitor" comparator="LESS" value="1600"/>
+    <addto_object_property player_slot="1" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 2-5">
+    <if_distance player_slot1="1" name2="Inquisitor" comparator="LESS" value="1400"/>
+    <addto_object_property player_slot="1" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 2-6">
+    <if_distance player_slot1="1" name2="Inquisitor" comparator="LESS" value="1200"/>
+    <addto_object_property player_slot="1" property="energy" value="-1"/>
+ </event>
+
+  <event name="Drain Energy Slot 2-6">
+    <if_distance player_slot1="1" name2="Inquisitor" comparator="LESS" value="1000"/>
+    <addto_object_property player_slot="1" property="energy" value="-2"/>
+ </event>
+
+ <event name="Drain Energy Slot 3-1">
+    <if_distance player_slot1="2" name2="Inquisitor" comparator="LESS" value="2200"/>
+    <addto_object_property player_slot="2" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 3-2">
+    <if_distance player_slot1="2" name2="Inquisitor" comparator="LESS" value="2000"/>
+    <addto_object_property player_slot="2" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 3-3">
+    <if_distance player_slot1="2" name2="Inquisitor" comparator="LESS" value="1800"/>
+    <addto_object_property player_slot="2" property="energy" value="-1"/>
+ </event>
+
+  <event name="Drain Energy Slot 3-4">
+    <if_distance player_slot1="2" name2="Inquisitor" comparator="LESS" value="1600"/>
+    <addto_object_property player_slot="2" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 3-5">
+    <if_distance player_slot1="2" name2="Inquisitor" comparator="LESS" value="1400"/>
+    <addto_object_property player_slot="2" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 3-6">
+    <if_distance player_slot1="2" name2="Inquisitor" comparator="LESS" value="1200"/>
+    <addto_object_property player_slot="2" property="energy" value="-1"/>
+ </event>
+
+  <event name="Drain Energy Slot 3-6">
+    <if_distance player_slot1="2" name2="Inquisitor" comparator="LESS" value="1000"/>
+    <addto_object_property player_slot="2" property="energy" value="-2"/>
+ </event>
+
+<event name="Drain Energy Slot 4-1">
+    <if_distance player_slot1="3" name2="Inquisitor" comparator="LESS" value="2200"/>
+    <addto_object_property player_slot="3" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 4-2">
+    <if_distance player_slot1="3" name2="Inquisitor" comparator="LESS" value="2000"/>
+    <addto_object_property player_slot="3" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 4-3">
+    <if_distance player_slot1="3" name2="Inquisitor" comparator="LESS" value="1800"/>
+    <addto_object_property player_slot="3" property="energy" value="-1"/>
+ </event>
+
+  <event name="Drain Energy Slot 4-4">
+    <if_distance player_slot1="3" name2="Inquisitor" comparator="LESS" value="1600"/>
+    <addto_object_property player_slot="3" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 4-5">
+    <if_distance player_slot1="3" name2="Inquisitor" comparator="LESS" value="1400"/>
+    <addto_object_property player_slot="3" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 4-6">
+    <if_distance player_slot1="3" name2="Inquisitor" comparator="LESS" value="1200"/>
+    <addto_object_property player_slot="3" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 4-6">
+    <if_distance player_slot1="3" name2="Inquisitor" comparator="LESS" value="1000"/>
+    <addto_object_property player_slot="3" property="energy" value="-2"/>
+ </event>
+
+<event name="Drain Energy Slot 5-1">
+    <if_distance player_slot1="4" name2="Inquisitor" comparator="LESS" value="2200"/>
+    <addto_object_property player_slot="4" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 5-2">
+    <if_distance player_slot1="4" name2="Inquisitor" comparator="LESS" value="2000"/>
+    <addto_object_property player_slot="4" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 5-3">
+    <if_distance player_slot1="4" name2="Inquisitor" comparator="LESS" value="1800"/>
+    <addto_object_property player_slot="4" property="energy" value="-1"/>
+ </event>
+
+  <event name="Drain Energy Slot 5-4">
+    <if_distance player_slot1="4" name2="Inquisitor" comparator="LESS" value="1600"/>
+    <addto_object_property player_slot="4" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 5-5">
+    <if_distance player_slot1="4" name2="Inquisitor" comparator="LESS" value="1400"/>
+    <addto_object_property player_slot="4" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 5-6">
+    <if_distance player_slot1="4" name2="Inquisitor" comparator="LESS" value="1200"/>
+    <addto_object_property player_slot="4" property="energy" value="-1"/>
+ </event>
+
+  <event name="Drain Energy Slot 5-6">
+    <if_distance player_slot1="4" name2="Inquisitor" comparator="LESS" value="1000"/>
+    <addto_object_property player_slot="4" property="energy" value="-2"/>
+ </event>
+
+ <event name="Drain Energy Slot 6-1">
+    <if_distance player_slot1="5" name2="Inquisitor" comparator="LESS" value="2200"/>
+    <addto_object_property player_slot="5" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 6-2">
+    <if_distance player_slot1="5" name2="Inquisitor" comparator="LESS" value="2000"/>
+    <addto_object_property player_slot="5" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 6-3">
+    <if_distance player_slot1="5" name2="Inquisitor" comparator="LESS" value="1800"/>
+    <addto_object_property player_slot="5" property="energy" value="-1"/>
+ </event>
+
+  <event name="Drain Energy Slot 6-4">
+    <if_distance player_slot1="5" name2="Inquisitor" comparator="LESS" value="1600"/>
+    <addto_object_property player_slot="5" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 6-5">
+    <if_distance player_slot1="5" name2="Inquisitor" comparator="LESS" value="1400"/>
+    <addto_object_property player_slot="5" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 6-6">
+    <if_distance player_slot1="5" name2="Inquisitor" comparator="LESS" value="1200"/>
+    <addto_object_property player_slot="5" property="energy" value="-1"/>
+ </event>
+
+  <event name="Drain Energy Slot 6-6">
+    <if_distance player_slot1="5" name2="Inquisitor" comparator="LESS" value="1000"/>
+    <addto_object_property player_slot="5" property="energy" value="-2"/>
+ </event>
+
+<event name="Drain Energy Slot 7-1">
+    <if_distance player_slot1="6" name2="Inquisitor" comparator="LESS" value="2200"/>
+    <addto_object_property player_slot="6" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 7-2">
+    <if_distance player_slot1="6" name2="Inquisitor" comparator="LESS" value="2000"/>
+    <addto_object_property player_slot="6" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 7-3">
+    <if_distance player_slot1="6" name2="Inquisitor" comparator="LESS" value="1800"/>
+    <addto_object_property player_slot="6" property="energy" value="-1"/>
+ </event>
+
+  <event name="Drain Energy Slot 7-4">
+    <if_distance player_slot1="6" name2="Inquisitor" comparator="LESS" value="1600"/>
+    <addto_object_property player_slot="6" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 7-5">
+    <if_distance player_slot1="6" name2="Inquisitor" comparator="LESS" value="1400"/>
+    <addto_object_property player_slot="6" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 7-6">
+    <if_distance player_slot1="6" name2="Inquisitor" comparator="LESS" value="1200"/>
+    <addto_object_property player_slot="6" property="energy" value="-1"/>
+ </event>
+
+  <event name="Drain Energy Slot 7-6">
+    <if_distance player_slot1="6" name2="Inquisitor" comparator="LESS" value="1000"/>
+    <addto_object_property player_slot="6" property="energy" value="-2"/>
+ </event>
+
+<event name="Drain Energy Slot 8-1">
+    <if_distance player_slot1="7" name2="Inquisitor" comparator="LESS" value="2200"/>
+    <addto_object_property player_slot="7" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 8-2">
+    <if_distance player_slot1="7" name2="Inquisitor" comparator="LESS" value="2000"/>
+    <addto_object_property player_slot="7" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 8-3">
+    <if_distance player_slot1="7" name2="Inquisitor" comparator="LESS" value="1800"/>
+    <addto_object_property player_slot="7" property="energy" value="-1"/>
+ </event>
+
+  <event name="Drain Energy Slot 8-4">
+    <if_distance player_slot1="7" name2="Inquisitor" comparator="LESS" value="1600"/>
+    <addto_object_property player_slot="7" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 8-5">
+    <if_distance player_slot1="7" name2="Inquisitor" comparator="LESS" value="1400"/>
+    <addto_object_property player_slot="7" property="energy" value="-1"/>
+ </event>
+
+ <event name="Drain Energy Slot 8-6">
+    <if_distance player_slot1="7" name2="Inquisitor" comparator="LESS" value="1200"/>
+    <addto_object_property player_slot="7" property="energy" value="-1"/>
+ </event>
+
+  <event name="Drain Energy Slot 8-6">
+    <if_distance player_slot1="7" name2="Inquisitor" comparator="LESS" value="1000"/>
+    <addto_object_property player_slot="7" property="energy" value="-2"/>
+ </event>
+
+</mission_data>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

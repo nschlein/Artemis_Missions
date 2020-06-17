@@ -1,0 +1,1976 @@
+<mission_data version="1.0" background_id_arme="9533f436-582b-4910-8ae3-f2c69e1454c9" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <start id_arme="9533f436-582b-4910-8ae3-f2c69e1454c9">
+    <create count="40" type="asteroids" startX="50000.0" startY="500.0" startZ="50459.0" endX="50000.0" endY="-500.0" endZ="50459.0" randomRange="10000" randomSeed="3" />
+    <create count="20" type="mines" startX="89949.0" startY="0.0" startZ="46479.0" endX="71735.0" endY="0.0" endZ="46173.0" />
+    <create count="20" type="mines" startX="89949.0" startY="0.0" startZ="46979.0" endX="71735.0" endY="0.0" endZ="46673.0" />
+    <create count="20" type="mines" startX="37756.0" startY="0.0" startZ="52755.0" endX="19542.0" endY="0.0" endZ="52449.0" />
+    <create count="20" type="mines" startX="37756.0" startY="0.0" startZ="52255.0" endX="19542.0" endY="0.0" endZ="51949.0" />
+    <create count="45" type="nebulas" startAngle="115" endAngle="255" startX="51072.0" startY="0.0" startZ="39438.0" radius="25000" randomRange="10000" randomSeed="32" />
+    <create count="45" type="nebulas" startAngle="300" endAngle="430" startX="54898.0" startY="0.0" startZ="60102.0" radius="25000" randomRange="10000" randomSeed="68" />
+    <create type="player" player_slot="0" x="78929.0" y="0.0" z="77704.0" angle="44.3" name="Artemis" sideValue="2" />
+    <create type="player" player_slot="1" x="23980.0" y="0.0" z="24591.0" angle="224.1" name="Intrepid" sideValue="3" />
+    <create type="station" x="49847.0" y="0.0" z="50153.0" angle="0" name="Fort Phi" raceKeys="friendly" hullKeys="Industrial Base" sideValue="0" />
+    <create type="station" x="79388.0" y="0.0" z="20459.0" angle="0" name="Gamma Garrison" raceKeys="Skaraan enemy" hullKeys="Base" sideValue="2" />
+    <create type="station" x="24133.0" y="0.0" z="27500.0" angle="0" name="Beta Base" raceKeys="Arvonian enemy" hullKeys="Base" sideValue="3" />
+    <create type="station" x="33011.0" y="0.0" z="81377.0" angle="0" name="Sigma Station" raceKeys="friendly" hullKeys="Command Base" sideValue="3" />
+    <create type="station" x="75409.0" y="0.0" z="77551.0" angle="0" name="Omega Outpost" raceKeys="Terran friendly" hullKeys="Deep Space Base" sideValue="2" />
+    <create type="blackHole" x="53980.0" y="0.0" z="79846.0" name="Ximni Retirement Home" />
+    <create type="enemy" x="80613.0" y="0.0" z="22755.0" angle="129.8" name="Marshal Magnetic" raceKeys="Skaraan enemy" hullKeys="warship Defiler" sideValue="2" fleetnumber="1" />
+    <create type="enemy" x="77858.0" y="0.0" z="20612.0" angle="129.8" name="BS&amp;S Corp" raceKeys="Skaraan enemy" hullKeys="warship Enforcer" sideValue="2" fleetnumber="4" />
+    <create type="enemy" x="78011.0" y="0.0" z="22908.0" angle="129.8" name="Bull's Eye Inc" raceKeys="Skaraan enemy" hullKeys="warship Executor" sideValue="2" fleetnumber="5" />
+    <create type="neutral" x="23368.0" y="0.0" z="29489.0" angle="230.6" name="001100" hullID="3002" sideValue="3" />
+    <create type="enemy" x="31327.0" y="0.0" z="79846.0" angle="328.7" name="Martin" raceKeys="Ximni player" hullKeys="warship Light Cruiser" sideValue="3" fleetnumber="3" />
+    <create type="enemy" x="30868.0" y="0.0" z="81836.0" angle="329.2" name="Short" raceKeys="Ximni player" hullKeys="warship Scout" sideValue="3" fleetnumber="3" />
+    <create type="enemy" x="32092.0" y="0.0" z="83520.0" angle="331.2" name="Chase" raceKeys="Ximni player" hullKeys="warship Battleship" sideValue="3" fleetnumber="3" />
+    <create type="neutral" x="74796.0" y="0.0" z="78928.0" angle="39.4" name="The 33&amp;1/3rd Cavalry Division" raceKeys="Terran friendly" hullKeys="warship Escort" sideValue="2" />
+    <set_difficulty_level value="5" />
+    <set_skybox_index index="25" />
+    <set_object_property property="nebulaIsOpaque" value="1" />
+    <set_object_property property="sensorSetting" value="4" />
+    <set_object_property property="nonPlayerSpeed" value="100" />
+    <set_object_property property="nonPlayerShield" value="100" />
+    <set_object_property property="nonPlayerWeapon" value="100" />
+    <set_object_property property="playerWeapon" value="100" />
+    <set_object_property property="playerShields" value="100" />
+    <big_message title="Conquest Mode" subtitle1="by Matthew Vicksell" subtitle2="adventure for Artemis 2.4+" />
+    <set_timer name="tickets_timer" seconds="7" />
+    <set_timer name="start_mission_timer_1" seconds="10" />
+    <!--These are the damcon team variables-->
+    <set_variable name="team0" value="0.0" integer="yes" />
+    <set_variable name="team1" value="0.0" integer="yes" />
+    <set_variable name="team2" value="0.0" integer="yes" />
+    <set_variable name="player_tickets" value="150.0" integer="yes" />
+    <set_variable name="enemy_tickets" value="150.0" integer="yes" />
+    <set_variable name="player_bases" value="2.0" integer="yes" />
+    <set_variable name="enemy_bases" value="2.0" integer="yes" />
+    <set_variable name="chapter_1" value="1" integer="yes" />
+    <set_variable name="game_over" value="0.0" integer="yes" />
+    <set_variable name="E_caps_Phi_init" value="0.0" integer="yes" />
+    <set_variable name="E_caps_Gamma_init" value="0.0" integer="yes" />
+    <set_variable name="E_caps_Beta_init" value="0.0" integer="yes" />
+    <set_variable name="E_caps_Sigma_init" value="2.0" integer="yes" />
+    <set_variable name="E_caps_Omega_init" value="0.0" integer="yes" />
+    <set_variable name="capture_phi_init" value="0.0" integer="yes" />
+    <set_variable name="capture_gamma_init" value="0.0" integer="yes" />
+    <set_variable name="capture_beta_init" value="0.0" integer="yes" />
+    <set_variable name="capture_sigma_init" value="0.0" integer="yes" />
+    <set_variable name="capture_omega_init" value="0.0" integer="yes" />
+    <set_variable name="dock_station" value="0.0" integer="yes" />
+    <set_variable name="dock_station_2" value="0.0" integer="yes" />
+    <set_variable name="respawn_player_flag" value="2.0" integer="yes" />
+    <set_variable name="respawn_marshal_flag" value="2.0" integer="yes" />
+    <set_variable name="respawn_bss_flag" value="2.0" integer="yes" />
+    <set_variable name="respawn_bullseye_flag" value="2.0" integer="yes" />
+    <set_variable name="respawn_14_flag" value="2.0" integer="yes" />
+    <set_variable name="respawn_22_flag" value="2.0" integer="yes" />
+    <set_variable name="respawn_martin_flag" value="2.0" integer="yes" />
+    <set_variable name="respawn_short_flag" value="2.0" integer="yes" />
+    <set_variable name="respawn_chase_flag" value="2.0" integer="yes" />
+    <set_variable name="respawn_monstro_flag" value="2.0" integer="yes" />
+    <set_variable name="111_init_flag" value="1.0" integer="yes" />
+  </start>
+  <event name="Skaraan_Elite_Abilities" id_arme="89b989f1-684e-4a2e-badb-c24c54158fd5">
+    <if_variable name="chapter_1" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="start_mission_timer_1" />
+    <set_object_property property="pitch" value="90.0" name="Ximni Retirement Home" />
+    <set_special name="Marshal Magnetic" ability="HET" />
+    <set_special name="Marshal Magnetic" ability="Warp" />
+    <set_special name="Marshal Magnetic" ability="Tractor" />
+    <set_special name="BS&amp;S Corp" ability="Cloak" />
+    <set_special name="BS&amp;S Corp" ability="Teleport" />
+    <set_special name="BS&amp;S Corp" ability="Drones" />
+    <set_special name="Bull's Eye Inc" ability="AntiMine" />
+    <set_special name="Bull's Eye Inc" ability="AntiTorp" />
+    <set_special name="Bull's Eye Inc" ability="ShldDrain" />
+    <set_variable name="chapter_1" value="2.0" />
+    <set_special name="Martin" ability="Teleport" />
+    <set_special name="Short" ability="Teleport" />
+    <set_special name="Chase" ability="Teleport" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Marshal Magnetic" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="BS&amp;S Corp" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Bull's Eye Inc" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="001100" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Martin" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Short" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Chase" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Monstro" />
+  </event>
+  <event name="player_ticket_bleed" id_arme="1693231d-b667-4bc0-8089-44f2d88c7820">
+    <if_timer_finished name="tickets_timer" />
+    <if_variable name="enemy_bases" comparator="GREATER_EQUAL" value="3.0" />
+    <set_variable name="player_tickets" value="player_tickets-1" integer="yes" />
+  </event>
+  <event name="enemy_ticket_bleed" id_arme="949a7ef1-778e-4bac-9bdd-6087a822dae6">
+    <if_timer_finished name="tickets_timer" />
+    <if_variable name="player_bases" comparator="GREATER_EQUAL" value="3.0" />
+    <set_variable name="enemy_tickets" value="enemy_tickets-1" integer="yes" />
+  </event>
+  <event name="tickets_timer_loop" id_arme="257f5140-255a-4019-a6ae-b3cc65d6204c">
+    <if_timer_finished name="tickets_timer" />
+    <set_timer name="tickets_timer" seconds="7" />
+    <incoming_comms_text from="Score Updates" sideValue="2" type="STATUS">Artemis: |player_tickets| Intrepid: |enemy_tickets|</incoming_comms_text>
+    <incoming_comms_text from="Score Updates" sideValue="3" type="STATUS">Intrepid: |enemy_tickets| Artemis: |player_tickets| </incoming_comms_text>
+  </event>
+  <folder_arme name="Artemis_base_capture" id_arme="0d03c444-03eb-4c1d-90b8-87b3f701f209" />
+  <event name="Player_takes_phi_start" id_arme="c427a714-9b3f-48e4-b7a0-5f81c7773fc5" parent_id_arme="0d03c444-03eb-4c1d-90b8-87b3f701f209">
+    <if_distance name1="Artemis" name2="Fort Phi" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="2.0" />
+    <if_variable name="capture_phi_init" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="Capturing Base..." consoles="WS" name="Artemis" />
+    <set_timer name="Capturing_Phi" seconds="20" />
+    <set_variable name="capture_phi_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Player_takes_gamma_start" id_arme="e4bc729b-32db-4dcc-9c21-0d38f4aa1df0" parent_id_arme="0d03c444-03eb-4c1d-90b8-87b3f701f209">
+    <if_distance name1="Artemis" name2="Gamma Garrison" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="NOT" value="2.0" />
+    <if_variable name="capture_gamma_init" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="Capturing Base..." consoles="WS" name="Artemis" />
+    <set_timer name="Capturing_Gamma" seconds="20" />
+    <set_variable name="capture_gamma_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Player_takes_beta_start" id_arme="8b4c2d09-dd30-4913-ab89-623443f6bc99" parent_id_arme="0d03c444-03eb-4c1d-90b8-87b3f701f209">
+    <if_distance name1="Artemis" name2="Beta Base" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Beta Base" comparator="NOT" value="2.0" />
+    <if_variable name="capture_beta_init" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="Capturing Base..." consoles="WS" name="Artemis" />
+    <set_timer name="Capturing_Beta" seconds="20" />
+    <set_variable name="capture_beta_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Player_takes_sigma_start" id_arme="cd87b1a4-12cd-46f7-87ca-f1f33f2ff080" parent_id_arme="0d03c444-03eb-4c1d-90b8-87b3f701f209">
+    <if_distance name1="Artemis" name2="Sigma Station" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="2.0" />
+    <if_variable name="capture_sigma_init" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="Capturing Base..." consoles="WS" name="Artemis" />
+    <set_timer name="Capturing_Sigma" seconds="20" />
+    <set_variable name="capture_sigma_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Player_takes_omega_start" id_arme="97a1acc5-d96a-4bbe-aac6-aadecb332aed" parent_id_arme="0d03c444-03eb-4c1d-90b8-87b3f701f209">
+    <if_distance name1="Artemis" name2="Omega Outpost" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="2.0" />
+    <if_variable name="capture_omega_init" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="Capturing Base..." consoles="WS" name="Artemis" />
+    <set_timer name="Capturing_Omega" seconds="20" />
+    <set_variable name="capture_omega_init" value="1.0" integer="yes" />
+  </event>
+  <folder_arme name="Artemis_docks" id_arme="dc4ccac0-ec2c-4363-baaa-79dca0094752" />
+  <event name="Player_docks_phi" id_arme="9612f90d-6dbc-4832-a68c-8ce644a5d797" parent_id_arme="dc4ccac0-ec2c-4363-baaa-79dca0094752">
+    <if_distance name1="Intrepid" name2="Fort Phi" comparator="GREATER" value="100.0" />
+    <if_docked name="Fort Phi" />
+    <if_variable name="dock_station" comparator="NOT" value="0.0" />
+    <set_variable name="dock_station" value="0.0" integer="yes" />
+  </event>
+  <event name="Player_docks_gamma" id_arme="c4789f9b-7418-4799-822b-07c90ff774af" parent_id_arme="dc4ccac0-ec2c-4363-baaa-79dca0094752">
+    <if_distance name1="Intrepid" name2="Gamma Garrison" comparator="GREATER" value="100.0" />
+    <if_docked name="Gamma Garrison" />
+    <if_variable name="dock_station" comparator="NOT" value="1.0" />
+    <set_variable name="dock_station" value="1.0" integer="yes" />
+  </event>
+  <event name="Player_docks_beta" id_arme="9ff85169-4be7-44d4-9488-da743f48ac87" parent_id_arme="dc4ccac0-ec2c-4363-baaa-79dca0094752">
+    <if_distance name1="Intrepid" name2="Beta Base" comparator="GREATER" value="100.0" />
+    <if_docked name="Beta Base" />
+    <if_variable name="dock_station" comparator="NOT" value="2.0" />
+    <set_variable name="dock_station" value="2.0" integer="yes" />
+  </event>
+  <event name="Player_docks_sigma" id_arme="b87778af-66d2-40e0-b03a-333e17031670" parent_id_arme="dc4ccac0-ec2c-4363-baaa-79dca0094752">
+    <if_docked name="Sigma Station" />
+    <if_variable name="dock_station" comparator="NOT" value="3.0" />
+    <if_distance name1="Intrepid" name2="Sigma Station" comparator="GREATER" value="100.0" />
+    <set_variable name="dock_station" value="3.0" integer="yes" />
+  </event>
+  <event name="Player_docks_omega" id_arme="246cb9e1-6710-4536-9f3d-0e950e00d1e8" parent_id_arme="dc4ccac0-ec2c-4363-baaa-79dca0094752">
+    <if_docked name="Omega Outpost" />
+    <if_variable name="dock_station" comparator="NOT" value="4.0" />
+    <if_distance name1="Intrepid" name2="Omega Outpost" comparator="GREATER" value="100.0" />
+    <set_variable name="dock_station" value="4.0" integer="yes" />
+  </event>
+  <folder_arme name="Intrepid_docks" id_arme="a708f8c0-3f5e-4e86-9882-6da1f6db58ef" />
+  <event name="Player2_docks_phi" id_arme="6c3a3aab-4cc0-46d4-a1c5-056e41965d3c" parent_id_arme="a708f8c0-3f5e-4e86-9882-6da1f6db58ef">
+    <if_distance name1="Artemis" name2="Fort Phi" comparator="GREATER" value="100.0" />
+    <if_docked name="Fort Phi" />
+    <if_variable name="dock_station_2" comparator="NOT" value="0.0" />
+    <set_variable name="dock_station_2" value="0.0" integer="yes" />
+  </event>
+  <event name="Player2_docks_gamma" id_arme="6b6704d3-441b-4d49-ae8c-be417de8bb82" parent_id_arme="a708f8c0-3f5e-4e86-9882-6da1f6db58ef">
+    <if_distance name1="Artemis" name2="Gamma Garrison" comparator="GREATER" value="100.0" />
+    <if_docked name="Gamma Garrison" />
+    <if_variable name="dock_station_2" comparator="NOT" value="1.0" />
+    <set_variable name="dock_station_2" value="1.0" integer="yes" />
+  </event>
+  <event name="Player2_docks_beta" id_arme="14e124c9-2b69-4fea-8351-36ef900d6b74" parent_id_arme="a708f8c0-3f5e-4e86-9882-6da1f6db58ef">
+    <if_distance name1="Artemis" name2="Beta Base" comparator="GREATER" value="100.0" />
+    <if_docked name="Beta Base" />
+    <if_variable name="dock_station_2" comparator="NOT" value="2.0" />
+    <set_variable name="dock_station_2" value="2.0" integer="yes" />
+  </event>
+  <event name="Player2_docks_sigma" id_arme="04c74112-fba3-4631-8b88-9fcca0bd192d" parent_id_arme="a708f8c0-3f5e-4e86-9882-6da1f6db58ef">
+    <if_docked name="Sigma Station" />
+    <if_variable name="dock_station_2" comparator="NOT" value="3.0" />
+    <if_distance name1="Artemis" name2="Sigma Station" comparator="GREATER" value="100.0" />
+    <set_variable name="dock_station_2" value="3.0" integer="yes" />
+  </event>
+  <event name="Player2_docks_omega" id_arme="80fa9700-a390-4c5a-9cea-f2e9b8016be0" parent_id_arme="a708f8c0-3f5e-4e86-9882-6da1f6db58ef">
+    <if_docked name="Omega Outpost" />
+    <if_variable name="dock_station" comparator="NOT" value="4.0" />
+    <if_distance name1="Artemis" name2="Omega Outpost" comparator="GREATER" value="100.0" />
+    <set_variable name="dock_station_2" value="4.0" integer="yes" />
+  </event>
+  <folder_arme name="Player_secures_bases" id_arme="c17e6676-157b-4e7b-ac68-266bfa0c5660" />
+  <event name="Enemy_loses_phi" id_arme="bbc522f4-0030-4308-9f89-c2eb576e09ca" parent_id_arme="c17e6676-157b-4e7b-ac68-266bfa0c5660">
+    <if_object_property property="sideValue" name="Fort Phi" comparator="EQUALS" value="3.0" />
+    <if_timer_finished name="Capturing_Phi" />
+    <if_variable name="capture_phi_init" comparator="EQUALS" value="1.0" />
+    <set_variable name="enemy_bases" value="enemy_bases-1" integer="yes" />
+  </event>
+  <event name="Player_takes_phi_finish" id_arme="69307a74-6696-4c82-915a-d86a669fd54d" parent_id_arme="c17e6676-157b-4e7b-ac68-266bfa0c5660">
+    <if_timer_finished name="Capturing_Phi" />
+    <if_variable name="capture_phi_init" comparator="EQUALS" value="1.0" />
+    <set_variable name="player_bases" value="player_bases+1" integer="yes" />
+    <set_side_value value="2" name="Fort Phi" />
+    <set_variable name="capture_phi_init" value="0.0" integer="yes" />
+    <set_variable name="E_caps_Phi_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Player_support_at_phi" id_arme="b6b7f5be-8f6d-49d8-8578-d546321d9313" parent_id_arme="c17e6676-157b-4e7b-ac68-266bfa0c5660">
+    <if_not_exists name="The Eleventy-first Starborne Division" />
+    <if_timer_finished name="Capturing_Phi" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="EQUALS" value="2.0" />
+    <create type="neutral" x="51531.0" y="0.0" z="48775.0" angle="318.5" name="The Eleventy-first Starborne Division" raceKeys="TSN friendly" hullKeys="warship Juggernaut" sideValue="2" />
+    <set_variable name="111_init_flag" value="0.0" integer="yes" />
+    <set_timer name="111_timer" seconds="1" />
+  </event>
+  <event name="Phi_friendly_ai_stack" id_arme="b91ff273-3ec8-4970-9a46-490eedba30b1" parent_id_arme="c17e6676-157b-4e7b-ac68-266bfa0c5660">
+    <if_exists name="The Eleventy-first Starborne Division" />
+    <if_timer_finished name="111_timer" />
+    <if_variable name="111_init_flag" comparator="EQUALS" value="0.0" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="The Eleventy-first Starborne Division" />
+    <set_variable name="111_init_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Enemy_loses_gamma" id_arme="5da1839e-ce00-4526-ab55-16fe55abff99" parent_id_arme="c17e6676-157b-4e7b-ac68-266bfa0c5660">
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="EQUALS" value="3.0" />
+    <if_timer_finished name="Capturing_Gamma" />
+    <if_variable name="capture_gamma_init" comparator="EQUALS" value="1.0" />
+    <set_variable name="enemy_bases" value="enemy_bases-1" integer="yes" />
+  </event>
+  <event name="Player_takes_gamma_finish" id_arme="d973e8df-d33f-4933-9a83-c41f9254f591" parent_id_arme="c17e6676-157b-4e7b-ac68-266bfa0c5660">
+    <if_timer_finished name="Capturing_Gamma" />
+    <if_variable name="capture_gamma_init" comparator="EQUALS" value="1.0" />
+    <set_variable name="player_bases" value="player_bases+1" integer="yes" />
+    <set_side_value value="2" name="Gamma Garrison" />
+    <addto_object_property value="2.0" property="countNuke" player_slot="0" />
+    <set_variable name="capture_gamma_init" value="0.0" integer="yes" />
+    <set_variable name="E_caps_Gamma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Enemy_loses_beta" id_arme="9ec76101-7b1f-47e7-95aa-c6a69c944484" parent_id_arme="c17e6676-157b-4e7b-ac68-266bfa0c5660">
+    <if_object_property property="sideValue" name="Beta Base" comparator="EQUALS" value="3.0" />
+    <if_timer_finished name="Capturing_Beta" />
+    <if_variable name="capture_beta_init" comparator="EQUALS" value="1.0" />
+    <set_variable name="enemy_bases" value="enemy_bases-1" integer="yes" />
+  </event>
+  <event name="Player_takes_beta_finish" id_arme="7df51e47-25bd-4d53-b33b-8e49ba515cb7" parent_id_arme="c17e6676-157b-4e7b-ac68-266bfa0c5660">
+    <if_timer_finished name="Capturing_Beta" />
+    <if_variable name="capture_beta_init" comparator="EQUALS" value="1.0" />
+    <set_variable name="player_bases" value="player_bases+1" integer="yes" />
+    <set_side_value value="2" name="Beta Base" />
+    <create type="Anomaly" pickupType="7" x="23674.0" y="0.0" z="31173.0" />
+    <create type="Anomaly" pickupType="4" x="26276.0" y="0.0" z="27500.0" />
+    <set_variable name="capture_beta_init" value="0.0" integer="yes" />
+    <set_variable name="E_caps_Beta_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Enemy_loses_sigma" id_arme="4c5fd826-0162-4caa-a057-1180aadff0c9" parent_id_arme="c17e6676-157b-4e7b-ac68-266bfa0c5660">
+    <if_object_property property="sideValue" name="Sigma Station" comparator="EQUALS" value="3.0" />
+    <if_timer_finished name="Capturing_Sigma" />
+    <if_variable name="capture_sigma_init" comparator="EQUALS" value="1.0" />
+    <set_variable name="enemy_bases" value="enemy_bases-1" integer="yes" />
+  </event>
+  <event name="Player_takes_sigma_finish" id_arme="ad45f101-1287-4334-889b-f1416f46e6e5" parent_id_arme="c17e6676-157b-4e7b-ac68-266bfa0c5660">
+    <if_timer_finished name="Capturing_Sigma" />
+    <if_variable name="capture_sigma_init" comparator="EQUALS" value="1.0" />
+    <set_variable name="player_bases" value="player_bases+1" integer="yes" />
+    <set_side_value value="2" name="Sigma Station" />
+    <set_variable name="capture_sigma_init" value="0.0" integer="yes" />
+    <set_variable name="E_caps_Sigma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Enemy_loses_omega" id_arme="bc7992a8-1254-4bab-b470-0ddc35310005" parent_id_arme="c17e6676-157b-4e7b-ac68-266bfa0c5660">
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="EQUALS" value="3.0" />
+    <if_timer_finished name="Capturing_Omega" />
+    <if_variable name="capture_omega_init" comparator="EQUALS" value="1.0" />
+    <set_variable name="enemy_bases" value="enemy_bases-1" integer="yes" />
+  </event>
+  <event name="Player_takes_omega_finish" id_arme="e5d2b21a-dfbe-4c44-8703-3aa1bd5f1596" parent_id_arme="c17e6676-157b-4e7b-ac68-266bfa0c5660">
+    <if_timer_finished name="Capturing_Omega" />
+    <if_variable name="capture_omega_init" comparator="EQUALS" value="1.0" />
+    <set_variable name="player_bases" value="player_bases+1" integer="yes" />
+    <set_side_value value="2" name="Omega Outpost" />
+    <set_variable name="capture_omega_init" value="0.0" integer="yes" />
+    <set_variable name="E_caps_Omega_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Player_support_at_omega" id_arme="55e0f0e7-b25f-4566-929d-9fa09842dcdf" parent_id_arme="c17e6676-157b-4e7b-ac68-266bfa0c5660">
+    <if_not_exists name="The 33&amp;1/3rd Cavalry Division" />
+    <if_variable name="player_tickets" comparator="GREATER" value="0.0" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="Capturing_Omega" />
+    <create type="neutral" x="74643.0" y="0.0" z="78622.0" angle="40.5" name="The 33&amp;1/3rd Cavalry Division" raceKeys="TSN friendly" hullKeys="Carrier warship" sideValue="2" />
+    <set_variable name="chapter_1" value="2.0" integer="yes" />
+    <set_variable name="player_tickets" value="player_tickets-1" integer="yes" />
+  </event>
+  <event name="33_3rd_ai_init" id_arme="6bc439e4-7c99-439d-8e6f-543fc3cea0ce" parent_id_arme="c17e6676-157b-4e7b-ac68-266bfa0c5660">
+    <if_variable name="chapter_1" comparator="EQUALS" value="2.0" />
+    <if_exists name="The 33&amp;1/3rd Cavalry Division" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="5000" name="The 33&amp;1/3rd Cavalry Division" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="The 33&amp;1/3rd Cavalry Division" />
+    <set_variable name="chapter_1" value="3.0" integer="yes" />
+  </event>
+  <folder_arme name="Marshal_base_capture" id_arme="661c6a72-10f6-4946-bad0-eb2afb15039a" />
+  <event name="Marshal_takes_phi_start" id_arme="7f9a4015-de41-4179-bb47-bc5e15f761d1" parent_id_arme="661c6a72-10f6-4946-bad0-eb2afb15039a">
+    <if_distance name1="Marshal Magnetic" name2="Fort Phi" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="2.0" />
+    <if_variable name="capture_phi_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Phi" seconds="20" />
+    <set_variable name="capture_phi_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Marshal_takes_gamma_start" id_arme="784bd70f-b85a-4df5-ace3-6ada3e3e67c1" parent_id_arme="661c6a72-10f6-4946-bad0-eb2afb15039a">
+    <if_distance name1="Marshal Magnetic" name2="Gamma Garrison" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="NOT" value="2.0" />
+    <if_variable name="capture_gamma_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Gamma" seconds="20" />
+    <set_variable name="capture_gamma_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Marshal_takes_beta_start" id_arme="16ab23e4-ab48-491d-934f-f379e694439f" parent_id_arme="661c6a72-10f6-4946-bad0-eb2afb15039a">
+    <if_distance name1="Marshal Magnetic" name2="Beta Base" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Beta Base" comparator="NOT" value="2.0" />
+    <if_variable name="capture_beta_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Beta" seconds="20" />
+    <set_variable name="capture_beta_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Marshal_takes_sigma_start" id_arme="144dd513-4925-4595-b3e6-c8d96ca3b12b" parent_id_arme="661c6a72-10f6-4946-bad0-eb2afb15039a">
+    <if_distance name1="Marshal Magnetic" name2="Sigma Station" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="2.0" />
+    <if_variable name="capture_sigma_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Sigma" seconds="20" />
+    <set_variable name="capture_sigma_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Marshal_takes_omega_start" id_arme="f362e1ea-7bf2-4eb9-ba8d-67b87ded218e" parent_id_arme="661c6a72-10f6-4946-bad0-eb2afb15039a">
+    <if_distance name1="Marshal Magnetic" name2="Omega Outpost" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="2.0" />
+    <if_variable name="capture_omega_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Omega" seconds="20" />
+    <set_variable name="capture_omega_init" value="1.0" integer="yes" />
+  </event>
+  <folder_arme name="BS&amp;S_base_capture" id_arme="d5f7bf6e-a5c4-4a09-9d9c-7fd62e8950ca" />
+  <event name="BS&amp;S_takes_phi_start" id_arme="336d5eb6-9f5e-44da-9ec5-67b4ede23957" parent_id_arme="d5f7bf6e-a5c4-4a09-9d9c-7fd62e8950ca">
+    <if_distance name1="BS&amp;S Corp" name2="Fort Phi" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="2.0" />
+    <if_variable name="capture_phi_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Phi" seconds="20" />
+    <set_variable name="capture_phi_init" value="1.0" integer="yes" />
+  </event>
+  <event name="BS&amp;S_takes_gamma_start" id_arme="087b2464-46df-4d11-8cb1-65d67436da9c" parent_id_arme="d5f7bf6e-a5c4-4a09-9d9c-7fd62e8950ca">
+    <if_distance name1="BS&amp;S Corp" name2="Gamma Garrison" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="NOT" value="2.0" />
+    <if_variable name="capture_gamma_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Gamma" seconds="20" />
+    <set_variable name="capture_gamma_init" value="1.0" integer="yes" />
+  </event>
+  <event name="BS&amp;S_takes_beta_start" id_arme="cacf8eba-b616-4d37-b12b-32eb8b7a97a8" parent_id_arme="d5f7bf6e-a5c4-4a09-9d9c-7fd62e8950ca">
+    <if_distance name1="BS&amp;S Corp" name2="Beta Base" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Beta Base" comparator="NOT" value="2.0" />
+    <if_variable name="capture_beta_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Beta" seconds="20" />
+    <set_variable name="capture_beta_init" value="1.0" integer="yes" />
+  </event>
+  <event name="BS&amp;S_takes_sigma_start" id_arme="80591534-49bb-4f78-b73d-aea24e994625" parent_id_arme="d5f7bf6e-a5c4-4a09-9d9c-7fd62e8950ca">
+    <if_distance name1="BS&amp;S Corp" name2="Sigma Station" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="2.0" />
+    <if_variable name="capture_sigma_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Sigma" seconds="20" />
+    <set_variable name="capture_sigma_init" value="1.0" integer="yes" />
+  </event>
+  <event name="BS&amp;S_takes_omega_start" id_arme="bbc7086b-355d-40ed-b03c-ed7f0333b743" parent_id_arme="d5f7bf6e-a5c4-4a09-9d9c-7fd62e8950ca">
+    <if_distance name1="BS&amp;S Corp" name2="Omega Outpost" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="2.0" />
+    <if_variable name="capture_omega_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Omega" seconds="20" />
+    <set_variable name="capture_omega_init" value="1.0" integer="yes" />
+  </event>
+  <folder_arme name="Bullseye_base_capture" id_arme="e9c6ceee-8987-4af7-9048-bc3705388a16" />
+  <event name="Bullseye_takes_phi_start" id_arme="3fb7da21-5921-472e-acac-3b99fa81d29b" parent_id_arme="e9c6ceee-8987-4af7-9048-bc3705388a16">
+    <if_distance name1="Bullseye Inc" name2="Fort Phi" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="2.0" />
+    <if_variable name="capture_phi_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Phi" seconds="20" />
+    <set_variable name="capture_phi_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Bullseye_takes_gamma_start" id_arme="9f1e82ce-49f0-4c23-afe1-20f1cc69624f" parent_id_arme="e9c6ceee-8987-4af7-9048-bc3705388a16">
+    <if_distance name1="Bullseye Inc" name2="Gamma Garrison" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="NOT" value="2.0" />
+    <if_variable name="capture_gamma_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Gamma" seconds="20" />
+    <set_variable name="capture_gamma_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Bullseye_takes_beta_start" id_arme="e0f67bc0-176d-4787-9767-d28b12d43d9a" parent_id_arme="e9c6ceee-8987-4af7-9048-bc3705388a16">
+    <if_distance name1="Bullseye Inc" name2="Beta Base" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Beta Base" comparator="NOT" value="2.0" />
+    <if_variable name="capture_beta_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Beta" seconds="20" />
+    <set_variable name="capture_beta_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Bullseye_takes_sigma_start" id_arme="128dfa37-3b11-4d2b-b7d9-da254691d66b" parent_id_arme="e9c6ceee-8987-4af7-9048-bc3705388a16">
+    <if_distance name1="Bullseye Inc" name2="Sigma Station" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="2.0" />
+    <if_variable name="capture_sigma_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Sigma" seconds="20" />
+    <set_variable name="capture_sigma_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Bullseye_takes_omega_start" id_arme="ac74808f-1bed-45f4-8658-e8db3796bf1b" parent_id_arme="e9c6ceee-8987-4af7-9048-bc3705388a16">
+    <if_distance name1="Bullseye Inc" name2="Omega Outpost" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="2.0" />
+    <if_variable name="capture_omega_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Omega" seconds="20" />
+    <set_variable name="capture_omega_init" value="1.0" integer="yes" />
+  </event>
+  <folder_arme name="33_base_capture" id_arme="3dc3a395-c869-48a0-92af-9a8c3ddc4b7d" />
+  <event name="33_takes_phi_start" id_arme="60b62202-643a-4068-88b1-9d5d03ef98a4" parent_id_arme="3dc3a395-c869-48a0-92af-9a8c3ddc4b7d">
+    <if_distance name1="The 33&amp;1/3rd Cavalry Division" name2="Fort Phi" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="2.0" />
+    <if_variable name="capture_phi_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Phi" seconds="20" />
+    <set_variable name="capture_phi_init" value="1.0" integer="yes" />
+  </event>
+  <event name="33_takes_gamma_start" id_arme="f35c50e6-ffb9-460f-a1f2-79005f6c186a" parent_id_arme="3dc3a395-c869-48a0-92af-9a8c3ddc4b7d">
+    <if_distance name1="The 33&amp;1/3rd Cavalry Division" name2="Gamma Garrison" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="NOT" value="2.0" />
+    <if_variable name="capture_gamma_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Gamma" seconds="20" />
+    <set_variable name="capture_gamma_init" value="1.0" integer="yes" />
+  </event>
+  <event name="33_takes_beta_start" id_arme="c2778406-b194-4985-8a93-22f3faa63b58" parent_id_arme="3dc3a395-c869-48a0-92af-9a8c3ddc4b7d">
+    <if_distance name1="The 33&amp;1/3rd Cavalry Division" name2="Beta Base" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Beta Base" comparator="NOT" value="2.0" />
+    <if_variable name="capture_beta_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Beta" seconds="20" />
+    <set_variable name="capture_beta_init" value="1.0" integer="yes" />
+  </event>
+  <event name="33_takes_sigma_start" id_arme="e0fc0935-beb1-48bb-858b-d7462fc087ac" parent_id_arme="3dc3a395-c869-48a0-92af-9a8c3ddc4b7d">
+    <if_distance name1="The 33&amp;1/3rd Cavalry Division" name2="Sigma Station" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="2.0" />
+    <if_variable name="capture_sigma_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Sigma" seconds="20" />
+    <set_variable name="capture_sigma_init" value="1.0" integer="yes" />
+  </event>
+  <event name="33_takes_omega_start" id_arme="40d10c59-ae1c-4243-a7cc-dc3deb62ac98" parent_id_arme="3dc3a395-c869-48a0-92af-9a8c3ddc4b7d">
+    <if_distance name1="The 33&amp;1/3rd Cavalry Division" name2="Omega Outpost" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="2.0" />
+    <if_variable name="capture_omega_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Omega" seconds="20" />
+    <set_variable name="capture_omega_init" value="1.0" integer="yes" />
+  </event>
+  <folder_arme name="111_base_capture" id_arme="4805708a-c80b-4b7d-b906-c1560694b695" />
+  <event name="111_takes_phi_start" id_arme="e66933ad-a0cd-4886-894d-04e06a73f1a6" parent_id_arme="4805708a-c80b-4b7d-b906-c1560694b695">
+    <if_distance name1="The Eleventy-first Starborne Division" name2="Fort Phi" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="2.0" />
+    <if_variable name="capture_phi_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Phi" seconds="20" />
+    <set_variable name="capture_phi_init" value="1.0" integer="yes" />
+  </event>
+  <event name="111_takes_gamma_start" id_arme="9be357d1-e36c-4477-b356-50c40cb393a6" parent_id_arme="4805708a-c80b-4b7d-b906-c1560694b695">
+    <if_distance name1="The Eleventy-first Starborne Division" name2="Gamma Garrison" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="NOT" value="2.0" />
+    <if_variable name="capture_gamma_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Gamma" seconds="20" />
+    <set_variable name="capture_gamma_init" value="1.0" integer="yes" />
+  </event>
+  <event name="111_takes_beta_start" id_arme="247a6316-400f-45dc-9794-ddb96334c685" parent_id_arme="4805708a-c80b-4b7d-b906-c1560694b695">
+    <if_distance name1="The Eleventy-first Starborne Division" name2="Beta Base" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Beta Base" comparator="NOT" value="2.0" />
+    <if_variable name="capture_beta_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Beta" seconds="20" />
+    <set_variable name="capture_beta_init" value="1.0" integer="yes" />
+  </event>
+  <event name="111_takes_sigma_start" id_arme="bf8218d1-42d0-47f1-99cb-e1e80215817e" parent_id_arme="4805708a-c80b-4b7d-b906-c1560694b695">
+    <if_distance name1="The Eleventy-first Starborne Division" name2="Sigma Station" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="2.0" />
+    <if_variable name="capture_sigma_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Sigma" seconds="20" />
+    <set_variable name="capture_sigma_init" value="1.0" integer="yes" />
+  </event>
+  <event name="111_takes_omega_start" id_arme="57a6fd10-42ef-4628-8ffb-b9c269007d2d" parent_id_arme="4805708a-c80b-4b7d-b906-c1560694b695">
+    <if_distance name1="The Eleventy-first Starborne Division" name2="Omega Outpost" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="2.0" />
+    <if_variable name="capture_omega_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="Capturing_Omega" seconds="20" />
+    <set_variable name="capture_omega_init" value="1.0" integer="yes" />
+  </event>
+  <folder_arme name="010010_base_capture" id_arme="141b12b6-e017-4f4e-8b2e-64d898abfe26" />
+  <event name="010010_takes_phi_start" id_arme="5ec7af9f-d7e8-40a8-a313-2f5d28fbd661" parent_id_arme="141b12b6-e017-4f4e-8b2e-64d898abfe26">
+    <if_distance name1="Intrepid" name2="Fort Phi" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Phi_init" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="Capturing Base..." consoles="WS" name="Intrepid" />
+    <set_timer name="losing_phi" seconds="20" />
+    <set_variable name="E_caps_Phi_init" value="1.0" integer="yes" />
+  </event>
+  <event name="010010_takes_gamma_start" id_arme="1700ca0b-9a80-419a-a18b-0b332c08fb22" parent_id_arme="141b12b6-e017-4f4e-8b2e-64d898abfe26">
+    <if_distance name1="Intrepid" name2="Gamma Garrison" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Gamma_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_gamma" seconds="20" />
+    <set_variable name="E_caps_Gamma_init" value="1.0" integer="yes" />
+    <warning_popup_message message="Capturing Base..." consoles="WS" name="Intrepid" />
+  </event>
+  <event name="010010_takes_beta_start" id_arme="ccc80290-d59d-4dc2-ac14-fd6e923c4172" parent_id_arme="141b12b6-e017-4f4e-8b2e-64d898abfe26">
+    <if_distance name1="Intrepid" name2="Beta Base" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Beta Base" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Beta_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_beta" seconds="20" />
+    <set_variable name="E_caps_Beta_init" value="1.0" integer="yes" />
+    <warning_popup_message message="Capturing Base..." consoles="WS" name="Intrepid" />
+  </event>
+  <event name="010010_takes_sigma_start" id_arme="5979528d-77f6-4e3f-96ef-b079f74f4c75" parent_id_arme="141b12b6-e017-4f4e-8b2e-64d898abfe26">
+    <if_distance name1="Intrepid" name2="Sigma Station" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Sigma_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_sigma" seconds="20" />
+    <set_variable name="E_caps_Sigma_init" value="1.0" integer="yes" />
+    <warning_popup_message message="Capturing Base..." consoles="WS" name="Intrepid" />
+  </event>
+  <event name="010010_takes_omega_start" id_arme="0865072b-5d20-4170-ad4f-4c5654cbd54a" parent_id_arme="141b12b6-e017-4f4e-8b2e-64d898abfe26">
+    <if_distance name1="Intrepid" name2="Omega Outpost" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Omega_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_omega" seconds="20" />
+    <set_variable name="E_caps_Omega_init" value="1.0" integer="yes" />
+    <warning_popup_message />
+    <warning_popup_message message="Capturing Base..." consoles="WS" name="Intrepid" />
+  </event>
+  <folder_arme name="001100_base_capture" id_arme="1539e611-5f99-463e-857b-a23997477f89" />
+  <event name="001100_takes_phi_start" id_arme="512939ba-c6e4-4de0-9542-b9868fc8bb25" parent_id_arme="1539e611-5f99-463e-857b-a23997477f89">
+    <if_distance name1="001100" name2="Fort Phi" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Phi_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_phi" seconds="20" />
+    <set_variable name="E_caps_Phi_init" value="1.0" integer="yes" />
+  </event>
+  <event name="001100_takes_gamma_start" id_arme="18b3018f-9499-400e-bf79-6bb7c70ec5a8" parent_id_arme="1539e611-5f99-463e-857b-a23997477f89">
+    <if_distance name1="001100" name2="Gamma Garrison" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Gamma_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_gamma" seconds="20" />
+    <set_variable name="E_caps_Gamma_init" value="1.0" integer="yes" />
+  </event>
+  <event name="001100_takes_beta_start" id_arme="90b8e036-724c-41c7-8b11-045915064273" parent_id_arme="1539e611-5f99-463e-857b-a23997477f89">
+    <if_distance name1="001100" name2="Beta Base" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Beta Base" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Beta_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_beta" seconds="20" />
+    <set_variable name="E_caps_Beta_init" value="1.0" integer="yes" />
+  </event>
+  <event name="001100_takes_sigma_start" id_arme="df850b85-a627-44bc-b521-2ec9e340d196" parent_id_arme="1539e611-5f99-463e-857b-a23997477f89">
+    <if_distance name1="001100" name2="Sigma Station" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Sigma_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_sigma" seconds="20" />
+    <set_variable name="E_caps_Sigma_init" value="1.0" integer="yes" />
+  </event>
+  <event name="001100_takes_omega_start" id_arme="bb4bc01e-860e-4373-a338-267b3b9af508" parent_id_arme="1539e611-5f99-463e-857b-a23997477f89">
+    <if_distance name1="001100" name2="Omega Outpost" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Omega_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_omega" seconds="20" />
+    <set_variable name="E_caps_Omega_init" value="1.0" integer="yes" />
+  </event>
+  <folder_arme name="Martin_base_capture" id_arme="7531fbbe-acd0-4037-be84-0278dcaf5a3a" />
+  <event name="Martin_takes_phi_start" id_arme="ed5368f2-d2cc-4a47-a9f1-c8e0653561e4" parent_id_arme="7531fbbe-acd0-4037-be84-0278dcaf5a3a">
+    <if_distance name1="Martin" name2="Fort Phi" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Phi_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_phi" seconds="20" />
+    <set_variable name="E_caps_Phi_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Martin_takes_gamma_start" id_arme="780371de-6cfe-4d6a-9295-8d5fea3570c2" parent_id_arme="7531fbbe-acd0-4037-be84-0278dcaf5a3a">
+    <if_distance name1="Martin" name2="Gamma Garrison" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Gamma_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_gamma" seconds="20" />
+    <set_variable name="E_caps_Gamma_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Martin_takes_beta_start" id_arme="6cff4887-641e-4aa0-9c85-8cd02c57de30" parent_id_arme="7531fbbe-acd0-4037-be84-0278dcaf5a3a">
+    <if_distance name1="Martin" name2="Beta Base" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Beta Base" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Beta_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_beta" seconds="20" />
+    <set_variable name="E_caps_Beta_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Martin_takes_sigma_start" id_arme="4202d91d-6994-4fab-bda1-c227538e9cc7" parent_id_arme="7531fbbe-acd0-4037-be84-0278dcaf5a3a">
+    <if_distance name1="Martin" name2="Sigma Station" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Sigma_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_sigma" seconds="20" />
+    <set_variable name="E_caps_Sigma_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Martin_takes_omega_start" id_arme="1ec7b51d-a368-4ce1-9d90-9a01496e326e" parent_id_arme="7531fbbe-acd0-4037-be84-0278dcaf5a3a">
+    <if_distance name1="Martin" name2="Omega Outpost" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Omega_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_omega" seconds="20" />
+    <set_variable name="E_caps_Omega_init" value="1.0" integer="yes" />
+  </event>
+  <folder_arme name="Short_base_capture" id_arme="07795177-016f-40f5-9f0a-fd1b3db2c216" />
+  <event name="Short_takes_phi_start" id_arme="217a3f07-7be5-4bae-af98-881426a53b21" parent_id_arme="07795177-016f-40f5-9f0a-fd1b3db2c216">
+    <if_distance name1="Short" name2="Fort Phi" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Phi_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_phi" seconds="20" />
+    <set_variable name="E_caps_Phi_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Short_takes_gamma_start" id_arme="5b981a5f-b541-4745-8ae1-2b81102ce8a7" parent_id_arme="07795177-016f-40f5-9f0a-fd1b3db2c216">
+    <if_distance name1="Short" name2="Gamma Garrison" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Gamma_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_gamma" seconds="20" />
+    <set_variable name="E_caps_Gamma_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Short_takes_beta_start" id_arme="207ef6e1-451e-4f87-890f-84f973e5500e" parent_id_arme="07795177-016f-40f5-9f0a-fd1b3db2c216">
+    <if_distance name1="Short" name2="Beta Base" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Beta Base" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Beta_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_beta" seconds="20" />
+    <set_variable name="E_caps_Beta_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Short_takes_sigma_start" id_arme="ea14b6ad-3fd5-48c2-9d39-bd0e1fbdb799" parent_id_arme="07795177-016f-40f5-9f0a-fd1b3db2c216">
+    <if_distance name1="Short" name2="Sigma Station" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Sigma_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_sigma" seconds="20" />
+    <set_variable name="E_caps_Sigma_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Short_takes_omega_start" id_arme="580d6ba4-20bf-41bd-ac9d-e038b732ce5e" parent_id_arme="07795177-016f-40f5-9f0a-fd1b3db2c216">
+    <if_distance name1="Short" name2="Omega Outpost" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Omega_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_omega" seconds="20" />
+    <set_variable name="E_caps_Omega_init" value="1.0" integer="yes" />
+  </event>
+  <folder_arme name="Chase_base_capture" id_arme="1293ffab-27d4-4f2b-b7ba-c75f0414bfaa" />
+  <event name="Chase_takes_phi_start" id_arme="5a27e092-abb0-476f-b8d2-24c2ed30ff98" parent_id_arme="1293ffab-27d4-4f2b-b7ba-c75f0414bfaa">
+    <if_distance name1="Chase" name2="Fort Phi" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Phi_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_phi" seconds="20" />
+    <set_variable name="E_caps_Phi_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Chase_takes_gamma_start" id_arme="d500af23-1e0d-487e-ae7f-4f2aa37fa1c0" parent_id_arme="1293ffab-27d4-4f2b-b7ba-c75f0414bfaa">
+    <if_distance name1="Chase" name2="Gamma Garrison" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Gamma_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_gamma" seconds="20" />
+    <set_variable name="E_caps_Gamma_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Chase_takes_beta_start" id_arme="2c8d8eac-5cd0-462d-9794-1b6fb261c05f" parent_id_arme="1293ffab-27d4-4f2b-b7ba-c75f0414bfaa">
+    <if_distance name1="Chase" name2="Beta Base" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Beta Base" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Beta_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_beta" seconds="20" />
+    <set_variable name="E_caps_Beta_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Chase_takes_sigma_start" id_arme="58d46acb-0e38-419b-9bcc-02a4e19acf8e" parent_id_arme="1293ffab-27d4-4f2b-b7ba-c75f0414bfaa">
+    <if_distance name1="Chase" name2="Sigma Station" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Sigma_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_sigma" seconds="20" />
+    <set_variable name="E_caps_Sigma_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Chase_takes_omega_start" id_arme="955e25ab-d4a0-4c8a-82fd-072b242d36a7" parent_id_arme="1293ffab-27d4-4f2b-b7ba-c75f0414bfaa">
+    <if_distance name1="Chase" name2="Omega Outpost" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Omega_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_omega" seconds="20" />
+    <set_variable name="E_caps_Omega_init" value="1.0" integer="yes" />
+  </event>
+  <folder_arme name="Monstro_base_capture" id_arme="48a89528-eb0e-4324-8436-dc5292843bd3" />
+  <event name="Monstro_takes_phi_start" id_arme="26fd081a-6fac-499b-8db7-fb112cf86e20" parent_id_arme="48a89528-eb0e-4324-8436-dc5292843bd3">
+    <if_distance name1="Monstro" name2="Fort Phi" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Phi_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_phi" seconds="20" />
+    <set_variable name="E_caps_Phi_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Monstro_takes_gamma_start" id_arme="42a40669-3944-4fac-b30b-b8920071f672" parent_id_arme="48a89528-eb0e-4324-8436-dc5292843bd3">
+    <if_distance name1="Monstro" name2="Gamma Garrison" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Gamma_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_gamma" seconds="20" />
+    <set_variable name="E_caps_Gamma_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Monstro_takes_beta_start" id_arme="79c288ce-12ed-4133-a1b2-64a111c16ae8" parent_id_arme="48a89528-eb0e-4324-8436-dc5292843bd3">
+    <if_distance name1="Monstro" name2="Beta Base" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Beta Base" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Beta_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_beta" seconds="20" />
+    <set_variable name="E_caps_Beta_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Monstro_takes_sigma_start" id_arme="ea3da1c8-cff4-4a41-92ef-846af8e7f40e" parent_id_arme="48a89528-eb0e-4324-8436-dc5292843bd3">
+    <if_distance name1="Monstro" name2="Sigma Station" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Sigma_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_sigma" seconds="20" />
+    <set_variable name="E_caps_Sigma_init" value="1.0" integer="yes" />
+  </event>
+  <event name="Monstro_takes_omega_start" id_arme="1df1cf1d-9203-487e-b269-1e51817047ba" parent_id_arme="48a89528-eb0e-4324-8436-dc5292843bd3">
+    <if_distance name1="Monstro" name2="Omega Outpost" comparator="LESS" value="2000.0" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_variable name="E_caps_Omega_init" comparator="EQUALS" value="0.0" />
+    <set_timer name="losing_omega" seconds="20" />
+    <set_variable name="E_caps_Omega_init" value="1.0" integer="yes" />
+  </event>
+  <folder_arme name="Player_defends_bases" id_arme="574344ac-8b74-43df-a70a-4e0f823e12b8" />
+  <event name="Player_defends_phi" id_arme="2c752d70-8b9f-4786-b99e-ff17f65e3d85" parent_id_arme="574344ac-8b74-43df-a70a-4e0f823e12b8">
+    <if_distance name1="Artemis" name2="Fort Phi" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Phi_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="losing_phi" seconds="1000000" />
+    <set_variable name="E_caps_Phi_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Player_defends_gamma" id_arme="3aa05523-1efa-4042-bc91-1798e079002d" parent_id_arme="574344ac-8b74-43df-a70a-4e0f823e12b8">
+    <if_distance name1="Artemis" name2="Gamma Garrison" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Gamma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="losing_gamma" seconds="1000000" />
+    <set_variable name="E_caps_Gamma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Player_defends_beta" id_arme="dfd95d6a-3550-4fb0-96e7-fbf6effad2f4" parent_id_arme="574344ac-8b74-43df-a70a-4e0f823e12b8">
+    <if_distance name1="Artemis" name2="Beta Base" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Beta_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="losing_beta" seconds="1000000" />
+    <set_variable name="E_caps_Beta_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Player_defends_sigma" id_arme="cbc32ff6-135e-4a22-9578-c7599ddc5762" parent_id_arme="574344ac-8b74-43df-a70a-4e0f823e12b8">
+    <if_distance name1="Artemis" name2="Sigma Station" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Sigma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="losing_sigma" seconds="1000000" />
+    <set_variable name="E_caps_Sigma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Player_defends_omega" id_arme="d038934c-6d05-4274-b795-c11c5f25bf00" parent_id_arme="574344ac-8b74-43df-a70a-4e0f823e12b8">
+    <if_distance name1="Artemis" name2="Omega Outpost" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Omega_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="losing_omega" seconds="1000000" />
+    <set_variable name="E_caps_Omega_init" value="0.0" integer="yes" />
+  </event>
+  <folder_arme name="Player2_defends_bases" id_arme="b2f42d89-fa03-4436-bf6e-377917a9d990" />
+  <event name="Player2_defends_phi" id_arme="4544f7c2-309f-42f4-8949-a62e78d467fd" parent_id_arme="b2f42d89-fa03-4436-bf6e-377917a9d990">
+    <if_distance name1="Intrepid" name2="Fort Phi" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_phi_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Phi" seconds="1000000" />
+    <set_variable name="capture_phi_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Player2_defends_gamma" id_arme="428652f2-61a0-4f79-8eb9-e153fc14fdd7" parent_id_arme="b2f42d89-fa03-4436-bf6e-377917a9d990">
+    <if_distance name1="Intrepid" name2="Gamma Garrison" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_gamma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Gamma" seconds="1000000" />
+    <set_variable name="capture_gamma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Player2_defends_beta" id_arme="b853a103-2026-4bbe-80c6-9f92b4b3b063" parent_id_arme="b2f42d89-fa03-4436-bf6e-377917a9d990">
+    <if_distance name1="Intrepid" name2="Beta Base" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_beta_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Beta" seconds="1000000" />
+    <set_variable name="capture_beta_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Player2_defends_sigma" id_arme="6fc2f1b5-1490-42ff-bbd4-d81c489678b5" parent_id_arme="b2f42d89-fa03-4436-bf6e-377917a9d990">
+    <if_distance name1="Intrepid" name2="Sigma Station" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_sigma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Sigma" seconds="1000000" />
+    <set_variable name="capture_sigma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Player2_defends_omega" id_arme="3bd0c823-422f-445f-b1ea-98e5b5a9e18f" parent_id_arme="b2f42d89-fa03-4436-bf6e-377917a9d990">
+    <if_distance name1="Intrepid" name2="Omega Outpost" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_omega_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Omega" seconds="1000000" />
+    <set_variable name="capture_omega_init" value="0.0" integer="yes" />
+  </event>
+  <folder_arme name="Marshal_defends_bases" id_arme="b29f8cf4-6bb5-489b-8f49-e6b2d0e2cfc8" />
+  <event name="Marshal_defends_phi" id_arme="54843f8d-06cb-46e1-9f17-29778e0866f7" parent_id_arme="b29f8cf4-6bb5-489b-8f49-e6b2d0e2cfc8">
+    <if_distance name1="Marshal Magnetic" name2="Fort Phi" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Phi_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Phi" seconds="1000000" />
+    <set_variable name="E_caps_Phi_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Marshal_defends_gamma" id_arme="31252750-519a-411f-9031-eb36a12969bb" parent_id_arme="b29f8cf4-6bb5-489b-8f49-e6b2d0e2cfc8">
+    <if_distance name1="Marshal Magnetic" name2="Gamma Garrison" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Gamma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Gamma" seconds="1000000" />
+    <set_variable name="E_caps_Gamma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Marshal_defends_beta" id_arme="7b2ea1a5-544f-4a18-ad73-62f707d13c7d" parent_id_arme="b29f8cf4-6bb5-489b-8f49-e6b2d0e2cfc8">
+    <if_distance name1="Marshal Magnetic" name2="Beta Base" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Beta_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Beta" seconds="1000000" />
+    <set_variable name="E_caps_Beta_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Marshal_defends_sigma" id_arme="92bade71-ee42-4324-8555-b2e797fe20d0" parent_id_arme="b29f8cf4-6bb5-489b-8f49-e6b2d0e2cfc8">
+    <if_distance name1="Marshal Magnetic" name2="Sigma Station" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Sigma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Sigma" seconds="1000000" />
+    <set_variable name="E_caps_Sigma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Marshal_defends_omega" id_arme="0dfed6c6-a267-4f7d-ab78-13188f000043" parent_id_arme="b29f8cf4-6bb5-489b-8f49-e6b2d0e2cfc8">
+    <if_distance name1="Marshal Magnetic" name2="Omega Outpost" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Omega_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Omega" seconds="1000000" />
+    <set_variable name="E_caps_Omega_init" value="0.0" integer="yes" />
+  </event>
+  <folder_arme name="BS_defends_bases" id_arme="d07a9cd5-0bee-4bcc-8b89-4cb37605d2e2" />
+  <event name="BS_defends_phi" id_arme="148f40bd-55e4-460f-b1a5-802cae847f87" parent_id_arme="d07a9cd5-0bee-4bcc-8b89-4cb37605d2e2">
+    <if_distance name1="BS&amp;S Corp" name2="Fort Phi" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Phi_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Phi" seconds="1000000" />
+    <set_variable name="E_caps_Phi_init" value="0.0" integer="yes" />
+  </event>
+  <event name="BS_defends_gamma" id_arme="2e3319e5-2d4d-4ae6-84c8-158929656b0f" parent_id_arme="d07a9cd5-0bee-4bcc-8b89-4cb37605d2e2">
+    <if_distance name1="BS&amp;S Corp" name2="Gamma Garrison" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Gamma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Gamma" seconds="1000000" />
+    <set_variable name="E_caps_Gamma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="BS_defends_beta" id_arme="0e17cc64-869f-4bb8-aae5-8bd807e0055c" parent_id_arme="d07a9cd5-0bee-4bcc-8b89-4cb37605d2e2">
+    <if_distance name1="BS&amp;S Corp" name2="Beta Base" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Beta_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Beta" seconds="1000000" />
+    <set_variable name="E_caps_Beta_init" value="0.0" integer="yes" />
+  </event>
+  <event name="BS_defends_sigma" id_arme="aaebf529-9e73-4c9c-b33b-346b4d6dc439" parent_id_arme="d07a9cd5-0bee-4bcc-8b89-4cb37605d2e2">
+    <if_distance name1="BS&amp;S Corp" name2="Sigma Station" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Sigma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Sigma" seconds="1000000" />
+    <set_variable name="E_caps_Sigma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="BS_defends_omega" id_arme="13b6500d-6e78-4d96-82c2-41383b7925c4" parent_id_arme="d07a9cd5-0bee-4bcc-8b89-4cb37605d2e2">
+    <if_distance name1="BS&amp;S Corp" name2="Omega Outpost" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Omega_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Omega" seconds="1000000" />
+    <set_variable name="E_caps_Omega_init" value="0.0" integer="yes" />
+  </event>
+  <folder_arme name="BE_defends_bases" id_arme="bc458cef-f8f0-41dd-964c-3ff6699ccc49" />
+  <event name="BE_defends_phi" id_arme="a11a99c2-79ad-4851-8322-5ab800be6842" parent_id_arme="bc458cef-f8f0-41dd-964c-3ff6699ccc49">
+    <if_distance name1="Bull's Eye Inc" name2="Fort Phi" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Phi_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Phi" seconds="1000000" />
+    <set_variable name="E_caps_Phi_init" value="0.0" integer="yes" />
+  </event>
+  <event name="BE_defends_gamma" id_arme="db74e25f-2122-4d72-8e9a-e74338fea7f2" parent_id_arme="bc458cef-f8f0-41dd-964c-3ff6699ccc49">
+    <if_distance name1="Bull's Eye Inc" name2="Gamma Garrison" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Gamma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Gamma" seconds="1000000" />
+    <set_variable name="E_caps_Gamma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="BE_defends_beta" id_arme="21d9e5c6-fac6-44ab-aef9-3fbdfa9a89aa" parent_id_arme="bc458cef-f8f0-41dd-964c-3ff6699ccc49">
+    <if_distance name1="Bull's Eye Inc" name2="Beta Base" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Beta_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Beta" seconds="1000000" />
+    <set_variable name="E_caps_Beta_init" value="0.0" integer="yes" />
+  </event>
+  <event name="BE_defends_sigma" id_arme="7397fda6-3350-4c01-842f-b9d18baaeca0" parent_id_arme="bc458cef-f8f0-41dd-964c-3ff6699ccc49">
+    <if_distance name1="Bull's Eye Inc" name2="Sigma Station" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Sigma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Sigma" seconds="1000000" />
+    <set_variable name="E_caps_Sigma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="BE_defends_omega" id_arme="99549457-e4bb-4337-a53c-daecce0e8e55" parent_id_arme="bc458cef-f8f0-41dd-964c-3ff6699ccc49">
+    <if_distance name1="Bull's Eye Inc" name2="Omega Outpost" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Omega_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Omega" seconds="1000000" />
+    <set_variable name="E_caps_Omega_init" value="0.0" integer="yes" />
+  </event>
+  <folder_arme name="33_defends_bases" id_arme="7cfca1f7-8474-4b1c-9a3d-2b4fc9543147" />
+  <event name="33_defends_phi" id_arme="b8b93cf1-10d2-4c91-9b77-1e53eddee385" parent_id_arme="7cfca1f7-8474-4b1c-9a3d-2b4fc9543147">
+    <if_distance name1="The 33&amp;1/3rd Cavalry Division" name2="Fort Phi" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Phi_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Phi" seconds="1000000" />
+    <set_variable name="E_caps_Phi_init" value="0.0" integer="yes" />
+  </event>
+  <event name="33_defends_gamma" id_arme="6d378363-d1c6-44ef-92c8-573b63a39005" parent_id_arme="7cfca1f7-8474-4b1c-9a3d-2b4fc9543147">
+    <if_distance name1="The 33&amp;1/3rd Cavalry Division" name2="Gamma Garrison" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Gamma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Gamma" seconds="1000000" />
+    <set_variable name="E_caps_Gamma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="33_defends_beta" id_arme="a61fa0f8-318f-410c-b0eb-d3e76c09f555" parent_id_arme="7cfca1f7-8474-4b1c-9a3d-2b4fc9543147">
+    <if_distance name1="The 33&amp;1/3rd Cavalry Division" name2="Beta Base" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Beta_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Beta" seconds="1000000" />
+    <set_variable name="E_caps_Beta_init" value="0.0" integer="yes" />
+  </event>
+  <event name="33_defends_sigma" id_arme="3d9662e9-70b7-4fcf-aaca-73cc4cdfd233" parent_id_arme="7cfca1f7-8474-4b1c-9a3d-2b4fc9543147">
+    <if_distance name1="The 33&amp;1/3rd Cavalry Division" name2="Sigma Station" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Sigma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Sigma" seconds="1000000" />
+    <set_variable name="E_caps_Sigma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="33_defends_omega" id_arme="d4a4db99-e7b5-4508-bc22-f3e8f6263919" parent_id_arme="7cfca1f7-8474-4b1c-9a3d-2b4fc9543147">
+    <if_distance name1="The 33&amp;1/3rd Cavalry Division" name2="Omega Outpost" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Omega_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Omega" seconds="1000000" />
+    <set_variable name="E_caps_Omega_init" value="0.0" integer="yes" />
+  </event>
+  <folder_arme name="111_defends_bases" id_arme="34bef16e-5e0a-4a95-b9a4-3b94baa8e662" />
+  <event name="111_defends_phi" id_arme="2467cbc6-fa37-41f3-9aff-9232c4b55349" parent_id_arme="34bef16e-5e0a-4a95-b9a4-3b94baa8e662">
+    <if_distance name1="The Eleventy-first Starborne Division" name2="Fort Phi" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Phi_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Phi" seconds="1000000" />
+    <set_variable name="E_caps_Phi_init" value="0.0" integer="yes" />
+  </event>
+  <event name="111_defends_gamma" id_arme="10215870-b7b4-4cbf-ad15-a50e242fc360" parent_id_arme="34bef16e-5e0a-4a95-b9a4-3b94baa8e662">
+    <if_distance name1="The Eleventy-first Starborne Division" name2="Gamma Garrison" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Gamma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Gamma" seconds="1000000" />
+    <set_variable name="E_caps_Gamma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="111_defends_beta" id_arme="755656bb-715c-407c-91ad-e34b65efe09d" parent_id_arme="34bef16e-5e0a-4a95-b9a4-3b94baa8e662">
+    <if_distance name1="The Eleventy-first Starborne Division" name2="Beta Base" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Beta_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Beta" seconds="1000000" />
+    <set_variable name="E_caps_Beta_init" value="0.0" integer="yes" />
+  </event>
+  <event name="111_defends_sigma" id_arme="439d8e11-cd02-4f29-bf13-d8ea32594973" parent_id_arme="34bef16e-5e0a-4a95-b9a4-3b94baa8e662">
+    <if_distance name1="The Eleventy-first Starborne Division" name2="Sigma Station" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Sigma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Sigma" seconds="1000000" />
+    <set_variable name="E_caps_Sigma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="111_defends_omega" id_arme="1d97cfb3-72b3-4ee9-9732-e9324b0e9b5d" parent_id_arme="34bef16e-5e0a-4a95-b9a4-3b94baa8e662">
+    <if_distance name1="The Eleventy-first Starborne Division" name2="Omega Outpost" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="E_caps_Omega_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Omega" seconds="1000000" />
+    <set_variable name="E_caps_Omega_init" value="0.0" integer="yes" />
+  </event>
+  <folder_arme name="14_defends_bases" id_arme="61b99ef9-1b30-4a4e-a3f8-6b567b4d9edc" />
+  <event name="14_defends_phi" id_arme="6473aaea-7dc7-45d2-aed5-a26d3f8243a6" parent_id_arme="61b99ef9-1b30-4a4e-a3f8-6b567b4d9edc">
+    <if_distance name1="001100" name2="Fort Phi" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_phi_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Phi" seconds="1000000" />
+    <set_variable name="capture_phi_init" value="0.0" integer="yes" />
+  </event>
+  <event name="14_defends_gamma" id_arme="735b058a-d994-442a-8581-56f65ef0ca3d" parent_id_arme="61b99ef9-1b30-4a4e-a3f8-6b567b4d9edc">
+    <if_distance name1="001100" name2="Gamma Garrison" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_gamma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Gamma" seconds="1000000" />
+    <set_variable name="capture_gamma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="14_defends_beta" id_arme="3eab1d89-a2cd-46f6-8810-7f2d1e198c91" parent_id_arme="61b99ef9-1b30-4a4e-a3f8-6b567b4d9edc">
+    <if_distance name1="001100" name2="Beta Base" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_beta_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Beta" seconds="1000000" />
+    <set_variable name="capture_beta_init" value="0.0" integer="yes" />
+  </event>
+  <event name="14_defends_sigma" id_arme="58d017a3-ebc4-4b28-b4e0-ac04ba44b616" parent_id_arme="61b99ef9-1b30-4a4e-a3f8-6b567b4d9edc">
+    <if_distance name1="001100" name2="Sigma Station" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_sigma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Sigma" seconds="1000000" />
+    <set_variable name="capture_sigma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="14_defends_omega" id_arme="943b832a-4f5a-43a2-aedc-78e15d511dd2" parent_id_arme="61b99ef9-1b30-4a4e-a3f8-6b567b4d9edc">
+    <if_distance name1="001100" name2="Omega Outpost" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_omega_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Omega" seconds="1000000" />
+    <set_variable name="capture_omega_init" value="0.0" integer="yes" />
+  </event>
+  <folder_arme name="Martin_defends_bases" id_arme="cd62a9dc-5743-4ee5-aa38-b7aec8eb783d" />
+  <event name="Martin_defends_phi" id_arme="b700c360-4f54-4dc1-9404-cc51a1227ded" parent_id_arme="cd62a9dc-5743-4ee5-aa38-b7aec8eb783d">
+    <if_distance name1="Martin" name2="Fort Phi" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_phi_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Phi" seconds="1000000" />
+    <set_variable name="capture_phi_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Martin_defends_gamma" id_arme="ff610936-ec2c-46ea-bcc1-ece6a365b083" parent_id_arme="cd62a9dc-5743-4ee5-aa38-b7aec8eb783d">
+    <if_distance name1="Martin" name2="Gamma Garrison" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_gamma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Gamma" seconds="1000000" />
+    <set_variable name="capture_gamma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Martin_defends_beta" id_arme="6a68870c-4aaf-4989-8f4c-5bda64e7e05c" parent_id_arme="cd62a9dc-5743-4ee5-aa38-b7aec8eb783d">
+    <if_distance name1="Martin" name2="Beta Base" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_beta_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Beta" seconds="1000000" />
+    <set_variable name="capture_beta_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Martin_defends_sigma" id_arme="afb8835e-44c1-4054-9ce0-da1d1b96980a" parent_id_arme="cd62a9dc-5743-4ee5-aa38-b7aec8eb783d">
+    <if_distance name1="Martin" name2="Sigma Station" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_sigma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Sigma" seconds="1000000" />
+    <set_variable name="capture_sigma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Martin_defends_omega" id_arme="73a4ac2e-5c58-4b1a-a423-196b55a29a97" parent_id_arme="cd62a9dc-5743-4ee5-aa38-b7aec8eb783d">
+    <if_distance name1="Martin" name2="Omega Outpost" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_omega_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Omega" seconds="1000000" />
+    <set_variable name="capture_omega_init" value="0.0" integer="yes" />
+  </event>
+  <folder_arme name="Short_defends_bases" id_arme="66b51db8-c07f-4e53-abd4-87d97486af59" />
+  <event name="Short_defends_phi" id_arme="b581c970-b027-4215-9c13-7c26dc7a4802" parent_id_arme="66b51db8-c07f-4e53-abd4-87d97486af59">
+    <if_distance name1="short" name2="Fort Phi" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_phi_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Phi" seconds="1000000" />
+    <set_variable name="capture_phi_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Short_defends_gamma" id_arme="a91bf018-7339-43fe-b190-1fe7c7f2a8d1" parent_id_arme="66b51db8-c07f-4e53-abd4-87d97486af59">
+    <if_distance name1="short" name2="Gamma Garrison" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_gamma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Gamma" seconds="1000000" />
+    <set_variable name="capture_gamma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Short_defends_beta" id_arme="4c9ed3a6-2591-4f57-a0e4-360912e76bfe" parent_id_arme="66b51db8-c07f-4e53-abd4-87d97486af59">
+    <if_distance name1="short" name2="Beta Base" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_beta_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Beta" seconds="1000000" />
+    <set_variable name="capture_beta_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Short_defends_sigma" id_arme="b6d672ee-e495-4b0b-b964-d6f64da81d30" parent_id_arme="66b51db8-c07f-4e53-abd4-87d97486af59">
+    <if_distance name1="short" name2="Sigma Station" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_sigma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Sigma" seconds="1000000" />
+    <set_variable name="capture_sigma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Short_defends_omega" id_arme="03b0987c-c28d-42dd-aef3-3d55b6e737de" parent_id_arme="66b51db8-c07f-4e53-abd4-87d97486af59">
+    <if_distance name1="short" name2="Omega Outpost" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_omega_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Omega" seconds="1000000" />
+    <set_variable name="capture_omega_init" value="0.0" integer="yes" />
+  </event>
+  <folder_arme name="Chase_defends_bases" id_arme="1a9d49fc-bcee-42f0-afed-2ac6e446811c" />
+  <event name="Chase_defends_phi" id_arme="5772002b-4d49-42ee-a4ec-126dc143de34" parent_id_arme="1a9d49fc-bcee-42f0-afed-2ac6e446811c">
+    <if_distance name1="Chase" name2="Fort Phi" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_phi_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Phi" seconds="1000000" />
+    <set_variable name="capture_phi_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Chase_defends_gamma" id_arme="26fae372-63c3-42ba-927c-3d61fb633824" parent_id_arme="1a9d49fc-bcee-42f0-afed-2ac6e446811c">
+    <if_distance name1="Chase" name2="Gamma Garrison" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_gamma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Gamma" seconds="1000000" />
+    <set_variable name="capture_gamma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Chase_defends_beta" id_arme="af2a7374-7576-44a8-b420-534bb1e0cd1e" parent_id_arme="1a9d49fc-bcee-42f0-afed-2ac6e446811c">
+    <if_distance name1="Chase" name2="Beta Base" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_beta_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Beta" seconds="1000000" />
+    <set_variable name="capture_beta_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Chase_defends_sigma" id_arme="9f7485c2-40e6-4d76-83d5-8f106d593213" parent_id_arme="1a9d49fc-bcee-42f0-afed-2ac6e446811c">
+    <if_distance name1="Chase" name2="Sigma Station" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_sigma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Sigma" seconds="1000000" />
+    <set_variable name="capture_sigma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Chase_defends_omega" id_arme="11312004-ee4e-4012-ad22-f7f2be33c6fb" parent_id_arme="1a9d49fc-bcee-42f0-afed-2ac6e446811c">
+    <if_distance name1="Chase" name2="Omega Outpost" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_omega_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Omega" seconds="1000000" />
+    <set_variable name="capture_omega_init" value="0.0" integer="yes" />
+  </event>
+  <folder_arme name="Monstro_defends_bases" id_arme="fcdfb200-559c-4091-9183-82c70e48d16e" />
+  <event name="Monstro_defends_phi" id_arme="634a1b78-cede-40e1-860d-c087316a5425" parent_id_arme="fcdfb200-559c-4091-9183-82c70e48d16e">
+    <if_distance name1="Chase" name2="Fort Phi" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_phi_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Phi" seconds="1000000" />
+    <set_variable name="capture_phi_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Monstro_defends_gamma" id_arme="0f7453ef-cbcb-4982-b86e-cd41cb783bb9" parent_id_arme="fcdfb200-559c-4091-9183-82c70e48d16e">
+    <if_distance name1="Chase" name2="Gamma Garrison" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_gamma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Gamma" seconds="1000000" />
+    <set_variable name="capture_gamma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Monstro_defends_beta" id_arme="a1be80c8-e33e-465c-ac5d-dd242ca7e061" parent_id_arme="fcdfb200-559c-4091-9183-82c70e48d16e">
+    <if_distance name1="Chase" name2="Beta Base" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_beta_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Beta" seconds="1000000" />
+    <set_variable name="capture_beta_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Monstro_defends_sigma" id_arme="5af1cd9f-21ea-4e75-965d-28db3a1055be" parent_id_arme="fcdfb200-559c-4091-9183-82c70e48d16e">
+    <if_distance name1="Chase" name2="Sigma Station" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_sigma_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Sigma" seconds="1000000" />
+    <set_variable name="capture_sigma_init" value="0.0" integer="yes" />
+  </event>
+  <event name="Monstro_defends_omega" id_arme="b7b888a9-969e-47dc-92d4-c66d7cf72799" parent_id_arme="fcdfb200-559c-4091-9183-82c70e48d16e">
+    <if_distance name1="Chase" name2="Omega Outpost" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="capture_omega_init" comparator="EQUALS" value="1.0" />
+    <set_timer name="Capturing_Omega" seconds="1000000" />
+    <set_variable name="capture_omega_init" value="0.0" integer="yes" />
+  </event>
+  <folder_arme name="Enemy_secures_bases" id_arme="23bc3c8c-5092-41d6-8b69-516ab0a64b22" />
+  <event name="Player_loses_phi" id_arme="55fe0fbb-5134-41c5-91e5-680b9a47a383" parent_id_arme="23bc3c8c-5092-41d6-8b69-516ab0a64b22">
+    <if_object_property property="sideValue" name="Fort Phi" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="losing_phi" />
+    <if_variable name="E_caps_Phi_init" comparator="EQUALS" value="1.0" />
+    <set_variable name="player_bases" value="player_bases-1" integer="yes" />
+  </event>
+  <event name="Enemy_takes_phi" id_arme="4a300613-6e09-4461-ad4a-90f9cb9b9036" parent_id_arme="23bc3c8c-5092-41d6-8b69-516ab0a64b22">
+    <if_timer_finished name="losing_phi" />
+    <if_variable name="E_caps_Phi_init" comparator="EQUALS" value="1.0" />
+    <set_side_value value="3" name="Fort Phi" />
+    <set_variable name="enemy_bases" value="enemy_bases+1" integer="yes" />
+    <set_variable name="E_caps_Phi_init" value="2.0" integer="yes" />
+    <set_timer name="Monstro_respawn" seconds="1" />
+  </event>
+  <event name="More_enemies_at_phi" id_arme="3e70edae-53fd-47fc-9bf4-39d996ff7019" parent_id_arme="23bc3c8c-5092-41d6-8b69-516ab0a64b22">
+    <if_variable name="respawn_monstro_flag" comparator="EQUALS" value="0.0" />
+    <if_not_exists name="Monstro" />
+    <if_timer_finished name="Monstro_respawn" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="EQUALS" value="3.0" />
+    <create type="enemy" x="48776.0" y="0.0" z="51989.0" angle="226.9" name="Monstro" raceKeys="Torgoth" hullKeys="Goliath warship" sideValue="3" fleetnumber="6" />
+    <set_variable name="respawn_monstro_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Monstro_AI" id_arme="1f017325-d16d-4100-acb0-d4de812438d5" parent_id_arme="23bc3c8c-5092-41d6-8b69-516ab0a64b22">
+    <if_variable name="respawn_monstro_flag" comparator="EQUALS" value="1.0" />
+    <if_exists name="Monstro" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Monstro" />
+    <set_variable name="respawn_monstro_flag" value="2.0" integer="yes" />
+  </event>
+  <event name="Player_loses_gamma" id_arme="e3baae46-854d-4151-8299-b577ab5136b4" parent_id_arme="23bc3c8c-5092-41d6-8b69-516ab0a64b22">
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="losing_gamma" />
+    <if_variable name="E_caps_Gamma_init" comparator="EQUALS" value="1.0" />
+    <set_variable name="player_bases" value="player_bases-1" integer="yes" />
+  </event>
+  <event name="Enemy_takes_gamma" id_arme="7d716271-3d8f-4f4f-af1f-5fa4d94c6540" parent_id_arme="23bc3c8c-5092-41d6-8b69-516ab0a64b22">
+    <if_timer_finished name="losing_gamma" />
+    <if_variable name="E_caps_Gamma_init" comparator="EQUALS" value="1.0" />
+    <set_side_value value="3" name="Gamma Garrison" />
+    <set_variable name="enemy_bases" value="enemy_bases+1" integer="yes" />
+    <set_variable name="E_caps_Gamma_init" value="2.0" integer="yes" />
+  </event>
+  <event name="Player_loses_beta" id_arme="38fec5e9-c0e1-4397-b7c3-1b6516c6aef8" parent_id_arme="23bc3c8c-5092-41d6-8b69-516ab0a64b22">
+    <if_object_property property="sideValue" name="Beta Base" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="losing_beta" />
+    <if_variable name="E_caps_Beta_init" comparator="EQUALS" value="1.0" />
+    <set_variable name="player_bases" value="player_bases-1" integer="yes" />
+  </event>
+  <event name="Enemy_takes_beta" id_arme="94c9da9c-e96e-4f34-9d7f-e512729e8aa6" parent_id_arme="23bc3c8c-5092-41d6-8b69-516ab0a64b22">
+    <if_timer_finished name="losing_beta" />
+    <if_variable name="E_caps_Beta_init" comparator="EQUALS" value="1.0" />
+    <set_side_value value="3" name="Beta Base" />
+    <set_variable name="enemy_bases" value="enemy_bases+1" integer="yes" />
+    <set_variable name="E_caps_Beta_init" value="2.0" integer="yes" />
+  </event>
+  <event name="Player_loses_sigma" id_arme="95d6e2f0-bb93-4616-b214-0541d2764835" parent_id_arme="23bc3c8c-5092-41d6-8b69-516ab0a64b22">
+    <if_object_property property="sideValue" name="Sigma Station" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="losing_sigma" />
+    <if_variable name="E_caps_Sigma_init" comparator="EQUALS" value="1.0" />
+    <set_variable name="player_bases" value="player_bases-1" integer="yes" />
+  </event>
+  <event name="Enemy_takes_sigma" id_arme="72a0681b-2ff2-4083-86b3-98475072639f" parent_id_arme="23bc3c8c-5092-41d6-8b69-516ab0a64b22">
+    <if_timer_finished name="losing_sigma" />
+    <if_variable name="E_caps_Sigma_init" comparator="EQUALS" value="1.0" />
+    <set_side_value value="3" name="Sigma Station" />
+    <set_variable name="enemy_bases" value="enemy_bases+1" integer="yes" />
+    <set_variable name="E_caps_Sigma_init" value="2.0" integer="yes" />
+  </event>
+  <event name="Player_loses_omega" id_arme="fa654e87-6475-4828-aa23-a32cedcf8007" parent_id_arme="23bc3c8c-5092-41d6-8b69-516ab0a64b22">
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="losing_omega" />
+    <if_variable name="E_caps_Omega_init" comparator="EQUALS" value="1.0" />
+    <set_variable name="player_bases" value="player_bases-1" integer="yes" />
+  </event>
+  <event name="Enemy_takes_omega" id_arme="532d6e4a-5152-41b0-a644-5846341a0998" parent_id_arme="23bc3c8c-5092-41d6-8b69-516ab0a64b22">
+    <if_timer_finished name="losing_omega" />
+    <if_variable name="E_caps_Omega_init" comparator="EQUALS" value="1.0" />
+    <set_side_value value="3" name="Omega Outpost" />
+    <set_variable name="enemy_bases" value="enemy_bases+1" integer="yes" />
+    <set_variable name="E_caps_Omega_init" value="2.0" integer="yes" />
+  </event>
+  <folder_arme name="Respawn Vessels" id_arme="453f4de7-761c-41fb-8822-f8c00454923f" expanded_arme="" />
+  <folder_arme name="Respawn Marshal" id_arme="fd65b320-c44d-4582-9588-6ab762cacb60" parent_id_arme="453f4de7-761c-41fb-8822-f8c00454923f" />
+  <event name="Marshal_Dies" id_arme="d3f0def6-eddb-46da-a5b9-ebe291716194" parent_id_arme="fd65b320-c44d-4582-9588-6ab762cacb60">
+    <if_variable name="respawn_marshal_flag" comparator="EQUALS" value="2.0" />
+    <if_variable name="enemy_tickets" comparator="GREATER" value="0.0" />
+    <if_not_exists name="Marshal Magnetic" />
+    <set_timer name="Marshal_respawn" seconds="30" />
+    <set_variable name="respawn_marshal_flag" value="0.0" integer="yes" />
+  </event>
+  <event name="Marshal_Respawn_Front" id_arme="c8275d87-2dde-4107-9410-b3e65c384ff8" parent_id_arme="fd65b320-c44d-4582-9588-6ab762cacb60">
+    <if_not_exists name="Marshal Magnetic" />
+    <if_timer_finished name="Marshal_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_marshal_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="72960.0" y="0.0" z="77551.0" angle="40.4" name="Marshal Magnetic" raceKeys="Skaraan enemy" hullKeys="warship Defiler" sideValue="3" fleetnumber="1" />
+    <set_variable name="chapter_1" value="1.0" integer="yes" />
+    <set_variable name="respawn_marshal_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Marshal_Respawn_Mid" id_arme="ec4c510c-91c5-46e8-a951-d031914d1252" parent_id_arme="fd65b320-c44d-4582-9588-6ab762cacb60">
+    <if_not_exists name="Marshal Magnetic" />
+    <if_timer_finished name="Marshal_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_marshal_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="49388.0" y="0.0" z="51836.0" angle="181.6" name="Marshal Magnetic" raceKeys="Skaraan enemy" hullKeys="warship Defiler" sideValue="3" fleetnumber="1" />
+    <set_variable name="chapter_1" value="1.0" integer="yes" />
+    <set_variable name="respawn_marshal_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Marshal_Respawn_Front2" id_arme="b75ee4e8-a242-4bbf-a88a-99869e43c4f4" parent_id_arme="fd65b320-c44d-4582-9588-6ab762cacb60">
+    <if_not_exists name="Marshal Magnetic" />
+    <if_timer_finished name="Marshal_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_marshal_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="30868.0" y="0.0" z="80000.0" angle="328.2" name="Marshal Magnetic" raceKeys="Skaraan enemy" hullKeys="warship Defiler" sideValue="3" fleetnumber="1" />
+    <set_variable name="chapter_1" value="1.0" integer="yes" />
+    <set_variable name="respawn_marshal_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Marshal_Respawn_Home" id_arme="488fd166-e60c-4e5a-b89f-4ad994ae22fd" parent_id_arme="fd65b320-c44d-4582-9588-6ab762cacb60">
+    <if_not_exists name="Marshal Magnetic" />
+    <if_timer_finished name="Marshal_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_marshal_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="80613.0" y="0.0" z="23214.0" angle="132" name="Marshal Magnetic" raceKeys="Skaraan enemy" hullKeys="warship Defiler" sideValue="3" fleetnumber="1" />
+    <set_variable name="chapter_1" value="1.0" integer="yes" />
+    <set_variable name="respawn_marshal_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Marshal_Respawn_Back" id_arme="0d8a2cd3-e50d-49d8-8f15-2e133968ba57" parent_id_arme="fd65b320-c44d-4582-9588-6ab762cacb60">
+    <if_not_exists name="Marshal Magnetic" />
+    <if_timer_finished name="Marshal_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Beta Base" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_marshal_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="25511.0" y="0.0" z="30255.0" angle="232.6" name="Marshal Magnetic" raceKeys="Skaraan enemy" hullKeys="warship Defiler" sideValue="3" fleetnumber="1" />
+    <set_variable name="chapter_1" value="1.0" integer="yes" />
+    <set_variable name="respawn_marshal_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Marshal_Respawn_Tickets" id_arme="ae93d91a-4625-46dc-8ac3-71abf28648d2" parent_id_arme="fd65b320-c44d-4582-9588-6ab762cacb60">
+    <if_timer_finished name="Marshal_respawn" />
+    <if_variable name="respawn_marshal_flag" comparator="EQUALS" value="1.0" />
+    <if_exists name="Marshal Magnetic" />
+    <set_variable name="enemy_tickets" value="enemy_tickets-1" integer="yes" />
+    <set_variable name="respawn_marshal_flag" value="2.0" integer="yes" />
+    <set_special name="Marshal Magnetic" ability="HET" />
+    <set_special name="Marshal Magnetic" ability="Warp" />
+    <set_special name="Marshal Magnetic" ability="Tractor" />
+  </event>
+  <folder_arme name="Respawn BS" id_arme="1a63e4f8-1b52-4e10-8bb2-11e9dffd042f" parent_id_arme="453f4de7-761c-41fb-8822-f8c00454923f" />
+  <event name="BS_Dies" id_arme="eac49efe-9810-4a67-8b90-d9d7f36640fd" parent_id_arme="1a63e4f8-1b52-4e10-8bb2-11e9dffd042f">
+    <if_variable name="enemy_tickets" comparator="GREATER" value="0.0" />
+    <if_not_exists name="BS&amp;S Corp" />
+    <if_variable name="respawn_bss_flag" comparator="EQUALS" value="2.0" />
+    <set_timer name="BS_respawn" seconds="30" />
+    <set_variable name="respawn_bss_flag" value="0.0" integer="yes" />
+  </event>
+  <event name="BS_Respawn_Front" id_arme="5c2b5513-04dd-4240-8550-1658e87d88c3" parent_id_arme="1a63e4f8-1b52-4e10-8bb2-11e9dffd042f">
+    <if_not_exists name="BS&amp;S Corp" />
+    <if_timer_finished name="BS_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_bss_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="72960.0" y="0.0" z="77551.0" angle="40.4" name="BS&amp;S Corp" raceKeys="Skaraan enemy" hullKeys="warship Enforcer" sideValue="3" fleetnumber="4" />
+    <set_variable name="chapter_1" value="1.0" integer="yes" />
+    <set_variable name="respawn_bss_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="BS_Respawn_Mid" id_arme="00eaec50-3198-4061-b5aa-e6cf5ce40247" parent_id_arme="1a63e4f8-1b52-4e10-8bb2-11e9dffd042f">
+    <if_not_exists name="BS&amp;S Corp" />
+    <if_timer_finished name="BS_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_bss_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="49388.0" y="0.0" z="51836.0" angle="181.6" name="BS&amp;S Corp" raceKeys="Skaraan enemy" hullKeys="warship Enforcer" sideValue="3" fleetnumber="4" />
+    <set_variable name="chapter_1" value="1.0" integer="yes" />
+    <set_variable name="respawn_bss_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="BS_Respawn_Front2" id_arme="60efba96-3feb-415a-a977-d56cd7b83ab4" parent_id_arme="1a63e4f8-1b52-4e10-8bb2-11e9dffd042f">
+    <if_not_exists name="BS&amp;S Corp" />
+    <if_timer_finished name="BS_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_bss_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="30868.0" y="0.0" z="80000.0" angle="328.2" name="BS&amp;S Corp" raceKeys="Skaraan enemy" hullKeys="warship Enforcer" sideValue="3" fleetnumber="4" />
+    <set_variable name="chapter_1" value="1.0" integer="yes" />
+    <set_variable name="respawn_bss_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="BS_Respawn_Home" id_arme="e5fb2b70-c90b-472c-a49a-d8fbbc3c3ca5" parent_id_arme="1a63e4f8-1b52-4e10-8bb2-11e9dffd042f">
+    <if_not_exists name="BS&amp;S Corp" />
+    <if_timer_finished name="BS_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_bss_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="80613.0" y="0.0" z="23214.0" angle="132" name="BS&amp;S Corp" raceKeys="Skaraan enemy" hullKeys="warship Enforcer" sideValue="3" fleetnumber="4" />
+    <set_variable name="chapter_1" value="1.0" integer="yes" />
+    <set_variable name="respawn_bss_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="BS_Respawn_Back" id_arme="ad2e7c28-9210-430b-8e71-595842bb80b5" parent_id_arme="1a63e4f8-1b52-4e10-8bb2-11e9dffd042f">
+    <if_not_exists name="BS&amp;S Corp" />
+    <if_timer_finished name="BS_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Beta Base" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_bss_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="25511.0" y="0.0" z="30255.0" angle="232.6" name="BS&amp;S Corp" raceKeys="Skaraan enemy" hullKeys="warship Enforcer" sideValue="3" fleetnumber="4" />
+    <set_variable name="chapter_1" value="1.0" integer="yes" />
+    <set_variable name="respawn_bss_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="BS_Respawn_Tickets" id_arme="63c13b87-8415-4aab-9d4f-c370990c4e38" parent_id_arme="1a63e4f8-1b52-4e10-8bb2-11e9dffd042f">
+    <if_timer_finished name="BS_respawn" />
+    <if_exists name="BS&amp;S Corp" />
+    <if_variable name="respawn_bss_flag" comparator="EQUALS" value="1.0" />
+    <set_variable name="enemy_tickets" value="enemy_tickets-1" />
+    <set_special name="BS&amp;S Corp" ability="Cloak" />
+    <set_special name="BS&amp;S Corp" ability="Teleport" />
+    <set_special name="BS&amp;S Corp" ability="Drones" />
+    <set_variable name="chapter_1" value="1.0" />
+    <set_variable name="respawn_bss_flag" value="2.0" />
+  </event>
+  <folder_arme name="Respawn BE" id_arme="71b8bc59-c7c8-4e65-bc39-5b01be65d1b8" parent_id_arme="453f4de7-761c-41fb-8822-f8c00454923f" />
+  <event name="BE_Dies" id_arme="f3ae1647-1522-40fc-9bc0-28df7d51a84b" parent_id_arme="71b8bc59-c7c8-4e65-bc39-5b01be65d1b8">
+    <if_variable name="enemy_tickets" comparator="GREATER" value="0.0" />
+    <if_not_exists name="Bull's Eye Inc" />
+    <if_variable name="respawn_bullseye_flag" comparator="EQUALS" value="2.0" />
+    <set_timer name="BE_respawn" seconds="30" />
+    <set_variable name="respawn_bullseye_flag" value="0.0" integer="yes" />
+  </event>
+  <event name="BE_Respawn_Front" id_arme="579282aa-04d6-4075-9f21-9ba0ff978d2a" parent_id_arme="71b8bc59-c7c8-4e65-bc39-5b01be65d1b8">
+    <if_not_exists name="Bull's Eye Inc" />
+    <if_timer_finished name="BE_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_bullseye_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="72960.0" y="0.0" z="77551.0" angle="40.4" name="Bull's Eye Inc" raceKeys="Skaraan enemy" hullKeys="warship Executor" sideValue="3" fleetnumber="5" />
+    <set_variable name="chapter_1" value="1.0" integer="yes" />
+    <set_variable name="respawn_bullseye_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="BE_Respawn_Mid" id_arme="1d66c53d-cc62-4958-ad39-8f8ec326657f" parent_id_arme="71b8bc59-c7c8-4e65-bc39-5b01be65d1b8">
+    <if_not_exists name="Bull's Eye Inc" />
+    <if_timer_finished name="BE_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_bullseye_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="49388.0" y="0.0" z="51836.0" angle="181.6" name="Bull's Eye Inc" raceKeys="Skaraan enemy" hullKeys="warship Executor" sideValue="3" fleetnumber="5" />
+    <set_variable name="chapter_1" value="1.0" integer="yes" />
+    <set_variable name="respawn_bullseye_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="BE_Respawn_Front2" id_arme="f96cfbab-7da4-42d1-a1df-93ca8d4f5baf" parent_id_arme="71b8bc59-c7c8-4e65-bc39-5b01be65d1b8">
+    <if_not_exists name="Bull's Eye Inc" />
+    <if_timer_finished name="BE_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_bullseye_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="30868.0" y="0.0" z="80000.0" angle="328.2" name="Bull's Eye Inc" raceKeys="Skaraan enemy" hullKeys="warship Executor" sideValue="3" fleetnumber="5" />
+    <set_variable name="chapter_1" value="1.0" integer="yes" />
+    <set_variable name="respawn_bullseye_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="BE_Respawn_Home" id_arme="e55c82b7-2f92-4f21-ad59-348be8c5ae8d" parent_id_arme="71b8bc59-c7c8-4e65-bc39-5b01be65d1b8">
+    <if_not_exists name="Bull's Eye Inc" />
+    <if_timer_finished name="BE_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_bullseye_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="80613.0" y="0.0" z="23214.0" angle="132" name="Bull's Eye Inc" raceKeys="Skaraan enemy" hullKeys="warship Executor" sideValue="3" fleetnumber="5" />
+    <set_variable name="chapter_1" value="1.0" integer="yes" />
+    <set_variable name="respawn_bullseye_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="BE_Respawn_Back" id_arme="46733cf7-0d8b-4833-ab55-9da8b862716f" parent_id_arme="71b8bc59-c7c8-4e65-bc39-5b01be65d1b8">
+    <if_not_exists name="Bull's Eye Inc" />
+    <if_timer_finished name="BE_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Beta Base" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_bullseye_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="25511.0" y="0.0" z="30255.0" angle="232.6" name="Bull's Eye Inc" raceKeys="Skaraan enemy" hullKeys="warship Executor" sideValue="3" fleetnumber="5" />
+    <set_variable name="chapter_1" value="1.0" integer="yes" />
+    <set_variable name="respawn_bullseye_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="BE_Respawn_Tickets" id_arme="f6938a7a-ccb8-4829-bd7f-94d10a7ecbfc" parent_id_arme="71b8bc59-c7c8-4e65-bc39-5b01be65d1b8">
+    <if_timer_finished name="BE_respawn" />
+    <if_exists name="Bull's Eye Inc" />
+    <if_variable name="respawn_bullseye_flag" comparator="EQUALS" value="1.0" />
+    <set_variable name="enemy_tickets" value="enemy_tickets-1" />
+    <set_special name="Bull's Eye Inc" ability="AntiMine" />
+    <set_special name="Bull's Eye Inc" ability="AntiTorp" />
+    <set_special name="Bull's Eye Inc" ability="ShldDrain" />
+    <set_variable name="chapter_1" value="1.0" />
+    <set_variable name="respawn_bullseye_flag" value="2.0" />
+  </event>
+  <folder_arme name="Respawn 14" id_arme="551f04cf-c862-46d9-bdbf-080623110e00" parent_id_arme="453f4de7-761c-41fb-8822-f8c00454923f" />
+  <event name="14_Dies" id_arme="f936cb78-2dde-4e6f-98d6-05b542aedeba" parent_id_arme="551f04cf-c862-46d9-bdbf-080623110e00">
+    <if_variable name="enemy_tickets" comparator="GREATER" value="0.0" />
+    <if_not_exists name="001100" />
+    <if_variable name="respawn_14_flag" comparator="EQUALS" value="2.0" />
+    <set_timer name="14_respawn" seconds="30" />
+    <set_variable name="respawn_14_flag" value="0.0" integer="yes" />
+  </event>
+  <event name="14_Respawn_Front" id_arme="3fe0c663-7db9-4353-ba00-423ee29e9be1" parent_id_arme="551f04cf-c862-46d9-bdbf-080623110e00">
+    <if_not_exists name="001100" />
+    <if_timer_finished name="14_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_14_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="31786.0" y="0.0" z="80000.0" angle="330.1" name="001100" hullID="3002" sideValue="3" fleetnumber="2" />
+    <set_variable name="respawn_14_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="14_Respawn_Mid" id_arme="df8ecd34-5341-4d2e-aaae-52aaee1f8806" parent_id_arme="551f04cf-c862-46d9-bdbf-080623110e00">
+    <if_not_exists name="001100" />
+    <if_timer_finished name="14_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_14_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="49388.0" y="0.0" z="51836.0" angle="181.6" name="001100" hullID="3002" sideValue="3" fleetnumber="2" />
+    <set_variable name="respawn_14_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="14_Respawn_Front2" id_arme="b60ad40f-64b2-438e-a2b5-d0d088281293" parent_id_arme="551f04cf-c862-46d9-bdbf-080623110e00">
+    <if_not_exists name="001100" />
+    <if_timer_finished name="14_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_14_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="76786.0" y="0.0" z="75102.0" angle="46.2" name="001100" hullID="3002" sideValue="3" fleetnumber="2" />
+    <set_variable name="respawn_14_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="14_Respawn_Home" id_arme="25b29f79-ef16-435f-a6cf-1f839cecf92b" parent_id_arme="551f04cf-c862-46d9-bdbf-080623110e00">
+    <if_not_exists name="001100" />
+    <if_timer_finished name="14_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_14_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="25511.0" y="0.0" z="30255.0" angle="232.6" name="001100" hullID="3002" sideValue="3" fleetnumber="2" />
+    <set_variable name="respawn_14_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="14_Respawn_Back" id_arme="2ac62e75-edb9-4434-b21c-08e1f8322c30" parent_id_arme="551f04cf-c862-46d9-bdbf-080623110e00">
+    <if_not_exists name="001100" />
+    <if_timer_finished name="14_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Beta Base" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_14_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="80613.0" y="0.0" z="23214.0" angle="132" name="001100" hullID="3002" sideValue="3" fleetnumber="2" />
+    <set_variable name="respawn_14_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="14_Respawn_Tickets" id_arme="e1073d1b-d808-4481-b09b-07afba0df07d" parent_id_arme="551f04cf-c862-46d9-bdbf-080623110e00">
+    <if_timer_finished name="14_respawn" />
+    <if_exists name="001100" />
+    <if_variable name="respawn_14_flag" comparator="EQUALS" value="1.0" />
+    <set_variable name="enemy_tickets" value="enemy_tickets-1" integer="yes" />
+    <set_variable name="respawn_14_flag" value="2.0" integer="yes" />
+  </event>
+  <folder_arme name="Respawn Martin" id_arme="038e8bba-3589-45a3-a1a9-81ac211b8dc7" parent_id_arme="453f4de7-761c-41fb-8822-f8c00454923f" />
+  <event name="Martin_Dies" id_arme="f331ff35-d114-4df9-a142-379a1bb4ac36" parent_id_arme="038e8bba-3589-45a3-a1a9-81ac211b8dc7">
+    <if_variable name="enemy_tickets" comparator="GREATER" value="0.0" />
+    <if_not_exists name="Martin" />
+    <if_variable name="respawn_martin_flag" comparator="EQUALS" value="2.0" />
+    <set_timer name="Martin_respawn" seconds="30" />
+    <set_variable name="respawn_martin_flag" value="0.0" integer="yes" />
+  </event>
+  <event name="Martin_Respawn_Front" id_arme="d53020b6-ae2c-488d-a4a9-da246d285ee4" parent_id_arme="038e8bba-3589-45a3-a1a9-81ac211b8dc7">
+    <if_not_exists name="Martin" />
+    <if_timer_finished name="Martin_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_martin_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="72960.0" y="0.0" z="77551.0" angle="40.4" name="Martin" raceKeys="Ximni player" hullKeys="Light Cruiser warship" sideValue="3" fleetnumber="3" />
+    <set_variable name="respawn_martin_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Martin_Respawn_Mid" id_arme="42f3c873-fdd4-4d09-9342-044c0c596969" parent_id_arme="038e8bba-3589-45a3-a1a9-81ac211b8dc7">
+    <if_not_exists name="Martin" />
+    <if_timer_finished name="Martin_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_martin_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="49388.0" y="0.0" z="51836.0" angle="181.6" name="Martin" raceKeys="Ximni player" hullKeys="Light Cruiser warship" sideValue="3" fleetnumber="3" />
+    <set_variable name="respawn_martin_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Martin_Respawn_Front2" id_arme="5aea15b0-02f8-4794-be68-3b884d212a60" parent_id_arme="038e8bba-3589-45a3-a1a9-81ac211b8dc7">
+    <if_not_exists name="Martin" />
+    <if_timer_finished name="Martin_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_martin_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="30868.0" y="0.0" z="80000.0" angle="328.2" name="Martin" raceKeys="Ximni player" hullKeys="Light Cruiser warship" sideValue="3" fleetnumber="3" />
+    <set_variable name="respawn_martin_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Martin_Respawn_Home" id_arme="a25be619-6ed8-453c-ad69-5a4063d67065" parent_id_arme="038e8bba-3589-45a3-a1a9-81ac211b8dc7">
+    <if_not_exists name="Martin" />
+    <if_timer_finished name="Martin_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_martin_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="80613.0" y="0.0" z="23214.0" angle="132" name="Martin" raceKeys="Ximni player" hullKeys="Light Cruiser warship" sideValue="3" fleetnumber="3" />
+    <set_variable name="respawn_martin_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Martin_Respawn_Back" id_arme="f00439be-ef75-4535-bb5c-80d39e6ac699" parent_id_arme="038e8bba-3589-45a3-a1a9-81ac211b8dc7">
+    <if_not_exists name="Martin" />
+    <if_timer_finished name="Martin_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Beta Base" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_martin_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="25511.0" y="0.0" z="30255.0" angle="232.6" name="Martin" raceKeys="Ximni player" hullKeys="Light Cruiser warship" sideValue="3" fleetnumber="3" />
+    <set_variable name="respawn_martin_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Martin_Respawn_Tickets" id_arme="d3106cee-7ea3-4fc1-9546-077975d52905" parent_id_arme="038e8bba-3589-45a3-a1a9-81ac211b8dc7">
+    <if_timer_finished name="Martin_respawn" />
+    <if_exists name="Martin" />
+    <if_variable name="respawn_martin_flag" comparator="EQUALS" value="1.0" />
+    <set_variable name="enemy_tickets" value="enemy_tickets-1" integer="yes" />
+    <set_variable name="respawn_martin_flag" value="2.0" integer="yes" />
+  </event>
+  <folder_arme name="Respawn Short" id_arme="021df957-4eb6-4477-a6e5-008851c32527" parent_id_arme="453f4de7-761c-41fb-8822-f8c00454923f" />
+  <event name="Short_Dies" id_arme="2d925e69-a8ec-4116-8571-7a861598f374" parent_id_arme="021df957-4eb6-4477-a6e5-008851c32527">
+    <if_variable name="enemy_tickets" comparator="GREATER" value="0.0" />
+    <if_not_exists name="Short" />
+    <if_variable name="respawn_short_flag" comparator="EQUALS" value="2.0" />
+    <set_timer name="Short_respawn" seconds="30" />
+    <set_variable name="respawn_short_flag" value="0.0" integer="yes" />
+  </event>
+  <event name="Short_Respawn_Front" id_arme="91374a55-4529-47a6-9154-2ca0bbb1bd19" parent_id_arme="021df957-4eb6-4477-a6e5-008851c32527">
+    <if_not_exists name="Short" />
+    <if_timer_finished name="Short_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_short_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="30868.0" y="0.0" z="80000.0" angle="328.2" name="Short" raceKeys="Ximni player" hullKeys="Scout warship" sideValue="3" fleetnumber="3" />
+    <set_variable name="respawn_short_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Short_Respawn_Mid" id_arme="db432061-5ec6-43f6-b036-a76941ad135f" parent_id_arme="021df957-4eb6-4477-a6e5-008851c32527">
+    <if_not_exists name="Short" />
+    <if_timer_finished name="Short_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_short_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="49388.0" y="0.0" z="51836.0" angle="181.6" name="Short" raceKeys="Ximni player" hullKeys="Scout warship" sideValue="3" fleetnumber="3" />
+    <set_variable name="respawn_short_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Short_Respawn_Front2" id_arme="d57dc33b-1c04-4b17-a123-09e0fe3327a1" parent_id_arme="021df957-4eb6-4477-a6e5-008851c32527">
+    <if_not_exists name="Short" />
+    <if_timer_finished name="Short_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_short_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="72960.0" y="0.0" z="77551.0" angle="40.4" name="Short" raceKeys="Ximni player" hullKeys="Scout warship" sideValue="3" fleetnumber="3" />
+    <set_variable name="respawn_short_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Short_Respawn_Home" id_arme="7bfb23b8-b679-4e90-a969-28a5d16e6551" parent_id_arme="021df957-4eb6-4477-a6e5-008851c32527">
+    <if_not_exists name="Short" />
+    <if_timer_finished name="Short_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_short_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="25511.0" y="0.0" z="30255.0" angle="232.6" name="Short" raceKeys="Ximni player" hullKeys="Scout warship" sideValue="3" fleetnumber="3" />
+    <set_variable name="respawn_short_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Short_Respawn_Back" id_arme="baa00426-bdbb-4e5b-afd0-42d89e46a369" parent_id_arme="021df957-4eb6-4477-a6e5-008851c32527">
+    <if_not_exists name="Short" />
+    <if_timer_finished name="Short_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Beta Base" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_short_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="80613.0" y="0.0" z="23214.0" angle="132" name="Short" raceKeys="Ximni player" hullKeys="Scout warship" sideValue="3" fleetnumber="3" />
+    <set_variable name="respawn_short_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Short_Respawn_Tickets" id_arme="5e43753a-0dd8-4e9a-a05c-f5cb3e3c526d" parent_id_arme="021df957-4eb6-4477-a6e5-008851c32527">
+    <if_timer_finished name="Short_respawn" />
+    <if_exists name="Short" />
+    <if_variable name="respawn_short_flag" comparator="EQUALS" value="1.0" />
+    <set_variable name="enemy_tickets" value="enemy_tickets-1" integer="yes" />
+    <set_variable name="respawn_short_flag" value="2.0" integer="yes" />
+  </event>
+  <folder_arme name="Respawn Chase" id_arme="51721269-2464-44e9-a43d-0788f8577a88" parent_id_arme="453f4de7-761c-41fb-8822-f8c00454923f" />
+  <event name="Chase_Dies" id_arme="66f90ee8-a6d3-445a-a475-fe07327c265a" parent_id_arme="51721269-2464-44e9-a43d-0788f8577a88">
+    <if_variable name="enemy_tickets" comparator="GREATER" value="0.0" />
+    <if_not_exists name="Chase" />
+    <if_variable name="respawn_chase_flag" comparator="EQUALS" value="2.0" />
+    <set_timer name="Chase_respawn" seconds="30" />
+    <set_variable name="respawn_chase_flag" value="0.0" integer="yes" />
+  </event>
+  <event name="Chase_Respawn_Front" id_arme="4d01dfdf-e563-42a6-85a8-37a2d03f0e27" parent_id_arme="51721269-2464-44e9-a43d-0788f8577a88">
+    <if_not_exists name="Chase" />
+    <if_timer_finished name="Chase_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_chase_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="72960.0" y="0.0" z="77551.0" angle="40.4" name="Chase" raceKeys="Ximni player" hullKeys="Battleship warship" sideValue="3" fleetnumber="3" />
+    <set_variable name="respawn_chase_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Chase_Respawn_Mid" id_arme="bd4dbb17-d24b-473d-a327-a2b4d1823ef3" parent_id_arme="51721269-2464-44e9-a43d-0788f8577a88">
+    <if_not_exists name="Chase" />
+    <if_timer_finished name="Chase_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_chase_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="49388.0" y="0.0" z="51836.0" angle="181.6" name="Chase" raceKeys="Ximni player" hullKeys="Battleship warship" sideValue="3" fleetnumber="3" />
+    <set_variable name="respawn_chase_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Chase_Respawn_Front2" id_arme="10ada245-8d28-429a-9069-63adcb4a4184" parent_id_arme="51721269-2464-44e9-a43d-0788f8577a88">
+    <if_not_exists name="Chase" />
+    <if_timer_finished name="Chase_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_chase_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="30868.0" y="0.0" z="80000.0" angle="328.2" name="Chase" raceKeys="Ximni player" hullKeys="Battleship warship" sideValue="3" fleetnumber="3" />
+    <set_variable name="respawn_chase_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Chase_Respawn_Home" id_arme="0fe54732-88f8-4d6d-9338-630b05637f44" parent_id_arme="51721269-2464-44e9-a43d-0788f8577a88">
+    <if_not_exists name="Chase" />
+    <if_timer_finished name="Chase_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_chase_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="80613.0" y="0.0" z="23214.0" angle="132" name="Chase" raceKeys="Ximni player" hullKeys="Battleship warship" sideValue="3" fleetnumber="3" />
+    <set_variable name="respawn_chase_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Chase_Respawn_Back" id_arme="e8bab583-5cab-4a8e-b7d1-a60e377d0ee6" parent_id_arme="51721269-2464-44e9-a43d-0788f8577a88">
+    <if_not_exists name="Chase" />
+    <if_timer_finished name="Chase_respawn" />
+    <if_object_property property="sideValue" name="Omega Outpost" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Fort Phi" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Sigma Station" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Gamma Garrison" comparator="NOT" value="3.0" />
+    <if_object_property property="sideValue" name="Beta Base" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_chase_flag" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="25511.0" y="0.0" z="30255.0" angle="232.6" name="Chase" raceKeys="Ximni player" hullKeys="Battleship warship" sideValue="3" fleetnumber="3" />
+    <set_variable name="respawn_chase_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Chase_Respawn_Tickets" id_arme="ae0d090b-f4aa-4577-9ae8-59daac2c341e" parent_id_arme="51721269-2464-44e9-a43d-0788f8577a88">
+    <if_timer_finished name="Chase_respawn" />
+    <if_exists name="Chase" />
+    <if_variable name="respawn_chase_flag" comparator="EQUALS" value="1.0" />
+    <set_variable name="enemy_tickets" value="enemy_tickets-1" integer="yes" />
+    <set_variable name="respawn_chase_flag" value="2.0" integer="yes" />
+  </event>
+  <folder_arme name="Respawn Artemis" id_arme="a70fd100-ea49-4c8f-8c84-5241968c8c5e" parent_id_arme="453f4de7-761c-41fb-8822-f8c00454923f" />
+  <event name="Artemis_Dies" id_arme="a35f9ecf-ee6f-42c5-8299-138b9972e853" parent_id_arme="a70fd100-ea49-4c8f-8c84-5241968c8c5e">
+    <if_not_exists name="Artemis" />
+    <if_variable name="player_tickets" comparator="GREATER" value="0.0" />
+    <if_variable name="respawn_player_flag" comparator="EQUALS" value="2.0" />
+    <set_timer name="Artemis_respawn" seconds="30" />
+    <set_variable name="respawn_player_flag" value="0.0" integer="yes" />
+  </event>
+  <event name="Artemis_spawns_at_phi" id_arme="2202924d-0857-4b4b-bdbe-78ab7f48aa5d" parent_id_arme="a70fd100-ea49-4c8f-8c84-5241968c8c5e">
+    <if_timer_finished name="Artemis_respawn" />
+    <if_variable name="dock_station" comparator="EQUALS" value="0.0" />
+    <if_variable name="respawn_player_flag" comparator="EQUALS" value="0.0" />
+    <create type="player" player_slot="0" x="48623.0" y="0.0" z="52295.0" angle="315.6" name="Artemis" sideValue="2" />
+    <set_variable name="respawn_player_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Artemis_spawns_at_gamma" id_arme="12cd3e85-b803-4078-a64f-38ea08476e7d" parent_id_arme="a70fd100-ea49-4c8f-8c84-5241968c8c5e">
+    <if_timer_finished name="Artemis_respawn" />
+    <if_variable name="dock_station" comparator="EQUALS" value="1.0" />
+    <if_variable name="respawn_player_flag" comparator="EQUALS" value="0.0" />
+    <create type="player" player_slot="0" x="80460.0" y="0.0" z="22908.0" angle="131.7" name="Artemis" sideValue="2" />
+    <set_variable name="respawn_player_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Artemis_spawns_at_beta" id_arme="6ca81265-f349-4d44-9586-81b1e9d42a49" parent_id_arme="a70fd100-ea49-4c8f-8c84-5241968c8c5e">
+    <if_timer_finished name="Artemis_respawn" />
+    <if_variable name="dock_station" comparator="EQUALS" value="2.0" />
+    <if_variable name="respawn_player_flag" comparator="EQUALS" value="0.0" />
+    <create type="player" player_slot="0" x="24898.0" y="0.0" z="29642.0" angle="230.2" name="Artemis" sideValue="2" />
+    <set_variable name="respawn_player_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Artemis_spawns_at_sigma" id_arme="f00c51b4-f3cc-4f2f-b802-a8794b917c7a" parent_id_arme="a70fd100-ea49-4c8f-8c84-5241968c8c5e">
+    <if_timer_finished name="Artemis_respawn" />
+    <if_variable name="dock_station" comparator="EQUALS" value="0.0" />
+    <if_variable name="respawn_player_flag" comparator="EQUALS" value="0.0" />
+    <create type="player" player_slot="0" x="48623.0" y="0.0" z="52295.0" angle="315.6" name="Artemis" sideValue="2" />
+    <set_variable name="respawn_player_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Artemis_spawns_at_omega" id_arme="96840801-4b84-4d33-acde-0e1a741c55cc" parent_id_arme="a70fd100-ea49-4c8f-8c84-5241968c8c5e">
+    <if_timer_finished name="Artemis_respawn" />
+    <if_variable name="dock_station" comparator="EQUALS" value="4.0" />
+    <if_variable name="respawn_player_flag" comparator="EQUALS" value="0.0" />
+    <create type="player" player_slot="0" x="78929.0" y="0.0" z="77704.0" angle="44.3" name="Artemis" sideValue="2" />
+    <set_variable name="respawn_player_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="Artemis_respawn_tickets" id_arme="4513e45e-548f-46dc-8249-83146d74b178" parent_id_arme="a70fd100-ea49-4c8f-8c84-5241968c8c5e">
+    <if_timer_finished name="Artemis_respawn" />
+    <if_variable name="respawn_player_flag" comparator="EQUALS" value="1.0" />
+    <if_exists name="Artemis" />
+    <set_variable name="player_tickets" value="player_tickets-1" integer="yes" />
+    <set_variable name="respawn_player_flag" value="2.0" integer="yes" />
+  </event>
+  <folder_arme name="Respawn 22" id_arme="77888b48-905f-4eed-9be0-d90fb36267c2" parent_id_arme="453f4de7-761c-41fb-8822-f8c00454923f" />
+  <event name="22_Dies" id_arme="15d59dcf-672e-45b0-91cd-22b9dfa0c575" parent_id_arme="77888b48-905f-4eed-9be0-d90fb36267c2">
+    <if_variable name="enemy_tickets" comparator="GREATER" value="0.0" />
+    <if_not_exists name="Intrepid" />
+    <if_variable name="respawn_22_flag" comparator="EQUALS" value="2.0" />
+    <set_timer name="22_respawn" seconds="30" />
+    <set_variable name="respawn_22_flag" value="0.0" integer="yes" />
+  </event>
+  <event name="22_Respawn_Mid" id_arme="b894c6e4-a050-47b5-8d2c-0298f87fc5a8" parent_id_arme="77888b48-905f-4eed-9be0-d90fb36267c2">
+    <if_not_exists name="Intrepid" />
+    <if_timer_finished name="22_respawn" />
+    <if_variable name="dock_station_2" comparator="EQUALS" value="0.0" />
+    <if_variable name="respawn_22_flag" comparator="EQUALS" value="0.0" />
+    <create type="player" player_slot="1" x="49388.0" y="0.0" z="51836.0" angle="181.6" name="Intrepid" sideValue="3" />
+    <set_variable name="respawn_22_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="22_Respawn_Home" id_arme="0907528c-a224-493a-b35a-cd4b442d8319" parent_id_arme="77888b48-905f-4eed-9be0-d90fb36267c2">
+    <if_not_exists name="Intrepid" />
+    <if_timer_finished name="22_respawn" />
+    <if_variable name="dock_station_2" comparator="EQUALS" value="1.0" />
+    <if_variable name="respawn_22_flag" comparator="EQUALS" value="0.0" />
+    <create type="player" player_slot="1" x="25511.0" y="0.0" z="30255.0" angle="232.6" name="Intrepid" sideValue="3" />
+    <set_variable name="respawn_22_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="22_Respawn_Back" id_arme="c82abfda-b790-4afd-b158-d62b209dc7cd" parent_id_arme="77888b48-905f-4eed-9be0-d90fb36267c2">
+    <if_not_exists name="Intrepid" />
+    <if_timer_finished name="22_respawn" />
+    <if_variable name="dock_station_2" comparator="EQUALS" value="2.0" />
+    <if_variable name="respawn_22_flag" comparator="EQUALS" value="0.0" />
+    <create type="player" player_slot="1" x="80613.0" y="0.0" z="23214.0" angle="132" name="Intrepid" sideValue="3" />
+    <set_variable name="respawn_22_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="22_Respawn_Front2" id_arme="faa2f0cc-1b12-4316-97a5-ef5123210230" parent_id_arme="77888b48-905f-4eed-9be0-d90fb36267c2">
+    <if_not_exists name="Intrepid" />
+    <if_timer_finished name="22_respawn" />
+    <if_variable name="dock_station_2" comparator="EQUALS" value="3.0" />
+    <if_variable name="respawn_22_flag" comparator="EQUALS" value="0.0" />
+    <create type="player" player_slot="1" x="72960.0" y="0.0" z="77551.0" angle="40.4" name="Intrepid" sideValue="3" />
+    <set_variable name="respawn_22_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="22_Respawn_Front" id_arme="897f33cf-c8c0-4ce5-bd04-8901550c2ca1" parent_id_arme="77888b48-905f-4eed-9be0-d90fb36267c2">
+    <if_not_exists name="Intrepid" />
+    <if_timer_finished name="22_respawn" />
+    <if_variable name="dock_station_2" comparator="EQUALS" value="4.0" />
+    <if_variable name="respawn_22_flag" comparator="EQUALS" value="0.0" />
+    <create type="player" player_slot="1" x="30868.0" y="0.0" z="80000.0" angle="328.2" name="Intrepid" sideValue="3" />
+    <set_variable name="respawn_22_flag" value="1.0" integer="yes" />
+  </event>
+  <event name="22_Respawn_Tickets" id_arme="e6452740-b9d5-4cba-b4df-de4ff1b6edf7" parent_id_arme="77888b48-905f-4eed-9be0-d90fb36267c2">
+    <if_timer_finished name="22_respawn" />
+    <if_exists name="Intrepid" />
+    <if_variable name="respawn_22_flag" comparator="EQUALS" value="1.0" />
+    <set_variable name="enemy_tickets" value="enemy_tickets-1" integer="yes" />
+    <set_variable name="respawn_22_flag" value="2.0" integer="yes" />
+  </event>
+  <event name="Monstro_Dies" id_arme="ecfeef90-e40a-41e8-95d8-3e0dd6f5a172">
+    <if_not_exists name="Monstro" />
+    <if_variable name="respawn_monstro_flag" comparator="EQUALS" value="2.0" />
+    <set_variable name="respawn_monstro_flag" value="0.0" integer="yes" />
+    <set_timer name="Monstro_respawn" seconds="30" />
+  </event>
+  <event name="Marshal_surrenders" id_arme="99995d8f-db48-4a59-8836-ffa3ee583a3d">
+    <if_object_property property="hasSurrendered" name="Marshal Magnetic" comparator="EQUALS" value="1.0" />
+    <if_variable name="respawn_marshal_flag" comparator="EQUALS" value="2.0" />
+    <set_timer name="Marshal_explode" seconds="10" />
+    <set_variable name="player_tickets" value="player_tickets-1" integer="yes" />
+    <set_timer name="reset_values" seconds="2" />
+    <set_variable name="respawn_marshal_flag" value="3.0" integer="yes" />
+  </event>
+  <event name="Marshal_explode" id_arme="f408ef78-a78a-4df9-86d4-1557dcadbe53">
+    <if_timer_finished name="Marshal_explode" />
+    <if_variable name="respawn_marshal_flag" comparator="EQUALS" value="3.0" />
+    <destroy name="Marshal Magnetic" />
+    <set_variable name="respawn_marshal_flag" value="2.0" integer="yes" />
+  </event>
+  <event name="BS_surrenders" id_arme="331935d6-f795-4b5b-87db-77d8d3b0e19d">
+    <if_object_property property="hasSurrendered" name="BS&amp;S Corp" comparator="EQUALS" value="1.0" />
+    <if_variable name="respawn_bss_flag" comparator="EQUALS" value="2.0" />
+    <set_timer name="BS_explode" seconds="10" />
+    <set_variable name="player_tickets" value="player_tickets-1" integer="yes" />
+    <set_variable name="respawn_bss_flag" value="3.0" integer="yes" />
+  </event>
+  <event name="BS_explode" id_arme="7c52cdb9-4165-425a-bdf3-72643b6a8fdb">
+    <if_timer_finished name="BS_explode" />
+    <if_variable name="respawn_bss_flag" comparator="EQUALS" value="3.0" />
+    <destroy name="BS&amp;S Corp" />
+    <set_variable name="respawn_bss_flag" value="2.0" />
+  </event>
+  <event name="BE_surrenders" id_arme="57650c38-9b55-4fca-b196-bb4e853452d7">
+    <if_object_property property="hasSurrendered" name="Bull's Eye Inc" comparator="EQUALS" value="1.0" />
+    <if_variable name="respawn_bullseye_flag" comparator="EQUALS" value="2.0" />
+    <set_timer name="BE_explode" seconds="10" />
+    <set_variable name="player_tickets" value="player_tickets-1" integer="yes" />
+    <set_variable name="respawn_bullseye_flag" value="3.0" integer="yes" />
+  </event>
+  <event name="BE_explode" id_arme="e463e622-b118-4b23-ad0e-788fad48dffb">
+    <if_timer_finished name="BE_explode" />
+    <if_variable name="respawn_bullseye_flag" comparator="EQUALS" value="3.0" />
+    <destroy name="Bull's Eye Inc" />
+    <set_variable name="respawn_bullseye_flag" value="2.0" integer="yes" />
+  </event>
+  <event name="14_surrenders" id_arme="a9ee43bc-6262-401d-8bf5-68290c94030b">
+    <if_object_property property="hasSurrendered" name="001100" comparator="EQUALS" value="1.0" />
+    <if_variable name="respawn_14_flag" comparator="EQUALS" value="2.0" />
+    <set_timer name="14_explode" seconds="10" />
+    <set_variable name="enemy_tickets" value="enemy_tickets-1" integer="yes" />
+    <set_variable name="respawn_14_flag" value="3.0" integer="yes" />
+  </event>
+  <event name="14_explode" id_arme="5d85c662-f23a-4a66-af7a-a0d45f275dae">
+    <if_timer_finished name="14_explode" />
+    <if_variable name="respawn_14_flag" comparator="EQUALS" value="3.0" />
+    <destroy name="001100" />
+    <set_variable name="respawn_14_flag" value="2.0" integer="yes" />
+  </event>
+  <event name="33_surrenders" id_arme="fe30b280-0d17-45a4-966a-eaf4d224bd97">
+    <if_variable name="chapter_1" comparator="EQUALS" value="3.0" />
+    <if_object_property property="hasSurrendered" name="The 33&amp;1/3rd Cavalry Division" comparator="EQUALS" value="1.0" />
+    <set_timer name="33_explode" seconds="10" />
+    <set_variable name="player_tickets" value="player_tickets-1" integer="yes" />
+    <set_variable name="chapter_1" value="4.0" integer="yes" />
+  </event>
+  <event name="33_explode" id_arme="a13ce7aa-5a12-4c0f-9e85-2ff7ae37f1a9">
+    <if_timer_finished name="33_explode" />
+    <if_variable name="chapter_1" comparator="EQUALS" value="4.0" />
+    <destroy name="The 33&amp;1/3rd Cavalry Division" />
+    <set_variable name="chapter_1" value="2.0" integer="yes" />
+  </event>
+  <event name="111_surrenders" id_arme="e295811e-70fa-4488-935c-9c2bffbe6441">
+    <if_variable name="111_init_flag" comparator="EQUALS" value="1.0" />
+    <if_object_property property="hasSurrendered" name="The Eleventy-first Starborne Division" comparator="EQUALS" value="1.0" />
+    <set_timer name="111_explode" seconds="10" />
+    <set_variable name="player_tickets" value="player_tickets-1" integer="yes" />
+    <set_variable name="111_init_flag" value="2.0" integer="yes" />
+  </event>
+  <event name="111_explode" id_arme="53c38295-56ec-4692-809e-1faebc310334">
+    <if_timer_finished name="33_explode" />
+    <if_variable name="111_init_flag" comparator="EQUALS" value="2.0" />
+    <destroy name="The Eleventy-first Starborne Division" />
+  </event>
+  <event name="Martin_surrenders" id_arme="92208a1d-5082-4028-bef6-da6fbe3be2d9">
+    <if_object_property property="hasSurrendered" name="Martin" comparator="EQUALS" value="1.0" />
+    <if_variable name="respawn_martin_flag" comparator="EQUALS" value="2.0" />
+    <set_timer name="Martin_explode" seconds="10" />
+    <set_variable name="enemy_tickets" value="enemy_tickets-1" integer="yes" />
+    <set_variable name="respawn_martin_flag" value="3.0" integer="yes" />
+  </event>
+  <event name="Martin_explode" id_arme="1d0480c0-757c-4375-bd7b-04482a7298c6">
+    <if_timer_finished name="Martin_explode" />
+    <if_variable name="respawn_martin_flag" comparator="EQUALS" value="3.0" />
+    <destroy name="Martin" />
+    <set_variable name="respawn_martin_flag" value="2.0" integer="yes" />
+  </event>
+  <event name="Short_surrenders" id_arme="7f427877-8cac-4185-b926-1ae9f7153ebb">
+    <if_object_property property="hasSurrendered" name="Short" comparator="EQUALS" value="1.0" />
+    <if_variable name="respawn_short_flag" comparator="EQUALS" value="2.0" />
+    <set_timer name="Short_explode" seconds="10" />
+    <set_variable name="enemy_tickets" value="enemy_tickets-1" integer="yes" />
+    <set_variable name="respawn_short_flag" value="3.0" integer="yes" />
+  </event>
+  <event name="Short_explode" id_arme="a191366d-2779-4758-ac80-4debcd67ce69">
+    <if_timer_finished name="Short_explode" />
+    <if_variable name="respawn_short_flag" comparator="EQUALS" value="3.0" />
+    <destroy name="Short" />
+    <set_variable name="respawn_short_flag" value="2.0" integer="yes" />
+  </event>
+  <event name="Chase_surrenders" id_arme="03444da5-b59b-42a0-87d4-fa1fa7b6bd7a">
+    <if_object_property property="hasSurrendered" name="Chase" comparator="EQUALS" value="1.0" />
+    <if_variable name="respawn_chase_flag" comparator="EQUALS" value="2.0" />
+    <set_timer name="Chase_explode" seconds="10" />
+    <set_variable name="enemy_tickets" value="enemy_tickets-1" integer="yes" />
+    <set_variable name="respawn_chase_flag" value="3.0" integer="yes" />
+  </event>
+  <event name="Chase_explode" id_arme="318356a7-08b8-4ef3-812c-702f7b8cd1cb">
+    <if_timer_finished name="Chase_explode" />
+    <if_variable name="respawn_chase_flag" comparator="EQUALS" value="3.0" />
+    <destroy name="Chase" />
+    <set_variable name="respawn_chase_flag" value="2.0" integer="yes" />
+  </event>
+  <event name="Monstro_surrenders" id_arme="253e88a7-8817-4a6c-b71b-062155c4e290">
+    <if_object_property property="hasSurrendered" name="Monstro" comparator="EQUALS" value="1.0" />
+    <if_variable name="respawn_monstro_flag" comparator="EQUALS" value="2.0" />
+    <set_timer name="Monstro_explode" seconds="10" />
+    <set_variable name="enemy_tickets" value="enemy_tickets-1" integer="yes" />
+    <set_variable name="respawn_monstro_flag" value="3.0" integer="yes" />
+  </event>
+  <event name="Monstro_explode" id_arme="afd69fd5-8b00-498a-943f-76d5286eed08">
+    <if_timer_finished name="Monstro_explode" />
+    <if_variable name="respawn_monstro_flag" comparator="EQUALS" value="3.0" />
+    <destroy name="Monstro" />
+    <set_variable name="respawn_monstro_flag" value="2.0" integer="yes" />
+  </event>
+  <!--Bases need to be invulnerable, otherwise how can influence be tracked?-->
+  <event name="Regen_phi" id_arme="c2b58d14-577a-4392-bb3f-4bc908a51978">
+    <if_object_property property="shieldState" name="Fort Phi" comparator="LESS" value="399.0" />
+    <set_object_property property="shieldState" value="400.0" name="Fort Phi" />
+  </event>
+  <event name="Regen_gamma" id_arme="494956f3-e583-4893-abc4-ee5e9f1b6254">
+    <if_object_property property="shieldState" name="Gamma Garrison" comparator="LESS" value="399.0" />
+    <set_object_property property="shieldState" value="400.0" name="Gamma Garrison" />
+  </event>
+  <event name="Regen_beta" id_arme="521ce848-b868-410d-b0fc-15e2575ab7ba">
+    <if_object_property property="shieldState" name="Beta Base" comparator="LESS" value="399.0" />
+    <set_object_property property="shieldState" value="400.0" name="Beta Base" />
+  </event>
+  <event name="Regen_sigma" id_arme="8344bc23-3d42-457b-b158-c79c05dbffae">
+    <if_object_property property="shieldState" name="Sigma Station" comparator="LESS" value="399.0" />
+    <set_object_property property="shieldState" value="400.0" name="Sigma Station" />
+  </event>
+  <event name="Regen_omega" id_arme="4a662493-b49b-4072-a094-22e4643d6e19">
+    <if_object_property property="shieldState" name="Omega Outpost" comparator="LESS" value="399.0" />
+    <set_object_property property="shieldState" value="400.0" name="Omega Outpost" />
+  </event>
+  <event name="Game_total_lose" id_arme="6b7d7ae4-9834-4c2a-a8a4-abe052f3df9f">
+    <if_variable name="game_over" comparator="EQUALS" value="0.0" />
+    <if_variable name="player_tickets" comparator="LESS" value="0.0" />
+    <if_variable name="enemy_tickets" comparator="GREATER" value="50.0" />
+    <big_message title="Total Defeat!" subtitle1="A catastrophic loss for the TSN and the USFP" />
+    <set_variable name="game_over" value="1.0" integer="yes" />
+    <set_timer name="game_end" seconds="10" />
+  </event>
+  <event name="Game_major_lose" id_arme="e13a5c3a-eda2-48b1-a3bc-640d4c92a2d1">
+    <if_variable name="game_over" comparator="EQUALS" value="0.0" />
+    <if_variable name="player_tickets" comparator="LESS" value="0.0" />
+    <if_variable name="enemy_tickets" comparator="LESS_EQUAL" value="50.0" />
+    <if_variable name="enemy_tickets" comparator="GREATER" value="25.0" />
+    <big_message title="Major Defeat!" subtitle1="A devastating loss for the TSN and the USFP" />
+    <set_variable name="game_over" value="1.0" integer="yes" />
+    <set_timer name="game_end" seconds="10" />
+  </event>
+  <event name="Game_minor_lose" id_arme="e6defc71-e8fa-4b5d-8cde-2b2b01f56680">
+    <if_variable name="game_over" comparator="EQUALS" value="0.0" />
+    <if_variable name="player_tickets" comparator="LESS" value="0.0" />
+    <if_variable name="enemy_tickets" comparator="LESS_EQUAL" value="25.0" />
+    <big_message title="Minor Defeat!" subtitle1="A costly setback for the TSN and the USFP" />
+    <set_variable name="game_over" value="1.0" integer="yes" />
+    <set_timer name="game_end" seconds="10" />
+  </event>
+  <event name="Game_total_win" id_arme="593bf4f1-ef0f-4724-a379-8a7b2ed9baef">
+    <if_variable name="game_over" comparator="EQUALS" value="0.0" />
+    <if_variable name="enemy_tickets" comparator="LESS" value="0.0" />
+    <if_variable name="player_tickets" comparator="GREATER" value="50.0" />
+    <big_message title="Total Victory!" subtitle1="Your decisive victory will be celebrated for years to come." />
+    <set_variable name="game_over" value="1.0" integer="yes" />
+    <set_timer name="game_end" seconds="10" />
+  </event>
+  <event name="Game_major_win" id_arme="2dc9d19e-52d2-4553-8c4f-1570229c79b3">
+    <if_variable name="game_over" comparator="EQUALS" value="0.0" />
+    <if_variable name="enemy_tickets" comparator="LESS" value="0.0" />
+    <if_variable name="player_tickets" comparator="LESS_EQUAL" value="50.0" />
+    <if_variable name="player_tickets" comparator="GREATER" value="25.0" />
+    <big_message title="Major Victory!" subtitle1="This was a Triumph." subtitle2="I'm making a note here: Huge Success!" />
+    <set_variable name="game_over" value="1.0" integer="yes" />
+    <set_timer name="game_end" seconds="10" />
+  </event>
+  <event name="Game_minor_victory" id_arme="e8ffcae3-849c-49d4-bb85-36df79d3fe38">
+    <if_variable name="game_over" comparator="EQUALS" value="0.0" />
+    <if_variable name="enemy_tickets" comparator="LESS" value="0.0" />
+    <if_variable name="player_tickets" comparator="LESS_EQUAL" value="25.0" />
+    <if_variable name="player_tickets" comparator="GREATER" value="0.0" />
+    <big_message title="Minor Victory" subtitle1="A hard fought battle with great losses, yet still the TSN prevails!" />
+    <set_variable name="game_over" value="1.0" integer="yes" />
+    <set_timer name="game_end" seconds="10" />
+  </event>
+  <event name="Game_Over" id_arme="8c0ecc22-8ee1-4d25-8562-85f700ee42fe">
+    <if_timer_finished name="game_end" />
+    <end_mission />
+  </event>
+</mission_data>
