@@ -12,11 +12,11 @@
     <create type="player" player_slot="0" x="5000.0" y="0.0" z="5000.0" />
     <big_message title="A New Year" subtitle1="by Neal Schlein" subtitle2="adventure for Artemis 2.7.5" />
     <set_timer name="start_mission_timer_1" seconds="10" />
-    <create count="25" type="mines" startAngle="100" endAngle="360" startX="50155.0" startY="0.0" startZ="50154.0" radius="15000" />
-    <create count="25" type="mines" startAngle="100" endAngle="360" startX="50155.0" startY="600.0" startZ="50154.0" radius="15000" />
-    <create count="25" type="mines" startAngle="100" endAngle="360" startX="50155.0" startY="-600.0" startZ="50154.0" radius="15000" />
-    <create count="10" type="mines" startAngle="100" endAngle="360" startX="50464.0" startY="500.0" startZ="50154.0" radius="5000" />
-    <create count="10" type="mines" startAngle="100" endAngle="360" startX="50464.0" startY="-500.0" startZ="50154.0" radius="5000" />
+    <create count="80" type="mines" startAngle="100" endAngle="360" startX="50155.0" startY="0.0" startZ="50154.0" radius="15000" />
+    <create count="80" type="mines" startAngle="100" endAngle="360" startX="50155.0" startY="600.0" startZ="50154.0" radius="15000" />
+    <create count="80" type="mines" startAngle="100" endAngle="360" startX="50155.0" startY="-600.0" startZ="50154.0" radius="15000" />
+    <create count="30" type="mines" startAngle="100" endAngle="360" startX="50464.0" startY="499.0" startZ="50154.0" radius="5000" />
+    <create count="30" type="mines" startAngle="100" endAngle="360" startX="50464.0" startY="-499.0" startZ="50154.0" radius="5000" />
     <create count="20" type="nebulas" startX="28970.0" startY="0.0" startZ="72113.0" radius="5000" randomRange="5000" randomSeed="500" />
     <create count="70" type="nebulas" nebType="3" startX="29731.0" startY="600.0" startZ="42164.0" endX="29731.0" endY="-500.0" endZ="42164.0" randomRange="10000" randomSeed="1000" />
     <create count="30" type="nebulas" startX="61598.0" startY="800.0" startZ="58814.0" radius="100" randomRange="5000" randomSeed="1000" />
