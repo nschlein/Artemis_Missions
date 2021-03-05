@@ -11097,7 +11097,7 @@
     <set_object_property property="positionZ" value="TempZ" name="Sensor_Temp" />
     <set_variable name="SensorTest" value="2.0" integer="yes" />
   </event>
-  <folder_arme name="Long Haul Resupply" id_arme="8348bceb-44f6-4919-abe1-951b98437281" expanded_arme="" />
+  <folder_arme name="Long Haul Resupply" id_arme="8348bceb-44f6-4919-abe1-951b98437281" />
   <event name="Long Haul Behavior" id_arme="995eac23-0d4c-4cfe-b2f3-5e938c204de2" parent_id_arme="8348bceb-44f6-4919-abe1-951b98437281">
     <if_variable name="NAVComplete" comparator="EQUALS" value="2.0" />
     <if_timer_finished name="Long Haul" />
@@ -11411,7 +11411,7 @@
     <warning_popup_message message="Refill Complete." consoles="MHC" player_slot="7" />
     <set_variable name="Player7" value="2.0" integer="yes" />
   </event>
-  <folder_arme name="Tags" id_arme="ac4711a5-4559-4f2d-9ad3-59a7f52eaa21" expanded_arme="" />
+  <folder_arme name="Tags" id_arme="ac4711a5-4559-4f2d-9ad3-59a7f52eaa21" />
   <event name="Tag A24" id_arme="63d3829d-b283-4d59-9985-eafef778e886" parent_id_arme="ac4711a5-4559-4f2d-9ad3-59a7f52eaa21">
     <if_variable name="TagA" comparator="EQUALS" value="0.0" />
     <if_object_tag_matches objectName="A24" />
@@ -11601,6 +11601,23 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="V42" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="E81" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="D94" />
+    <add_ai type="CHASE_ANGER" name="A24" />
+    <add_ai type="CHASE_ANGER" name="K43" />
+    <add_ai type="CHASE_ANGER" name="B15" />
+    <add_ai type="CHASE_ANGER" name="J98" />
+    <add_ai type="CHASE_ANGER" name="M30" />
+    <add_ai type="CHASE_ANGER" name="N00" />
+    <add_ai type="CHASE_ANGER" name="C67" />
+    <add_ai type="CHASE_ANGER" name="Q33" />
+    <add_ai type="CHASE_ANGER" name="R17" />
+    <add_ai type="CHASE_ANGER" name="F21" />
+    <add_ai type="CHASE_ANGER" name="U85" />
+    <add_ai type="CHASE_ANGER" name="O01" />
+    <add_ai type="CHASE_ANGER" name="T1000" />
+    <add_ai type="CHASE_ANGER" name="G13" />
+    <add_ai type="CHASE_ANGER" name="V42" />
+    <add_ai type="CHASE_ANGER" name="E81" />
+    <add_ai type="CHASE_ANGER" name="D94" />
     <add_ai type="SPCL_AI" name="T1000" />
     <add_ai type="SPCL_AI" name="E81" />
     <add_ai type="SPCL_AI" name="D94" />
@@ -11654,6 +11671,23 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="V42" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="E81" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="D94" />
+    <add_ai type="CHASE_ANGER" name="A24" />
+    <add_ai type="CHASE_ANGER" name="K43" />
+    <add_ai type="CHASE_ANGER" name="B15" />
+    <add_ai type="CHASE_ANGER" name="J98" />
+    <add_ai type="CHASE_ANGER" name="M30" />
+    <add_ai type="CHASE_ANGER" name="N00" />
+    <add_ai type="CHASE_ANGER" name="C67" />
+    <add_ai type="CHASE_ANGER" name="Q33" />
+    <add_ai type="CHASE_ANGER" name="R17" />
+    <add_ai type="CHASE_ANGER" name="F21" />
+    <add_ai type="CHASE_ANGER" name="U85" />
+    <add_ai type="CHASE_ANGER" name="O01" />
+    <add_ai type="CHASE_ANGER" name="T1000" />
+    <add_ai type="CHASE_ANGER" name="G13" />
+    <add_ai type="CHASE_ANGER" name="V42" />
+    <add_ai type="CHASE_ANGER" name="E81" />
+    <add_ai type="CHASE_ANGER" name="D94" />
     <add_ai type="SPCL_AI" name="T1000" />
     <add_ai type="SPCL_AI" name="E81" />
     <add_ai type="SPCL_AI" name="D94" />
@@ -11707,6 +11741,23 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="V42" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="E81" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="D94" />
+    <add_ai type="CHASE_ANGER" name="A24" />
+    <add_ai type="CHASE_ANGER" name="K43" />
+    <add_ai type="CHASE_ANGER" name="B15" />
+    <add_ai type="CHASE_ANGER" name="J98" />
+    <add_ai type="CHASE_ANGER" name="M30" />
+    <add_ai type="CHASE_ANGER" name="N00" />
+    <add_ai type="CHASE_ANGER" name="C67" />
+    <add_ai type="CHASE_ANGER" name="Q33" />
+    <add_ai type="CHASE_ANGER" name="R17" />
+    <add_ai type="CHASE_ANGER" name="F21" />
+    <add_ai type="CHASE_ANGER" name="U85" />
+    <add_ai type="CHASE_ANGER" name="O01" />
+    <add_ai type="CHASE_ANGER" name="T1000" />
+    <add_ai type="CHASE_ANGER" name="G13" />
+    <add_ai type="CHASE_ANGER" name="V42" />
+    <add_ai type="CHASE_ANGER" name="E81" />
+    <add_ai type="CHASE_ANGER" name="D94" />
     <add_ai type="SPCL_AI" name="T1000" />
     <add_ai type="SPCL_AI" name="E81" />
     <add_ai type="SPCL_AI" name="D94" />
@@ -11760,6 +11811,23 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="V42" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="E81" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="D94" />
+    <add_ai type="CHASE_ANGER" name="A24" />
+    <add_ai type="CHASE_ANGER" name="K43" />
+    <add_ai type="CHASE_ANGER" name="B15" />
+    <add_ai type="CHASE_ANGER" name="J98" />
+    <add_ai type="CHASE_ANGER" name="M30" />
+    <add_ai type="CHASE_ANGER" name="N00" />
+    <add_ai type="CHASE_ANGER" name="C67" />
+    <add_ai type="CHASE_ANGER" name="Q33" />
+    <add_ai type="CHASE_ANGER" name="R17" />
+    <add_ai type="CHASE_ANGER" name="F21" />
+    <add_ai type="CHASE_ANGER" name="U85" />
+    <add_ai type="CHASE_ANGER" name="O01" />
+    <add_ai type="CHASE_ANGER" name="T1000" />
+    <add_ai type="CHASE_ANGER" name="G13" />
+    <add_ai type="CHASE_ANGER" name="V42" />
+    <add_ai type="CHASE_ANGER" name="E81" />
+    <add_ai type="CHASE_ANGER" name="D94" />
     <add_ai type="SPCL_AI" name="T1000" />
     <add_ai type="SPCL_AI" name="E81" />
     <add_ai type="SPCL_AI" name="D94" />
@@ -11813,6 +11881,23 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="V42" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="E81" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="D94" />
+    <add_ai type="CHASE_ANGER" name="A24" />
+    <add_ai type="CHASE_ANGER" name="K43" />
+    <add_ai type="CHASE_ANGER" name="B15" />
+    <add_ai type="CHASE_ANGER" name="J98" />
+    <add_ai type="CHASE_ANGER" name="M30" />
+    <add_ai type="CHASE_ANGER" name="N00" />
+    <add_ai type="CHASE_ANGER" name="C67" />
+    <add_ai type="CHASE_ANGER" name="Q33" />
+    <add_ai type="CHASE_ANGER" name="R17" />
+    <add_ai type="CHASE_ANGER" name="F21" />
+    <add_ai type="CHASE_ANGER" name="U85" />
+    <add_ai type="CHASE_ANGER" name="O01" />
+    <add_ai type="CHASE_ANGER" name="T1000" />
+    <add_ai type="CHASE_ANGER" name="G13" />
+    <add_ai type="CHASE_ANGER" name="V42" />
+    <add_ai type="CHASE_ANGER" name="E81" />
+    <add_ai type="CHASE_ANGER" name="D94" />
     <add_ai type="SPCL_AI" name="T1000" />
     <add_ai type="SPCL_AI" name="E81" />
     <add_ai type="SPCL_AI" name="D94" />
@@ -11869,6 +11954,23 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="V42" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="E81" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="D94" />
+    <add_ai type="CHASE_ANGER" name="A24" />
+    <add_ai type="CHASE_ANGER" name="K43" />
+    <add_ai type="CHASE_ANGER" name="B15" />
+    <add_ai type="CHASE_ANGER" name="J98" />
+    <add_ai type="CHASE_ANGER" name="M30" />
+    <add_ai type="CHASE_ANGER" name="N00" />
+    <add_ai type="CHASE_ANGER" name="C67" />
+    <add_ai type="CHASE_ANGER" name="Q33" />
+    <add_ai type="CHASE_ANGER" name="R17" />
+    <add_ai type="CHASE_ANGER" name="F21" />
+    <add_ai type="CHASE_ANGER" name="U85" />
+    <add_ai type="CHASE_ANGER" name="O01" />
+    <add_ai type="CHASE_ANGER" name="T1000" />
+    <add_ai type="CHASE_ANGER" name="G13" />
+    <add_ai type="CHASE_ANGER" name="V42" />
+    <add_ai type="CHASE_ANGER" name="E81" />
+    <add_ai type="CHASE_ANGER" name="D94" />
     <add_ai type="SPCL_AI" name="T1000" />
     <add_ai type="SPCL_AI" name="E81" />
     <add_ai type="SPCL_AI" name="D94" />
@@ -11913,6 +12015,23 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="V42" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="E81" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="D94" />
+    <add_ai type="CHASE_ANGER" name="A24" />
+    <add_ai type="CHASE_ANGER" name="K43" />
+    <add_ai type="CHASE_ANGER" name="B15" />
+    <add_ai type="CHASE_ANGER" name="J98" />
+    <add_ai type="CHASE_ANGER" name="M30" />
+    <add_ai type="CHASE_ANGER" name="N00" />
+    <add_ai type="CHASE_ANGER" name="C67" />
+    <add_ai type="CHASE_ANGER" name="Q33" />
+    <add_ai type="CHASE_ANGER" name="R17" />
+    <add_ai type="CHASE_ANGER" name="F21" />
+    <add_ai type="CHASE_ANGER" name="U85" />
+    <add_ai type="CHASE_ANGER" name="O01" />
+    <add_ai type="CHASE_ANGER" name="T1000" />
+    <add_ai type="CHASE_ANGER" name="G13" />
+    <add_ai type="CHASE_ANGER" name="V42" />
+    <add_ai type="CHASE_ANGER" name="E81" />
+    <add_ai type="CHASE_ANGER" name="D94" />
     <add_ai type="SPCL_AI" name="T1000" />
     <add_ai type="SPCL_AI" name="E81" />
     <add_ai type="SPCL_AI" name="D94" />
@@ -11957,6 +12076,23 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="V42" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="E81" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="D94" />
+    <add_ai type="CHASE_ANGER" name="A24" />
+    <add_ai type="CHASE_ANGER" name="K43" />
+    <add_ai type="CHASE_ANGER" name="B15" />
+    <add_ai type="CHASE_ANGER" name="J98" />
+    <add_ai type="CHASE_ANGER" name="M30" />
+    <add_ai type="CHASE_ANGER" name="N00" />
+    <add_ai type="CHASE_ANGER" name="C67" />
+    <add_ai type="CHASE_ANGER" name="Q33" />
+    <add_ai type="CHASE_ANGER" name="R17" />
+    <add_ai type="CHASE_ANGER" name="F21" />
+    <add_ai type="CHASE_ANGER" name="U85" />
+    <add_ai type="CHASE_ANGER" name="O01" />
+    <add_ai type="CHASE_ANGER" name="T1000" />
+    <add_ai type="CHASE_ANGER" name="G13" />
+    <add_ai type="CHASE_ANGER" name="V42" />
+    <add_ai type="CHASE_ANGER" name="E81" />
+    <add_ai type="CHASE_ANGER" name="D94" />
     <add_ai type="SPCL_AI" name="T1000" />
     <add_ai type="SPCL_AI" name="E81" />
     <add_ai type="SPCL_AI" name="D94" />
@@ -12001,6 +12137,23 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="V42" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="E81" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="D94" />
+    <add_ai type="CHASE_ANGER" name="A24" />
+    <add_ai type="CHASE_ANGER" name="K43" />
+    <add_ai type="CHASE_ANGER" name="B15" />
+    <add_ai type="CHASE_ANGER" name="J98" />
+    <add_ai type="CHASE_ANGER" name="M30" />
+    <add_ai type="CHASE_ANGER" name="N00" />
+    <add_ai type="CHASE_ANGER" name="C67" />
+    <add_ai type="CHASE_ANGER" name="Q33" />
+    <add_ai type="CHASE_ANGER" name="R17" />
+    <add_ai type="CHASE_ANGER" name="F21" />
+    <add_ai type="CHASE_ANGER" name="U85" />
+    <add_ai type="CHASE_ANGER" name="O01" />
+    <add_ai type="CHASE_ANGER" name="T1000" />
+    <add_ai type="CHASE_ANGER" name="G13" />
+    <add_ai type="CHASE_ANGER" name="V42" />
+    <add_ai type="CHASE_ANGER" name="E81" />
+    <add_ai type="CHASE_ANGER" name="D94" />
     <add_ai type="SPCL_AI" name="T1000" />
     <add_ai type="SPCL_AI" name="E81" />
     <add_ai type="SPCL_AI" name="D94" />
@@ -12045,6 +12198,23 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="V42" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="E81" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="D94" />
+    <add_ai type="CHASE_ANGER" name="A24" />
+    <add_ai type="CHASE_ANGER" name="K43" />
+    <add_ai type="CHASE_ANGER" name="B15" />
+    <add_ai type="CHASE_ANGER" name="J98" />
+    <add_ai type="CHASE_ANGER" name="M30" />
+    <add_ai type="CHASE_ANGER" name="N00" />
+    <add_ai type="CHASE_ANGER" name="C67" />
+    <add_ai type="CHASE_ANGER" name="Q33" />
+    <add_ai type="CHASE_ANGER" name="R17" />
+    <add_ai type="CHASE_ANGER" name="F21" />
+    <add_ai type="CHASE_ANGER" name="U85" />
+    <add_ai type="CHASE_ANGER" name="O01" />
+    <add_ai type="CHASE_ANGER" name="T1000" />
+    <add_ai type="CHASE_ANGER" name="G13" />
+    <add_ai type="CHASE_ANGER" name="V42" />
+    <add_ai type="CHASE_ANGER" name="E81" />
+    <add_ai type="CHASE_ANGER" name="D94" />
     <add_ai type="SPCL_AI" name="T1000" />
     <add_ai type="SPCL_AI" name="E81" />
     <add_ai type="SPCL_AI" name="D94" />
@@ -12089,6 +12259,23 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="V42" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="E81" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="D94" />
+    <add_ai type="CHASE_ANGER" name="A24" />
+    <add_ai type="CHASE_ANGER" name="K43" />
+    <add_ai type="CHASE_ANGER" name="B15" />
+    <add_ai type="CHASE_ANGER" name="J98" />
+    <add_ai type="CHASE_ANGER" name="M30" />
+    <add_ai type="CHASE_ANGER" name="N00" />
+    <add_ai type="CHASE_ANGER" name="C67" />
+    <add_ai type="CHASE_ANGER" name="Q33" />
+    <add_ai type="CHASE_ANGER" name="R17" />
+    <add_ai type="CHASE_ANGER" name="F21" />
+    <add_ai type="CHASE_ANGER" name="U85" />
+    <add_ai type="CHASE_ANGER" name="O01" />
+    <add_ai type="CHASE_ANGER" name="T1000" />
+    <add_ai type="CHASE_ANGER" name="G13" />
+    <add_ai type="CHASE_ANGER" name="V42" />
+    <add_ai type="CHASE_ANGER" name="E81" />
+    <add_ai type="CHASE_ANGER" name="D94" />
     <add_ai type="SPCL_AI" name="T1000" />
     <add_ai type="SPCL_AI" name="E81" />
     <add_ai type="SPCL_AI" name="D94" />
@@ -12119,6 +12306,23 @@
     <add_ai type="LAUNCH_FIGHTERS" value1="11000" name="M30" />
     <add_ai type="LAUNCH_FIGHTERS" value1="11000" name="C67" />
     <add_ai type="LAUNCH_FIGHTERS" value1="11000" name="N00" />
+    <add_ai type="CHASE_ANGER" name="A24" />
+    <add_ai type="CHASE_ANGER" name="K43" />
+    <add_ai type="CHASE_ANGER" name="B15" />
+    <add_ai type="CHASE_ANGER" name="J98" />
+    <add_ai type="CHASE_ANGER" name="M30" />
+    <add_ai type="CHASE_ANGER" name="N00" />
+    <add_ai type="CHASE_ANGER" name="C67" />
+    <add_ai type="CHASE_ANGER" name="Q33" />
+    <add_ai type="CHASE_ANGER" name="R17" />
+    <add_ai type="CHASE_ANGER" name="F21" />
+    <add_ai type="CHASE_ANGER" name="U85" />
+    <add_ai type="CHASE_ANGER" name="O01" />
+    <add_ai type="CHASE_ANGER" name="T1000" />
+    <add_ai type="CHASE_ANGER" name="G13" />
+    <add_ai type="CHASE_ANGER" name="V42" />
+    <add_ai type="CHASE_ANGER" name="E81" />
+    <add_ai type="CHASE_ANGER" name="D94" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="A24" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="K43" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="B15" />
@@ -12160,9 +12364,26 @@
     <if_variable name="Alerted" comparator="LESS" value="2.0" />
     <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
     <warning_popup_message message="Warning!  Enemy Scans Increased" consoles="MHWESCO" />
-    <add_ai type="LAUNCH_FIGHTERS" value1="4250" name="M30" />
-    <add_ai type="LAUNCH_FIGHTERS" value1="4250" name="C67" />
-    <add_ai type="LAUNCH_FIGHTERS" value1="4250" name="N00" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="M30" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="60000" name="C67" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="6000" name="N00" />
+    <add_ai type="CHASE_ANGER" name="A24" />
+    <add_ai type="CHASE_ANGER" name="K43" />
+    <add_ai type="CHASE_ANGER" name="B15" />
+    <add_ai type="CHASE_ANGER" name="J98" />
+    <add_ai type="CHASE_ANGER" name="M30" />
+    <add_ai type="CHASE_ANGER" name="N00" />
+    <add_ai type="CHASE_ANGER" name="C67" />
+    <add_ai type="CHASE_ANGER" name="Q33" />
+    <add_ai type="CHASE_ANGER" name="R17" />
+    <add_ai type="CHASE_ANGER" name="F21" />
+    <add_ai type="CHASE_ANGER" name="U85" />
+    <add_ai type="CHASE_ANGER" name="O01" />
+    <add_ai type="CHASE_ANGER" name="T1000" />
+    <add_ai type="CHASE_ANGER" name="G13" />
+    <add_ai type="CHASE_ANGER" name="V42" />
+    <add_ai type="CHASE_ANGER" name="E81" />
+    <add_ai type="CHASE_ANGER" name="D94" />
     <add_ai type="CHASE_PLAYER" value1="4500" value2="1000" name="A24" />
     <add_ai type="CHASE_PLAYER" value1="4500" value2="1000" name="K43" />
     <add_ai type="CHASE_PLAYER" value1="4500" value2="1000" name="B15" />
@@ -12203,6 +12424,7 @@
     <if_variable name="Wave" comparator="EQUALS" value="1.0" />
     <set_variable name="Wave" value="2.0" integer="yes" />
   </event>
+  <event id_arme="d07f3bcc-745a-48ff-a0f5-2538bfd11dfd" />
   <event name="Mission All Complete" id_arme="c4b659bd-6763-4f5b-962a-c3e928734092">
     <if_not_exists name="Chrithon" />
     <if_not_exists name="Harulk" />
@@ -12288,9 +12510,10 @@
     <set_timer name="End" seconds="15" />
     <big_message title="Mission Failed!" subtitle1="All player ships destroyed." />
   </event>
-  <event name="Event 1046" id_arme="be11fa7c-6da8-4cc6-a7b5-eff8cda83a12">
+  <event name="Aborted Mission" id_arme="be11fa7c-6da8-4cc6-a7b5-eff8cda83a12">
     <if_variable name="Alerted" comparator="EQUALS" value="3.0" />
     <if_comms_button text="Abort Mission" />
+    <set_variable name="Alerted" value="4.0" integer="yes" />
     <big_message title="Mission Failed!" subtitle1="Station Destroyed Prematurely" />
     <set_timer name="End" seconds="15" />
     <set_variable name="End" value="1.0" integer="yes" />
