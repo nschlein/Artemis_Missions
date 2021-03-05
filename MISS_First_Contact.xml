@@ -12,10 +12,10 @@
     <set_object_property property="playerWeapon" value="100" />
     <set_object_property property="playerShields" value="100" />
     <create type="station" x="29124.0" y="51.0" z="19072.0" name="Listening Post 1" hullID="1000" sideValue="2" />
-    <create type="genericMesh" x="83403.0" y="50.0" z="56185.0" name="Sensor Drop 1" meshFileName="dat\asteroid.dxs" textureFileName="dat\trans-blue.png" colorRed="1.0" colorGreen="0.0" colorBlue="0.0" />
-    <create type="genericMesh" x="60361.0" y="50.0" z="71494.0" name="Sensor Drop 2" meshFileName="dat\asteroid.dxs" textureFileName="dat\trans-blue.png" colorRed="1.0" colorGreen="0.0" colorBlue="0.0" />
-    <create type="genericMesh" x="40258.0" y="50.0" z="72113.0" name="Sensor Drop 3" meshFileName="dat\asteroid.dxs" textureFileName="dat\trans-blue.png" colorRed="1.0" colorGreen="0.0" colorBlue="0.0" />
-    <create type="genericMesh" x="12114.0" y="50.0" z="56340.0" name="Sensor Drop 4" meshFileName="dat\asteroid.dxs" textureFileName="dat\trans-blue.png" colorRed="1.0" colorGreen="0.0" colorBlue="0.0" />
+    <create type="genericMesh" x="83403.0" y="50.0" z="56185.0" name="Sensor Drop 1" meshFileName="dat\asteroid.dxs" textureFileName="dat\trans-blue.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    <create type="genericMesh" x="60361.0" y="50.0" z="71494.0" name="Sensor Drop 2" meshFileName="dat\asteroid.dxs" textureFileName="dat\trans-blue.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    <create type="genericMesh" x="40258.0" y="50.0" z="72113.0" name="Sensor Drop 3" meshFileName="dat\asteroid.dxs" textureFileName="dat\trans-blue.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    <create type="genericMesh" x="12114.0" y="50.0" z="56340.0" name="Sensor Drop 4" meshFileName="dat\asteroid.dxs" textureFileName="dat\trans-blue.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
     <create type="neutral" x="52939.0" y="0.0" z="7783.0" angle="139.7" name="TSN Long Haul" hullID="1503" />
     <create type="player" player_slot="0" x="17372.0" y="0.0" z="10412.0" angle="220.3" />
     <big_message title="First Contact: A Historical Simulation" subtitle1="by Neal Schlein, for 2021 TSN Armada" subtitle2="Artemis 2.7.5, adapted from Eaton Command Pt 1" />
