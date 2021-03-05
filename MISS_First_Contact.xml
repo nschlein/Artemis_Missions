@@ -1,5 +1,5 @@
 <mission_data version="2.7.5" background_id_arme="a59135e3-9c0e-49aa-8603-3fba5826a9ae" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
-  <mission_description>A new path has been found to the distant Eaton sector; a reconnaissance mission is critical.^Multi-ship mission for up to 8 ships.</mission_description>
+  <mission_description>An unknown vessel has appeared.  Your mission is to conduct reconnaissance...which doesn't go exactly as planned.^Multi-ship mission for up to 8 ships.</mission_description>
   <start id_arme="a59135e3-9c0e-49aa-8603-3fba5826a9ae">
     <set_variable name="System Build" value="-1.0" integer="yes" />
     <set_difficulty_level value="6" />
