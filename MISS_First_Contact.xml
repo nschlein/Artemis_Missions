@@ -12,14 +12,15 @@
     <set_object_property property="playerWeapon" value="100" />
     <set_object_property property="playerShields" value="100" />
     <create type="station" x="29124.0" y="51.0" z="19072.0" name="Listening Post 1" hullID="1000" sideValue="2" />
-    <create type="genericMesh" x="83403.0" y="50.0" z="56185.0" name="Sensor Drop 1" meshFileName="dat\asteroid.dxs" textureFileName="dat\trans-blue.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
-    <create type="genericMesh" x="60361.0" y="50.0" z="71494.0" name="Sensor Drop 2" meshFileName="dat\asteroid.dxs" textureFileName="dat\trans-blue.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
-    <create type="genericMesh" x="40258.0" y="50.0" z="72113.0" name="Sensor Drop 3" meshFileName="dat\asteroid.dxs" textureFileName="dat\trans-blue.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
-    <create type="genericMesh" x="12114.0" y="50.0" z="56340.0" name="Sensor Drop 4" meshFileName="dat\asteroid.dxs" textureFileName="dat\trans-blue.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    <create type="genericMesh" x="67603.0" y="50.0" z="37985.0" name="Sensor Drop 1" meshFileName="dat\asteroid.dxs" textureFileName="dat\trans-blue.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    <create type="genericMesh" x="53061.0" y="50.0" z="51294.0" name="Sensor Drop 2" meshFileName="dat\asteroid.dxs" textureFileName="dat\trans-blue.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    <create type="genericMesh" x="35658.0" y="50.0" z="51913.0" name="Sensor Drop 3" meshFileName="dat\asteroid.dxs" textureFileName="dat\trans-blue.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    <create type="genericMesh" x="22514.0" y="50.0" z="37740.0" name="Sensor Drop 4" meshFileName="dat\asteroid.dxs" textureFileName="dat\trans-blue.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
     <create type="neutral" x="52939.0" y="0.0" z="7783.0" angle="139.7" name="TSN Long Haul" hullID="1503" />
     <create type="player" player_slot="0" x="17372.0" y="0.0" z="10412.0" angle="220.3" />
-    <big_message title="First Contact: A Historical Simulation" subtitle1="by Neal Schlein, for 2021 TSN Armada" subtitle2="Artemis 2.7.5, adapted from Eaton Command Pt 1" />
+    <big_message title="First Contact: Historical Simulation" subtitle1="by Neal Schlein, TSN Online Armada 2021" subtitle2="Artemis 2.7.5, adapted from Eaton Command Pt 1" />
     <set_timer name="start_mission_timer_1" seconds="10" />
+    <set_variable name="FirstContact" value="0.0" integer="yes" />
     <set_variable name="Mission" value="-5.0" integer="yes" />
     <set_variable name="SideScramble" value="-1.0" integer="yes" />
   </start>
@@ -37,7 +38,7 @@
     <clear_comms_button text="Back (Ship 7)" sideValue="9" />
     <clear_comms_button text="Back (Ship 8)" sideValue="10" />
     <clear_comms_button text="Back" sideValue="2" />
-    <warning_popup_message message="Resetting Comms Menu" consoles="EC" />
+    <warning_popup_message message="Comms Menu Reset Complete" consoles="EC" />
     <set_timer name="CommsReset" seconds="10" />
     <set_variable name="CommsMasterReset" value="1.0" integer="yes" />
   </event>
@@ -168,7 +169,6 @@
     <set_variable name="Comms6" value="0.0" integer="yes" />
     <set_variable name="Comms7" value="0.0" integer="yes" />
     <set_variable name="SideScramble" value="3.0" integer="yes" />
-    <set_variable name="FirstContact" value="2.0" integer="yes" />
   </event>
   <folder_arme name="Player 0 Offsides" id_arme="c325410b-a472-423c-88f5-40f811e5ae9c" parent_id_arme="a7d452d2-6bbe-4d8f-a9c0-98d210f378bc" />
   <event name="Off-Sides Comms Buttons Player 0" id_arme="4fd923c3-b2a2-41fa-a1be-e75e3add2fc5" parent_id_arme="c325410b-a472-423c-88f5-40f811e5ae9c">
@@ -951,11 +951,13 @@
     <set_object_property property="positionX" value="50000.0" player_slot="0" />
     <set_object_property property="positionZ" value="10000.0" player_slot="0" />
     <set_object_property property="positionY" value="0.0" player_slot="0" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="0" />
     <set_variable name="Player0" value="1.0" integer="yes" />
   </event>
   <event name="Spawn Player 1" id_arme="ae6881d3-50b2-4243-83dd-188905d4b13f" parent_id_arme="94ed05a5-1311-4c9a-9ff6-8557a2d7eb8f">
     <if_variable name="Player1" comparator="EQUALS" value="0.0" />
     <if_exists player_slot="1" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="1" />
     <set_object_property property="positionX" value="50600.0" player_slot="1" />
     <set_object_property property="positionZ" value="10000.0" player_slot="1" />
     <set_object_property property="positionY" value="0.0" player_slot="1" />
@@ -964,6 +966,7 @@
   <event name="Spawn Player 2" id_arme="ad0661e3-fa66-475a-b5ae-f8e3d9e36d36" parent_id_arme="94ed05a5-1311-4c9a-9ff6-8557a2d7eb8f">
     <if_variable name="Player2" comparator="EQUALS" value="0.0" />
     <if_exists player_slot="2" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="2" />
     <set_object_property property="positionX" value="49400.0" player_slot="2" />
     <set_object_property property="positionZ" value="11000.0" player_slot="2" />
     <set_object_property property="positionY" value="0.0" player_slot="2" />
@@ -972,6 +975,7 @@
   <event name="Spawn Player 3" id_arme="d782b138-2fec-4787-bcdf-b6ee5ea73ac3" parent_id_arme="94ed05a5-1311-4c9a-9ff6-8557a2d7eb8f">
     <if_variable name="Player3" comparator="EQUALS" value="0.0" />
     <if_exists player_slot="3" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="3" />
     <set_object_property property="positionX" value="51200.0" player_slot="3" />
     <set_object_property property="positionZ" value="10500.0" player_slot="3" />
     <set_object_property property="positionY" value="0.0" player_slot="3" />
@@ -980,6 +984,7 @@
   <event name="Spawn Player 4" id_arme="ee6b5cb9-bd8d-43fc-8b0b-5add350c832f" parent_id_arme="94ed05a5-1311-4c9a-9ff6-8557a2d7eb8f">
     <if_variable name="Player4" comparator="EQUALS" value="0.0" />
     <if_exists player_slot="4" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="4" />
     <set_object_property property="positionX" value="48800.0" player_slot="4" />
     <set_object_property property="positionZ" value="10000.0" player_slot="4" />
     <set_object_property property="positionY" value="0.0" player_slot="4" />
@@ -988,6 +993,7 @@
   <event name="Spawn Player 5" id_arme="5836cb53-2e7e-48b8-8781-7890b857a8af" parent_id_arme="94ed05a5-1311-4c9a-9ff6-8557a2d7eb8f">
     <if_variable name="Player5" comparator="EQUALS" value="0.0" />
     <if_exists player_slot="5" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="5" />
     <set_object_property property="positionX" value="50000.0" player_slot="5" />
     <set_object_property property="positionZ" value="12000.0" player_slot="5" />
     <set_object_property property="positionY" value="0.0" player_slot="5" />
@@ -996,6 +1002,7 @@
   <event name="Spawn Player 6" id_arme="7d4c08d8-4bb0-4cbe-adfa-29bcd9286ac2" parent_id_arme="94ed05a5-1311-4c9a-9ff6-8557a2d7eb8f">
     <if_variable name="Player6" comparator="EQUALS" value="0.0" />
     <if_exists player_slot="6" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="6" />
     <set_object_property property="positionX" value="50600.0" player_slot="6" />
     <set_object_property property="positionZ" value="11075.0" player_slot="6" />
     <set_object_property property="positionY" value="0.0" player_slot="6" />
@@ -1004,6 +1011,7 @@
   <event name="Spawn Player 7" id_arme="fd3f9405-a15d-4a54-875a-4e159fb27f3f" parent_id_arme="94ed05a5-1311-4c9a-9ff6-8557a2d7eb8f">
     <if_variable name="Player7" comparator="EQUALS" value="0.0" />
     <if_exists player_slot="7" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="7" />
     <set_object_property property="positionX" value="49400.0" player_slot="7" />
     <set_object_property property="positionZ" value="9000.0" player_slot="7" />
     <set_object_property property="positionY" value="0.0" player_slot="7" />
@@ -1013,9 +1021,9 @@
   <event name="First Contact Comms" id_arme="0a0bb3f1-6f30-4422-bf7a-99ff0ab8bfd4" parent_id_arme="edb96aea-889b-444e-990d-af547ca9e5c6">
     <if_variable name="FirstContact" comparator="EQUALS" value="0.0" />
     <if_timer_finished name="start_mission_timer_1" />
-    <incoming_comms_text from="COMMS MENU INFO" type="ALERT">TO RESET MENU^Set Engineering Sensor Power to 0%^Set Engineering Sensor Coolant to 8^^Back button should reset on all Comms clients.^^^USING THE MENU^^1. Drag Comms button list up or down to see all buttons.^^2. Press the button with your Ship Number (1-8) to access your ship's commands.^^3. The Comms Menu is shared among all ships on a side.  Share nicely, as pressing a button alters the menu on all allied ships.</incoming_comms_text>
-    <warning_popup_message message="Comms Reset: Sensor Power 0%, Collant Max" consoles="MESC">TO RESET MENU^Set Engineering Sensor Power to 0%^Set Engineering Sensor Coolant to 8^^Back button should reset on all Comms clients.^^^USING THE MENU^^1. Drag Comms button list up or down to see all buttons.^^2. Press the button with your Ship Number (1-8) to access your ship's commands.^^3. The Comms Menu is shared among all ships on a side.  Share nicely, as pressing a button alters the menu on all allied ships.</warning_popup_message>
-    <incoming_comms_text from="Command HQ" type="STATION">Encrypted Transmission...  Decryption Complete...^^Terran Command is tracking an unknown vessel, which is approaching your location.  All attempts at communication have been unsuccessful.  We believe it may be heading back toward its home sector.^^Intel requests that you immediately deploy sensor relay buoys to the marked locations (be within 800m to deploy). ^^Do not engage the unknown ship at this time. Further instructions will follow.^^HINT: Use this time to become familiar with the Comms Menu</incoming_comms_text>
+    <incoming_comms_text from="COMMS MENU INFO" type="ALERT">USING THE COMMS MENU^^1. Drag Comms button list up or down to see all options.^^2. Press the button with your Ship Number (1-8) to access your ship's commands.^^3. The Comms Menu is shared among all ships on a side.  Share nicely, as pressing a button alters the menu on all allied ships.^^TO RESET MENU IN CASE OF ERROR:^Set Engineering Sensor Power to 0%^Set Engineering Sensor Coolant to 8^^Back button should reset on all Comms clients.</incoming_comms_text>
+    <warning_popup_message message="NOTE: To reset Comms, set Sensor Power 0%, Collant Max" consoles="MESC">TO RESET MENU^Set Engineering Sensor Power to 0%^Set Engineering Sensor Coolant to 8^^Back button should reset on all Comms clients.^^^USING THE MENU^^1. Drag Comms button list up or down to see all buttons.^^2. Press the button with your Ship Number (1-8) to access your ship's commands.^^3. The Comms Menu is shared among all ships on a side.  Share nicely, as pressing a button alters the menu on all allied ships.</warning_popup_message>
+    <incoming_comms_text from="Command HQ" type="STATION">Encrypted Transmission...  Decryption Complete...^^Terran Command is tracking an unknown vessel approaching your location.  All attempts at communication have been unsuccessful.  We believe it may be heading back toward its home sector.^^Intel requests that you immediately deploy sensor relays to the marked locations. ^^Do not engage the unknown ship at this time. Further instructions will follow.^^HINT: ^1. Must be within 800m to deploy relay.^2. Use this time to become familiar with the Comms Menu. </incoming_comms_text>
     <set_ship_text name="Sensor Drop 1" class="Drop point" desc="Sensor Relay Required" />
     <set_ship_text name="Sensor Drop 2" class="Drop Point" desc="Sensor Relay Required" />
     <set_ship_text name="Sensor Drop 3" class="Drop Point" desc="Sensor Relay Required" />
@@ -1023,45 +1031,75 @@
     <set_timer name="Buttons" seconds="5" />
     <set_variable name="FirstContact" value="1.0" integer="yes" />
   </event>
-  <event name="First Contact Return to Station" id_arme="022575f3-de4b-40bf-98da-c3afcb489f77" parent_id_arme="edb96aea-889b-444e-990d-af547ca9e5c6">
+  <event name="First Contact Deploy Complete Return to Station" id_arme="022575f3-de4b-40bf-98da-c3afcb489f77" parent_id_arme="edb96aea-889b-444e-990d-af547ca9e5c6">
     <if_variable name="FirstContact" comparator="EQUALS" value="1.0" />
-    <if_variable name="SensorFirst" comparator="EQUALS" value="4.0" />
+    <if_exists name="Sensor Relay 1" />
+    <if_exists name="Sensor Relay 2" />
+    <if_exists name="Sensor Relay 3" />
+    <if_exists name="Sensor Relay 4" />
+    <set_comms_button text="Skip Tutorial" sideValue="2" />
     <warning_popup_message message="Deployment Complete" consoles="MSC">All Sensor relays are deployed.  Return to Listening Post 1 and await further instructions.</warning_popup_message>
-    <incoming_comms_text from="Command" type="STATION">All Sensor relays are deployed.  Withdraw to Listening Post 1 and await further instructions.^^Scan, but do not approach or engage the vessel.</incoming_comms_text>
+    <incoming_comms_text from="Command" type="STATION">All Sensor relays are deployed.  Vessel approaching.  Withdraw and await further instructions.^^Scan, but do not approach or engage the vessel.</incoming_comms_text>
     <set_object_property property="sensorSetting" value="0" />
-    <create type="neutral" x="83403.0" y="50.0" z="56185.0" angle="270" name="Unknown Ship" raceKeys="Skaraan" hullKeys="small medium large" sideValue="0" />
+    <create type="neutral" x="83403.0" y="50.0" z="86185.0" angle="270" name="Unknown Ship" raceKeys="Skaraan" hullKeys="small medium large" sideValue="0" />
     <set_variable name="FirstContact" value="2.0" integer="yes" />
   </event>
-  <event name="First Contact Return to Station" id_arme="a5b09167-40c2-45f7-9052-66d7000e3d6c" parent_id_arme="edb96aea-889b-444e-990d-af547ca9e5c6">
+  <event name="First Contact Ship Details" id_arme="a5b09167-40c2-45f7-9052-66d7000e3d6c" parent_id_arme="edb96aea-889b-444e-990d-af547ca9e5c6">
     <if_variable name="FirstContact" comparator="EQUALS" value="2.0" />
-    <set_ship_text name="Unknown Ship" race="Unknown" class="Unknown" desc="Unknown Vessel" scan_desc="Processing Scan Data..." hailtext=" " />
     <clear_ai name="Unknown Ship" />
-    <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="Unknown Ship" />
-    <add_ai type="CHASE_ANGER" name="Unknown Ship" />
-    <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="Unknown Ship" />
+    <set_ship_text name="Unknown Ship" race="Unknown" class="Unknown" desc="Unknown Vessel" scan_desc="Processing Scan Data..." hailtext=" " />
+    <set_special name="Unknown Ship" clear="yes" ability="LowVis" />
+    <set_special name="Unknown Ship" clear="yes" ability="Stealth" />
+    <set_special name="Unknown Ship" clear="yes" ability="Cloak" />
+    <set_special name="Unknown Ship" clear="yes" ability="AntiTorp" />
+    <set_special name="Unknown Ship" ability="HET" />
+    <set_special name="Unknown Ship" ability="Warp" />
     <set_object_property property="exitPointZ" value="100000.0" name="Unknown Ship" />
-    <set_object_property property="exitPointX" value="50000.0" name="Unknown Ship" />
-    <add_ai type="SPCL_AI" name="Unknown Ship" />
     <set_variable name="FirstContact" value="3.0" integer="yes" />
   </event>
-  <event name="First Contact Return to Station" id_arme="17e71211-061a-4af1-ad1d-316004ba1531" parent_id_arme="edb96aea-889b-444e-990d-af547ca9e5c6">
+  <event name="First Contact Ship Exit command" id_arme="17e71211-061a-4af1-ad1d-316004ba1531" parent_id_arme="edb96aea-889b-444e-990d-af547ca9e5c6">
     <if_variable name="FirstContact" comparator="EQUALS" value="3.0" />
     <if_scan_level name="Unknown Ship" side="2" comparator="EQUALS" value="2" />
-    <set_ship_text name="Unknown Ship" race="Unknown" class="Unknown" desc="Unknown Vessel" scan_desc="Processing Scan Data..." hailtext=" " />
-    <clear_ai name="Unknown Ship" />
-    <add_ai type="POINT_THROTTLE" value1="50000.0" value2="0.0" value3="100000.0" value4="1.0" name="Unknown Ship" />
-    <set_timer name="start_mission_timer_1" seconds="10" />
+    <set_ship_text name="Unknown Ship" race="Skaraan" class="Unknown" desc="Unknown Vessel" scan_desc="Processing Scan Data..." hailtext=" " />
+    <get_object_property property="positionX" name="Unknown Ship" variable="TempX" />
+    <set_object_property property="exitPointX" value="TempX" name="Unknown Ship" />
+    <add_ai type="PROCEED_TO_EXIT" name="Unknown Ship" />
+    <add_ai type="POINT_THROTTLE" value1="TempX" value2="0.0" value3="100000.0" value4="2.0" name="Unknown Ship" />
+    <set_timer name="start_mission_timer_1" seconds="8" />
     <set_variable name="FirstContact" value="4.0" integer="yes" />
   </event>
-  <event name="First Contact Return to Station" id_arme="a01f5381-7f62-46d2-b60c-7cd0bffbfaa6" parent_id_arme="edb96aea-889b-444e-990d-af547ca9e5c6">
-    <if_timer_finished name="start_mission_timer_1" />
+  <event name="First Contact Ship Location Detect" id_arme="a01f5381-7f62-46d2-b60c-7cd0bffbfaa6" parent_id_arme="edb96aea-889b-444e-990d-af547ca9e5c6">
     <if_variable name="FirstContact" comparator="EQUALS" value="4.0" />
-    <if_inside_sphere name="Unknown Ship" centerX="50000.0" centerY="0.0" centerZ="100000.0" radius="15000" />
+    <if_timer_finished name="start_mission_timer_1" />
+    <if_inside_box name="Unknown Ship" leastX="0.0" leastZ="84000.0" mostX="100000.0" mostZ="100000.0" />
+    <clear_comms_button text="Skip Tutorial" sideValue="2" />
+    <set_timer name="start_mission_timer_1" seconds="10" />
+    <set_variable name="FirstContact" value="5.0" integer="yes" />
+  </event>
+  <event name="First Contact Ship Remove" id_arme="61da0d1e-c9ea-406b-904c-65309b9d5d17" parent_id_arme="edb96aea-889b-444e-990d-af547ca9e5c6">
+    <if_variable name="FirstContact" comparator="EQUALS" value="5.0" />
+    <if_timer_finished name="start_mission_timer_1" />
+    <clear_comms_button text="Skip Tutorial" sideValue="2" />
+    <incoming_comms_text from="Command" type="STATION">The unknown vessel is withdrawing.  ^Intel is reviewing the data you collected.  Please await further instructions.</incoming_comms_text>
+    <set_timer name="start_mission_timer_1" seconds="10" />
     <warning_popup_message message="Vessel Out of Range" consoles="MS" />
     <destroy name="Unknown Ship" />
-    <set_timer name="start_mission_timer_1" seconds="20" />
-    <set_variable name="FirstContact" value="5.0" integer="yes" />
+    <destroy name="Sensor Drop 1" />
+    <destroy name="Sensor Drop 2" />
+    <destroy name="Sensor Drop 3" />
+    <destroy name="Sensor Drop 4" />
+    <set_variable name="FirstContact" value="6.0" integer="yes" />
     <set_variable name="Mission" value="-4.0" integer="yes" />
+  </event>
+  <event name="Skip Tutorial Pressed" id_arme="b7297252-2a85-49e6-9dca-2e277aa71520" parent_id_arme="edb96aea-889b-444e-990d-af547ca9e5c6">
+    <if_variable name="FirstContact" comparator="LESS" value="4.0" />
+    <if_comms_button text="Skip Tutorial" />
+    <destroy name="Sensor Drop 1" />
+    <destroy name="Sensor Drop 2" />
+    <destroy name="Sensor Drop 3" />
+    <destroy name="Sensor Drop 4" />
+    <warning_popup_message message="Tutorial Skipped" consoles="MHWESCOF" />
+    <set_variable name="FirstContact" value="5.0" integer="yes" />
   </event>
   <folder_arme name="Delayed Start Mission Briefing" id_arme="ea6643a1-9be7-40f0-a0ac-e35c85df0924" expanded_arme="" />
   <event name="Mission Announce" id_arme="c9e7e6ce-ff58-4a59-83b3-7e485db5b8b6" parent_id_arme="ea6643a1-9be7-40f0-a0ac-e35c85df0924">
@@ -1069,7 +1107,8 @@
     <if_variable name="Mission" comparator="EQUALS" value="-4.0" />
     <if_exists player_slot="0" />
     <if_variable name="Player0" comparator="EQUALS" value="1.0" />
-    <incoming_comms_text from="Command HQ" type="STATION">Decryption Complete...^This is Sector Command.  ^^The following information is currently classified as top-secret.^^The unknown vessel has been identified as belonging to a race referred to as "Skaraan."  We know little about them; Intel has tracked the ship back to another sector, and advised an immediate scouting operation.  ^^As the nearest ships, you have been selected to conduct reconnaissance.  Remote sensor data is being highly distorted.  Once in-sector, you may be on your own.^^You will be provided with the necessary jump coordinates, and have been allocated a single supply ship--the TSN Long Haul.  ^^The Long Haul's navigational equipment is outdated; you will need to place several NAV buoys before it can safely follow you.  Positional data has been supplied to your computers.</incoming_comms_text>
+    <clear_comms_button text="Skip Tutorial" sideValue="2" />
+    <incoming_comms_text from="Command HQ" type="STATION">Decryption Complete...^This is Sector Command.  ^^The following information is currently classified as top-secret.^^The unknown vessel has been identified as belonging to a race referred to as "Skaraan."  We know little about them; Intel has tracked the ship back to another sector, and advised an immediate scouting operation.  ^^As the nearest ships, you have been selected to conduct reconnaissance.  Remote sensor data is being highly distorted.  Once in-sector, you may be on your own--even local comms may not work.^^You will be provided with the necessary jump coordinates, and have been allocated a single supply ship--the TSN Long Haul.  ^^The Long Haul's navigational equipment is outdated; you will need to place several NAV buoys before it can safely follow you.  Positional data has been supplied to your computers.</incoming_comms_text>
     <set_timer name="start_mission_timer_1" seconds="10" />
     <set_variable name="Mission" value="-3.0" integer="yes" />
   </event>
@@ -1078,10 +1117,10 @@
     <if_variable name="Mission" comparator="EQUALS" value="-3.0" />
     <if_exists player_slot="0" />
     <if_variable name="Player0" comparator="EQUALS" value="1.0" />
-    <incoming_comms_text from="Command HQ" type="STATION">MISSION PARAMATERS^For now, this is a scouting mission only! Avoid detection and do not engage enemies if possible. ^^Mission Goals^--Map all system features.^--Investigate and deploy relay nodes to counteract all interference.^--Locate and install spy tags on all enemy bases and any capital ships.^^OPTIONAL: Place NAV Buoyies to summon the TSN Long Haul.^^Good luck.^^SYSTEM BEARING: 180</incoming_comms_text>
-    <warning_popup_message message="Goal 1: Explore System" consoles="MHWESCO" />
-    <warning_popup_message message="Goal 2: Tag Bases and Capital Ships" consoles="MHWESCO" />
-    <warning_popup_message message="Goal 3: Place Relays" consoles="MHWESCO" />
+    <incoming_comms_text from="Command HQ" type="STATION">MISSION PARAMETERS^For now, this is a scouting mission only! Avoid detection and do not engage enemies if possible. ^^Mission Goals^--Map all system features.^--Investigate and deploy relay nodes to counteract interference.^--Install spy tags on any capital ships or Skaraan bases located.^^OPTIONAL: Place NAV Buoys to summon the TSN Long Haul.^^Good luck.^^SYSTEM BEARING: 180</incoming_comms_text>
+    <warning_popup_message message="Goal 3: Tag Bases and Capital Ships" consoles="MHWESCO" />
+    <warning_popup_message message="Goal 2: Place Relays" consoles="MHWESCO" />
+    <warning_popup_message message="Goal 1: Explore New System" consoles="MHWESCO" />
     <set_comms_button text="Initiate Jump" />
     <set_variable name="Mission" value="-2.0" integer="yes" />
   </event>
@@ -1219,6 +1258,9 @@
     <set_timer name="Anom9" seconds="1" />
     <set_timer name="Anom10" seconds="1" />
     <set_timer name="Anom11" seconds="1" />
+    <set_variable name="Relocation" value="60.0" integer="yes" />
+    <set_variable name="Relocate" value="60.0" integer="yes" />
+    <set_timer name="Relocate" seconds="Relocate" />
     <!--Temp variables-->
     <set_variable name="TempX" value="0.0" />
     <set_variable name="TempY" value="0.0" />
@@ -1230,9 +1272,9 @@
     <!--Sides and Buoy Variables-->
     <set_variable name="CommsPlaced" value="0.0" integer="yes" />
     <!--Mission Initiation-->
-    <set_variable name="Mission" value="1.0" integer="yes" />
     <set_timer name="start_mission_timer_1" seconds="15" />
     <set_timer name="Buttons" seconds="5" />
+    <set_variable name="Mission" value="1.0" integer="yes" />
   </event>
   <event name="Static Eaton System Build" id_arme="5da5c68d-41bb-418f-a6a6-3db690d8a10a" parent_id_arme="8d8d85de-d75a-48fc-8694-110d8f23f898">
     <if_variable name="System Build" comparator="EQUALS" value="1.0" />
@@ -1277,54 +1319,72 @@
     <set_special name="A24" />
     <set_special name="A24" clear="yes" ability="Stealth" />
     <set_special name="A24" clear="yes" ability="Cloak" />
+    <set_special name="A24" clear="yes" ability="AntiTorp" />
     <set_special name="B15" />
     <set_special name="B15" clear="yes" ability="Stealth" />
     <set_special name="B15" clear="yes" ability="Cloak" />
+    <set_special name="B15" clear="yes" ability="AntiTorp" />
     <set_special name="K43" />
     <set_special name="K43" clear="yes" ability="Stealth" />
     <set_special name="K43" clear="yes" ability="Cloak" />
+    <set_special name="K43" clear="yes" ability="AntiTorp" />
     <set_special name="J98" />
     <set_special name="J98" clear="yes" ability="Stealth" />
     <set_special name="J98" clear="yes" ability="Cloak" />
+    <set_special name="J98" clear="yes" ability="AntiTorp" />
     <set_special name="M30" />
     <set_special name="M30" clear="yes" ability="Stealth" />
     <set_special name="M30" clear="yes" ability="Cloak" />
+    <set_special name="M30" clear="yes" ability="AntiTorp" />
     <set_special name="N00" />
     <set_special name="N00" clear="yes" ability="Stealth" />
     <set_special name="N00" clear="yes" ability="Cloak" />
+    <set_special name="N00" clear="yes" ability="AntiTorp" />
     <set_special name="C67" />
     <set_special name="C67" clear="yes" ability="Stealth" />
     <set_special name="C67" clear="yes" ability="Cloak" />
+    <set_special name="C67" clear="yes" ability="Cloak" />
+    <set_special name="C67" clear="yes" ability="AntiTorp" />
     <set_special name="Q33" />
     <set_special name="Q33" clear="yes" ability="Stealth" />
     <set_special name="Q33" clear="yes" ability="Cloak" />
+    <set_special name="Q33" clear="yes" ability="AntiTorp" />
     <set_special name="R17" />
     <set_special name="R17" clear="yes" ability="Stealth" />
     <set_special name="R17" clear="yes" ability="Cloak" />
+    <set_special name="R17" clear="yes" ability="AntiTorp" />
     <set_special name="F21" />
     <set_special name="F21" clear="yes" ability="Stealth" />
     <set_special name="F21" clear="yes" ability="Cloak" />
+    <set_special name="F21" clear="yes" ability="AntiTorp" />
     <set_special name="U85" />
     <set_special name="U85" clear="yes" ability="Stealth" />
     <set_special name="U85" clear="yes" ability="Cloak" />
+    <set_special name="U85" clear="yes" ability="AntiTorp" />
     <set_special name="O01" />
     <set_special name="O01" clear="yes" ability="Stealth" />
     <set_special name="O01" clear="yes" ability="Cloak" />
+    <set_special name="O01" clear="yes" ability="AntiTorp" />
     <set_special name="T1000" />
     <set_special name="T1000" clear="yes" ability="Stealth" />
     <set_special name="T1000" clear="yes" ability="Cloak" />
+    <set_special name="T1000" clear="yes" ability="AntiTorp" />
     <set_special name="G13" />
     <set_special name="G13" clear="yes" ability="Stealth" />
     <set_special name="G13" clear="yes" ability="Cloak" />
+    <set_special name="G13" clear="yes" ability="AntiTorp" />
     <set_special name="V42" />
     <set_special name="V42" clear="yes" ability="Stealth" />
     <set_special name="V42" clear="yes" ability="Cloak" />
+    <set_special name="V42" clear="yes" ability="AntiTorp" />
     <set_special name="E81" />
     <set_special name="E81" clear="yes" ability="Stealth" />
     <set_special name="E81" clear="yes" ability="Cloak" />
+    <set_special name="E81" clear="yes" ability="AntiTorp" />
     <set_special name="D94" />
     <set_special name="D94" clear="yes" ability="Stealth" />
     <set_special name="D94" clear="yes" ability="Cloak" />
+    <set_special name="D94" clear="yes" ability="AntiTorp" />
     <clear_ai name="Station 1" />
     <clear_ai name="Station 2" />
     <clear_ai name="Station 3" />
@@ -1335,37 +1395,29 @@
     <add_ai type="TRY_TO_BECOME_LEADER" name="A24" />
     <add_ai type="LEADER_LEADS" name="A24" />
     <add_ai type="FOLLOW_LEADER" name="A24" />
-    <add_ai type="LAUNCH_FIGHTERS" value1="4250" name="A24" />
     <add_ai type="PROCEED_TO_EXIT" name="A24" />
     <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="A24" />
-    <!--<add_ai type="CHASE_ANGER" name="A24" />-->
     <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="A24" />
     <clear_ai name="K43" />
     <add_ai type="TRY_TO_BECOME_LEADER" name="K43" />
     <add_ai type="LEADER_LEADS" name="K43" />
     <add_ai type="FOLLOW_LEADER" name="K43" />
-    <add_ai type="LAUNCH_FIGHTERS" value1="4250" name="K43" />
     <add_ai type="PROCEED_TO_EXIT" name="K43" />
     <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="K43" />
-    <!--<add_ai type="CHASE_ANGER" name="K43" />-->
     <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="K43" />
     <clear_ai name="B15" />
     <add_ai type="TRY_TO_BECOME_LEADER" name="B15" />
     <add_ai type="LEADER_LEADS" name="B15" />
     <add_ai type="FOLLOW_LEADER" name="B15" />
-    <add_ai type="LAUNCH_FIGHTERS" value1="4250" name="B15" />
     <add_ai type="PROCEED_TO_EXIT" name="B15" />
     <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="B15" />
-    <!--<add_ai type="CHASE_ANGER" name="B15" />-->
     <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="B15" />
     <clear_ai name="J98" />
     <add_ai type="TRY_TO_BECOME_LEADER" name="J98" />
     <add_ai type="LEADER_LEADS" name="J98" />
     <add_ai type="FOLLOW_LEADER" name="J98" />
-    <add_ai type="LAUNCH_FIGHTERS" value1="4250" name="J98" />
     <add_ai type="PROCEED_TO_EXIT" name="J98" />
     <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="J98" />
-    <!--<add_ai type="CHASE_ANGER" name="J98" />-->
     <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="J98" />
     <clear_ai name="M30" />
     <add_ai type="TRY_TO_BECOME_LEADER" name="M30" />
@@ -1373,14 +1425,12 @@
     <add_ai type="FOLLOW_LEADER" name="M30" />
     <add_ai type="PROCEED_TO_EXIT" name="M30" />
     <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="M30" />
-    <!--<add_ai type="CHASE_ANGER" name="M30" />-->
     <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="M30" />
     <clear_ai name="N00" />
     <add_ai type="TRY_TO_BECOME_LEADER" name="N00" />
     <add_ai type="LEADER_LEADS" name="N00" />
     <add_ai type="FOLLOW_LEADER" name="N00" />
     <add_ai type="PROCEED_TO_EXIT" name="N00" />
-    <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="N00" />
     <!--<add_ai type="CHASE_ANGER" name="N00" />-->
     <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="N00" />
     <clear_ai name="C67" />
@@ -1389,105 +1439,102 @@
     <add_ai type="FOLLOW_LEADER" name="C67" />
     <add_ai type="PROCEED_TO_EXIT" name="C67" />
     <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="C67" />
-    <!--<add_ai type="CHASE_ANGER" name="C67" />-->
     <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="C67" />
     <clear_ai name="Q33" />
     <add_ai type="TRY_TO_BECOME_LEADER" name="Q33" />
     <add_ai type="LEADER_LEADS" name="Q33" />
     <add_ai type="FOLLOW_LEADER" name="Q33" />
-    <add_ai type="LAUNCH_FIGHTERS" value1="4250" name="Q33" />
     <add_ai type="PROCEED_TO_EXIT" name="Q33" />
     <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="Q33" />
-    <!--<add_ai type="CHASE_ANGER" name="Q33" />-->
     <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="Q33" />
     <clear_ai name="R17" />
     <add_ai type="TRY_TO_BECOME_LEADER" name="R17" />
     <add_ai type="LEADER_LEADS" name="R17" />
     <add_ai type="FOLLOW_LEADER" name="R17" />
-    <add_ai type="LAUNCH_FIGHTERS" value1="4250" name="R17" />
     <add_ai type="PROCEED_TO_EXIT" name="R17" />
     <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="R17" />
-    <!--<add_ai type="CHASE_ANGER" name="R17" />-->
     <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="R17" />
     <clear_ai name="F21" />
     <add_ai type="TRY_TO_BECOME_LEADER" name="F21" />
     <add_ai type="LEADER_LEADS" name="F21" />
     <add_ai type="FOLLOW_LEADER" name="F21" />
-    <add_ai type="LAUNCH_FIGHTERS" value1="4250" name="F21" />
     <add_ai type="PROCEED_TO_EXIT" name="F21" />
     <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="F21" />
-    <!--<add_ai type="CHASE_ANGER" name="F21" />-->
     <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="F21" />
     <clear_ai name="U85" />
     <add_ai type="TRY_TO_BECOME_LEADER" name="U85" />
     <add_ai type="LEADER_LEADS" name="U85" />
     <add_ai type="FOLLOW_LEADER" name="U85" />
-    <add_ai type="LAUNCH_FIGHTERS" value1="4250" name="U85" />
     <add_ai type="PROCEED_TO_EXIT" name="U85" />
     <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="U85" />
-    <!--<add_ai type="CHASE_ANGER" name="U85" />-->
     <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="U85" />
     <clear_ai name="O01" />
     <add_ai type="TRY_TO_BECOME_LEADER" name="O01" />
     <add_ai type="LEADER_LEADS" name="O01" />
     <add_ai type="FOLLOW_LEADER" name="O01" />
-    <add_ai type="LAUNCH_FIGHTERS" value1="4250" name="O01" />
     <add_ai type="PROCEED_TO_EXIT" name="O01" />
     <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="O01" />
-    <!--<add_ai type="CHASE_ANGER" name="O01" />-->
     <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="O01" />
     <clear_ai name="T1000" />
     <add_ai type="TRY_TO_BECOME_LEADER" name="T1000" />
     <add_ai type="LEADER_LEADS" name="T1000" />
     <add_ai type="FOLLOW_LEADER" name="T1000" />
-    <add_ai type="LAUNCH_FIGHTERS" value1="4250" name="T1000" />
     <add_ai type="PROCEED_TO_EXIT" name="T1000" />
     <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="T1000" />
-    <!--<add_ai type="CHASE_ANGER" name="T1000" />-->
     <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="T1000" />
     <clear_ai name="G13" />
     <add_ai type="TRY_TO_BECOME_LEADER" name="G13" />
     <add_ai type="LEADER_LEADS" name="G13" />
     <add_ai type="FOLLOW_LEADER" name="G13" />
-    <add_ai type="LAUNCH_FIGHTERS" value1="4250" name="G13" />
     <add_ai type="PROCEED_TO_EXIT" name="G13" />
     <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="G13" />
-    <!--<add_ai type="CHASE_ANGER" name="G13" />-->
     <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="G13" />
     <clear_ai name="V42" />
     <add_ai type="TRY_TO_BECOME_LEADER" name="V42" />
     <add_ai type="LEADER_LEADS" name="V42" />
     <add_ai type="FOLLOW_LEADER" name="V42" />
-    <add_ai type="LAUNCH_FIGHTERS" value1="4250" name="V42" />
     <add_ai type="PROCEED_TO_EXIT" name="V42" />
     <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="V42" />
-    <!--<add_ai type="CHASE_ANGER" name="V42" />-->
     <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="V42" />
     <clear_ai name="E81" />
     <add_ai type="TRY_TO_BECOME_LEADER" name="E81" />
     <add_ai type="LEADER_LEADS" name="E81" />
     <add_ai type="FOLLOW_LEADER" name="E81" />
-    <add_ai type="LAUNCH_FIGHTERS" value1="4250" name="E81" />
     <add_ai type="PROCEED_TO_EXIT" name="E81" />
     <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="E81" />
-    <!--<add_ai type="CHASE_ANGER" name="E81" />-->
     <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="E81" />
     <clear_ai name="D94" />
     <add_ai type="TRY_TO_BECOME_LEADER" name="D94" />
     <add_ai type="LEADER_LEADS" name="D94" />
     <add_ai type="FOLLOW_LEADER" name="D94" />
-    <add_ai type="LAUNCH_FIGHTERS" value1="4250" name="D94" />
     <add_ai type="PROCEED_TO_EXIT" name="D94" />
     <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="D94" />
-    <!--<add_ai type="CHASE_ANGER" name="D94" />-->
     <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="D94" />
-    <set_object_property property="topSpeed" value="0.0" name="Station 1" />
     <set_object_property property="topSpeed" value="0.0" name="Unknown" />
-    <set_object_property property="topSpeed" value="0.0" name="Station 2" />
-    <set_object_property property="topSpeed" value="0.0" name="Station 3" />
-    <set_object_property property="topSpeed" value="0.0" name="Station 4" />
-    <set_object_property property="topSpeed" value="0.0" name="Station 5" />
-    <set_object_property property="topSpeed" value="0.0" name="Station 6" />
+    <set_object_property property="topSpeed" value="0.00001" name="Station 1" />
+    <set_object_property property="topSpeed" value="0.00001" name="Station 2" />
+    <set_object_property property="topSpeed" value="0.00001" name="Station 3" />
+    <set_object_property property="topSpeed" value="0.00001" name="Station 4" />
+    <set_object_property property="topSpeed" value="0.00001" name="Station 5" />
+    <set_object_property property="topSpeed" value="0.00001" name="Station 6" />
+    <add_ai type="POINT_THROTTLE" value1="75052.0" value2="0.0" value3="41030.0" value4="1.0" name="Station 1" />
+    <set_object_property property="exitPointX" value="75052.0" name="Station 1" />
+    <set_object_property property="exitPointZ" value="41030.0" name="Station 1" />
+    <add_ai type="POINT_THROTTLE" value1="92836.0" value2="0.0" value3="14742.0" value4="1.0" name="Station 2" />
+    <set_object_property property="exitPointX" value="92836.0" name="Station 2" />
+    <set_object_property property="exitPointZ" value="14742.0" name="Station 2" />
+    <add_ai type="POINT_THROTTLE" value1="16135.0" value2="0.0" value3="37474.0" value4="1.0" name="Station 3" />
+    <set_object_property property="exitPointX" value="16135.0" name="Station 3" />
+    <set_object_property property="exitPointZ" value="37474.0" name="Station 3" />
+    <add_ai type="POINT_THROTTLE" value1="90516.0" value2="0.0" value3="72731.0" value4="1.0" name="Station 4" />
+    <set_object_property property="exitPointX" value="90516.0" name="Station 4" />
+    <set_object_property property="exitPointZ" value="72731.0" name="Station 4" />
+    <add_ai type="POINT_THROTTLE" value1="51662.0" value2="0.0" value3="78298.0" value4="1.0" name="Station 5" />
+    <set_object_property property="exitPointX" value="51662.0" name="Station 5" />
+    <set_object_property property="exitPointZ" value="78298.0" name="Station 5" />
+    <add_ai type="POINT_THROTTLE" value1="15768.0" value2="0.0" value3="74971.0" value4="1.0" name="Station 6" />
+    <set_object_property property="exitPointX" value="15768.0" name="Station 5" />
+    <set_object_property property="exitPointZ" value="74971.0" name="Station 5" />
     <set_object_property property="exitPointX" value="16289.0" name="A24" />
     <set_object_property property="exitPointZ" value="37938.0" name="A24" />
     <set_object_property property="exitPointX" value="16289.0" name="K43" />
@@ -1522,47 +1569,32 @@
     <set_object_property property="exitPointZ" value="78608.0" name="R17" />
     <set_object_property property="exitPointX" value="51702.0" name="F21" />
     <set_object_property property="exitPointZ" value="78608.0" name="F21" />
-    <!--<create type="enemy" x="72732.0" y="0.0" z="9020.0" angle="0" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="18" />-->
-    <!--<create type="enemy" x="74433.0" y="0.0" z="10876.0" angle="0" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="18" />-->
-    <!--<create type="enemy" x="71186.0" y="0.0" z="11958.0" angle="0" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="18" />-->
-    <!--<create type="enemy" x="75361.0" y="0.0" z="8247.0" angle="0" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="18" />-->
-    <!--<create type="enemy" x="74433.0" y="0.0" z="14896.0" angle="0" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="18" />-->
-    <!--<create type="enemy" x="23248.0" y="0.0" z="73505.0" angle="0" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="19" />-->
-    <!--<create type="enemy" x="16753.0" y="0.0" z="73505.0" angle="0" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="19" />-->
-    <!--<create type="enemy" x="20155.0" y="0.0" z="69948.0" angle="0" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="19" />-->
-    <!--<create type="enemy" x="22165.0" y="0.0" z="71649.0" angle="0" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="19" />-->
-    <!--<create type="enemy" x="18918.0" y="0.0" z="71494.0" angle="0" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="19" />-->
-    <!--<create type="enemy" x="85753.0" y="0.0" z="85907.0" angle="68.4" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="20" />-->
-    <!--<create type="enemy" x="87454.0" y="0.0" z="87763.0" angle="63.4" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="20" />-->
-    <!--<create type="enemy" x="84207.0" y="0.0" z="88845.0" angle="49.8" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="20" />-->
-    <!--<create type="enemy" x="88382.0" y="0.0" z="85134.0" angle="76.2" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="20" />-->
-    <!--<create type="enemy" x="87454.0" y="0.0" z="91783.0" angle="49.3" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="20" />-->
     <set_variable name="System Build" value="7.0" integer="yes" />
   </event>
   <event name="Enemy System Build" id_arme="2191f1ca-f74f-4321-ae79-6ecc1573cdc4" parent_id_arme="8d8d85de-d75a-48fc-8694-110d8f23f898">
     <if_variable name="System Build" comparator="EQUALS" value="5.0" />
     <create type="neutral" x="13815.0" y="0.0" z="10412.0" angle="0" name="Unknown" raceKeys="Terran" hullKeys="cargo" sideValue="1" />
-    <create type="neutral" x="15671.0" y="0.0" z="75051.0" angle="0" name="Station 6" raceKeys="Kralien" hullKeys="small" sideValue="1" />
+    <create type="neutral" x="15671.0" y="0.0" z="75051.0" angle="0" name="Station 6" raceKeys="Kralien" hullKeys="large" sideValue="1" />
     <create type="neutral" x="12578.0" y="0.0" z="77998.0" angle="0" name="A24" raceKeys="Skaraan" hullKeys="medium large" sideValue="1" />
     <create type="neutral" x="9330.0" y="0.0" z="79845.0" angle="0" name="K43" raceKeys="Kralien Skaraan" hullKeys="medium large" sideValue="1" />
     <create type="neutral" x="13660.0" y="0.0" z="74896.0" angle="0" name="B15" raceKeys="Skaraan" hullKeys="small medium large" sideValue="1" />
     <create type="neutral" x="8403.0" y="0.0" z="74278.0" angle="0" name="J98" raceKeys="Kralien Skaraan" hullKeys="small medium" sideValue="1" />
-    <create type="neutral" x="90671.0" y="0.0" z="72886.0" angle="0" name="Station 4" raceKeys="Kralien" hullKeys="small" sideValue="1" />
+    <create type="neutral" x="90671.0" y="0.0" z="72886.0" angle="0" name="Station 4" raceKeys="Kralien" hullKeys="large" sideValue="1" />
     <create type="neutral" x="89588.0" y="0.0" z="70412.0" angle="0" name="M30" raceKeys="Arvonian" hullKeys="carrier" sideValue="1" />
     <create type="neutral" x="94227.0" y="0.0" z="72268.0" angle="0" name="N00" raceKeys="Arvonian" hullKeys="carrier" sideValue="1" />
     <create type="neutral" x="93763.0" y="0.0" z="66546.0" angle="0" name="C67" raceKeys="Arvonian" hullKeys="carrier" sideValue="1" />
-    <create type="neutral" x="51702.0" y="0.0" z="78608.0" angle="0" name="Station 5" raceKeys="Kralien" hullKeys="small" sideValue="1" />
+    <create type="neutral" x="51702.0" y="0.0" z="78608.0" angle="0" name="Station 5" raceKeys="Kralien" hullKeys="large" sideValue="1" />
     <create type="neutral" x="47062.0" y="0.0" z="75051.0" angle="0" name="Q33" raceKeys="Skaraan" hullKeys="small large" sideValue="1" />
     <create type="neutral" x="46135.0" y="0.0" z="81546.0" angle="0" name="R17" raceKeys="Skaraan" hullKeys="small" sideValue="1" />
     <create type="neutral" x="51702.0" y="0.0" z="84639.0" angle="0" name="F21" raceKeys="Skaraan" hullKeys="small medium" sideValue="1" />
-    <create type="neutral" x="75052.0" y="0.0" z="41030.0" angle="0" name="Station 1" raceKeys="Kralien" hullKeys="small" sideValue="1" />
+    <create type="neutral" x="75052.0" y="0.0" z="41030.0" angle="0" name="Station 1" raceKeys="Kralien" hullKeys="large" sideValue="1" />
     <create type="neutral" x="79382.0" y="0.0" z="42577.0" angle="0" name="U85" raceKeys="Skaraan" hullKeys="large" sideValue="1" />
     <create type="neutral" x="74588.0" y="0.0" z="42577.0" angle="0" name="O01" raceKeys="Skaraan" hullKeys="medium" sideValue="1" />
     <create type="neutral" x="72578.0" y="0.0" z="42577.0" angle="0" name="T1000" raceKeys="Skaraan" hullKeys="medium" sideValue="1" />
-    <create type="neutral" x="16289.0" y="0.0" z="37938.0" angle="0" name="Station 3" raceKeys="Kralien" hullKeys="small" sideValue="1" />
+    <create type="neutral" x="16289.0" y="0.0" z="37938.0" angle="0" name="Station 3" raceKeys="Kralien" hullKeys="large" sideValue="1" />
     <create type="neutral" x="13970.0" y="0.0" z="35463.0" angle="0" name="G13" raceKeys="Skaraan hasspecials" hullKeys="medium" sideValue="1" />
     <create type="neutral" x="12432.0" y="0.0" z="37728.0" angle="0" name="V42" raceKeys="hasspecials" hullKeys="medium large" sideValue="1" />
-    <create type="neutral" x="92836.0" y="0.0" z="14742.0" angle="0" name="Station 2" raceKeys="Kralien" hullKeys="small" sideValue="1" />
+    <create type="neutral" x="92836.0" y="0.0" z="14742.0" angle="0" name="Station 2" raceKeys="Kralien" hullKeys="large" sideValue="1" />
     <create type="neutral" x="95310.0" y="0.0" z="13350.0" angle="0" name="E81" raceKeys="Kralien Skaraan Torgoth" hullKeys="large" sideValue="1" />
     <create type="neutral" x="94382.0" y="0.0" z="17061.0" angle="0" name="D94" raceKeys="Kralien Torgoth" hullKeys="large" sideValue="1" />
     <set_variable name="System Build" value="6.0" integer="yes" />
@@ -1918,48 +1950,86 @@
     <set_object_property property="exitPointZ" value="14742.0" name="U85" />
     <set_variable name="TargetO" value="2.0" integer="yes" />
   </event>
-  <event name="Station 1 Relocate" id_arme="dc068506-28d3-40aa-9e96-54c57ea5d8e2" parent_id_arme="9e6d6aac-c337-47a8-991e-724d2862ce19">
-    <if_exists name="Station 1" />
-    <if_outside_sphere name="Station 1" centerX="75052.0" centerY="0.0" centerZ="41030.0" radius="500" />
+  <event name="Reset Base Relocation" id_arme="75374b80-27dc-4bd6-9284-799beed0ced7" parent_id_arme="9e6d6aac-c337-47a8-991e-724d2862ce19">
+    <if_variable name="Relocation" comparator="EQUALS" value="2.0" />
+    <set_timer name="Relocate" seconds="Relocate" />
+    <set_variable name="Relocation" value="1.0" integer="yes" />
+  </event>
+  <event name="Relocate Enemy Bases" id_arme="cdb00542-4b00-4443-8bdd-9cc133d8a3a8" parent_id_arme="9e6d6aac-c337-47a8-991e-724d2862ce19">
+    <if_variable name="Relocation" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Relocate" />
     <set_object_property property="positionX" value="75052.0" name="Station 1" />
     <set_object_property property="positionY" value="0.0" name="Station 1" />
     <set_object_property property="positionZ" value="41030.0" name="Station 1" />
-  </event>
-  <event name="Station 2 Relocate" id_arme="c64b7ab1-145a-432b-b5ef-87d5940e6b42" parent_id_arme="9e6d6aac-c337-47a8-991e-724d2862ce19">
-    <if_exists name="Station 2" />
-    <if_outside_sphere name="Station 2" centerX="92836.0" centerY="0.0" centerZ="14742.0" radius="500" />
     <set_object_property property="positionX" value="92836.0" name="Station 2" />
     <set_object_property property="positionY" value="0.0" name="Station 2" />
     <set_object_property property="positionZ" value="14742.0" name="Station 2" />
-  </event>
-  <event name="Station 3 Relocate" id_arme="bbba64e5-00ef-41e7-8229-9ec9e3aae74f" parent_id_arme="9e6d6aac-c337-47a8-991e-724d2862ce19">
-    <if_exists name="Station 3" />
-    <if_outside_sphere name="Station 3" centerX="16135.0" centerY="0.0" centerZ="37474.0" radius="500" />
     <set_object_property property="positionX" value="16135.0" name="Station 3" />
     <set_object_property property="positionY" value="0.0" name="Station 3" />
     <set_object_property property="positionZ" value="37474.0" name="Station 3" />
-  </event>
-  <event name="Station 4 Relocate" id_arme="30369a52-4072-4d9a-a614-02051f8da1d0" parent_id_arme="9e6d6aac-c337-47a8-991e-724d2862ce19">
-    <if_exists name="Station 4" />
-    <if_outside_sphere name="Station 4" centerX="90516.0" centerY="0.0" centerZ="72731.0" radius="500" />
     <set_object_property property="positionX" value="90516.0" name="Station 4" />
     <set_object_property property="positionY" value="0.0" name="Station 4" />
     <set_object_property property="positionZ" value="72731.0" name="Station 4" />
-  </event>
-  <event name="Station 5 Relocate" id_arme="bafceae9-2244-421a-a8e7-a1a674036d7a" parent_id_arme="9e6d6aac-c337-47a8-991e-724d2862ce19">
-    <if_exists name="Station 5" />
-    <if_outside_sphere name="Station 5" centerX="51662.0" centerY="0.0" centerZ="78298.0" radius="500" />
     <set_object_property property="positionX" value="51662.0" name="Station 5" />
     <set_object_property property="positionY" value="0.0" name="Station 5" />
     <set_object_property property="positionZ" value="78298.0" name="Station 5" />
-  </event>
-  <event name="Station 6 Relocate" id_arme="2b572c18-ee1b-417f-a8a0-2d2173143caf" parent_id_arme="9e6d6aac-c337-47a8-991e-724d2862ce19">
-    <if_exists name="Station 6" />
-    <if_outside_sphere name="Station 6" centerX="15768.0" centerY="0.0" centerZ="74971.0" radius="500" />
     <set_object_property property="positionX" value="15768.0" name="Station 6" />
     <set_object_property property="positionY" value="0.0" name="Station 6" />
     <set_object_property property="positionZ" value="74971.0" name="Station 6" />
+    <set_variable name="Relocation" value="2.0" integer="yes" />
   </event>
+  <event name="End Relocate Loop" id_arme="13f01f66-bce7-483b-a1b3-ca51a9d3f51b" parent_id_arme="9e6d6aac-c337-47a8-991e-724d2862ce19">
+    <if_variable name="Relocation" comparator="EQUALS" value="2.0" />
+    <if_not_exists name="Station 1" />
+    <if_not_exists name="Station 2" />
+    <if_not_exists name="Station 3" />
+    <if_not_exists name="Station 4" />
+    <if_not_exists name="Station 5" />
+    <if_not_exists name="Station 6" />
+    <set_variable name="Relocate" value="3.0" integer="yes" />
+  </event>
+  <disabled_event name="Station 1 Relocate" id_arme="dc068506-28d3-40aa-9e96-54c57ea5d8e2" parent_id_arme="9e6d6aac-c337-47a8-991e-724d2862ce19">
+    <if_exists name="Station 1" />
+    <if_outside_sphere name="Station 1" centerX="75052.0" centerY="0.0" centerZ="41030.0" radius="1000" />
+    <set_object_property property="positionX" value="75052.0" name="Station 1" />
+    <set_object_property property="positionY" value="0.0" name="Station 1" />
+    <set_object_property property="positionZ" value="41030.0" name="Station 1" />
+  </disabled_event>
+  <disabled_event name="Station 2 Relocate" id_arme="c64b7ab1-145a-432b-b5ef-87d5940e6b42" parent_id_arme="9e6d6aac-c337-47a8-991e-724d2862ce19">
+    <if_exists name="Station 2" />
+    <if_outside_sphere name="Station 2" centerX="92836.0" centerY="0.0" centerZ="14742.0" radius="1000" />
+    <set_object_property property="positionX" value="92836.0" name="Station 2" />
+    <set_object_property property="positionY" value="0.0" name="Station 2" />
+    <set_object_property property="positionZ" value="14742.0" name="Station 2" />
+  </disabled_event>
+  <disabled_event name="Station 3 Relocate" id_arme="bbba64e5-00ef-41e7-8229-9ec9e3aae74f" parent_id_arme="9e6d6aac-c337-47a8-991e-724d2862ce19">
+    <if_exists name="Station 3" />
+    <if_outside_sphere name="Station 3" centerX="16135.0" centerY="0.0" centerZ="37474.0" radius="1000" />
+    <set_object_property property="positionX" value="16135.0" name="Station 3" />
+    <set_object_property property="positionY" value="0.0" name="Station 3" />
+    <set_object_property property="positionZ" value="37474.0" name="Station 3" />
+  </disabled_event>
+  <disabled_event name="Station 4 Relocate" id_arme="30369a52-4072-4d9a-a614-02051f8da1d0" parent_id_arme="9e6d6aac-c337-47a8-991e-724d2862ce19">
+    <if_exists name="Station 4" />
+    <if_outside_sphere name="Station 4" centerX="90516.0" centerY="0.0" centerZ="72731.0" radius="1000" />
+    <set_object_property property="positionX" value="90516.0" name="Station 4" />
+    <set_object_property property="positionY" value="0.0" name="Station 4" />
+    <set_object_property property="positionZ" value="72731.0" name="Station 4" />
+  </disabled_event>
+  <disabled_event name="Station 5 Relocate" id_arme="bafceae9-2244-421a-a8e7-a1a674036d7a" parent_id_arme="9e6d6aac-c337-47a8-991e-724d2862ce19">
+    <if_exists name="Station 5" />
+    <if_outside_sphere name="Station 5" centerX="51662.0" centerY="0.0" centerZ="78298.0" radius="1000" />
+    <set_object_property property="positionX" value="51662.0" name="Station 5" />
+    <set_object_property property="positionY" value="0.0" name="Station 5" />
+    <set_object_property property="positionZ" value="78298.0" name="Station 5" />
+  </disabled_event>
+  <disabled_event name="Station 6 Relocate" id_arme="2b572c18-ee1b-417f-a8a0-2d2173143caf" parent_id_arme="9e6d6aac-c337-47a8-991e-724d2862ce19">
+    <if_exists name="Station 6" />
+    <if_outside_sphere name="Station 6" centerX="15768.0" centerY="0.0" centerZ="74971.0" radius="1000" />
+    <set_object_property property="positionX" value="15768.0" name="Station 6" />
+    <set_object_property property="positionY" value="0.0" name="Station 6" />
+    <set_object_property property="positionZ" value="74971.0" name="Station 6" />
+  </disabled_event>
   <event name="Hole in the wall Description" id_arme="44ccbe77-54d7-48c2-ab9b-9aa296245fb4" parent_id_arme="9e6d6aac-c337-47a8-991e-724d2862ce19">
     <if_exists name="Hole in the Wall" />
     <if_variable name="PirateBase" comparator="EQUALS" value="1.0" />
@@ -2543,42 +2613,42 @@
   </event>
   <event name="Station 1 Relocate" id_arme="620d6058-d3da-4c86-bd69-8012f4ca7b4c" parent_id_arme="4d16c6fe-76a9-4574-937c-3f07d1bf0b0f">
     <if_exists name="Station 1" />
-    <if_outside_sphere name="Station 1" centerX="75052.0" centerY="0.0" centerZ="41030.0" radius="500" />
+    <if_outside_sphere name="Station 1" centerX="75052.0" centerY="0.0" centerZ="41030.0" radius="1000" />
     <set_object_property property="positionX" value="75052.0" name="Station 1" />
     <set_object_property property="positionY" value="0.0" name="Station 1" />
     <set_object_property property="positionZ" value="41030.0" name="Station 1" />
   </event>
   <event name="Station 2 Relocate" id_arme="d5a100c3-8042-46ac-b7f1-ddbe40b95ec0" parent_id_arme="4d16c6fe-76a9-4574-937c-3f07d1bf0b0f">
     <if_exists name="Station 2" />
-    <if_outside_sphere name="Station 2" centerX="92836.0" centerY="0.0" centerZ="14742.0" radius="500" />
+    <if_outside_sphere name="Station 2" centerX="92836.0" centerY="0.0" centerZ="14742.0" radius="1000" />
     <set_object_property property="positionX" value="92836.0" name="Station 2" />
     <set_object_property property="positionY" value="0.0" name="Station 2" />
     <set_object_property property="positionZ" value="14742.0" name="Station 2" />
   </event>
   <event name="Station 3 Relocate" id_arme="ffbad2ef-c020-476e-a509-b1eb6aa6b492" parent_id_arme="4d16c6fe-76a9-4574-937c-3f07d1bf0b0f">
     <if_exists name="Station 3" />
-    <if_outside_sphere name="Station 3" centerX="16135.0" centerY="0.0" centerZ="37474.0" radius="500" />
+    <if_outside_sphere name="Station 3" centerX="16135.0" centerY="0.0" centerZ="37474.0" radius="1000" />
     <set_object_property property="positionX" value="16135.0" name="Station 3" />
     <set_object_property property="positionY" value="0.0" name="Station 3" />
     <set_object_property property="positionZ" value="37474.0" name="Station 3" />
   </event>
   <event name="Station 4 Relocate" id_arme="3f7cbdf5-7b9d-4d3e-94d0-b6b6d8982ea0" parent_id_arme="4d16c6fe-76a9-4574-937c-3f07d1bf0b0f">
     <if_exists name="Station 4" />
-    <if_outside_sphere name="Station 4" centerX="90516.0" centerY="0.0" centerZ="72731.0" radius="500" />
+    <if_outside_sphere name="Station 4" centerX="90516.0" centerY="0.0" centerZ="72731.0" radius="1000" />
     <set_object_property property="positionX" value="90516.0" name="Station 4" />
     <set_object_property property="positionY" value="0.0" name="Station 4" />
     <set_object_property property="positionZ" value="72731.0" name="Station 4" />
   </event>
   <event name="Station 5 Relocate" id_arme="90c36465-7693-49c8-9b5c-9a77d904c1d2" parent_id_arme="4d16c6fe-76a9-4574-937c-3f07d1bf0b0f">
     <if_exists name="Station 5" />
-    <if_outside_sphere name="Station 5" centerX="51662.0" centerY="0.0" centerZ="78298.0" radius="500" />
+    <if_outside_sphere name="Station 5" centerX="51662.0" centerY="0.0" centerZ="78298.0" radius="1000" />
     <set_object_property property="positionX" value="51662.0" name="Station 5" />
     <set_object_property property="positionY" value="0.0" name="Station 5" />
     <set_object_property property="positionZ" value="78298.0" name="Station 5" />
   </event>
   <event name="Station 6 Relocate" id_arme="c4280931-8f78-48d0-b66e-7cfdfce2373c" parent_id_arme="4d16c6fe-76a9-4574-937c-3f07d1bf0b0f">
     <if_exists name="Station 6" />
-    <if_outside_sphere name="Station 6" centerX="15768.0" centerY="0.0" centerZ="74971.0" radius="500" />
+    <if_outside_sphere name="Station 6" centerX="15768.0" centerY="0.0" centerZ="74971.0" radius="1000" />
     <set_object_property property="positionX" value="15768.0" name="Station 6" />
     <set_object_property property="positionY" value="0.0" name="Station 6" />
     <set_object_property property="positionZ" value="74971.0" name="Station 6" />
@@ -3159,6 +3229,12 @@
   <folder_arme name="Nebula Explore Changes" id_arme="afcf90bc-10a5-4f79-89fa-7444a33c6ea7" />
   <event name="Nebula 1 Changes" id_arme="4b1f5755-13d1-42f6-89b3-042f150bc551" parent_id_arme="afcf90bc-10a5-4f79-89fa-7444a33c6ea7">
     <if_variable name="Neb1" comparator="EQUALS" value="1.0" />
+    <if_exists name="E" />
+    <if_exists name="G" />
+    <if_exists name="F" />
+    <if_exists name="H" />
+    <if_exists name="I" />
+    <if_exists name="J" />
     <set_ship_text name="E" desc="Sensor Distortion Detected" scan_desc="Relay Buoy Required." />
     <set_ship_text name="G" desc="Comms Disruption Detected" />
     <set_ship_text name="F" desc="Scan inconclusive; proximity scan required." />
@@ -3168,6 +3244,10 @@
     <set_variable name="Neb1" value="2.0" integer="yes" />
   </event>
   <event name="Nebula 2 Changes" id_arme="48356176-b011-4360-93c7-5f33ba69f88d" parent_id_arme="afcf90bc-10a5-4f79-89fa-7444a33c6ea7">
+    <if_exists name="A" />
+    <if_exists name="B" />
+    <if_exists name="C" />
+    <if_exists name="D" />
     <if_variable name="Neb2" comparator="EQUALS" value="1.0" />
     <set_ship_text name="A" desc="Comms Disruption Detected" scan_desc="Relay Buoy Required." />
     <set_ship_text name="B" desc="Scan inconclusive; proximity scan required." />
@@ -3176,6 +3256,12 @@
     <set_variable name="Neb2" value="2.0" integer="yes" />
   </event>
   <event name="Nebula 3 Changes" id_arme="e9de82fe-8428-4d6f-9772-c7218be0bd6a" parent_id_arme="afcf90bc-10a5-4f79-89fa-7444a33c6ea7">
+    <if_exists name="K" />
+    <if_exists name="L" />
+    <if_exists name="M" />
+    <if_exists name="N" />
+    <if_exists name="O" />
+    <if_exists name="P" />
     <if_variable name="Neb3" comparator="EQUALS" value="1.0" />
     <set_ship_text name="K" desc="Sensor Distortion Detected" scan_desc="Relay Buoy Required" />
     <set_ship_text name="L" desc="Scan inconclusive; proximity scan required." scan_desc="Proximity Scan Required" />
@@ -3186,6 +3272,12 @@
     <set_variable name="Neb3" value="2.0" integer="yes" />
   </event>
   <event name="Nebula 4 Changes" id_arme="d86353ae-c9c8-4109-8792-8615c8065430" parent_id_arme="afcf90bc-10a5-4f79-89fa-7444a33c6ea7">
+    <if_exists name="Q" />
+    <if_exists name="R" />
+    <if_exists name="S" />
+    <if_exists name="T" />
+    <if_exists name="U" />
+    <if_exists name="V" />
     <if_variable name="Neb4" comparator="EQUALS" value="1.0" />
     <set_ship_text name="Q" desc="Scan inconclusive; proximity scan required." scan_desc="Proximity Scan Required" />
     <set_ship_text name="R" desc="Comms Disruption Detected" scan_desc="Relay Buoy Required." />
@@ -3197,6 +3289,10 @@
   </event>
   <event name="Nebula 5 Changes" id_arme="4d60135d-8df4-4048-981d-bc6455940386" parent_id_arme="afcf90bc-10a5-4f79-89fa-7444a33c6ea7">
     <if_variable name="Neb5" comparator="EQUALS" value="1.0" />
+    <if_exists name="W" />
+    <if_exists name="X" />
+    <if_exists name="Y" />
+    <if_exists name="Z" />
     <set_ship_text name="W" desc="Sensor Distortion Detected" scan_desc="Relay Buoy Required." />
     <set_ship_text name="X" desc="Scan inconclusive; proximity scan required." scan_desc="Proximity scan required." />
     <set_ship_text name="Y" desc="Scan inconclusive; proximity scan required." scan_desc="Proximity Scan Required" />
@@ -3205,11 +3301,17 @@
   </event>
   <event name="Nebula 6 Changes" id_arme="aee8303f-5e27-48ce-8171-000b816a8097" parent_id_arme="afcf90bc-10a5-4f79-89fa-7444a33c6ea7">
     <if_variable name="Neb6" comparator="EQUALS" value="1.0" />
+    <if_exists name="BB" />
+    <if_exists name="AA" />
     <set_ship_text name="BB" desc="Sensor Distortion Detected" scan_desc="Relay Bouy Required." />
     <set_ship_text name="AA" desc="Comms Disruption Detected" scan_desc="Relay Buoy Required." />
     <set_variable name="Neb6" value="2.0" integer="yes" />
   </event>
   <event name="Nebula 7 Changes" id_arme="8a7a877a-9adf-4cd7-9b53-6c9c78db6e0a" parent_id_arme="afcf90bc-10a5-4f79-89fa-7444a33c6ea7">
+    <if_exists name="CC" />
+    <if_exists name="DD" />
+    <if_exists name="EE" />
+    <if_exists name="FF" />
     <if_variable name="Neb7" comparator="EQUALS" value="1.0" />
     <set_ship_text name="CC" desc="Sensor Distortion Detected" scan_desc="Relay Buoy Required." />
     <set_ship_text name="DD" desc="Scan inconclusive; proximity scan required." scan_desc="Proximity scan required." />
@@ -3218,12 +3320,17 @@
     <set_variable name="Neb7" value="2.0" integer="yes" />
   </event>
   <event name="Nebula 8 Changes" id_arme="bfbe8f53-c737-421f-bd93-468551d5289c" parent_id_arme="afcf90bc-10a5-4f79-89fa-7444a33c6ea7">
+    <if_exists name="HH" />
+    <if_exists name="GG" />
     <if_variable name="Neb8" comparator="EQUALS" value="1.0" />
     <set_ship_text name="GG" desc="Comms Disruption Detected" scan_desc="Relay Bouy Required" />
     <set_ship_text name="HH" desc="Scan inconclusive; proximity scan required." scan_desc="Proximity Scan Required" />
     <set_variable name="Neb8" value="2.0" integer="yes" />
   </event>
   <event name="Nebula 9 Changes" id_arme="4daa41ef-0065-4b60-a3b4-1fa109a5df62" parent_id_arme="afcf90bc-10a5-4f79-89fa-7444a33c6ea7">
+    <if_exists name="JJ" />
+    <if_exists name="II" />
+    <if_exists name="KK" />
     <if_variable name="Neb9" comparator="EQUALS" value="1.0" />
     <set_ship_text name="JJ" desc="Sensor Distortion Detected" scan_desc="Relay Bouy Required" />
     <set_ship_text name="II" desc="Scan inconclusive; proximity scan required." scan_desc="Proximity Scan Required" />
@@ -3231,6 +3338,10 @@
     <set_variable name="Neb9" value="2.0" integer="yes" />
   </event>
   <event name="Nebula 10 Changes" id_arme="e4ae43db-40cc-4b6a-a640-7beb9e6877f8" parent_id_arme="afcf90bc-10a5-4f79-89fa-7444a33c6ea7">
+    <if_exists name="LL" />
+    <if_exists name="MM" />
+    <if_exists name="NN" />
+    <if_exists name="OO" />
     <if_variable name="Neb10" comparator="EQUALS" value="1.0" />
     <set_ship_text name="LL" desc="Comms Disruption Detected" scan_desc="Relay Bouy Required." />
     <set_ship_text name="MM" desc="Scan inconclusive; proximity scan required." scan_desc="Proximity Scan Required" />
@@ -3239,6 +3350,12 @@
     <set_variable name="Neb10" value="2.0" integer="yes" />
   </event>
   <event name="Nebula 11 Changes" id_arme="994dc6a2-5e48-4b47-be76-8bb526ba1f0b" parent_id_arme="afcf90bc-10a5-4f79-89fa-7444a33c6ea7">
+    <if_exists name="QQ" />
+    <if_exists name="RR" />
+    <if_exists name="SS" />
+    <if_exists name="TT" />
+    <if_exists name="UU" />
+    <if_exists name="VV" />
     <if_variable name="Neb11" comparator="EQUALS" value="1.0" />
     <set_ship_text name="QQ" desc="Sensor Distortion Detected" scan_desc="Relay Buoy Required" />
     <set_ship_text name="RR" desc="Comms Disruption Detected" scan_desc="Relay Buoy Required." />
@@ -3248,7 +3365,7 @@
     <set_ship_text name="VV" desc="Scan inconclusive; proximity scan required." scan_desc="Proximity scan required." />
     <set_variable name="Neb11" value="2.0" integer="yes" />
   </event>
-  <folder_arme name="Explore Player 0" id_arme="1625f9c6-58b7-4cd5-bdd6-4cd62810d4be" expanded_arme="" />
+  <folder_arme name="Explore Player 0" id_arme="1625f9c6-58b7-4cd5-bdd6-4cd62810d4be" />
   <folder_arme name="Sensor Point Scans Player0" id_arme="f8b6eb52-af1b-43ff-ab00-5caa1d32b151" parent_id_arme="1625f9c6-58b7-4cd5-bdd6-4cd62810d4be" />
   <event name="Sensor Proximity B" id_arme="2f200277-9da7-4d99-a5c0-f12bf2c90c06" parent_id_arme="f8b6eb52-af1b-43ff-ab00-5caa1d32b151">
     <if_variable name="B" comparator="EQUALS" value="0.0" />
@@ -3793,7 +3910,7 @@
     <set_variable name="Ast3" value="1.0" integer="yes" />
     <create count="20" type="asteroids" startX="10732.0" startY="100.0" startZ="88659.0" endX="19732.0" endY="-200.0" endZ="70659.0" randomRange="3000" randomSeed="90" />
   </event>
-  <folder_arme name="Explore Player 1" id_arme="04486b0a-0b3a-4786-8f34-a0be64f2a7a7" expanded_arme="" />
+  <folder_arme name="Explore Player 1" id_arme="04486b0a-0b3a-4786-8f34-a0be64f2a7a7" />
   <folder_arme name="Sensor Point Scans Player1" id_arme="a76d3584-4edd-4855-9e6e-30f7200db271" parent_id_arme="04486b0a-0b3a-4786-8f34-a0be64f2a7a7" />
   <event name="Sensor Proximity B" id_arme="d3f95097-3ec4-439e-983f-fdd8578a03b6" parent_id_arme="a76d3584-4edd-4855-9e6e-30f7200db271">
     <if_variable name="B" comparator="EQUALS" value="0.0" />
@@ -4338,7 +4455,7 @@
     <set_variable name="Ast3" value="1.0" integer="yes" />
     <create count="20" type="asteroids" startX="10732.0" startY="100.0" startZ="88659.0" endX="19732.0" endY="-200.0" endZ="70659.0" randomRange="3000" randomSeed="90" />
   </event>
-  <folder_arme name="Explore Player 2" id_arme="c9394352-8aac-4d0e-aafe-1be9ffd867e8" expanded_arme="" />
+  <folder_arme name="Explore Player 2" id_arme="c9394352-8aac-4d0e-aafe-1be9ffd867e8" />
   <folder_arme name="Sensor Point Scans Player2" id_arme="7739d172-ee41-4d08-bba2-325826c68f11" parent_id_arme="c9394352-8aac-4d0e-aafe-1be9ffd867e8" />
   <event name="Sensor Proximity B" id_arme="be91c00e-f14f-4dfe-9ee6-f30fbea2eb6d" parent_id_arme="7739d172-ee41-4d08-bba2-325826c68f11">
     <if_variable name="B" comparator="EQUALS" value="0.0" />
@@ -4883,7 +5000,7 @@
     <set_variable name="Ast3" value="1.0" integer="yes" />
     <create count="20" type="asteroids" startX="10732.0" startY="100.0" startZ="88659.0" endX="19732.0" endY="-200.0" endZ="70659.0" randomRange="3000" randomSeed="90" />
   </event>
-  <folder_arme name="Explore Player 3" id_arme="33a61783-e723-4e05-99a3-dfacc62ac08c" expanded_arme="" />
+  <folder_arme name="Explore Player 3" id_arme="33a61783-e723-4e05-99a3-dfacc62ac08c" />
   <folder_arme name="Sensor Point Scans Player3" id_arme="02bd08bd-d95f-4be4-ad86-cd712f6bdb2b" parent_id_arme="33a61783-e723-4e05-99a3-dfacc62ac08c" />
   <event name="Sensor Proximity B" id_arme="47162f29-8683-4418-a6d3-65dc8a2ae8fa" parent_id_arme="02bd08bd-d95f-4be4-ad86-cd712f6bdb2b">
     <if_variable name="B" comparator="EQUALS" value="0.0" />
@@ -5227,7 +5344,6 @@
     <create type="Anomaly" pickupType="0" x="79455.0" y="0.0" z="21301.0" />
     <create type="Anomaly" pickupType="5" x="79855.0" y="0.0" z="22201.0" />
     <create type="Anomaly" pickupType="2" x="79755.0" y="0.0" z="22001.0" />
-    <set_variable name="Neb4" value="1.0" integer="yes" />
     <create type="monster" monsterType="8" x="82085.0" y="0.0" z="23710.0" angle="0" />
     <create type="monster" monsterType="7" x="81293.0" y="0.0" z="21528.0" angle="200" />
     <create type="monster" monsterType="7" x="83093.0" y="0.0" z="20228.0" angle="200" />
@@ -5245,6 +5361,7 @@
     <create type="monster" monsterType="8" x="78985.0" y="0.0" z="24010.0" angle="0" />
     <create type="monster" monsterType="7" x="80493.0" y="0.0" z="23828.0" angle="200" />
     <create type="monster" monsterType="7" x="77493.0" y="0.0" z="21328.0" angle="200" />
+    <set_variable name="Neb4" value="1.0" integer="yes" />
     <create type="monster" monsterType="8" x="81485.0" y="0.0" z="27710.0" angle="0" />
   </event>
   <event name="Nebula 5 Player3" id_arme="3eb8ee82-c0cb-419d-bdac-9375c005823c" parent_id_arme="95b72ffa-8454-4aed-9d4b-80bfeaf6c2ae">
@@ -5428,7 +5545,7 @@
     <set_variable name="Ast3" value="1.0" integer="yes" />
     <create count="20" type="asteroids" startX="10732.0" startY="100.0" startZ="88659.0" endX="19732.0" endY="-200.0" endZ="70659.0" randomRange="3000" randomSeed="90" />
   </event>
-  <folder_arme name="Explore Player 4" id_arme="9fa60e71-b6bc-4c94-92bf-bd6122a2e8b8" expanded_arme="" />
+  <folder_arme name="Explore Player 4" id_arme="9fa60e71-b6bc-4c94-92bf-bd6122a2e8b8" />
   <folder_arme name="Sensor Point Scans Player4" id_arme="f63b5e09-d430-4479-a721-250d80516d39" parent_id_arme="9fa60e71-b6bc-4c94-92bf-bd6122a2e8b8" />
   <event name="Sensor Proximity B" id_arme="eb7d2d7f-5f1c-4f6a-bcd2-cecb2c082dab" parent_id_arme="f63b5e09-d430-4479-a721-250d80516d39">
     <if_variable name="B" comparator="EQUALS" value="0.0" />
@@ -5973,7 +6090,7 @@
     <set_variable name="Ast3" value="1.0" integer="yes" />
     <create count="20" type="asteroids" startX="10732.0" startY="100.0" startZ="88659.0" endX="19732.0" endY="-200.0" endZ="70659.0" randomRange="3000" randomSeed="90" />
   </event>
-  <folder_arme name="Explore Player 5" id_arme="40b57aad-b5aa-4637-8e83-a37c5df1a318" expanded_arme="" />
+  <folder_arme name="Explore Player 5" id_arme="40b57aad-b5aa-4637-8e83-a37c5df1a318" />
   <folder_arme name="Sensor Point Scans Player5" id_arme="1a8e849a-96fc-4ba0-b70d-d3a42a133a3c" parent_id_arme="40b57aad-b5aa-4637-8e83-a37c5df1a318" />
   <event name="Sensor Proximity B" id_arme="73f67bd6-ed6b-4330-99b4-5a7dd87c37bc" parent_id_arme="1a8e849a-96fc-4ba0-b70d-d3a42a133a3c">
     <if_variable name="B" comparator="EQUALS" value="0.0" />
@@ -6518,7 +6635,7 @@
     <set_variable name="Ast3" value="1.0" integer="yes" />
     <create count="20" type="asteroids" startX="10732.0" startY="100.0" startZ="88659.0" endX="19732.0" endY="-200.0" endZ="70659.0" randomRange="3000" randomSeed="90" />
   </event>
-  <folder_arme name="Explore Player 6" id_arme="01479f01-5807-4788-b9ae-09139c5d53eb" expanded_arme="" />
+  <folder_arme name="Explore Player 6" id_arme="01479f01-5807-4788-b9ae-09139c5d53eb" />
   <folder_arme name="Sensor Point Scans Player6" id_arme="63badeaa-270f-409a-89ae-858d86750753" parent_id_arme="01479f01-5807-4788-b9ae-09139c5d53eb" />
   <event name="Sensor Proximity B" id_arme="c131aaf2-3fd4-49e0-ba96-7729ad0865f3" parent_id_arme="63badeaa-270f-409a-89ae-858d86750753">
     <if_variable name="B" comparator="EQUALS" value="0.0" />
@@ -7063,7 +7180,7 @@
     <set_variable name="Ast3" value="1.0" integer="yes" />
     <create count="20" type="asteroids" startX="10732.0" startY="100.0" startZ="88659.0" endX="19732.0" endY="-200.0" endZ="70659.0" randomRange="3000" randomSeed="90" />
   </event>
-  <folder_arme name="Explore Player 7" id_arme="afd67d73-3f67-4659-8442-911d2bb59287" expanded_arme="" />
+  <folder_arme name="Explore Player 7" id_arme="afd67d73-3f67-4659-8442-911d2bb59287" />
   <folder_arme name="Sensor Point Scans Player7" id_arme="1ada5807-4834-4221-8ea5-586d124ee839" parent_id_arme="afd67d73-3f67-4659-8442-911d2bb59287" />
   <event name="Sensor Proximity B" id_arme="652dcca8-d6e0-46c7-b868-9c32f4ef869d" parent_id_arme="1ada5807-4834-4221-8ea5-586d124ee839">
     <if_variable name="B" comparator="EQUALS" value="0.0" />
@@ -9581,7 +9698,7 @@
     <destroy name="Anom11" />
   </event>
   <folder_arme name="Bouy and Relay Placement" id_arme="d781a141-d878-4533-abf3-b1b2437acd09" />
-  <folder_arme name="NAV Buoys" id_arme="50b694cf-0ad5-4522-9fd6-320b208dcdff" parent_id_arme="d781a141-d878-4533-abf3-b1b2437acd09" expanded_arme="" />
+  <folder_arme name="NAV Buoys" id_arme="50b694cf-0ad5-4522-9fd6-320b208dcdff" parent_id_arme="d781a141-d878-4533-abf3-b1b2437acd09" />
   <event name="Deploy Fail Point 1" id_arme="a6ea809b-168c-473b-a912-7a0c8658c70a" parent_id_arme="50b694cf-0ad5-4522-9fd6-320b208dcdff">
     <if_variable name="NAVTest" comparator="EQUALS" value="2.0" />
     <if_variable name="NAVTestFail" comparator="EQUALS" value="0.0" />
@@ -9942,7 +10059,7 @@
     <set_variable name="NAVTest" value="0.0" integer="yes" />
   </event>
   <folder_arme name="Comms Relays" id_arme="14fb3b46-cd28-409e-9676-c4b7242c2fb4" parent_id_arme="d781a141-d878-4533-abf3-b1b2437acd09" expanded_arme="" />
-  <folder_arme name="Comms Placement Correct" id_arme="59fb09ee-d4a6-4d76-bbc9-e0c8b20ac58f" parent_id_arme="14fb3b46-cd28-409e-9676-c4b7242c2fb4" expanded_arme="" />
+  <folder_arme name="Comms Placement Correct" id_arme="59fb09ee-d4a6-4d76-bbc9-e0c8b20ac58f" parent_id_arme="14fb3b46-cd28-409e-9676-c4b7242c2fb4" />
   <event name="Relay Rename A" id_arme="1f91edf1-726a-4ec5-801d-4bcfb41bd7e2" parent_id_arme="59fb09ee-d4a6-4d76-bbc9-e0c8b20ac58f">
     <if_exists name="A" />
     <if_distance name1="Comms_Temp" name2="A" comparator="LESS" value="800.0" />
@@ -10111,7 +10228,7 @@
     <set_variable name="CommsPlaced" value="CommsPlaced+1" integer="yes" />
     <set_variable name="CommsTest" value="0.0" integer="yes" />
   </event>
-  <folder_arme name="Comms Relay Failure Test" id_arme="faff2705-d758-4670-8a05-424037378645" parent_id_arme="14fb3b46-cd28-409e-9676-c4b7242c2fb4" expanded_arme="" />
+  <folder_arme name="Comms Relay Failure Test" id_arme="faff2705-d758-4670-8a05-424037378645" parent_id_arme="14fb3b46-cd28-409e-9676-c4b7242c2fb4" />
   <event name="Deploy Fail Point A" id_arme="d3c50bcc-e2fb-4681-876e-f2d9e5c3017c" parent_id_arme="faff2705-d758-4670-8a05-424037378645">
     <if_distance name1="Comms_Temp" name2="A" comparator="GREATER" value="800.0" />
     <if_variable name="CommsTest" comparator="EQUALS" value="2.0" />
@@ -10276,7 +10393,7 @@
     <set_variable name="CommsTest" value="0.0" integer="yes" />
     <destroy name="Comms_Temp" />
   </event>
-  <folder_arme name="Place Relay" id_arme="4e35c224-ab6a-43fd-b993-f28e6ffefc31" parent_id_arme="14fb3b46-cd28-409e-9676-c4b7242c2fb4" expanded_arme="" />
+  <folder_arme name="Place Relay" id_arme="4e35c224-ab6a-43fd-b993-f28e6ffefc31" parent_id_arme="14fb3b46-cd28-409e-9676-c4b7242c2fb4" />
   <event name="Place Relay Player 0" id_arme="fda8f832-40a1-4daf-843a-4c5496b54b31" parent_id_arme="4e35c224-ab6a-43fd-b993-f28e6ffefc31">
     <if_variable name="CommsTest" comparator="EQUALS" value="0.0" />
     <if_comms_button text="Deploy Comms Relay (Ship 1)" />
@@ -10445,8 +10562,8 @@
     <set_object_property property="positionZ" value="TempZ" name="Comms_Temp" />
     <set_variable name="CommsTest" value="2.0" integer="yes" />
   </event>
-  <folder_arme name="Sensor Relays" id_arme="37c8728a-adfb-4e3a-bb66-e6bd0fff0408" parent_id_arme="d781a141-d878-4533-abf3-b1b2437acd09" expanded_arme="" />
-  <folder_arme name="Sensor Placement Correct" id_arme="3357e867-5ff7-493c-8652-c6fa50187e6e" parent_id_arme="37c8728a-adfb-4e3a-bb66-e6bd0fff0408" expanded_arme="" />
+  <folder_arme name="Sensor Relays" id_arme="37c8728a-adfb-4e3a-bb66-e6bd0fff0408" parent_id_arme="d781a141-d878-4533-abf3-b1b2437acd09" />
+  <folder_arme name="Sensor Placement Correct" id_arme="3357e867-5ff7-493c-8652-c6fa50187e6e" parent_id_arme="37c8728a-adfb-4e3a-bb66-e6bd0fff0408" />
   <event name="Relay Rename Sensor 1" id_arme="f2727bfb-2499-4d93-8fb1-bf905621a6e8" parent_id_arme="3357e867-5ff7-493c-8652-c6fa50187e6e">
     <if_exists name="Sensor Drop 1" />
     <if_exists name="Sensor_Temp" />
@@ -11412,7 +11529,108 @@
     <set_variable name="Player7" value="2.0" integer="yes" />
   </event>
   <folder_arme name="Tags" id_arme="ac4711a5-4559-4f2d-9ad3-59a7f52eaa21" />
-  <event name="Tag A24" id_arme="63d3829d-b283-4d59-9985-eafef778e886" parent_id_arme="ac4711a5-4559-4f2d-9ad3-59a7f52eaa21">
+  <event name="Base Harulk Tagged" id_arme="63d3829d-b283-4d59-9985-eafef778e886" parent_id_arme="ac4711a5-4559-4f2d-9ad3-59a7f52eaa21">
+    <if_variable name="TagHarulk" comparator="EQUALS" value="0.0" />
+    <if_object_tag_matches objectName="Harulk" />
+    <warning_popup_message message="Enemy Base Tagged" />
+    <incoming_comms_text from="Intel" sideValue="2" type="STATUS">Spy tag transmitting from base Harulk.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="3" type="STATUS">Spy tag transmitting from base Harulk.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="4" type="STATUS">Spy tag transmitting from base Harulk.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="5" type="STATUS">Spy tag transmitting from base Harulk.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="6" type="STATUS">Spy tag transmitting from base Harulk.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="7" type="STATUS">Spy tag transmitting from base Harulk.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="8" type="STATUS">Spy tag transmitting from base Harulk.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="9" type="STATUS">Spy tag transmitting from base Harulk.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="10" type="STATUS">Spy tag transmitting from base Harulk.</incoming_comms_text>
+    <set_variable name="TagHarulk" value="1.0" integer="yes" />
+  </event>
+  <event name="Base Partib Tagged" id_arme="ec115b0d-abf4-4997-9e53-ffad1117d87b" parent_id_arme="ac4711a5-4559-4f2d-9ad3-59a7f52eaa21">
+    <if_variable name="TagPartib" comparator="EQUALS" value="0.0" />
+    <if_object_tag_matches objectName="Partib" />
+    <warning_popup_message message="Enemy Base Tagged" />
+    <incoming_comms_text from="Intel" sideValue="2" type="STATUS">Spy tag transmitting from base Partib.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="3" type="STATUS">Spy tag transmitting from base Partib.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="4" type="STATUS">Spy tag transmitting from base Partib.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="5" type="STATUS">Spy tag transmitting from base Partib.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="6" type="STATUS">Spy tag transmitting from base Partib.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="7" type="STATUS">Spy tag transmitting from base Partib.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="8" type="STATUS">Spy tag transmitting from base Partib.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="9" type="STATUS">Spy tag transmitting from base Partib.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="10" type="STATUS">Spy tag transmitting from base Partib.</incoming_comms_text>
+    <set_variable name="TagPartib" value="1.0" integer="yes" />
+  </event>
+  <event name="Base Andar Tagged" id_arme="c7d177ef-fa7e-467b-b477-83df04cba569" parent_id_arme="ac4711a5-4559-4f2d-9ad3-59a7f52eaa21">
+    <if_variable name="TagAndar" comparator="EQUALS" value="0.0" />
+    <if_object_tag_matches objectName="Andar" />
+    <warning_popup_message message="Enemy Base Tagged" />
+    <incoming_comms_text from="Intel" sideValue="2" type="STATUS">Spy tag transmitting from base Andar.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="3" type="STATUS">Spy tag transmitting from base Andar.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="4" type="STATUS">Spy tag transmitting from base Andar.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="5" type="STATUS">Spy tag transmitting from base Andar.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="6" type="STATUS">Spy tag transmitting from base Andar.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="7" type="STATUS">Spy tag transmitting from base Andar.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="8" type="STATUS">Spy tag transmitting from base Andar.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="9" type="STATUS">Spy tag transmitting from base Andar.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="10" type="STATUS">Spy tag transmitting from base Andar.</incoming_comms_text>
+    <set_variable name="TagAndar" value="1.0" integer="yes" />
+  </event>
+  <event name="Base Chrithon Tagged" id_arme="79fb7be4-1c4e-43bd-9f38-903b74a444ee" parent_id_arme="ac4711a5-4559-4f2d-9ad3-59a7f52eaa21">
+    <if_variable name="TagChrithon" comparator="EQUALS" value="0.0" />
+    <if_object_tag_matches objectName="Chrithon" />
+    <warning_popup_message message="Enemy Base Tagged" />
+    <incoming_comms_text from="Intel" sideValue="2" type="STATUS">Spy tag transmitting from base Chrithon.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="3" type="STATUS">Spy tag transmitting from base Chrithon.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="4" type="STATUS">Spy tag transmitting from base Chrithon.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="5" type="STATUS">Spy tag transmitting from base Chrithon.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="6" type="STATUS">Spy tag transmitting from base Chrithon.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="7" type="STATUS">Spy tag transmitting from base Chrithon.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="8" type="STATUS">Spy tag transmitting from base Chrithon.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="9" type="STATUS">Spy tag transmitting from base Chrithon.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="10" type="STATUS">Spy tag transmitting from base Chrithon.</incoming_comms_text>
+    <set_variable name="TagChrithon" value="1.0" integer="yes" />
+  </event>
+  <event name="Base Shinhart Tagged" id_arme="6a25cec9-81a9-4d9c-80b1-2566372fa9de" parent_id_arme="ac4711a5-4559-4f2d-9ad3-59a7f52eaa21">
+    <if_object_tag_matches objectName="Shinhart" />
+    <if_variable name="TagShinhart" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="Enemy Base Tagged" />
+    <incoming_comms_text from="Intel" sideValue="2" type="STATUS">Spy tag transmitting from base Shinhart.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="3" type="STATUS">Spy tag transmitting from base Shinhart.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="4" type="STATUS">Spy tag transmitting from base Shinhart.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="5" type="STATUS">Spy tag transmitting from base Shinhart.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="6" type="STATUS">Spy tag transmitting from base Shinhart.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="7" type="STATUS">Spy tag transmitting from base Shinhart.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="8" type="STATUS">Spy tag transmitting from base Shinhart.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="9" type="STATUS">Spy tag transmitting from base Shinhart.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="10" type="STATUS">Spy tag transmitting from base Shinhart.</incoming_comms_text>
+    <set_variable name="TagShinhart" value="1.0" integer="yes" />
+  </event>
+  <event name="Base Q'tim Tagged" id_arme="0b4942dd-267f-4121-91ad-0ec018987de6" parent_id_arme="ac4711a5-4559-4f2d-9ad3-59a7f52eaa21">
+    <if_variable name="TagQtim" comparator="EQUALS" value="0.0" />
+    <if_object_tag_matches objectName="Q'tim" />
+    <warning_popup_message message="Enemy Base Tagged" />
+    <incoming_comms_text from="Intel" sideValue="2" type="STATUS">Spy tag transmitting from base Q'tim.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="3" type="STATUS">Spy tag transmitting from base Q'tim.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="4" type="STATUS">Spy tag transmitting from base Q'tim.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="5" type="STATUS">Spy tag transmitting from base Q'tim.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="6" type="STATUS">Spy tag transmitting from base Q'tim.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="7" type="STATUS">Spy tag transmitting from base Q'tim.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="8" type="STATUS">Spy tag transmitting from base Q'tim.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="9" type="STATUS">Spy tag transmitting from base Q'tim.</incoming_comms_text>
+    <incoming_comms_text from="Intel" sideValue="10" type="STATUS">Spy tag transmitting from base Q'tim.</incoming_comms_text>
+    <set_variable name="TagQtim" value="1.0" integer="yes" />
+  </event>
+  <event name="All Bases Tagged" id_arme="06cf9415-a0e9-4ce8-b36f-f301adcb8cd8" parent_id_arme="ac4711a5-4559-4f2d-9ad3-59a7f52eaa21">
+    <if_variable name="BasesTagged" comparator="EQUALS" value="0.0" />
+    <if_variable name="TagShinhart" comparator="EQUALS" value="1.0" />
+    <if_variable name="TagQtim" comparator="EQUALS" value="1.0" />
+    <if_variable name="TagPartib" comparator="EQUALS" value="1.0" />
+    <if_variable name="TagAndar" comparator="EQUALS" value="1.0" />
+    <if_variable name="TagChrithon" comparator="EQUALS" value="1.0" />
+    <if_variable name="TagHarulk" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="All Bases Tagged" consoles="MWSC" />
+    <set_variable name="BasesTagged" value="1.0" integer="yes" />
+  </event>
+  <event name="Tag A24" id_arme="0191d1df-f21c-44ab-8851-66946c726b3e" parent_id_arme="ac4711a5-4559-4f2d-9ad3-59a7f52eaa21">
     <if_variable name="TagA" comparator="EQUALS" value="0.0" />
     <if_object_tag_matches objectName="A24" />
     <set_variable name="TagTotal" value="TagTotal+1" integer="yes" />
@@ -11525,19 +11743,13 @@
     <set_variable name="TagD" value="1.0" integer="yes" />
   </event>
   <event name="Initiate Extreme Prejudice" id_arme="f0601064-72ca-48e0-a253-e1ae5f246147">
-    <if_object_tag_matches objectName="Harulk" />
-    <if_object_tag_matches objectName="Q'tim" />
-    <if_object_tag_matches objectName="Partib" />
-    <if_object_tag_matches objectName="Chrithon" />
-    <if_object_tag_matches objectName="Andar" />
-    <if_object_tag_matches objectName="Shinhart" />
-    <if_variable name="BasesTagged" comparator="EQUALS" value="0.0" />
+    <if_variable name="BasesTagged" comparator="EQUALS" value="1.0" />
     <if_variable name="TagTotal" comparator="GREATER_EQUAL" value="10.0" />
     <if_variable name="SideScramble" comparator="EQUALS" value="3.0" />
     <if_variable name="Explore" comparator="EQUALS" value="1.0" />
-    <incoming_comms_text from="Command HQ" type="STATION">This is Terran Command.^^We have learned enough.  You have a new mission:^^Destroy all enemy forces. Leave no enemy alive, accept no surrender, and let no one escape.^^Repeat:  PROCEED WITH EXTREME PREJUDICE.  </incoming_comms_text>
+    <incoming_comms_text from="Command HQ" type="STATION">This is Terran Command.^^We have learned enough--the Skaraans are working with the Arvonians and Kraliens.  You have new instructions:^^Destroy all enemy forces. Leave no enemy alive, accept no surrender, and let no one escape.^^Repeat:  PROCEED WITH EXTREME PREJUDICE.  </incoming_comms_text>
     <warning_popup_message message="Mission Change: No Quarter" consoles="MHWESCO" />
-    <set_variable name="BasesTagged" value="1.0" integer="yes" />
+    <set_variable name="BasesTagged" value="2.0" integer="yes" />
   </event>
   <event name="All Nebula and Asteroids Located" id_arme="cc94ea07-6f4f-4acd-8e61-45340d57b900">
     <if_variable name="Neb1" comparator="GREATER_EQUAL" value="1.0" />
@@ -11568,7 +11780,7 @@
     <set_variable name="Explore" value="1.0" integer="yes" />
   </event>
   <event name="Base 1 Destroyed" id_arme="adfc5873-26c0-4a5f-bb95-0271a54772cf">
-    <if_variable name="BasesTagged" comparator="NOT" value="1.0" />
+    <if_variable name="BasesTagged" comparator="NOT" value="2.0" />
     <if_not_exists name="Harulk" />
     <if_not_exists name="Station 1" />
     <if_variable name="Base1" comparator="GREATER" value="0.0" />
@@ -11638,7 +11850,7 @@
     <set_variable name="Alerted" value="3.0" integer="yes" />
   </event>
   <event name="Base 2 Destroyed" id_arme="9c4e9d55-947b-45f6-96dc-57760a6ac530">
-    <if_variable name="BasesTagged" comparator="NOT" value="1.0" />
+    <if_variable name="BasesTagged" comparator="NOT" value="2.0" />
     <if_not_exists name="Partib" />
     <if_not_exists name="Station 2" />
     <if_variable name="Base2" comparator="GREATER" value="0.0" />
@@ -11708,7 +11920,7 @@
     <set_variable name="Alerted" value="3.0" integer="yes" />
   </event>
   <event name="Base 3 Destroyed" id_arme="ffef2f15-487d-4de4-bf1c-87064b70ae2d">
-    <if_variable name="BasesTagged" comparator="NOT" value="1.0" />
+    <if_variable name="BasesTagged" comparator="NOT" value="2.0" />
     <if_not_exists name="Andar" />
     <if_not_exists name="Station 3" />
     <if_variable name="Base3" comparator="GREATER" value="0.0" />
@@ -11778,7 +11990,7 @@
     <set_variable name="Alerted" value="3.0" integer="yes" />
   </event>
   <event name="Base 4 Destroyed" id_arme="fcb007f2-641a-40eb-8d3e-06488b14c126">
-    <if_variable name="BasesTagged" comparator="NOT" value="1.0" />
+    <if_variable name="BasesTagged" comparator="NOT" value="2.0" />
     <if_not_exists name="Chrithon" />
     <if_not_exists name="Station 4" />
     <if_variable name="Base4" comparator="GREATER" value="0.0" />
@@ -11848,7 +12060,7 @@
     <set_variable name="Alerted" value="3.0" integer="yes" />
   </event>
   <event name="Base 5 Destroyed" id_arme="623b3b72-1504-4124-b38a-e37ca9b224d4">
-    <if_variable name="BasesTagged" comparator="NOT" value="1.0" />
+    <if_variable name="BasesTagged" comparator="NOT" value="2.0" />
     <if_not_exists name="Shinhart" />
     <if_not_exists name="Station 5" />
     <if_variable name="Base5" comparator="GREATER" value="0.0" />
@@ -11918,7 +12130,7 @@
     <set_variable name="Alerted" value="3.0" integer="yes" />
   </event>
   <event name="Base 6 Destroyed" id_arme="dfa6bbde-8292-45a2-9adb-941eadcc3396">
-    <if_variable name="BasesTagged" comparator="NOT" value="1.0" />
+    <if_variable name="BasesTagged" comparator="NOT" value="2.0" />
     <if_not_exists name="Q'tim" />
     <if_not_exists name="Station 6" />
     <if_variable name="Base6" comparator="GREATER" value="0.0" />
@@ -11991,12 +12203,13 @@
     <set_variable name="Alerted" value="3.0" integer="yes" />
   </event>
   <event name="Base 1 Destroyed OK" id_arme="991df2ba-80b8-45eb-a9fc-b5f6e1853ae8">
-    <if_variable name="BasesTagged" comparator="EQUALS" value="1.0" />
+    <if_variable name="BasesTagged" comparator="GREATER_EQUAL" value="2.0" />
     <if_not_exists name="Harulk" />
-    <if_not_exists name="Station 1" />
-    <if_variable name="Base1" comparator="GREATER" value="0.0" />
     <if_variable name="Alerted" comparator="LESS" value="3.0" />
     <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="11000" name="M30" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="11000" name="C67" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="11000" name="N00" />
     <warning_popup_message message="Enemy on High Alert!" consoles="MSC" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="A24" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="K43" />
@@ -12053,11 +12266,12 @@
   </event>
   <event name="Base 2 Destroyed OK" id_arme="9dbf3fe4-aa08-42bd-95a5-f10ae04656ab">
     <if_not_exists name="Partib" />
-    <if_variable name="BasesTagged" comparator="EQUALS" value="1.0" />
-    <if_not_exists name="Station 2" />
-    <if_variable name="Base2" comparator="GREATER" value="0.0" />
+    <if_variable name="BasesTagged" comparator="GREATER_EQUAL" value="2.0" />
     <if_variable name="Alerted" comparator="LESS" value="3.0" />
     <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="11000" name="M30" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="11000" name="C67" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="11000" name="N00" />
     <warning_popup_message message="Enemy on High Alert!" consoles="MSC" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="A24" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="K43" />
@@ -12113,12 +12327,13 @@
     <set_variable name="Alerted" value="3.0" integer="yes" />
   </event>
   <event name="Base 3 Destroyed OK" id_arme="dc5767ba-3857-4f32-bb16-d848555f6306">
-    <if_variable name="BasesTagged" comparator="EQUALS" value="1.0" />
+    <if_variable name="BasesTagged" comparator="GREATER_EQUAL" value="2.0" />
     <if_not_exists name="Andar" />
-    <if_not_exists name="Station 3" />
-    <if_variable name="Base3" comparator="GREATER" value="0.0" />
     <if_variable name="Alerted" comparator="LESS" value="3.0" />
     <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="11000" name="M30" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="11000" name="C67" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="11000" name="N00" />
     <warning_popup_message message="Enemy on High Alert!" consoles="MSC" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="A24" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="K43" />
@@ -12174,12 +12389,13 @@
     <set_variable name="Alerted" value="3.0" integer="yes" />
   </event>
   <event name="Base 4 Destroyed OK" id_arme="272a2da1-8564-4a0e-aa50-35198754508f">
-    <if_variable name="BasesTagged" comparator="EQUALS" value="1.0" />
+    <if_variable name="BasesTagged" comparator="GREATER_EQUAL" value="2.0" />
     <if_not_exists name="Chrithon" />
-    <if_not_exists name="Station 4" />
-    <if_variable name="Base4" comparator="GREATER" value="0.0" />
     <if_variable name="Alerted" comparator="LESS" value="3.0" />
     <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="11000" name="M30" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="11000" name="C67" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="11000" name="N00" />
     <warning_popup_message message="Enemy on High Alert!" consoles="MSC" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="A24" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="K43" />
@@ -12235,12 +12451,13 @@
     <set_variable name="Alerted" value="3.0" integer="yes" />
   </event>
   <event name="Base 5 Destroyed OK" id_arme="585d04a1-1b80-4a04-8c18-d63c2686e900">
-    <if_variable name="BasesTagged" comparator="EQUALS" value="1.0" />
+    <if_variable name="BasesTagged" comparator="GREATER_EQUAL" value="2.0" />
     <if_not_exists name="Shinhart" />
-    <if_not_exists name="Station 5" />
-    <if_variable name="Base5" comparator="GREATER" value="0.0" />
     <if_variable name="Alerted" comparator="LESS" value="3.0" />
     <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="11000" name="M30" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="11000" name="C67" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="11000" name="N00" />
     <warning_popup_message message="Enemy on High Alert!" consoles="MSC" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="A24" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="K43" />
@@ -12296,10 +12513,8 @@
     <set_variable name="Alerted" value="3.0" integer="yes" />
   </event>
   <event name="Base 6 Destroyed OK" id_arme="f4ef05b3-291e-4dd6-b4b8-17c8961c4bc6">
-    <if_variable name="BasesTagged" comparator="EQUALS" value="1.0" />
+    <if_variable name="BasesTagged" comparator="GREATER_EQUAL" value="2.0" />
     <if_not_exists name="Q'tim" />
-    <if_not_exists name="Station 6" />
-    <if_variable name="Base6" comparator="GREATER" value="0.0" />
     <if_variable name="Alerted" comparator="LESS" value="3.0" />
     <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
     <warning_popup_message message="Enemy on High Alert!" consoles="MSC" />
@@ -12360,7 +12575,7 @@
     <set_variable name="Alerted" value="3.0" integer="yes" />
   </event>
   <event name="Enemy Alerted Ship Destroyed" id_arme="2d441a62-cded-4bbb-9752-0507ca050e84">
-    <if_fleet_count comparator="LESS" value="17.0" sideValue="1" />
+    <if_fleet_count comparator="LESS" value="16.0" sideValue="1" />
     <if_variable name="Alerted" comparator="LESS" value="2.0" />
     <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
     <warning_popup_message message="Warning!  Enemy Scans Increased" consoles="MHWESCO" />
@@ -12424,15 +12639,14 @@
     <if_variable name="Wave" comparator="EQUALS" value="1.0" />
     <set_variable name="Wave" value="2.0" integer="yes" />
   </event>
-  <event id_arme="d07f3bcc-745a-48ff-a0f5-2538bfd11dfd" />
   <event name="Mission All Complete" id_arme="c4b659bd-6763-4f5b-962a-c3e928734092">
+    <if_variable name="End" comparator="EQUALS" value="0.0" />
     <if_not_exists name="Chrithon" />
     <if_not_exists name="Harulk" />
     <if_not_exists name="Partib" />
     <if_not_exists name="Andar" />
     <if_not_exists name="Q'tim" />
     <if_not_exists name="Shinhart" />
-    <if_variable name="End" comparator="EQUALS" value="0.0" />
     <if_not_exists name="Hole in the Wall" />
     <if_not_exists name="F" />
     <if_not_exists name="H" />
@@ -12459,14 +12673,14 @@
     <if_variable name="Explore" comparator="EQUALS" value="1.0" />
     <if_variable name="CommsPlaced" comparator="GREATER_EQUAL" value="12.0" />
     <if_variable name="SensorProgress" comparator="EQUALS" value="3.0" />
-    <if_variable name="TagTotal" comparator="EQUALS" value="17.0" />
+    <if_variable name="TagTotal" comparator="GREATER_EQUAL" value="17.0" />
     <if_fleet_count comparator="EQUALS" value="0.0" sideValue="1" countSurrendered="1" />
-    <if_fleet_count comparator="EQUALS" value="0.0" sideValue="0" countSurrendered="1" />
     <set_variable name="End" value="1.0" integer="yes" />
     <set_timer name="End" seconds="15" />
-    <big_message title="Mission Success!" subtitle1="All ships tagged, bases located, nebula explored...and enemies eliminated." />
+    <big_message title="Historical Simulation Complete" subtitle1="Historical Accuracy: 100% (Exploration Complete.  All objects tagged.  Enemies eliminated.)" subtitle2="Essay Assignment: Discuss the history of Skaraan cloaking technology." />
   </event>
   <event name="Mission Complete Enemy Engaged" id_arme="5eaf057d-b303-4c9f-b2cb-19397c5a932f">
+    <if_variable name="TagTotal" comparator="LESS" value="17.0" />
     <if_not_exists name="Chrithon" />
     <if_not_exists name="Harulk" />
     <if_not_exists name="Partib" />
@@ -12480,20 +12694,20 @@
     <if_variable name="Explore" comparator="EQUALS" value="1.0" />
     <if_variable name="CommsPlaced" comparator="GREATER_EQUAL" value="12.0" />
     <if_variable name="SensorProgress" comparator="EQUALS" value="3.0" />
-    <if_variable name="BasesTagged" comparator="EQUALS" value="1.0" />
+    <if_variable name="BasesTagged" comparator="EQUALS" value="2.0" />
     <set_variable name="End" value="1.0" integer="yes" />
     <set_timer name="End" seconds="15" />
-    <big_message title="Success!" subtitle1="System explored and Enemy Cleared." subtitle2="Return to Base." />
+    <big_message title="Historical Simulation Complete" subtitle1="Accuracy: Exploration Complete; Enemies Destroyed.  Ship Tags Incomplete (|TagTotal|/17)." subtitle2="Essay Assignment: Role of TSN in Skaraan anti-missile technology." />
   </event>
   <event name="Mission Failed Base and Enemies Destroyed" id_arme="6f88b3ef-7169-4a3f-8c14-2b2c0450dc1c">
-    <if_variable name="BasesTagged" comparator="NOT" value="1.0" />
+    <if_variable name="BasesTagged" comparator="NOT" value="2.0" />
     <if_variable name="End" comparator="EQUALS" value="0.0" />
-    <if_fleet_count comparator="LESS" value="17.0" sideValue="1" countSurrendered="1" />
+    <if_fleet_count comparator="EQUALS" value="0.0" sideValue="1" countSurrendered="1" />
     <if_variable name="System Build" comparator="GREATER_EQUAL" value="8.0" />
     <if_variable name="Alerted" comparator="EQUALS" value="3.0" />
     <set_variable name="End" value="1.0" integer="yes" />
     <set_timer name="End" seconds="15" />
-    <big_message title="Mission Abort!" subtitle1="Station destroyed.  Enemy forces on high alert." subtitle2="Return to Base." />
+    <big_message title="Historical Simulation Failed" subtitle1="Station destroyed early.  Enemy forces on high alert.  Ship Tags: |TagTotal|/17" subtitle2="Return to Base." />
   </event>
   <event name="Mission Failed Players Destroyed" id_arme="4148eb51-cc28-4d96-bc1c-293e9191f5d0">
     <if_variable name="End" comparator="EQUALS" value="0.0" />
@@ -12508,13 +12722,13 @@
     <if_variable name="System Build" comparator="GREATER_EQUAL" value="8.0" />
     <set_variable name="End" value="1.0" integer="yes" />
     <set_timer name="End" seconds="15" />
-    <big_message title="Mission Failed!" subtitle1="All player ships destroyed." />
+    <big_message title="Historical Simulation Failed!" subtitle1="Accuracy: You were destroyed.  Enemies Tagged: |TagTotal|/17 " subtitle2="Essay Assignment: History of anti-missile technology." />
   </event>
   <event name="Aborted Mission" id_arme="be11fa7c-6da8-4cc6-a7b5-eff8cda83a12">
     <if_variable name="Alerted" comparator="EQUALS" value="3.0" />
     <if_comms_button text="Abort Mission" />
     <set_variable name="Alerted" value="4.0" integer="yes" />
-    <big_message title="Mission Failed!" subtitle1="Station Destroyed Prematurely" />
+    <big_message title="Simulation Aborted By User" subtitle1="Historical Accuracy: Station Destroyed Prematurely.  Ships Tagged: |TagTotal|/17" subtitle2="Assignment: Review offical TSN historical account." />
     <set_timer name="End" seconds="15" />
     <set_variable name="End" value="1.0" integer="yes" />
   </event>
