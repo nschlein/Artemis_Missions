@@ -19662,7 +19662,7 @@
   <event name="Out of Excchange Range Artemis 2" id_arme="f805a258-a7e2-4250-8e76-b429a177a9ae" parent_id_arme="f5a1f29b-44f7-4228-b692-4acc005d5707">
     <if_distance name1="Artemis" name2="Hole in the Wall" comparator="GREATER" value="2500.0" />
     <if_object_property property="sideValue" name="Artemis" comparator="EQUALS" value="2" />
-    <if_variable name="ScamArtemis" comparator="GREATER_EQUAL" value="0.0" />
+    <if_variable name="ScamArtemis" comparator="GREATER" value="0.0" />
     <if_variable name="ScamArtemis" comparator="LESS" value="6.0" />
     <clear_comms_button text="Accept (Artemis)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <clear_comms_button text="Decline (Artemis)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -19671,7 +19671,7 @@
   <event name="Out of Excchange Range Artemis 2" id_arme="d3aab093-e983-4cb1-9faf-ac97b0f5902c" parent_id_arme="f5a1f29b-44f7-4228-b692-4acc005d5707">
     <if_distance name1="Artemis" name2="Hole in the Wall" comparator="GREATER" value="2500.0" />
     <if_object_property property="sideValue" name="Artemis" comparator="NOT" value="2" />
-    <if_variable name="ScamArtemis" comparator="GREATER_EQUAL" value="0.0" />
+    <if_variable name="ScamArtemis" comparator="GREATER" value="0.0" />
     <if_variable name="ScamArtemis" comparator="LESS" value="6.0" />
     <clear_comms_button text="Accept (Artemis)" sideValue="3">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <clear_comms_button text="Decline (Artemis)" sideValue="3">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -19775,11 +19775,11 @@
     <clear_comms_button text="Decline (Artemis)" sideValue="3">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <set_variable name="ScamArtemis" value="7.0" integer="yes">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</set_variable>
   </event>
-  <folder_arme name="Scam Intrepid" id_arme="9f85a8de-1937-4a58-802a-18a1d7cebe6e" parent_id_arme="ae9e359f-e40e-4aaf-b566-8898954db36b" />
+  <folder_arme name="Scam Intrepid" id_arme="9f85a8de-1937-4a58-802a-18a1d7cebe6e" parent_id_arme="ae9e359f-e40e-4aaf-b566-8898954db36b" expanded_arme="" />
   <event name="Out of Excchange Range Intrepid 2" id_arme="3761393d-7110-487b-8604-ddb920043da5" parent_id_arme="9f85a8de-1937-4a58-802a-18a1d7cebe6e">
     <if_distance name1="Intrepid" name2="Hole in the Wall" comparator="GREATER" value="2500.0" />
     <if_object_property property="sideValue" name="Intrepid" comparator="EQUALS" value="2" />
-    <if_variable name="ScamIntrepid" comparator="GREATER_EQUAL" value="0.0" />
+    <if_variable name="ScamIntrepid" comparator="GREATER" value="0.0" />
     <if_variable name="ScamIntrepid" comparator="LESS" value="6.0" />
     <clear_comms_button text="Accept (Intrepid)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <clear_comms_button text="Decline (Intrepid)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -19788,7 +19788,7 @@
   <event name="Out of Excchange Range Intrepid 2" id_arme="432d9700-777a-44c3-9c65-8517861c2ba6" parent_id_arme="9f85a8de-1937-4a58-802a-18a1d7cebe6e">
     <if_distance name1="Intrepid" name2="Hole in the Wall" comparator="GREATER" value="2500.0" />
     <if_object_property property="sideValue" name="Intrepid" comparator="NOT" value="2" />
-    <if_variable name="ScamIntrepid" comparator="GREATER_EQUAL" value="0.0" />
+    <if_variable name="ScamIntrepid" comparator="GREATER" value="0.0" />
     <if_variable name="ScamIntrepid" comparator="LESS" value="6.0" />
     <clear_comms_button text="Accept (Intrepid)" sideValue="4">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <clear_comms_button text="Decline (Intrepid)" sideValue="4">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -19891,11 +19891,11 @@
     <clear_comms_button text="Decline (Intrepid)" sideValue="4">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <set_variable name="ScamIntrepid" value="7.0" integer="yes">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</set_variable>
   </event>
-  <folder_arme name="Scam Aegis" id_arme="b4fe0e4a-c447-4db8-a457-b1a6a741d9e5" parent_id_arme="ae9e359f-e40e-4aaf-b566-8898954db36b" />
+  <folder_arme name="Scam Aegis" id_arme="b4fe0e4a-c447-4db8-a457-b1a6a741d9e5" parent_id_arme="ae9e359f-e40e-4aaf-b566-8898954db36b" expanded_arme="" />
   <event name="Out of Excchange Range Aegis 2" id_arme="051c689c-02e3-4eff-ad8e-ea1d9974c405" parent_id_arme="b4fe0e4a-c447-4db8-a457-b1a6a741d9e5">
     <if_distance name1="Aegis" name2="Hole in the Wall" comparator="GREATER" value="2500.0" />
     <if_object_property property="sideValue" name="Aegis" comparator="EQUALS" value="2" />
-    <if_variable name="ScamAegis" comparator="GREATER_EQUAL" value="0.0" />
+    <if_variable name="ScamAegis" comparator="GREATER" value="0.0" />
     <if_variable name="ScamAegis" comparator="LESS" value="6.0" />
     <clear_comms_button text="Accept (Aegis)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <clear_comms_button text="Decline (Aegis)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -19904,7 +19904,7 @@
   <event name="Out of Excchange Range Aegis 2" id_arme="b25dae0b-bfbe-4728-a3d0-6b107e2d854c" parent_id_arme="b4fe0e4a-c447-4db8-a457-b1a6a741d9e5">
     <if_distance name1="Aegis" name2="Hole in the Wall" comparator="GREATER" value="2500.0" />
     <if_object_property property="sideValue" name="Aegis" comparator="NOT" value="2" />
-    <if_variable name="ScamAegis" comparator="GREATER_EQUAL" value="0.0" />
+    <if_variable name="ScamAegis" comparator="GREATER" value="0.0" />
     <if_variable name="ScamAegis" comparator="LESS" value="6.0" />
     <clear_comms_button text="Accept (Aegis)" sideValue="5">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <clear_comms_button text="Decline (Aegis)" sideValue="5">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -20007,11 +20007,11 @@
     <clear_comms_button text="Decline (Aegis)" sideValue="5">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <set_variable name="ScamAegis" value="7.0" integer="yes">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</set_variable>
   </event>
-  <folder_arme name="Scam Horatio" id_arme="300d8c13-9343-40bd-9fe1-61bc51ea5716" parent_id_arme="ae9e359f-e40e-4aaf-b566-8898954db36b" />
+  <folder_arme name="Scam Horatio" id_arme="300d8c13-9343-40bd-9fe1-61bc51ea5716" parent_id_arme="ae9e359f-e40e-4aaf-b566-8898954db36b" expanded_arme="" />
   <event name="Out of Excchange Range Horatio 2" id_arme="b435eb46-8d62-4a59-9ec1-602f18704f45" parent_id_arme="300d8c13-9343-40bd-9fe1-61bc51ea5716">
     <if_distance name1="Horatio" name2="Hole in the Wall" comparator="GREATER" value="2500.0" />
     <if_object_property property="sideValue" name="Horatio" comparator="EQUALS" value="2" />
-    <if_variable name="ScamHoratio" comparator="GREATER_EQUAL" value="0.0" />
+    <if_variable name="ScamHoratio" comparator="GREATER" value="0.0" />
     <if_variable name="ScamHoratio" comparator="LESS" value="6.0" />
     <clear_comms_button text="Accept (Horatio)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <clear_comms_button text="Decline (Horatio)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -20020,7 +20020,7 @@
   <event name="Out of Excchange Range Horatio 2" id_arme="0e7784bb-f623-488b-a684-99022093427a" parent_id_arme="300d8c13-9343-40bd-9fe1-61bc51ea5716">
     <if_distance name1="Horatio" name2="Hole in the Wall" comparator="GREATER" value="2500.0" />
     <if_object_property property="sideValue" name="Horatio" comparator="NOT" value="2" />
-    <if_variable name="ScamHoratio" comparator="GREATER_EQUAL" value="0.0" />
+    <if_variable name="ScamHoratio" comparator="GREATER" value="0.0" />
     <if_variable name="ScamHoratio" comparator="LESS" value="6.0" />
     <clear_comms_button text="Accept (Horatio)" sideValue="6">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <clear_comms_button text="Decline (Horatio)" sideValue="6">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -20123,11 +20123,11 @@
     <clear_comms_button text="Decline (Horatio)" sideValue="6">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <set_variable name="ScamHoratio" value="7.0" integer="yes">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</set_variable>
   </event>
-  <folder_arme name="Scam Excalibur" id_arme="0ad127ad-ce53-4e07-bc81-8df5b5df00f2" parent_id_arme="ae9e359f-e40e-4aaf-b566-8898954db36b" />
+  <folder_arme name="Scam Excalibur" id_arme="0ad127ad-ce53-4e07-bc81-8df5b5df00f2" parent_id_arme="ae9e359f-e40e-4aaf-b566-8898954db36b" expanded_arme="" />
   <event name="Out of Excchange Range Excalibur 2" id_arme="e8e081e2-be72-480f-b9c4-d56142c6e8e8" parent_id_arme="0ad127ad-ce53-4e07-bc81-8df5b5df00f2">
     <if_distance name1="Excalibur" name2="Hole in the Wall" comparator="GREATER" value="2500.0" />
     <if_object_property property="sideValue" name="Excalibur" comparator="EQUALS" value="2" />
-    <if_variable name="ScamExcalibur" comparator="GREATER_EQUAL" value="0.0" />
+    <if_variable name="ScamExcalibur" comparator="GREATER" value="0.0" />
     <if_variable name="ScamExcalibur" comparator="LESS" value="6.0" />
     <clear_comms_button text="Accept (Excalibur)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <clear_comms_button text="Decline (Excalibur)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -20136,7 +20136,7 @@
   <event name="Out of Excchange Range Excalibur 2" id_arme="75473ee4-cd43-4306-9dc7-5c6e99e50399" parent_id_arme="0ad127ad-ce53-4e07-bc81-8df5b5df00f2">
     <if_distance name1="Excalibur" name2="Hole in the Wall" comparator="GREATER" value="2500.0" />
     <if_object_property property="sideValue" name="Excalibur" comparator="NOT" value="2" />
-    <if_variable name="ScamExcalibur" comparator="GREATER_EQUAL" value="0.0" />
+    <if_variable name="ScamExcalibur" comparator="GREATER" value="0.0" />
     <if_variable name="ScamExcalibur" comparator="LESS" value="6.0" />
     <clear_comms_button text="Accept (Excalibur)" sideValue="7">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <clear_comms_button text="Decline (Excalibur)" sideValue="7">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -20239,11 +20239,11 @@
     <clear_comms_button text="Decline (Excalibur)" sideValue="7">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <set_variable name="ScamExcalibur" value="7.0" integer="yes">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</set_variable>
   </event>
-  <folder_arme name="Scam Hera" id_arme="d4b18f25-21f3-483d-85ed-d979fe0f28e3" parent_id_arme="ae9e359f-e40e-4aaf-b566-8898954db36b" />
+  <folder_arme name="Scam Hera" id_arme="d4b18f25-21f3-483d-85ed-d979fe0f28e3" parent_id_arme="ae9e359f-e40e-4aaf-b566-8898954db36b" expanded_arme="" />
   <event name="Out of Excchange Range Hera 2" id_arme="6d2ac9e3-8c0e-4067-bb8d-4a8aaba9ec34" parent_id_arme="d4b18f25-21f3-483d-85ed-d979fe0f28e3">
     <if_distance name1="Hera" name2="Hole in the Wall" comparator="GREATER" value="2500.0" />
     <if_object_property property="sideValue" name="Hera" comparator="EQUALS" value="2" />
-    <if_variable name="ScamHera" comparator="GREATER_EQUAL" value="0.0" />
+    <if_variable name="ScamHera" comparator="GREATER" value="0.0" />
     <if_variable name="ScamHera" comparator="LESS" value="6.0" />
     <clear_comms_button text="Accept (Hera)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <clear_comms_button text="Decline (Hera)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -20252,7 +20252,7 @@
   <event name="Out of Excchange Range Hera 2" id_arme="84b28b3a-f476-4e74-8ceb-71608e0d705b" parent_id_arme="d4b18f25-21f3-483d-85ed-d979fe0f28e3">
     <if_distance name1="Hera" name2="Hole in the Wall" comparator="GREATER" value="2500.0" />
     <if_object_property property="sideValue" name="Hera" comparator="NOT" value="2" />
-    <if_variable name="ScamHera" comparator="GREATER_EQUAL" value="0.0" />
+    <if_variable name="ScamHera" comparator="GREATER" value="0.0" />
     <if_variable name="ScamHera" comparator="LESS" value="6.0" />
     <clear_comms_button text="Accept (Hera)" sideValue="8">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <clear_comms_button text="Decline (Hera)" sideValue="8">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -20355,11 +20355,11 @@
     <clear_comms_button text="Decline (Hera)" sideValue="8">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <set_variable name="ScamHera" value="7.0" integer="yes">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</set_variable>
   </event>
-  <folder_arme name="Scam Ceres" id_arme="1f794273-3a72-4186-b07f-00d6ac894412" parent_id_arme="ae9e359f-e40e-4aaf-b566-8898954db36b" />
+  <folder_arme name="Scam Ceres" id_arme="1f794273-3a72-4186-b07f-00d6ac894412" parent_id_arme="ae9e359f-e40e-4aaf-b566-8898954db36b" expanded_arme="" />
   <event name="Out of Excchange Range Ceres 2" id_arme="12041b32-11ec-41fd-84c2-b2380b1c1e58" parent_id_arme="1f794273-3a72-4186-b07f-00d6ac894412">
     <if_distance name1="Ceres" name2="Hole in the Wall" comparator="GREATER" value="2500.0" />
     <if_object_property property="sideValue" name="Ceres" comparator="EQUALS" value="2" />
-    <if_variable name="ScamCeres" comparator="GREATER_EQUAL" value="0.0" />
+    <if_variable name="ScamCeres" comparator="GREATER" value="0.0" />
     <if_variable name="ScamCeres" comparator="LESS" value="6.0" />
     <clear_comms_button text="Accept (Ceres)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <clear_comms_button text="Decline (Ceres)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -20368,7 +20368,7 @@
   <event name="Out of Excchange Range Ceres 2" id_arme="ddcfdd6e-8808-4450-8865-c8e3ab1d6f17" parent_id_arme="1f794273-3a72-4186-b07f-00d6ac894412">
     <if_distance name1="Ceres" name2="Hole in the Wall" comparator="GREATER" value="2500.0" />
     <if_object_property property="sideValue" name="Ceres" comparator="NOT" value="2" />
-    <if_variable name="ScamCeres" comparator="GREATER_EQUAL" value="0.0" />
+    <if_variable name="ScamCeres" comparator="GREATER" value="0.0" />
     <if_variable name="ScamCeres" comparator="LESS" value="6.0" />
     <clear_comms_button text="Accept (Ceres)" sideValue="9">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <clear_comms_button text="Decline (Ceres)" sideValue="9">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -20475,7 +20475,7 @@
   <event name="Out of Excchange Range Diana 2" id_arme="e6807e4f-6a2e-49b5-ba5a-835063685c93" parent_id_arme="f0334a55-dca1-4018-a237-8618ff20ff8b">
     <if_distance name1="Diana" name2="Hole in the Wall" comparator="GREATER" value="2500.0" />
     <if_object_property property="sideValue" name="Diana" comparator="EQUALS" value="2" />
-    <if_variable name="ScamDiana" comparator="GREATER_EQUAL" value="0.0" />
+    <if_variable name="ScamDiana" comparator="GREATER" value="0.0" />
     <if_variable name="ScamDiana" comparator="LESS" value="6.0" />
     <clear_comms_button text="Accept (Diana)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <clear_comms_button text="Decline (Diana)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -20484,7 +20484,7 @@
   <event name="Out of Excchange Range Diana 2" id_arme="b2ad86a6-6a43-4a60-a0ed-39f411f0971b" parent_id_arme="f0334a55-dca1-4018-a237-8618ff20ff8b">
     <if_distance name1="Diana" name2="Hole in the Wall" comparator="GREATER" value="2500.0" />
     <if_object_property property="sideValue" name="Diana" comparator="NOT" value="2" />
-    <if_variable name="ScamDiana" comparator="GREATER_EQUAL" value="0.0" />
+    <if_variable name="ScamDiana" comparator="GREATER" value="0.0" />
     <if_variable name="ScamDiana" comparator="LESS" value="6.0" />
     <clear_comms_button text="Accept (Diana)" sideValue="10">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <clear_comms_button text="Decline (Diana)" sideValue="10">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -20587,7 +20587,7 @@
     <clear_comms_button text="Decline (Diana)" sideValue="3">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <set_variable name="ScamDiana" value="7.0" integer="yes">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</set_variable>
   </event>
-  <folder_arme name="Artemis Trade" id_arme="6b257cf4-5ad9-45ff-a3fd-169053f7e82f" parent_id_arme="ae9e359f-e40e-4aaf-b566-8898954db36b" expanded_arme="" />
+  <folder_arme name="Artemis Trade" id_arme="6b257cf4-5ad9-45ff-a3fd-169053f7e82f" parent_id_arme="ae9e359f-e40e-4aaf-b566-8898954db36b" />
   <event name="Artemis Destroyed Side 2" id_arme="1ad26bbc-6608-4f43-ad86-4e099ce9fd17" parent_id_arme="6b257cf4-5ad9-45ff-a3fd-169053f7e82f">
     <if_object_property property="sideValue" name="Artemis" comparator="EQUALS" value="2" />
     <if_variable name="ExchangeArtemis" comparator="GREATER" value="0.0" />
