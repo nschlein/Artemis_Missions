@@ -1,5 +1,5 @@
 <mission_data version="2.7.5" background_id_arme="410f5e22-00a4-4946-bce0-c162e7a857b4" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
-  <mission_description>CONFIDENTIAL DATA^An unknown ship has appeared, and you are tasked with conducting First Contact reconaissance.  Then, you find yourself alone.^^DETAILS^1-8 ship compatible. shuttles enabled^Ship type and propulsion selectable.  Pre-selected ship names.^Unscaled, non-randomized mission^Mission section selectable (full , exploration, or combat)^^Created for the 2021 Online Armada scripting contest by Neal Schlein</mission_description>
+  <mission_description>CONFIDENTIAL SIMULATION^An unknown ship has appeared, and you are tasked with conducting First Contact reconaissance. ^^DETAILS^1-8 ship compatible. shuttles enabled^Ship type and propulsion selectable.^Full, Explore, &amp; Combat variants^Unscaled, non-randomized^^Created for the 2021 Online Armada scripting contest by Neal Schlein</mission_description>
   <start id_arme="410f5e22-00a4-4946-bce0-c162e7a857b4">
     <set_variable name="System Build" value="-1.0" integer="yes" />
     <set_difficulty_level value="6" />
@@ -19760,6 +19760,7 @@
   <event name="Artemis Destroyed Side 2" id_arme="0900d433-c8b3-40bd-ac84-2f43272f9c89" parent_id_arme="f5a1f29b-44f7-4228-b692-4acc005d5707">
     <if_object_property property="sideValue" name="Artemis" comparator="EQUALS" value="2" />
     <if_variable name="ScamArtemis" comparator="GREATER" value="0.0" />
+    <if_variable name="ScamArtemis" comparator="LESS" value="7.0" />
     <if_exists name="Hole in the Wall" />
     <if_not_exists name="Artemis" />
     <clear_comms_button text="Accept (Artemis)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -19767,6 +19768,7 @@
     <set_variable name="ScamArtemis" value="7.0" integer="yes">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</set_variable>
   </event>
   <event name="Artemis Destroyed Off Side" id_arme="1e7303b6-eae2-4855-b760-83f0a578e3d0" parent_id_arme="f5a1f29b-44f7-4228-b692-4acc005d5707">
+    <if_variable name="ScamArtemis" comparator="LESS" value="7.0" />
     <if_object_property property="sideValue" name="Artemis" comparator="NOT" value="2" />
     <if_variable name="ScamArtemis" comparator="GREATER" value="0.0" />
     <if_exists name="Hole in the Wall" />
@@ -19874,6 +19876,7 @@
     <set_variable name="ScamIntrepid" value="1.0" integer="yes" />
   </event>
   <event name="Intrepid Destroyed Side 2" id_arme="58f5435e-c105-4eef-b780-3301b650d6b7" parent_id_arme="9f85a8de-1937-4a58-802a-18a1d7cebe6e">
+    <if_variable name="ScamIntrepid" comparator="LESS" value="7.0" />
     <if_object_property property="sideValue" name="Intrepid" comparator="EQUALS" value="2" />
     <if_variable name="ScamIntrepid" comparator="GREATER" value="0.0" />
     <if_exists name="Hole in the Wall" />
@@ -19885,6 +19888,7 @@
   <event name="Intrepid Destroyed Off Side" id_arme="f4e15f59-0ac6-4a90-bb07-06e665e55984" parent_id_arme="9f85a8de-1937-4a58-802a-18a1d7cebe6e">
     <if_object_property property="sideValue" name="Intrepid" comparator="NOT" value="2" />
     <if_variable name="ScamIntrepid" comparator="GREATER" value="0.0" />
+    <if_variable name="ScamIntrepid" comparator="LESS" value="7.0" />
     <if_exists name="Hole in the Wall" />
     <if_not_exists name="Intrepid" />
     <clear_comms_button text="Accept (Intrepid)" sideValue="4">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -19992,6 +19996,7 @@
   <event name="Aegis Destroyed Side 2" id_arme="682d38c0-cb72-4e8a-b991-7938ae1aedf2" parent_id_arme="b4fe0e4a-c447-4db8-a457-b1a6a741d9e5">
     <if_object_property property="sideValue" name="Aegis" comparator="EQUALS" value="2" />
     <if_variable name="ScamAegis" comparator="GREATER" value="0.0" />
+    <if_variable name="ScamAegis" comparator="LESS" value="7.0" />
     <if_exists name="Hole in the Wall" />
     <if_not_exists name="Aegis" />
     <clear_comms_button text="Accept (Aegis)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -19999,6 +20004,7 @@
     <set_variable name="ScamAegis" value="7.0" integer="yes">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</set_variable>
   </event>
   <event name="Aegis Destroyed Off Side" id_arme="21390930-8bd4-4a74-b3bc-c601a7be73db" parent_id_arme="b4fe0e4a-c447-4db8-a457-b1a6a741d9e5">
+    <if_variable name="ScamAegis" comparator="LESS" value="7.0" />
     <if_object_property property="sideValue" name="Aegis" comparator="NOT" value="2" />
     <if_variable name="ScamAegis" comparator="GREATER" value="0.0" />
     <if_exists name="Hole in the Wall" />
@@ -20108,6 +20114,7 @@
   <event name="Horatio Destroyed Side 2" id_arme="5f814b84-2487-4e9f-b9f2-66dd6ef496d2" parent_id_arme="300d8c13-9343-40bd-9fe1-61bc51ea5716">
     <if_object_property property="sideValue" name="Horatio" comparator="EQUALS" value="2" />
     <if_variable name="ScamHoratio" comparator="GREATER" value="0.0" />
+    <if_variable name="ScamHoratio" comparator="LESS" value="7.0" />
     <if_exists name="Hole in the Wall" />
     <if_not_exists name="Horatio" />
     <clear_comms_button text="Accept (Horatio)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -20115,6 +20122,7 @@
     <set_variable name="ScamHoratio" value="7.0" integer="yes">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</set_variable>
   </event>
   <event name="Horatio Destroyed Off Side" id_arme="d80c36c3-4716-4569-9bef-a2636a1a2bfc" parent_id_arme="300d8c13-9343-40bd-9fe1-61bc51ea5716">
+    <if_variable name="ScamHoratio" comparator="LESS" value="7.0" />
     <if_object_property property="sideValue" name="Horatio" comparator="NOT" value="2" />
     <if_variable name="ScamHoratio" comparator="GREATER" value="0.0" />
     <if_exists name="Hole in the Wall" />
@@ -20224,6 +20232,7 @@
   <event name="Excalibur Destroyed Side 2" id_arme="df4623dc-1404-4a63-a4f5-a6f588b55394" parent_id_arme="0ad127ad-ce53-4e07-bc81-8df5b5df00f2">
     <if_object_property property="sideValue" name="Excalibur" comparator="EQUALS" value="2" />
     <if_variable name="ScamExcalibur" comparator="GREATER" value="0.0" />
+    <if_variable name="ScamExcalibur" comparator="LESS" value="7.0" />
     <if_exists name="Hole in the Wall" />
     <if_not_exists name="Excalibur" />
     <clear_comms_button text="Accept (Excalibur)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -20231,6 +20240,7 @@
     <set_variable name="ScamExcalibur" value="7.0" integer="yes">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</set_variable>
   </event>
   <event name="Excalibur Destroyed Off Side" id_arme="7fe40771-d9d9-4a3b-b8bc-85a2bc2288ef" parent_id_arme="0ad127ad-ce53-4e07-bc81-8df5b5df00f2">
+    <if_variable name="ScamExcalibur" comparator="LESS" value="7.0" />
     <if_object_property property="sideValue" name="Excalibur" comparator="NOT" value="2" />
     <if_variable name="ScamExcalibur" comparator="GREATER" value="0.0" />
     <if_exists name="Hole in the Wall" />
@@ -20340,6 +20350,7 @@
   <event name="Hera Destroyed Side 2" id_arme="0d3825c5-9cb3-4a4e-93f9-3875d12a91de" parent_id_arme="d4b18f25-21f3-483d-85ed-d979fe0f28e3">
     <if_object_property property="sideValue" name="Hera" comparator="EQUALS" value="2" />
     <if_variable name="ScamHera" comparator="GREATER" value="0.0" />
+    <if_variable name="ScamHera" comparator="LESS" value="7.0" />
     <if_exists name="Hole in the Wall" />
     <if_not_exists name="Hera" />
     <clear_comms_button text="Accept (Hera)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -20347,6 +20358,7 @@
     <set_variable name="ScamHera" value="7.0" integer="yes">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</set_variable>
   </event>
   <event name="Hera Destroyed Off Side" id_arme="bef04b4a-3184-4c5b-9c62-13ba7ee4954d" parent_id_arme="d4b18f25-21f3-483d-85ed-d979fe0f28e3">
+    <if_variable name="ScamHera" comparator="LESS" value="7.0" />
     <if_object_property property="sideValue" name="Hera" comparator="NOT" value="2" />
     <if_variable name="ScamHera" comparator="GREATER" value="0.0" />
     <if_exists name="Hole in the Wall" />
@@ -20456,6 +20468,7 @@
   <event name="Ceres Destroyed Side 2" id_arme="c779db79-8348-495d-8017-a669172fbda8" parent_id_arme="1f794273-3a72-4186-b07f-00d6ac894412">
     <if_object_property property="sideValue" name="Ceres" comparator="EQUALS" value="2" />
     <if_variable name="ScamCeres" comparator="GREATER" value="0.0" />
+    <if_variable name="ScamCeres" comparator="LESS" value="7.0" />
     <if_exists name="Hole in the Wall" />
     <if_not_exists name="Ceres" />
     <clear_comms_button text="Accept (Ceres)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -20463,6 +20476,7 @@
     <set_variable name="ScamCeres" value="7.0" integer="yes">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</set_variable>
   </event>
   <event name="Ceres Destroyed Off Side" id_arme="8cc8b2ab-a5ae-4e01-8e29-00a863f140ae" parent_id_arme="1f794273-3a72-4186-b07f-00d6ac894412">
+    <if_variable name="ScamCeres" comparator="LESS" value="7.0" />
     <if_object_property property="sideValue" name="Ceres" comparator="NOT" value="2" />
     <if_variable name="ScamCeres" comparator="GREATER" value="0.0" />
     <if_exists name="Hole in the Wall" />
@@ -20471,7 +20485,7 @@
     <clear_comms_button text="Decline (Ceres)" sideValue="9">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <set_variable name="ScamCeres" value="7.0" integer="yes">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</set_variable>
   </event>
-  <folder_arme name="Scam Diana" id_arme="f0334a55-dca1-4018-a237-8618ff20ff8b" parent_id_arme="ae9e359f-e40e-4aaf-b566-8898954db36b" />
+  <folder_arme name="Scam Diana" id_arme="f0334a55-dca1-4018-a237-8618ff20ff8b" parent_id_arme="ae9e359f-e40e-4aaf-b566-8898954db36b" expanded_arme="" />
   <event name="Out of Excchange Range Diana 2" id_arme="e6807e4f-6a2e-49b5-ba5a-835063685c93" parent_id_arme="f0334a55-dca1-4018-a237-8618ff20ff8b">
     <if_distance name1="Diana" name2="Hole in the Wall" comparator="GREATER" value="2500.0" />
     <if_object_property property="sideValue" name="Diana" comparator="EQUALS" value="2" />
@@ -20572,6 +20586,7 @@
   <event name="Diana Destroyed Side 2" id_arme="88839b02-dc39-4962-be9a-bb146b95f03b" parent_id_arme="f0334a55-dca1-4018-a237-8618ff20ff8b">
     <if_object_property property="sideValue" name="Diana" comparator="EQUALS" value="2" />
     <if_variable name="ScamDiana" comparator="GREATER" value="0.0" />
+    <if_variable name="ScamDiana" comparator="LESS" value="7.0" />
     <if_exists name="Hole in the Wall" />
     <if_not_exists name="Diana" />
     <clear_comms_button text="Accept (Diana)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
@@ -20579,6 +20594,7 @@
     <set_variable name="ScamDiana" value="7.0" integer="yes">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</set_variable>
   </event>
   <event name="Diana Destroyed Off Side" id_arme="5d5bcd8f-4c69-4e78-9b8f-a7bc986b6d59" parent_id_arme="f0334a55-dca1-4018-a237-8618ff20ff8b">
+    <if_variable name="ScamDiana" comparator="LESS" value="7.0" />
     <if_object_property property="sideValue" name="Diana" comparator="NOT" value="2" />
     <if_variable name="ScamDiana" comparator="GREATER" value="0.0" />
     <if_exists name="Hole in the Wall" />
