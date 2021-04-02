@@ -1,6 +1,6 @@
-<mission_data version="2.7.5" background_id_arme="a59135e3-9c0e-49aa-8603-3fba5826a9ae" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+<mission_data version="2.7.5" background_id_arme="525f4bcd-c6a1-4645-ae41-4cdc0d6a75cf" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
   <mission_description>A call for help from the recently established Eaton Command Base has you playing Cat and Mouse in nebula.^Multi-ship mission for up to 8 ships.</mission_description>
-  <start id_arme="a59135e3-9c0e-49aa-8603-3fba5826a9ae">
+  <start id_arme="525f4bcd-c6a1-4645-ae41-4cdc0d6a75cf">
     <set_difficulty_level value="5" />
     <set_skybox_index index="10" />
     <set_object_property property="nebulaIsOpaque" value="1" />
@@ -16,7 +16,7 @@
     <set_timer name="start_mission_timer_1" seconds="10" />
     <set_variable name="Mission" value="-3.0" integer="yes" />
   </start>
-  <folder_arme name="Spawn Players" id_arme="94ed05a5-1311-4c9a-9ff6-8557a2d7eb8f" expanded_arme="" />
+  <folder_arme name="Spawn Players" id_arme="94ed05a5-1311-4c9a-9ff6-8557a2d7eb8f" />
   <event name="Spawn Player 0" id_arme="0d7eed4d-cb92-4a38-b995-ee2cd6343eb2" parent_id_arme="94ed05a5-1311-4c9a-9ff6-8557a2d7eb8f">
     <if_variable name="Player0" comparator="EQUALS" value="0.0" />
     <if_exists player_slot="0" />
@@ -81,7 +81,7 @@
     <set_object_property property="positionY" value="0.0" player_slot="7" />
     <set_variable name="Player7" value="1.0" integer="yes" />
   </event>
-  <folder_arme name="Delayed Start Briefing" id_arme="ea6643a1-9be7-40f0-a0ac-e35c85df0924" expanded_arme="" />
+  <folder_arme name="Delayed Start Briefing" id_arme="ea6643a1-9be7-40f0-a0ac-e35c85df0924" />
   <event name="Initial Distress Call Jump to sector Button" id_arme="c9e7e6ce-ff58-4a59-83b3-7e485db5b8b6" parent_id_arme="ea6643a1-9be7-40f0-a0ac-e35c85df0924">
     <if_timer_finished name="start_mission_timer_1" />
     <if_variable name="Mission" comparator="EQUALS" value="-3.0" />
@@ -488,7 +488,7 @@
     <set_ship_text name="    " desc="Skaraan Communications Detected" scan_desc="Data scramblers detected!  Proximity Scan Required (800m)" />
     <set_variable name="Layout" value="5.0" integer="yes" />
   </event>
-  <folder_arme name="Defense Fleet" id_arme="7b6078b2-5079-4663-8a53-b79340ac87d6" expanded_arme="" />
+  <folder_arme name="Defense Fleet" id_arme="7b6078b2-5079-4663-8a53-b79340ac87d6" />
   <event name="Randomized Defense Fleet Location" id_arme="96e80684-df0a-4145-afd8-bff610dab1e0" parent_id_arme="7b6078b2-5079-4663-8a53-b79340ac87d6">
     <if_variable name="Fleet" comparator="EQUALS" value="1.0" />
     <set_variable name="Fleet" randomIntLow="2" randomIntHigh="5" integer="yes" />
@@ -961,7 +961,7 @@
     <set_variable name="Survivor" value="0.0" integer="yes" />
     <set_variable name="Fleet" value="0.0" integer="yes" />
   </event>
-  <folder_arme name="Mercutio Recover" id_arme="48f29931-36b7-4a4f-b958-f2a0af26a8fa" parent_id_arme="7b6078b2-5079-4663-8a53-b79340ac87d6" expanded_arme="" />
+  <folder_arme name="Mercutio Recover" id_arme="48f29931-36b7-4a4f-b958-f2a0af26a8fa" parent_id_arme="7b6078b2-5079-4663-8a53-b79340ac87d6" />
   <event name="Proximity Mercutio 0" id_arme="43a3653e-e2bc-4a05-aa98-45cf3729c465" parent_id_arme="48f29931-36b7-4a4f-b958-f2a0af26a8fa">
     <if_distance name1="Mercutio" player_slot2="0" comparator="LESS" value="3000.0" />
     <if_exists name="Mercutio" />
@@ -1490,7 +1490,7 @@
     <if_variable name="Enemy7" comparator="EQUALS" value="1.0" />
     <set_variable name="Enemy7" value="2.0" integer="yes" />
   </event>
-  <folder_arme name="TSN Surprise Repairs" id_arme="49b5bc57-259e-4950-94a9-d96b122e6975" expanded_arme="" />
+  <folder_arme name="TSN Surprise Repairs" id_arme="49b5bc57-259e-4950-94a9-d96b122e6975" />
   <event name="AAA Repair Arrives" id_arme="1065f2e5-c5ff-476d-9a1c-132f6e74e269" parent_id_arme="49b5bc57-259e-4950-94a9-d96b122e6975">
     <if_distance name1="Surprise" name2="AAA Repair" comparator="LESS_EQUAL" value="1000.0" />
     <if_variable name="Repair" comparator="EQUALS" value="0.0" />
@@ -1776,25 +1776,35 @@
     <set_variable name="Activate" value="7.0" integer="yes" />
   </event>
   <folder_arme name="Re Spawn Mine Clearers per player" id_arme="0dc3caeb-6af2-419c-893f-47a39d7ace0b" />
-  <event name="Mine Clearers 1" id_arme="7c670e95-e062-447d-b458-51cf9c85d1d4" parent_id_arme="0dc3caeb-6af2-419c-893f-47a39d7ace0b">
-    <if_not_exists name="F12" />
-    <if_not_exists name="F13" />
-    <if_exists name="Seaiya" />
-    <if_exists name="Eaton Command" />
-    <create type="enemy" x="90000.0" y="90000.0" z="90000.0" angle="45" name="F12" hullID="3000" fleetnumber="0" />
-    <create type="enemy" x="90000.0" y="80000.0" z="90000.0" angle="45" name="F13" hullID="3000" fleetnumber="0" />
-    <set_relative_position name2="F12" distance="800" angle="20" name1="Seaiya" />
-    <set_relative_position name2="F13" distance="800" angle="340" name1="Seaiya" />
-  </event>
-  <event name="Mine Clearers 2" id_arme="cae4dd71-a834-43c1-b495-0afcf03064a2" parent_id_arme="0dc3caeb-6af2-419c-893f-47a39d7ace0b">
-    <if_exists name="Eminili" />
-    <if_not_exists name="F10" />
-    <if_not_exists name="F11" />
-    <if_exists name="Eaton Command" />
-    <create type="enemy" x="90000.0" y="90000.0" z="90000.0" angle="45" name="F10" hullID="3000" fleetnumber="0" />
-    <create type="enemy" x="90000.0" y="80000.0" z="90000.0" angle="45" name="F11" hullID="3000" fleetnumber="0" />
-    <set_relative_position name2="F10" distance="800" angle="20" name1="Eminili" />
-    <set_relative_position name2="F11" distance="800" angle="340" name1="Eminili" />
+  <event name="Mine Clearer Base Destroyed Target Surprise" id_arme="40b7ae3f-eac8-4ff0-a36f-e5e8f2503ba2" parent_id_arme="0dc3caeb-6af2-419c-893f-47a39d7ace0b">
+    <if_timer_finished name="Mine Clearer Reset" />
+    <if_not_exists name="Eaton Command" />
+    <if_exists name="Surprise" />
+    <clear_ai name="F10" />
+    <clear_ai name="F11" />
+    <clear_ai name="F12" />
+    <clear_ai name="F13" />
+    <set_object_property property="surrenderChance" value="0.0" name="Seaiya" />
+    <set_object_property property="surrenderChance" value="0.0" name="Eminili" />
+    <set_object_property property="hasSurrendered" value="0.0" name="Seaiya" />
+    <set_object_property property="hasSurrendered" value="0.0" name="Eminili" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="F10" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="F11" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="F12" />
+    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="F13" />
+    <add_ai type="CHASE_STATION" value1="10000" name="F10" />
+    <add_ai type="CHASE_STATION" value1="10000" name="F11" />
+    <add_ai type="CHASE_STATION" value1="10000" name="F12" />
+    <add_ai type="CHASE_STATION" value1="10000" name="F13" />
+    <add_ai type="CHASE_ANGER" name="F10" />
+    <add_ai type="CHASE_ANGER" name="F11" />
+    <add_ai type="CHASE_ANGER" name="F12" />
+    <add_ai type="CHASE_ANGER" name="F13" />
+    <add_ai type="TARGET_THROTTLE" value1="1.2" targetName="Surprise" name="F12" />
+    <add_ai type="TARGET_THROTTLE" value1="1.2" targetName="Surprise" name="F13" />
+    <add_ai type="TARGET_THROTTLE" value1="1.2" targetName="Surprise" name="F10" />
+    <add_ai type="TARGET_THROTTLE" value1="1.2" targetName="Surprise" name="F11" />
+    <set_timer name="Mine Clearer Reset" seconds="10" />
   </event>
   <event name="Mine Clearer Targeting" id_arme="1bf1cc6a-411a-4cd8-8475-60012ffb3314" parent_id_arme="0dc3caeb-6af2-419c-893f-47a39d7ace0b">
     <if_timer_finished name="Mine Clearer Reset" />
@@ -1825,35 +1835,28 @@
     <add_ai type="TARGET_THROTTLE" value1="1.2" targetName="Eaton Command" name="F11" />
     <set_timer name="Mine Clearer Reset" seconds="10" />
   </event>
-  <event name="Mine Clearer Base Destroyed Target Surprise" id_arme="40b7ae3f-eac8-4ff0-a36f-e5e8f2503ba2" parent_id_arme="0dc3caeb-6af2-419c-893f-47a39d7ace0b">
-    <if_timer_finished name="Mine Clearer Reset" />
-    <if_not_exists name="Eaton Command" />
-    <if_exists name="Surprise" />
-    <clear_ai name="F10" />
-    <clear_ai name="F11" />
-    <clear_ai name="F12" />
-    <clear_ai name="F13" />
-    <set_object_property property="surrenderChance" value="0.0" name="Seaiya" />
-    <set_object_property property="surrenderChance" value="0.0" name="Eminili" />
-    <set_object_property property="hasSurrendered" value="0.0" name="Seaiya" />
-    <set_object_property property="hasSurrendered" value="0.0" name="Eminili" />
-    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="F10" />
-    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="F11" />
-    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="F12" />
-    <add_ai type="CHASE_PLAYER" value1="1000" value2="1000" name="F13" />
-    <add_ai type="CHASE_STATION" value1="10000" name="F10" />
-    <add_ai type="CHASE_STATION" value1="10000" name="F11" />
-    <add_ai type="CHASE_STATION" value1="10000" name="F12" />
-    <add_ai type="CHASE_STATION" value1="10000" name="F13" />
-    <add_ai type="CHASE_ANGER" name="F10" />
-    <add_ai type="CHASE_ANGER" name="F11" />
-    <add_ai type="CHASE_ANGER" name="F12" />
-    <add_ai type="CHASE_ANGER" name="F13" />
-    <add_ai type="TARGET_THROTTLE" value1="1.2" targetName="Surprise" name="F12" />
-    <add_ai type="TARGET_THROTTLE" value1="1.2" targetName="Surprise" name="F13" />
-    <add_ai type="TARGET_THROTTLE" value1="1.2" targetName="Surprise" name="F10" />
-    <add_ai type="TARGET_THROTTLE" value1="1.2" targetName="Surprise" name="F11" />
-    <set_timer name="Mine Clearer Reset" seconds="10" />
+  <event name="Mine Clearers 1" id_arme="7c670e95-e062-447d-b458-51cf9c85d1d4" parent_id_arme="0dc3caeb-6af2-419c-893f-47a39d7ace0b">
+    <if_not_exists name="F12" />
+    <if_not_exists name="F13" />
+    <if_exists name="Seaiya" />
+    <if_exists name="Eaton Command" />
+    <create type="enemy" x="90000.0" y="90000.0" z="90000.0" angle="45" name="F12" hullID="3000" fleetnumber="0" />
+    <create type="enemy" x="90000.0" y="80000.0" z="90000.0" angle="45" name="F13" hullID="3000" fleetnumber="0" />
+    <set_relative_position name2="F12" distance="800" angle="20" name1="Seaiya" />
+    <set_object_property property="angle" name="Seaiya" />
+    <set_relative_position name2="F13" distance="800" angle="340" name1="Seaiya" />
+    <set_timer name="Mine Clearer Reset" seconds="2" />
+  </event>
+  <event name="Mine Clearers 2" id_arme="cae4dd71-a834-43c1-b495-0afcf03064a2" parent_id_arme="0dc3caeb-6af2-419c-893f-47a39d7ace0b">
+    <if_exists name="Eminili" />
+    <if_not_exists name="F10" />
+    <if_not_exists name="F11" />
+    <if_exists name="Eaton Command" />
+    <create type="enemy" x="90000.0" y="90000.0" z="90000.0" angle="45" name="F10" hullID="3000" fleetnumber="0" />
+    <create type="enemy" x="90000.0" y="80000.0" z="90000.0" angle="45" name="F11" hullID="3000" fleetnumber="0" />
+    <set_relative_position name2="F10" distance="800" angle="20" name1="Eminili" />
+    <set_relative_position name2="F11" distance="800" angle="340" name1="Eminili" />
+    <set_timer name="Mine Clearer Reset" seconds="2" />
   </event>
   <folder_arme name="Repair Ship Speed Boost" id_arme="c04d7b90-fa6f-43bb-9f36-a2bfb4c85586" />
   <event name="Repair Crew Proximity Speed Drop" id_arme="689b0774-7f95-470e-a614-a8721cb6b581" parent_id_arme="c04d7b90-fa6f-43bb-9f36-a2bfb4c85586">
@@ -2421,7 +2424,7 @@
     <if_scan_level name="E   " side="2" comparator="EQUALS" value="2" />
     <destroy name="E   " />
   </event>
-  <folder_arme name="Ship 0 Fleet Proximity Scans" id_arme="55a95e58-7db7-4a4c-843b-fe3f19c62c03" parent_id_arme="19229f7e-9313-45e4-9bd8-4ae240860126" />
+  <folder_arme name="Ship 0 Fleet Proximity Scans" id_arme="55a95e58-7db7-4a4c-843b-fe3f19c62c03" parent_id_arme="19229f7e-9313-45e4-9bd8-4ae240860126" expanded_arme="" />
   <event name="Ghost Fleet Proximity H1" id_arme="adf0d81b-b9a3-40d6-94b8-6e35093014db" parent_id_arme="55a95e58-7db7-4a4c-843b-fe3f19c62c03">
     <if_exists name="H" />
     <if_distance player_slot1="0" name2="H" comparator="LESS_EQUAL" value="1000.0" />
@@ -3608,7 +3611,7 @@
     <set_timer name="Nebula Pierce" seconds="180" />
     <set_variable name="Frequency" value="5.0" integer="yes" />
   </event>
-  <folder_arme name="Proximity Scan on Buoys" id_arme="ebe8039a-609d-429f-b253-d14267214c67" expanded_arme="" />
+  <folder_arme name="Proximity Scan on Buoys" id_arme="ebe8039a-609d-429f-b253-d14267214c67" />
   <folder_arme name="Siphon Buoy" id_arme="cfaae321-a800-41f9-b19d-28a2c64e6430" parent_id_arme="ebe8039a-609d-429f-b253-d14267214c67" />
   <event name="Shield Buoy Scan A0" id_arme="cede59b6-ae5c-43fa-a663-20a8e010601f" parent_id_arme="cfaae321-a800-41f9-b19d-28a2c64e6430">
     <if_variable name="ShieldScan" comparator="EQUALS" value="0.0" />
@@ -3917,7 +3920,7 @@
     <set_ship_text name="Scrambler Buoy" desc="Skaraan Communications Detected" scan_desc="Comms Scrambler.  Frequency |CommsDisable|" />
     <set_variable name="CommsChange" value="4.0" integer="yes" />
   </event>
-  <folder_arme name="End Game" id_arme="8b4b0392-b8ff-4cf6-aecf-177d2872aee9" expanded_arme="" />
+  <folder_arme name="End Game" id_arme="8b4b0392-b8ff-4cf6-aecf-177d2872aee9" />
   <event name="Failure Absolute, No Progress, All Ships Destroyed" id_arme="56a92728-c6eb-4361-8980-8256c4e5b6c8" parent_id_arme="8b4b0392-b8ff-4cf6-aecf-177d2872aee9">
     <if_not_exists player_slot="0" />
     <if_not_exists player_slot="1" />
