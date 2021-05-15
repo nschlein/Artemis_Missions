@@ -1,0 +1,9 @@
+Dawn Patrol 2.0 Instructions
+
+- You are piloting a Ximni Scout with Jump Drive.  Jump well. You will jump a lot.
+- You do not actually follow Pirate "race" rules (with surrender/looting energy, base favor ratings, etc.).  You just have a home pirate base and say "Argg".
+- Your home pirate base, the Dragon Tooth Refuge, will buy loot that you steal, but the black market value (prices) change over time (randomly).  Comms will receive updates when this changes (every 10 minutes).
+- The only way to steal loot is by destroying cargo vessels (getting them to surrender won't give up the loot).
+- You can only hold one unit of cargo.  If you try to pick up more, weird things happen (like getting forcibly repelled by the next cargo).
+- When you redock with the Dragon Tooth Refuge, Comms will have the option of selling the cargo in your hold.
+- You have 50 minutes to grab the most value of loot and then the game ends.  

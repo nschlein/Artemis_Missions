@@ -1,0 +1,763 @@
+<!-- mission_data is the big wrapper for all the parts of a mission -->
+<mission_data version="1.60" background_id_arme="" playerShipNames_arme="Blackbird">
+  <mission_description>    The Waning Dark presents a simple exploration mission, with a small amount of voice acting to help     build immersion. Your crew has been assigned to transport a scientist, Doctor Barnard, to various     nebulae around the sector, so he can run experiments. Various malfunctions will keep your crew busy,     and enemy forces may be waiting to attack.   </mission_description>
+  <start>
+    <create type="station" x="70000" y="0" z="20000" name="DS45" raceKeys="friendly" hullKeys="base" />
+    <create type="station" x="30000" y="0" z="23000" name="DS49" raceKeys="friendly" hullKeys="base" />
+    <set_player_carried_type player_slot="0" bay_slot="0" raceKeys="TSN player" hullKeys="player shuttle" name="Crescent" />
+    <create type="player" x="30100" y="0" z="23300" name="Artemis" />
+    <create type="neutral" x="70100" y="0" z="45000" angle="0" name="Borland Cargo" raceKeys="friendly" hullKeys="cargo" />
+    <clear_ai name="Borland Cargo" />
+    <add_ai type="TARGET_THROTTLE" value1="1.0" targetName="DS45" value2="1" name="Borland Cargo" />
+    <set_ship_text name="Borland Cargo" desc="An unarmed bulk freighter, slowly moving cheap cargo between the stars. This one is moving unusually fast." scan_desc="Intel: The captain doesn't trust to luck and is not religious." hailtext="We are cargoing food resources to your space station.  Have a devout day." />
+    <!-- rightmost nebula is purple -->
+    <create count="20" type="nebulas" nebType="1" startAngle="0" endAngle="360" startX="20000" startY="0" startZ="80000" radius="6000" randomRange="4000" randomSeed="4" />
+    <!-- center nebula is cyan/blue-->
+    <create count="20" type="nebulas" nebType="2" startAngle="0" endAngle="360" startX="50000" startY="0" startZ="80000" radius="6000" randomRange="3000" randomSeed="3" />
+    <!-- leftmost nebula is yellow -->
+    <create count="20" type="nebulas" nebType="3" startAngle="0" endAngle="360" startX="80000" startY="0" startZ="60000" radius="4000" randomRange="2000" randomSeed="2" />
+    <create count="50" type="nebulas" startAngle="0" endAngle="70" startX="80000" startY="0" startZ="80000" radius="50000" randomRange="4000" randomSeed="5" />
+    <create count="30" type="asteroids" startAngle="0" endAngle="40" startX="80000" startY="0" startZ="80000" radius="50000" randomRange="1000" randomSeed="6" />
+    <create count="30" type="mines" startX="65000" startY="0" startZ="30000" endX="45000" endY="0" endZ="30000" />
+    <big_message title="THE WANING DARK" subtitle1="written by Thom Robertson" subtitle2="Make sure Comms is logged in" />
+    <!--_____Adjustable Settings_____-->
+    <set_variable name="StartingMsgPace" value="30.0" />
+    <set_variable name="CluePacing" value="15.0" />
+    <set_variable name="PaceDoctorBugging" value="240.0" />
+    <set_variable name="PaceNebulaEffect" value="45.0" />
+    <set_variable name="PaceScienceDuration" value="60.0" />
+    <set_variable name="AnomalyMax" value="10.0" integer="yes" />
+    <set_variable name="JunkMax" value="15.0" integer="yes" />
+    <set_variable name="WreckMax" value="5.0" integer="yes" />
+    <set_variable name="WreckPiranhaMax" value="5.0" integer="yes" />
+    <set_variable name="WhalePodMax" value="5.0" integer="yes" />
+    <set_variable name="SharkMax" value="3.0" integer="yes" />
+    <!--_____Variables_____-->
+    <set_variable name="AnomalyCount" value="0.0" integer="yes" />
+    <set_variable name="JunkCount" value="0.0" integer="yes" />
+    <set_variable name="WreckCount" value="0.0" integer="yes" />
+    <set_variable name="WreckPiranhaCount" value="0.0" integer="yes" />
+    <set_variable name="WhalePodCount" value="0.0" integer="yes" />
+    <set_variable name="SharkCount" value="0.0" integer="yes" />
+    <set_timer name="admiral_bug_timer" seconds="10" />
+    <set_timer name="doctor_bug_timer" seconds="60" />
+    <set_variable name="attackRight" value="0" integer="yes" />
+    <set_variable name="attackCenter" value="0" integer="yes" />
+    <set_variable name="attackLeft" value="0" integer="yes" />
+    <set_timer name="timer-purpleEffect" seconds="0" />
+    <set_timer name="timer-blueEffect" seconds="0" />
+    <set_timer name="timer-yellowEffect" seconds="0" />
+    <set_variable name="scienceRight" value="0" integer="yes" />
+    <set_variable name="scienceCenter" value="0" integer="yes" />
+    <set_variable name="scienceLeft" value="0" integer="yes" />
+    <set_variable name="boardingTeam" value="0.0" integer="yes" />
+    <set_variable name="missionComplete" value="0" integer="yes" />
+    <set_variable name="scienceComplete" value="0.0" integer="yes" />
+    <set_variable name="firstDoctorComm" value="0" integer="yes" />
+    <set_variable name="fleet4Appears" value="0" integer="yes" />
+    <set_variable name="TorgothHunters" value="0.0" integer="yes" />
+    <set_variable name="charybdisComplete" value="0.0" integer="yes" />
+    <set_variable name="Points" value="0.0" integer="yes" />
+    <set_variable name="whichBackDelete" value="0" integer="yes" />
+    <set_variable name="redrawButtons" value="0" integer="yes" />
+    <set_variable name="admiralButton" value="0" integer="yes" />
+    <set_variable name="doctorButton" value="0" integer="yes" />
+    <set_variable name="borlandButton" value="0" integer="yes" />
+    <!--______Success Points________-->
+    <set_variable name="SuccessDS49" value="1.0" integer="yes" />
+    <set_variable name="SuccessDS49Points" value="15.0" integer="yes" />
+    <set_variable name="SuccessDS45" value="1.0" integer="yes" />
+    <set_variable name="SuccessDS45Points" value="15.0" integer="yes" />
+    <set_variable name="SuccessBorland" value="1.0" integer="yes" />
+    <set_variable name="SuccessBorlandPoints" value="10.0" integer="yes" />
+    <set_variable name="SuccessYellowSci" value="1.0" integer="yes" />
+    <set_variable name="SuccessYellowSciPoints" value="5.0" integer="yes" />
+    <set_variable name="SuccessBlueSci" value="1.0" integer="yes" />
+    <set_variable name="SuccessBlueSciPoints" value="5.0" integer="yes" />
+    <set_variable name="SuccessPurpleSci" value="1.0" integer="yes" />
+    <set_variable name="SuccessPurpleSciPoints" value="5.0" integer="yes" />
+    <set_variable name="SuccessCharybdis" value="1.0" integer="yes" />
+    <set_variable name="SuccessCharybdisPoints" value="10.0" integer="yes" />
+    <set_variable name="SuccessTorgoth" value="1.0" integer="yes" />
+    <set_variable name="SuccessTorgothPoints" value="10.0" integer="yes" />
+    <set_variable name="SuccessYellowFleet" value="1.0" integer="yes" />
+    <set_variable name="SuccessYellowFleetPoints" value="5.0" integer="yes" />
+    <set_variable name="SuccessPurpleFleet" value="1.0" integer="yes" />
+    <set_variable name="SuccessPurpleFleetPoints" value="5.0" integer="yes" />
+    <set_variable name="SuccessBigFleet" value="1.0" integer="yes" />
+    <set_variable name="SuccessBigFleetPoints" value="15.0" integer="yes" />
+    <!--______Begin Logging________-->
+    <log text="Starting\n\n" />
+  </start>
+  <folder_arme name="Random Spawns" id_arme="f370426d-d132-463e-8d6e-47781bb9278f" expanded_arme="" />
+  <event name="Generate Anomalies" id_arme="bb34dbfc-1bab-4b2d-9f7d-c06c62b117dd" parent_id_arme="f370426d-d132-463e-8d6e-47781bb9278f">
+    <if_variable name="AnomalyCount" comparator="LESS" value="AnomalyMax" />
+    <set_variable name="AnomalyX" randomFloatLow="1000.0" randomFloatHigh="99000.0" />
+    <set_variable name="AnomalyY" randomFloatLow="1000.0" randomFloatHigh="99000.0" />
+    <set_variable name="AnomalyType" randomIntLow="0" randomIntHigh="6" integer="yes" />
+    <create type="Anomaly" pickupType="AnomalyType" x="AnomalyX" y="0.0" z="AnomalyY" />
+    <set_variable name="AnomalyCount" value="AnomalyCount+1" integer="yes" />
+  </event>
+  <event name="Generate Junk" id_arme="780d2da1-d8c1-4e03-87d0-6a32ebf00ac8" parent_id_arme="f370426d-d132-463e-8d6e-47781bb9278f">
+    <if_variable name="JunkCount" comparator="LESS" value="JunkMax" />
+    <set_variable name="AnomalyX" randomFloatLow="1000.0" randomFloatHigh="99000.0" />
+    <set_variable name="AnomalyY" randomFloatLow="1000.0" randomFloatHigh="99000.0" />
+    <create type="Anomaly" pickupType="9" x="AnomalyX" y="0.0" z="AnomalyY" />
+    <set_variable name="JunkCount" value="JunkCount+1" integer="yes" />
+  </event>
+  <event name="Generate Wrecks" id_arme="d949b785-31f8-4563-ac61-adec0814e61e" parent_id_arme="f370426d-d132-463e-8d6e-47781bb9278f">
+    <if_variable name="WreckCount" comparator="LESS" value="WreckMax" />
+    <set_variable name="AnomalyX" randomFloatLow="1000.0" randomFloatHigh="99000.0" />
+    <set_variable name="AnomalyY" randomFloatLow="1000.0" randomFloatHigh="99000.0" />
+    <create type="monster" monsterType="8" x="AnomalyX" y="0.0" z="AnomalyY" name="Wreck" />
+    <set_variable name="WreckCount" value="WreckCount+1" integer="yes" />
+  </event>
+  <event name="Generate Wrecks with Piranhas" id_arme="453d016b-52cb-452f-b25b-2d231116ef9f" parent_id_arme="f370426d-d132-463e-8d6e-47781bb9278f">
+    <if_variable name="WreckPiranhaCount" comparator="LESS" value="WreckPiranhaMax" />
+    <set_variable name="AnomalyX" randomFloatLow="1000.0" randomFloatHigh="99000.0" />
+    <set_variable name="AnomalyY" randomFloatLow="1000.0" randomFloatHigh="99000.0" />
+    <create type="monster" monsterType="8" x="AnomalyX" y="0.0" z="AnomalyY" name="Wreck " />
+    <add_ai type="RELEASE_PIRANHAS" value3="5" value4="9" value1="0" value2="5000" name="Wreck " />
+    <set_variable name="WreckPiranhaCount" value="WreckPiranhaCount+1" integer="yes" />
+  </event>
+  <event name="Generate Whale Pods" id_arme="255576c7-146f-4c4a-b478-2ee9e6ea8e26" parent_id_arme="f370426d-d132-463e-8d6e-47781bb9278f">
+    <if_variable name="WhalePodCount" comparator="LESS" value="WhalePodMax" />
+    <set_variable name="AnomalyX" randomFloatLow="1000.0" randomFloatHigh="99000.0" />
+    <set_variable name="AnomalyY" randomFloatLow="1000.0" randomFloatHigh="99000.0" />
+    <create type="monster" monsterType="1" age="1" podnumber="WhalePodCount" x="AnomalyX" y="0.0" z="AnomalyY" />
+    <create type="monster" monsterType="1" age="1" podnumber="WhalePodCount" x="AnomalyX" y="0.0" z="AnomalyY" />
+    <create type="monster" monsterType="1" age="1" podnumber="WhalePodCount" x="AnomalyX" y="0.0" z="AnomalyY" />
+    <create type="monster" monsterType="1" age="1" podnumber="WhalePodCount" x="AnomalyX" y="0.0" z="AnomalyY" />
+    <create type="monster" monsterType="1" age="2" podnumber="WhalePodCount" x="AnomalyX" y="0.0" z="AnomalyY" />
+    <set_variable name="WhalePodCount" value="WhalePodCount+1" integer="yes" />
+  </event>
+  <event name="Generate Shark" id_arme="dfdb1591-86f7-4fcf-81e4-ae4abd2b2dae" parent_id_arme="f370426d-d132-463e-8d6e-47781bb9278f">
+    <if_variable name="SharkCount" comparator="LESS" value="SharkMax" />
+    <set_variable name="AnomalyX" randomFloatLow="1000.0" randomFloatHigh="99000.0" />
+    <set_variable name="AnomalyY" randomFloatLow="1000.0" randomFloatHigh="99000.0" />
+    <create type="monster" monsterType="2" age="2" x="AnomalyX" y="0.0" z="AnomalyY" />
+    <set_variable name="SharkCount" value="SharkCount+1" integer="yes" />
+  </event>
+  <folder_arme name="NPC Messages" id_arme="3e3d94f7-40fc-44e5-a97a-f2f807639866" expanded_arme="" />
+  <event name="Message from Admiral" id_arme="400f6942-8438-4093-abe4-ed3d364450f3" parent_id_arme="3e3d94f7-40fc-44e5-a97a-f2f807639866">
+    <!-- delay Admiral Grankov's message to make sure Comms is logged in -->
+    <if_timer_finished name="admiral_bug_timer" />
+    <if_variable name="admiralButton" comparator="EQUALS" value="0" />
+    <big_message subtitle2="Incoming message" />
+    <set_comms_button text="Admiral Grankov" sideValue="2" />
+    <incoming_comms_text from="Admiral Grankov" type="ALERT">
+      Hello, Captain.  Kraliens and their allies seem
+      to be moving, and there are reports of battles along
+      the frontier.  Use extreme caution in this sector.^
+      You have a scientist on board, a Doctor Barnard.
+      Help him collect the data he needs on this sector.^
+      Good luck, Artemis!
+    </incoming_comms_text>
+    <set_variable name="admiralButton" value="1" />
+  </event>
+  <event name="Bernard Welcome" id_arme="0fc62347-7edd-4741-b8c0-fff0bb2586b3" parent_id_arme="3e3d94f7-40fc-44e5-a97a-f2f807639866">
+    <!-- handle doctor bugging player to visit the nebulas -->
+    <if_variable name="firstDoctorComm" comparator="NOT" value="1" />
+    <if_timer_finished name="doctor_bug_timer" />
+    <big_message subtitle2="Incoming message" />
+    <set_comms_button text="Doctor Barnard" sideValue="2" />
+    <incoming_comms_text from="Doctor Barnard" type="FRIEND">
+      Hello, there, Captain.  Thanks for having me aboard.
+      I've set up my sensors here in science bay 2, and all
+      of them are in tip top shape!^
+      Now, there are three very interesting nebulas in the south side
+      of this sector, and I'd like to take readings in the center of each
+      of them.  Be aware that these nebulas may have unexpected effects
+      on your ship.  So off we go then!
+    </incoming_comms_text>
+    <set_variable name="firstDoctorComm" value="1" />
+    <set_variable name="doctorButton" value="1" />
+    <set_timer name="doctor_bug_timer" seconds="PaceDoctorBugging" />
+  </event>
+  <event name="Bernard Bugging Nebula" id_arme="031b02fe-ba7b-4199-9f4f-1179daef1acc" parent_id_arme="3e3d94f7-40fc-44e5-a97a-f2f807639866">
+    <if_variable name="firstDoctorComm" comparator="EQUALS" value="1" />
+    <if_variable name="scienceComplete" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="doctor_bug_timer" />
+    <incoming_comms_text from="Doctor Barnard" type="FRIEND">
+      Hello, there, Captain.  I'm still hoping to get readings
+      from all three of those nebulas.  Chop chop, daylight's wasting!  Heh heh.
+    </incoming_comms_text>
+    <set_timer name="doctor_bug_timer" seconds="PaceDoctorBugging" />
+  </event>
+  <event name="Bernard Bugging Charybdis" id_arme="1689e682-4c2b-4107-81a5-656d1480533a" parent_id_arme="3e3d94f7-40fc-44e5-a97a-f2f807639866">
+    <if_variable name="firstDoctorComm" comparator="EQUALS" value="1" />
+    <if_variable name="scienceComplete" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="doctor_bug_timer" />
+    <incoming_comms_text from="Doctor Barnard" type="FRIEND">Hello, there, Captain. My tag is ready for you to launch. I really need this for my tenure review. Can we hurry it up a bit?</incoming_comms_text>
+    <set_timer name="doctor_bug_timer" seconds="PaceDoctorBugging" />
+  </event>
+  <folder_arme name="Purple Nebula" id_arme="4e925f3e-ff95-40be-b537-933d9033676f" expanded_arme="" />
+  <event name="Purple Nebula Effect" id_arme="35f932ab-faa9-4e27-80e1-f8619dce0249" parent_id_arme="4e925f3e-ff95-40be-b537-933d9033676f">
+    <!-- inhibit warp in the rightmost nebula -->
+    <if_in_nebula name="Artemis" compare="1" />
+    <if_timer_finished name="timer-purpleEffect" />
+    <set_player_grid_damage value="1" name="Artemis" index="0" systemType="systemWarp" countFrom="left" />
+    <set_player_grid_damage value="1" name="Artemis" index="1" systemType="systemWarp" countFrom="left" />
+    <set_player_grid_damage value="1" name="Artemis" index="2" systemType="systemWarp" countFrom="left" />
+    <set_player_grid_damage value="1" name="Artemis" index="3" systemType="systemWarp" countFrom="left" />
+    <warning_popup_message message="This nebula is fouling our Warp Manifold!  We'll try to clear the blockage." consoles="E" name="Artemis" />
+    <set_timer name="timer-purpleEffect" seconds="PaceNebulaEffect" />
+  </event>
+  <event name="Purple Nebula Enemies" id_arme="992565d0-1871-4915-a5e9-7a2cfd4c9316" parent_id_arme="4e925f3e-ff95-40be-b537-933d9033676f">
+    <!-- enemies in the rightmost nebula -->
+    <if_variable name="attackRight" comparator="NOT" value="1" />
+    <if_in_nebula name="Artemis" compare="1" />
+    <if_inside_sphere name="Artemis" centerX="20000" centerY="0" centerZ="80000" radius="3000" />
+    <create type="enemy" x="20000" y="0" z="80200" angle="0" name="KR01" raceKeys="Kralien enemy" hullKeys="medium" fleetnumber="1" />
+    <create type="enemy" x="20000" y="0" z="80100" angle="0" name="KR02" raceKeys="Kralien enemy" hullKeys="small" fleetnumber="1" />
+    <create type="enemy" x="20000" y="0" z="80000" angle="0" name="KR03" raceKeys="Kralien enemy" hullKeys="small" fleetnumber="1" />
+    <add_ai type="CHASE_PLAYER" name="KR01" />
+    <add_ai type="CHASE_PLAYER" name="KR02" />
+    <add_ai type="CHASE_PLAYER" name="KR03" />
+    <warning_popup_message message="Kraliens were hiding in this Nebula!" consoles="H" name="Artemis" />
+    <log text="Created fleet 1\n" />
+    <set_variable name="attackRight" value="1" />
+  </event>
+  <event name="Purple Nebula Science Start" id_arme="b9edef26-6927-4781-9b7b-49a874a62c2f" parent_id_arme="4e925f3e-ff95-40be-b537-933d9033676f">
+    <!-- science in the rightmost nebula -->
+    <if_variable name="scienceRight" comparator="EQUALS" value="0.0" />
+    <if_in_nebula name="Artemis" compare="1" />
+    <if_inside_sphere name="Artemis" centerX="20000" centerY="0" centerZ="80000" radius="2000" />
+    <warning_popup_message message="Dr. Barnard: Look at these readings!  Fascinating" consoles="S" name="Artemis" />
+    <incoming_comms_text from="Doctor Barnard" type="FRIEND">Yes, yes, I'm getting good readings here.^Try to stay in the center of the nebula while I record.</incoming_comms_text>
+    <set_timer name="timer-purpleScience" seconds="PaceScienceDuration" />
+    <set_variable name="scienceRight" value="1" />
+  </event>
+  <event name="Purple Nebula Science End" id_arme="63ccd888-275f-4903-917b-ac0f3817b21f" parent_id_arme="4e925f3e-ff95-40be-b537-933d9033676f">
+    <!-- science in the rightmost nebula -->
+    <if_variable name="scienceRight" comparator="EQUALS" value="1" />
+    <if_in_nebula name="Artemis" compare="1" />
+    <if_inside_sphere name="Artemis" centerX="20000" centerY="0" centerZ="80000" radius="2000" />
+    <if_timer_finished name="timer-purpleScience" />
+    <warning_popup_message message="Dr. Barnard: I'm going to publish so many papers with this data!" consoles="S" name="Artemis" />
+    <incoming_comms_text from="Doctor Barnard" type="FRIEND">Yes, I've gathered enough data now.  We don't need to be in the purple nebula anymore.</incoming_comms_text>
+    <log text="completed science 1\n" />
+    <set_variable name="scienceRight" value="2.0" />
+  </event>
+  <folder_arme name="Blue Nebula" id_arme="79a4d6f1-2167-47c1-8a78-23f1ac86b15a" expanded_arme="" />
+  <event name="Blue Nebula Effect Torgoth1" id_arme="1146f1cb-a756-4de4-81b0-c1bf9af1e728" parent_id_arme="79a4d6f1-2167-47c1-8a78-23f1ac86b15a">
+    <if_inside_sphere name="Hunter1" centerX="50000.0" centerY="0.0" centerZ="80000.0" radius="7000" />
+    <if_timer_finished name="timer-blueEffect" />
+    <set_object_property property="shieldStateFront" value="0.0" name="Hunter1" />
+    <set_object_property property="shieldStateBack" value="0.0" name="Hunter1" />
+    <set_timer name="timer-blueEffect" seconds="PaceNebulaEffect" />
+  </event>
+  <event name="Blue Nebula Effect Players" id_arme="cd5c1f57-be8c-4097-8cd0-d65f393d5d1c" parent_id_arme="79a4d6f1-2167-47c1-8a78-23f1ac86b15a">
+    <!-- inhibit shields in the middlemost nebula -->
+    <if_in_nebula name="Artemis" compare="2" />
+    <if_timer_finished name="timer-blueEffect" />
+    <set_object_property property="shieldStateFront" value="0" name="Artemis" />
+    <set_object_property property="shieldStateBack" value="0" name="Artemis" />
+    <warning_popup_message message="This nebula has shorted our shields down to zero!  Don't get shot!" consoles="E" name="Artemis" />
+    <set_timer name="timer-blueEffect" seconds="PaceNebulaEffect" />
+  </event>
+  <event name="Blue Nebula Enemies" id_arme="79a3ebc7-4317-45aa-bf19-e8137c7348fb" parent_id_arme="79a4d6f1-2167-47c1-8a78-23f1ac86b15a">
+    <!-- enemies in the center nebula -->
+    <if_variable name="attackCenter" comparator="NOT" value="1" />
+    <if_in_nebula name="Artemis" compare="2" />
+    <if_inside_sphere name="Artemis" centerX="50000" centerY="0" centerZ="80000" radius="3000" />
+    <create type="monster" monsterType="8" x="50000.0" y="0.0" z="80000.0" angle="0" name="Wreck1" />
+    <add_ai type="RELEASE_PIRANHAS" value3="4" value4="9" value1="0" value2="1500" name="Wreck1" />
+    <!--<create type="enemy" raceKeys="Kralien enemy" hullKeys="small" x="50000" y="0" z="80000" angle="0" name="KR11" fleetnumber="2" />-->
+    <!--<set_object_property integer="yes" value="0.0" property="shieldStateFront" name="KR11" />-->
+    <!--<set_object_property integer="yes" value="0.0" property="shieldStateBack" name="KR11" />-->
+    <create type="monster" monsterType="8" x="51200.0" y="0.0" z="80300.0" angle="0" name="Wreck2" />
+    <add_ai type="RELEASE_PIRANHAS" value3="4" value4="9" value1="0" value2="1500" name="Wreck2" />
+    <!--<create type="enemy" raceKeys="Kralien enemy" hullKeys="small" x="50000" y="0" z="80100" angle="0" name="KR12" fleetnumber="2" />-->
+    <!--<set_object_property integer="yes" value="0.0" property="shieldStateFront" name="KR12" />-->
+    <!--<set_object_property integer="yes" value="0.0" property="shieldStateBack" name="KR12" />-->
+    <create type="monster" monsterType="8" x="48500.0" y="0.0" z="79000.0" angle="0" name="Wreck3" />
+    <add_ai type="RELEASE_PIRANHAS" value3="4" value4="9" value1="0" value2="1500" name="Wreck3" />
+    <!--<create type="enemy" raceKeys="Kralien enemy" hullKeys="medium" x="50000" y="0" z="80200" angle="0" name="KR13" fleetnumber="2" />-->
+    <!--<set_object_property integer="yes" value="0.0" property="shieldStateFront" name="KR13" />-->
+    <!--<set_object_property integer="yes" value="0.0" property="shieldStateBack" name="KR13" />-->
+    <warning_popup_message message="Looks like a ship graveyard here." consoles="H" name="Artemis" />
+    <log text="Created fleet 2\n" />
+    <set_variable name="attackCenter" value="1" />
+  </event>
+  <event name="Blue Nebula Science Start" id_arme="563b182a-0ee1-442f-968d-4fad190eaed0" parent_id_arme="79a4d6f1-2167-47c1-8a78-23f1ac86b15a">
+    <!-- science in the center nebula -->
+    <if_variable name="scienceCenter" comparator="EQUALS" value="0.0" />
+    <if_in_nebula name="Artemis" compare="2" />
+    <if_inside_sphere name="Artemis" centerX="50000" centerY="0" centerZ="80000" radius="2000" />
+    <incoming_comms_text from="Doctor Barnard" type="FRIEND">Yes, yes, I'm getting good readings here. Try not to shake the ship too much.</incoming_comms_text>
+    <warning_popup_message message="Dr. Barnard: Look at these readings!  Fascinating" consoles="S" name="Artemis" />
+    <set_timer name="timer-blueScience" seconds="PaceScienceDuration" />
+    <set_variable name="scienceCenter" value="1" />
+  </event>
+  <event name="Blue Nebula Science End" id_arme="87a56133-c2b8-474f-bd5e-9de8418aff08" parent_id_arme="79a4d6f1-2167-47c1-8a78-23f1ac86b15a">
+    <!-- science in the center nebula -->
+    <if_variable name="scienceCenter" comparator="EQUALS" value="1" />
+    <if_in_nebula name="Artemis" compare="2" />
+    <if_inside_sphere name="Artemis" centerX="50000" centerY="0" centerZ="80000" radius="2000" />
+    <if_timer_finished name="timer-blueScience" />
+    <warning_popup_message message="Dr. Barnard: Maybe they'll name a new nebula after me because of this." consoles="S" name="Artemis" />
+    <incoming_comms_text from="Doctor Barnard" type="FRIEND">Yes, I've gathered enough data now.  We don't need to be in the blue nebula anymore.    </incoming_comms_text>
+    <log text="completed science 2\n" />
+    <set_variable name="scienceCenter" value="2.0" />
+  </event>
+  <folder_arme name="Yellow Nebula" id_arme="ffa5a07b-4959-43d8-ba1c-04e8b6533ba9" expanded_arme="" />
+  <event name="Yellow Nebula Effect Torgoth1" id_arme="79d8697f-7f44-43a3-9808-97abae6dd589" parent_id_arme="ffa5a07b-4959-43d8-ba1c-04e8b6533ba9">
+    <if_inside_sphere name="Hunter1" centerX="80000.0" centerY="0.0" centerZ="60000.0" radius="7000" />
+    <if_timer_finished name="timer-blueEffect" />
+    <set_object_property property="systemDamageTurning" value="1.0" name="Hunter1" />
+    <set_timer name="timer-blueEffect" seconds="PaceNebulaEffect" />
+  </event>
+  <event name="Yellow Nebula Effect Players" id_arme="e8eb7798-0c23-4ca5-87f3-be2d74052231" parent_id_arme="ffa5a07b-4959-43d8-ba1c-04e8b6533ba9">
+    <!-- inhibit maneuvering in the leftmost nebula -->
+    <if_in_nebula name="Artemis" compare="3" />
+    <if_timer_finished name="timer-yellowEffect" />
+    <set_player_grid_damage value="1" name="Artemis" index="0" systemType="systemTurning" countFrom="left" />
+    <set_player_grid_damage value="1" name="Artemis" index="1" systemType="systemTurning" countFrom="left" />
+    <set_player_grid_damage value="1" name="Artemis" index="2" systemType="systemTurning" countFrom="left" />
+    <warning_popup_message message="This nebula is blocking our maneuvering jets! We'll try to clear the blockage." consoles="E" name="Artemis" />
+    <set_timer name="timer-yellowEffect" seconds="PaceNebulaEffect" />
+  </event>
+  <event name="Yellow Nebula Enemies" id_arme="b3cbd2b1-cd9a-4052-8d1b-44917c9b1422" parent_id_arme="ffa5a07b-4959-43d8-ba1c-04e8b6533ba9">
+    <!-- enemies in the leftmost nebula -->
+    <if_variable name="attackLeft" comparator="NOT" value="1" />
+    <if_in_nebula name="Artemis" compare="3" />
+    <if_inside_sphere name="Artemis" centerX="80000" centerY="0" centerZ="60000" radius="3000" />
+    <create type="enemy" x="80000" y="0" z="60400.0" angle="0" name="KR25" raceKeys="Kralien enemy" hullKeys="large" fleetnumber="3" />
+    <create type="enemy" x="80000" y="0" z="60300.0" angle="0" name="KR24" raceKeys="Kralien enemy" hullKeys="medium" fleetnumber="3" />
+    <create type="enemy" x="80000" y="0" z="60200" angle="0" name="KR23" raceKeys="Kralien enemy" hullKeys="medium" fleetnumber="3" />
+    <create type="enemy" x="80000" y="0" z="60100" angle="0" name="KR22" raceKeys="Kralien enemy" hullKeys="small" fleetnumber="3" />
+    <create type="enemy" x="80000" y="0" z="60000" angle="0" name="KR21" raceKeys="Kralien enemy" hullKeys="small" fleetnumber="3" />
+    <warning_popup_message message="Kraliens were hiding in this Nebula!" consoles="H" name="Artemis" />
+    <log text="Created fleet 3\n" />
+    <set_variable name="attackLeft" value="1" />
+    <add_ai type="CHASE_PLAYER" name="KR21" />
+    <add_ai type="CHASE_PLAYER" name="KR22" />
+    <add_ai type="CHASE_PLAYER" name="KR23" />
+    <add_ai type="CHASE_PLAYER" name="KR24" />
+    <add_ai type="CHASE_PLAYER" name="KR25" />
+  </event>
+  <event name="Yellow Nebula Science Start" id_arme="26498ded-c048-4702-ab44-42f5416173c5" parent_id_arme="ffa5a07b-4959-43d8-ba1c-04e8b6533ba9">
+    <!-- science in the leftmost nebula -->
+    <if_variable name="scienceLeft" comparator="EQUALS" value="0.0" />
+    <if_in_nebula name="Artemis" compare="3" />
+    <if_inside_sphere name="Artemis" centerX="80000" centerY="0" centerZ="60000" radius="2000" />
+    <warning_popup_message message="Dr. Barnard: Look at these readings!  Fascinating" consoles="S" name="Artemis" />
+    <incoming_comms_text from="Doctor Barnard" type="FRIEND">Yes, yes, I'm getting good readings here.  Try to stay put, will you?</incoming_comms_text>
+    <set_timer name="timer-yellowScience" seconds="PaceScienceDuration" />
+    <set_variable name="scienceLeft" value="1" />
+  </event>
+  <event name="Yellow Nebula Science End" id_arme="477e5002-1b5a-46ef-b4ce-4bbffee89007" parent_id_arme="ffa5a07b-4959-43d8-ba1c-04e8b6533ba9">
+    <!-- science in the leftmost nebula -->
+    <if_variable name="scienceLeft" comparator="EQUALS" value="1" />
+    <if_in_nebula name="Artemis" compare="3" />
+    <if_inside_sphere name="Artemis" centerX="80000" centerY="0" centerZ="60000" radius="2000" />
+    <if_timer_finished name="timer-yellowScience" />
+    <incoming_comms_text from="Doctor Barnard" type="FRIEND">Yes, I've gathered enough data now.  We don't need to be in the yellow nebula anymore.    </incoming_comms_text>
+    <warning_popup_message message="Dr. Barnard: Nobel laureate Barnard has a nice ring to it, don't you think?" consoles="S" name="Artemis" />
+    <log text="completed science 3\n" />
+    <set_variable name="scienceLeft" value="2.0" />
+  </event>
+  <event name="Science Complete Check" id_arme="0b5b5b68-f1be-4476-91a2-ae302215e081">
+    <if_variable name="scienceComplete" comparator="EQUALS" value="0.0" />
+    <if_variable name="scienceRight" comparator="EQUALS" value="2.0" />
+    <if_variable name="scienceCenter" comparator="EQUALS" value="2.0" />
+    <if_variable name="scienceLeft" comparator="EQUALS" value="2.0" />
+    <set_variable name="scienceComplete" value="1" />
+  </event>
+  <folder_arme name="Charybdis Appears" id_arme="4e2c1150-709a-4ce5-8e87-475c75bbf360" expanded_arme="" />
+  <event name="Create Charybdis" id_arme="616776a1-de4c-4716-a605-b99a128e8321" parent_id_arme="4e2c1150-709a-4ce5-8e87-475c75bbf360">
+    <if_variable name="scienceComplete" comparator="EQUALS" value="1.0" />
+    <set_timer name="timer-torgothChasing" seconds="90" />
+    <create type="monster" monsterType="5" age="3" x="60000.0" y="0.0" z="100000.0" angle="0" name="Charybdis" />
+    <set_variable name="scienceComplete" value="2.0" />
+    <incoming_comms_text from="Doctor Barnard" type="FRIEND">Oh my word!  A Charybdis xenoform has shown up on long range scanners!  This is the chance of a lifetime!  I need you to tag this monster for me.  I'll begin preparing the tag right away.  I'll be famous!</incoming_comms_text>
+    <set_monster_tag_data tag_slot="0" name="Charybdis" />
+    <set_monster_tag_data tag_slot="1" name="Charybdis" />
+    <set_monster_tag_data tag_slot="2" name="Charybdis" />
+    <set_monster_tag_data tag_slot="3" name="Charybdis" />
+  </event>
+  <event name="Create Torgoth Hunters" id_arme="01743b0d-85b9-4807-a448-8595d40286c2" parent_id_arme="4e2c1150-709a-4ce5-8e87-475c75bbf360">
+    <if_variable name="scienceComplete" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="timer-torgothChasing" />
+    <if_variable name="TorgothHunters" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="60000.0" y="0.0" z="100000.0" angle="0" name="Hunter1" raceKeys="Torgoth enemy whalehater" hullKeys="large" sideValue="1" fleetnumber="6" />
+    <set_object_property property="topSpeed" value="1.0" name="Hunter1" />
+    <add_ai type="TARGET_THROTTLE" value1="1.0" targetName="Charybdis" name="Hunter1" />
+    <set_variable name="TorgothHunters" value="1.0" integer="yes" />
+  </event>
+  <event name="Warn of Hunters" id_arme="0da5d7ed-93f3-4b9f-a5df-e52a3e8bc5de" parent_id_arme="4e2c1150-709a-4ce5-8e87-475c75bbf360">
+    <if_variable name="TorgothHunters" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="timer-torgothChasing" />
+    <incoming_comms_text from="Doctor Barnard" type="FRIEND">Oh no, it looks like those Torgoth are hunting the Charybdis! I'll never gather the data to publish papers if they kill it first! You must drive those hunters away!</incoming_comms_text>
+    <set_timer name="timer-torgothChasing" seconds="60" />
+  </event>
+  <event name="Charybdis Tagged" id_arme="0c899354-0643-417f-b455-0d8ae036906f" parent_id_arme="4e2c1150-709a-4ce5-8e87-475c75bbf360">
+    <if_monster_tag_matches name="Charybdis" string="Artemis" />
+    <if_variable name="scienceComplete" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text from="Doctor Barnard" type="FRIEND">You did it! The tag is transmitting data! I'm going to be famous!</incoming_comms_text>
+    <set_variable name="scienceComplete" value="3.0" />
+    <set_variable name="charybdisComplete" value="1.0" integer="yes" />
+  </event>
+  <event name="Torgoth Hunters Defeated" id_arme="884b6792-5472-423f-8011-cb3a05a0b944" parent_id_arme="4e2c1150-709a-4ce5-8e87-475c75bbf360">
+    <if_fleet_count comparator="EQUALS" value="0.0" fleetnumber="6" />
+    <if_variable name="TorgothHunters" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="Doctor Barnard" type="FRIEND">Fwew! Now the Charybdis can generate data in peace.</incoming_comms_text>
+    <set_variable name="TorgothHunters" value="2.0" integer="yes" />
+  </event>
+  <event name="Charybdis Destroyed" id_arme="6329b95f-a1d8-4d65-806c-192cb4575a06" parent_id_arme="4e2c1150-709a-4ce5-8e87-475c75bbf360">
+    <if_not_exists name="Charybdis" />
+    <if_variable name="scienceComplete" comparator="EQUALS" value="2.0" />
+    <set_variable name="charybdisComplete" value="1.0" integer="yes" />
+    <incoming_comms_text from="Doctor Barnard" type="FRIEND">Oh no, those Torgoth hunters killed my Charybdis! So many papers I'll never publish!</incoming_comms_text>
+    <set_variable name="TorgothHunters" value="2.0" integer="yes" />
+    <add_ai type="POINT_THROTTLE" value1="60000.0" value2="0.0" value3="100000.0" value4="1.0" name="Hunter1" />
+  </event>
+  <folder_arme name="Cargo Ship Trap" id_arme="62890519-70f3-4011-989c-f3f8b4981d55" expanded_arme="" />
+  <event name="Cargo Ship Stops" id_arme="2c2f3b69-93c4-41ef-8660-f7f3f33da948" parent_id_arme="62890519-70f3-4011-989c-f3f8b4981d55">
+    <!-- handle the sloop turning out to be a super bomb -->
+    <if_exists name="Borland Cargo" />
+    <if_exists name="DS45" />
+    <if_distance name1="Borland Cargo" name2="DS45" comparator="LESS" value="10000" />
+    <if_variable name="boardingTeam" comparator="LESS" value="4.0" />
+    <set_object_property property="systemDamageImpulse" value="90" name="Borland Cargo" />
+  </event>
+  <event name="Cargo Ship Detonates" id_arme="d32f585f-6221-4ac8-b2b1-1ae00bd373bc" parent_id_arme="62890519-70f3-4011-989c-f3f8b4981d55">
+    <if_exists name="Borland Cargo" />
+    <if_exists name="Artemis" />
+    <if_distance name1="Borland Cargo" name2="Artemis" comparator="GREATER" value="30000" />
+    <if_exists name="DS45" />
+    <if_distance name1="Borland Cargo" name2="DS45" comparator="LESS" value="10100" />
+    <if_variable name="boardingTeam" comparator="LESS" value="4.0" />
+    <big_message subtitle2="Incoming message" />
+    <set_comms_button text="Borland Cargo" sideValue="2" />
+    <destroy name="Borland Cargo" />
+    <incoming_comms_text from="Alien transmission" type="ENEMY">
+      You fool!  This pathetic earth cargo vessel is
+      the instrument of our wrath!  Watch as we pulverize
+      your space station!  You are powerless against us!^
+      Wait, you fool, don't touch that!  That's the b.....
+    </incoming_comms_text>
+    <destroy_near type="all" radius="9000" centerX="70000" centerY="0" centerZ="30000" />
+    <set_variable name="borlandButton" value="1" />
+  </event>
+  <event name="Cargo Ship Approaching" id_arme="4ef64be8-9fd5-405a-a8d2-00caafcd0be5" parent_id_arme="62890519-70f3-4011-989c-f3f8b4981d55">
+    <if_exists name="Borland Cargo" />
+    <if_exists name="Artemis" />
+    <if_distance name1="Borland Cargo" name2="Artemis" comparator="LESS" value="1000.0" />
+    <if_variable name="nearCargo" comparator="EQUALS" value="0.0" />
+    <set_variable name="nearCargo" value="1.0" integer="yes" />
+    <warning_popup_message message="Approaching the Borland Cargo vessel.  We can't safely get close enough to examine it, but the shuttle could fly by to take a look." consoles="MH" name="Artemis" />
+  </event>
+  <event name="Cargo Ship Leaving" id_arme="7742e6b8-f85e-4cb9-b5c7-ef5dfe471e05" parent_id_arme="62890519-70f3-4011-989c-f3f8b4981d55">
+    <if_exists name="Borland Cargo" />
+    <if_exists name="Artemis" />
+    <if_distance name1="Borland Cargo" name2="Artemis" comparator="GREATER_EQUAL" value="1000.0" />
+    <if_variable name="nearCargo" comparator="EQUALS" value="1.0" />
+    <set_variable name="nearCargo" value="0.0" integer="yes" />
+  </event>
+  <event name="Cargo Ship Shuttle Flyby" id_arme="a766fa6d-2a68-4386-b827-d5390ceddcb0" parent_id_arme="62890519-70f3-4011-989c-f3f8b4981d55">
+    <if_exists name="Borland Cargo" />
+    <if_exists name="Crescent" />
+    <if_distance name1="Borland Cargo" name2="Crescent" comparator="LESS" value="300.0" />
+    <if_variable name="boardingTeam" comparator="EQUALS" value="0.0" />
+    <set_variable name="boardingTeam" value="1.0" integer="yes" />
+    <warning_popup_message message="Kraliens have taken over the bridge!  If we can take down their shields the shuttle can land a boarding team to retake the ship!  We'll have to have the shuttle come back to pickup the boarding team." consoles="MF" name="Artemis" />
+    <incoming_comms_text from="Crescent Shuttle" type="PLAYER">Kraliens have taken over the bridge!  If we can take down their shields the shuttle can land a boarding team to retake the ship!  We'll have to have the shuttle come back to pickup the boarding team.</incoming_comms_text>
+    <set_side_value value="1" name="Borland Cargo" />
+  </event>
+  <event name="Cargo Ship Shuttle Pickup Boarding" id_arme="8f560a79-08c9-4f73-bc43-58791b86bc71" parent_id_arme="62890519-70f3-4011-989c-f3f8b4981d55">
+    <if_exists name="Borland Cargo" />
+    <if_variable name="boardingTeam" comparator="EQUALS" value="1.0" />
+    <if_not_exists name="Crescent" />
+    <set_variable name="boardingTeam" value="2.0" integer="yes" />
+    <warning_popup_message message="Loading the boarding team!  The shields will need to be down and we'll need to pull up alongside for them to board." consoles="MCF" name="Artemis" />
+    <set_timer name="timer-boardingTeam" seconds="30" />
+  </event>
+  <event name="Cargo Ship Shuttle Ready Boarding" id_arme="b2d337fc-1219-4b5d-9a0b-6ca59bfdb94b" parent_id_arme="62890519-70f3-4011-989c-f3f8b4981d55">
+    <if_variable name="boardingTeam" comparator="EQUALS" value="2.0" />
+    <if_not_exists name="Crescent" />
+    <if_timer_finished name="timer-boardingTeam" />
+    <set_variable name="boardingTeam" value="3.0" integer="yes" />
+    <warning_popup_message message="The boarding team is on the shuttle and ready to launch!  Get those shields down and us on board and we'll do the rest." consoles="MF" name="Artemis" />
+    <incoming_comms_text from="Boarding Team" type="PLAYER">The boarding team is on the shuttle and ready to launch!  Get those shields down and us on board and we'll do the rest.</incoming_comms_text>
+  </event>
+  <event name="Cargo Ship Shuttle Deliver Boarding Back" id_arme="08d04c5c-47f1-4ac3-ab52-adb36f965104" parent_id_arme="62890519-70f3-4011-989c-f3f8b4981d55">
+    <if_exists name="Borland Cargo" />
+    <if_exists name="Crescent" />
+    <if_distance name1="Borland Cargo" name2="Crescent" comparator="LESS" value="300.0" />
+    <if_object_property property="shieldStateBack" name="Borland Cargo" comparator="LESS" value="1" />
+    <if_variable name="boardingTeam" comparator="EQUALS" value="3.0" />
+    <set_timer name="timer-boardingTeam" seconds="30" />
+    <warning_popup_message message="Boarding team has breached the hull and will try to regain control of the ship!" consoles="MF" name="Artemis" />
+    <incoming_comms_text from="Crescent Shuttle" type="PLAYER">Boarding team has breached the hull and will try to regain control of the ship!</incoming_comms_text>
+    <set_variable name="boardingTeam" value="4.0" integer="yes" />
+  </event>
+  <event name="Cargo Ship Shuttle Deliver Boarding Front" id_arme="83301ae1-842c-46e5-bce9-8e70a944259e" parent_id_arme="62890519-70f3-4011-989c-f3f8b4981d55">
+    <if_exists name="Borland Cargo" />
+    <if_exists name="Crescent" />
+    <if_distance name1="Borland Cargo" name2="Crescent" comparator="LESS" value="300.0" />
+    <if_object_property property="shieldStateFront" name="Borland Cargo" comparator="EQUALS" value="0" />
+    <if_variable name="boardingTeam" comparator="EQUALS" value="3.0" />
+    <set_timer name="timer-boardingTeam" seconds="30" />
+    <warning_popup_message message="Boarding team has breached the hull and will regain control of the ship!" consoles="MF" name="Artemis" />
+    <incoming_comms_text from="Crescent Shuttle" type="PLAYER">Boarding team has breached the hull and will try to regain control of the ship!</incoming_comms_text>
+    <set_variable name="boardingTeam" value="4.0" integer="yes" />
+  </event>
+  <event name="Cargo Ship Boarding Complete" id_arme="745741b4-f5f5-44e9-9f83-2abcd5d84ce9" parent_id_arme="62890519-70f3-4011-989c-f3f8b4981d55">
+    <if_timer_finished name="timer-boardingTeam" />
+    <if_exists name="Borland Cargo" />
+    <if_variable name="boardingTeam" comparator="EQUALS" value="4.0" />
+    <set_variable name="boardingTeam" value="5.0" integer="yes" />
+    <warning_popup_message message="Good news!  We're regained control of the ship.  There were a few casualties, but we'll treat their injuries here." consoles="MF" name="Artemis" />
+    <incoming_comms_text from="Boarding Team" type="PLAYER">Good news!  We're regained control of the ship.  There were a few casualties, but we'll treat their injuries here.</incoming_comms_text>
+    <set_side_value value="2" name="Borland Cargo" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Borland Cargo" />
+  </event>
+  <event name="4th Enemy Fleet Appears" id_arme="6ccb4826-06b3-4266-90bb-eae14307ed54">
+    <!-- handle the 4th enemy fleet appearing just when you don't want it to -->
+    <if_variable name="fleet4Appears" comparator="NOT" value="1" />
+    <if_inside_box name="Artemis" leastX="18000" leastZ="78000" mostX="22000" mostZ="82000" />
+    <create type="enemy" x="60000" y="0" z="30000" angle="0" name="TG11" raceKeys="Kralien enemy" hullKeys="large" fleetnumber="4" />
+    <create type="enemy" x="60000" y="0" z="30100" angle="0" name="TG12" raceKeys="Kralien enemy" hullKeys="medium" fleetnumber="4" />
+    <create type="enemy" x="60000" y="0" z="30200" angle="0" name="TG13" raceKeys="Kralien enemy" hullKeys="small" fleetnumber="4" />
+    <create type="enemy" x="60100" y="0" z="30000" angle="0" name="TG14" raceKeys="Torgoth enemy" hullKeys="small" fleetnumber="4" />
+    <create type="enemy" x="60100" y="0" z="30100" angle="0" name="TG15" raceKeys="Arvonian enemy" hullKeys="carrier" fleetnumber="4" />
+    <!-- add a cloaked Skaraan to shadow this fleet -->
+    <create type="enemy" x="60000" y="0" z="30400" angle="0" name="Skar01" raceKeys="Skaraan enemy elite" hullKeys="small" fleetnumber="5" />
+    <set_special name="Skar01" ability="Cloak" />
+    <set_special name="Skar01" ability="Warp" />
+    <add_ai type="CHASE_FLEET" value1="5000" name="Skar01" />
+    <set_variable name="fleet4Appears" value="1" />
+  </event>
+  <folder_arme name="End Game" id_arme="99e97e65-8f7a-4909-b387-67f4eb7e19d1" expanded_arme="" />
+  <event name="Stations Lost End Game" id_arme="2c849d46-1b67-4b55-915b-95b95f9a50cd" parent_id_arme="99e97e65-8f7a-4909-b387-67f4eb7e19d1">
+    <if_not_exists name="DS49" />
+    <if_not_exists name="DS45" />
+    <set_variable name="missionComplete" value="1" integer="yes" />
+    <incoming_comms_text from="Doctor Barnard" type="FRIEND">Oh no, both bases have been lost!  Now I'll never complete my research!  We'll have to leave the sector now.</incoming_comms_text>
+    <set_variable name="Points" value="0.0" integer="yes" />
+    <set_variable name="PointCount" value="0.0" integer="yes" />
+    <log text="Start Stations Lost End Game" />
+  </event>
+  <event name="Research Complete End Game" id_arme="da50e6ad-516a-4ea6-ae6f-d12c6096c5bc" parent_id_arme="99e97e65-8f7a-4909-b387-67f4eb7e19d1">
+    <!-- handle end of game -->
+    <if_variable name="missionComplete" comparator="EQUALS" value="0.0" />
+    <if_variable name="scienceComplete" comparator="GREATER_EQUAL" value="2.0" />
+    <if_fleet_count comparator="LESS_EQUAL" value="0" fleetnumber="1" />
+    <if_fleet_count comparator="LESS_EQUAL" value="0" fleetnumber="2" />
+    <if_fleet_count comparator="LESS_EQUAL" value="0" fleetnumber="3" />
+    <if_fleet_count comparator="LESS_EQUAL" value="0" fleetnumber="4" />
+    <if_fleet_count comparator="LESS_EQUAL" value="0" fleetnumber="5" />
+    <if_variable name="charybdisComplete" comparator="EQUALS" value="1.0" />
+    <if_variable name="TorgothHunters" comparator="EQUALS" value="2.0" />
+    <set_variable name="missionComplete" value="1" integer="yes" />
+    <incoming_comms_text from="Doctor Barnard" type="FRIEND">Thank you for escorting me on this very important data gathering mission.  I'll be sure to mention you in my acknowledgements when I publish about these nebulae.  Can you take me back to base now?</incoming_comms_text>
+    <set_variable name="Points" value="0.0" integer="yes" />
+    <set_variable name="PointCount" value="0.0" integer="yes" />
+    <log text="Start Research Complete End Game" />
+  </event>
+  <event name="Points DS49 Survives" id_arme="0e613db1-ccb1-44fa-889c-6cd519bf0a8c" parent_id_arme="99e97e65-8f7a-4909-b387-67f4eb7e19d1">
+    <if_exists name="DS49" />
+    <if_variable name="missionComplete" comparator="EQUALS" value="1" />
+    <if_variable name="SuccessDS49" comparator="EQUALS" value="1.0" />
+    <set_variable name="Points" value="Points+SuccessDS49Points" integer="yes" />
+    <set_variable name="SuccessDS49" value="0.0" integer="yes" />
+    <log text="DS49 Survived. Points: |Points|" />
+  </event>
+  <event name="Points DS45 Survives" id_arme="63fcfa97-3428-42f3-91eb-800562549762" parent_id_arme="99e97e65-8f7a-4909-b387-67f4eb7e19d1">
+    <if_exists name="DS45" />
+    <if_variable name="missionComplete" comparator="EQUALS" value="1" />
+    <if_variable name="SuccessDS45" comparator="EQUALS" value="1.0" />
+    <set_variable name="Points" value="Points+SuccessDS45Points" integer="yes" />
+    <set_variable name="SuccessDS45" value="0.0" integer="yes" />
+    <log text="DS45 Survived. Points: |Points|" />
+  </event>
+  <event name="Points Borland Cargo Survives" id_arme="0b3ea0f8-f7f3-4593-b5e9-8a8af95b2944" parent_id_arme="99e97e65-8f7a-4909-b387-67f4eb7e19d1">
+    <if_exists name="Borland Cargo" />
+    <if_variable name="missionComplete" comparator="EQUALS" value="1" />
+    <if_variable name="SuccessBorland" comparator="EQUALS" value="1.0" />
+    <set_variable name="Points" value="Points+SuccessBorlandPoints" integer="yes" />
+    <set_variable name="SuccessBorland" value="0.0" integer="yes" />
+    <log text="Borland Cargo Survived. Points: |Points|" />
+  </event>
+  <event name="Points Yellow Science Complete" id_arme="a8e04c84-3e2e-40e4-804e-542f03c0043f" parent_id_arme="99e97e65-8f7a-4909-b387-67f4eb7e19d1">
+    <if_variable name="missionComplete" comparator="EQUALS" value="1" />
+    <if_variable name="scienceLeft" comparator="EQUALS" value="2.0" />
+    <if_variable name="SuccessYellowSci" comparator="EQUALS" value="1.0" />
+    <set_variable name="Points" value="Points+SuccessYellowSciPoints" integer="yes" />
+    <set_variable name="SuccessYellowSci" value="0.0" integer="yes" />
+    <log text="Yellow nebula science complete. Points: |Points|" />
+  </event>
+  <event name="Points Blue Science Complete" id_arme="321ae4cd-3ec1-47d0-94fd-135222aba2ae" parent_id_arme="99e97e65-8f7a-4909-b387-67f4eb7e19d1">
+    <if_variable name="missionComplete" comparator="EQUALS" value="1" />
+    <if_variable name="scienceCenter" comparator="EQUALS" value="2.0" />
+    <if_variable name="SuccessBlueSci" comparator="EQUALS" value="1.0" />
+    <set_variable name="Points" value="Points+SuccessBlueSciPoints" integer="yes" />
+    <set_variable name="SuccessBlueSci" value="0.0" integer="yes" />
+    <log text="Blue nebula science complete. Points: |Points|" />
+  </event>
+  <event name="Points Purple Science Complete" id_arme="32aa5c07-5de4-437b-9c59-0f9c32338f6a" parent_id_arme="99e97e65-8f7a-4909-b387-67f4eb7e19d1">
+    <if_variable name="missionComplete" comparator="EQUALS" value="1" />
+    <if_variable name="scienceRight" comparator="EQUALS" value="2.0" />
+    <if_variable name="SuccessPurpleSci" comparator="EQUALS" value="1.0" />
+    <set_variable name="Points" value="Points+SuccessPurpleSciPoints" integer="yes" />
+    <set_variable name="SuccessPurpleSci" value="0.0" integer="yes" />
+    <log text="Purple nebula science complete. Points: |Points|" />
+  </event>
+  <event name="Points Charybdis Tagged" id_arme="8cc4f0be-fb85-4d2e-9cec-e941340b03c4" parent_id_arme="99e97e65-8f7a-4909-b387-67f4eb7e19d1">
+    <if_variable name="missionComplete" comparator="EQUALS" value="1" />
+    <if_variable name="scienceComplete" comparator="EQUALS" value="3.0" />
+    <if_variable name="SuccessCharybdis" comparator="EQUALS" value="1.0" />
+    <set_variable name="Points" value="Points+SuccessCharybdisPoints" integer="yes" />
+    <set_variable name="SuccessCharybdis" value="0.0" integer="yes" />
+    <log text="Charybdis tagged. Points: |Points|" />
+  </event>
+  <event name="Points Defeat Yellow Kraliens" id_arme="1e3f3e50-5ecd-4c02-918b-a0f13ea7cae5" parent_id_arme="99e97e65-8f7a-4909-b387-67f4eb7e19d1">
+    <if_variable name="missionComplete" comparator="EQUALS" value="1" />
+    <if_fleet_count comparator="LESS_EQUAL" value="0" fleetnumber="1" />
+    <if_variable name="SuccessYellowFleet" comparator="EQUALS" value="1.0" />
+    <set_variable name="Points" value="Points+SuccessYellowFleetPoints" integer="yes" />
+    <set_variable name="SuccessYellowFleet" value="0.0" integer="yes" />
+    <log text="Yellow nebula fleet destroyed. Points: |Points|" />
+  </event>
+  <event name="Points Defeat Purple Kraliens" id_arme="e2ab93e6-534f-4c32-af53-bb4420c2cdbc" parent_id_arme="99e97e65-8f7a-4909-b387-67f4eb7e19d1">
+    <if_variable name="missionComplete" comparator="EQUALS" value="1" />
+    <if_fleet_count comparator="LESS_EQUAL" value="0" fleetnumber="3" />
+    <if_variable name="SuccessPurpleFleet" comparator="EQUALS" value="1.0" />
+    <set_variable name="Points" value="Points+SuccessPurpleFleetPoints" integer="yes" />
+    <set_variable name="SuccessPurpleFleet" value="0.0" integer="yes" />
+    <log text="Purple nebula fleet destroyed. Points: |Points|" />
+  </event>
+  <event name="Points Defeat 4th Fleet" id_arme="97e419b3-b395-47f8-8e27-dabb5492cc59" parent_id_arme="99e97e65-8f7a-4909-b387-67f4eb7e19d1">
+    <if_variable name="missionComplete" comparator="EQUALS" value="1" />
+    <if_fleet_count comparator="LESS_EQUAL" value="0" fleetnumber="4" />
+    <if_fleet_count comparator="LESS_EQUAL" value="0" fleetnumber="5" />
+    <if_variable name="SuccessBigFleet" comparator="EQUALS" value="1.0" />
+    <set_variable name="Points" value="Points+SuccessBigFleetPoints" integer="yes" />
+    <set_variable name="SuccessBigFleet" value="0.0" integer="yes" />
+    <log text="Big fleet destroyed. Points: |Points|" />
+  </event>
+  <event name="Points Defeat Torgoth Hunters" id_arme="2e80bc53-53ab-4ab0-abd7-c96b920b33fd" parent_id_arme="99e97e65-8f7a-4909-b387-67f4eb7e19d1">
+    <if_variable name="missionComplete" comparator="EQUALS" value="1" />
+    <if_fleet_count comparator="LESS_EQUAL" value="0" fleetnumber="6" />
+    <if_variable name="SuccessTorgoth" comparator="EQUALS" value="1.0" />
+    <set_variable name="Points" value="Points+SuccessTorgothPoints" integer="yes" />
+    <set_variable name="SuccessTorgoth" value="0.0" integer="yes" />
+    <log text="Torgoth hunters defeated. Points: |Points|" />
+  </event>
+  <event name="Display Points" id_arme="20d07aa3-7824-4e99-a2ab-15946cbd2ae4" parent_id_arme="99e97e65-8f7a-4909-b387-67f4eb7e19d1">
+    <if_variable name="missionComplete" comparator="EQUALS" value="1" />
+    <if_variable name="Points" comparator="LESS" value="100.0" />
+    <log text="You completed the mission with a |Points| Success Rate.  Try again for 100." />
+    <incoming_comms_text from="Game End" type="STATUS">You completed the mission with a |Points| Success Rate.  Try again for 100.</incoming_comms_text>
+    <big_message title="Mission Successful" subtitle1="You completed the mission with a |Points| Success Rate." subtitle2="Try again for 100." />
+    <set_variable name="missionComplete" value="2.0" integer="yes" />
+    <set_timer name="missionComplete_timer" seconds="120" />
+  </event>
+  <event name="Display Points 100" id_arme="0657b4af-dadb-4c3f-9f82-f68cef2ec363" parent_id_arme="99e97e65-8f7a-4909-b387-67f4eb7e19d1">
+    <if_variable name="missionComplete" comparator="EQUALS" value="1" />
+    <if_variable name="Points" comparator="EQUALS" value="100.0" />
+    <log text="You completed the mission with a |Points| Success Rate.  You achieved Complete Success!" />
+    <incoming_comms_text from="Game End" type="STATUS">You completed the mission with a |Points| Success Rate.  You achieved Complete Success!</incoming_comms_text>
+    <big_message title="Mission Successful" subtitle1="You completed the mission with a |Points| Success Rate." subtitle2="You achieved Complete Success!" />
+    <set_variable name="missionComplete" value="2.0" integer="yes" />
+    <set_timer name="missionComplete_timer" seconds="120" />
+  </event>
+  <event name="End End Game" id_arme="b86c3ae5-45ce-498a-b22e-9784a09fa4c2" parent_id_arme="99e97e65-8f7a-4909-b387-67f4eb7e19d1">
+    <if_variable name="missionComplete" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="missionComplete_timer" />
+    <set_variable name="missionComplete" value="3.0" integer="yes" />
+    <end_mission />
+  </event>
+  <folder_arme name="Comms Button Presses" id_arme="7b9f62de-e740-4f37-a1ff-d40cea830297" expanded_arme="" />
+  <event name="Admiral Message" id_arme="ce7caf48-8eb8-4f0e-9a88-6f88f8ae06e8" parent_id_arme="7b9f62de-e740-4f37-a1ff-d40cea830297">
+    <!-- respond to Admiral Grankov's button press -->
+    <if_comms_button text="Admiral Grankov" />
+    <set_object_property property="musicObjectMasterVolume" value="0.25" />
+    <set_object_property property="commsObjectMasterVolume" value="1.00" />
+    <play_sound_now filename="./dat/Missions/MISS_TheWaningDark2/Grankov1.wav" />
+    <clear_comms_button text="Admiral Grankov" sideValue="2" />
+    <clear_comms_button text="Doctor Barnard" sideValue="2" />
+    <clear_comms_button text="Borland Cargo" sideValue="2" />
+    <set_comms_button text="Back" sideValue="2" />
+    <set_comms_button text="Delete" sideValue="2" />
+    <set_variable name="whichBackDelete" value="1" />
+  </event>
+  <event name="Doctor Message" id_arme="d9013f11-2647-4833-80b6-38d544b42ab4" parent_id_arme="7b9f62de-e740-4f37-a1ff-d40cea830297">
+    <!-- respond to Doctor Barnard's button press -->
+    <if_comms_button text="Doctor Barnard" />
+    <set_object_property property="musicObjectMasterVolume" value="0.25" />
+    <set_object_property property="commsObjectMasterVolume" value="1.00" />
+    <play_sound_now filename="./dat/Missions/MISS_TheWaningDark2/Barnard1.wav" />
+    <clear_comms_button text="Admiral Grankov" sideValue="2" />
+    <clear_comms_button text="Doctor Barnard" sideValue="2" />
+    <clear_comms_button text="Borland Cargo" sideValue="2" />
+    <set_comms_button text="Back" sideValue="2" />
+    <set_comms_button text="Delete" sideValue="2" />
+    <set_variable name="whichBackDelete" value="2" />
+  </event>
+  <event name="Cargo Message" id_arme="7a5e6627-3d64-4abf-922e-d6ce7c82ba68" parent_id_arme="7b9f62de-e740-4f37-a1ff-d40cea830297">
+    <!-- respond to Borland Cargo's button press -->
+    <if_comms_button text="Borland Cargo" />
+    <set_object_property property="musicObjectMasterVolume" value="0.25" />
+    <set_object_property property="commsObjectMasterVolume" value="1.00" />
+    <play_sound_now filename="./dat/Missions/MISS_TheWaningDark2/Borland.wav" />
+    <clear_comms_button text="Admiral Grankov" sideValue="2" />
+    <clear_comms_button text="Doctor Barnard" sideValue="2" />
+    <clear_comms_button text="Borland Cargo" sideValue="2" />
+    <set_comms_button text="Back" sideValue="2" />
+    <set_comms_button text="Delete" sideValue="2" />
+    <set_variable name="whichBackDelete" value="3" />
+  </event>
+  <event name="Back Button" id_arme="afd50ad8-dde7-4b07-b77f-ce8a88a7c175" parent_id_arme="7b9f62de-e740-4f37-a1ff-d40cea830297">
+    <if_comms_button text="Back" />
+    <clear_comms_button text="Back" />
+    <clear_comms_button text="Delete" />
+    <set_variable name="redrawButtons" value="1" />
+  </event>
+  <event name="Delete Button1" id_arme="d2e1a8d3-ae8a-4fc9-96ff-3605e9eeca9f" parent_id_arme="7b9f62de-e740-4f37-a1ff-d40cea830297">
+    <if_comms_button text="Delete" />
+    <if_variable name="whichBackDelete" comparator="EQUALS" value="1" />
+    <clear_comms_button text="Back" />
+    <clear_comms_button text="Delete" />
+    <set_variable name="admiralButton" value="2" />
+    <set_variable name="redrawButtons" value="1" />
+  </event>
+  <event name="Delete Button2" id_arme="c84115b2-fd95-4848-bb74-d5150c87db39" parent_id_arme="7b9f62de-e740-4f37-a1ff-d40cea830297">
+    <if_comms_button text="Delete" />
+    <if_variable name="whichBackDelete" comparator="EQUALS" value="2" />
+    <clear_comms_button text="Back" />
+    <clear_comms_button text="Delete" />
+    <set_variable name="doctorButton" value="2" />
+    <set_variable name="redrawButtons" value="1" />
+  </event>
+  <event name="Delete Button3" id_arme="dff01a7d-8f6e-4b4c-8c7d-624577fcced8" parent_id_arme="7b9f62de-e740-4f37-a1ff-d40cea830297">
+    <if_comms_button text="Delete" />
+    <if_variable name="whichBackDelete" comparator="EQUALS" value="3" />
+    <clear_comms_button text="Back" />
+    <clear_comms_button text="Delete" />
+    <set_variable name="borlandButton" value="2" />
+    <set_variable name="redrawButtons" value="1" />
+  </event>
+  <event name="Redraw Admiral Button" id_arme="db093f7a-d7af-4ba1-89e9-43aa3fb7d3f5" parent_id_arme="7b9f62de-e740-4f37-a1ff-d40cea830297">
+    <!-- redraw buttons in response to back/delete -->
+    <if_variable name="redrawButtons" comparator="EQUALS" value="1" />
+    <if_variable name="admiralButton" comparator="EQUALS" value="1" />
+    <set_comms_button text="Admiral Grankov" sideValue="2" />
+  </event>
+  <event name="Redraw Doctor Button" id_arme="b8fc9885-9928-40e6-ac5b-0747b8d52f35" parent_id_arme="7b9f62de-e740-4f37-a1ff-d40cea830297">
+    <if_variable name="redrawButtons" comparator="EQUALS" value="1" />
+    <if_variable name="doctorButton" comparator="EQUALS" value="1" />
+    <set_comms_button text="Doctor Barnard" sideValue="2" />
+  </event>
+  <event name="Redraw Cargo Button" id_arme="637ed94b-ebf0-4b49-a8d7-3d5a75cd0eac" parent_id_arme="7b9f62de-e740-4f37-a1ff-d40cea830297">
+    <if_variable name="redrawButtons" comparator="EQUALS" value="1" />
+    <if_variable name="borlandButton" comparator="EQUALS" value="1" />
+    <set_comms_button text="Borland Cargo" sideValue="2" />
+  </event>
+  <event name="Redraw Buttons" id_arme="044e651a-f4e1-42db-9c31-104811a56e39" parent_id_arme="7b9f62de-e740-4f37-a1ff-d40cea830297">
+    <if_variable name="redrawButtons" comparator="EQUALS" value="1" />
+    <set_variable name="redrawButtons" value="0" />
+  </event>
+</mission_data>

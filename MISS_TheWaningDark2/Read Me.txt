@@ -1,0 +1,31 @@
+"The Waning Dark 2: Wane Harder"
+
+(Updated for Artemis 2.7.5)
+
+by Thom Robertson (updated by Richard Ryley and Ryan McMullan)
+
+Recommended for TSN Light Cruiser
+
+This mission script presents a simple exploration mission, with a small amount of voice acting to help 
+build immersion. Your crew has been assigned to transport a scientist, Doctor Barnard, to various 
+nebulae around the sector, so he can run experiments. Various malfunctions will keep your crew busy, 
+and enemy forces may be waiting to attack. 
+
+The Communications officer is very important for this mission. Comms should make sure to log in before 
+the game is started, and be ready for an incoming transmission from the Admiral. Once a message comes in, 
+the Communications officer will be able to play the message for the crew. Comms should be very careful not 
+to log out or lose connection to the game until it ends. If Comms does lose connection, all of the messages 
+previously received will be lost.
+
+This script can be set to any difficulty, but a lower difficulty, around 3-7, is intended. A higher difficulty 
+would make the game more serious and less comedic in nature. 
+
+YOU WILL NOT BE ABLE TO NAME YOUR SHIP ANYTHING OTHER THAN ARTEMIS.
+ 
+
+Good luck and have fun!
+
+Hints:
+The Communications Officer can hail friendly ships -- if they refuse to answer, that may mean trouble.
+The Communications Officer can wait to delete the audio messages, and play them again if the crew wants to review orders.
+The Communications Officer can also read the text of the audio messages on his Comms display.

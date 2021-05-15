@@ -1,0 +1,3 @@
+**** log file for mission MISS_Dawn_Patrol_2.0 ****
+Holocron Disk Sold for 4.0 Loot Score = 4.0
+Number of Loot Sold = 1.0

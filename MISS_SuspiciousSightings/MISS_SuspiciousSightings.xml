@@ -1,0 +1,1456 @@
+<mission_data version="1.0" background_id_arme="2583bcc6-5c91-40f5-a700-276cc7eb274d" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <mission_description>The commercial sector of Xaria has five stations and many cargo ships.  But a mysterious ship has just appeared! Attempt to solve the mystery in this Clue-style mystery mission! Player-selected Difficulty.</mission_description>
+  <start id_arme="2583bcc6-5c91-40f5-a700-276cc7eb274d">
+    <set_variable name="PlaytestMode" value="0.0" integer="yes" />
+    <create type="player" x="100000.0" y="0.0" z="100000.0" angle="45" name="SS cluefinder" warp="yes" jump="no" />
+    <set_skybox_index index="18" />
+    <set_object_property property="nebulaIsOpaque" value="0" />
+    <set_object_property property="sensorSetting" value="0" />
+    <set_object_property property="nonPlayerSpeed" value="100" />
+    <set_object_property property="nonPlayerShield" value="100" />
+    <set_object_property property="nonPlayerWeapon" value="100" />
+    <set_object_property property="playerWeapon" value="100" />
+    <set_object_property property="playerShields" value="100" />
+    <big_message title="Suspicious Sightings" subtitle1="Jamie McMullan, feat. Sarah McMullan" subtitle2="adventure for Artemis 2.7.5" />
+    <create type="station" x="36054.0" y="0.0" z="40556.0" name="DS ballroom" raceKeys="Terran" hullKeys="Civilian Base Base" sideValue="2" />
+    <create type="station" x="29952.0" y="0.0" z="64673.0" name="DS conservatory" raceKeys="Terran" hullKeys="Industrial Base Base" sideValue="2" />
+    <create type="station" x="57700.0" y="0.0" z="67869.0" name="DS study" raceKeys="Terran" hullKeys="Civilian Base Base" sideValue="2" />
+    <create type="station" x="70775.0" y="0.0" z="53631.0" name="DS library" raceKeys="Terran" hullKeys="Science Base Base" sideValue="2" />
+    <create type="station" x="60751.0" y="0.0" z="38523.0" name="DS lounge" raceKeys="Terran" hullKeys="Civilian Base Base" sideValue="2" />
+    <set_timer name="start_mission_timer_1" seconds="10" />
+    <set_variable name="stopper1" value="0.0" integer="yes" />
+    <set_variable name="stopper2" value="0.0" integer="yes" />
+    <set_variable name="stopper3" value="0.0" integer="yes" />
+    <set_variable name="frontstop" value="1.0" integer="yes" />
+    <set_variable name="backstop" value="1.0" integer="yes" />
+    <set_variable name="end_first" value="0.0" integer="yes" />
+    <set_variable name="appear 2" value="0.0" integer="yes" />
+    <set_variable name="round" value="0.0" integer="yes" />
+    <set_variable name="AlienShipState" value="0.0" integer="yes" />
+    <set_variable name="wrong stop1" value="1.0" integer="yes" />
+    <set_variable name="wrong stop2" value="1.0" integer="yes" />
+    <set_variable name="wrong stop3" value="1.0" integer="yes" />
+    <set_variable name="wrong stop4" value="1.0" integer="yes" />
+    <set_variable name="wrong stop5" value="1.0" integer="yes" />
+    <!--<set_variable name="wrong stop6" value="1.0" integer="yes" />-->
+    <!--<set_variable name="wrong stop7" value="1.0" integer="yes" />-->
+    <!--<set_variable name="wrong stop8" value="1.0" integer="yes" />-->
+    <!--<set_variable name="wrong stop9" value="1.0" integer="yes" />-->
+    <!--<set_variable name="wrong stop10" value="1.0" integer="yes" />-->
+    <set_variable name="bases gone" value="0.0" integer="yes" />
+    <set_timer name="round3timer" seconds="1" />
+    <set_variable name="destroy button timer" value="0.0" integer="yes" />
+    <set_variable name="stationdistance" value="3000.0" integer="yes" />
+    <create type="enemy" x="1000.0" y="0.0" z="0.0" angle="0" name="dentripitoid" raceKeys="BioMech enemy" hullKeys="Stage 2" sideValue="1" fleetnumber="-1" />
+    <set_ship_text name="dentripitoid" race="??????" class="???????" desc="a strange ship resembling a biomech, can't figure anything else out." scan_desc="still nothing." />
+    <create type="genericMesh" x="100.0" y="0.0" z="99000.0" name="shell" meshFileName="dat/asteroid.dxs" textureFileName="dat/skaraan_station_glow.png" colorRed="0.0" colorGreen="0.0" colorBlue="0.0" />
+    <create type="monster" monsterType="8" x="75581.0" y="0.0" z="69419.0" angle="0" name="arvonian military wreck" />
+    <create type="monster" monsterType="8" x="81474.0" y="0.0" z="36071.0" angle="0" name="arvonian civilian wreck" />
+    <create type="monster" monsterType="8" x="24554.0" y="0.0" z="26696.0" angle="0" name="military wreck" />
+    <create type="monster" monsterType="8" x="14509.0" y="0.0" z="85625.0" angle="0" name="whaling wreck" />
+    <set_object_property property="pushRadius" value="0.0" name="shell" />
+    <set_object_property property="artScale" value="0.3" name="shell" />
+    <add_ai type="TARGET_THROTTLE" value1="0.0" targetName="DS library" name="dentripitoid" />
+    <set_timer name="wreck1 timer" seconds="60" />
+    <set_timer name="wreck2 timer" seconds="80" />
+    <set_timer name="wreck3 timer" seconds="50" />
+    <set_timer name="wreck4 timer" seconds="65" />
+  </start>
+  <folder_arme name="Playtest Buttons" id_arme="ae25d74f-1f9d-45db-a667-cf31f4004ca5" expanded_arme="" />
+  <event name="Create Buttons" id_arme="824fc6ac-b4ee-4cca-8995-97857bfbaedc" parent_id_arme="ae25d74f-1f9d-45db-a667-cf31f4004ca5">
+    <if_variable name="PlaytestMode" comparator="EQUALS" value="1.0" />
+    <set_variable name="PlaytestMode" value="2.0" integer="yes" />
+    <set_comms_button text="Jump to Mystery" sideValue="2" />
+    <set_comms_button text="Jump to Center" sideValue="2" />
+    <set_comms_button text="Jump to Corner" sideValue="2" />
+  </event>
+  <event name="Jump to Ship Mystery" id_arme="72a048be-dbfa-4efb-8d0f-42da2d94e0fe" parent_id_arme="ae25d74f-1f9d-45db-a667-cf31f4004ca5">
+    <if_comms_button text="Jump to Mystery" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="1.0" />
+    <set_variable name="frontstop" value="1.0" integer="yes" />
+    <set_variable name="backstop" value="1.0" integer="yes" />
+    <set_object_property property="positionX" value="99000.0" name="dentripitoid" />
+    <set_object_property property="positionZ" value="99000.0" name="dentripitoid" />
+    <destroy name="dentripitoid" />
+    <destroy name="shell" />
+    <set_variable name="end_first" value="1.0" integer="yes" />
+    <set_variable name="AlienShipState" value="2.0" integer="yes" />
+  </event>
+  <event name="Jump to Center" id_arme="e9a80cb2-f4a2-41bc-92fe-3c41212ee30e" parent_id_arme="ae25d74f-1f9d-45db-a667-cf31f4004ca5">
+    <if_comms_button text="Jump to Center" />
+    <set_object_property property="positionX" value="50000.0" name="SS cluefinder" />
+    <set_object_property property="positionZ" value="50000.0" name="SS cluefinder" />
+  </event>
+  <event name="Jump to Corner" id_arme="2a4fe6fc-9282-4b59-a48c-3c894ee6cfa9" parent_id_arme="ae25d74f-1f9d-45db-a667-cf31f4004ca5">
+    <if_comms_button text="Jump to Corner" />
+    <set_object_property property="positionX" value="8000.0" name="SS cluefinder" />
+    <set_object_property property="positionZ" value="8000.0" name="SS cluefinder" />
+  </event>
+  <folder_arme name="first encounter" id_arme="4a20e5e6-7b56-4b76-9172-b9ba21409eb7" expanded_arme="" />
+  <event name="message1" id_arme="ce799284-5b78-4e98-8abf-49e7208e53fc" parent_id_arme="4a20e5e6-7b56-4b76-9172-b9ba21409eb7">
+    <if_variable name="stopper1" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="start_mission_timer_1" />
+    <incoming_comms_text from="lounge" sideValue="2" type="FRIEND">hello, SS cluefinder. this is DS lounge. yes, the captain of this area is quite to fond of his mystery books.</incoming_comms_text>
+    <set_timer name="shut_up_timer" seconds="10" />
+    <set_variable name="stopper1" value="1.0" integer="yes" />
+  </event>
+  <event name="message2" id_arme="1d9ae456-421d-428a-8546-212d9bedc2ae" parent_id_arme="4a20e5e6-7b56-4b76-9172-b9ba21409eb7">
+    <if_variable name="stopper2" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="shut_up_timer" />
+    <incoming_comms_text from="DS ballroom" sideValue="2" type="FRIEND">shut up.</incoming_comms_text>
+    <set_timer name="mysterious_ship_timer1" seconds="5" />
+    <set_variable name="stopper2" value="1.0" integer="yes" />
+  </event>
+  <event name="message3" id_arme="a5080679-67c2-42b7-9959-2802bd068f0b" parent_id_arme="4a20e5e6-7b56-4b76-9172-b9ba21409eb7">
+    <if_variable name="stopper3" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="mysterious_ship_timer1" />
+    <incoming_comms_text from="DS lounge" sideValue="2" type="FRIEND">yes yes. we have detected a ship inside the sector, but it is not responded to any type of message we send it.^well, not with any sense. our cargo ships are to worried to go out with a creepy alien about. wait a second. our scanners sh***</incoming_comms_text>
+    <set_timer name="mysterious_ship_timer2" seconds="15" />
+    <set_variable name="stopper3" value="1.0" integer="yes" />
+    <!--FOR TESTING-->
+    <!--<set_variable name="end_first" value="1.0" integer="yes" />-->
+    <!--<set_comms_button integer="yes" value="0.0" text="HitShields" sideValue="2" />-->
+  </event>
+  <event name="ship attack" id_arme="cc061c19-0597-44ea-a3d3-a0ccfc025089" parent_id_arme="4a20e5e6-7b56-4b76-9172-b9ba21409eb7">
+    <if_variable name="AlienShipState" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="mysterious_ship_timer2" />
+    <set_variable name="AlienShipState" value="1.0" integer="yes" />
+    <!--AlienShipState: 0=Initialize, 1=Created, 2=Disappeared-->
+    <set_object_property property="turnRate" value="1.0" name="dentripitoid" />
+    <add_ai type="ATTACK" targetName="SS cluefinder" value1="5.0" name="dentripitoid" />
+    <set_variable name="backstop" value="0.0" integer="yes" />
+    <set_variable name="frontstop" value="0.0" integer="yes" />
+  </event>
+  <event name="ship disapears front" id_arme="65b0df3c-a11b-49c0-b70b-78cddb7e77c1" parent_id_arme="4a20e5e6-7b56-4b76-9172-b9ba21409eb7">
+    <if_variable name="frontstop" comparator="EQUALS" value="0.0" />
+    <if_object_property property="shieldStateFront" name="dentripitoid" comparator="LESS_EQUAL" value="10" />
+    <set_variable name="backstop" value="1.0" integer="yes" />
+    <set_variable name="frontstop" value="1.0" integer="yes" />
+    <set_object_property property="positionX" value="99000.0" name="dentripitoid" />
+    <set_object_property property="positionZ" value="99000.0" name="dentripitoid" />
+    <destroy name="dentripitoid" />
+    <destroy name="shell" />
+    <set_variable name="end_first" value="1.0" integer="yes" />
+    <set_variable name="AlienShipState" value="2.0" integer="yes" />
+  </event>
+  <event name="ship disapears back" id_arme="52fa5408-dc7b-4761-90d7-7853c6314071" parent_id_arme="4a20e5e6-7b56-4b76-9172-b9ba21409eb7">
+    <if_variable name="backstop" comparator="EQUALS" value="0.0" />
+    <if_object_property property="shieldStateBack" name="dentripitoid" comparator="LESS_EQUAL" value="10" />
+    <set_variable name="frontstop" value="1.0" integer="yes" />
+    <set_variable name="backstop" value="1.0" integer="yes" />
+    <set_object_property property="positionX" value="99000.0" name="dentripitoid" />
+    <set_object_property property="positionZ" value="99000.0" name="dentripitoid" />
+    <destroy name="dentripitoid" />
+    <destroy name="shell" />
+    <set_variable name="end_first" value="1.0" integer="yes" />
+    <set_variable name="AlienShipState" value="2.0" integer="yes" />
+  </event>
+  <disabled_event name="Test: shield hit" id_arme="da496865-6a35-48d5-88a9-f0109c9321f2" parent_id_arme="4a20e5e6-7b56-4b76-9172-b9ba21409eb7">
+    <if_comms_button text="HitShields" />
+    <set_object_property property="shieldStateFront" value="5" name="dentripitoid" />
+  </disabled_event>
+  <folder_arme name="movement cycle" id_arme="b2540aa6-cee4-4606-b050-df863dd07a83" expanded_arme="" />
+  <event name="message4" id_arme="dfb5b5d1-d4f1-42ae-8d94-f9aa9e2a82fa" parent_id_arme="b2540aa6-cee4-4606-b050-df863dd07a83">
+    <if_variable name="end_first" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="you see the ship's shape materialize into the form of a cargo carrier and teleport away." consoles="MHWESCOF" player_slot="0" />
+    <incoming_comms_text from="DS lounge" sideValue="2" type="FRIEND">Masterfully done! though the ship escaped, our cargo carriers can now return to they're daily schedule. feel free to stay here as long as you like. for safety purposes though, we must do short range communtication for security reasons, having the mysterious ship and all. and one last thing, be careful of the nsect nests! huh. I though we only had 4 cargo ships. oh well! the more the marrier! </incoming_comms_text>
+    <set_variable name="end_first" value="2.0" integer="yes" />
+    <set_variable name="traitor" randomIntLow="1" randomIntHigh="5" integer="yes" />
+    <create type="neutral" x="57410.0" y="0.0" z="67723.0" angle="0" name="peacock" raceKeys="Terran" hullKeys="cargo" />
+    <create type="neutral" x="29807.0" y="0.0" z="64963.0" angle="0" name="plum" raceKeys="Terran" hullKeys="cargo" />
+    <create type="neutral" x="71792.0" y="0.0" z="53777.0" angle="0" name="mustard" raceKeys="Terran" hullKeys="cargo" />
+    <create type="neutral" x="57555.0" y="0.0" z="68159.0" angle="0" name="scarlet" raceKeys="Terran" hullKeys="cargo" />
+    <create type="neutral" x="36199.0" y="0.0" z="40702.0" angle="0" name="green" raceKeys="Terran" hullKeys="cargo" />
+    <!--<create type="neutral" x="29807.0" y="0.0" z="64673.0" angle="0" name="6" raceKeys="Terran" hullKeys="cargo" />-->
+    <!--<create type="neutral" x="71502.0" y="0.0" z="53341.0" angle="0" name="7" raceKeys="Terran" hullKeys="cargo" />-->
+    <!--<create type="neutral" x="61187.0" y="0.0" z="38813.0" angle="0" name="8" raceKeys="Terran" hullKeys="cargo" />-->
+    <!--<create type="neutral" x="35618.0" y="0.0" z="40121.0" angle="0" name="9" raceKeys="Terran" hullKeys="cargo" />-->
+    <!--<create type="neutral" x="61768.0" y="0.0" z="38232.0" angle="0" name="10" raceKeys="Terran" hullKeys="cargo" />-->
+    <set_object_property property="shieldMaxStateBack" value="100" name="peacock" />
+    <set_object_property property="shieldMaxStateFront" value="100" name="peacock" />
+    <set_object_property property="shieldStateFront" value="100" name="peacock" />
+    <set_object_property property="shieldStateBack" value="100" name="peacock" />
+    <set_object_property property="shieldStateBack" value="100" name="plum" />
+    <set_object_property property="shieldStateFront" value="100" name="plum" />
+    <set_object_property property="shieldMaxStateFront" value="100" name="plum" />
+    <set_object_property property="shieldMaxStateBack" value="100" name="plum" />
+    <set_object_property property="shieldStateBack" value="100" name="mustard" />
+    <set_object_property property="shieldStateFront" value="100" name="mustard" />
+    <set_object_property property="shieldMaxStateFront" value="100" name="mustard" />
+    <set_object_property property="shieldMaxStateBack" value="100" name="mustard" />
+    <set_object_property property="shieldStateBack" value="100" name="scarlet" />
+    <set_object_property property="shieldStateFront" value="100" name="scarlet" />
+    <set_object_property property="shieldMaxStateFront" value="100" name="scarlet" />
+    <set_object_property property="shieldMaxStateBack" value="100" name="scarlet" />
+    <set_object_property property="shieldStateBack" value="100" name="green" />
+    <set_object_property property="shieldStateFront" value="100" name="green" />
+    <set_object_property property="shieldMaxStateFront" value="100" name="green" />
+    <set_object_property property="shieldMaxStateBack" value="100" name="green" />
+    <!--<set_object_property integer="yes" value="100" property="shieldStateBack" name="6" />-->
+    <!--<set_object_property integer="yes" value="100" property="shieldStateFront" name="6" />-->
+    <!--<set_object_property integer="yes" value="100" property="shieldMaxStateFront" name="6" />-->
+    <!--<set_object_property integer="yes" value="100" property="shieldMaxStateBack" name="6" />-->
+    <!--<set_object_property integer="yes" value="100" property="shieldStateBack" name="7" />-->
+    <!--<set_object_property integer="yes" value="100" property="shieldStateFront" name="7" />-->
+    <!--<set_object_property integer="yes" value="100" property="shieldMaxStateFront" name="7" />-->
+    <!--<set_object_property integer="yes" value="100" property="shieldMaxStateBack" name="7" />-->
+    <!--<set_object_property integer="yes" value="100" property="shieldStateBack" name="8" />-->
+    <!--<set_object_property integer="yes" value="100" property="shieldStateFront" name="8" />-->
+    <!--<set_object_property integer="yes" value="100" property="shieldMaxStateFront" name="8" />-->
+    <!--<set_object_property integer="yes" value="100" property="shieldMaxStateBack" name="8" />-->
+    <!--<set_object_property integer="yes" value="100" property="shieldStateBack" name="9" />-->
+    <!--<set_object_property integer="yes" value="100" property="shieldStateFront" name="9" />-->
+    <!--<set_object_property integer="yes" value="100" property="shieldMaxStateFront" name="9" />-->
+    <!--<set_object_property integer="yes" value="100" property="shieldMaxStateBack" name="9" />-->
+    <!--<set_object_property integer="yes" value="100" property="shieldStateBack" name="10" />-->
+    <!--<set_object_property integer="yes" value="100" property="shieldStateFront" name="10" />-->
+    <!--<set_object_property integer="yes" value="100" property="shieldMaxStateFront" name="10" />-->
+    <!--<set_object_property integer="yes" value="100" property="shieldMaxStateBack" name="10" />-->
+    <set_variable name="wrong stop1" value="0.0" integer="yes" />
+    <set_variable name="wrong stop2" value="0.0" integer="yes" />
+    <set_variable name="wrong stop3" value="0.0" integer="yes" />
+    <set_variable name="wrong stop4" value="0.0" integer="yes" />
+    <set_variable name="wrong stop5" value="0.0" integer="yes" />
+    <!--<set_variable integer="yes" value="0.0" name="wrong stop6" />-->
+    <!--<set_variable integer="yes" value="0.0" name="wrong stop7" />-->
+    <!--<set_variable integer="yes" value="0.0" name="wrong stop8" />-->
+    <!--<set_variable integer="yes" value="0.0" name="wrong stop9" />-->
+    <set_variable name="round" value="3.0" integer="yes" />
+    <!--<set_variable integer="yes" value="0.0" name="wrong stop10" />-->
+  </event>
+  <folder_arme name="round1" id_arme="9e9d92fe-a19d-48d1-a069-c094eb45324a" parent_id_arme="b2540aa6-cee4-4606-b050-df863dd07a83" expanded_arme="" />
+  <event name="movements" id_arme="e1b62027-3344-4ada-880b-3baf7f790eab" parent_id_arme="9e9d92fe-a19d-48d1-a069-c094eb45324a">
+    <if_object_property property="throttle" name="peacock" comparator="EQUALS" value="0.0" />
+    <if_object_property property="throttle" name="plum" comparator="EQUALS" value="0.0" />
+    <if_object_property property="throttle" name="mustard" comparator="EQUALS" value="0.0" />
+    <if_object_property property="throttle" name="scarlet" comparator="EQUALS" value="0.0" />
+    <if_object_property property="throttle" name="green" comparator="EQUALS" value="0.0" />
+    <!--<if_object_property comparator="EQUALS" property="throttle" name="6" value="0.0" />-->
+    <!--<if_object_property comparator="EQUALS" property="throttle" name="7" value="0.0" />-->
+    <!--<if_object_property comparator="EQUALS" property="throttle" name="8" value="0.0" />-->
+    <!--<if_object_property comparator="EQUALS" property="throttle" name="9" value="0.0" />-->
+    <!--<if_object_property comparator="EQUALS" property="throttle" name="10" value="0.0" />-->
+    <if_variable name="end_first" comparator="EQUALS" value="2.0" />
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <if_timer_finished name="round3timer" />
+    <!--top right: ballroom 5 9-->
+    <!--bottom left: conservatory 2 6-->
+    <!--bottom right: study 1 4-->
+    <!--top left: lounge 10 8-->
+    <!--far left: library 3 7-->
+    <add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS ballroom" value2="peacock" name="peacock" />
+    <add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS study" value2="3" name="plum" />
+    <add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS lounge" value2="3" name="mustard" />
+    <add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS conservatory" value2="3" name="scarlet" />
+    <add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS library" value2="3" name="green" />
+    <!--<add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS study" value2="3" name="6" />-->
+    <!--<add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS ballroom" value2="3" name="7" />-->
+    <!--<add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS conservatory" value2="3" name="8" />-->
+    <!--<add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS lounge" value2="3" name="9" />-->
+    <!--<add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS library" value2="1" name="10" />-->
+    <set_variable name="end_first" value="3.0" integer="yes" />
+    <set_variable name="round" value="1.0" integer="yes" />
+    <set_timer name="round1timer" seconds="10" />
+  </event>
+  <folder_arme name="comms button response" id_arme="c77d484d-d88b-45e2-964b-d96a4e84e511" parent_id_arme="9e9d92fe-a19d-48d1-a069-c094eb45324a" expanded_arme="" />
+  <event name="ship peacock" id_arme="538f67bd-af19-440a-ae9d-8c9423d862e0" parent_id_arme="c77d484d-d88b-45e2-964b-d96a4e84e511">
+    <if_comms_button text="ask about peacock" />
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <if_variable name="traitor" comparator="NOT" value="1.0" />
+    <incoming_comms_text from="DS study" type="FRIEND">study) Good day, Cluefinder. You are correct, the ship calling itself "Peacock" recently departed. The captain offended our maintenance staff by denying them access to the ship for standard resupply purposes.^</incoming_comms_text>
+  </event>
+  <event name="ship plum" id_arme="0e993f1f-30b3-4cd7-adba-c84f7f8e383c" parent_id_arme="c77d484d-d88b-45e2-964b-d96a4e84e511">
+    <if_comms_button text="ask about plum" />
+    <if_variable name="traitor" comparator="NOT" value="2.0" />
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="DS conservatory" type="FRIEND">Conservatory) Yeah, Plum docked here to trade. It was weird - the captain looked Ximni, but had purple eyes. I've never heard of a purple-eyed Ximni, have you?^</incoming_comms_text>
+  </event>
+  <event name="ship mustard" id_arme="f55dc5bb-b111-45b7-93e8-3d7f4ec4ada8" parent_id_arme="c77d484d-d88b-45e2-964b-d96a4e84e511">
+    <if_comms_button text="ask about mustard" />
+    <if_variable name="traitor" comparator="NOT" value="3.0" />
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="DS library" type="FRIEND">library) SS Cluefinder - Indeed, Mustard was here. Purchased large supply of high-tech security gear.^</incoming_comms_text>
+  </event>
+  <event name="ship scarlet" id_arme="fd6939f0-4cd6-4b14-bcd2-ca6e8431b532" parent_id_arme="c77d484d-d88b-45e2-964b-d96a4e84e511">
+    <if_comms_button text="ask about scarlet" />
+    <if_variable name="traitor" comparator="NOT" value="4.0" />
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="DS study" type="FRIEND">study) Lovely to speak with you, Cluefinder. The ship called "Scarlet" was here recently. Very strange - passers-by at the docks reported a great deal of yelling coming from the ship, in a language that our computers didn't recognize. ^</incoming_comms_text>
+  </event>
+  <event name="ship green" id_arme="d59172ee-673e-4f76-bf46-8c720d7a7891" parent_id_arme="c77d484d-d88b-45e2-964b-d96a4e84e511">
+    <if_comms_button text="ask about green" />
+    <if_variable name="traitor" comparator="NOT" value="5.0" />
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="DS ballroom" type="FRIEND">ballroom) Hullo there! Aye, we saw Green. Rumor has it that they were buying up all the torpedoes they could get. Dunna tell them I said so!^</incoming_comms_text>
+  </event>
+  <disabled_event name="ship 6" id_arme="ca34106b-c8b5-488c-ad6d-23063e9acf71" parent_id_arme="c77d484d-d88b-45e2-964b-d96a4e84e511">
+    <if_comms_button text="ask about 6" />
+    <if_variable name="traitor" comparator="NOT" value="6.0" />
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="DS conservatory" type="FRIEND">I'm not sure about 6. they just made a preeeeetty shady deal with 2 and are now heading of for DS study.</incoming_comms_text>
+  </disabled_event>
+  <disabled_event name="ship 7" id_arme="c688d386-4e6b-48a9-84ed-384889727502" parent_id_arme="c77d484d-d88b-45e2-964b-d96a4e84e511">
+    <if_comms_button text="ask about 7" />
+    <if_variable name="traitor" comparator="NOT" value="7.0" />
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="DS library" type="FRIEND">7 just sold some steel to 3. they are great metalworkers there, and I beleve they are heading off to DS ballroom to sell more of those goods.</incoming_comms_text>
+  </disabled_event>
+  <disabled_event name="ship 8" id_arme="b01b7606-167a-47a4-9f1f-282405c1b044" parent_id_arme="c77d484d-d88b-45e2-964b-d96a4e84e511">
+    <if_comms_button text="ask about 8" />
+    <if_variable name="traitor" comparator="NOT" value="8.0" />
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="DS lounge" type="FRIEND">8's been pretty quiet. they're setting off for DS conservatory to get some goods from 4.</incoming_comms_text>
+  </disabled_event>
+  <disabled_event name="ship 9" id_arme="a85e8eac-bbf2-4d21-95e6-f77358cfb5a1" parent_id_arme="c77d484d-d88b-45e2-964b-d96a4e84e511">
+    <if_comms_button text="ask about 9" />
+    <if_variable name="traitor" comparator="NOT" value="9.0" />
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="DS library" type="FRIEND">heading to rendevue with 3 at DS lounge, just picked up some furs to trade them.</incoming_comms_text>
+  </disabled_event>
+  <disabled_event name="ship 10" id_arme="7ce6894f-2756-4672-9935-286c84c69ef0" parent_id_arme="c77d484d-d88b-45e2-964b-d96a4e84e511">
+    <if_comms_button text="ask about 10" />
+    <if_variable name="traitor" comparator="NOT" value="10.0" />
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="DS lounge" type="FRIEND">10 just sold some cetrocite crystals to 8, and is now heading off to DS library to grab some glassworks from 5.</incoming_comms_text>
+  </disabled_event>
+  <event name="traitor button peacock" id_arme="de36872e-037f-4ec1-a52c-762c4f6ca188" parent_id_arme="c77d484d-d88b-45e2-964b-d96a4e84e511">
+    <if_comms_button text="ask about peacock" />
+    <if_variable name="traitor" comparator="EQUALS" value="1.0" />
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="DS study">study) Good day, Cluefinder. You are correct, the ship calling itself "Peacock" recently departed. The captain offended our maintenance staff by denying them access to the ship for standard resupply purposes.^</incoming_comms_text>
+  </event>
+  <event name="traitor button plum" id_arme="3b91fa6c-1e7f-4fe6-a1bc-627dee51a766" parent_id_arme="c77d484d-d88b-45e2-964b-d96a4e84e511">
+    <if_comms_button text="ask about plum" />
+    <if_variable name="traitor" comparator="EQUALS" value="2.0" />
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="DS conservatory">Conservatory) Yeah, Plum docked here to trade. It was weird - the captain looked Ximni, but had purple eyes. I've never heard of a purple-eyed Ximni, have you?^</incoming_comms_text>
+  </event>
+  <event name="traitor button mustard" id_arme="f744534b-bf20-42bc-bf49-eab3c69380cf" parent_id_arme="c77d484d-d88b-45e2-964b-d96a4e84e511">
+    <if_comms_button text="ask about mustard" />
+    <if_variable name="traitor" comparator="EQUALS" value="3.0" />
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="DS library">library) SS Cluefinder - Indeed, Mustard was here. Purchased large supply of high-tech security gear.^</incoming_comms_text>
+  </event>
+  <event name="traitor button scarlet" id_arme="75dff42c-f6c9-44c6-95d8-6c443ac3cf47" parent_id_arme="c77d484d-d88b-45e2-964b-d96a4e84e511">
+    <if_comms_button text="ask about scarlet" />
+    <if_variable name="traitor" comparator="EQUALS" value="4.0" />
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="DS study">study) Lovely to speak with you, Cluefinder. The ship called "Scarlet" was here recently. Very strange - passers-by at the docks reported a great deal of yelling coming from the ship, in a language that our computers didn't recognize. ^</incoming_comms_text>
+  </event>
+  <event name="traitor button green" id_arme="1e856810-fbc9-4f6b-9c86-384bc5bea0ae" parent_id_arme="c77d484d-d88b-45e2-964b-d96a4e84e511">
+    <if_comms_button text="ask about green" />
+    <if_variable name="traitor" comparator="EQUALS" value="5.0" />
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="DS ballroom">ballroom) Hullo there! Aye, we saw Green. Rumor has it that they were buying up all the torpedoes they could get. Dunna tell them I said so!^</incoming_comms_text>
+  </event>
+  <disabled_event name="traitor button 6" id_arme="b3a64909-f3ff-4175-b2e8-b3c0e2d041b0" parent_id_arme="c77d484d-d88b-45e2-964b-d96a4e84e511">
+    <if_comms_button text="ask about 6" />
+    <if_variable name="traitor" comparator="EQUALS" value="1.0" />
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text />
+  </disabled_event>
+  <disabled_event name="traitor button 7" id_arme="6b855f34-358e-40f4-acb5-90bafe5ed1b0" parent_id_arme="c77d484d-d88b-45e2-964b-d96a4e84e511">
+    <if_comms_button text="ask about 7" />
+    <if_variable name="traitor" comparator="EQUALS" value="1.0" />
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text />
+  </disabled_event>
+  <disabled_event name="traitor button 8" id_arme="43af98dc-e1e9-42cf-97b0-0943c399202e" parent_id_arme="c77d484d-d88b-45e2-964b-d96a4e84e511">
+    <if_comms_button text="ask about 8" />
+    <if_variable name="traitor" comparator="EQUALS" value="1.0" />
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text />
+  </disabled_event>
+  <disabled_event name="traitor button 9" id_arme="bb780983-627c-4b87-8f6d-ba53d18bbf1a" parent_id_arme="c77d484d-d88b-45e2-964b-d96a4e84e511">
+    <if_comms_button text="ask about 9" />
+    <if_variable name="traitor" comparator="EQUALS" value="1.0" />
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text />
+  </disabled_event>
+  <disabled_event name="traitor button 10" id_arme="bb886b63-5d65-4980-825b-6d7df9d77929" parent_id_arme="c77d484d-d88b-45e2-964b-d96a4e84e511">
+    <if_comms_button text="ask about 10" />
+    <if_variable name="traitor" comparator="EQUALS" value="1.0" />
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text />
+  </disabled_event>
+  <folder_arme name="round2" id_arme="a3da912a-c827-4298-92ac-21471873b029" parent_id_arme="b2540aa6-cee4-4606-b050-df863dd07a83" expanded_arme="" />
+  <event name="movements" id_arme="decfdf1a-5d3c-4a46-868c-0cb2f17f48a5" parent_id_arme="a3da912a-c827-4298-92ac-21471873b029">
+    <if_object_property property="throttle" name="peacock" comparator="EQUALS" value="0.0" />
+    <if_object_property property="throttle" name="plum" comparator="EQUALS" value="0.0" />
+    <if_object_property property="throttle" name="mustard" comparator="EQUALS" value="0.0" />
+    <if_object_property property="throttle" name="scarlet" comparator="EQUALS" value="0.0" />
+    <if_object_property property="throttle" name="green" comparator="EQUALS" value="0.0" />
+    <!--<if_object_property comparator="EQUALS" property="throttle" name="6" value="0.0" />-->
+    <!--<if_object_property comparator="EQUALS" property="throttle" name="7" value="0.0" />-->
+    <!--<if_object_property comparator="EQUALS" property="throttle" name="8" value="0.0" />-->
+    <!--<if_object_property comparator="EQUALS" property="throttle" name="9" value="0.0" />-->
+    <!--<if_object_property comparator="EQUALS" property="throttle" name="10" value="0.0" />-->
+    <if_timer_finished name="round1timer" />
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <!--top right: ballroom 1 7-->
+    <!--bottom left: conservatory 4 8-->
+    <!--bottom right: study 5 6-->
+    <!--top left: lounge 9 3-->
+    <!--far left: library 10 2-->
+    <add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS study" value2="peacock" name="peacock" />
+    <add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS ballroom" value2="3" name="plum" />
+    <add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS library" value2="3" name="mustard" />
+    <add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS lounge" value2="3" name="scarlet" />
+    <add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS conservatory" value2="3" name="green" />
+    <!--<add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS library" value2="3" name="6" />-->
+    <!--<add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS study" value2="3" name="7" />-->
+    <!--<add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS lounge" value2="3" name="8" />-->
+    <!--<add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS ballroom" value2="3" name="9" />-->
+    <!--<add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS conservatory" value2="1" name="10" />-->
+    <set_variable name="round" value="2.0" integer="yes" />
+    <set_timer name="round2timer" seconds="10" />
+  </event>
+  <folder_arme name="comms button response" id_arme="16e0722a-bc74-463e-953c-c3223853f4e7" parent_id_arme="a3da912a-c827-4298-92ac-21471873b029" expanded_arme="" />
+  <event name="ship peacock" id_arme="8c4d0bd0-85a4-4353-9747-cfa5d8402c7e" parent_id_arme="16e0722a-bc74-463e-953c-c3223853f4e7">
+    <if_comms_button text="ask about peacock" />
+    <if_variable name="traitor" comparator="NOT" value="1.0" />
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text from="DS ballroom" type="FRIEND">ballroom) Oy, Cluefinder! You want to know about Peacock? They just left. I hear they bought some weird chemicals at one of the station shops. Wonder what that's all about?^</incoming_comms_text>
+  </event>
+  <event name="ship plum" id_arme="5b1b92ec-8703-412f-b7ed-153750e7a357" parent_id_arme="16e0722a-bc74-463e-953c-c3223853f4e7">
+    <if_comms_button text="ask about plum" />
+    <if_variable name="traitor" comparator="NOT" value="2.0" />
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text from="DS study" type="FRIEND">study) Greetings, Cluefinder. Indeed, the ship designated "Plum" recently left. My observation is that the Ximni captain requires diction lessons - he was slurring his words terribly.^</incoming_comms_text>
+  </event>
+  <event name="ship mustard" id_arme="2c54e7be-f8b8-490f-8f91-42cbe29e83d5" parent_id_arme="16e0722a-bc74-463e-953c-c3223853f4e7">
+    <if_comms_button text="ask about mustard" />
+    <if_variable name="traitor" comparator="NOT" value="3.0" />
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text from="DS lounge" type="FRIEND">lounge) Heya, Cluey! How's it going? Ya wanna know about Mustard? They wouldn't tell anyone what they're transporting, but there were strange noises coming from their hold and they used a ton of electricity while they were docked.^</incoming_comms_text>
+  </event>
+  <event name="ship scarlet" id_arme="253d96b3-7d40-49e6-b7c2-afcaf6966a42" parent_id_arme="16e0722a-bc74-463e-953c-c3223853f4e7">
+    <if_comms_button text="ask about scarlet" />
+    <if_variable name="traitor" comparator="NOT" value="4.0" />
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text from="DS conservatory" type="FRIEND">conservatory) Hi again, Cluefinder! Yeah, that Scarlet ship is an odd one. One of our deck hands told me she heard some weird chanting, and when the door opened she peeked in and saw people dancing around a purple fire. What's that about?^</incoming_comms_text>
+  </event>
+  <event name="ship green" id_arme="0f84f4f6-0e94-44ea-b777-1d058e0f545e" parent_id_arme="16e0722a-bc74-463e-953c-c3223853f4e7">
+    <if_comms_button text="ask about green" />
+    <if_variable name="traitor" comparator="NOT" value="5.0" />
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text from="DS library" type="FRIEND">library) SS Cluefinder, welcome. Affirmative, Green docked here. Requisitioned tauron focusers. Authorization codes passed a cursory exam, but if you're concerned we can radio their home port to verify. Should have a response in 24 hours. ^</incoming_comms_text>
+  </event>
+  <disabled_event name="ship 6" id_arme="1fe22c7a-c226-45b0-a367-b466a68dd1f1" parent_id_arme="16e0722a-bc74-463e-953c-c3223853f4e7">
+    <if_comms_button text="ask about 6" />
+    <if_variable name="traitor" comparator="NOT" value="6.0" />
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text from="DS conservatory" type="FRIEND">I'm not sure about 6. they just made a preeeeetty shady deal with 2 and are now heading of for DS study.</incoming_comms_text>
+  </disabled_event>
+  <disabled_event name="ship 8" id_arme="4c1c7d61-2add-4f05-b286-45d8803658b6" parent_id_arme="16e0722a-bc74-463e-953c-c3223853f4e7">
+    <if_comms_button text="ask about 8" />
+    <if_variable name="traitor" comparator="NOT" value="8.0" />
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text from="DS lounge" type="FRIEND">8's been pretty quiet. they're setting off for DS conservatory to get some goods from 4.</incoming_comms_text>
+  </disabled_event>
+  <disabled_event name="ship 7" id_arme="eb96f045-a837-4e62-8032-d2ecba17ed05" parent_id_arme="16e0722a-bc74-463e-953c-c3223853f4e7">
+    <if_comms_button text="ask about 7" />
+    <if_variable name="traitor" comparator="NOT" value="7.0" />
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text from="DS library" type="FRIEND">7 just sold some steel to 3. they are great metalworkers there, and I beleve they are heading off to DS ballroom to sell more of those goods.</incoming_comms_text>
+  </disabled_event>
+  <disabled_event name="ship 9" id_arme="8b40f0a1-895b-4c3a-8a66-42d3a7438233" parent_id_arme="16e0722a-bc74-463e-953c-c3223853f4e7">
+    <if_comms_button text="ask about 9" />
+    <if_variable name="traitor" comparator="NOT" value="9.0" />
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text from="DS library" type="FRIEND">heading to rendevue with 3 at DS lounge, just picked up some furs to trade them.</incoming_comms_text>
+  </disabled_event>
+  <disabled_event name="ship 10" id_arme="17b5e610-5aea-479a-9531-b66c27f667f9" parent_id_arme="16e0722a-bc74-463e-953c-c3223853f4e7">
+    <if_comms_button text="ask about 10" />
+    <if_variable name="traitor" comparator="NOT" value="10.0" />
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text from="DS lounge" type="FRIEND">10 just sold some cetrocite crystals to 8, and is now heading off to DS library to grab some glassworks from 5.</incoming_comms_text>
+  </disabled_event>
+  <event name="traitor button peacock" id_arme="3677f453-7f47-48e7-b319-71f357c0d64a" parent_id_arme="16e0722a-bc74-463e-953c-c3223853f4e7">
+    <if_comms_button text="ask about peacock" />
+    <if_variable name="traitor" comparator="EQUALS" value="1.0" />
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text from="DS ballroom">ballroom) Oy, Cluefinder! You want to know about Peacock? They just left. I hear they bought some weird electronic equipment at one of the station shops. Wonder what that's all about?^</incoming_comms_text>
+  </event>
+  <event name="traitor button plum" id_arme="dd24b3ef-bfd2-436f-9edc-27adca6ff14e" parent_id_arme="16e0722a-bc74-463e-953c-c3223853f4e7">
+    <if_comms_button text="ask about plum" />
+    <if_variable name="traitor" comparator="EQUALS" value="2.0" />
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text from="DS library">Library) Greetings, Cluefinder. Indeed, the ship deisignated "Plum" recently left. I understand the the Ximni captain had dinner at our steak house. Strange, considering that Ximni cannot metabolize terran meat.^</incoming_comms_text>
+  </event>
+  <event name="traitor button mustard" id_arme="d70504a0-ea8e-4d45-aae4-d664cc08dff1" parent_id_arme="16e0722a-bc74-463e-953c-c3223853f4e7">
+    <if_comms_button text="ask about mustard" />
+    <if_variable name="traitor" comparator="EQUALS" value="3.0" />
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text from="DS lounge">lounge) Heya, Cluey! How's it going? Ya wanna know about Mustard? They wouldn't tell anyone what they're transporting, but there was a weird purple glow coming from their hold and they used a ton of electricity while they were docked.^</incoming_comms_text>
+  </event>
+  <event name="traitor button scarlet" id_arme="8c15bdf0-8523-4402-b580-5f78b40dbf3c" parent_id_arme="16e0722a-bc74-463e-953c-c3223853f4e7">
+    <if_comms_button text="ask about scarlet" />
+    <if_variable name="traitor" comparator="EQUALS" value="4.0" />
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text from="DS conservatory">conservatory) Yeah, Scarlet was here. I didn't pay much attention at the time, but then my buddy at the grocery mentioned that they ordered enough food for an army. Not field rations, but fresh food. Since cargo ships usually have a crew of half a dozen, wonder who's going to eat all that cheese?^</incoming_comms_text>
+  </event>
+  <event name="traitor button green" id_arme="40cb2724-ba13-47fb-b40b-6774f57e28eb" parent_id_arme="16e0722a-bc74-463e-953c-c3223853f4e7">
+    <if_comms_button text="ask about green" />
+    <if_variable name="traitor" comparator="EQUALS" value="5.0" />
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text from="DS library">library) SS Cluefinder, welcome. Affirmative, Green docked here. Requisitioned tauron focusers. Authorization codes passed a cursory exam, but if you're concerned we can radio their home port to verify. Should have a response in 24 hours. ^</incoming_comms_text>
+  </event>
+  <disabled_event name="traitor button 7" id_arme="98921092-20e6-48f0-9e9c-ed3c6eccdb5a" parent_id_arme="16e0722a-bc74-463e-953c-c3223853f4e7">
+    <if_comms_button text="ask about 7" />
+    <if_variable name="traitor" comparator="EQUALS" value="1.0" />
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text />
+  </disabled_event>
+  <disabled_event name="traitor button 8" id_arme="0a2685f4-7974-41e8-a1cd-8ebed305a142" parent_id_arme="16e0722a-bc74-463e-953c-c3223853f4e7">
+    <if_comms_button text="ask about 8" />
+    <if_variable name="traitor" comparator="EQUALS" value="1.0" />
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text />
+  </disabled_event>
+  <disabled_event name="traitor button 9" id_arme="92b86263-546b-4076-9148-741893e56888" parent_id_arme="16e0722a-bc74-463e-953c-c3223853f4e7">
+    <if_comms_button text="ask about 9" />
+    <if_variable name="traitor" comparator="EQUALS" value="1.0" />
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text />
+  </disabled_event>
+  <disabled_event name="traitor button 6" id_arme="0d41357c-dbd5-4c8e-a06b-08dfb48a3acf" parent_id_arme="16e0722a-bc74-463e-953c-c3223853f4e7">
+    <if_comms_button text="ask about 6" />
+    <if_variable name="traitor" comparator="EQUALS" value="1.0" />
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text />
+  </disabled_event>
+  <disabled_event name="traitor button 10" id_arme="f4157f7d-be40-4d26-bbfd-f13c456527df" parent_id_arme="16e0722a-bc74-463e-953c-c3223853f4e7">
+    <if_comms_button text="ask about 10" />
+    <if_variable name="traitor" comparator="EQUALS" value="1.0" />
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text />
+  </disabled_event>
+  <folder_arme name="round3" id_arme="d06fda44-f20d-4887-86b9-34d7dfce3ab5" parent_id_arme="b2540aa6-cee4-4606-b050-df863dd07a83" expanded_arme="" />
+  <event name="movements" id_arme="3f22e96b-e088-4384-8a62-d95cbe25412e" parent_id_arme="d06fda44-f20d-4887-86b9-34d7dfce3ab5">
+    <if_object_property property="throttle" name="peacock" comparator="EQUALS" value="0.0" />
+    <if_object_property property="throttle" name="plum" comparator="EQUALS" value="0.0" />
+    <if_object_property property="throttle" name="mustard" comparator="EQUALS" value="0.0" />
+    <if_object_property property="throttle" name="scarlet" comparator="EQUALS" value="0.0" />
+    <if_object_property property="throttle" name="green" comparator="EQUALS" value="0.0" />
+    <!--<if_object_property comparator="EQUALS" property="throttle" name="6" value="0.0" />-->
+    <!--<if_object_property comparator="EQUALS" property="throttle" name="7" value="0.0" />-->
+    <!--<if_object_property comparator="EQUALS" property="throttle" name="8" value="0.0" />-->
+    <!--<if_object_property comparator="EQUALS" property="throttle" name="9" value="0.0" />-->
+    <!--<if_object_property comparator="EQUALS" property="throttle" name="10" value="0.0" />-->
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="round2timer" />
+    <!--top right: ballroom 5 9-->
+    <!--bottom left: conservatory 2 6-->
+    <!--bottom right: study 1 4-->
+    <!--top left: lounge 10 8-->
+    <!--far left: library 3 7-->
+    <add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS study" value2="peacock" name="peacock" />
+    <add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS conservatory" value2="1" name="plum" />
+    <add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS library" value2="1" name="mustard" />
+    <add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS study" value2="1" name="scarlet" />
+    <add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS ballroom" value2="1" name="green" />
+    <!--<add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS conservatory" value2="1" name="6" />-->
+    <!--<add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS library" value2="1" name="7" />-->
+    <!--<add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS lounge" value2="1" name="8" />-->
+    <!--<add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS ballroom" value2="1" name="9" />-->
+    <!--<add_ai type="TARGET_THROTTLE" value1="3.0" targetName="DS lounge" value2="1" name="10" />-->
+    <set_variable name="round" value="3.0" integer="yes" />
+    <set_timer name="round3timer" seconds="10" />
+  </event>
+  <folder_arme name="comms button response" id_arme="0a766eab-04fb-47eb-a74a-585447599953" parent_id_arme="d06fda44-f20d-4887-86b9-34d7dfce3ab5" expanded_arme="" />
+  <event name="ship peacock" id_arme="7cffc1a8-a2b4-49fc-b58e-bc9675a2536c" parent_id_arme="0a766eab-04fb-47eb-a74a-585447599953">
+    <if_comms_button text="ask about peacock" />
+    <if_variable name="traitor" comparator="NOT" value="1.0" />
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <incoming_comms_text from="DS study" type="FRIEND">study) Cluefinder, we meet again! Indeed, Peacock is docked here. The captain admitted they refused our maintence crews previously due to embarasment about the filthy state of the ship's interior. They purchased cleaning supplies and are taking some time to straighten up.^</incoming_comms_text>
+  </event>
+  <event name="ship plum" id_arme="e658cb80-cc35-44e3-a4e8-b1cdf8d6f557" parent_id_arme="0a766eab-04fb-47eb-a74a-585447599953">
+    <if_comms_button text="ask about plum" />
+    <if_variable name="traitor" comparator="NOT" value="2.0" />
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <incoming_comms_text from="DS ballroom" type="FRIEND">Ballroom) Cheers, Cluefinder! Aye, Plum was here. The capt'in got really drunk and immediately got caught cheating at the casino. The coppers ran his ID, and he's legit, if kind of a jerk. Has purple contat lenses - what a weirdo!^</incoming_comms_text>
+  </event>
+  <event name="ship mustard" id_arme="95cef54b-9815-4759-8ea2-7730a4d846e9" parent_id_arme="0a766eab-04fb-47eb-a74a-585447599953">
+    <if_comms_button text="ask about mustard" />
+    <if_variable name="traitor" comparator="NOT" value="3.0" />
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <incoming_comms_text from="DS library" type="FRIEND">library) SS Cluefinder - affirmative, Mustard is currently docked. Entire crew can be found in the bar, celebrating their successful delivery of a load of priceless koala-kittens to an eccentric buyer.^</incoming_comms_text>
+  </event>
+  <event name="ship scarlet" id_arme="9d082bb1-75bd-4c6c-9fab-c98d3805701c" parent_id_arme="0a766eab-04fb-47eb-a74a-585447599953">
+    <if_comms_button text="ask about scarlet" />
+    <if_variable name="traitor" comparator="NOT" value="4.0" />
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <incoming_comms_text from="DS lounge" type="FRIEND">lounge) Hey there, Cluey! Oh, you wanna know about Scarlet? Yeah, I heard all this singing over the comms, so I asked them what's up and it turns out they're celebrating some obscure Arvonian religious festival. They brought me cookies!^</incoming_comms_text>
+  </event>
+  <event name="ship green" id_arme="e11326e8-0358-4562-81c6-c747ae27a038" parent_id_arme="0a766eab-04fb-47eb-a74a-585447599953">
+    <if_comms_button text="ask about green" />
+    <if_variable name="traitor" comparator="NOT" value="5.0" />
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <incoming_comms_text from="DS conservatory" type="FRIEND">conservatory) Yeah, Green docked here briefly. Between you and me, they met up with an undercover Terran military liason to pass off some goods they aquired. Don't ask how I know!^</incoming_comms_text>
+  </event>
+  <disabled_event name="ship 6" id_arme="ee7fc70e-7698-403a-91cf-814eae1060fe" parent_id_arme="0a766eab-04fb-47eb-a74a-585447599953">
+    <if_comms_button text="ask about 6" />
+    <if_variable name="traitor" comparator="NOT" value="6.0" />
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <incoming_comms_text from="DS conservatory" type="FRIEND">I'm not sure about 6. they just made a preeeeetty shady deal with 2 and are now heading of for DS study.</incoming_comms_text>
+  </disabled_event>
+  <disabled_event name="ship 7" id_arme="cafb9695-e091-4553-80a3-2dcb9c64a1bd" parent_id_arme="0a766eab-04fb-47eb-a74a-585447599953">
+    <if_comms_button text="ask about 7" />
+    <if_variable name="traitor" comparator="NOT" value="7.0" />
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <incoming_comms_text from="DS library" type="FRIEND">7 just sold some steel to 3. they are great metalworkers there, and I beleve they are heading off to DS ballroom to sell more of those goods.</incoming_comms_text>
+  </disabled_event>
+  <disabled_event name="ship 8" id_arme="23e5d7a1-c414-49dd-821e-78f29425a822" parent_id_arme="0a766eab-04fb-47eb-a74a-585447599953">
+    <if_comms_button text="ask about 8" />
+    <if_variable name="traitor" comparator="NOT" value="8.0" />
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <incoming_comms_text from="DS lounge" type="FRIEND">8's been pretty quiet. they're setting off for DS conservatory to get some goods from 4.</incoming_comms_text>
+  </disabled_event>
+  <disabled_event name="ship 9" id_arme="f289982d-683a-490f-a97a-b0aa41e6f919" parent_id_arme="0a766eab-04fb-47eb-a74a-585447599953">
+    <if_comms_button text="ask about 9" />
+    <if_variable name="traitor" comparator="NOT" value="9.0" />
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <incoming_comms_text from="DS library" type="FRIEND">heading to rendevue with 3 at DS lounge, just picked up some furs to trade them.</incoming_comms_text>
+  </disabled_event>
+  <disabled_event name="ship 10" id_arme="410cc7b7-e257-4602-a659-f106d19ab2c7" parent_id_arme="0a766eab-04fb-47eb-a74a-585447599953">
+    <if_comms_button text="ask about 10" />
+    <if_variable name="traitor" comparator="NOT" value="10.0" />
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <incoming_comms_text from="DS lounge" type="FRIEND">10 just sold some cetrocite crystals to 8, and is now heading off to DS library to grab some glassworks from 5.</incoming_comms_text>
+  </disabled_event>
+  <event name="traitor button peacock" id_arme="9cd89438-a2f1-4e4a-9656-27a2b5d7ee2a" parent_id_arme="0a766eab-04fb-47eb-a74a-585447599953">
+    <if_comms_button text="ask about peacock" />
+    <if_variable name="traitor" comparator="EQUALS" value="1.0" />
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <incoming_comms_text from="DS study">study) Cluefinder, we meet agiain! Indeed, Peacock currently docked here. Port authorities have mentioned some unusual high-pitched sounds and anomolous energy readings coming from the ship. They must be performing some daft science!^</incoming_comms_text>
+  </event>
+  <event name="traitor button plum" id_arme="2e5e7bec-9bd8-42c5-86da-62fc2dd847e2" parent_id_arme="0a766eab-04fb-47eb-a74a-585447599953">
+    <if_comms_button text="ask about plum" />
+    <if_variable name="traitor" comparator="EQUALS" value="2.0" />
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <incoming_comms_text from="DS ballroom">Ballroom) Ach, aye, Plum was here. They claimed to be Ximin, but we got a high-falutin' Ximni diplomat on the station who said their verification codes were all wrong. When I called them on it, they buggered out on warp! What Ximni ship uses warp drive, I ask ye?^</incoming_comms_text>
+  </event>
+  <event name="traitor button mustard" id_arme="a17af738-b4f6-4062-b3db-714ea1a5e6db" parent_id_arme="0a766eab-04fb-47eb-a74a-585447599953">
+    <if_comms_button text="ask about mustard" />
+    <if_variable name="traitor" comparator="EQUALS" value="3.0" />
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <incoming_comms_text from="DS library">library) SS Cluefinder - affermative, Mustard is currently docked. There are strange noises eminating from the ship, and anomolous high energy readings. We are concerned.^</incoming_comms_text>
+  </event>
+  <event name="traitor button scarlet" id_arme="58cbca79-d1b8-45db-9980-eccde82f1f38" parent_id_arme="0a766eab-04fb-47eb-a74a-585447599953">
+    <if_comms_button text="ask about scarlet" />
+    <if_variable name="traitor" comparator="EQUALS" value="4.0" />
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <incoming_comms_text from="DS lounge">lounge) Hey Cluey, you wanna know about Scarlet? They just came by and there was some comm traffic. Let me check the records…Decrypting now… Huh, it looks like they received a schemating of Lounge station, with all the choke points marked. That's weird.^</incoming_comms_text>
+  </event>
+  <event name="traitor button green" id_arme="1126503a-0fce-42fb-a62b-a6d0904985cf" parent_id_arme="0a766eab-04fb-47eb-a74a-585447599953">
+    <if_comms_button text="ask about green" />
+    <if_variable name="traitor" comparator="EQUALS" value="5.0" />
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <incoming_comms_text from="DS conservatory">conservatory) Yeah, Green was here. They paid to use one of our mechanical laboratories. Don't know what they were doing in there, but they had armed guards escorting their gear to the lab and back.^</incoming_comms_text>
+  </event>
+  <disabled_event name="traitor button 6" id_arme="a6b51073-a6c4-4605-a7d0-95dbd903f5c7" parent_id_arme="0a766eab-04fb-47eb-a74a-585447599953">
+    <if_comms_button text="ask about 6" />
+    <if_variable name="traitor" comparator="EQUALS" value="1.0" />
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <incoming_comms_text />
+  </disabled_event>
+  <disabled_event name="traitor button 7" id_arme="6eab8883-b4f7-44cb-a186-01768d48c270" parent_id_arme="0a766eab-04fb-47eb-a74a-585447599953">
+    <if_comms_button text="ask about 7" />
+    <if_variable name="traitor" comparator="EQUALS" value="1.0" />
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <incoming_comms_text />
+  </disabled_event>
+  <disabled_event name="traitor button 8" id_arme="09ec6591-e6b3-4daa-ab2a-4371fd34727f" parent_id_arme="0a766eab-04fb-47eb-a74a-585447599953">
+    <if_comms_button text="ask about 8" />
+    <if_variable name="traitor" comparator="EQUALS" value="1.0" />
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <incoming_comms_text />
+  </disabled_event>
+  <disabled_event name="traitor button 9" id_arme="303673b5-b301-4b34-ba40-750c23bb8336" parent_id_arme="0a766eab-04fb-47eb-a74a-585447599953">
+    <if_comms_button text="ask about 9" />
+    <if_variable name="traitor" comparator="EQUALS" value="1.0" />
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <incoming_comms_text />
+  </disabled_event>
+  <disabled_event name="traitor button 10" id_arme="58e47365-1691-41b6-9698-68fa74e0aee2" parent_id_arme="0a766eab-04fb-47eb-a74a-585447599953">
+    <if_comms_button text="ask about 10" />
+    <if_variable name="traitor" comparator="EQUALS" value="1.0" />
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <incoming_comms_text />
+  </disabled_event>
+  <folder_arme name="End Game" id_arme="5a552169-8874-4f55-9658-97176957c4b2" expanded_arme="" />
+  <folder_arme name="shoot ship" id_arme="90dd42fd-8d52-4b40-a557-c7b2268971c0" parent_id_arme="5a552169-8874-4f55-9658-97176957c4b2" expanded_arme="" />
+  <folder_arme name="wrong" id_arme="cbde381e-236e-4f3b-80de-5fd6925c3c22" parent_id_arme="90dd42fd-8d52-4b40-a557-c7b2268971c0" expanded_arme="" />
+  <folder_arme name="check 1" id_arme="d719807a-e376-4822-b82d-8390aafabd8d" parent_id_arme="cbde381e-236e-4f3b-80de-5fd6925c3c22" expanded_arme="" />
+  <event name="wrong back1" id_arme="cd5cfb29-d26d-4441-b49e-6b2c058ebb47" parent_id_arme="d719807a-e376-4822-b82d-8390aafabd8d">
+    <if_variable name="traitor" comparator="NOT" value="1.0" />
+    <if_object_property property="shieldStateBack" name="peacock" comparator="LESS" value="100" />
+    <if_variable name="wrong stop1" comparator="EQUALS" value="0.0" />
+    <set_variable name="wrong stop1" value="1.0" integer="yes" />
+    <set_timer name="game over" seconds="15" />
+    <incoming_comms_text from="DS lounge">SS CLUEFINDER! how dare you attack one of our ships!I am in no way afraid that we will have to escort you out of the sector and ask you to NEVER come by here again.</incoming_comms_text>
+  </event>
+  <event name="wrong front1" id_arme="bbdf5e79-0144-4ae1-9ec9-d0ac81a0816d" parent_id_arme="d719807a-e376-4822-b82d-8390aafabd8d">
+    <if_variable name="traitor" comparator="NOT" value="1.0" />
+    <if_object_property property="shieldStateFront" name="peacock" comparator="LESS" value="100" />
+    <if_variable name="wrong stop1" comparator="EQUALS" value="0.0" />
+    <incoming_comms_text from="DS lounge">SS CLUEFINDER! how dare you attack one of our ships!I am in no way afraid that we will have to escort you out of the sector and ask you to NEVER come by here again.</incoming_comms_text>
+    <set_timer name="game over" seconds="15" />
+    <set_variable name="wrong stop1" value="1.0" integer="yes" />
+  </event>
+  <folder_arme name="check 2" id_arme="0b3fd185-7d94-4b3e-b537-0a625efb11e7" parent_id_arme="cbde381e-236e-4f3b-80de-5fd6925c3c22" expanded_arme="" />
+  <event name="wrong back2" id_arme="ab4a848b-9a98-46a0-a2f5-6f57ab4b195d" parent_id_arme="0b3fd185-7d94-4b3e-b537-0a625efb11e7">
+    <if_variable name="traitor" comparator="NOT" value="2.0" />
+    <if_object_property property="shieldStateBack" name="plum" comparator="LESS" value="100" />
+    <if_variable name="wrong stop2" comparator="EQUALS" value="0.0" />
+    <set_timer name="game over" seconds="15" />
+    <incoming_comms_text from="DS lounge">SS CLUEFINDER! how dare you attack one of our ships!I am in no way afraid that we will have to escort you out of the sector and ask you to NEVER come by here again.</incoming_comms_text>
+    <set_variable name="wrong stop2" value="2.0" integer="yes" />
+  </event>
+  <event name="wrong front2" id_arme="2618305c-276d-4ea9-964c-3d8ff957e9b3" parent_id_arme="0b3fd185-7d94-4b3e-b537-0a625efb11e7">
+    <if_variable name="traitor" comparator="NOT" value="2.0" />
+    <if_object_property property="shieldStateFront" name="plum" comparator="LESS" value="100" />
+    <if_variable name="wrong stop2" comparator="EQUALS" value="0.0" />
+    <incoming_comms_text from="DS lounge">SS CLUEFINDER! how dare you attack one of our ships!I am in no way afraid that we will have to escort you out of the sector and ask you to NEVER come by here again.</incoming_comms_text>
+    <set_timer name="game over" seconds="25" />
+    <set_variable name="wrong stop2" value="2.0" integer="yes" />
+  </event>
+  <folder_arme name="check 3" id_arme="fcb9fad6-5f62-4d5e-a9b6-1949279e7b25" parent_id_arme="cbde381e-236e-4f3b-80de-5fd6925c3c22" expanded_arme="" />
+  <event name="wrong back3" id_arme="b408f1b8-a0b6-4118-a18e-f02083681316" parent_id_arme="fcb9fad6-5f62-4d5e-a9b6-1949279e7b25">
+    <if_variable name="traitor" comparator="NOT" value="3.0" />
+    <if_object_property property="shieldStateBack" name="mustard" comparator="LESS" value="100" />
+    <if_variable name="wrong stop3" comparator="EQUALS" value="0.0" />
+    <set_timer name="game over" seconds="15" />
+    <incoming_comms_text from="DS lounge">SS CLUEFINDER! how dare you attack one of our ships!I am in no way afraid that we will have to escort you out of the sector and ask you to NEVER come by here again.</incoming_comms_text>
+    <set_variable name="wrong stop3" value="2.0" integer="yes" />
+  </event>
+  <event name="wrong front3" id_arme="149f5518-52d3-4e99-b386-8d77c9bd79aa" parent_id_arme="fcb9fad6-5f62-4d5e-a9b6-1949279e7b25">
+    <if_variable name="traitor" comparator="NOT" value="3.0" />
+    <if_object_property property="shieldStateFront" name="mustard" comparator="LESS" value="100" />
+    <if_variable name="wrong stop3" comparator="EQUALS" value="0.0" />
+    <incoming_comms_text from="DS lounge">SS CLUEFINDER! how dare you attack one of our ships!I am in no way afraid that we will have to escort you out of the sector and ask you to NEVER come by here again.</incoming_comms_text>
+    <set_timer name="game over" seconds="15" />
+    <set_variable name="wrong stop3" value="3.0" integer="yes" />
+  </event>
+  <folder_arme name="check 4" id_arme="bf9c1653-7172-4be5-955a-534f5bd8a441" parent_id_arme="cbde381e-236e-4f3b-80de-5fd6925c3c22" expanded_arme="" />
+  <event name="wrong back4" id_arme="8ab0e1db-9e3f-4caf-884c-85bd113df942" parent_id_arme="bf9c1653-7172-4be5-955a-534f5bd8a441">
+    <if_variable name="traitor" comparator="NOT" value="4.0" />
+    <if_object_property property="shieldStateBack" name="scarlet" comparator="LESS" value="100" />
+    <if_variable name="wrong stop4" comparator="EQUALS" value="0.0" />
+    <set_timer name="game over" seconds="15" />
+    <incoming_comms_text from="DS lounge">SS CLUEFINDER! how dare you attack one of our ships!I am in no way afraid that we will have to escort you out of the sector and ask you to NEVER come by here again.</incoming_comms_text>
+    <set_variable name="wrong stop4" value="3.0" integer="yes" />
+  </event>
+  <event name="wrong front4" id_arme="f3961475-3732-4716-bf13-e956fa87d34d" parent_id_arme="bf9c1653-7172-4be5-955a-534f5bd8a441">
+    <if_variable name="traitor" comparator="NOT" value="4.0" />
+    <if_object_property property="shieldStateFront" name="scarlet" comparator="LESS" value="100" />
+    <if_variable name="wrong stop4" comparator="EQUALS" value="0.0" />
+    <incoming_comms_text from="DS lounge">SS CLUEFINDER! how dare you attack one of our ships!I am in no way afraid that we will have to escort you out of the sector and ask you to NEVER come by here again.</incoming_comms_text>
+    <set_timer name="game over" seconds="15" />
+    <set_variable name="wrong stop4" value="3.0" integer="yes" />
+  </event>
+  <folder_arme name="check 5" id_arme="6b964fdb-f91d-464f-985f-3aed2d9cc59e" parent_id_arme="cbde381e-236e-4f3b-80de-5fd6925c3c22" expanded_arme="" />
+  <event name="wrong back5" id_arme="9d3e1c46-37aa-4338-9a6a-85d6cb30f60c" parent_id_arme="6b964fdb-f91d-464f-985f-3aed2d9cc59e">
+    <if_variable name="traitor" comparator="NOT" value="5.0" />
+    <if_object_property property="shieldStateBack" name="green" comparator="LESS" value="100" />
+    <if_variable name="wrong stop5" comparator="EQUALS" value="0.0" />
+    <set_timer name="game over" seconds="15" />
+    <incoming_comms_text from="DS lounge">SS CLUEFINDER! how dare you attack one of our ships!I am in no way afraid that we will have to escort you out of the sector and ask you to NEVER come by here again.</incoming_comms_text>
+    <set_variable name="wrong stop5" value="5.0" integer="yes" />
+  </event>
+  <event name="wrong front5" id_arme="a7700908-722e-4976-b1fe-a5b0a8befd86" parent_id_arme="6b964fdb-f91d-464f-985f-3aed2d9cc59e">
+    <if_variable name="traitor" comparator="NOT" value="5.0" />
+    <if_object_property property="shieldStateFront" name="green" comparator="LESS" value="100" />
+    <if_variable name="wrong stop5" comparator="EQUALS" value="0.0" />
+    <incoming_comms_text from="DS lounge">SS CLUEFINDER! how dare you attack one of our ships!I am in no way afraid that we will have to escort you out of the sector and ask you to NEVER come by here again.</incoming_comms_text>
+    <set_timer name="game over" seconds="15" />
+    <set_variable name="wrong stop5" value="5.0" integer="yes" />
+  </event>
+  <folder_arme name="check 6" id_arme="8f7051d7-c9e7-4ea5-8ae1-b2c6eb157b01" parent_id_arme="cbde381e-236e-4f3b-80de-5fd6925c3c22" expanded_arme="" />
+  <disabled_event name="wrong back6" id_arme="a9e018a8-f461-4a85-82f0-fac11806c9f0" parent_id_arme="8f7051d7-c9e7-4ea5-8ae1-b2c6eb157b01">
+    <if_variable name="traitor" comparator="NOT" value="6.0" />
+    <if_object_property property="shieldStateBack" name="6" comparator="LESS" value="100" />
+    <if_variable name="wrong stop6" comparator="EQUALS" value="0.0" />
+    <set_timer name="game over" seconds="15" />
+    <incoming_comms_text from="DS lounge">SS CLUEFINDER! how dare you attack one of our ships!I am in no way afraid that we will have to escort you out of the sector and ask you to NEVER come by here again.</incoming_comms_text>
+    <set_variable name="wrong stop6" value="6.0" integer="yes" />
+  </disabled_event>
+  <disabled_event name="wrong front6" id_arme="87e3a359-88e4-4d1f-b4c3-014b0cb8ed2b" parent_id_arme="8f7051d7-c9e7-4ea5-8ae1-b2c6eb157b01">
+    <if_variable name="traitor" comparator="NOT" value="6.0" />
+    <if_object_property property="shieldStateFront" name="6" comparator="LESS" value="100" />
+    <if_variable name="wrong stop6" comparator="EQUALS" value="0.0" />
+    <incoming_comms_text from="DS lounge">SS CLUEFINDER! how dare you attack one of our ships!I am in no way afraid that we will have to escort you out of the sector and ask you to NEVER come by here again.</incoming_comms_text>
+    <set_timer name="game over" seconds="15" />
+    <set_variable name="wrong stop6" value="6.0" integer="yes" />
+  </disabled_event>
+  <folder_arme name="check 7" id_arme="ce6ca6d7-cf2c-4432-831c-fc4ce6c70cfd" parent_id_arme="cbde381e-236e-4f3b-80de-5fd6925c3c22" expanded_arme="" />
+  <disabled_event name="wrong back7" id_arme="03f6a801-da32-49a0-acc3-5a83bc9601c2" parent_id_arme="ce6ca6d7-cf2c-4432-831c-fc4ce6c70cfd">
+    <if_variable name="traitor" comparator="NOT" value="7.0" />
+    <if_object_property property="shieldStateBack" name="7" comparator="LESS" value="100" />
+    <if_variable name="wrong stop7" comparator="EQUALS" value="0.0" />
+    <set_timer name="game over" seconds="15" />
+    <incoming_comms_text from="DS lounge">SS CLUEFINDER! how dare you attack one of our ships!I am in no way afraid that we will have to escort you out of the sector and ask you to NEVER come by here again.</incoming_comms_text>
+    <set_variable name="wrong stop7" value="7.0" integer="yes" />
+  </disabled_event>
+  <disabled_event name="wrong front7" id_arme="b50afe77-5450-4c44-9ebe-fc5f73c4a42b" parent_id_arme="ce6ca6d7-cf2c-4432-831c-fc4ce6c70cfd">
+    <if_variable name="traitor" comparator="NOT" value="7.0" />
+    <if_object_property property="shieldStateFront" name="7" comparator="LESS" value="100" />
+    <if_variable name="wrong stop7" comparator="EQUALS" value="0.0" />
+    <incoming_comms_text from="DS lounge">SS CLUEFINDER! how dare you attack one of our ships!I am in no way afraid that we will have to escort you out of the sector and ask you to NEVER come by here again.</incoming_comms_text>
+    <set_timer name="game over" seconds="15" />
+    <set_variable name="wrong stop7" value="7.0" integer="yes" />
+  </disabled_event>
+  <folder_arme name="check 8" id_arme="29e18adf-e72a-4eea-9270-aa91a0ffd95b" parent_id_arme="cbde381e-236e-4f3b-80de-5fd6925c3c22" expanded_arme="" />
+  <disabled_event name="wrong back8" id_arme="8580d1a0-fc7c-4bfb-bf09-1bae45127f86" parent_id_arme="29e18adf-e72a-4eea-9270-aa91a0ffd95b">
+    <if_variable name="traitor" comparator="NOT" value="8.0" />
+    <if_object_property property="shieldStateBack" name="8" comparator="LESS" value="100" />
+    <if_variable name="wrong stop8" comparator="EQUALS" value="0.0" />
+    <set_timer name="game over" seconds="15" />
+    <incoming_comms_text from="DS lounge">SS CLUEFINDER! how dare you attack one of our ships!I am in no way afraid that we will have to escort you out of the sector and ask you to NEVER come by here again.</incoming_comms_text>
+    <set_variable name="wrong stop8" value="8.0" integer="yes" />
+  </disabled_event>
+  <disabled_event name="wrong front8" id_arme="14dfedec-e824-43e4-9ae0-f219ebcf8f61" parent_id_arme="29e18adf-e72a-4eea-9270-aa91a0ffd95b">
+    <if_variable name="traitor" comparator="NOT" value="8.0" />
+    <if_object_property property="shieldStateFront" name="8" comparator="LESS" value="100" />
+    <if_variable name="wrong stop8" comparator="EQUALS" value="0.0" />
+    <incoming_comms_text from="DS lounge">SS CLUEFINDER! how dare you attack one of our ships!I am in no way afraid that we will have to escort you out of the sector and ask you to NEVER come by here again.</incoming_comms_text>
+    <set_timer name="game over" seconds="15" />
+    <set_variable name="wrong stop8" value="8.0" integer="yes" />
+  </disabled_event>
+  <folder_arme name="check 9" id_arme="d25dd9ab-1cd1-4409-9763-26c50b5fe53e" parent_id_arme="cbde381e-236e-4f3b-80de-5fd6925c3c22" expanded_arme="" />
+  <disabled_event name="wrong back9" id_arme="714515c9-866b-46f2-a0da-aed3a30667af" parent_id_arme="d25dd9ab-1cd1-4409-9763-26c50b5fe53e">
+    <if_variable name="traitor" comparator="NOT" value="9.0" />
+    <if_object_property property="shieldStateBack" name="9" comparator="LESS" value="100" />
+    <if_variable name="wrong stop9" comparator="EQUALS" value="0.0" />
+    <set_timer name="game over" seconds="15" />
+    <incoming_comms_text from="DS lounge">SS CLUEFINDER! how dare you attack one of our ships!I am in no way afraid that we will have to escort you out of the sector and ask you to NEVER come by here again.</incoming_comms_text>
+    <set_variable name="wrong stop9" value="9.0" integer="yes" />
+  </disabled_event>
+  <disabled_event name="wrong front9" id_arme="27947a41-7292-415d-a398-100b4889edac" parent_id_arme="d25dd9ab-1cd1-4409-9763-26c50b5fe53e">
+    <if_variable name="traitor" comparator="NOT" value="9.0" />
+    <if_object_property property="shieldStateFront" name="9" comparator="LESS" value="100" />
+    <if_variable name="wrong stop9" comparator="EQUALS" value="0.0" />
+    <incoming_comms_text from="DS lounge">SS CLUEFINDER! how dare you attack one of our ships!I am in no way afraid that we will have to escort you out of the sector and ask you to NEVER come by here again.</incoming_comms_text>
+    <set_timer name="game over" seconds="15" />
+    <set_variable name="wrong stop9" value="9.0" integer="yes" />
+  </disabled_event>
+  <folder_arme name="check 10" id_arme="327725bc-d3c9-440a-9a55-140597c311bd" parent_id_arme="cbde381e-236e-4f3b-80de-5fd6925c3c22" expanded_arme="" />
+  <disabled_event name="wrong back10" id_arme="ef8e14ea-931c-4faf-8fbb-a7ebec3470f9" parent_id_arme="327725bc-d3c9-440a-9a55-140597c311bd">
+    <if_variable name="traitor" comparator="NOT" value="10.0" />
+    <if_object_property property="shieldStateBack" name="10" comparator="LESS" value="100" />
+    <if_variable name="wrong stop10" comparator="EQUALS" value="0.0" />
+    <set_timer name="game over" seconds="15" />
+    <incoming_comms_text from="DS lounge">SS CLUEFINDER! how dare you attack one of our ships!I am in no way afraid that we will have to escort you out of the sector and ask you to NEVER come by here again.</incoming_comms_text>
+    <set_variable name="wrong stop10" value="10.0" integer="yes" />
+  </disabled_event>
+  <disabled_event name="wrong front10" id_arme="c154b946-56b7-45f4-9fad-eaec17e02875" parent_id_arme="327725bc-d3c9-440a-9a55-140597c311bd">
+    <if_variable name="traitor" comparator="NOT" value="10.0" />
+    <if_object_property property="shieldStateFront" name="10" comparator="LESS" value="100" />
+    <if_variable name="wrong stop10" comparator="EQUALS" value="0.0" />
+    <incoming_comms_text from="DS lounge">SS CLUEFINDER! how dare you attack one of our ships!I am in no way afraid that we will have to escort you out of the sector and ask you to NEVER come by here again.</incoming_comms_text>
+    <set_timer name="game over" seconds="15" />
+    <set_variable name="wrong stop10" value="10.0" integer="yes" />
+  </disabled_event>
+  <folder_arme name="right" id_arme="62a9d62e-abfe-4c34-b84f-71e0f685320a" parent_id_arme="90dd42fd-8d52-4b40-a557-c7b2268971c0" expanded_arme="" />
+  <folder_arme name="right1" id_arme="122fffef-9d7e-4c2f-a7cd-86f0c5b10cc9" parent_id_arme="62a9d62e-abfe-4c34-b84f-71e0f685320a" expanded_arme="" />
+  <event name="checkback1" id_arme="2d4a31ea-07da-4a6b-a91a-28f90cdc97c9" parent_id_arme="122fffef-9d7e-4c2f-a7cd-86f0c5b10cc9">
+    <if_object_property property="shieldStateBack" name="peacock" comparator="LESS" value="100" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="2.0" />
+    <if_variable name="traitor" comparator="EQUALS" value="1.0" />
+    <set_variable name="AlienShipState" value="3.0" integer="yes" />
+    <!--AlienShipState: 0=Initialize, 1=Created, 2=Disappeared, 3=Reappeared-->
+    <get_object_property property="positionX" name="peacock" variable="AlienEmerge_X" />
+    <get_object_property property="positionY" name="peacock" variable="AlienEmerge_Y" />
+    <get_object_property property="positionZ" name="peacock" variable="AlienEmerge_Z" />
+    <destroy name="peacock" />
+    <create type="enemy" x="AlienEmerge_X" y="AlienEmerge_Y" z="AlienEmerge_Z" angle="0" name="dentripitoid" raceKeys="BioMech" hullKeys="Stage 2" sideValue="1" fleetnumber="-1" />
+    <set_variable name="appear 2" value="1.0" integer="yes" />
+    <set_object_property property="turnRate" value="1.0" name="dentripitoid" />
+    <add_ai type="ATTACK" targetName="SS cluefinder" value1="5.0" name="dentripitoid" />
+    <set_ship_text name="dentripitoid" race="??????" class="???????" desc="It is definetly attacking you, but you can't really figure out anything else." scan_desc="still nothing." />
+    <create type="genericMesh" x="100.0" y="0.0" z="99000.0" name="shell" meshFileName="dat/asteroid.dxs" textureFileName="dat/skaraan_station_glow.png" hullRace="???" hullType="???" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="shell" />
+    <set_object_property property="artScale" value="1.0" name="shell" />
+  </event>
+  <event name="checkfront1" id_arme="b229b188-352d-432e-b106-caf4b33f485b" parent_id_arme="122fffef-9d7e-4c2f-a7cd-86f0c5b10cc9">
+    <if_object_property property="shieldStateFront" name="peacock" comparator="LESS" value="100" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="2.0" />
+    <if_variable name="traitor" comparator="EQUALS" value="1.0" />
+    <set_variable name="AlienShipState" value="3.0" integer="yes" />
+    <!--AlienShipState: 0=Initialize, 1=Created, 2=Disappeared, 3=Reappeared-->
+    <get_object_property property="positionX" name="peacock" variable="AlienEmerge_X" />
+    <get_object_property property="positionY" name="peacock" variable="AlienEmerge_Y" />
+    <get_object_property property="positionZ" name="peacock" variable="AlienEmerge_Z" />
+    <destroy name="peacock" />
+    <create type="enemy" x="AlienEmerge_X" y="AlienEmerge_Y" z="AlienEmerge_Z" angle="0" name="dentripitoid" raceKeys="BioMech enemy" hullKeys="Stage 2" sideValue="1" fleetnumber="-1" />
+    <set_variable name="appear 2" value="1.0" integer="yes" />
+    <set_object_property property="turnRate" value="1.0" name="dentripitoid" />
+    <add_ai type="ATTACK" targetName="SS cluefinder" value1="5.0" name="dentripitoid" />
+    <set_ship_text name="dentripitoid" race="??????" class="???????" desc="It is definetly attacking you, but you can't really figure out anything else." scan_desc="still nothing." />
+    <create type="genericMesh" x="100.0" y="0.0" z="99000.0" name="shell" meshFileName="dat/asteroid.dxs" textureFileName="dat/skaraan_station_glow.png" hullRace="???" hullType="???" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="shell" />
+    <set_object_property property="artScale" value="1.0" name="shell" />
+  </event>
+  <folder_arme name="right2" id_arme="0523e6a0-8706-4f75-a275-13c144895899" parent_id_arme="62a9d62e-abfe-4c34-b84f-71e0f685320a" expanded_arme="" />
+  <event name="checkback2" id_arme="8dc79c2e-8f0d-47b2-a714-890ac661592b" parent_id_arme="0523e6a0-8706-4f75-a275-13c144895899">
+    <if_object_property property="shieldStateBack" name="plum" comparator="LESS" value="100" />
+    <if_variable name="traitor" comparator="EQUALS" value="2.0" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="2.0" />
+    <set_variable name="AlienShipState" value="3.0" integer="yes" />
+    <!--AlienShipState: 0=Initialize, 1=Created, 2=Disappeared, 3=Reappeared-->
+    <get_object_property property="positionX" name="plum" variable="AlienEmerge_X" />
+    <get_object_property property="positionY" name="plum" variable="AlienEmerge_Y" />
+    <get_object_property property="positionZ" name="plum" variable="AlienEmerge_Z" />
+    <destroy name="plum" />
+    <create type="enemy" x="AlienEmerge_X" y="AlienEmerge_Y" z="AlienEmerge_Z" angle="0" name="dentripitoid" raceKeys="BioMech enemy" hullKeys="Stage 2" sideValue="1" fleetnumber="-1" />
+    <set_variable name="appear 2" value="1.0" integer="yes" />
+    <set_object_property property="turnRate" value="1.0" name="dentripitoid" />
+    <add_ai type="ATTACK" targetName="SS cluefinder" value1="2.0" name="dentripitoid" />
+    <set_ship_text name="dentripitoid" race="??????" class="???????" desc="It is definetly attacking you, but you can't really figure out anything else." scan_desc="still nothing." />
+    <create type="genericMesh" x="100.0" y="0.0" z="99000.0" name="shell" meshFileName="dat/asteroid.dxs" textureFileName="dat/skaraan_station_glow.png" hullRace="???" hullType="???" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="shell" />
+    <set_object_property property="artScale" value="1.0" name="shell" />
+  </event>
+  <event name="checkfront2" id_arme="9b172226-ce1e-49a3-ae60-b91c94f2f375" parent_id_arme="0523e6a0-8706-4f75-a275-13c144895899">
+    <if_object_property property="shieldStateFront" name="plum" comparator="LESS" value="100" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="2.0" />
+    <if_variable name="traitor" comparator="EQUALS" value="2.0" />
+    <set_variable name="AlienShipState" value="3.0" integer="yes" />
+    <!--AlienShipState: 0=Initialize, 1=Created, 2=Disappeared, 3=Reappeared-->
+    <get_object_property property="positionX" name="plum" variable="AlienEmerge_X" />
+    <get_object_property property="positionY" name="plum" variable="AlienEmerge_Y" />
+    <get_object_property property="positionZ" name="plum" variable="AlienEmerge_Z" />
+    <destroy name="plum" />
+    <create type="enemy" x="AlienEmerge_X" y="AlienEmerge_Y" z="AlienEmerge_Z" angle="0" name="dentripitoid" raceKeys="BioMech enemy" hullKeys="Stage 2" sideValue="1" fleetnumber="-1" />
+    <set_variable name="appear 2" value="1.0" integer="yes" />
+    <set_object_property property="turnRate" value="1.0" name="dentripitoid" />
+    <add_ai type="ATTACK" targetName="SS cluefinder" value1="5.0" name="dentripitoid" />
+    <set_ship_text name="dentripitoid" race="??????" class="???????" desc="It is definetly attacking you, but you can't really figure out anything else." scan_desc="still nothing." />
+    <create type="genericMesh" x="100.0" y="0.0" z="99000.0" name="shell" meshFileName="dat/asteroid.dxs" textureFileName="dat/skaraan_station_glow.png" hullRace="???" hullType="???" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="shell" />
+    <set_object_property property="artScale" value="1.0" name="shell" />
+  </event>
+  <folder_arme name="right3" id_arme="9b9ad531-13c8-4881-b809-da59391d953c" parent_id_arme="62a9d62e-abfe-4c34-b84f-71e0f685320a" expanded_arme="" />
+  <event name="checkback3" id_arme="e9d31745-a623-4764-aaf5-9861b44a2fc0" parent_id_arme="9b9ad531-13c8-4881-b809-da59391d953c">
+    <if_object_property property="shieldStateBack" name="mustard" comparator="LESS" value="100" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="2.0" />
+    <if_variable name="traitor" comparator="EQUALS" value="3.0" />
+    <set_variable name="AlienShipState" value="3.0" integer="yes" />
+    <!--AlienShipState: 0=Initialize, 1=Created, 2=Disappeared, 3=Reappeared-->
+    <get_object_property property="positionX" name="mustard" variable="AlienEmerge_X" />
+    <get_object_property property="positionY" name="mustard" variable="AlienEmerge_Y" />
+    <get_object_property property="positionZ" name="mustard" variable="AlienEmerge_Z" />
+    <destroy name="mustard" />
+    <create type="enemy" x="AlienEmerge_X" y="AlienEmerge_Y" z="AlienEmerge_Z" angle="0" name="dentripitoid" raceKeys="BioMech enemy" hullKeys="Stage 2" sideValue="1" fleetnumber="-1" />
+    <set_variable name="appear 2" value="1.0" integer="yes" />
+    <set_object_property property="turnRate" value="1.0" name="dentripitoid" />
+    <add_ai type="ATTACK" targetName="SS cluefinder" value1="5.0" name="dentripitoid" />
+    <set_ship_text name="dentripitoid" race="??????" class="???????" desc="It is definetly attacking you, but you can't really figure out anything else." scan_desc="still nothing." />
+    <create type="genericMesh" x="100.0" y="0.0" z="99000.0" name="shell" meshFileName="dat/asteroid.dxs" textureFileName="dat/skaraan_station_glow.png" hullRace="???" hullType="???" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="shell" />
+    <set_object_property property="artScale" value="1.0" name="shell" />
+  </event>
+  <event name="checkfront3" id_arme="cb7ee810-0f71-44f4-aa7a-efb091370bf5" parent_id_arme="9b9ad531-13c8-4881-b809-da59391d953c">
+    <if_object_property property="shieldStateFront" name="mustard" comparator="LESS" value="100" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="2.0" />
+    <if_variable name="traitor" comparator="EQUALS" value="3.0" />
+    <set_variable name="AlienShipState" value="3.0" integer="yes" />
+    <!--AlienShipState: 0=Initialize, 1=Created, 2=Disappeared, 3=Reappeared-->
+    <get_object_property property="positionX" name="mustard" variable="AlienEmerge_X" />
+    <get_object_property property="positionY" name="mustard" variable="AlienEmerge_Y" />
+    <get_object_property property="positionZ" name="mustard" variable="AlienEmerge_Z" />
+    <destroy name="mustard" />
+    <create type="enemy" x="AlienEmerge_X" y="AlienEmerge_Y" z="AlienEmerge_Z" angle="0" name="dentripitoid" raceKeys="BioMech enemy" hullKeys="Stage 2" sideValue="1" fleetnumber="-1" />
+    <set_variable name="appear 2" value="1.0" integer="yes" />
+    <set_object_property property="turnRate" value="1.0" name="dentripitoid" />
+    <add_ai type="ATTACK" targetName="SS cluefinder" value1="5.0" name="dentripitoid" />
+    <set_ship_text name="dentripitoid" race="??????" class="???????" desc="It is definetly attacking you, but you can't really figure out anything else." scan_desc="still nothing." />
+    <create type="genericMesh" x="100.0" y="0.0" z="99000.0" name="shell" meshFileName="dat/asteroid.dxs" textureFileName="dat/skaraan_station_glow.png" hullRace="???" hullType="???" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="shell" />
+    <set_object_property property="artScale" value="1.0" name="shell" />
+  </event>
+  <folder_arme name="right4" id_arme="941bcd13-996a-4ec7-8ac6-8f4faeb69b49" parent_id_arme="62a9d62e-abfe-4c34-b84f-71e0f685320a" expanded_arme="" />
+  <event name="checkback4" id_arme="111fbdc8-8bb3-4d11-9f1d-96e91148bde5" parent_id_arme="941bcd13-996a-4ec7-8ac6-8f4faeb69b49">
+    <if_object_property property="shieldStateBack" name="scarlet" comparator="LESS" value="100" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="2.0" />
+    <if_variable name="traitor" comparator="EQUALS" value="4.0" />
+    <set_variable name="AlienShipState" value="3.0" integer="yes" />
+    <!--AlienShipState: 0=Initialize, 1=Created, 2=Disappeared, 3=Reappeared-->
+    <get_object_property property="positionX" name="scarlet" variable="AlienEmerge_X" />
+    <get_object_property property="positionY" name="scarlet" variable="AlienEmerge_Y" />
+    <get_object_property property="positionZ" name="scarlet" variable="AlienEmerge_Z" />
+    <destroy name="scarlet" />
+    <create type="enemy" x="AlienEmerge_X" y="AlienEmerge_Y" z="AlienEmerge_Z" angle="0" name="dentripitoid" raceKeys="BioMech enemy" hullKeys="Stage 2" sideValue="1" fleetnumber="-1" />
+    <set_variable name="appear 2" value="1.0" integer="yes" />
+    <set_object_property property="turnRate" value="1.0" name="dentripitoid" />
+    <add_ai type="ATTACK" targetName="SS cluefinder" value1="5.0" name="dentripitoid" />
+    <set_ship_text name="dentripitoid" race="??????" class="???????" desc="It is definetly attacking you, but you can't really figure out anything else." scan_desc="still nothing." />
+    <create type="genericMesh" x="100.0" y="0.0" z="99000.0" name="shell" meshFileName="dat/asteroid.dxs" textureFileName="dat/skaraan_station_glow.png" hullRace="???" hullType="???" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="shell" />
+    <set_object_property property="artScale" value="1.0" name="shell" />
+  </event>
+  <event name="checkfront4" id_arme="21ab34c9-d085-4306-a48f-0cc6268be084" parent_id_arme="941bcd13-996a-4ec7-8ac6-8f4faeb69b49">
+    <if_object_property property="shieldStateFront" name="scarlet" comparator="LESS" value="100" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="2.0" />
+    <if_variable name="traitor" comparator="EQUALS" value="4.0" />
+    <set_variable name="AlienShipState" value="3.0" integer="yes" />
+    <!--AlienShipState: 0=Initialize, 1=Created, 2=Disappeared, 3=Reappeared-->
+    <get_object_property property="positionX" name="scarlet" variable="AlienEmerge_X" />
+    <get_object_property property="positionY" name="scarlet" variable="AlienEmerge_Y" />
+    <get_object_property property="positionZ" name="scarlet" variable="AlienEmerge_Z" />
+    <destroy name="scarlet" />
+    <create type="enemy" x="AlienEmerge_X" y="AlienEmerge_Y" z="AlienEmerge_Z" angle="0" name="dentripitoid" raceKeys="BioMech enemy" hullKeys="Stage 2" sideValue="1" fleetnumber="-1" />
+    <set_variable name="appear 2" value="1.0" integer="yes" />
+    <set_object_property property="turnRate" value="1.0" name="dentripitoid" />
+    <add_ai type="ATTACK" targetName="SS cluefinder" value1="5.0" name="dentripitoid" />
+    <set_ship_text name="dentripitoid" race="??????" class="???????" desc="It is definetly attacking you, but you can't really figure out anything else." scan_desc="still nothing." />
+    <create type="genericMesh" x="100.0" y="0.0" z="99000.0" name="shell" meshFileName="dat/asteroid.dxs" textureFileName="dat/skaraan_station_glow.png" hullRace="???" hullType="???" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="shell" />
+    <set_object_property property="artScale" value="1.0" name="shell" />
+  </event>
+  <folder_arme name="right5" id_arme="95c4c046-a576-4bf8-a5b7-73452f88f11b" parent_id_arme="62a9d62e-abfe-4c34-b84f-71e0f685320a" expanded_arme="" />
+  <event name="checkback5" id_arme="6925dc7b-a1c1-44ba-945c-01c6e893c9cb" parent_id_arme="95c4c046-a576-4bf8-a5b7-73452f88f11b">
+    <if_object_property property="shieldStateBack" name="green" comparator="LESS" value="100" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="2.0" />
+    <if_variable name="traitor" comparator="EQUALS" value="5.0" />
+    <set_variable name="AlienShipState" value="3.0" integer="yes" />
+    <!--AlienShipState: 0=Initialize, 1=Created, 2=Disappeared, 3=Reappeared-->
+    <get_object_property property="positionX" name="green" variable="AlienEmerge_X" />
+    <get_object_property property="positionY" name="green" variable="AlienEmerge_Y" />
+    <get_object_property property="positionZ" name="green" variable="AlienEmerge_Z" />
+    <destroy name="green" />
+    <create type="enemy" x="AlienEmerge_X" y="AlienEmerge_Y" z="AlienEmerge_Z" angle="0" name="dentripitoid" raceKeys="BioMech enemy" hullKeys="Stage 2" sideValue="1" fleetnumber="-1" />
+    <set_variable name="appear 2" value="1.0" integer="yes" />
+    <set_object_property property="turnRate" value="1.0" name="dentripitoid" />
+    <add_ai type="ATTACK" targetName="SS cluefinder" value1="5.0" name="dentripitoid" />
+    <set_ship_text name="dentripitoid" race="??????" class="???????" desc="It is definetly attacking you, but you can't really figure out anything else." scan_desc="still nothing." />
+    <create type="genericMesh" x="100.0" y="0.0" z="99000.0" name="shell" meshFileName="dat/asteroid.dxs" textureFileName="dat/skaraan_station_glow.png" hullRace="???" hullType="???" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="shell" />
+    <set_object_property property="artScale" value="1.0" name="shell" />
+  </event>
+  <event name="checkfront5" id_arme="5bf247d1-d6d2-46c9-87f5-7023fa9a7e98" parent_id_arme="95c4c046-a576-4bf8-a5b7-73452f88f11b">
+    <if_object_property property="shieldStateFront" name="green" comparator="LESS" value="100" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="2.0" />
+    <if_variable name="traitor" comparator="EQUALS" value="5.0" />
+    <set_variable name="AlienShipState" value="3.0" integer="yes" />
+    <!--AlienShipState: 0=Initialize, 1=Created, 2=Disappeared, 3=Reappeared-->
+    <get_object_property property="positionX" name="green" variable="AlienEmerge_X" />
+    <get_object_property property="positionY" name="green" variable="AlienEmerge_Y" />
+    <get_object_property property="positionZ" name="green" variable="AlienEmerge_Z" />
+    <destroy name="green" />
+    <create type="enemy" x="AlienEmerge_X" y="AlienEmerge_Y" z="AlienEmerge_Z" angle="0" name="dentripitoid" raceKeys="BioMech enemy" hullKeys="Stage 2" sideValue="1" fleetnumber="-1" />
+    <set_variable name="appear 2" value="1.0" integer="yes" />
+    <set_object_property property="turnRate" value="1.0" name="dentripitoid" />
+    <add_ai type="ATTACK" targetName="SS cluefinder" value1="5.0" name="dentripitoid" />
+    <set_ship_text name="dentripitoid" race="??????" class="???????" desc="It is definetly attacking you, but you can't really figure out anything else." scan_desc="still nothing." />
+    <create type="genericMesh" x="100.0" y="0.0" z="99000.0" name="shell" meshFileName="dat/asteroid.dxs" textureFileName="dat/skaraan_station_glow.png" hullRace="???" hullType="???" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="shell" />
+    <set_object_property property="artScale" value="1.0" name="shell" />
+  </event>
+  <folder_arme name="right6" id_arme="d03c3258-5107-4b18-adb6-f512bb108674" parent_id_arme="62a9d62e-abfe-4c34-b84f-71e0f685320a" expanded_arme="" />
+  <disabled_event name="checkback6" id_arme="8179584f-f14f-4e92-b971-6ad78e04149e" parent_id_arme="d03c3258-5107-4b18-adb6-f512bb108674">
+    <if_object_property property="shieldStateBack" name="6" comparator="LESS" value="600" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="2.0" />
+    <if_variable name="traitor" comparator="EQUALS" value="1.0" />
+    <set_variable name="appear 2" value="1.0" integer="yes" />
+    <set_variable name="AlienShipState" value="1.0" integer="yes" />
+    <!--AlienShipState: 0=Initialize, 1=Created, 2=Disappeared-->
+    <create type="enemy" x="50000.0" y="0.0" z="50000.0" angle="0" name="dentripitoid" raceKeys="Torgoth enemy" hullKeys="Leviathan" sideValue="1" fleetnumber="-1" />
+    <set_relative_position name2="dentripitoid" distance="0" angle="0" name1="6" />
+    <set_object_property property="turnRate" value="1.0" name="dentripitoid" />
+    <add_ai type="ATTACK" targetName="SS cluefinder" value1="5.0" name="dentripitoid" />
+    <set_ship_text name="dentripitoid" race="??????" class="???????" desc="It is definetly attacking you, but you can't really figure out anything else." scan_desc="still nothing." />
+    <create type="genericMesh" x="100.0" y="0.0" z="99000.0" name="shell" meshFileName="dat/asteroid.dxs" textureFileName="dat/skaraan_station_glow.png" hullRace="???" hullType="???" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="shell" />
+    <set_object_property property="artScale" value="1.0" name="shell" />
+    <destroy name="6" />
+  </disabled_event>
+  <disabled_event name="checkfront6" id_arme="4d9a4f66-acca-4a47-a8f9-55f4f856b503" parent_id_arme="d03c3258-5107-4b18-adb6-f512bb108674">
+    <if_object_property property="shieldStateFront" name="6" comparator="LESS" value="600" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="2.0" />
+    <if_variable name="traitor" comparator="EQUALS" value="1.0" />
+    <set_variable name="appear 2" value="1.0" integer="yes" />
+    <set_variable name="AlienShipState" value="1.0" integer="yes" />
+    <!--AlienShipState: 0=Initialize, 1=Created, 2=Disappeared-->
+    <create type="enemy" x="50000.0" y="0.0" z="50000.0" angle="0" name="dentripitoid" raceKeys="Torgoth enemy" hullKeys="Leviathan" sideValue="1" fleetnumber="-1" />
+    <set_relative_position name2="dentripitoid" distance="0" angle="0" name1="6" />
+    <set_object_property property="turnRate" value="1.0" name="dentripitoid" />
+    <add_ai type="ATTACK" targetName="SS cluefinder" value1="5.0" name="dentripitoid" />
+    <set_ship_text name="dentripitoid" race="??????" class="???????" desc="It is definetly attacking you, but you can't really figure out anything else." scan_desc="still nothing." />
+    <create type="genericMesh" x="100.0" y="0.0" z="99000.0" name="shell" meshFileName="dat/asteroid.dxs" textureFileName="dat/skaraan_station_glow.png" hullRace="???" hullType="???" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="shell" />
+    <set_object_property property="artScale" value="1.0" name="shell" />
+    <destroy name="6" />
+  </disabled_event>
+  <folder_arme name="right7" id_arme="136920bb-ebb8-48de-b1de-5a4768917cf4" parent_id_arme="62a9d62e-abfe-4c34-b84f-71e0f685320a" expanded_arme="" />
+  <disabled_event name="checkback7" id_arme="2ea9dcf0-9b51-4eb3-9dd5-2fc5a6d4e9ad" parent_id_arme="136920bb-ebb8-48de-b1de-5a4768917cf4">
+    <if_object_property property="shieldStateBack" name="7" comparator="LESS" value="700" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="2.0" />
+    <if_variable name="traitor" comparator="EQUALS" value="7.0" />
+    <set_variable name="appear 2" value="1.0" integer="yes" />
+    <set_variable name="AlienShipState" value="1.0" integer="yes" />
+    <!--AlienShipState: 0=Initialize, 1=Created, 2=Disappeared-->
+    <create type="enemy" x="50000.0" y="0.0" z="50000.0" angle="0" name="dentripitoid" raceKeys="Torgoth enemy" hullKeys="Leviathan" sideValue="1" fleetnumber="-1" />
+    <set_relative_position name2="dentripitoid" distance="0" angle="0" name1="7" />
+    <set_object_property property="turnRate" value="1.0" name="dentripitoid" />
+    <add_ai type="ATTACK" targetName="SS cluefinder" value1="5.0" name="dentripitoid" />
+    <set_ship_text name="dentripitoid" race="??????" class="???????" desc="It is definetly attacking you, but you can't really figure out anything else." scan_desc="still nothing." />
+    <create type="genericMesh" x="100.0" y="0.0" z="99000.0" name="shell" meshFileName="dat/asteroid.dxs" textureFileName="dat/skaraan_station_glow.png" hullRace="???" hullType="???" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="shell" />
+    <set_object_property property="artScale" value="1.0" name="shell" />
+    <destroy name="7" />
+  </disabled_event>
+  <disabled_event name="checkfront7" id_arme="5ff55ea1-d230-476e-a4a7-105045ca3521" parent_id_arme="136920bb-ebb8-48de-b1de-5a4768917cf4">
+    <if_object_property property="shieldStateFront" name="7" comparator="LESS" value="700" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="2.0" />
+    <if_variable name="traitor" comparator="EQUALS" value="7.0" />
+    <set_variable name="appear 2" value="1.0" integer="yes" />
+    <set_variable name="AlienShipState" value="1.0" integer="yes" />
+    <!--AlienShipState: 0=Initialize, 1=Created, 2=Disappeared-->
+    <create type="enemy" x="50000.0" y="0.0" z="50000.0" angle="0" name="dentripitoid" raceKeys="Torgoth enemy" hullKeys="Leviathan" sideValue="1" fleetnumber="-1" />
+    <set_relative_position name2="dentripitoid" distance="0" angle="0" name1="7" />
+    <set_object_property property="turnRate" value="1.0" name="dentripitoid" />
+    <add_ai type="ATTACK" targetName="SS cluefinder" value1="5.0" name="dentripitoid" />
+    <set_ship_text name="dentripitoid" race="??????" class="???????" desc="It is definetly attacking you, but you can't really figure out anything else." scan_desc="still nothing." />
+    <create type="genericMesh" x="100.0" y="0.0" z="99000.0" name="shell" meshFileName="dat/asteroid.dxs" textureFileName="dat/skaraan_station_glow.png" hullRace="???" hullType="???" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="shell" />
+    <set_object_property property="artScale" value="1.0" name="shell" />
+    <destroy name="7" />
+  </disabled_event>
+  <folder_arme name="right8" id_arme="79d3eb9b-ddcc-4309-bced-03e0b96d7df8" parent_id_arme="62a9d62e-abfe-4c34-b84f-71e0f685320a" expanded_arme="" />
+  <disabled_event name="checkback8" id_arme="b4cb5285-dc46-47ac-8a10-2d3d16457561" parent_id_arme="79d3eb9b-ddcc-4309-bced-03e0b96d7df8">
+    <if_object_property property="shieldStateBack" name="8" comparator="LESS" value="800" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="2.0" />
+    <if_variable name="traitor" comparator="EQUALS" value="8.0" />
+    <set_variable name="appear 2" value="1.0" integer="yes" />
+    <set_variable name="AlienShipState" value="1.0" integer="yes" />
+    <!--AlienShipState: 0=Initialize, 1=Created, 2=Disappeared-->
+    <create type="enemy" x="50000.0" y="0.0" z="50000.0" angle="0" name="dentripitoid" raceKeys="Torgoth enemy" hullKeys="Leviathan" sideValue="1" fleetnumber="-1" />
+    <set_relative_position name2="dentripitoid" distance="0" angle="0" name1="8" />
+    <set_object_property property="turnRate" value="1.0" name="dentripitoid" />
+    <add_ai type="ATTACK" targetName="SS cluefinder" value1="5.0" name="dentripitoid" />
+    <set_ship_text name="dentripitoid" race="??????" class="???????" desc="It is definetly attacking you, but you can't really figure out anything else." scan_desc="still nothing." />
+    <create type="genericMesh" x="100.0" y="0.0" z="99000.0" name="shell" meshFileName="dat/asteroid.dxs" textureFileName="dat/skaraan_station_glow.png" hullRace="???" hullType="???" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="shell" />
+    <set_object_property property="artScale" value="1.0" name="shell" />
+    <destroy name="8" />
+  </disabled_event>
+  <disabled_event name="checkfront8" id_arme="ca382dfc-1dff-4384-90dc-5c99a97f3446" parent_id_arme="79d3eb9b-ddcc-4309-bced-03e0b96d7df8">
+    <if_object_property property="shieldStateFront" name="8" comparator="LESS" value="800" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="2.0" />
+    <if_variable name="traitor" comparator="EQUALS" value="8.0" />
+    <set_variable name="appear 2" value="1.0" integer="yes" />
+    <set_variable name="AlienShipState" value="1.0" integer="yes" />
+    <!--AlienShipState: 0=Initialize, 1=Created, 2=Disappeared-->
+    <create type="enemy" x="50000.0" y="0.0" z="50000.0" angle="0" name="dentripitoid" raceKeys="Torgoth enemy" hullKeys="Leviathan" sideValue="1" fleetnumber="-1" />
+    <set_relative_position name2="dentripitoid" distance="0" angle="0" name1="8" />
+    <set_object_property property="turnRate" value="1.0" name="dentripitoid" />
+    <add_ai type="ATTACK" targetName="SS cluefinder" value1="5.0" name="dentripitoid" />
+    <set_ship_text name="dentripitoid" race="??????" class="???????" desc="It is definetly attacking you, but you can't really figure out anything else." scan_desc="still nothing." />
+    <create type="genericMesh" x="100.0" y="0.0" z="99000.0" name="shell" meshFileName="dat/asteroid.dxs" textureFileName="dat/skaraan_station_glow.png" hullRace="???" hullType="???" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="shell" />
+    <set_object_property property="artScale" value="1.0" name="shell" />
+    <destroy name="8" />
+  </disabled_event>
+  <folder_arme name="right9" id_arme="c7a74db8-1bf5-418d-958b-52a756bfafc2" parent_id_arme="62a9d62e-abfe-4c34-b84f-71e0f685320a" expanded_arme="" />
+  <disabled_event name="checkback9" id_arme="f313f863-5017-43f0-970d-38ba2a581fe3" parent_id_arme="c7a74db8-1bf5-418d-958b-52a756bfafc2">
+    <if_object_property property="shieldStateBack" name="9" comparator="LESS" value="900" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="2.0" />
+    <if_variable name="traitor" comparator="EQUALS" value="9.0" />
+    <set_variable name="appear 2" value="1.0" integer="yes" />
+    <set_variable name="AlienShipState" value="1.0" integer="yes" />
+    <!--AlienShipState: 0=Initialize, 1=Created, 2=Disappeared-->
+    <create type="enemy" x="50000.0" y="0.0" z="50000.0" angle="0" name="dentripitoid" raceKeys="Torgoth enemy" hullKeys="Leviathan" sideValue="1" fleetnumber="-1" />
+    <set_relative_position name2="dentripitoid" distance="0" angle="0" name1="9" />
+    <set_object_property property="turnRate" value="1.0" name="dentripitoid" />
+    <add_ai type="ATTACK" targetName="SS cluefinder" value1="5.0" name="dentripitoid" />
+    <set_ship_text name="dentripitoid" race="??????" class="???????" desc="It is definetly attacking you, but you can't really figure out anything else." scan_desc="still nothing." />
+    <create type="genericMesh" x="100.0" y="0.0" z="99000.0" name="shell" meshFileName="dat/asteroid.dxs" textureFileName="dat/skaraan_station_glow.png" hullRace="???" hullType="???" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="shell" />
+    <set_object_property property="artScale" value="1.0" name="shell" />
+    <destroy name="9" />
+  </disabled_event>
+  <disabled_event name="checkfront9" id_arme="665befd9-6b63-4f26-9b02-e31efeb03604" parent_id_arme="c7a74db8-1bf5-418d-958b-52a756bfafc2">
+    <if_object_property property="shieldStateFront" name="9" comparator="LESS" value="900" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="2.0" />
+    <if_variable name="traitor" comparator="EQUALS" value="9.0" />
+    <set_variable name="appear 2" value="1.0" integer="yes" />
+    <set_variable name="AlienShipState" value="1.0" integer="yes" />
+    <!--AlienShipState: 0=Initialize, 1=Created, 2=Disappeared-->
+    <create type="enemy" x="50000.0" y="0.0" z="50000.0" angle="0" name="dentripitoid" raceKeys="Torgoth enemy" hullKeys="Leviathan" sideValue="1" fleetnumber="-1" />
+    <set_relative_position name2="dentripitoid" distance="0" angle="0" name1="9" />
+    <set_object_property property="turnRate" value="1.0" name="dentripitoid" />
+    <add_ai type="ATTACK" targetName="SS cluefinder" value1="5.0" name="dentripitoid" />
+    <set_ship_text name="dentripitoid" race="??????" class="???????" desc="It is definetly attacking you, but you can't really figure out anything else." scan_desc="still nothing." />
+    <create type="genericMesh" x="100.0" y="0.0" z="99000.0" name="shell" meshFileName="dat/asteroid.dxs" textureFileName="dat/skaraan_station_glow.png" hullRace="???" hullType="???" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="shell" />
+    <set_object_property property="artScale" value="1.0" name="shell" />
+    <destroy name="9" />
+  </disabled_event>
+  <folder_arme name="right10" id_arme="1615db1b-2bc2-4840-86c7-1c34a47a8cf3" parent_id_arme="62a9d62e-abfe-4c34-b84f-71e0f685320a" expanded_arme="" />
+  <disabled_event name="checkback10" id_arme="d1fae8dc-bcfd-4f18-89ba-ee41780cd006" parent_id_arme="1615db1b-2bc2-4840-86c7-1c34a47a8cf3">
+    <if_object_property property="shieldStateBack" name="10" comparator="LESS" value="100" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="2.0" />
+    <if_variable name="traitor" comparator="EQUALS" value="10.0" />
+    <set_variable name="appear 2" value="1.0" integer="yes" />
+    <set_variable name="AlienShipState" value="1.0" integer="yes" />
+    <!--AlienShipState: 0=Initialize, 1=Created, 2=Disappeared-->
+    <create type="enemy" x="50000.0" y="0.0" z="50000.0" angle="0" name="dentripitoid" raceKeys="Torgoth enemy" hullKeys="Leviathan" sideValue="1" fleetnumber="-1" />
+    <set_relative_position name2="dentripitoid" distance="0" angle="0" name1="10" />
+    <set_object_property property="turnRate" value="1.0" name="dentripitoid" />
+    <add_ai type="ATTACK" targetName="SS cluefinder" value1="5.0" name="dentripitoid" />
+    <set_ship_text name="dentripitoid" race="??????" class="???????" desc="It is definetly attacking you, but you can't really figure out anything else." scan_desc="still nothing." />
+    <create type="genericMesh" x="100.0" y="0.0" z="99000.0" name="shell" meshFileName="dat/asteroid.dxs" textureFileName="dat/skaraan_station_glow.png" hullRace="???" hullType="???" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="shell" />
+    <set_object_property property="artScale" value="1.0" name="shell" />
+    <destroy name="10" />
+  </disabled_event>
+  <disabled_event name="checkfront10" id_arme="a54e4e8c-a92c-4652-9ab3-b7c87dc38ae4" parent_id_arme="1615db1b-2bc2-4840-86c7-1c34a47a8cf3">
+    <if_object_property property="shieldStateFront" name="10" comparator="LESS" value="100" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="2.0" />
+    <if_variable name="traitor" comparator="EQUALS" value="10.0" />
+    <set_variable name="appear 2" value="1.0" integer="yes" />
+    <set_variable name="AlienShipState" value="1.0" integer="yes" />
+    <!--AlienShipState: 0=Initialize, 1=Created, 2=Disappeared-->
+    <create type="enemy" x="50000.0" y="0.0" z="50000.0" angle="0" name="dentripitoid" raceKeys="Torgoth enemy" hullKeys="Leviathan" sideValue="1" fleetnumber="-1" />
+    <set_relative_position name2="dentripitoid" distance="0" angle="0" name1="10" />
+    <set_object_property property="turnRate" value="1.0" name="dentripitoid" />
+    <add_ai type="ATTACK" targetName="SS cluefinder" value1="5.0" name="dentripitoid" />
+    <set_ship_text name="dentripitoid" race="??????" class="???????" desc="It is definetly attacking you, but you can't really figure out anything else." scan_desc="still nothing." />
+    <create type="genericMesh" x="100.0" y="0.0" z="99000.0" name="shell" meshFileName="dat/asteroid.dxs" textureFileName="dat/skaraan_station_glow.png" hullRace="???" hullType="???" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="shell" />
+    <set_object_property property="artScale" value="1.0" name="shell" />
+    <destroy name="10" />
+  </disabled_event>
+  <event name="End Mission" id_arme="213b2942-bbdd-4545-894a-637a1d273b88" parent_id_arme="5a552169-8874-4f55-9658-97176957c4b2">
+    <if_not_exists name="dentripitoid" />
+    <if_variable name="appear 2" comparator="EQUALS" value="1.0" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="3.0" />
+    <destroy name="shell" />
+    <incoming_comms_text from="DS lounge" type="FRIEND">astounding SS cluefinder! how ever did you do it? I couldn't tell the differnece between them and the others, I didn't even know anything was up! good job, once again.</incoming_comms_text>
+    <set_timer name="game over" seconds="30" />
+    <set_variable name="appear 2" value="2.0" integer="yes" />
+  </event>
+  <disabled_event name="copy paste" id_arme="45e8a01a-5403-418f-a04a-ea0236ae8e63" parent_id_arme="5a552169-8874-4f55-9658-97176957c4b2">
+    <set_relative_position name2="dentripitoid" distance="0" angle="0" name1="1" />
+  </disabled_event>
+  <event name="game over check" id_arme="9f9a2b5f-1e6f-47fd-9e9c-90e61c1c1c37" parent_id_arme="5a552169-8874-4f55-9658-97176957c4b2">
+    <if_timer_finished name="game over" />
+    <if_variable name="AlienShipState" comparator="EQUALS" value="3.0" />
+    <end_mission />
+  </event>
+  <folder_arme name="OTHER" id_arme="4002f469-ba0b-4642-8801-5f528611a87e" expanded_arme="" />
+  <event name="shell follows" id_arme="faec0931-156f-4eed-ba78-cf8a46744260" parent_id_arme="4002f469-ba0b-4642-8801-5f528611a87e">
+    <if_exists name="dentripitoid" />
+    <if_exists name="shell" />
+    <set_object_property property="angle" value="0.0" name="shell" />
+    <set_relative_position name2="shell" distance="0" name1="dentripitoid" />
+  </event>
+  <event name="base check p1" id_arme="dd6cd8bc-dffd-47f9-846a-ed9789e96978" parent_id_arme="4002f469-ba0b-4642-8801-5f528611a87e">
+    <set_variable name="bases gone" value="1.0" integer="yes" />
+  </event>
+  <event name="base check p2" id_arme="87aedef7-732a-428c-8a6a-7b8bfd698aef" parent_id_arme="4002f469-ba0b-4642-8801-5f528611a87e">
+    <if_exists name="DS ballroom" />
+    <if_exists name="DS conservatory" />
+    <if_exists name="DS study" />
+    <if_exists name="DS library" />
+    <if_exists name="DS lounge" />
+    <set_variable name="bases gone" value="0.0" integer="yes" />
+  </event>
+  <event name="base check p3" id_arme="7ea951ba-76ae-4818-af0d-dd6d1d29f01f" parent_id_arme="4002f469-ba0b-4642-8801-5f528611a87e">
+    <if_variable name="bases gone" comparator="EQUALS" value="1.0" />
+    <end_mission />
+  </event>
+  <folder_arme name="comms buttons" id_arme="6a913ae7-29c9-48d9-a027-2d769422f8c5" parent_id_arme="4002f469-ba0b-4642-8801-5f528611a87e" />
+  <disabled_event name="destroy buttons" id_arme="0cd4cfdc-fd93-4847-adb5-0c3c6f0ed852" parent_id_arme="6a913ae7-29c9-48d9-a027-2d769422f8c5">
+    <clear_comms_button text="ask about green" sideValue="2" />
+    <clear_comms_button text="ask about mustard" sideValue="2" />
+    <clear_comms_button text="ask about peacock" sideValue="2" />
+    <clear_comms_button text="ask about plum" sideValue="2" />
+    <clear_comms_button text="ask about scarlet" sideValue="2" />
+  </disabled_event>
+  <folder_arme name="r1" id_arme="ca62693f-7111-4e17-a6b9-f1778ca94cf4" parent_id_arme="6a913ae7-29c9-48d9-a027-2d769422f8c5" expanded_arme="" />
+  <event name="r1s1" id_arme="7e5599a1-3cef-40e9-83dd-b46270bf365b" parent_id_arme="ca62693f-7111-4e17-a6b9-f1778ca94cf4">
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <if_distance name1="SS cluefinder" name2="DS ballroom" comparator="LESS" value="stationdistance" />
+    <set_comms_button text="ask about green" sideValue="2" />
+  </event>
+  <event name="r1s2" id_arme="4d4bea18-8cdf-4e17-818e-636ebcb0e749" parent_id_arme="ca62693f-7111-4e17-a6b9-f1778ca94cf4">
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <if_distance name1="SS cluefinder" name2="DS conservatory" comparator="LESS" value="stationdistance" />
+    <set_comms_button text="ask about plum" sideValue="2" />
+  </event>
+  <event name="r1s3" id_arme="f8dcc101-0863-4a56-ae3d-0af7d8fba293" parent_id_arme="ca62693f-7111-4e17-a6b9-f1778ca94cf4">
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <if_distance name1="SS cluefinder" name2="DS study" comparator="LESS" value="stationdistance" />
+    <set_comms_button text="ask about peacock" sideValue="2" />
+    <set_comms_button text="ask about scarlet" sideValue="2" />
+  </event>
+  <event name="r1s4" id_arme="05a9931c-74c8-4be3-b7b6-247e0c16ccba" parent_id_arme="ca62693f-7111-4e17-a6b9-f1778ca94cf4">
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <if_distance name1="SS cluefinder" name2="DS library" comparator="LESS" value="stationdistance" />
+    <set_comms_button text="ask about mustard" sideValue="2" />
+  </event>
+  <event name="r1s1 leave" id_arme="f12ca5a1-547a-48a8-9395-00da7cad8c53" parent_id_arme="ca62693f-7111-4e17-a6b9-f1778ca94cf4">
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <if_distance name1="SS cluefinder" name2="DS ballroom" comparator="GREATER_EQUAL" value="stationdistance" />
+    <clear_comms_button text="ask about green" sideValue="2" />
+  </event>
+  <event name="r1s2 leave" id_arme="9c91642a-7b51-4a4f-a332-57bce69d9257" parent_id_arme="ca62693f-7111-4e17-a6b9-f1778ca94cf4">
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <if_distance name1="SS cluefinder" name2="DS conservatory" comparator="GREATER_EQUAL" value="stationdistance" />
+    <clear_comms_button text="ask about plum" sideValue="2" />
+  </event>
+  <event name="r1s3 leave" id_arme="9ae76aa5-d7d7-47df-a9b2-92d16b45d867" parent_id_arme="ca62693f-7111-4e17-a6b9-f1778ca94cf4">
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <if_distance name1="SS cluefinder" name2="DS study" comparator="GREATER_EQUAL" value="stationdistance" />
+    <clear_comms_button text="ask about peacock" sideValue="2" />
+    <clear_comms_button text="ask about scarlet" sideValue="2" />
+  </event>
+  <event name="r1s4 leave" id_arme="cff0411d-5668-4ea5-90ec-cfb6bf0f0ab5" parent_id_arme="ca62693f-7111-4e17-a6b9-f1778ca94cf4">
+    <if_variable name="round" comparator="EQUALS" value="1.0" />
+    <if_distance name1="SS cluefinder" name2="DS library" comparator="GREATER_EQUAL" value="stationdistance" />
+    <clear_comms_button text="ask about mustard" sideValue="2" />
+  </event>
+  <folder_arme name="r2" id_arme="fcf05cb3-eb3d-4aea-954f-0e0f8ec480b7" parent_id_arme="6a913ae7-29c9-48d9-a027-2d769422f8c5" expanded_arme="" />
+  <event name="r2s1" id_arme="69358d74-d369-4a59-8146-be3c63e191c2" parent_id_arme="fcf05cb3-eb3d-4aea-954f-0e0f8ec480b7">
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <if_distance name1="SS cluefinder" name2="DS ballroom" comparator="LESS" value="stationdistance" />
+    <set_comms_button text="ask about peacock" sideValue="2" />
+  </event>
+  <event name="r2s2" id_arme="b0fa5433-1272-4450-9ff9-aea14b3461d2" parent_id_arme="fcf05cb3-eb3d-4aea-954f-0e0f8ec480b7">
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <if_distance name1="SS cluefinder" name2="DS conservatory" comparator="LESS" value="stationdistance" />
+    <set_comms_button text="ask about scarlet" sideValue="2" />
+  </event>
+  <event name="r2s3" id_arme="069a4602-5720-4fa6-b78d-a3e0dbeddd60" parent_id_arme="fcf05cb3-eb3d-4aea-954f-0e0f8ec480b7">
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <if_distance name1="SS cluefinder" name2="DS study" comparator="LESS_EQUAL" value="stationdistance" />
+    <set_comms_button text="ask about plum" sideValue="2" />
+  </event>
+  <event name="r2s4" id_arme="f533bd54-b50f-46f9-b400-3c87772d935a" parent_id_arme="fcf05cb3-eb3d-4aea-954f-0e0f8ec480b7">
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <if_distance name1="SS cluefinder" name2="DS library" comparator="LESS" value="stationdistance" />
+    <set_comms_button text="ask about green" sideValue="2" />
+  </event>
+  <event name="r2s5" id_arme="b370e16f-0ca8-4ba4-a8b2-393143372193" parent_id_arme="fcf05cb3-eb3d-4aea-954f-0e0f8ec480b7">
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <if_distance name1="SS cluefinder" name2="DS lounge" comparator="LESS" value="stationdistance" />
+    <set_comms_button text="ask about mustard" sideValue="2" />
+  </event>
+  <event name="r2s1 leave" id_arme="4fa8c43b-1db8-42c6-bf27-81ef547c612c" parent_id_arme="fcf05cb3-eb3d-4aea-954f-0e0f8ec480b7">
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <if_distance name1="SS cluefinder" name2="DS ballroom" comparator="GREATER_EQUAL" value="stationdistance" />
+    <clear_comms_button text="ask about peacock" sideValue="2" />
+  </event>
+  <event name="r2s2 leave" id_arme="49bab72d-fc7b-4329-b4a3-b0d5787c918b" parent_id_arme="fcf05cb3-eb3d-4aea-954f-0e0f8ec480b7">
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <if_distance name1="SS cluefinder" name2="DS conservatory" comparator="GREATER_EQUAL" value="stationdistance" />
+    <clear_comms_button text="ask about scarlet" sideValue="2" />
+  </event>
+  <event name="r2s3 leave" id_arme="b47d92a7-a557-4804-9f6d-16dcc27c60f9" parent_id_arme="fcf05cb3-eb3d-4aea-954f-0e0f8ec480b7">
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <if_distance name1="SS cluefinder" name2="DS study" comparator="GREATER_EQUAL" value="stationdistance" />
+    <clear_comms_button text="ask about plum" sideValue="2" />
+  </event>
+  <event name="r2s4 leave" id_arme="1f396d2a-4417-4a6b-83bc-cf1235ee0fdb" parent_id_arme="fcf05cb3-eb3d-4aea-954f-0e0f8ec480b7">
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <if_distance name1="SS cluefinder" name2="DS library" comparator="GREATER_EQUAL" value="stationdistance" />
+    <clear_comms_button text="ask about green" sideValue="2" />
+  </event>
+  <event name="r2s5 leave" id_arme="33a4baa3-f79d-43f0-9acc-050ce28c3ba5" parent_id_arme="fcf05cb3-eb3d-4aea-954f-0e0f8ec480b7">
+    <if_variable name="round" comparator="EQUALS" value="2.0" />
+    <if_distance name1="SS cluefinder" name2="DS lounge" comparator="GREATER_EQUAL" value="stationdistance" />
+    <clear_comms_button text="ask about mustard" sideValue="2" />
+  </event>
+  <folder_arme name="r3" id_arme="10aa0ae0-c191-40e7-aa5e-b170e35f28ad" parent_id_arme="6a913ae7-29c9-48d9-a027-2d769422f8c5" expanded_arme="" />
+  <event name="r3s1" id_arme="54527ea3-4e1a-4639-b674-444ea4e9e40d" parent_id_arme="10aa0ae0-c191-40e7-aa5e-b170e35f28ad">
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <if_distance name1="SS cluefinder" name2="DS ballroom" comparator="LESS" value="stationdistance" />
+    <set_comms_button text="ask about plum" sideValue="2" />
+  </event>
+  <event name="r3s2" id_arme="3a2fcecf-0301-45cb-8bc6-2c1c98589b3d" parent_id_arme="10aa0ae0-c191-40e7-aa5e-b170e35f28ad">
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <if_distance name1="SS cluefinder" name2="DS conservatory" comparator="LESS" value="stationdistance" />
+    <set_comms_button text="ask about green" sideValue="2" />
+  </event>
+  <event name="r3s3" id_arme="381b733c-6362-4308-afc1-a6174d83fbe9" parent_id_arme="10aa0ae0-c191-40e7-aa5e-b170e35f28ad">
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <if_distance name1="SS cluefinder" name2="DS study" comparator="LESS" value="stationdistance" />
+    <set_comms_button text="ask about peacock" sideValue="2" />
+  </event>
+  <event name="r3s4" id_arme="e9b93bc1-ae30-4b08-89fa-512225f5219d" parent_id_arme="10aa0ae0-c191-40e7-aa5e-b170e35f28ad">
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <if_distance name1="SS cluefinder" name2="DS library" comparator="LESS" value="stationdistance" />
+    <set_comms_button text="ask about mustard" sideValue="2" />
+  </event>
+  <event name="r3s5" id_arme="b3a37a2a-5765-4b7e-9408-29119aaffaf2" parent_id_arme="10aa0ae0-c191-40e7-aa5e-b170e35f28ad">
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <if_distance name1="SS cluefinder" name2="DS lounge" comparator="LESS" value="stationdistance" />
+    <set_comms_button text="ask about scarlet" sideValue="2" />
+  </event>
+  <event name="r3s1 leave" id_arme="54cb6c5a-ce40-4b1e-85fb-6cfd49c77515" parent_id_arme="10aa0ae0-c191-40e7-aa5e-b170e35f28ad">
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <if_distance name1="SS cluefinder" name2="DS ballroom" comparator="GREATER_EQUAL" value="stationdistance" />
+    <clear_comms_button text="ask about plum" sideValue="2" />
+  </event>
+  <event name="r3s2 leave" id_arme="5320d4d2-5100-4dbe-af57-e3c86bb08846" parent_id_arme="10aa0ae0-c191-40e7-aa5e-b170e35f28ad">
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <if_distance name1="SS cluefinder" name2="DS conservatory" comparator="GREATER_EQUAL" value="stationdistance" />
+    <clear_comms_button text="ask about green" sideValue="2" />
+  </event>
+  <event name="r3s3 leave" id_arme="45154779-ea65-4b1f-a81b-31fd9ddea04c" parent_id_arme="10aa0ae0-c191-40e7-aa5e-b170e35f28ad">
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <if_distance name1="SS cluefinder" name2="DS study" comparator="GREATER_EQUAL" value="stationdistance" />
+    <clear_comms_button text="ask about peacock" sideValue="2" />
+  </event>
+  <event name="r3s4 leave" id_arme="e80386f5-d56c-4335-b85f-30871a65e009" parent_id_arme="10aa0ae0-c191-40e7-aa5e-b170e35f28ad">
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <if_distance name1="SS cluefinder" name2="DS library" comparator="GREATER_EQUAL" value="stationdistance" />
+    <clear_comms_button text="ask about mustard" sideValue="2" />
+  </event>
+  <event name="r3s5 leave" id_arme="9f12b30b-ad6c-4d26-ac5a-01ccacd74d63" parent_id_arme="10aa0ae0-c191-40e7-aa5e-b170e35f28ad">
+    <if_variable name="round" comparator="EQUALS" value="3.0" />
+    <if_distance name1="SS cluefinder" name2="DS lounge" comparator="GREATER_EQUAL" value="stationdistance" />
+    <clear_comms_button text="ask about scarlet" sideValue="2" />
+  </event>
+  <event name="dentripitoid shield bonus" id_arme="25fda47c-ec8d-427b-b87f-058d27396e47" parent_id_arme="4002f469-ba0b-4642-8801-5f528611a87e">
+    <if_exists name="dentripitoid" />
+    <set_object_property property="shieldMaxStateFront" value="300" name="dentripitoid" />
+    <set_object_property property="shieldStateFront" value="300" name="dentripitoid" />
+  </event>
+  <folder_arme name="Nsects" id_arme="6e2f2c94-41ec-49dc-a836-e6dbc1a77e50" parent_id_arme="4002f469-ba0b-4642-8801-5f528611a87e" expanded_arme="" />
+  <event name="wreck 1" id_arme="cd891044-ef16-4d28-a315-a2553140db96" parent_id_arme="6e2f2c94-41ec-49dc-a836-e6dbc1a77e50">
+    <if_timer_finished name="wreck1 timer" />
+    <if_exists name="arvonian military wreck" />
+    <create type="monster" monsterType="6" x="75500.0" y="1.0" z="69400.0" name="alpha" />
+    <add_ai type="CHASE_STATION" name="alpha" />
+    <set_timer name="wreck1 timer" seconds="120" />
+    <add_ai type="CHASE_ANGER" name="alpha" />
+  </event>
+  <event name="wreck 2" id_arme="63610cbd-b4d4-425d-ab5d-3394da9204f9" parent_id_arme="6e2f2c94-41ec-49dc-a836-e6dbc1a77e50">
+    <if_timer_finished name="wreck2 timer" />
+    <if_exists name="arvonian civilian wreck" />
+    <create type="monster" monsterType="6" x="81400.0" y="1.0" z="36000.0" name="beta" />
+    <add_ai type="CHASE_STATION" name="beta" />
+    <set_timer name="wreck2 timer" seconds="120" />
+    <add_ai type="CHASE_ANGER" name="beta" />
+  </event>
+  <event name="wreck 3" id_arme="1d99991f-d363-4038-a0fe-a78d47d052a1" parent_id_arme="6e2f2c94-41ec-49dc-a836-e6dbc1a77e50">
+    <if_timer_finished name="wreck3 timer" />
+    <if_exists name="military wreck" />
+    <create type="monster" monsterType="6" x="24500.0" y="1.0" z="26600.0" name="gamma" />
+    <add_ai type="CHASE_STATION" name="gamma" />
+    <set_timer name="wreck3 timer" seconds="120" />
+    <add_ai type="CHASE_ANGER" name="gamma" />
+  </event>
+  <event name="wreck 4" id_arme="ac373595-5469-4b51-b974-d953fe00986f" parent_id_arme="6e2f2c94-41ec-49dc-a836-e6dbc1a77e50">
+    <if_timer_finished name="wreck4 timer" />
+    <if_exists name="whaling wreck" />
+    <create type="monster" monsterType="6" x="14500.0" y="1.0" z="85600.0" name="delta" />
+    <add_ai type="CHASE_STATION" name="delta" />
+    <set_timer name="wreck4 timer" seconds="120" />
+    <add_ai type="CHASE_ANGER" name="delta" />
+  </event>
+</mission_data>
