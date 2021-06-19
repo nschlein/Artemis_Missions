@@ -1,0 +1,429 @@
+<mission_data version="2.7.5" background_id_arme="129a99d3-a795-4606-9c09-70552341e35f" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <mission_description>These Are The Voyages... Ep. III^^The Excalibur is ordered to escort a Ximni ambassador amid fears of Torgoth aggression, though all is not as it seems...^^*Recommended for experienced crews*</mission_description>
+  <!--Setting the Stage-->
+  <start id_arme="129a99d3-a795-4606-9c09-70552341e35f">
+    <big_message title="These Are The Voyages..." subtitle1="Episode III" subtitle2="Diplomatic Orders" />
+    <set_difficulty_level value="7" />
+    <set_skybox_index index="28" />
+    <set_object_property property="nebulaIsOpaque" value="1" />
+    <set_object_property property="sensorSetting" value="2" />
+    <set_object_property property="nonPlayerSpeed" value="100" />
+    <set_object_property property="nonPlayerShield" value="100" />
+    <set_object_property property="nonPlayerWeapon" value="100" />
+    <set_object_property property="playerWeapon" value="100" />
+    <set_object_property property="playerShields" value="100" />
+    <create count="100" type="nebulas" nebType="1" startX="100000.0" startY="0.0" startZ="80000.0" endX="80000.0" endY="0.0" endZ="100000.0" randomRange="20000" randomSeed="200" />
+    <!---->
+    <create type="player" player_slot="0" x="10000.0" y="0.0" z="50000.0" angle="270" name="Excalibur" accent_color="50" raceKeys="TSN" hullKeys="Battleship" warp="yes" jump="no" />
+    <create type="neutral" x="30749.0" y="0.0" z="70053.0" angle="340" name="Triumph of Zhul" raceKeys="Ximni" hullKeys="Light Cruiser" sideValue="2" fleetnumber="1" />
+    <create type="station" x="90000.0" y="0.0" z="30000.0" name="Ozanka Spacedock" raceKeys="Terra" hullKeys="Civilian Base Station" sideValue="2" />
+    <create type="neutral" x="72460.0" y="0.0" z="11818.0" angle="210" name="TSN Cargo Vessel" raceKeys="Terran" hullKeys="Bulk Cargo" sideValue="2" fleetnumber="2" />
+    <create type="neutral" x="77594.0" y="0.0" z="39732.0" angle="25" name="Honor of Election Day" raceKeys="Ximni" hullKeys="Scout" sideValue="2" fleetnumber="3" />
+    <add_ai type="GUARD_STATION" value1="0" name="Honor of Election Day" />
+    <add_ai type="TARGET_THROTTLE" value1="0.2" targetName="Ozanka Spacedock" value2="1" name="TSN Cargo Vessel" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Honor of Election Day" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Cargo Vessel" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Triumph of Zhul" />
+    <!---->
+    <!---->
+    <create type="Anomaly" pickupType="0" x="37166.0" y="0.0" z="77754.0" />
+    <create type="Anomaly" pickupType="6" x="63637.0" y="0.0" z="71336.0" />
+    <create type="Anomaly" pickupType="0" x="89305.0" y="0.0" z="52727.0" />
+    <create type="Anomaly" pickupType="0" x="3637.0" y="0.0" z="51283.0" />
+    <create type="Anomaly" pickupType="6" x="17273.0" y="0.0" z="36203.0" />
+    <set_timer name="TSNCommandBriefing" seconds="10" />
+    <set_variable name="TSNCommandBriefing" value="0.0" integer="yes" />
+    <!---->
+    <set_timer name="Triumph" seconds="90" />
+    <set_variable name="Triumph" value="0.0" integer="yes" />
+    <!---->
+    <set_variable name="Spacedock" value="0.0" integer="yes" />
+    <!---->
+    <set_variable name="Rendezvous Point" value="0.0" integer="yes" />
+    <!---->
+    <set_variable name="Torgoth" value="0.0" integer="yes" />
+    <!---->
+    <set_variable name="EndMission" value="0.0" integer="yes" />
+    <!---->
+    <set_variable name="ScenarioA" value="0.0" integer="yes" />
+    <set_variable name="ScenarioB" value="0.0" integer="yes" />
+    <!---->
+    <set_variable name="ComputerWarning" value="0.0" integer="yes" />
+  </start>
+  <!--TSN Command Briefing-->
+  <folder_arme name="Mission Briefing" id_arme="0d3f48fe-6e3d-42ea-a392-38105182ed66" expanded_arme="" />
+  <event name="Review on Comms" id_arme="463c7e8d-6461-42c2-9b16-28e128e0eadb" parent_id_arme="0d3f48fe-6e3d-42ea-a392-38105182ed66">
+    <if_timer_finished name="TSNCommandBriefing" />
+    <if_variable name="TSNCommandBriefing" comparator="EQUALS" value="0.0" />
+    <set_variable name="TSNCommandBriefing" value="1.0" integer="yes" />
+    <incoming_comms_text from="TSN COMMAND - STARDATE: 98682.56" sideValue="2" type="STATUS PLAYER FRIEND">An important Ximni ambassador is travelling from one of their colony planets to their homeworld for a key election they are having concerning the Confederation's state of involvement in the war. Capturing the ambassador would be a major coup for the Torgoth or Skaraan, so we're assigning you to make sure everything goes smoothly. I read your report from Wolf 359, and determined the Excalibur would be the best crew to handle such a delicate situation.^^You are to escort Ambassador Pavok safely from Ozanka back to Ximni. ^You will find him at Ozanka spacedock. Once you have him on board, speak with him about the mission.^Do whatever is necessary to keep him safe.</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Review briefing on Comms." consoles="MHWESC" player_slot="0" />
+  </event>
+  <!-- - - - - - - - - - - -->
+  <folder_arme name="Triumph Wishes to Speak" id_arme="464b885a-bd06-49b2-b626-c633d75c49eb" expanded_arme="" />
+  <event name="Triumph Hail" id_arme="6e1d9ff9-bed4-4c4f-894f-eb55fc5c79fc" parent_id_arme="464b885a-bd06-49b2-b626-c633d75c49eb">
+    <if_timer_finished name="Triumph" />
+    <if_variable name="Triumph" comparator="EQUALS" value="0.0" />
+    <incoming_comms_text from="Triumph of Zhul" sideValue="2" type="STATUS FRIEND">Greetings, Terrans! My name is Aurae, elected captain of this vessel for our exchange. We understand that you have buisiness with Ambassador Pavok this fine day, but there is much that we would like to discuss with you before you pick him up at Ozanka spacedock. We would have this conversation on open channels, but feel it is best to speak face to face to maintain confidentiality. Rendezvous with us immediately. As allies we think this matter is of the utmost importance.</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: We are being hailed by a Ximni ship on Comms." consoles="MC" player_slot="0" />
+    <set_variable name="Triumph" value="1.0" integer="yes" />
+    <set_timer name="ComputerWarning" seconds="15" />
+  </event>
+  <event name="Computer Warning" id_arme="384086e0-a370-4875-b343-d6947fe034c1" parent_id_arme="464b885a-bd06-49b2-b626-c633d75c49eb">
+    <if_timer_finished name="ComputerWarning" />
+    <if_variable name="ComputerWarning" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="COMPUTER: We should not delay our mission." consoles="MHWESC" player_slot="0" />
+    <set_variable name="ComputerWarning" value="1.0" integer="yes" />
+  </event>
+  <!-- - - - - - - - - - - -->
+  <folder_arme name="A Confidential Exchange" id_arme="254a8b7c-087d-490b-a1a5-ca58eb30f4a6" expanded_arme="" />
+  <event name="Rendezvos With Triumph" id_arme="f516023c-f076-4cc4-9dd5-dbf4be3aa041" parent_id_arme="254a8b7c-087d-490b-a1a5-ca58eb30f4a6">
+    <if_distance name1="Triumph of Zhul" name2="Excalibur" comparator="LESS_EQUAL" value="2000.0" />
+    <if_variable name="Triumph" comparator="EQUALS" value="1.0" />
+    <set_variable name="Triumph" value="2.0" integer="yes" />
+    <incoming_comms_text from="Aurae" sideValue="2" type="STATUS FRIEND">Glorious allies, we knew you would trust our word and listen to what we have to say!^^Ambassador Pavok has been a great friend of mine for years. We served together on this very ship once upon a time, before he took more interest in strengthening our democracy. As you know we Ximni have frequent elections concerning the state of affairs in this vast universe fairly regularly. Pavok has dedicated his life to keeping our alliance with the USFP and TSN strong for the greater good of free civilizations everywhere. Without him and his council, we would not have been involved with you Terrans for this long. His importance to both our interests cannot be understated.^^That being said, Pavok has not been himself lately.</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: The Triumph is hailing us on a secure channel." consoles="MC" player_slot="0" />
+    <set_comms_button text="What do you mean?" />
+  </event>
+  <event name="Conversation 1" id_arme="2b45c1d6-9484-418e-b63f-f005253beb51" parent_id_arme="254a8b7c-087d-490b-a1a5-ca58eb30f4a6">
+    <if_variable name="Triumph" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="What do you mean?" />
+    <incoming_comms_text from="Aurae" type="STATUS FRIEND">My friends at the spacedock here have informed me that whenever Pavok has been away from the planet surface he's spent his time locked in his room. When he ventures to Ozanka, he goes alone. The other night, when our ship arrived here after a glorious defeat of several Kralien ships, he did not wish to partake in our celebration. We even invited him to fill in the baritone role for a recital of our victory hymn, an offer that he declined! It is unlike a Ximni to not want celebrate the glory of our great Confederacy. But that is just the tip of the iceberg...</incoming_comms_text>
+    <clear_comms_button text="What do you mean?" />
+    <set_variable name="Triumph" value="3.0" integer="yes" />
+    <set_comms_button text="What else is there?" />
+  </event>
+  <event name="Conversation 2" id_arme="8d33a346-3b74-4ba7-b8a8-c1499d77a780" parent_id_arme="254a8b7c-087d-490b-a1a5-ca58eb30f4a6">
+    <if_comms_button text="What else is there?" />
+    <if_variable name="Triumph" comparator="EQUALS" value="3.0" />
+    <incoming_comms_text from="Aurae" sideValue="2" type="STATUS FRIEND">Rumors are circulating that Pavok has been voting... differently, in our elections these past few days. They say he hasn't voted to continue our alliance, and instead wants us to move strictly against the Torgoth and pay no mind to what any USFP members think. ^^He retreated to our colony here, which is a sacred planet for our species on which we hope to usher in a new era for ourselves, without giving much of a reason for visit. This planet is very close to the edge of Torgoth and Skaraan space. If we Ximni hadn't discovered it first, it would likely have been claimed by one of them before you got here. Granted, Pavok is under no obligation to tell anyone his business; however, it is most unusual for a Ximni to hide how they are feeling. We pride ourselves in our honesty. In my opinion, comrade, Pavok is hiding something, and we think it wise for you to be on your guard.</incoming_comms_text>
+    <clear_comms_button text="What else is there?" />
+    <set_comms_button text="While your concerns are noted, these are stressful times. Pavok may just be committed to his work right now." />
+    <set_comms_button text="The Ambassador surely could be up to something. We will keep a close eye on him. If he doesn't trust us, why should we trust him." />
+  </event>
+  <event name="Possible Response 1" id_arme="09004c82-c3e3-4c6c-9edc-5c9d8e2c8f42" parent_id_arme="254a8b7c-087d-490b-a1a5-ca58eb30f4a6">
+    <if_variable name="Triumph" comparator="EQUALS" value="3.0" />
+    <if_comms_button text="The Ambassador surely could be up to something. We will keep a close eye on him. If he doesn't trust us, why should we trust him." />
+    <set_variable name="Triumph" value="4.0" integer="yes" />
+    <clear_comms_button text="The Ambassador surely could be up to something. We will keep a close eye on him. If he doesn't trust us, why should we trust him." />
+    <incoming_comms_text from="Aurae" sideValue="2" type="STATUS FRIEND">Thank you for your time, Excalibur, and godspeed!</incoming_comms_text>
+    <clear_comms_button text="While your concerns are noted, these are stressful times. Pavok may just be committed to his work right now." />
+    <warning_popup_message message="COMPUTER: We are running late." consoles="M" player_slot="0" />
+  </event>
+  <event name="Possible Response 2" id_arme="973856a5-ac4e-4544-b7d4-3c5e0e00dc36" parent_id_arme="254a8b7c-087d-490b-a1a5-ca58eb30f4a6">
+    <if_variable name="Triumph" comparator="EQUALS" value="3.0" />
+    <if_comms_button text="While your concerns are noted, these are stressful times. Pavok may just be committed to his work right now." />
+    <clear_comms_button text="The Ambassador surely could be up to something. We will keep a close eye on him. If he doesn't trust us, why should we trust him." />
+    <clear_comms_button text="While your concerns are noted, these are stressful times. Pavok may just be committed to his work right now." />
+    <set_variable name="Triumph" value="4.0" integer="yes" />
+    <warning_popup_message message="COMPUTER: We are running late." consoles="M" player_slot="0" />
+    <incoming_comms_text from="Aurae" sideValue="2" type="STATUS FRIEND">Perhaps you are right. Be safe, Excalibur.</incoming_comms_text>
+  </event>
+  <!-- - - - - - - - - - - -->
+  <folder_arme name="Ozanka Spacedock" id_arme="4563f167-be3a-45f9-b5b1-409cde24feb1" expanded_arme="" />
+  <event name="Approaching Spacedock" id_arme="960d4d9a-76ab-4ca9-8762-e00f142b3cb7" parent_id_arme="4563f167-be3a-45f9-b5b1-409cde24feb1">
+    <if_variable name="Spacedock" comparator="EQUALS" value="0.0" />
+    <if_variable name="Triumph" comparator="LESS_EQUAL" value="4.0" />
+    <if_distance player_slot1="0" name2="Ozanka Spacedock" comparator="LESS_EQUAL" value="20000.0" />
+    <incoming_comms_text from="Pavok" sideValue="2" type="FRIEND">Ah, Excalibur! It's about time you arrived. I am eagerly awaiting our journey together. I will come aboard your vessel when you dock here at Ozanka spacedock! </incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Pavok is hailing us on Comms." consoles="MC" player_slot="0" />
+    <set_variable name="Triumph" value="5.0" integer="yes" />
+    <set_variable name="Spacedock" value="1.0" integer="yes" />
+  </event>
+  <event name="Docking" id_arme="26bf2d97-379d-4993-b3dd-cb4ac2117231" parent_id_arme="4563f167-be3a-45f9-b5b1-409cde24feb1">
+    <if_docked player_slot="0" name="Ozanka Spacedock" />
+    <if_variable name="Spacedock" comparator="EQUALS" value="1.0" />
+    <set_variable name="Spacedock" value="2.0" integer="yes" />
+    <create type="genericMesh" x="10000.0" y="0.0" z="50000.0" name="Rendezvous Point" meshFileName="dat\asteroid.dxs" textureFileName="dat\asteroidTexture.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="Rendezvous Point" />
+    <set_object_property property="artScale" value="0.01" name="Rendezvous Point" />
+    <set_comms_button text="It is our duty that our allies are kept safe. Enjoy your stay on Excalibur." />
+    <set_comms_button text="Ozanka is certainly most beautiful. What exactly were you doing here, Ambassador?" />
+    <incoming_comms_text from="Pavok" sideValue="2" type="FRIEND">This is quite the ship you have here! Now that my business on the planet Ozanka is concluded, I am ready for you to escort me back to Ximni. I trust you Terrans have good reason if you deem it necessary that you accompany me home, but I do think you worry too much. I am grateful for our most honorable partnership in this war. Let us be on our way!</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: The Ambassador is boarding. Discuss mission on Comms." consoles="MHWESC" player_slot="0" />
+  </event>
+  <event name="Trustworty" id_arme="e05cff48-144c-4b5d-a184-99dafb8ffd42" parent_id_arme="4563f167-be3a-45f9-b5b1-409cde24feb1">
+    <if_comms_button text="It is our duty that our allies are kept safe. Enjoy your stay on Excalibur." />
+    <if_variable name="Spacedock" comparator="EQUALS" value="2.0" />
+    <clear_comms_button text="It is our duty that our allies are kept safe. Enjoy your stay on Excalibur." />
+    <clear_comms_button text="Ozanka is certainly most beautiful. What exactly were you doing here, Ambassador?" />
+    <set_variable name="Spacedock" value="3.0" integer="yes" />
+    <incoming_comms_text from="Pavok" sideValue="2" type="FRIEND">Thank you! I will be retiring to my room now, friends. Long live the alliance!</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Proceed to rendezvous point." consoles="MHS" player_slot="0" />
+  </event>
+  <event name="Untrustworthy" id_arme="bc18c885-b6c9-4eb6-95ea-f8d09f0b5d97" parent_id_arme="4563f167-be3a-45f9-b5b1-409cde24feb1">
+    <if_comms_button text="Ozanka is certainly most beautiful. What exactly were you doing here, Ambassador?" />
+    <if_variable name="Spacedock" comparator="EQUALS" value="2.0" />
+    <clear_comms_button text="It is our duty that our allies are kept safe. Enjoy your stay on Excalibur." />
+    <set_variable name="Spacedock" value="3.0" integer="yes" />
+    <clear_comms_button text="Ozanka is certainly most beautiful. What exactly were you doing here, Ambassador?" />
+    <incoming_comms_text from="Pavok" sideValue="2" type="STATUS">It is indeed, especially compared to our homeworld. My business is my own, I'm sure you understand. I will be retiring to my room now. We must delay no longer. Long live the alliance.^</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Proceed to rendezvous point." consoles="MHS" player_slot="0" />
+  </event>
+  <!-- - - - - - - - - - - -->
+  <folder_arme name="Science Officer" id_arme="b9613d6b-d25d-4c1d-8a2f-a706ee488cf5" expanded_arme="" />
+  <event name="Rendezvous Point" id_arme="d1ad10b5-1091-442b-8131-5e2f2cf3a935" parent_id_arme="b9613d6b-d25d-4c1d-8a2f-a706ee488cf5">
+    <if_scan_level name="Rendezvous Point" side="2" comparator="NOT" value="0" />
+    <if_variable name="Rendezvous Point" comparator="EQUALS" value="0.0" />
+    <if_exists name="Rendezvous Point" />
+    <set_ship_text name="Rendezvous Point" newname="Rendezvous Point" desc="COMPUTER: Bring Excalibur to this point to exit the sector." />
+    <set_variable name="Rendezvous Point" value="1.0" integer="yes" />
+  </event>
+  <!-- - - - - - - - - - - -->
+  <folder_arme name="Rendezvous Point" id_arme="5a4ea9d0-f431-477a-98c7-d8f06aefaf44" expanded_arme="" />
+  <event name="Something Torgoth This Way Comes" id_arme="d9c9bd6c-843c-4b38-a515-eaeb9e83a0eb" parent_id_arme="5a4ea9d0-f431-477a-98c7-d8f06aefaf44">
+    <if_distance player_slot1="0" name2="Rendezvous Point" comparator="LESS_EQUAL" value="10000.0" />
+    <if_variable name="Torgoth" comparator="EQUALS" value="0.0" />
+    <if_exists name="Rendezvous Point" />
+    <set_timer name="TorgothHail" seconds="10" />
+    <warning_popup_message message="COMPUTER: A Torgoth ship is on an intercept course. They are hailing us." consoles="MHWESC" player_slot="0" />
+    <destroy name="Rendezvous Point" />
+    <set_variable name="Torgoth" value="1.0" integer="yes" />
+  </event>
+  <event name="Torgoth Hail" id_arme="c424e5af-96dc-4e83-93a4-0bda5a0edef7" parent_id_arme="5a4ea9d0-f431-477a-98c7-d8f06aefaf44">
+    <if_variable name="Torgoth" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="TorgothHail" />
+    <set_variable name="Torgoth" value="2.0" integer="yes" />
+    <set_comms_button text="Chameleon? What are you talking about?" />
+    <set_object_property property="shieldsOn" value="1" player_slot="0" />
+    <warning_popup_message message="COMPUTER: Raising shields. Recommend going to red alert." consoles="MHWESC" player_slot="0" />
+    <incoming_comms_text from="Torgoth Behemoth" sideValue="2" type="ALERT STATUS ENEMY">Attention, Terran vessel! While we would love for your blood to be on our hands today, we do not wish to be played for fools any longer by the chameleon on your vessel. Hand him over now, or we will destroy the both of you!</incoming_comms_text>
+  </event>
+  <event name="Chameleon?" id_arme="6ee72fff-e5b2-4681-9d80-f4f24c16ae80" parent_id_arme="5a4ea9d0-f431-477a-98c7-d8f06aefaf44">
+    <if_variable name="Torgoth" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Chameleon? What are you talking about?" />
+    <set_comms_button text="Pavok, what do you have to say for yourself?" />
+    <incoming_comms_text from="Torgoth Behemoth" sideValue="2" type="ALERT STATUS ENEMY">The "Ambassador" on your ship is not who they claim to be, Terran! They are an Arvonian in cahoots with the Skaraan. Arvonians are able to manipulate the color of their skin as well as physical features to such a perfect level that they can imitate other living things, or blend with their environments. ^^Torgoth parliament has discovered recently that we have been being spied on by our supposed Hegemony "allies", and that they have been manipulating us by appealing to our nature and hunger for war! They plan on running our resources dry and taking all of our splendor for themselves, but we Torgoth are not brainless! This Arvonian on your ship is trying to split the alliance so that the Skaraan, Kraliens, and Arvonians can take out both the Ximni and TSN, while overwhelming us on two fronts. For now, our interests align. Now beam the imposter over so I may stab him through the heart! </incoming_comms_text>
+    <set_variable name="Torgoth" value="3.0" integer="yes" />
+    <clear_comms_button text="Chameleon? What are you talking about?" />
+  </event>
+  <event name="Pavok Choice" id_arme="c0115e8c-e304-4421-8c11-1b1680b8369f" parent_id_arme="5a4ea9d0-f431-477a-98c7-d8f06aefaf44">
+    <if_comms_button text="Pavok, what do you have to say for yourself?" />
+    <if_variable name="Torgoth" comparator="EQUALS" value="3.0" />
+    <set_variable name="Torgoth" value="4.0" integer="yes" />
+    <clear_comms_button text="Pavok, what do you have to say for yourself?" />
+    <incoming_comms_text from="Pavok" type="STATUS">I do not know why you are entertaining this Torgoth's meritless claim. They have no proof that I am Arvonian. Consider the fact that you were sent here to protect me from a potential Hegemony coup. Well, the Torgoth ARE a member of the Hegemony. Is it not more likely that this is merely a diversion to prevent us from exiting the sector before these whale-hunting scum can attack us?</incoming_comms_text>
+    <set_comms_button text="You are right, Pavok. We must follow our TSN orders and protect you." />
+    <set_comms_button text="If you are really Pavok, then you will report to sickbay for testing." />
+  </event>
+  <event name="Trust Pavok" id_arme="44f36f19-b6ab-4e4f-afea-88a27386a84d" parent_id_arme="5a4ea9d0-f431-477a-98c7-d8f06aefaf44">
+    <if_comms_button text="You are right, Pavok. We must follow our TSN orders and protect you." />
+    <if_variable name="ScenarioB" comparator="EQUALS" value="0.0" />
+    <clear_comms_button text="If you are really Pavok, then you will report to sickbay for testing." />
+    <clear_comms_button text="You are right, Pavok. We must follow our TSN orders and protect you." />
+    <set_variable name="ScenarioB" value="1.0" integer="yes" />
+    <incoming_comms_text from="Torgoth Behemoth" sideValue="2" type="ALERT ENEMY">Fine! We will destroy the Arvonian! We didn't want it to come to this, but we are glad it did because now we can destroy you as well!</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Enemy ship approaching." consoles="MHWS" player_slot="0" />
+    <create type="enemy" x="2500.0" y="15.0" z="50000.0" angle="270" name="Torgoth Behemoth" raceKeys="Torgoth" hullKeys="Behemoth" sideValue="0" fleetnumber="49" />
+    <set_special name="Torgoth Behemoth" ship="-1" captain="5" />
+    <add_ai type="ATTACK" targetName="Excalibur" value1="0.4" name="Torgoth Behemoth" />
+    <set_timer name="Behemoth" seconds="2" />
+  </event>
+  <event name="Trust Torgoth" id_arme="57c65db0-db18-4b94-8b76-dd6e1ec84725" parent_id_arme="5a4ea9d0-f431-477a-98c7-d8f06aefaf44">
+    <if_comms_button text="If you are really Pavok, then you will report to sickbay for testing." />
+    <if_variable name="ScenarioA" comparator="EQUALS" value="0.0" />
+    <incoming_comms_text from="Pavok" type="ALERT STATUS ENEMY">You're making a big mistake.</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Unauthorized use of transporter room detected." consoles="MHWS" player_slot="0" />
+    <clear_comms_button text="You are right, Pavok. We must follow our TSN orders and protect you." />
+    <clear_comms_button text="If you are really Pavok, then you will report to sickbay for testing." />
+    <set_comms_button text="Security, bring &quot;Pavok&quot; to the brig!" />
+    <set_variable name="ScenarioA" value="1.0" integer="yes" />
+  </event>
+  <!-- - - - - - - - - - - -->
+  <folder_arme name="Torgoth Behemoth" id_arme="836a2e0d-84d1-42f5-84ba-c4fc320810c9" expanded_arme="" />
+  <event name="Behemoth Battle" id_arme="e7c18ea9-d2eb-4aa5-a991-9d90fd8d74fc" parent_id_arme="836a2e0d-84d1-42f5-84ba-c4fc320810c9">
+    <if_variable name="ScenarioB" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Behemoth" />
+    <if_exists name="Torgoth Behemoth" />
+    <set_variable name="ScenarioB" value="2.0" integer="yes" />
+  </event>
+  <event name="Behemoth Destroyed" id_arme="a6b3e0eb-928a-442d-b40a-70a7216f6f14" parent_id_arme="836a2e0d-84d1-42f5-84ba-c4fc320810c9">
+    <if_not_exists name="Torgoth Behemoth" />
+    <if_variable name="ScenarioB" comparator="EQUALS" value="2.0" />
+    <set_variable name="ScenarioB" value="3.0" integer="yes" />
+    <set_timer name="Imposter" seconds="10" />
+    <warning_popup_message message="COMPUTER: Enemy destroyed." consoles="MHWS" player_slot="0" />
+  </event>
+  <event name="Behemoth Surrendered" id_arme="9ee05024-698c-429e-b209-f9804329c80b" parent_id_arme="836a2e0d-84d1-42f5-84ba-c4fc320810c9">
+    <if_object_property property="hasSurrendered" name="Torgoth Behemoth" comparator="EQUALS" value="1" />
+    <if_variable name="ScenarioB" comparator="EQUALS" value="2.0" />
+    <set_variable name="ScenarioB" value="3.0" integer="yes" />
+    <set_timer name="Imposter" seconds="10" />
+    <warning_popup_message message="COMPUTER: Enemy defeated." consoles="MHWS" player_slot="0" />
+  </event>
+  <event name="Triumph Discovery" id_arme="c7542b63-6b6a-484a-be83-dbd563ed6fcb" parent_id_arme="836a2e0d-84d1-42f5-84ba-c4fc320810c9">
+    <if_variable name="ScenarioB" comparator="EQUALS" value="3.0" />
+    <if_timer_finished name="Imposter" />
+    <incoming_comms_text from="Triumph of Zhul" sideValue="2" type="ALERT PLAYER FRIEND">Excalibur! It's Aurae of the Triumph of Zhul! Ozanka spacedock just informed me that Pavok's dead body was discovered locked away in his quarters on the station! You have an imposter on your ship!</incoming_comms_text>
+    <set_comms_button text="Security, bring &quot;Pavok&quot; to the brig!" />
+    <warning_popup_message message="COMPUTER: Incoming emergency hail on Comms." consoles="MHWESC" player_slot="0" />
+    <set_variable name="ScenarioB" value="4.0" integer="yes" />
+  </event>
+  <event name="Security" id_arme="ad1c1d5a-02d2-42b9-ad1e-98aa2298139a" parent_id_arme="836a2e0d-84d1-42f5-84ba-c4fc320810c9">
+    <if_comms_button text="Security, bring &quot;Pavok&quot; to the brig!" />
+    <if_variable name="ScenarioB" comparator="EQUALS" value="4.0" />
+    <set_object_property property="shieldsOn" value="0" player_slot="0" />
+    <warning_popup_message message="COMPUTER: &quot;Pavok&quot; has beamed off the ship." consoles="MHWESC" player_slot="0" />
+    <set_timer name="Arvonian" seconds="20" />
+    <incoming_comms_text from="Excalibur Security Chief " sideValue="2" type="ALERT STATUS PLAYER FRIEND">Captain, he is not in his cell! And our shields have been deactivated!</incoming_comms_text>
+    <set_variable name="ScenarioB" value="5.0" integer="yes" />
+    <clear_comms_button text="Security, bring &quot;Pavok&quot; to the brig!" />
+  </event>
+  <event name="Don't Let Him Get Away" id_arme="dbbca4bb-d9bc-4e7b-b5a6-7783a6df26a6" parent_id_arme="836a2e0d-84d1-42f5-84ba-c4fc320810c9">
+    <if_timer_finished name="Arvonian" />
+    <if_variable name="ScenarioB" comparator="EQUALS" value="5.0" />
+    <set_variable name="ScenarioB" value="6.0" integer="yes" />
+    <incoming_comms_text from="Aurae" sideValue="2" type="ALERT FRIEND">You must not let the Arvonians escape! Take them dead or alive!</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Enemy decloaking in sector C5. Raising shields." consoles="MHWESC" player_slot="0" />
+    <add_ai type="POINT_THROTTLE" value1="100000.0" value2="0" value3="100000.0" value4="1.0" name="Arvonian Carrier" />
+    <create type="enemy" x="17000.0" y="15.0" z="57000.0" angle="240" name="Arvonian Carrier" raceKeys="Arvonian" hullKeys="Light" sideValue="1" fleetnumber="50" />
+    <set_special name="Arvonian Carrier" ship="-1" captain="5" clear="yes" />
+    <set_object_property property="shieldsOn" value="1" player_slot="0" />
+  </event>
+  <!-- - - - - - - - - - - -->
+  <folder_arme name="Arvonian Carrier" id_arme="6c8216cc-2fa2-4fe2-b9ae-68eb3fb9011d" expanded_arme="" />
+  <event name="Security" id_arme="233fb473-4311-4f41-8deb-8489a6f6781c" parent_id_arme="6c8216cc-2fa2-4fe2-b9ae-68eb3fb9011d">
+    <if_comms_button text="Security, bring &quot;Pavok&quot; to the brig!" />
+    <if_variable name="ScenarioA" comparator="EQUALS" value="1.0" />
+    <set_object_property property="shieldsOn" value="0" player_slot="0" />
+    <warning_popup_message message="COMPUTER: &quot;Pavok&quot; has beamed off the ship." consoles="MHWESC" player_slot="0" />
+    <set_timer name="Arvonian" seconds="10" />
+    <incoming_comms_text from="Excalibur Security Chief " sideValue="2" type="ALERT STATUS PLAYER FRIEND">Captain, he is not in his cell! And our shields have been deactivated!</incoming_comms_text>
+    <clear_comms_button text="Security, bring &quot;Pavok&quot; to the brig!" />
+    <set_variable name="ScenarioA" value="2.0" integer="yes" />
+  </event>
+  <event name="Don't Let Him Get Away" id_arme="afc00e12-6aa0-490e-a5dc-bf036d167989" parent_id_arme="6c8216cc-2fa2-4fe2-b9ae-68eb3fb9011d">
+    <if_timer_finished name="Arvonian" />
+    <if_variable name="ScenarioA" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text from="Aurae" sideValue="2" type="ALERT FRIEND">You must not let the Arvonians escape! Take them dead or alive!</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Enemy decloaking in sector C5" consoles="MHWESC" player_slot="0" />
+    <set_object_property property="shieldsOn" value="1" player_slot="0" />
+    <set_variable name="ScenarioA" value="3.0" integer="yes" />
+    <set_special name="Arvonian Carrier" ship="-1" captain="5" ability="AntiTorp" />
+    <create type="enemy" x="10000.0" y="15.0" z="50000.0" angle="270" name="Arvonian Carrier" raceKeys="Arvonian" hullKeys="Light" sideValue="1" fleetnumber="50" />
+    <add_ai type="POINT_THROTTLE" value1="100000.0" value2="0" value3="100000.0" value4="1.0" name="Arvonian Carrier" />
+    <set_timer name="Skaraan" seconds="30" />
+  </event>
+  <event name="Skaraan A" id_arme="f638e988-8244-482e-8480-314c51bc7043" parent_id_arme="6c8216cc-2fa2-4fe2-b9ae-68eb3fb9011d">
+    <if_not_exists name="Arvonian Carrier" />
+    <if_timer_finished name="Skaraan" />
+    <if_variable name="ScenarioA" comparator="EQUALS" value="3.0" />
+    <create type="enemy" x="80000.0" y="0.0" z="80000.0" angle="0" name="Skaraan Defiler" raceKeys="Skaraan" hullKeys="Defiler" fleetnumber="51" />
+    <set_special name="Skaraan Defiler" ship="1" captain="5" ability="Teleport" />
+    <add_ai type="ATTACK" targetName="Excalibur" value1="1.02" name="Skaraan Defiler" />
+    <warning_popup_message message="COMPUTER: Enemy in sector E1" consoles="MHWSC" player_slot="0" />
+    <set_variable name="ScenarioA" value="4.0" integer="yes" />
+    <incoming_comms_text from="Aurae" type="ALERT STATUS FRIEND">Looks like a Skaraan ship just decloaked in the Nebula! The Arvonians must have been trying to group up with them for an escape. We must take them down!</incoming_comms_text>
+  </event>
+  <event name="Skaraan B" id_arme="1b748a42-f40a-452a-9abd-71905e346de4" parent_id_arme="6c8216cc-2fa2-4fe2-b9ae-68eb3fb9011d">
+    <if_object_property property="hasSurrendered" name="Arvonian Carrier" comparator="EQUALS" value="1" />
+    <if_timer_finished name="Skaraan" />
+    <if_variable name="ScenarioA" comparator="EQUALS" value="3.0" />
+    <create type="enemy" x="80000.0" y="0.0" z="80000.0" angle="0" name="Skaraan Defiler" raceKeys="Skaraan" hullKeys="Defiler" fleetnumber="51" />
+    <set_special name="Skaraan Defiler" ship="1" captain="5" ability="Teleport" />
+    <add_ai type="ATTACK" targetName="Excalibur" value1="1.02" name="Skaraan Defiler" />
+    <warning_popup_message message="COMPUTER: Enemy in sector E1" consoles="MHWSC" player_slot="0" />
+    <set_variable name="ScenarioA" value="4.0" integer="yes" />
+    <incoming_comms_text from="Aurae" type="ALERT STATUS FRIEND">Looks like a Skaraan ship just decloaked in the Nebula! The Arvonians must have been trying to group up with them for an escape. We must take them down!</incoming_comms_text>
+  </event>
+  <!-- - - - - - - - - - - -->
+  <folder_arme name="Failure" id_arme="d4430c03-47a0-4198-abcb-d58ae36cd594" expanded_arme="" />
+  <event name="Failure" id_arme="59064631-184e-4b6a-9c4f-773a4d6f94f7" parent_id_arme="d4430c03-47a0-4198-abcb-d58ae36cd594">
+    <if_variable name="EndMission" comparator="EQUALS" value="0.0" />
+    <if_not_exists name="Excalibur" />
+    <set_variable name="EndMission" value="1.0" integer="yes" />
+    <big_message title="MISSION FAILED" subtitle1="The Excalibur has been destroyed!" subtitle2="Better luck next time..." />
+    <set_timer name="EndMission" seconds="10" />
+  </event>
+  <event name="Arvonians Escape" id_arme="40de1a02-daa9-4126-bbcd-a113128a9bf9" parent_id_arme="d4430c03-47a0-4198-abcb-d58ae36cd594">
+    <if_variable name="EndMission" comparator="EQUALS" value="0.0" />
+    <if_exists name="Arvonian Carrier" />
+    <if_inside_box name="Arvonian Carrier" leastX="80000.0" leastZ="80000.0" mostX="100000.0" mostZ="100000.0" />
+    <big_message title="MISSION FAILED" subtitle1="The Arvonians have escaped!" subtitle2="Better luck next time..." />
+    <warning_popup_message message="COMPUTER: They have escaped." consoles="MHWESCO" player_slot="0" />
+    <set_variable name="EndMission" value="1.0" integer="yes" />
+  </event>
+  <folder_arme name="Scenario A Victory" id_arme="74f858db-c6c5-452a-afa8-c816f1f92f23" expanded_arme="" />
+  <event name="Arvonian Surrender/Skaraan Surrender" id_arme="02c5a7da-3e3e-466b-acc0-45675da4ee11" parent_id_arme="74f858db-c6c5-452a-afa8-c816f1f92f23">
+    <if_object_property property="hasSurrendered" name="Arvonian Carrier" comparator="EQUALS" value="1" />
+    <if_object_property property="hasSurrendered" name="Skaraan Defiler" comparator="EQUALS" value="1" />
+    <if_variable name="ScenarioA" comparator="EQUALS" value="4.0" />
+    <incoming_comms_text from="Aurae" sideValue="2" type="PLAYER FRIEND">Well done, Excalibur. We have taken the imposter prisoner. If the Arvonians and Skaraan are plotting espionage not just against the Earth-Ximni alliance, but their Torgoth allies as well, this could change the whole dynamic of the war. We must act quickly. Report what happened here to the USFP, and join us for some drinks back at Ozanka spacedock!</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Incoming Comms." consoles="MC" player_slot="0" />
+    <set_timer name="Success" seconds="20" />
+    <set_variable name="ScenarioA" value="5.0" integer="yes" />
+  </event>
+  <event name="Arvonian Destroyed/Skaraan Destroyed" id_arme="9921bd84-66e8-43f6-ae16-956ba594e4d7" parent_id_arme="74f858db-c6c5-452a-afa8-c816f1f92f23">
+    <if_not_exists name="Skaraan Defiler" />
+    <if_not_exists name="Arvonian Carrier" />
+    <if_variable name="ScenarioA" comparator="EQUALS" value="4.0" />
+    <incoming_comms_text from="Torgoth Behemoth" sideValue="2" type="PLAYER FRIEND">Impressive, Terrans. If the Arvonians and Skaraan are plotting espionage not just against your meager alliance, but us as well, this could change the whole dynamic of the war. I'm sure your Commanders would be most interested in what transpired today. ^^We will do battle one day, Terran, but for now our interests align. Don't cross us.</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Incoming Comms." consoles="MC" player_slot="0" />
+    <set_timer name="Success" seconds="20" />
+    <set_variable name="ScenarioA" value="5.0" integer="yes" />
+  </event>
+  <event name="Arvonian Destroyed/Skaraan Surrendered" id_arme="22955a65-931d-4822-8e43-3ec711fc6197" parent_id_arme="74f858db-c6c5-452a-afa8-c816f1f92f23">
+    <if_object_property property="hasSurrendered" name="Skaraan Defiler" comparator="EQUALS" value="1" />
+    <if_not_exists name="Arvonian Carrier" />
+    <if_variable name="ScenarioA" comparator="EQUALS" value="4.0" />
+    <incoming_comms_text from="Torgoth Behemoth" sideValue="2" type="PLAYER FRIEND">Impressive, Terrans. If the Arvonians and Skaraan are plotting espionage not just against your meager alliance, but us as well, this could change the whole dynamic of the war. I'm sure your Commanders would be most interested in what transpired today. ^^We will do battle one day, Terran, but for now our interests align. Don't cross us.</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Incoming Comms." consoles="MC" player_slot="0" />
+    <set_timer name="Success" seconds="20" />
+    <set_variable name="ScenarioA" value="5.0" integer="yes" />
+  </event>
+  <event name="Arvonian Surrender/Skaraan Destroyed" id_arme="236a1abb-4256-4519-bd02-e7f99e5ffa9c" parent_id_arme="74f858db-c6c5-452a-afa8-c816f1f92f23">
+    <if_object_property property="hasSurrendered" name="Arvonian Carrier" comparator="EQUALS" value="1" />
+    <if_not_exists name="Skaraan Defiler" />
+    <if_variable name="ScenarioA" comparator="EQUALS" value="4.0" />
+    <incoming_comms_text from="Aurae" sideValue="2" type="PLAYER FRIEND">Well done, Excalibur. We have taken the imposter prisoner. If the Arvonians and Skaraan are plotting espionage not just against the Earth-Ximni alliance, but their Torgoth allies as well, this could change the whole dynamic of the war. We must act quickly. Report what happened here to the USFP, and join us for some drinks back at Ozanka spacedock!</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Incoming Comms." consoles="MC" player_slot="0" />
+    <set_timer name="Success" seconds="20" />
+    <set_variable name="ScenarioA" value="5.0" integer="yes" />
+  </event>
+  <event name="Success" id_arme="12ff38bc-a4d4-4a80-a6f0-85d71f0e8c79" parent_id_arme="74f858db-c6c5-452a-afa8-c816f1f92f23">
+    <if_variable name="ScenarioA" comparator="EQUALS" value="5.0" />
+    <if_timer_finished name="Success" />
+    <big_message title="MISSION SUCCESS!" subtitle1="You foiled a Hegemony plot to split the Earth-Ximni alliance!" subtitle2="Next Episode: Imbalance of Terror" />
+    <set_timer name="EndMission" seconds="15" />
+    <set_variable name="ScenarioA" value="6.0" integer="yes" />
+  </event>
+  <event name="End Mission" id_arme="5f453f6e-dfef-430f-b182-aa875db16925" parent_id_arme="74f858db-c6c5-452a-afa8-c816f1f92f23">
+    <if_variable name="ScenarioA" comparator="EQUALS" value="6.0" />
+    <if_timer_finished name="EndMission" />
+    <end_mission />
+  </event>
+  <folder_arme name="Scenario B Victory" id_arme="e1197f13-bf9b-4957-8c11-8e405fc300d7" expanded_arme="" />
+  <event name="Arvonian Surrender" id_arme="7a8e8f00-ead4-4115-bb75-4491ae75e663" parent_id_arme="e1197f13-bf9b-4957-8c11-8e405fc300d7">
+    <if_object_property property="hasSurrendered" name="Arvonian Carrier" comparator="EQUALS" value="1" />
+    <if_variable name="ScenarioB" comparator="EQUALS" value="6.0" />
+    <incoming_comms_text from="Aurae" sideValue="2" type="PLAYER FRIEND">Well done, Excalibur. We have taken the imposter prisoner. If the Arvonians and Skaraan are plotting espionage not just against the Earth-Ximni alliance, but their Torgoth allies as well, this could change the whole dynamic of the war. We must act quickly. Report what happened here to the USFP, and join us for some drinks back at Ozanka spacedock!</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Incoming Comms." consoles="MC" player_slot="0" />
+    <set_timer name="Success" seconds="20" />
+    <set_variable name="ScenarioB" value="7.0" integer="yes" />
+  </event>
+  <event name="Arvonian Destroyed" id_arme="290ad297-c39a-44df-a27a-cba10b8e8936" parent_id_arme="e1197f13-bf9b-4957-8c11-8e405fc300d7">
+    <if_not_exists name="Arvonian Carrier" />
+    <if_variable name="ScenarioB" comparator="EQUALS" value="6.0" />
+    <incoming_comms_text from="Aurae" sideValue="2" type="PLAYER FRIEND">Well done, Excalibur. If the Arvonians and Skaraan are plotting espionage not just against the Earth-Ximni alliance, but their Torgoth allies as well, this could change the whole dynamic of the war. We must act quickly. Report what happened here to the USFP, and join us for some drinks back at Ozanka spacedock!</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Incoming Comms." consoles="MC" player_slot="0" />
+    <set_timer name="Success" seconds="20" />
+    <set_variable name="ScenarioB" value="7.0" integer="yes" />
+  </event>
+  <event name="Success" id_arme="f0a45bc4-82d3-464d-b82e-acbf709c85c2" parent_id_arme="e1197f13-bf9b-4957-8c11-8e405fc300d7">
+    <if_variable name="ScenarioB" comparator="EQUALS" value="7.0" />
+    <if_timer_finished name="Success" />
+    <big_message title="MISSION SUCCESS!" subtitle1="You foiled a Hegemony plot to split the Earth-Ximni alliance!" subtitle2="Next Episode: Imbalance of Terror" />
+    <set_timer name="EndMission" seconds="15" />
+    <set_variable name="ScenarioB" value="8.0" integer="yes" />
+  </event>
+  <event name="End Mission" id_arme="aef3c89e-a276-4bd1-a799-fce2e67e7852" parent_id_arme="e1197f13-bf9b-4957-8c11-8e405fc300d7">
+    <if_variable name="ScenarioB" comparator="EQUALS" value="8.0" />
+    <if_timer_finished name="EndMission" />
+    <end_mission />
+  </event>
+  <folder_arme name="End Mission Screen" id_arme="f516abb3-11b2-4336-a486-5063b98770a6" expanded_arme="" />
+  <event name="End Mission" id_arme="352be5b3-18fc-483c-aa5e-5fe932f509a1" parent_id_arme="f516abb3-11b2-4336-a486-5063b98770a6">
+    <if_timer_finished name="EndMission" />
+    <end_mission />
+  </event>
+</mission_data>

@@ -1,0 +1,356 @@
+<mission_data version="2.7.5" background_id_arme="6b4761b1-0c90-493a-b5c4-4ada6f275e79" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <mission_description>These Are The Voyages... Ep. IV^^When TSN Command loses all contact with an outpost along the Torgoth Neutral Zone, the Excalibur is sent to investigate as tensions escalate across the galaxy...^^*Recommended for experienced crews*</mission_description>
+  <!--Setting the Stage-->
+  <start id_arme="6b4761b1-0c90-493a-b5c4-4ada6f275e79">
+    <create type="player" player_slot="0" x="50000.0" y="0.0" z="95000.0" angle="0" name="Excalibur" sideValue="2" accent_color="50" raceKeys="TSN" hullKeys="Battleship" warp="yes" jump="no" />
+    <set_difficulty_level value="7" />
+    <create count="100" type="nebulas" nebType="1" startX="100000.0" startY="0.0" startZ="50000.0" endX="0.0" endY="0.0" endZ="50000.0" randomRange="10000" randomSeed="1" />
+    <set_skybox_index index="17" />
+    <create count="25" type="asteroids" startX="0.0" startY="0.0" startZ="0.0" endX="100000.0" endY="0.0" endZ="100000.0" randomRange="25000" randomSeed="9" />
+    <set_object_property property="nebulaIsOpaque" value="1" />
+    <set_object_property property="sensorSetting" value="1" />
+    <set_object_property property="nonPlayerSpeed" value="100" />
+    <set_object_property property="nonPlayerShield" value="100" />
+    <set_object_property property="nonPlayerWeapon" value="100" />
+    <set_object_property property="playerWeapon" value="100" />
+    <set_object_property property="playerShields" value="100" />
+    <big_message title="These Are The Voyages..." subtitle1="Episode IV" subtitle2="Imbalance of Terror" />
+    <!---->
+    <create type="enemy" x="90000.0" y="0.0" z="50000.0" angle="90" name="Skaraan Defiler" raceKeys="Skaraan" hullKeys="Defiler" sideValue="1" fleetnumber="2" />
+    <set_special name="Skaraan Defiler" ship="2" captain="3" ability="Stealth" />
+    <add_ai type="DIR_THROTTLE" value1="90" value2="0.2" name="Skaraan Defiler" />
+    <!---->
+    <create type="station" x="90000.0" y="0.0" z="65000.0" name="OP1" raceKeys="Terra" hullKeys="Deep Space Base" sideValue="2" />
+    <create type="station" x="70000.0" y="0.0" z="65000.0" name="OP2" raceKeys="Terra" hullKeys="Deep Space Base" sideValue="2" />
+    <create type="station" x="30000.0" y="0.0" z="65000.0" name="OP4" raceKeys="Terra" hullKeys="Deep Space Base" sideValue="2" />
+    <create type="station" x="10000.0" y="0.0" z="65000.0" name="OP5" raceKeys="Terra" hullKeys="Deep Space Base" sideValue="2" />
+    <!---->
+    <create type="station" x="90000.0" y="0.0" z="35000.0" name="TB1" raceKeys="Torgoth" hullKeys="Base" sideValue="1" />
+    <create type="station" x="70000.0" y="0.0" z="35000.0" name="TB2" raceKeys="Torgoth" hullKeys="Base" sideValue="1" />
+    <create type="station" x="50000.0" y="0.0" z="35000.0" name="TB3" raceKeys="Torgoth" hullKeys="Base" sideValue="1" />
+    <create type="station" x="30000.0" y="0.0" z="35000.0" name="TB4" raceKeys="Torgoth" hullKeys="Base" sideValue="1" />
+    <create type="station" x="10000.0" y="0.0" z="35000.0" name="TB5" raceKeys="Torgoth" hullKeys="Base" sideValue="1" />
+    <!---->
+    <create type="enemy" x="90000.0" y="0.0" z="20500.0" angle="180" name="TG1" raceKeys="Torgoth" hullKeys="Goliath" fleetnumber="1" />
+    <set_special name="TG1" ship="-1" captain="3" clear="yes" />
+    <add_ai type="GUARD_STATION" name="TG1" />
+    <create type="enemy" x="9000.0" y="0.0" z="20500.0" angle="180" name="TG2" raceKeys="Torgoth" hullKeys="Goliath" fleetnumber="1" />
+    <set_special name="TG2" ship="-1" captain="4" clear="yes" />
+    <add_ai type="GUARD_STATION" name="TG2" />
+    <!---->
+    <create type="genericMesh" x="50000.0" y="0.0" z="65000.0" name="Debris" meshFileName="dat\asteroid.dxs" textureFileName="dat\electricNoise2.png" colorRed="0.8" colorGreen="0.8" colorBlue="0.0" />
+    <set_object_property property="pushRadius" value="0.0" name="Debris" />
+    <set_object_property property="artScale" value="0.01" name="Debris" />
+    <!---->
+    <set_variable name="TSNCommand" value="0.0" integer="yes" />
+    <set_timer name="TSNCommand" seconds="10" />
+    <!---->
+    <set_timer name="StationAttack" seconds="300" />
+    <set_variable name="StationAttack" value="0.0" integer="yes" />
+    <set_variable name="Debris" value="0.0" integer="yes" />
+    <set_variable name="Executor" value="0.0" integer="yes" />
+    <set_variable name="EndMISSION" value="0.0" integer="yes" />
+    <set_variable name="box" value="0.0" integer="yes" />
+    <set_variable name="Defiler" value="0.0" integer="yes" />
+  </start>
+  <!--Mission Briefing-->
+  <folder_arme name="TSN Command Briefing" id_arme="bee9de2e-0bf1-4c8a-8b4d-3753ebd91b84" expanded_arme="" />
+  <event name="Mission Command Briefing" id_arme="0397ca10-0262-4d65-96a2-1b67dea99667" parent_id_arme="bee9de2e-0bf1-4c8a-8b4d-3753ebd91b84">
+    <if_variable name="TSNCommand" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="TSNCommand" />
+    <set_variable name="TSNCommand" value="1.0" integer="yes" />
+    <warning_popup_message message="COMPUTER: Review briefing on Comms." consoles="MHWESC" player_slot="0" />
+    <incoming_comms_text from="TSN COMMAND - STARDATE: 98688.57" sideValue="2" type="STATUS PLAYER FRIEND">TSN Command has lost contact with Outpost 3 along the Torgoth Neutral Zone. Everything indicates that it was attacked and has been destroyed. This is an odd move from the Torgoth who, despite their hunger for war, have recently come forward with interest in a ceasefire treaty. Investigate the situation, and do whatever you can as to not instigate the Torgoth into backing down from the peace talks. ^^We'll be monitoring your ships sensors so we can analyze your findings. </incoming_comms_text>
+  </event>
+  <!--Deliberations-->
+  <folder_arme name="Comms" id_arme="79b0cbaf-5cde-47f0-980e-65ba6f5ec9a9" expanded_arme="" />
+  <event name="Torgoth Parliament" id_arme="239c14a9-eef5-4496-a1e0-12c0e32ca0bc" parent_id_arme="79b0cbaf-5cde-47f0-980e-65ba6f5ec9a9">
+    <if_comms_button text="We did not destroy your station, but we will identify the culprit." />
+    <clear_comms_button text="We did not destroy your station, but we will identify the culprit." sideValue="2" />
+    <incoming_comms_text from="Torgoth Parliament" sideValue="2" type="ALERT ENEMY">You must think we are fools. Very well, Terrans, we will humor you. Destroy the supposed perpetrator or we will obliterate you.</incoming_comms_text>
+  </event>
+  <!--Scan Levels-->
+  <folder_arme name="Science Officer" id_arme="d135030a-b6d5-46cf-bd27-edb1cdf64874" expanded_arme="" />
+  <event name="Debris" id_arme="cd5ea8ef-d49d-4d15-abce-f55eda35b416" parent_id_arme="d135030a-b6d5-46cf-bd27-edb1cdf64874">
+    <if_scan_level name="Debris" side="2" comparator="NOT" value="0" />
+    <if_variable name="Debris" comparator="EQUALS" value="0.0" />
+    <set_ship_text name="Debris" newname="Outpost 3 Debris" race="TSN" class="Station" desc="COMPUTER: The station was definitely attacked by a ship. Impluse engine signature detected. Scan again with &quot;ENTER&quot; key." scan_desc="COMPUTER: Insufficient information. The attackers current heading is unknown." hailtext="..." />
+    <set_variable name="Debris" value="1.0" integer="yes" />
+    <incoming_comms_text from="TSN COMMAND" sideValue="2" type="STATUS PLAYER FRIEND">Interesting. So our suspicions were correct that the Outpost was attacked. We fear they may strike again now that you have entered the Neutral Zone. Either the Torgoth are tricking us, or someone else is trying to fool us both. Be on your guard, Excalibur.</incoming_comms_text>
+  </event>
+  <event name="Debris 2" id_arme="5c8661e2-7edf-4dfa-93fc-627b934c4450" parent_id_arme="d135030a-b6d5-46cf-bd27-edb1cdf64874">
+    <if_exists name="Debris 2" />
+    <if_scan_level name="Debris 2" side="2" comparator="NOT" value="0" />
+    <if_variable name="Debris" comparator="EQUALS" value="1.0" />
+    <set_ship_text name="Debris 2" newname="Torgoth Base 3 Debris" desc="COMPUTER: Scans indicate a Torgoth base was destroyed by the same assailant that destroyed our Outpost. Identity and motive unknown. Impulse signature detected again, scan again with &quot;ENTER&quot; key." scan_desc="COMPUTER: Assailants next heading anywhere between 90 and 270 degrees. We must intercept the enemy at their next destination before it's too late." />
+    <set_variable name="Debris" value="2.0" integer="yes" />
+  </event>
+  <event name="Debris 3" id_arme="91d26efd-5fe9-41a9-82ad-8641e7574709" parent_id_arme="d135030a-b6d5-46cf-bd27-edb1cdf64874">
+    <if_variable name="Debris" comparator="EQUALS" value="2.0" />
+    <if_scan_level name="Debris 3" side="2" comparator="NOT" value="0" />
+    <if_exists name="Debris 3" />
+    <set_variable name="Debris" value="3.0" integer="yes" />
+    <incoming_comms_text from="TSN COMMAND" sideValue="2" type="STATUS PLAYER FRIEND">So the Torgoth aren't responsible after all. You must stop them, Excalibur. The Torgoth are incredibly angry about the loss of their base. We have tried to reason that one of our stations was attacked first, and that we have not retaliated against them due to lack of evidence. Their patience grows razor thin. The Skaraan must be trying to make it look like one of us has attacked the other in an attempt to prevent the negotiations. There seems to be a pattern developing in their target selection, but we can't quite figure it out. We are too far removed from the situation. You must identify their next target and beat them to it.</incoming_comms_text>
+    <set_ship_text name="Debris 3" newname="Outpost 4 Debris" desc="COMPUTER: The attacking ship must be using incredibly advanced cloaking technology. Only the Skaraan are capable of such devices. The only way to ascertain its position, is to guess where its next target is and plot an intercept course. Analyze impulse signature with &quot;ENTER&quot; key." scan_desc="COMPUTER: Assailants heading is somewhere between 270 and 310 degrees." />
+  </event>
+  <event name="Debris 4" id_arme="e906e34b-359c-4e50-9eb0-464fa534df8a" parent_id_arme="d135030a-b6d5-46cf-bd27-edb1cdf64874">
+    <if_variable name="Debris" comparator="EQUALS" value="3.0" />
+    <if_scan_level name="Debris 4" side="2" comparator="NOT" value="0" />
+    <if_exists name="Debris 4" />
+    <set_variable name="Debris" value="4.0" integer="yes" />
+    <set_ship_text name="Debris 4" newname="Torgoth Base 2 Debris" desc="COMPUTER: Undoubtedly, the attack came from a Skaraan ship's beam weapons. Only the Executor has such range. Analyze impulse signature with &quot;ENTER&quot; key." scan_desc="COMPUTER: Targets heading is between 135 and 225 degrees." hailtext="..." />
+    <incoming_comms_text from="TSN COMMAND" sideValue="2" type="ALERT PLAYER FRIEND">Do not engage the Torgoth ships. We are trying to deescalate the situation with Torgoth Parliament, but we can't do that if you destroy their ships. The only way to resolve this is to bring the perpetrators to justice. You must hurry!</incoming_comms_text>
+  </event>
+  <event name="Debris 5" id_arme="fc3f0b67-7f8a-4eb7-ab78-afff032c46df" parent_id_arme="d135030a-b6d5-46cf-bd27-edb1cdf64874">
+    <if_exists name="Debris 5" />
+    <if_scan_level name="Debris 5" side="2" comparator="NOT" value="0" />
+    <if_variable name="Debris" comparator="EQUALS" value="4.0" />
+    <set_variable name="Debris" value="5.0" integer="yes" />
+    <set_ship_text name="Debris 5" newname="Outpost 2 Debris" desc="COMPUTER: If another Torgoth base is destroyed, the Torgoth will undoubtedly withdraw from the negotiations. Analyze impulse signature with &quot;ENTER&quot; key." scan_desc="COMPUTER: The Skaraan Executor is heading between 45 and 90 degrees. A pattern suggests it is likely the next target is a Torgoth base." />
+  </event>
+  <!--Station Attack Pattern-->
+  <folder_arme name="Stations Destroyed" id_arme="2f7aabaf-7223-4300-ac82-726a8df90888" expanded_arme="" />
+  <event name="TB3 Destroyed" id_arme="b07c2101-ebe5-4348-9915-125f05508aa7" parent_id_arme="2f7aabaf-7223-4300-ac82-726a8df90888">
+    <if_timer_finished name="StationAttack" />
+    <if_variable name="StationAttack" comparator="EQUALS" value="0.0" />
+    <destroy name="TB3" />
+    <set_variable name="StationAttack" value="1.0" integer="yes" />
+    <create type="genericMesh" x="50000.0" y="-50.0" z="35000.0" name="Debris 2" meshFileName="dat\asteroid.dxs" textureFileName="dat\electricNoise2.png" colorRed="0.8" colorGreen="0.8" colorBlue="0.0" />
+    <set_object_property property="pushRadius" value="0.0" name="Debris 2" />
+    <set_object_property property="artScale" value="0.01" name="Debris 2" />
+    <warning_popup_message message="COMPUTER: Torgoth Base 3 has been destroyed. Incoming hail from Torgoth Parliament." consoles="MHWESC" player_slot="0" />
+    <set_timer name="StationAttack2" seconds="300" />
+    <incoming_comms_text from="Torgoth Parliament" sideValue="2" type="ALERT ENEMY">What is the meaning of this, Terran? We come to you with an offering of peace, and you respond by destroying one of our bases?!</incoming_comms_text>
+    <set_comms_button text="We did not destroy your station, but we will identify the culprit." sideValue="2" />
+  </event>
+  <event name="OP4 Destroyed" id_arme="c0a40d6f-eb48-42b3-a4e3-675f8aa01408" parent_id_arme="2f7aabaf-7223-4300-ac82-726a8df90888">
+    <if_not_exists name="TB3" />
+    <if_timer_finished name="StationAttack2" />
+    <if_not_exists name="Skaraan Executor" />
+    <if_variable name="StationAttack" comparator="EQUALS" value="1.0" />
+    <create type="genericMesh" x="30000.0" y="-50.0" z="65000.0" name="Debris 3" meshFileName="dat\asteroid.dxs" textureFileName="dat\electricNoise2.png" />
+    <set_object_property property="pushRadius" value="0.0" name="Debris 3" />
+    <set_object_property property="artScale" value="0.01" name="Debris 3" />
+    <destroy name="OP4" />
+    <set_variable name="StationAttack" value="2.0" integer="yes" />
+    <warning_popup_message message="COMPUTER: Outpost 4 has been destroyed." consoles="MHWESC" player_slot="0" />
+    <set_timer name="StationAttack3" seconds="300" />
+    <incoming_comms_text from="TSN Command" sideValue="2" type="ALERT PLAYER FRIEND">Another Outpost has been destroyed?! Better hurry, Excalibur, or things could get sticky.</incoming_comms_text>
+  </event>
+  <event name="TB2 Destroyed" id_arme="e72bb1e4-ca30-43ea-8fdf-067e736995cb" parent_id_arme="2f7aabaf-7223-4300-ac82-726a8df90888">
+    <if_not_exists name="OP4" />
+    <if_not_exists name="TB3" />
+    <if_not_exists name="Skaraan Executor" />
+    <if_timer_finished name="StationAttack3" />
+    <if_variable name="StationAttack" comparator="EQUALS" value="2.0" />
+    <set_variable name="StationAttack" value="3.0" integer="yes" />
+    <set_timer name="StationAttack4" seconds="300" />
+    <destroy name="TB2" />
+    <create type="genericMesh" x="70000.0" y="-50.0" z="35000.0" name="Debris 4" meshFileName="dat\asteroid.dxs" textureFileName="dat\electricNoise2.png" />
+    <set_object_property property="pushRadius" value="0.0" name="Debris 4" />
+    <set_object_property property="artScale" value="0.01" name="Debris 4" />
+    <warning_popup_message message="COMPUTER: Torgoth Base 2 has been destroyed." consoles="MHWESC" player_slot="0" />
+    <incoming_comms_text from="Torgoth Goliaths">Cursed Terran scum! We will make you pay for this!</incoming_comms_text>
+    <add_ai type="ATTACK" targetName="Excalibur" value1="0.3" name="TG1" />
+    <add_ai type="ATTACK" targetName="Excalibur" value1="0.3" name="TG2" />
+  </event>
+  <event name="OP2 Destroyed" id_arme="17a2e8d2-06a3-4dcc-a3c3-b20052481a1a" parent_id_arme="2f7aabaf-7223-4300-ac82-726a8df90888">
+    <if_not_exists name="Skaraan Executor" />
+    <if_variable name="StationAttack" comparator="EQUALS" value="3.0" />
+    <if_not_exists name="OP4" />
+    <if_not_exists name="TB2" />
+    <if_not_exists name="TB3" />
+    <if_timer_finished name="StationAttack4" />
+    <set_variable name="StationAttack" value="4.0" integer="yes" />
+    <destroy name="OP2" />
+    <warning_popup_message message="COMPUTER: Outpost 2 has been destroyed." consoles="MHWESC" player_slot="0" />
+    <create type="genericMesh" x="70000.0" y="-50.0" z="65000.0" name="Debris 5" meshFileName="dat\asteroid.dxs" textureFileName="dat\electricNoise2.png" />
+    <set_object_property property="pushRadius" value="0.0" name="Debris 5" />
+    <set_object_property property="artScale" value="0.01" name="Debris 5" />
+    <set_timer name="StationAttack5" seconds="300" />
+    <incoming_comms_text from="TSN Command" sideValue="2" type="ALERT PLAYER FRIEND">This is not looking good, Excalibur. Torgoth Ambassadors are demanding to know what's going on out there, and are threatening to withdraw from the negotiations. You must do everything you can to neutralize the Skaraan!</incoming_comms_text>
+  </event>
+  <event name="TB4 Destroyed" id_arme="80714524-347c-40b8-9ef2-4f5442e52126" parent_id_arme="2f7aabaf-7223-4300-ac82-726a8df90888">
+    <if_timer_finished name="StationAttack5" />
+    <if_variable name="StationAttack" comparator="EQUALS" value="4.0" />
+    <set_variable name="StationAttack" value="5.0" integer="yes" />
+    <warning_popup_message message="COMPUTER: Torgoth Base 4 has been destroyed." consoles="MHWESC" player_slot="0" />
+    <destroy name="TB4" />
+    <incoming_comms_text from="TSN COMMAND" sideValue="2" type="ALERT PLAYER FRIEND">What on Earth happened out there, Excalibur?! The Torgoth are extremely angry with the TSN, and have withdrawn from the negotiations! There is no chance for peace after all. </incoming_comms_text>
+    <set_timer name="EndMission" seconds="20" />
+    <big_message title="MISSION FAILED" subtitle1="You were unable to prevent the Skaraan espionage!" subtitle2="Better luck next time..." />
+  </event>
+  <event name="Mission Failed" id_arme="036f2b02-b8c7-4fd0-a63f-68a52086ff73" parent_id_arme="2f7aabaf-7223-4300-ac82-726a8df90888">
+    <if_timer_finished name="EndMission" />
+    <if_variable name="StationAttack" comparator="EQUALS" value="5.0" />
+    <end_mission />
+  </event>
+  <!-- - - - - - - - - - - -->
+  <folder_arme name="Defiler Stuff" id_arme="3221c88f-011d-4f8c-9fde-ce30f296b9d2" expanded_arme="" />
+  <event name="Defiler reaches edge of screen" id_arme="8df0f3fc-68d8-40d5-bc93-381d4bf2f237" parent_id_arme="3221c88f-011d-4f8c-9fde-ce30f296b9d2">
+    <if_inside_box name="Skaraan Defiler" leastX="0.0" leastZ="40000.0" mostX="20000.0" mostZ="60000.0" />
+    <if_variable name="box" comparator="EQUALS" value="0.0" />
+    <add_ai type="DIR_THROTTLE" value1="270" value2="0.2" name="Skaraan Defiler" />
+    <set_variable name="box" value="1.0" integer="yes" />
+  </event>
+  <event name="Defiler reaches edge 2" id_arme="73ddddbb-3a85-4aab-9f02-c8b727b06f7f" parent_id_arme="3221c88f-011d-4f8c-9fde-ce30f296b9d2">
+    <if_inside_box name="Skaraan Defiler" leastX="80000.0" leastZ="40000.0" mostX="100000.0" mostZ="60000.0" />
+    <if_variable name="box" comparator="EQUALS" value="1.0" />
+    <add_ai type="DIR_THROTTLE" value1="90" value2="0.2" name="Skaraan Defiler" />
+    <set_variable name="box" value="2.0" integer="yes" />
+  </event>
+  <!--Succesful Intercept-->
+  <folder_arme name="Intercepting the Skaraan Executor" id_arme="11906ee8-2dac-44a6-93fe-6cee1f1b669d" expanded_arme="" />
+  <event name="TB3 Intercept" id_arme="ec2c0983-cffc-4c3e-aab8-dcc97f6f8cf7" parent_id_arme="11906ee8-2dac-44a6-93fe-6cee1f1b669d">
+    <if_inside_sphere player_slot="0" centerX="50000.0" centerY="0.0" centerZ="35000.0" radius="5000" />
+    <if_variable name="StationAttack" comparator="EQUALS" value="0.0" />
+    <if_exists name="OP2" />
+    <if_exists name="OP4" />
+    <if_exists name="TB2" />
+    <if_exists name="TB3" />
+    <if_exists name="TB4" />
+    <set_variable name="StationAttack" value="1.0" integer="yes" />
+    <warning_popup_message message="COMPUTER: We have intercepted the assailant. Sensors picking up Skaraan ship headed this way." consoles="MHWESC" player_slot="0" />
+    <create type="enemy" x="50000.0" y="0.0" z="45000.0" angle="0" name="Skaraan Executor" raceKeys="Skaraan" hullKeys="Executor" sideValue="1" fleetnumber="2" />
+    <set_special name="Skaraan Executor" ship="1" captain="1" ability="Stealth" />
+    <add_ai type="ATTACK" targetName="TB3" value1="0.5" name="Skaraan Executor" />
+    <add_ai type="ATTACK" targetName="Excalibur" value1="0.4" name="Skaraan Defiler" />
+  </event>
+  <event name="OP4 Intercept" id_arme="958b4772-59a3-412e-89ed-96aa6ce7aa02" parent_id_arme="11906ee8-2dac-44a6-93fe-6cee1f1b669d">
+    <if_inside_sphere player_slot="0" centerX="30000.0" centerY="0.0" centerZ="65000.0" radius="5000" />
+    <if_exists name="OP2" />
+    <if_exists name="OP4" />
+    <if_exists name="TB2" />
+    <if_not_exists name="TB3" />
+    <if_exists name="TB4" />
+    <if_variable name="StationAttack" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="COMPUTER: We have intercepted the assailant. Sensors picking up Skaraan ship headed this way." consoles="MHWESC" player_slot="0" />
+    <set_variable name="StationAttack" value="2.0" integer="yes" />
+    <create type="enemy" x="40000.0" y="0.0" z="50000.0" angle="135" name="Skaraan Executor" raceKeys="Skaraan" hullKeys="Executor" sideValue="1" fleetnumber="2" />
+    <set_special name="Skaraan Executor" ship="1" captain="1" ability="Stealth" />
+    <add_ai type="ATTACK" targetName="OP4" value1="0.5" name="Skaraan Executor" />
+    <add_ai type="ATTACK" targetName="Excalibur" value1="0.4" name="Skaraan Defiler" />
+  </event>
+  <event name="TB2 Intercept" id_arme="dbe017b8-c982-40df-9827-1ca4baf3d9f2" parent_id_arme="11906ee8-2dac-44a6-93fe-6cee1f1b669d">
+    <if_inside_sphere player_slot="0" centerX="70000.0" centerY="0.0" centerZ="35000.0" radius="5000" />
+    <if_exists name="OP2" />
+    <if_not_exists name="OP4" />
+    <if_exists name="TB2" />
+    <if_not_exists name="TB3" />
+    <if_exists name="TB4" />
+    <if_variable name="StationAttack" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="COMPUTER: We have intercepted the assailant. Sensors picking up Skaraan ship headed this way." consoles="MHWESC" player_slot="0" />
+    <set_variable name="StationAttack" value="3.0" integer="yes" />
+    <create type="enemy" x="60000.0" y="0.0" z="50000.0" angle="330" name="Skaraan Executor" raceKeys="Skaraan" hullKeys="Executor" sideValue="1" fleetnumber="2" />
+    <set_special name="Skaraan Executor" ship="1" captain="1" ability="Stealth" />
+    <add_ai type="ATTACK" targetName="TB2" value1="0.5" name="Skaraan Executor" />
+    <add_ai type="ATTACK" targetName="Excalibur" value1="0.4" name="Skaraan Defiler" />
+  </event>
+  <event name="OP2 Intercept" id_arme="1d22ef43-5a6e-4a80-905b-0fad730df23a" parent_id_arme="11906ee8-2dac-44a6-93fe-6cee1f1b669d">
+    <if_inside_sphere player_slot="0" centerX="70000.0" centerY="0.0" centerZ="65000.0" radius="5000" />
+    <if_exists name="OP2" />
+    <if_not_exists name="OP4" />
+    <if_not_exists name="TB2" />
+    <if_not_exists name="TB3" />
+    <if_exists name="TB4" />
+    <if_variable name="StationAttack" comparator="EQUALS" value="3.0" />
+    <warning_popup_message message="COMPUTER: We have intercepted the assailant. Sensors picking up Skaraan ship headed this way." consoles="MHWESC" player_slot="0" />
+    <set_variable name="StationAttack" value="4.0" integer="yes" />
+    <create type="enemy" x="70000.0" y="0.0" z="50000.0" angle="180" name="Skaraan Executor" raceKeys="Skaraan" hullKeys="Executor" sideValue="1" fleetnumber="2" />
+    <set_special name="Skaraan Executor" ship="1" captain="1" ability="Stealth" />
+    <add_ai type="ATTACK" targetName="OP2" value1="0.5" name="Skaraan Executor" />
+    <add_ai type="ATTACK" targetName="Excalibur" value1="0.4" name="Skaraan Defiler" />
+  </event>
+  <event name="TB4 Intercept" id_arme="5ad67d7b-69e7-4d12-a2df-7a54c1608542" parent_id_arme="11906ee8-2dac-44a6-93fe-6cee1f1b669d">
+    <if_inside_sphere player_slot="0" centerX="70000.0" centerY="0.0" centerZ="65000.0" radius="5000" />
+    <if_not_exists name="OP2" />
+    <if_not_exists name="OP4" />
+    <if_not_exists name="TB2" />
+    <if_not_exists name="TB3" />
+    <if_exists name="TB4" />
+    <if_variable name="StationAttack" comparator="EQUALS" value="4.0" />
+    <warning_popup_message message="COMPUTER: We have intercepted the assailant. Sensors picking up Skaraan ship headed this way." consoles="MHWESC" player_slot="0" />
+    <set_variable name="StationAttack" value="5.0" integer="yes" />
+    <create type="enemy" x="45000.0" y="0.0" z="45000.0" angle="45" name="Skaraan Executor" raceKeys="Skaraan" hullKeys="Executor" sideValue="1" fleetnumber="2" />
+    <set_special name="Skaraan Executor" ship="1" captain="1" ability="Stealth" />
+    <add_ai type="ATTACK" targetName="TB4" value1="0.5" name="Skaraan Executor" />
+    <add_ai type="ATTACK" targetName="Excalibur" value1="0.4" name="Skaraan Defiler" />
+  </event>
+  <!--Engaging the Skaraan-->
+  <folder_arme name="Skaraan Combat" id_arme="33198137-26e3-4e52-8b97-a6a621c9afd9" expanded_arme="" />
+  <event name="The Defiler" id_arme="fbef9a96-0143-49b6-9228-7969bdf7df0a" parent_id_arme="33198137-26e3-4e52-8b97-a6a621c9afd9">
+    <if_variable name="Defiler" comparator="EQUALS" value="0.0" />
+    <if_not_exists name="Skaraan Executor" />
+    <if_not_exists name="Skaraan Defiler" />
+    <warning_popup_message message="COMPUTER: Enemy destroyed. Incoming Comms." consoles="MHWESC" player_slot="0" />
+    <set_variable name="Defiler" value="1.0" integer="yes" />
+    <incoming_comms_text from="TSN COMMAND" sideValue="2" type="ALERT PLAYER FRIEND">Nice work, Excalibur; however, it does not appear as though the impulse signature of this ship matches the one you've discovered at the debris. This must have merely been a support craft for a much bigger threat, a threat that is still at large. Time is of the essence. You must stop this madness.</incoming_comms_text>
+  </event>
+  <event name="Skaraan Combat A" id_arme="59c1d789-aac5-4a7a-80b7-d5f646ceda5c" parent_id_arme="33198137-26e3-4e52-8b97-a6a621c9afd9">
+    <if_exists name="Skaraan Defiler" />
+    <if_exists name="Skaraan Executor" />
+    <if_variable name="Defiler" comparator="EQUALS" value="0.0" />
+    <if_variable name="Executor" comparator="EQUALS" value="0.0" />
+    <set_variable name="Executor" value="1.0" integer="yes" />
+    <incoming_comms_text from="Skaraan Executor" sideValue="2" type="STATUS ENEMY">It is a pity we must meet like this, Terrans. You see, the Skaraan War Corporation prefers that your conflict with the Torgoth endures, so that we may continue to profit from the weaponry that all races purchase from us to meet their ends. We were hoping that each of you would blame each other for what has transpired today. The only way that can still happen is if we destroy your ship, so that our sabotage is not discovered. Perhaps in another life we could have upgraded your ship in ways you humans can only dream of, but alas! Prepare to die.</incoming_comms_text>
+    <set_variable name="Defiler" value="1.0" integer="yes" />
+    <set_timer name="Command2" seconds="15" />
+  </event>
+  <event name="Skaraan Combat B" id_arme="5e33b012-c1a5-4afe-8a31-4a3aa8995ef6" parent_id_arme="33198137-26e3-4e52-8b97-a6a621c9afd9">
+    <if_not_exists name="Skaraan Defiler" />
+    <if_exists name="Skaraan Executor" />
+    <if_variable name="Defiler" comparator="EQUALS" value="1.0" />
+    <if_variable name="Executor" comparator="EQUALS" value="0.0" />
+    <set_variable name="Executor" value="1.0" integer="yes" />
+    <incoming_comms_text from="Skaraan Executor" sideValue="2" type="STATUS ENEMY">It is a pity we must meet like this, Terrans. You see, the Skaraan War Corporation prefers that your conflict with the Torgoth endures, so that we may continue to profit from the weaponry that all races purchase from us to meet their ends. We were hoping that each of you would blame each other for what has transpired today. The only way that can still happen is if we destroy your ship, so that our sabotage is not discovered. Perhaps in another life we could have upgraded your ship in ways you humans can only dream of, but alas! Prepare to die.</incoming_comms_text>
+    <set_variable name="Defiler" value="2.0" integer="yes" />
+    <set_timer name="Command2" seconds="15" />
+  </event>
+  <event name="TSN Comms" id_arme="9f189c62-2d0b-4494-ab76-2ecf53cc0ed7" parent_id_arme="33198137-26e3-4e52-8b97-a6a621c9afd9">
+    <if_timer_finished name="Command2" />
+    <if_variable name="Executor" comparator="EQUALS" value="1.0" />
+    <set_variable name="Executor" value="2.0" integer="yes" />
+    <incoming_comms_text from="TSN COMMAND" sideValue="2" type="ALERT PLAYER FRIEND">Excellent, Excalibur! You must destroy the Skaraan. They will not surrender, and if we don't stop them here and now they will do everything they can to undermine the peace talks.</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Incoming hail on Comms." consoles="MHWESC" player_slot="0" />
+  </event>
+  <event name="Destroying the Skaraan" id_arme="c7c9a4a8-4f77-4d7d-a9ed-83ab0e787284" parent_id_arme="33198137-26e3-4e52-8b97-a6a621c9afd9">
+    <if_not_exists name="Skaraan Defiler" />
+    <if_not_exists name="Skaraan Executor" />
+    <if_variable name="Executor" comparator="EQUALS" value="2.0" />
+    <set_timer name="Success" seconds="15" />
+    <incoming_comms_text from="Torgoth Parliament" sideValue="2" type="STATUS FRIEND">Bravo, Terrans- No! Bravo, Excalibur! We are in debt to your crew. Perhaps one day we can fight side by side against these traitorous slimes and deprive them not only of their lives, but the thing they hold most dear: Their wealth! The Skaraan War Corporation will no longer control us. We look forward to the upcoming summit at Khitomer. We will be in touch with the USFP.</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Enemy destroyed. Incoming hail on Comms." consoles="MHWESC" player_slot="0" />
+    <set_variable name="Executor" value="3.0" integer="yes" />
+  </event>
+  <event name="Mission Success" id_arme="46eb966f-60de-4105-bfcb-a10ac22de3c1" parent_id_arme="33198137-26e3-4e52-8b97-a6a621c9afd9">
+    <if_variable name="Executor" comparator="EQUALS" value="3.0" />
+    <if_timer_finished name="Success" />
+    <big_message title="MISSION SUCCESS!" subtitle1="You prevented the Skaraan from sabotaging the peace talks!" subtitle2="Next Episode: Yesterday's Excalibur" />
+    <set_timer name="EndMission" seconds="10" />
+    <set_variable name="Executor" value="4.0" integer="yes" />
+  </event>
+  <event name="End Mission" id_arme="48dd7c82-99eb-44e6-bb7f-474c4a965eb5" parent_id_arme="33198137-26e3-4e52-8b97-a6a621c9afd9">
+    <if_variable name="Executor" comparator="EQUALS" value="4.0" />
+    <if_timer_finished name="EndMission" />
+    <end_mission />
+  </event>
+  <event name="Executor Destroys Final Torgoth Base" id_arme="363a6d2c-279b-4492-a4a0-978dd367a804" parent_id_arme="33198137-26e3-4e52-8b97-a6a621c9afd9">
+    <if_not_exists name="TB4" />
+    <if_variable name="EndMISSION" comparator="EQUALS" value="0.0" />
+    <if_exists name="Skaraan Executor" />
+    <big_message title="MISSION FAILED" subtitle1="You were unable to stop the Executor!" subtitle2="Better luck next time..." />
+    <set_timer name="EndMission" seconds="10" />
+    <set_variable name="EndMISSION" value="1.0" integer="yes" />
+  </event>
+  <event name="Excalibur Destroyed" id_arme="a3f92330-483c-4ee1-b4d0-d3d383d646f5" parent_id_arme="33198137-26e3-4e52-8b97-a6a621c9afd9">
+    <if_variable name="EndMISSION" comparator="EQUALS" value="0.0" />
+    <if_not_exists name="Excalibur" />
+    <big_message title="MISSION FAILED" subtitle1="You have been destroyed!" subtitle2="Better luck next time..." />
+    <set_variable name="EndMISSION" value="1.0" integer="yes" />
+  </event>
+  <event name="Destroyed Failure" id_arme="f01434ff-5814-4980-8b78-bbdbd7450a01" parent_id_arme="33198137-26e3-4e52-8b97-a6a621c9afd9">
+    <if_timer_finished name="EndMission" />
+    <if_variable name="EndMISSION" comparator="EQUALS" value="1.0" />
+    <end_mission />
+  </event>
+</mission_data>

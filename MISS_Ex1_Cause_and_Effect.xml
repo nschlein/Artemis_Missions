@@ -1,0 +1,480 @@
+<mission_data version="2.7.5" background_id_arme="b72f0c84-4242-4942-bd5d-2edaca2bd8d1" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <mission_description>These Are The Voyages... Ep. I^^TSN Intelligence believes a Kralien invasion force is on its way to Earth. They've sent the brand new battleship, Excalibur, to lead an intercept force at Wolf 359. En route, a distress call has been picked up in the Tyken Expanse. Perhaps the invasion is closer than they think...^^*Recommended for experiecnced crews*</mission_description>
+  <!--The Backdrop and Moving Parts-->
+  <start id_arme="b72f0c84-4242-4942-bd5d-2edaca2bd8d1">
+    <!---->
+    <big_message title="These Are The Voyages..." subtitle1="Episode I" subtitle2="Cause and Effect" />
+    <set_difficulty_level value="8" />
+    <set_skybox_index index="1" />
+    <set_object_property property="musicObjectMasterVolume" value="0.0" />
+    <create count="35" type="asteroids" startX="93415.0" startY="0.0" startZ="22251.0" endX="60415.0" endY="0.0" endZ="1251.0" randomRange="10000" randomSeed="500" />
+    <create count="250" type="nebulas" startX="0.0" startY="0.0" startZ="0.0" endX="0.0" endY="0.0" endZ="0.0" randomRange="20500" randomSeed="36" />
+    <!---->
+    <set_object_property property="nebulaIsOpaque" value="1" />
+    <set_object_property property="sensorSetting" value="2" />
+    <set_object_property property="nonPlayerSpeed" value="100" />
+    <set_object_property property="nonPlayerShield" value="100" />
+    <set_object_property property="nonPlayerWeapon" value="100" />
+    <set_object_property property="playerWeapon" value="100" />
+    <set_object_property property="countEMP" value="4" player_slot="0" />
+    <set_object_property property="playerShields" value="100" />
+    <set_timer name="start_mission_timer_1" seconds="30" />
+    <set_timer name="start_mission_timer_2" seconds="60" />
+    <set_timer name="countdown_1" seconds="90" />
+    <set_variable name="piranhaspawn" value="0.0" integer="yes" />
+    <set_variable name="helmclosingin" value="0.0" integer="yes" />
+    <set_variable name="KralienSpawn" value="0.0" integer="yes" />
+    <set_variable name="commsbutton" value="0.0" integer="yes" />
+    <set_variable name="weapons_misdirection" value="0.0" integer="yes" />
+    <set_variable name="causeandeffect" value="0.0" integer="yes" />
+    <create type="player" player_slot="0" x="79928.0" y="0.0" z="80217.0" angle="45" name="Excalibur" accent_color="50" raceKeys="TSN" hullKeys="Battleship" warp="yes" jump="no" />
+    <set_damcon_members value="0" team_index="0" name="Excalibur" />
+    <set_damcon_members value="6" team_index="2" name="Excalibur" />
+    <set_damcon_members value="0" team_index="1" name="Excalibur" />
+    <set_comms_button text="Tyken Station, this is Excalibur, how can we be of assistance?" />
+    <create type="station" x="40000.0" y="0.0" z="40000.0" name="Tyken Station" raceKeys="friendly" hullKeys="science base" sideValue="2" />
+    <set_object_property property="shieldState" value="400.0" name="Tyken Station" />
+    <set_object_property property="missileStoresNuke" value="0.0" name="Tyken Station" />
+    <set_object_property property="missileStoresTag" value="0.0" name="Tyken Station" />
+    <set_object_property property="missileStoresPShock" value="0.0" name="Tyken Station" />
+    <set_object_property property="missileStoresProbe" value="0.0" name="Tyken Station" />
+    <set_object_property property="missileStoresMine" value="0" name="Tyken Station" />
+    <set_object_property property="missileStoresHoming" value="0.0" name="Tyken Station" />
+    <set_object_property property="missileStoresEMP" value="1" name="Tyken Station" />
+    <set_object_property property="missileStoresBeacon" value="0.0" name="Tyken Station" />
+    <set_object_property property="canShoot" value="0.0" name="Tyken Station" />
+    <create count="15" type="mines" startAngle="285" endAngle="400" startX="15000.0" startY="0.0" startZ="90000.0" radius="20000" />
+    <set_object_property property="canLaunchFighters" value="0.0" name="Tyken Station" />
+    <set_object_property property="canBuild" value="0.0" name="Tyken Station" />
+    <create type="genericMesh" x="48876.0" y="0.0" z="43979.0" name="?" meshFileName="dat\asteroid.dxs" textureFileName="dat\electricNoise2.png" colorRed="0.0" colorGreen="0.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="?" />
+    <set_object_property property="artScale" value="0.01" name="?" />
+    <create type="genericMesh" x="38893.0" y="0.0" z="33806.0" name="??" meshFileName="dat\asteroid.dxs" textureFileName="dat\electricNoise2.png" colorRed="0.0" colorGreen="0.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="??" />
+    <set_object_property property="artScale" value="0.01" name="??" />
+    <create type="genericMesh" x="35364.0" y="0.0" z="47716.0" name="???" meshFileName="dat\asteroid.dxs" textureFileName="dat\electricNoise2.png" colorRed="0.0" colorGreen="0.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="???" />
+    <set_object_property property="artScale" value="0.01" name="???" />
+    <create type="monster" monsterType="8" age="2" x="17594.0" y="0.0" z="85454.0" angle="200" name="Derelict" />
+    <create type="Anomaly" pickupType="6" x="9894.0" y="0.0" z="76951.0" />
+    <create type="Anomaly" pickupType="2" x="15509.0" y="0.0" z="85614.0" />
+    <create type="Anomaly" pickupType="0" x="17755.0" y="0.0" z="79037.0" />
+  </start>
+  <!--Time Resets-->
+  <folder_arme name="Loop Parameters" id_arme="e3210bc8-f2ce-4612-8022-96d2402b0ab3" expanded_arme="" />
+  <event name="Build the Loop 1" id_arme="fddd7797-35c1-4532-97f5-a1ee4b22cd9d" parent_id_arme="e3210bc8-f2ce-4612-8022-96d2402b0ab3">
+    <if_not_exists name="Tyken Station" />
+    <if_not_exists name="Excalibur" />
+    <if_variable name="causeandeffect" comparator="GREATER" value="0.0" />
+    <set_object_property property="nebulaIsOpaque" value="1" />
+    <set_object_property property="sensorSetting" value="2" />
+    <set_object_property property="nonPlayerSpeed" value="100" />
+    <set_object_property property="nonPlayerShield" value="100" />
+    <set_object_property property="nonPlayerWeapon" value="100" />
+    <set_object_property property="playerWeapon" value="100" />
+    <set_object_property property="countEMP" value="5" player_slot="0" />
+    <set_object_property property="playerShields" value="100" />
+    <set_timer name="start_mission_timer_1" seconds="20" />
+    <set_timer name="start_mission_timer_2" seconds="40" />
+    <set_timer name="countdown_1" seconds="60" />
+    <set_variable name="KralienSpawn" value="0.0" integer="yes" />
+    <set_variable name="helmclosingin" value="0.0" integer="yes" />
+    <set_variable name="weapons_misdirection" value="0.0" integer="yes" />
+    <set_variable name="causeandeffect" value="0.0" integer="yes" />
+    <create type="player" player_slot="0" x="79928.0" y="0.0" z="80217.0" angle="45" name="Excalibur" accent_color="50" raceKeys="TSN" hullKeys="Battleship" warp="yes" jump="no" />
+    <set_damcon_members value="6" team_index="2" name="Excalibur" />
+    <set_damcon_members value="0" team_index="0" name="Excalibur" />
+    <set_damcon_members value="0" team_index="1" name="Excalibur" />
+    <set_object_property property="systemCurEnergyBackShield" value="1.0" player_slot="0" />
+    <set_object_property property="systemCurEnergyFrontShield" value="1.0" player_slot="0" />
+    <create type="station" x="40000.0" y="0.0" z="40000.0" name="Tyken Station" raceKeys="friendly" hullKeys="science base" sideValue="2" />
+    <set_object_property property="shieldState" value="400.0" name="Tyken Station" />
+    <set_object_property property="missileStoresTag" value="0.0" name="Tyken Station" />
+    <set_object_property property="missileStoresPShock" value="0.0" name="Tyken Station" />
+    <set_object_property property="missileStoresBeacon" value="0.0" name="Tyken Station" />
+    <set_object_property property="missileStoresProbe" value="0.0" name="Tyken Station" />
+    <set_object_property property="missileStoresNuke" value="0.0" name="Tyken Station" />
+    <set_object_property property="missileStoresMine" value="0" name="Tyken Station" />
+    <set_object_property property="missileStoresHoming" value="0.0" name="Tyken Station" />
+    <set_object_property property="missileStoresEMP" value="1" name="Tyken Station" />
+    <set_object_property property="canShoot" value="0.0" name="Tyken Station" />
+    <set_object_property property="canLaunchFighters" value="0.0" name="Tyken Station" />
+    <set_object_property property="canBuild" value="0.0" name="Tyken Station" />
+    <create type="genericMesh" x="48876.0" y="0.0" z="43979.0" name="?" meshFileName="dat\asteroid.dxs" textureFileName="dat\electricNoise2.png" colorRed="0.0" colorGreen="0.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="?" />
+    <set_object_property property="artScale" value="0.01" name="?" />
+    <create type="genericMesh" x="38893.0" y="0.0" z="33806.0" name="??" meshFileName="dat\asteroid.dxs" textureFileName="dat\electricNoise2.png" colorRed="0.0" colorGreen="0.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="??" />
+    <set_object_property property="artScale" value="0.01" name="??" />
+    <create type="genericMesh" x="35364.0" y="0.0" z="47716.0" name="???" meshFileName="dat\asteroid.dxs" textureFileName="dat\electricNoise2.png" colorRed="0.0" colorGreen="0.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="???" />
+    <set_object_property property="artScale" value="0.01" name="???" />
+    <create type="genericMesh" x="75990.0" y="0.0" z="76951.0" name="Excalibur Warp Signature" meshFileName="dat\asteroid.dxs" textureFileName="dat\electricNoise2.png" colorRed="0.0" colorGreen="0.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="Excalibur Warp Signature" />
+    <set_object_property property="artScale" value="0.01" name="Excalibur Warp Signature" />
+    <create count="15" type="mines" startAngle="285" endAngle="400" startX="15000.0" startY="0.0" startZ="90000.0" radius="20000" />
+    <create type="monster" monsterType="8" age="3" x="17594.0" y="0.0" z="85454.0" angle="200" name="Derelict" />
+    <create type="Anomaly" pickupType="2" x="15509.0" y="0.0" z="85614.0" />
+    <create type="Anomaly" pickupType="0" x="17755.0" y="0.0" z="79037.0" />
+    <create type="Anomaly" pickupType="6" x="9894.0" y="0.0" z="76951.0" />
+  </event>
+  <event name="Build The Loop 2" id_arme="b6238be0-5590-41d2-b7d9-50232f66924c" parent_id_arme="e3210bc8-f2ce-4612-8022-96d2402b0ab3">
+    <if_exists name="Excalibur" />
+    <if_not_exists name="Tyken Station" />
+    <destroy name="Excalibur" />
+    <destroy name="Space Time Continuum Tear" />
+    <destroy_near type="mines" radius="100000" centerX="0" centerY="0" centerZ="0" />
+    <destroy name="Derelict" />
+    <destroy_near nebType="3" type="nebulas" radius="20000" centerX="40000.0" centerY="0.0" centerZ="40000.0" />
+    <destroy_near type="all" radius="20000" centerX="17594.0" centerZ="85454.0" />
+    <destroy_near type="all" radius="100" centerX="48876.0" centerY="0.0" centerZ="43979.0" />
+    <destroy_near type="all" radius="100" centerX="38893.0" centerY="0.0" centerZ="33806.0" />
+    <destroy_near type="all" radius="100" centerX="35364.0" centerY="0.0" centerZ="47716.0" />
+    <destroy_near type="all" radius="100" centerX="75990.0" centerY="0.0" centerZ="76951.0" />
+    <warning_popup_message message="COMPUTER: Tyken Station has been destroyed." consoles="MHWESC" player_slot="0" />
+    <destroy name="Magnetic Fissure" />
+    <destroy name="Temporal Distortion" />
+    <destroy name="Electric Pulse" />
+    <destroy name="Excalibur Warp Signature" />
+    <destroy name="???" />
+    <destroy name="??" />
+    <destroy name="?" />
+    <destroy name="Parasite_1" />
+    <destroy name="Parasite_2" />
+    <destroy name="Parasite_3" />
+  </event>
+  <event name="Piranha Trigger 1" id_arme="7c8e2da1-6311-459c-a255-6c7737e5ccb1" parent_id_arme="e3210bc8-f2ce-4612-8022-96d2402b0ab3">
+    <if_exists name="Parasite_1" />
+    <if_not_exists name="Tyken Station" />
+    <destroy name="Parasite_1" />
+  </event>
+  <event name="Piranha Trigger 2" id_arme="c20c3522-8210-4384-a23d-a71fc387c621" parent_id_arme="e3210bc8-f2ce-4612-8022-96d2402b0ab3">
+    <if_exists name="Parasite_2" />
+    <if_not_exists name="Tyken Station" />
+    <destroy name="Parasite_2" />
+  </event>
+  <event name="Piranha Trigger 3" id_arme="46d94fbe-3b9d-44d5-b8ac-6e0bf556ca1f" parent_id_arme="e3210bc8-f2ce-4612-8022-96d2402b0ab3">
+    <if_exists name="Parasite_3" />
+    <if_not_exists name="Tyken Station" />
+    <destroy name="Parasite_3" />
+  </event>
+  <!--Mission Events-->
+  <folder_arme name="Story Blurbs" id_arme="39a4ff97-d47e-43fd-8609-4e41411ef1a1" expanded_arme="" />
+  <event name="TSN Command Briefing" id_arme="e74e270a-bb74-4b0f-b05e-4a78c08985b4" parent_id_arme="39a4ff97-d47e-43fd-8609-4e41411ef1a1">
+    <if_variable name="causeandeffect" comparator="EQUALS" value="0.0" />
+    <if_object_property property="countEMP" player_slot="0" comparator="EQUALS" value="4" />
+    <if_timer_finished name="start_mission_timer_1" />
+    <incoming_comms_text from="TSN COMMAND - STARDATE: 98657.98" sideValue="2" type="STATUS FRIEND">Excalibur, we believe that the USFP weapons reasearch station located in the Tyken Expanse is under attack. We are picking up Tyken Station's long range distress beacon, but communications are not getting through. You are the closest ship in range. You are to divert course from Wolf 359, and protect Tyken Station at all costs.</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Review briefing on Comms." consoles="MHWESC" player_slot="0" />
+    <set_variable name="causeandeffect" value="1.0" integer="yes" />
+  </event>
+  <event name="Sickbay Pages the Bridge" id_arme="1c127903-a01b-4fcc-9ed4-2bd026279293" parent_id_arme="39a4ff97-d47e-43fd-8609-4e41411ef1a1">
+    <if_variable name="causeandeffect" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="start_mission_timer_2" />
+    <set_variable name="causeandeffect" value="2.0" integer="yes" />
+    <incoming_comms_text from="SICKBAY" sideValue="2" type="STATUS">This is Sickbay to Bridge. A dozen members of our damage control teams just reported to sick bay with severe migraines, nausea, and intense feelings of deja vu all at once. It's probably nothing; however, I also can't help but feel as though I've treated them for these same symptoms before despite this being our first mission. Engineering is only going to have one team available for the time being. Sickbay out.</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Sickbay on Comms" consoles="MC" player_slot="0" />
+    <set_timer name="countdown_1" seconds="60" />
+  </event>
+  <folder_arme name="Science Officer" id_arme="94b41769-e58c-4827-a7d7-a3561f8482dc" expanded_arme="" />
+  <event name="Electric Pulse" id_arme="ef283eb4-8744-4b13-ad86-f9f7c06b41b8" parent_id_arme="94b41769-e58c-4827-a7d7-a3561f8482dc">
+    <if_scan_level name="?" side="2" comparator="NOT" value="0" />
+    <if_exists name="?" />
+    <set_ship_text name="?" newname="Electric Pulse" desc="COMPUTER: Decoding strange data string emitted from an electric pulse near Tyken Station. Scan again with &quot;ENTER&quot; key." scan_desc="COMPUTER: Encoded energy signal from unknown sender reads &quot;W-E-A-P-O-N-S&quot;" />
+  </event>
+  <event name="Temporal Distortion" id_arme="5b5a2ac8-b787-416b-bdbf-159d7ecf2e07" parent_id_arme="94b41769-e58c-4827-a7d7-a3561f8482dc">
+    <if_scan_level name="??" side="2" comparator="NOT" value="0" />
+    <if_exists name="??" />
+    <set_ship_text name="??" newname="Temporal Distortion" desc="COMPUTER: Analyzing a distorted audio transmission coming from Tyken Station, but sensors indicate this broadcast should not even exist. More data required. Scan again with &quot;ENTER&quot; key." scan_desc="COMPUTER: Playing back best transmission quality. &quot;M--t -o-er d--- -----ds -it- E-- -o--e-o!&quot;" />
+  </event>
+  <event name="Magnetic Fissure" id_arme="1f91eb4e-5e46-4420-b082-16ace6505de8" parent_id_arme="94b41769-e58c-4827-a7d7-a3561f8482dc">
+    <if_scan_level name="???" side="2" comparator="NOT" value="0" />
+    <if_exists name="???" />
+    <set_ship_text name="???" newname="Magnetic Fissure" desc="COMPUTER: Decrypting an unkown signal in Tyken Station's magnetic field. Results inconclusive. Scan again with &quot;ENTER&quot; key." scan_desc="COMPUTER: Translators read, &quot;/*/R/*/*/*/*/N/S/ /I/N/ /*/5/&quot;" />
+  </event>
+  <event name="Excalibur Warp Signature" id_arme="8b088d85-9a30-49c0-a0bd-2dc756459231" parent_id_arme="94b41769-e58c-4827-a7d7-a3561f8482dc">
+    <if_scan_level name="Excalibur Warp Signature" side="2" comparator="NOT" value="0" />
+    <if_exists name="Excalibur Warp Signature" />
+    <set_ship_text name="Excalibur Warp Signature" newname="Excalibur Warp Signature" desc="COMPUTER: The Excalibur is in the same spot it was approximately 6 minutes ago, with almost everything the way it was before the shield generators overloaded and destroyed Tyken Station. Analyze our previous warp signature with the &quot;ENTER&quot; key." scan_desc="COMPUTER: The Excalibur has traveled back in time. It is recommended that the destruction of Tyken Station is prevented, otherwise this time loop may never end." />
+  </event>
+  <event name="Derelict" id_arme="6f29079b-9ad7-4ee3-9d0c-ed9a53670696" parent_id_arme="94b41769-e58c-4827-a7d7-a3561f8482dc">
+    <if_scan_level name="Derelict" side="2" comparator="NOT" value="0" />
+    <if_exists name="Derelict" />
+    <set_ship_text name="Derelict" newname="Kralien Cruiser" race="Kralien" class="Cruiser" desc="COMPUTER: It appears as though an enemy ship is in sector E5, but there are no life signs detected. Scan for further results with &quot;ENTER&quot; key." scan_desc="COMPUTER: An automated distress signal is active on the vessel. Life signs detected, but the energy levels are weak." hailtext="*distress signal*" />
+  </event>
+  <event name="Data Trail" id_arme="a090b077-1aa6-4afd-9676-1f3a1cc2e10c" parent_id_arme="94b41769-e58c-4827-a7d7-a3561f8482dc">
+    <if_scan_level name="????" side="2" comparator="NOT" value="0" />
+    <if_exists name="????" />
+    <set_ship_text name="????" newname="Data Trail" desc="COMPUTER: Kralien comms signatures detected. To analyze further, scan with &quot;ENTER&quot; key." scan_desc="The Kralien vessel was spying on experiments at Tyken Station and sending vital TSN information to Hegemony leadership. It appears as though the Kralien fleet is on its to Earth. It is recommended that Excalibur proceeds to intercept point at Wolf 359." />
+  </event>
+  <folder_arme name="Weapons" id_arme="b278933e-b04f-4960-bb26-c5e0ba631b18" expanded_arme="" />
+  <event name="Target Misdirection" id_arme="7227e40d-6dae-481e-a314-1b6bd0fd24e4" parent_id_arme="b278933e-b04f-4960-bb26-c5e0ba631b18">
+    <if_exists name="Tyken Station" />
+    <if_variable name="weapons_misdirection" comparator="EQUALS" value="0.0" />
+    <if_variable name="causeandeffect" comparator="LESS_EQUAL" value="7.0" />
+    <if_exists name="Excalibur" />
+    <if_player_is_targeting player_slot="0" name="Tyken Station" />
+    <incoming_comms_text from="Tyken Station" sideValue="2" type="ALERT">What are you doing, Exalibur? Do not fire at us! We need your help! We are peaceful, not your enemy!</incoming_comms_text>
+    <warning_popup_message message="Weapons has targeted a friendly station." consoles="WSC" player_slot="0" />
+    <set_variable name="weapons_misdirection" value="1.0" integer="yes" />
+  </event>
+  <folder_arme name="Comms Buttons" id_arme="5f4c0986-2881-4d43-a691-be6eb00e8fe7" expanded_arme="" />
+  <event name="Comms Button I" id_arme="88dd303b-50a8-4dd4-9e75-da296e397172" parent_id_arme="5f4c0986-2881-4d43-a691-be6eb00e8fe7">
+    <if_variable name="commsbutton" comparator="EQUALS" value="0.0" />
+    <if_comms_button text="Tyken Station, this is Excalibur, how can we be of assistance?" />
+    <incoming_comms_text from="Tyken Station" sideValue="2" type="PLAYER">Oh thank goodness TSN sent someone out here. We've encountered several malfunctions in key power distribution systems, and they've affected our long range comms, transporter functions, and most devastatingly our shield generators. Any assistance you can provide would be much appreciated.</incoming_comms_text>
+    <set_timer name="commsbutton" seconds="30" />
+    <set_variable name="commsbutton" value="1.0" integer="yes" />
+    <clear_comms_button text="Tyken Station, this is Excalibur, how can we be of assistance?" sideValue="2" />
+  </event>
+  <event name="Comms Button II" id_arme="3a4b2d4a-18fe-4aad-bf99-5914664b3f29" parent_id_arme="5f4c0986-2881-4d43-a691-be6eb00e8fe7">
+    <if_timer_finished name="commsbutton" />
+    <if_variable name="commsbutton" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Tyken Station, this is Excalibur, how can we be of assistance?" sideValue="2" />
+    <set_variable name="commsbutton" value="2.0" integer="yes" />
+  </event>
+  <folder_arme name="Helm" id_arme="b8480a2e-2eb0-410b-95af-da6a95beb42e" expanded_arme="" />
+  <event name="Closing In on Station" id_arme="fc152004-a97c-4bfc-8665-42c2478483ce" parent_id_arme="b8480a2e-2eb0-410b-95af-da6a95beb42e">
+    <if_distance player_slot1="0" name2="Tyken Station" comparator="LESS_EQUAL" value="10,000" />
+    <if_variable name="helmclosingin" comparator="EQUALS" value="0.0" />
+    <incoming_comms_text from="Tyken Station" sideValue="2" type="ALERT">Hurry! Dock with us so we may escape on your ship before it's too late!</incoming_comms_text>
+    <set_variable name="helmclosingin" value="1.0" integer="yes" />
+  </event>
+  <event name="Kralien Ambush" id_arme="115d1361-6a10-4a30-bfe1-d07b0f8e1401" parent_id_arme="b8480a2e-2eb0-410b-95af-da6a95beb42e">
+    <if_exists name="Tyken Station" />
+    <if_not_exists name="Kralien Scout 1" />
+    <if_not_exists name="Kralien Scout 2" />
+    <if_not_exists name="Kralien Scout 3" />
+    <if_exists name="Excalibur" />
+    <if_variable name="causeandeffect" comparator="EQUALS" value="9.0" />
+    <if_inside_box name="Excalibur" leastX="0.0" leastZ="0.0" mostX="20000.0" mostZ="20000.0" />
+    <if_variable name="KralienSpawn" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="9091.0" y="0.0" z="7967.0" angle="225" name="Kralien Scout 1" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="3476.0" y="0.0" z="3155.0" angle="0" name="Kralien Scout 2" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="-1" />
+    <create type="enemy" x="3637.0" y="0.0" z="9893.0" angle="0" name="Kralien Scout 3" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="-1" />
+    <warning_popup_message message="COMPUTER: Enemy ships detected in Nebula." consoles="MHWESC" player_slot="0" />
+    <set_special name="Kralien Scout 3" ship="1" captain="1" ability="AntiTorp" />
+    <set_special name="Kralien Scout 2" ship="0" captain="1" ability="AntiTorp" />
+    <set_special name="Kralien Scout 1" ship="1" captain="1" ability="AntiTorp" />
+    <add_ai type="ATTACK" targetName="Excalibur" value1="1.02" name="Kralien Scout 1" />
+    <add_ai type="ATTACK" targetName="Excalibur" value1="1.0" name="Kralien Scout 2" />
+    <add_ai type="ATTACK" targetName="Excalibur" value1="0.9" name="Kralien Scout 3" />
+    <create type="genericMesh" x="10000.0" y="0.0" z="10000.0" name="????" meshFileName="dat\asteroid.dxs" textureFileName="dat\electricNoise2.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="????" />
+    <set_object_property property="artScale" value="0.01" name="????" />
+    <set_variable name="KralienSpawn" value="1.0" integer="yes" />
+    <set_variable name="causeandeffect" value="10.0" integer="yes" />
+  </event>
+  <event name="Kralien Anti-Torp 1" id_arme="74c0d06e-2010-47c5-b1f1-c0260fd8eaa6" parent_id_arme="b8480a2e-2eb0-410b-95af-da6a95beb42e">
+    <if_variable name="KralienSpawn" comparator="EQUALS" value="1.0" />
+    <if_distance name1="Kralien Scout 1" player_slot2="0" comparator="LESS_EQUAL" value="5000.0" />
+    <set_variable name="KralienSpawn" value="2.0" integer="yes" />
+    <warning_popup_message message="COMPUTER: Nebula interference with torpedo tubes." consoles="WS" player_slot="0" />
+    <set_object_property property="countShk" value="0" player_slot="0" />
+    <set_object_property property="countEMP" value="0" player_slot="0" />
+    <set_object_property property="countMine" value="0" player_slot="0" />
+    <set_object_property property="countNuke" value="0" player_slot="0" />
+  </event>
+  <event name="Kralien Anti-Torp 2" id_arme="3cc7f38d-f93a-4e5b-a88d-42c6bb3f7561" parent_id_arme="b8480a2e-2eb0-410b-95af-da6a95beb42e">
+    <if_variable name="KralienSpawn" comparator="EQUALS" value="2.0" />
+    <if_distance name1="Kralien Scout 1" player_slot2="0" comparator="LESS_EQUAL" value="4000.0" />
+    <set_variable name="KralienSpawn" value="3.0" integer="yes" />
+    <warning_popup_message message="COMPUTER: Only regular torpedos available." consoles="WS" player_slot="0" />
+  </event>
+  <event name="Piranha Attack 1" id_arme="3bbed75a-76f6-4c28-8875-c5b88b879676" parent_id_arme="b8480a2e-2eb0-410b-95af-da6a95beb42e">
+    <if_variable name="piranhaspawn" comparator="EQUALS" value="0.0" />
+    <if_inside_sphere player_slot="0" centerX="17594.0" centerY="0.0" centerZ="85454.0" radius="2500" />
+    <create type="monster" monsterType="4" age="3" podnumber="0" x="17594.0" y="0.0" z="85454.0" angle="200" name="Parasite_5" />
+    <create type="monster" monsterType="4" age="3" podnumber="0" x="17594.0" y="0.0" z="85454.0" angle="200" name="Parasite_4" />
+    <create type="monster" monsterType="4" age="3" podnumber="0" x="17594.0" y="0.0" z="85454.0" angle="200" name="Parasite_3" />
+    <create type="monster" monsterType="4" age="2" podnumber="0" x="17594.0" y="0.0" z="85454.0" angle="190" name="Parasite_2" />
+    <create type="monster" monsterType="4" age="1" podnumber="0" x="17594.0" y="0.0" z="85454.0" angle="180" name="Parasite_1" />
+    <set_variable name="piranhaspawn" value="1.0" integer="yes" />
+    <add_ai type="RELEASE_PIRANHAS" value3="3" value4="0" value1="1" value2="2500" name="Derelict" />
+  </event>
+  <folder_arme name="Countdown" id_arme="e63260b9-1841-4a88-b266-aae6a1374522" expanded_arme="" />
+  <event name="Countdown Begins" id_arme="36cd9819-a9d0-4c78-93d2-4b1047b799df" parent_id_arme="e63260b9-1841-4a88-b266-aae6a1374522">
+    <if_variable name="causeandeffect" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="countdown_1" />
+    <set_timer name="countdown_2" seconds="60" />
+    <incoming_comms_text from="Tyken Station" sideValue="2" type="ALERT STATION">Please help us, Excalibur! We don't know why but our shield power couplings have gone completely haywire, and the resulting power surge has ripped open a massive hole in the space time continuum! The surge is disrupting transporter functions and has short circuited our access to escape pods. You must dock with us immediately and let us aboard your ship before the overload results in a catastrophic explosion that can destroy Tyken Station and kill us all!</incoming_comms_text>
+    <warning_popup_message message="Tyken Station Power Overload in 5 Minutes" consoles="ME" player_slot="0" />
+    <create type="blackHole" x="25000.0" y="0.0" z="25000.0" name="Space Time Continuum Tear" />
+    <create count="3" type="nebulas" nebType="3" startX="40000.0" startY="0.0" startZ="40000.0" radius="500" />
+    <set_variable name="causeandeffect" value="3.0" integer="yes" />
+  </event>
+  <event name="Countdown 1" id_arme="79299922-e521-44cb-b1b2-f4238a0ca72c" parent_id_arme="e63260b9-1841-4a88-b266-aae6a1374522">
+    <if_variable name="causeandeffect" comparator="EQUALS" value="3.0" />
+    <if_timer_finished name="countdown_2" />
+    <set_timer name="countdown_3" seconds="60" />
+    <warning_popup_message message="4 Minutes Until Tyken Station is Destroyed" consoles="MHWESC" player_slot="0" />
+    <set_variable name="causeandeffect" value="4.0" integer="yes" />
+    <create count="1" type="nebulas" nebType="3" startX="40000.0" startY="0.0" startZ="40000.0" radius="500" randomSeed="1" />
+  </event>
+  <event name="Countdown 2" id_arme="643dbf3d-0211-43a0-a41e-df938055c3c2" parent_id_arme="e63260b9-1841-4a88-b266-aae6a1374522">
+    <if_timer_finished name="countdown_3" />
+    <if_variable name="causeandeffect" comparator="EQUALS" value="4.0" />
+    <warning_popup_message message="Power Overload in 3 Minutes" consoles="MHWESC" player_slot="0" />
+    <set_timer name="countdown_4" seconds="60" />
+    <set_variable name="causeandeffect" value="5.0" integer="yes" />
+    <create count="1" type="nebulas" nebType="3" startX="40000.0" startY="0.0" startZ="40000.0" radius="500" randomSeed="2" />
+  </event>
+  <event name="Countdown 3" id_arme="cb33745a-f096-4439-add3-63f1d24947bf" parent_id_arme="e63260b9-1841-4a88-b266-aae6a1374522">
+    <if_timer_finished name="countdown_4" />
+    <if_variable name="causeandeffect" comparator="EQUALS" value="5.0" />
+    <warning_popup_message message="2 Minutes Until Complete Generator Overload" consoles="MHWESC" player_slot="0" />
+    <set_timer name="countdown_5" seconds="60" />
+    <set_variable name="causeandeffect" value="6.0" integer="yes" />
+    <create count="1" type="nebulas" nebType="3" startX="40000.0" startY="0.0" startZ="40000.0" radius="500" randomSeed="3" />
+  </event>
+  <event name="Countdown 4" id_arme="9c0f4a75-512b-41c9-b39a-6584524e7b42" parent_id_arme="e63260b9-1841-4a88-b266-aae6a1374522">
+    <if_timer_finished name="countdown_5" />
+    <if_variable name="causeandeffect" comparator="EQUALS" value="6.0" />
+    <warning_popup_message message="T-minus 60 Seconds" consoles="MHWESCO" player_slot="0" />
+    <set_timer name="countdown_6" seconds="60" />
+    <set_variable name="causeandeffect" value="7.0" integer="yes" />
+    <create count="1" type="nebulas" nebType="3" startX="40000.0" startY="0.0" startZ="40000.0" radius="500" randomSeed="4" />
+    <incoming_comms_text from="Tyken Station" sideValue="2" type="ALERT STATION">WHAT ARE YOU WAITING FOR, EXCALIBUR? IF YOU DON'T GET HERE IN ONE MINUTE WE ARE ALL DOOMED!</incoming_comms_text>
+  </event>
+  <folder_arme name="Failue/Success Conditions" id_arme="aed3cb38-8fda-451a-810f-c86922cf1ab8" expanded_arme="" />
+  <event name="The Space Time Tear is Fixed" id_arme="443761c3-6deb-4791-ac91-ad91bd7ec918" parent_id_arme="aed3cb38-8fda-451a-810f-c86922cf1ab8">
+    <if_exists name="Excalibur" />
+    <if_exists name="Tyken Station" />
+    <if_variable name="causeandeffect" comparator="LESS_EQUAL" value="7.0" />
+    <if_object_property property="shieldState" name="Tyken Station" comparator="LESS_EQUAL" value="200.0" />
+    <destroy name="Space Time Continuum Tear" />
+    <destroy_near type="all" radius="10" centerX="48876.0" centerY="0.0" centerZ="43979.0" />
+    <destroy_near type="all" radius="10" centerX="38893.0" centerY="0.0" centerZ="33806.0" />
+    <destroy_near type="all" radius="10" centerX="35364.0" centerY="0.0" centerZ="47716.0" />
+    <destroy_near nebType="3" type="nebulas" radius="10000" centerX="40000.0" centerZ="40000.0" />
+    <set_variable name="causeandeffect" value="8.0" integer="yes" />
+    <destroy name="Magnetic Fissure" />
+    <destroy name="Temporal Distortion" />
+    <destroy name="Electric Pulse" />
+    <destroy name="???" />
+    <destroy name="??" />
+    <destroy name="?" />
+    <set_object_property property="canBuild" value="1" name="Tyken Station" />
+  </event>
+  <event name="Nebula Prompt" id_arme="9765a632-424e-4055-aeb3-278c94519d8e" parent_id_arme="aed3cb38-8fda-451a-810f-c86922cf1ab8">
+    <if_not_exists name="Space Time Continuum Tear" />
+    <if_variable name="causeandeffect" comparator="EQUALS" value="8.0" />
+    <if_exists name="Tyken Station" />
+    <if_object_property property="shieldState" name="Tyken Station" comparator="LESS_EQUAL" value="200.0" />
+    <incoming_comms_text from="Tyken Station" sideValue="2" type="PLAYER">Actually, Excalibur... The tear just closed! Your EMP torpedo must have drained enough of our power output. Sorry for our frustration! We've been experimenting with various new methods of jump drive that allow starships to skip the spacetime continuum entirely. The explosion must have interacted with our projects in such a way that it ripped a hole in space itself. I don't know about you, Excalibur, but it feels like we have experienced this moment dozens of times! Thank you for your assistance! In the meantime you are now clear for safe docking here and we can provide whatever munitions you need.^^However, we have been getting odd readings from the Nebula in sector A5 of the expanse. Perhaps you should investigate...^</incoming_comms_text>
+    <set_variable name="causeandeffect" value="9.0" integer="yes" />
+    <warning_popup_message message="COMPUTER: Causality loop closed. Strange readings in Sector A5" consoles="MHWESC" player_slot="0" />
+  </event>
+  <event name="Victory!" id_arme="ece2a62c-1abc-4e86-ae2d-0c3a580f4dd1" parent_id_arme="aed3cb38-8fda-451a-810f-c86922cf1ab8">
+    <if_exists name="Excalibur" />
+    <if_exists name="Data Trail" />
+    <if_exists name="Tyken Station" />
+    <if_variable name="causeandeffect" comparator="EQUALS" value="10.0" />
+    <if_not_exists name="Space Time Continuum Tear" />
+    <if_not_exists name="Kralien Scout 1" />
+    <if_not_exists name="Kralien Scout 2" />
+    <if_not_exists name="Kralien Scout 3" />
+    <set_timer name="Victory_Timer" seconds="30" />
+    <set_variable name="causeandeffect" value="11.0" integer="yes" />
+    <incoming_comms_text from="TSN COMMAND: Great work, Excalibur. We must stop the Kraliens at Wolf 359." />
+    <warning_popup_message message="TSN COMMAND: Great work, Excalibur. We must stop the Kraliens at Wolf 359." consoles="MHWESC" player_slot="0" />
+    <big_message title="MISSION SUCCESS!" subtitle1="You stopped the temporal causality loop, and saved Tyken Station!" subtitle2="Next episode: The Invasion Of Wolf 359" />
+  </event>
+  <event name="surrender 1" id_arme="580bd71f-4c7b-45d5-8b13-b57aacf12202" parent_id_arme="aed3cb38-8fda-451a-810f-c86922cf1ab8">
+    <if_object_property property="hasSurrendered" name="Kralien Scout 1" comparator="EQUALS" value="1" />
+    <if_exists name="Kralien Scout 1" />
+    <destroy name="Kralien Scout 1" />
+  </event>
+  <event name="surrender 2" id_arme="7eeb3513-5578-4ab7-b6f1-ab4c926e8f0f" parent_id_arme="aed3cb38-8fda-451a-810f-c86922cf1ab8">
+    <if_object_property property="hasSurrendered" name="Kralien Scout 2" comparator="EQUALS" value="1" />
+    <if_exists name="Kralien Scout 2" />
+    <destroy name="Kralien Scout 2" />
+  </event>
+  <event name="surrender 3" id_arme="b9076e32-d226-4440-9f6d-0686c99416e1" parent_id_arme="aed3cb38-8fda-451a-810f-c86922cf1ab8">
+    <if_object_property property="hasSurrendered" name="Kralien Scout 3" comparator="EQUALS" value="1" />
+    <if_exists name="Kralien Scout 3" />
+    <destroy name="Kralien Scout 3" />
+  </event>
+  <event name="Attempting to Rescue Station Staff via Dock" id_arme="037f1808-d513-4936-8bea-ac69de3edb80" parent_id_arme="aed3cb38-8fda-451a-810f-c86922cf1ab8">
+    <if_variable name="causeandeffect" comparator="LESS_EQUAL" value="7.0" />
+    <if_distance name1="Excalibur" name2="Tyken Station" comparator="LESS_EQUAL" value="500.0" />
+    <destroy name="Tyken Station" />
+    <warning_popup_message message="COMPUTER: Docking procedure accellerated shield generator overload." consoles="ES" player_slot="0" />
+  </event>
+  <event name="Ran Out of Time" id_arme="4bd26e21-4e70-4317-88e9-fcd55c25dd87" parent_id_arme="aed3cb38-8fda-451a-810f-c86922cf1ab8">
+    <if_variable name="causeandeffect" comparator="EQUALS" value="7.0" />
+    <if_timer_finished name="countdown_6" />
+    <destroy name="Tyken Station" />
+    <set_variable name="causeandeffect" value="0.0" integer="yes" />
+  </event>
+  <event name="Destroyed by Black Hole" id_arme="25387b00-6c43-4d3a-9512-0132fc61afc8" parent_id_arme="aed3cb38-8fda-451a-810f-c86922cf1ab8">
+    <if_exists name="Tyken Station" />
+    <if_not_exists name="Excalibur" />
+    <if_exists name="Space Time Continuum Tear" />
+    <big_message title="MISSION FAILED" subtitle1="Your ship has been destroyed. You will not be able to save the station if you are dead!" subtitle2="Better luck next time!" />
+    <end_mission />
+  </event>
+  <event name="Kralien 1 Destroys Excalibur" id_arme="dc81f1ba-20a0-48b4-9fe6-4d8ae02dbf11" parent_id_arme="aed3cb38-8fda-451a-810f-c86922cf1ab8">
+    <if_exists name="Tyken Station" />
+    <if_exists name="Kralien Scout 1" />
+    <if_not_exists name="Excalibur" />
+    <big_message title="MISSION FAILED" subtitle1="Your ship has been destroyed. You will not be able to save the station if you are dead!" subtitle2="Better luck next time!" />
+    <end_mission />
+  </event>
+  <event name="Kralien 2 Destroys Excalibur" id_arme="e6d35685-1f85-4bd6-8d10-0293c60cb290" parent_id_arme="aed3cb38-8fda-451a-810f-c86922cf1ab8">
+    <if_exists name="Tyken Station" />
+    <if_exists name="Kralien Scout 2" />
+    <if_not_exists name="Excalibur" />
+    <big_message title="MISSION FAILED" subtitle1="Your ship has been destroyed. You will not be able to save the station if you are dead!" subtitle2="Better luck next time!" />
+    <end_mission />
+  </event>
+  <event name="Kralien 3 Destroys Excalibur" id_arme="5e8cdbb9-ccf0-4797-8b05-3d499941f06e" parent_id_arme="aed3cb38-8fda-451a-810f-c86922cf1ab8">
+    <if_exists name="Tyken Station" />
+    <if_exists name="Kralien Scout 3" />
+    <if_not_exists name="Excalibur" />
+    <big_message title="MISSION FAILED" subtitle1="Your ship has been destroyed. You will not be able to save the station if you are dead!" subtitle2="Better luck next time!" />
+    <end_mission />
+  </event>
+  <event name="Piranha 1 Destroys Excalibur" id_arme="839a9878-c786-4b2c-8a0a-ea2f89bd38c0" parent_id_arme="aed3cb38-8fda-451a-810f-c86922cf1ab8">
+    <if_not_exists name="Excalibur" />
+    <if_exists name="Parasite_1" />
+    <if_exists name="Tyken Station" />
+    <big_message title="MISSION FAILED" subtitle1="Your ship has been destroyed. You will not be able to save the station if you are dead!" subtitle2="Better luck next time!" />
+    <end_mission />
+  </event>
+  <event name="Piranha 2 Destroys Excalibur" id_arme="01430871-7862-4cf5-a10c-ce8340452043" parent_id_arme="aed3cb38-8fda-451a-810f-c86922cf1ab8">
+    <if_not_exists name="Excalibur" />
+    <if_exists name="Parasite_2" />
+    <if_exists name="Tyken Station" />
+    <big_message title="MISSION FAILED" subtitle1="Your ship has been destroyed. You will not be able to save the station if you are dead!" subtitle2="Better luck next time!" />
+    <end_mission />
+  </event>
+  <event name="Piranha 3 Destroys Excalibur" id_arme="778787da-21d6-497c-bbcc-eb9ce749ed8c" parent_id_arme="aed3cb38-8fda-451a-810f-c86922cf1ab8">
+    <if_not_exists name="Excalibur" />
+    <if_exists name="Parasite_3" />
+    <if_exists name="Tyken Station" />
+    <big_message title="MISSION FAILED" subtitle1="Your ship has been destroyed. You will not be able to save the station if you are dead!" subtitle2="Better luck next time!" />
+    <end_mission />
+  </event>
+  <event name="Piranha 4 Destroys Excalibur" id_arme="58b17bfe-fb07-4da3-8e1a-69d622277981" parent_id_arme="aed3cb38-8fda-451a-810f-c86922cf1ab8">
+    <if_not_exists name="Excalibur" />
+    <if_exists name="Parasite_4" />
+    <if_exists name="Tyken Station" />
+    <big_message title="MISSION FAILED" subtitle1="Your ship has been destroyed. You will not be able to save the station if you are dead!" subtitle2="Better luck next time!" />
+    <end_mission />
+  </event>
+  <event name="Piranha 5 Destroys Excalibur" id_arme="656d08b9-e00d-4b5a-8cdf-7a1339bfa72f" parent_id_arme="aed3cb38-8fda-451a-810f-c86922cf1ab8">
+    <if_not_exists name="Excalibur" />
+    <if_exists name="Parasite_5" />
+    <if_exists name="Tyken Station" />
+    <big_message title="MISSION FAILED" subtitle1="Your ship has been destroyed. You will not be able to save the station if you are dead!" subtitle2="Better luck next time!" />
+    <end_mission />
+  </event>
+  <event name="End Mission - Success" id_arme="ed4b25f7-1f8f-4c04-9288-788fbbc7a495" parent_id_arme="aed3cb38-8fda-451a-810f-c86922cf1ab8">
+    <if_exists name="Tyken Station" />
+    <if_variable name="causeandeffect" comparator="EQUALS" value="11.0" />
+    <if_exists name="Excalibur" />
+    <if_timer_finished name="Victory_Timer" />
+    <end_mission />
+  </event>
+</mission_data>

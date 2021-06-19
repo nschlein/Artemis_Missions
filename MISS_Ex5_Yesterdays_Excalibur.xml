@@ -1,0 +1,514 @@
+<mission_data version="2.7.5" background_id_arme="e25a20f9-8cef-4d38-9ba5-fd2c38c1c8e8" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <mission_description>These Are The Voyages... Ep. V^^The Excalibur's predecessor, A TSN Light Cruiser with the same name, passes through a rift in time, undoing ceasefire negotiations between the USFP and Torgoth...^^*Recommended for experienced crews*</mission_description>
+  <start id_arme="e25a20f9-8cef-4d38-9ba5-fd2c38c1c8e8">
+    <create type="player" player_slot="0" x="10000.0" y="0.0" z="30000.0" angle="225" name="Excalibur" sideValue="2" accent_color="50" raceKeys="TSN" hullKeys="Battleship" warp="yes" jump="no" />
+    <create count="8" type="mines" startAngle="0" endAngle="360" startX="60000.0" startY="0.0" startZ="60000.0" radius="1000" />
+    <create count="75" type="asteroids" startX="80000.0" startY="0.0" startZ="0.0" endX="0.0" endY="0.0" endZ="80000.0" randomRange="10000" />
+    <create count="30" type="nebulas" nebType="1" startAngle="45" endAngle="225" startX="93476.0" startY="0.0" startZ="10695.0" radius="25000" randomRange="10000" randomSeed="1" />
+    <set_difficulty_level value="7" />
+    <set_skybox_index index="17" />
+    <set_object_property property="nebulaIsOpaque" value="0" />
+    <set_object_property property="sensorSetting" value="0" />
+    <set_object_property property="nonPlayerSpeed" value="100" />
+    <set_object_property property="nonPlayerShield" value="100" />
+    <set_object_property property="nonPlayerWeapon" value="100" />
+    <set_object_property property="playerWeapon" value="100" />
+    <set_object_property property="playerShields" value="100" />
+    <big_message title="These Are The Voyages..." subtitle1="Episode V" subtitle2="Yesterday's Excalibur" />
+    <set_timer name="start_mission_timer_1" seconds="30" />
+    <create type="station" x="60000.0" y="0.0" z="60000.0" name="Narendra III" raceKeys="Torgoth" hullKeys="Base" sideValue="2" />
+    <set_object_property property="canLaunchFighters" value="0.0" name="Narendra III" />
+    <set_object_property property="canShoot" value="0" name="Narendra III" />
+    <set_object_property property="missileStoresBeacon" value="0.0" name="Narendra III" />
+    <set_object_property property="missileStoresEMP" value="0.0" name="Narendra III" />
+    <set_object_property property="missileStoresHoming" value="0.0" name="Narendra III" />
+    <set_object_property property="missileStoresMine" value="0.0" name="Narendra III" />
+    <set_object_property property="missileStoresNuke" value="0.0" name="Narendra III" />
+    <set_object_property property="missileStoresProbe" value="0.0" name="Narendra III" />
+    <set_object_property property="missileStoresPShock" value="0.0" name="Narendra III" />
+    <set_object_property property="missileStoresTag" value="0.0" name="Narendra III" />
+    <set_object_property property="canBuild" value="0.0" name="Narendra III" />
+    <create type="Anomaly" pickupType="0" x="10000.0" y="0.0" z="50000.0" name="A3" />
+    <create type="Anomaly" pickupType="0" x="25000.0" y="0.0" z="25000.0" name="A2" />
+    <create type="Anomaly" pickupType="0" x="73423.0" y="0.0" z="88181.0" name="A7" />
+    <create type="Anomaly" pickupType="6" x="90107.0" y="0.0" z="68609.0" name="A6" />
+    <create type="Anomaly" pickupType="4" x="94118.0" y="0.0" z="48877.0" name="A5" />
+    <create type="Anomaly" pickupType="0" x="46952.0" y="0.0" z="92352.0" name="A9" />
+    <create type="Anomaly" pickupType="0" x="36364.0" y="0.0" z="47593.0" name="A4" />
+    <create type="Anomaly" pickupType="0" x="47434.0" y="0.0" z="71336.0" name="A8" />
+    <create type="Anomaly" pickupType="0" x="2514.0" y="0.0" z="3315.0" name="A1" />
+    <create type="Anomaly" pickupType="0" x="69412.0" y="0.0" z="61871.0" name="A10" />
+    <set_variable name="Yesterday" value="0.0" integer="yes" />
+    <set_variable name="Ripley" value="0.0" integer="yes" />
+    <set_variable name="Damage" value="0.0" integer="yes" />
+    <set_variable name="torgoth" value="0.0" integer="yes" />
+    <set_variable name="AI Stack" value="0.0" integer="yes" />
+    <set_variable name="End Mission" value="0.0" integer="yes" />
+  </start>
+  <folder_arme name="Setting the Stage" id_arme="2ce8eebc-b563-4ef5-8bb3-fb07c12052bc" expanded_arme="" />
+  <event name="Mission Briefing" id_arme="058dca8f-d8b6-4eba-b479-c8fd0dc15034" parent_id_arme="2ce8eebc-b563-4ef5-8bb3-fb07c12052bc">
+    <if_timer_finished name="start_mission_timer_1" />
+    <if_variable name="Yesterday" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="COMPUTER: Review briefing on COMMS." consoles="MHWESC" player_slot="0" />
+    <set_variable name="Yesterday" value="1.0" integer="yes" />
+    <set_timer name="Envoy" seconds="60" />
+    <incoming_comms_text from="TSN COMMAND - STARDATE: 98917.83 " sideValue="2" type="STATUS FRIEND">Thanks to your efforts we are on the verge of a major diplomatic breakthrough in this war. The Torgoth have decided that the USFP and TSN are not their enemies at this time. We are sure that you are familiar enough with TSN history to remember the eight Light Cruisers that made up our first spacefaring fleet. The Artemis, Intrepid, Aegis, Horatio, Hera, Ceres, Diana, and of course, the Excalibur. Many of these ships are still in service; however, many years ago the original Excalibur sacrificed itself defending a Torgoth station in the Narendra system just past the border of the Neutral Zone from some sort of attack. In honor of that sacrifice, the Torgoth have agreed to begin peace talks at that very same station. You are to escort a USFP emissary there, and oversee the negotiations. As a show of good faith, the Torgoth will not be sending any of their warships to the station.</incoming_comms_text>
+  </event>
+  <event name="Envoy Ripley" id_arme="d221c42f-7592-46df-833e-94925b33b86c" parent_id_arme="2ce8eebc-b563-4ef5-8bb3-fb07c12052bc">
+    <if_timer_finished name="Envoy" />
+    <if_variable name="Ripley" comparator="EQUALS" value="0.0" />
+    <if_variable name="Yesterday" comparator="EQUALS" value="1.0" />
+    <set_comms_button text="What was it that attacked this station and destroyed the first Excalibur?" sideValue="2" />
+    <set_variable name="Ripley" value="1.0" integer="yes" />
+    <incoming_comms_text from="Envoy Ripley" sideValue="2" type="STATUS">Thank you for bringing me this far, Excalibur. It is fitting that the second TSN vessel to be named Excalibur, your Battleship, would also play a major part in the USFP's history with the Torgoth. We are almost at the Narendra III Torgoth outpost. Once we are within transporter range, I will beam aboard it and the negotiations will begin. You won't need to dock. Just relax, and play it cool. We don't want anything to come across like we are interested in anything other than a ceasefire on the Torgoth front.</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Transporter Room to Bridge on COMMS." consoles="MHWESC" player_slot="0" />
+    <set_variable name="Yesterday" value="2.0" integer="yes" />
+  </event>
+  <event name="History Lesson" id_arme="a750232e-c350-4195-86c9-be2fedda4017" parent_id_arme="2ce8eebc-b563-4ef5-8bb3-fb07c12052bc">
+    <if_comms_button text="What was it that attacked this station and destroyed the first Excalibur?" />
+    <if_variable name="Ripley" comparator="EQUALS" value="1.0" />
+    <set_variable name="Ripley" value="2.0" integer="yes" />
+    <set_comms_button text="Do you think the Torgoth would have done the same for them at the time?" sideValue="2" />
+    <clear_comms_button text="What was it that attacked this station and destroyed the first Excalibur?" sideValue="2" />
+    <incoming_comms_text from="Envoy Ripley" sideValue="2" type="FRIEND">While there are some key pieces of information missing, records state that when the TSN lost contact with Excalibur it sent several ships to the Neutral Zone demanding to know if the Torgoth had anything to do with it's disappearance. The Torgoth simply stated that the Excalibur defended this outpost from some kind of ambush, and that they were eternally grateful for their sacrifice. TSN Intelligence has speculated that the Torgoth may have started to catch on to the manipulation of the Skaraan and Arvonians around that time. It is hypothesized that a cloaked Skaraan Executor class could have taken the station by surpise and also have been more than a match for a TSN Light Cruiser.</incoming_comms_text>
+  </event>
+  <event name="Speculation" id_arme="fd6d82ab-0e73-4159-8a1b-6ed3037c716f" parent_id_arme="2ce8eebc-b563-4ef5-8bb3-fb07c12052bc">
+    <if_comms_button text="Do you think the Torgoth would have done the same for them at the time?" />
+    <if_variable name="Ripley" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text from="Envoy Ripley" sideValue="2" type="FRIEND">Who knows? While my gut tells me no, I remind myself how grateful we all are that today the Torgoth are open to these discussions thanks to the efforts of that crew, as well as yours.</incoming_comms_text>
+    <clear_comms_button text="Do you think the Torgoth would have done the same for them at the time?" sideValue="2" />
+    <set_variable name="Ripley" value="3.0" integer="yes" />
+  </event>
+  <folder_arme name="Approaching Narendra III" id_arme="704ee54d-25f5-4020-9b66-71bd62d12efc" expanded_arme="" />
+  <event name="Closing In" id_arme="27cfbf09-cc26-46f9-bbac-e0aca86603d5" parent_id_arme="704ee54d-25f5-4020-9b66-71bd62d12efc">
+    <if_distance player_slot1="0" name2="Narendra III" comparator="LESS_EQUAL" value="10000.0" />
+    <if_variable name="Yesterday" comparator="EQUALS" value="2.0" />
+    <incoming_comms_text from="Envoy Ripley" sideValue="2" type="STATUS">We are almost within transporter range. Take it nice steady, and I will beam aboard to begin discussions. There are plenty of anomalies in this region of space if the Excalibur needs an energy recharge.</incoming_comms_text>
+    <set_variable name="Yesterday" value="3.0" integer="yes" />
+    <clear_comms_button text="What was it that attacked this station and destroyed the first Excalibur?" sideValue="2" />
+    <clear_comms_button text="Do you think the Torgoth would have done the same for them at the time?" sideValue="2" />
+    <warning_popup_message message="COMPUTER: Transporter room to bridge on COMMS." consoles="MHWESC" player_slot="0" />
+  </event>
+  <event name="Transporting Envoy" id_arme="bab3ee03-7440-4fed-83e9-4437e050a71a" parent_id_arme="704ee54d-25f5-4020-9b66-71bd62d12efc">
+    <if_distance player_slot1="0" name2="Narendra III" comparator="LESS_EQUAL" value="3500.0" />
+    <if_variable name="Yesterday" comparator="EQUALS" value="3.0" />
+    <set_timer name="KerrLoop" seconds="45" />
+    <incoming_comms_text from="Transporter Chief" sideValue="2" type="STATUS FRIEND">This is transporter room to bridge. Envoy Ripley has just beamed aboard Narendra III.</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Transporter chief on COMMS." consoles="MHWESC" player_slot="0" />
+    <set_variable name="Yesterday" value="4.0" integer="yes" />
+  </event>
+  <event name="Strange Reading" id_arme="c6f55b9f-e23c-4969-8d5f-308dacf6056d" parent_id_arme="704ee54d-25f5-4020-9b66-71bd62d12efc">
+    <if_timer_finished name="KerrLoop" />
+    <if_variable name="Yesterday" comparator="EQUALS" value="4.0" />
+    <warning_popup_message message="COMPUTER: Strange reading in sector C2." consoles="MHWS" player_slot="0" />
+    <set_variable name="Yesterday" value="5.0" integer="yes" />
+    <set_object_property property="artScale" value="0.01" name="???" />
+    <set_object_property property="pushRadius" value="0.0" name="???" />
+    <create type="genericMesh" x="70000.0" y="0.0" z="50000.0" name="???" meshFileName="dat\asteroid.dxs" textureFileName="dat\electricNoise2.png" colorRed="0.0" colorGreen="0.0" colorBlue="1.0" />
+  </event>
+  <event name="Science Scan" id_arme="19d8700b-7067-4d30-9335-bd5ba2c292ec" parent_id_arme="704ee54d-25f5-4020-9b66-71bd62d12efc">
+    <if_scan_level name="???" side="2" comparator="NOT" value="0" />
+    <if_variable name="Yesterday" comparator="EQUALS" value="5.0" />
+    <set_ship_text name="???" newname="Temporal Distortion" desc="COMPUTER: Sensors indicate the phenomenon is similar to the one you encountered at Tyken Station. Scan again with ENTER key." scan_desc="COMPUTER: It appears to be a disturbance in the space time continuum. Recommend Excalibur gets closer for further sensor analysis, but be careful to not get too close. Slow approach is recommended." />
+    <set_variable name="Yesterday" value="6.0" integer="yes" />
+  </event>
+  <folder_arme name="The Kerr Loop" id_arme="4e43aa42-c441-4e70-8a17-775432e05eed" expanded_arme="" />
+  <event name="The Black Hole" id_arme="227458ca-37f6-48bd-888d-0eca1467d857" parent_id_arme="4e43aa42-c441-4e70-8a17-775432e05eed">
+    <if_variable name="Yesterday" comparator="EQUALS" value="6.0" />
+    <if_inside_sphere player_slot="0" centerX="70000.0" centerY="0.0" centerZ="50000.0" radius="3500" />
+    <set_variable name="Yesterday" value="7.0" integer="yes" />
+    <set_timer name="Excalibur I" seconds="10" />
+    <destroy name="Temporal Distortion" />
+    <create type="blackHole" x="70000.0" y="0.0" z="50000.0" name="Kerr Loop" />
+    <warning_popup_message message="COMPUTER: Warning! Subspace tear opening! A vessel is emerging from the black hole." consoles="MHWESC" player_slot="0" />
+  </event>
+  <event name="The Excalibur I appears" id_arme="37b1d3f3-0c10-4b09-84e1-c5c23a210f54" parent_id_arme="4e43aa42-c441-4e70-8a17-775432e05eed">
+    <if_timer_finished name="Excalibur I" />
+    <if_variable name="Yesterday" comparator="EQUALS" value="7.0" />
+    <set_variable name="Yesterday" value="8.0" integer="yes" />
+    <set_timer name="History" seconds="5" />
+    <create type="neutral" x="70000.0" y="0.0" z="55000.0" angle="45" name="TSN Excalibur" raceKeys="TSN" hullKeys="Light Cruiser" sideValue="2" />
+    <destroy name="Narendra III" />
+    <destroy_near type="mines" radius="100000" centerX="50000.0" centerY="0" centerZ="50000.0" />
+    <destroy_near type="all" radius="10" centerX="10000.0" centerY="0.0" centerZ="50000.0" />
+    <destroy_near type="all" radius="10" centerX="25000.0" centerY="0.0" centerZ="25000.0" />
+    <destroy_near type="all" radius="10" centerX="73423.0" centerY="0.0" centerZ="88181.0" />
+    <destroy_near type="all" radius="10" centerX="90107.0" centerY="0.0" centerZ="68609.0" />
+    <destroy_near type="all" radius="10" centerX="94118.0" centerY="0.0" centerZ="48877.0" />
+    <destroy_near type="all" radius="10" centerX="46952.0" centerY="0.0" centerZ="92352.0" />
+    <destroy_near type="all" radius="10" centerX="36364.0" centerY="0.0" centerZ="47593.0" />
+    <destroy_near type="all" radius="10" centerX="47434.0" centerY="0.0" centerZ="71336.0" />
+    <destroy_near type="all" radius="10" centerX="69412.0" centerY="0.0" centerZ="61871.0" />
+    <destroy_near type="all" radius="10" centerX="2514.0" centerY="0.0" centerZ="3315.0" />
+    <destroy_near nebType="1" type="nebulas" radius="100000" centerX="50000.0" centerZ="50000.0" />
+    <destroy_near type="asteroids" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+    <add_ai type="TARGET_THROTTLE" value1="0.3" targetName="Excalibur" value2="1" name="TSN Excalibur" />
+    <incoming_comms_text from="Transporter Chief" sideValue="2" type="ALERT">I no longer have Envoy Ripley's signal in the transporter! It's gone!</incoming_comms_text>
+    <set_skybox_index index="8" />
+  </event>
+  <event name="Quick Rebuild" id_arme="31872eb6-0e3e-4b80-a8cc-9a388bc5349b" parent_id_arme="4e43aa42-c441-4e70-8a17-775432e05eed">
+    <if_variable name="Yesterday" comparator="EQUALS" value="8.0" />
+    <if_timer_finished name="History" />
+    <set_variable name="Yesterday" value="9.0" integer="yes" />
+    <create type="Anomaly" pickupType="0" x="10000.0" y="0.0" z="50000.0" name="A3" />
+    <create count="75" type="asteroids" startX="80000.0" startY="0.0" startZ="0.0" endX="0.0" endY="0.0" endZ="80000.0" randomRange="10000" randomSeed="3" />
+    <create count="30" type="nebulas" nebType="1" startAngle="45" endAngle="225" startX="93476.0" startY="0.0" startZ="10695.0" radius="25000" randomRange="10000" randomSeed="3" />
+    <create type="Anomaly" pickupType="0" x="25000.0" y="0.0" z="25000.0" name="A2" />
+    <create type="Anomaly" pickupType="0" x="73423.0" y="0.0" z="88181.0" name="A7" />
+    <create type="Anomaly" pickupType="6" x="90107.0" y="0.0" z="68609.0" name="A6" />
+    <create type="Anomaly" pickupType="4" x="94118.0" y="0.0" z="48877.0" name="A5" />
+    <create type="Anomaly" pickupType="0" x="46952.0" y="0.0" z="92352.0" name="A9" />
+    <create type="Anomaly" pickupType="0" x="36364.0" y="0.0" z="47593.0" name="A4" />
+    <create type="Anomaly" pickupType="0" x="47434.0" y="0.0" z="71336.0" name="A8" />
+    <create type="Anomaly" pickupType="0" x="69412.0" y="0.0" z="61871.0" name="A10" />
+    <create type="Anomaly" pickupType="0" x="2514.0" y="0.0" z="3315.0" name="A1" />
+    <set_special name="Torgoth Goliath" ship="1" captain="2" ability="AntiTorp" />
+    <add_ai type="TARGET_THROTTLE" value1="0.6" targetName="TSN Excalibur" name="Torgoth Goliath" />
+    <create type="enemy" x="51926.0" y="0.0" z="65882.0" angle="300" name="Torgoth Goliath" raceKeys="Torgoth" hullKeys="Goliath" sideValue="1" fleetnumber="-1" />
+    <create type="genericMesh" x="60000.0" y="0.0" z="60000.0" name="????" meshFileName="dat\asteroid.dxs" textureFileName="dat\electricNoise2.png" colorRed="0.0" colorGreen="0.0" colorBlue="1.0" />
+    <set_object_property property="pushRadius" value="0.0" name="????" />
+    <set_object_property property="artScale" value="0.001" name="????" />
+  </event>
+  <event name="Science Scan Again" id_arme="92be62b0-6aab-415c-9a19-db4c1ffb8eeb" parent_id_arme="4e43aa42-c441-4e70-8a17-775432e05eed">
+    <if_scan_level name="????" side="2" comparator="NOT" value="0" />
+    <if_variable name="Yesterday" comparator="EQUALS" value="9.0" />
+    <incoming_comms_text from="Captain Garrett" sideValue="2" type="STATUS FRIEND">This is Captain Garrett of the starship Excalibur to... The Excalibur? What's going on here!? We have been attacked by Skaraan warships and require immediate assistance! We've sustained damage to our shields and warp drive systems.</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Incoming hail on COMMS." consoles="MHWSC" player_slot="0" />
+    <set_ship_text name="????" newname="????" desc="COMPUTER: The Torgoth station has vanished. System terrain has changed. An enemy ship has appeared from thin air on an intercept course. The original Excalibur, destroyed 22 years ago defending the station, is somehow now in the present. Hit ENTER to analyze further." scan_desc="COMPUTER: That Excalibur must have time traveled via the black hole, meaning the station was never saved from the attack. With history having changed, we must still be at war with the Torgoth. Our proximity to the black hole must have protected us from the changed timeline. Until the correct course of action can be determined, the other Excalibur must be protected." hailtext="COMPUTER: There is no response." />
+    <set_variable name="Yesterday" value="10.0" integer="yes" />
+    <set_comms_button text="Captain Garret, yes, we are ready to assist." sideValue="2" />
+  </event>
+  <folder_arme name="Excalibur Damaged Systems Loop" id_arme="8841be29-7117-4be6-bd8e-993fe5d2e40b" expanded_arme="" />
+  <event name="Damage Loop 1" id_arme="81bc2620-9adb-45c6-b9c8-d363cbf8d283" parent_id_arme="8841be29-7117-4be6-bd8e-993fe5d2e40b">
+    <if_exists name="TSN Excalibur" />
+    <if_variable name="Damage" comparator="EQUALS" value="0.0" />
+    <set_timer name="Damage" seconds="19" />
+    <set_variable name="Damage" value="1.0" integer="yes" />
+    <set_object_property property="systemDamageBackShield" value="5.0" name="TSN Excalibur" />
+    <set_object_property property="systemDamageFrontShield" value="5.0" name="TSN Excalibur" />
+    <set_object_property property="systemDamageWarp" value="10.0" name="TSN Excalibur" />
+  </event>
+  <event name="Damage Loop 2" id_arme="79248b05-3cf5-45e5-a1c7-f3e5a1bdb7fd" parent_id_arme="8841be29-7117-4be6-bd8e-993fe5d2e40b">
+    <if_timer_finished name="Damage" />
+    <if_variable name="Damage" comparator="EQUALS" value="1.0" />
+    <if_exists name="TSN Excalibur" />
+    <set_variable name="Damage" value="0.0" integer="yes" />
+  </event>
+  <folder_arme name="Captain Garrett" id_arme="de30d6fd-5cd7-4e80-9d0b-5eb419597ac5" expanded_arme="" />
+  <event name="Comms 1" id_arme="af7a1ed5-5a17-4f64-a89c-31b8431fe28d" parent_id_arme="de30d6fd-5cd7-4e80-9d0b-5eb419597ac5">
+    <if_variable name="Yesterday" comparator="EQUALS" value="10.0" />
+    <if_comms_button text="Captain Garret, yes, we are ready to assist." />
+    <set_variable name="Yesterday" value="11.0" integer="yes" />
+    <incoming_comms_text from="Captain Garrett" sideValue="2" type="STATUS FRIEND">That's strange... our sensors aren't picking up any Skaraan ships anymore, or the Torgoth Base. Perhaps the Skaraan have cloaked again, or maybe our sensors are damaged as well. We are, however, picking up some Torgoth ships in the area. Could it be they sent reinforcements to the region? We were under the impression that help was too far away to reach here in time, and that the Skaraan were attempting to make it look as though we were responsibe for the attack. Our hypothesis was that the Skaraan were trying to manipulate the Torgoth somehow, but everything doesn't seem right all of a sudden... I've never seen a TSN ship like yours before, let alone two ships sharing te same name. What's going on? </incoming_comms_text>
+    <set_comms_button text="We believe you have traveled 22 years into the future." sideValue="2" />
+    <clear_comms_button text="Captain Garret, yes, we are ready to assist." sideValue="2" />
+  </event>
+  <event name="Comms 2" id_arme="e4bc02c6-c9e3-4a7c-bb9e-7351de15a858" parent_id_arme="de30d6fd-5cd7-4e80-9d0b-5eb419597ac5">
+    <if_variable name="Yesterday" comparator="EQUALS" value="11.0" />
+    <if_comms_button text="We believe you have traveled 22 years into the future." />
+    <set_variable name="Yesterday" value="12.0" integer="yes" />
+    <clear_comms_button text="We believe you have traveled 22 years into the future." sideValue="2" />
+    <set_comms_button text="We believe you traveled through that singularity. Our records indicate that you died fighting the Skaraan. We are not from this time either. In our timeline we are currently negotiating a ceasefire with the Torgoth thanks to the efforst of the Excalibur." />
+    <incoming_comms_text from="Captain Garrett" sideValue="2" type="STATUS FRIEND">How is this possible? We were just fighting for our very lives against four Skaraan ships, and then in a split nanosecond we came face to face with you!</incoming_comms_text>
+    <destroy name="????" />
+  </event>
+  <event name="Comms 3" id_arme="143c2cd9-9753-4fd2-aabc-adfc6db47970" parent_id_arme="de30d6fd-5cd7-4e80-9d0b-5eb419597ac5">
+    <if_variable name="Yesterday" comparator="EQUALS" value="12.0" />
+    <if_comms_button text="We believe you traveled through that singularity. Our records indicate that you died fighting the Skaraan. We are not from this time either. In our timeline we are currently negotiating a ceasefire with the Torgoth thanks to the efforst of the Excalibur." />
+    <set_variable name="Yesterday" value="13.0" integer="yes" />
+    <warning_popup_message message="COMPUTER: Emergency hail from TSN Command on COMMS." consoles="MHWESC" player_slot="0" />
+    <clear_comms_button text="We believe you traveled through that singularity. Our records indicate that you died fighting the Skaraan. We are not from this time either. In our timeline we are currently negotiating a ceasefire with the Torgoth thanks to the efforst of the Excalibur." sideValue="2" />
+    <set_timer name="Garrett" seconds="60" />
+    <incoming_comms_text from="TSN COMMAND - EMERGENCY FREQUENCY" sideValue="2" type="ALERT STATUS FRIEND">This is Admiral Hansen broadcasting to all remaining USFP ships. I regret to inform you that we have failed to stop the Hegemony at Wolf 359, and suffered hundreds of casualties. While the battle persisted for weeks and we gave it our all, we have lost too much. Several Torgoth warships are headed to Earth as we speak, and it seems as though humankind as we know it is doomed. You are all to retreat to the Ximni system, and pray our former allies will show us mercy. Though they withdrew from the alliance, we have nowhere else to turn to. It is with no shred of dignity that I am able to ask this of you, but for whoever hears this message it has come time to run and hide. You are no good to us dead if we wish to fight another day. I only wish there was some way we could undo all of the war from the last quarter century... but I digress. Godspeed, my fellow Terrans, and may you thrive through it all.</incoming_comms_text>
+  </event>
+  <event name="Comms 4" id_arme="be433b8c-eb5a-4baa-8d6c-ec844a317003" parent_id_arme="de30d6fd-5cd7-4e80-9d0b-5eb419597ac5">
+    <if_variable name="Yesterday" comparator="EQUALS" value="13.0" />
+    <if_timer_finished name="Garrett" />
+    <if_not_exists name="Torgoth Goliath" />
+    <set_variable name="Yesterday" value="14.0" integer="yes" />
+    <set_comms_button text="If you return to your time, you will be destroyed. Let us go with you and assist!" sideValue="2" />
+    <set_comms_button text="Understood, Captain. You realize you must return, and return alone?" sideValue="2" />
+    <incoming_comms_text from="Captain Garrett" sideValue="2" type="STATUS FRIEND">We just heard the message from TSN Command. I myself am Ximni. To think that our race abandoned the alliance... it's impossible. All this war, no, all this death... Could this all really have been avoided if we never traveled to this time? We shouldn't be here. The thought of us having run away from the battle, despite us facing inevitable destruction at the hands of the Skaraan, sickened my crew and I enough as it is. To think that we are somehow responsible for the way history has unfolded here as well... It's overwhelming. </incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Captain Garrett on COMMS." consoles="MHWESC" player_slot="0" />
+  </event>
+  <event name="Comms 5a" id_arme="58dc0694-8076-4433-a5a1-085a512bc690" parent_id_arme="de30d6fd-5cd7-4e80-9d0b-5eb419597ac5">
+    <if_variable name="Yesterday" comparator="EQUALS" value="14.0" />
+    <if_comms_button text="Understood, Captain. You realize you must return, and return alone?" />
+    <set_variable name="Yesterday" value="15.0" integer="yes" />
+    <incoming_comms_text from="Captain Garrett" sideValue="2" type="STATUS FRIEND">Yes. We must prevent all this destruction. The needs of the many outweigh the needs of the few. We are close to repairing our shields. We will need them so that we can last long enough to make a difference against the attackers. We are still prepared to and expect to die. But to die as one ship taking on several as you know is a Ximni dream come true. We won't let you down. Please buy us some time, and then we will approach the wormhole.</incoming_comms_text>
+    <clear_comms_button text="Understood, Captain. You realize you must return, and return alone?" sideValue="2" />
+    <set_timer name="Protect" seconds="300" />
+    <clear_comms_button text="If you return to your time, you will be destroyed. Let us go with you and assist!" sideValue="2" />
+  </event>
+  <event name="Comms 5b" id_arme="16e40767-be44-4ce5-8ea1-efddaa58a5e0" parent_id_arme="de30d6fd-5cd7-4e80-9d0b-5eb419597ac5">
+    <if_variable name="Yesterday" comparator="EQUALS" value="14.0" />
+    <if_comms_button text="If you return to your time, you will be destroyed. Let us go with you and assist!" />
+    <set_variable name="Yesterday" value="15.0" integer="yes" />
+    <set_timer name="Protect" seconds="300" />
+    <clear_comms_button text="If you return to your time, you will be destroyed. Let us go with you and assist!" sideValue="2" />
+    <incoming_comms_text from="Captain Garrett" sideValue="2" type="STATUS FRIEND">No! You cannot return with us! It appears as though our presence here has damaged history enough as it is. We must not damage the timeline further! Your records indicate that we do not survive this battle, but our lives could prevent the end of the Earth-Ximni alliance and save billions of lives then we need to take that chance. The needs of the many outweigh the needs of the few. It will be a Ximni honor to perish as but one ship giving four of the strongest in the galaxy a run for their money. We are close to repairing our shields. We will need them so we can last long enough to make a difference against the Skaraan attackers. Buy us some time, and then we will approach the wormhole. We will not let you down.</incoming_comms_text>
+    <clear_comms_button text="Understood, Captain. You realize you must return, and return alone?" sideValue="2" />
+  </event>
+  <event name="Comms 6" id_arme="b62bcb4e-4d24-4ff1-8ec7-ba9482ebd3de" parent_id_arme="de30d6fd-5cd7-4e80-9d0b-5eb419597ac5">
+    <if_timer_finished name="Protect" />
+    <if_variable name="Damage" comparator="LESS_EQUAL" value="1.0" />
+    <if_not_exists name="Torgoth Goliath" />
+    <if_variable name="Yesterday" comparator="EQUALS" value="15.0" />
+    <if_not_exists name="Goliath 4" />
+    <if_not_exists name="Goliath 3" />
+    <if_not_exists name="Goliath 2" />
+    <set_variable name="Yesterday" value="16.0" integer="yes" />
+    <set_comms_button text="Make it so." sideValue="2" />
+    <incoming_comms_text from="Captain Garrett" sideValue="2" type="STATUS FRIEND">We are all repaired, Captain. It's time we went home and fixed this mess. On your command we will return through the wormhole.</incoming_comms_text>
+    <set_object_property property="systemDamageFrontShield" value="0.0" name="TSN Excalibur" />
+    <set_object_property property="systemDamageBackShield" value="0.0" name="TSN Excalibur" />
+    <set_object_property property="systemDamageWarp" value="0.0" name="TSN Excalibur" />
+    <set_object_property property="shieldsOn" value="1" name="TSN Excalibur" />
+    <set_variable name="Damage" value="2.0" integer="yes" />
+  </event>
+  <event name="Comms 7" id_arme="e013472b-a802-4388-9f62-1c2cab12d304" parent_id_arme="de30d6fd-5cd7-4e80-9d0b-5eb419597ac5">
+    <if_variable name="Yesterday" comparator="EQUALS" value="16.0" />
+    <if_variable name="AI Stack" comparator="EQUALS" value="0.0" />
+    <if_comms_button text="Make it so." />
+    <set_variable name="Yesterday" value="17.0" integer="yes" />
+    <clear_comms_button text="Make it so." sideValue="2" />
+    <clear_ai name="TSN Excalibur" />
+    <set_timer name="AI Stack" seconds="1" />
+    <set_variable name="AI Stack" value="1.0" integer="yes" />
+  </event>
+  <event name="Clear AI Stack" id_arme="8cddc771-f755-4557-ab66-21ba4b7fc783" parent_id_arme="de30d6fd-5cd7-4e80-9d0b-5eb419597ac5">
+    <if_variable name="AI Stack" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="AI Stack" />
+    <add_ai type="POINT_THROTTLE" value1="70000" value2="0" value3="50000" value4="0.7" name="TSN Excalibur" />
+    <set_variable name="AI Stack" value="2.0" integer="yes" />
+  </event>
+  <folder_arme name="Waves of Torgoth Attack" id_arme="839cc055-16e8-45ed-bcc8-08d4096b92a4" expanded_arme="" />
+  <event name="Defeating the Scout I" id_arme="98960d0a-0052-483e-affd-1ff63fbc38dc" parent_id_arme="839cc055-16e8-45ed-bcc8-08d4096b92a4">
+    <if_exists name="Torgoth Goliath" />
+    <if_variable name="torgoth" comparator="EQUALS" value="0.0" />
+    <add_ai type="ATTACK" targetName="TSN Excalibur" value1="0.3" name="Torgoth Goliath" />
+    <set_special name="Torgoth Goliath" ship="1" captain="1" ability="AntiTorp" />
+    <set_variable name="torgoth" value="1.0" integer="yes" />
+    <set_timer name="torgoth1" seconds="15" />
+  </event>
+  <event name="Defeating the Scout II" id_arme="151743c4-22b4-4a51-a5f1-118ed16b6d96" parent_id_arme="839cc055-16e8-45ed-bcc8-08d4096b92a4">
+    <if_exists name="Torgoth Goliath" />
+    <if_timer_finished name="torgoth1" />
+    <if_variable name="torgoth" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="COMPUTER: Enemy scout is on an intercept course." consoles="MHWESC" player_slot="0" />
+    <set_variable name="torgoth" value="2.0" integer="yes" />
+  </event>
+  <event name="Defeating the Scout III" id_arme="2c703fe4-3d69-4dde-a0f0-a8284b6b0753" parent_id_arme="839cc055-16e8-45ed-bcc8-08d4096b92a4">
+    <if_not_exists name="Torgoth Goliath" />
+    <if_variable name="torgoth" comparator="EQUALS" value="2.0" />
+    <set_timer name="torgoth2" seconds="15" />
+    <incoming_comms_text from="Transporter Chief" sideValue="2" type="ALERT FRIEND">That ship was just a scout. Considering that we are deep in Torgoth space, more enemies will be here any second. Be careful, as these ships will not surrender here.</incoming_comms_text>
+    <set_variable name="torgoth" value="3.0" integer="yes" />
+  </event>
+  <event name="Three Goliaths I" id_arme="accbf2c3-3422-426c-a3df-dfd0d5b9971b" parent_id_arme="839cc055-16e8-45ed-bcc8-08d4096b92a4">
+    <if_variable name="torgoth" comparator="EQUALS" value="3.0" />
+    <if_timer_finished name="torgoth2" />
+    <set_timer name="Protect" seconds="120" />
+    <set_variable name="torgoth" value="4.0" integer="yes" />
+    <create type="enemy" x="95000.0" y="0.0" z="50000.0" angle="100" name="Goliath 2" raceKeys="Torgoth" hullKeys="Goliath" fleetnumber="-1" />
+    <create type="enemy" x="93000.0" y="0.0" z="70000.0" angle="45" name="Goliath 3" raceKeys="Torgoth" hullKeys="Goliath" fleetnumber="-1" />
+    <create type="enemy" x="91000.0" y="0.0" z="62000.0" angle="50" name="Goliath 4" raceKeys="Torgoth" hullKeys="Goliath" fleetnumber="-1" />
+    <set_special name="Goliath 2" ship="1" captain="1" clear="yes" ability="AntiMine" />
+    <set_special name="Goliath 3" ship="2" captain="1" clear="yes" ability="AntiTorp" />
+    <set_special name="Goliath 4" ship="1" captain="1" clear="yes" ability="AntiMine" />
+    <add_ai type="ATTACK" targetName="Excalibur" value1="0.5" name="Goliath 2" />
+    <add_ai type="ATTACK" targetName="TSN Excalibur" value1="0.6" name="Goliath 3" />
+    <add_ai type="ATTACK" targetName="Excalibur" value1="0.5" name="Goliath 4" />
+  </event>
+  <event name="Three Goliaths II" id_arme="0a358f0d-056d-48d8-bff9-d2e074e33a43" parent_id_arme="839cc055-16e8-45ed-bcc8-08d4096b92a4">
+    <if_variable name="torgoth" comparator="EQUALS" value="4.0" />
+    <if_not_exists name="Goliath 2" />
+    <if_not_exists name="Goliath 3" />
+    <if_not_exists name="Goliath 4" />
+    <set_variable name="torgoth" value="5.0" integer="yes" />
+    <warning_popup_message message="COMPUTER: Enemy wave defeated" />
+    <incoming_comms_text from="Transporter Chief" type="STATUS FRIEND">Captain, great work up there! We likely won't be able to hold off another advance, you better fix this mess soon because the Torgoth are definitely going to be brining up the big guns now that you've really pissed them off!</incoming_comms_text>
+    <set_timer name="torgoth3" seconds="30" />
+  </event>
+  <event name="Unstoppable Wave" id_arme="d0a73cf6-2ecb-434d-86df-4b1ee770c15d" parent_id_arme="839cc055-16e8-45ed-bcc8-08d4096b92a4">
+    <if_variable name="torgoth" comparator="EQUALS" value="5.0" />
+    <if_timer_finished name="torgoth3" />
+    <set_variable name="torgoth" value="6.0" integer="yes" />
+    <create type="enemy" x="97166.0" y="20.0" z="4919.0" angle="140" name="Behemoth 1" raceKeys="Torgoth" hullKeys="Behemoth" fleetnumber="-1" />
+    <create type="enemy" x="92033.0" y="-10.0" z="4117.0" angle="180" name="Behemoth 2" raceKeys="Torgoth" hullKeys="Behemoth" fleetnumber="-1" />
+    <create type="enemy" x="12781.0" y="10.0" z="96042.0" angle="330" name="Behemoth 3" raceKeys="Torgoth" hullKeys="Behemoth" fleetnumber="-1" />
+    <create type="enemy" x="98610.0" y="0.0" z="98128.0" angle="45" name="Behemoth 4" raceKeys="Torgoth" hullKeys="Behemoth" fleetnumber="-1" />
+    <create type="enemy" x="26257.0" y="-20.0" z="97326.0" angle="335" name="Behemoth 5" raceKeys="Torgoth" hullKeys="Behemoth" fleetnumber="-1" />
+    <set_special name="Behemoth 1" ship="1" captain="1" ability="AntiTorp" />
+    <set_special name="Behemoth 2" ship="2" captain="1" clear="yes" />
+    <set_special name="Behemoth 3" ship="0" captain="1" ability="LowVis" />
+    <set_special name="Behemoth 4" ship="-1" captain="1" />
+    <set_special name="Behemoth 5" ship="2" captain="1" />
+    <add_ai type="ATTACK" targetName="Excalibur" value1="0.6" name="Behemoth 1" />
+    <add_ai type="ATTACK" targetName="TSN Excalibur" value1="0.6" name="Behemoth 2" />
+    <add_ai type="ATTACK" targetName="Excalibur" value1="0.6" name="Behemoth 3" />
+    <add_ai type="ATTACK" targetName="Excalibur" value1="0.6" name="Behemoth 4" />
+    <add_ai type="ATTACK" targetName="TSN Excalibur" value1="0.6" name="Behemoth 5" />
+    <warning_popup_message message="COMPUTER: Five Behemoths incoming." consoles="MHWESC" player_slot="0" />
+    <incoming_comms_text from="Transporter Chief" type="ALERT FRIEND">This is it, bridge, it's now or never. If we don't fix this we won't reset the timeline and see the fruit of Envoy Ripley's labor!</incoming_comms_text>
+  </event>
+  <folder_arme name="History is Fixed" id_arme="4c7dd5fe-29fb-41a4-ac07-a1202a846fda" expanded_arme="" />
+  <event name="The Excalibur I Disappears " id_arme="e19e6812-d7e2-4bb5-8da3-1f9422bf84d1" parent_id_arme="4c7dd5fe-29fb-41a4-ac07-a1202a846fda">
+    <if_inside_sphere name="TSN Excalibur" centerX="70000" centerY="0" centerZ="50000" radius="6000" />
+    <if_variable name="Yesterday" comparator="EQUALS" value="17.0" />
+    <set_variable name="Yesterday" value="18.0" integer="yes" />
+    <destroy name="Kerr Loop" />
+    <set_timer name="Repaired" seconds="1" />
+    <destroy_near type="all" radius="10" centerX="10000.0" centerY="0.0" centerZ="50000.0" />
+    <destroy_near type="all" radius="10" centerX="25000.0" centerY="0.0" centerZ="25000.0" />
+    <destroy_near type="all" radius="10" centerX="73423.0" centerY="0.0" centerZ="88181.0" />
+    <destroy_near type="all" radius="10" centerX="90107.0" centerY="0.0" centerZ="68609.0" />
+    <destroy_near type="all" radius="10" centerX="94118.0" centerY="0.0" centerZ="48877.0" />
+    <destroy_near type="all" radius="10" centerX="46952.0" centerY="0.0" centerZ="92352.0" />
+    <destroy_near type="all" radius="10" centerX="36364.0" centerY="0.0" centerZ="47593.0" />
+    <destroy_near type="all" radius="10" centerX="47434.0" centerY="0.0" centerZ="71336.0" />
+    <destroy_near type="all" radius="10" centerX="69412.0" centerY="0.0" centerZ="61871.0" />
+    <destroy_near type="all" radius="10" centerX="2514.0" centerY="0.0" centerZ="3315.0" />
+    <destroy_near nebType="1" type="nebulas" radius="100000" centerX="50000.0" centerZ="50000.0" />
+    <destroy_near type="asteroids" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+  </event>
+  <event name="Quick Rebuild" id_arme="fcf62da7-b07d-4fe8-b03d-b944479cee79" parent_id_arme="4c7dd5fe-29fb-41a4-ac07-a1202a846fda">
+    <if_variable name="Yesterday" comparator="EQUALS" value="18.0" />
+    <if_timer_finished name="Repaired" />
+    <create count="8" type="mines" startAngle="0" endAngle="360" startX="60000.0" startY="0.0" startZ="60000.0" radius="1000" />
+    <create count="75" type="asteroids" startX="80000.0" startY="0.0" startZ="0.0" endX="0.0" endY="0.0" endZ="80000.0" randomRange="10000" />
+    <create count="30" type="nebulas" nebType="1" startAngle="45" endAngle="225" startX="93476.0" startY="0.0" startZ="10695.0" radius="25000" randomRange="10000" randomSeed="1" />
+    <create type="station" x="60000.0" y="0.0" z="60000.0" name="Narendra III" raceKeys="Torgoth" hullKeys="Base" sideValue="2" />
+    <set_object_property property="canLaunchFighters" value="0.0" name="Narendra III" />
+    <set_object_property property="canShoot" value="0" name="Narendra III" />
+    <set_object_property property="missileStoresBeacon" value="0.0" name="Narendra III" />
+    <set_object_property property="missileStoresEMP" value="0.0" name="Narendra III" />
+    <set_object_property property="missileStoresHoming" value="0.0" name="Narendra III" />
+    <set_object_property property="missileStoresMine" value="0.0" name="Narendra III" />
+    <set_object_property property="missileStoresNuke" value="0.0" name="Narendra III" />
+    <set_object_property property="missileStoresProbe" value="0.0" name="Narendra III" />
+    <set_object_property property="missileStoresPShock" value="0.0" name="Narendra III" />
+    <set_object_property property="missileStoresTag" value="0.0" name="Narendra III" />
+    <set_object_property property="canBuild" value="0.0" name="Narendra III" />
+    <create type="Anomaly" pickupType="0" x="10000.0" y="0.0" z="50000.0" name="A3" />
+    <create type="Anomaly" pickupType="0" x="25000.0" y="0.0" z="25000.0" name="A2" />
+    <create type="Anomaly" pickupType="0" x="73423.0" y="0.0" z="88181.0" name="A7" />
+    <create type="Anomaly" pickupType="6" x="90107.0" y="0.0" z="68609.0" name="A6" />
+    <create type="Anomaly" pickupType="4" x="94118.0" y="0.0" z="48877.0" name="A5" />
+    <create type="Anomaly" pickupType="0" x="46952.0" y="0.0" z="92352.0" name="A9" />
+    <create type="Anomaly" pickupType="0" x="36364.0" y="0.0" z="47593.0" name="A4" />
+    <create type="Anomaly" pickupType="0" x="47434.0" y="0.0" z="71336.0" name="A8" />
+    <create type="Anomaly" pickupType="0" x="69412.0" y="0.0" z="61871.0" name="A10" />
+    <create type="Anomaly" pickupType="0" x="2514.0" y="0.0" z="3315.0" name="A1" />
+    <incoming_comms_text from="Transporter Chief" type="STATUS FRIEND">I've got a lock on Ripley's signal again! She's signaling for us to come and pick her back up. Within 3500km of the station should be close enough.^</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Narendra III has reappeared. History has been repaired." consoles="MHWESC" player_slot="0" />
+    <set_variable name="Yesterday" value="19.0" integer="yes" />
+    <set_skybox_index index="17" />
+    <destroy name="TSN Excalibur" />
+  </event>
+  <folder_arme name="Remove Enemies" id_arme="88842479-6ae8-4f9a-b8d1-2afec0da3b3d" expanded_arme="" />
+  <event name="Remove Enemies" id_arme="a8cd8791-4f65-41f1-bc81-87e211d8b0cd" parent_id_arme="88842479-6ae8-4f9a-b8d1-2afec0da3b3d">
+    <if_exists name="Torgoth Goliath" />
+    <if_not_exists name="Kerr Loop" />
+    <destroy name="Torgoth Goliath" />
+  </event>
+  <event name="Remove Enemies" id_arme="6efa709a-113d-4d57-8d89-16070d7440cd" parent_id_arme="88842479-6ae8-4f9a-b8d1-2afec0da3b3d">
+    <if_exists name="Goliath 2" />
+    <if_not_exists name="Kerr Loop" />
+    <destroy name="Goliath 2" />
+  </event>
+  <event name="Remove Enemies" id_arme="43b3af99-5104-4171-af8d-8a7e50d86f3e" parent_id_arme="88842479-6ae8-4f9a-b8d1-2afec0da3b3d">
+    <if_exists name="Goliath 3" />
+    <if_not_exists name="Kerr Loop" />
+    <destroy name="Goliath 3" />
+  </event>
+  <event name="Remove Enemies" id_arme="1377c815-a8d4-4f42-8b7e-dad67feb74bb" parent_id_arme="88842479-6ae8-4f9a-b8d1-2afec0da3b3d">
+    <if_exists name="Goliath 4" />
+    <if_not_exists name="Kerr Loop" />
+    <destroy name="Goliath 4" />
+  </event>
+  <event name="Remove Enemies" id_arme="52f88c42-892a-4e57-be86-2e2387cb4742" parent_id_arme="88842479-6ae8-4f9a-b8d1-2afec0da3b3d">
+    <if_exists name="Behemoth 1" />
+    <if_not_exists name="Kerr Loop" />
+    <destroy name="Behemoth 1" />
+  </event>
+  <event name="Remove Enemies" id_arme="ec8837b3-b6e0-4363-8fc4-dedab6c53692" parent_id_arme="88842479-6ae8-4f9a-b8d1-2afec0da3b3d">
+    <if_exists name="Behemoth 2" />
+    <if_not_exists name="Kerr Loop" />
+    <destroy name="Behemoth 2" />
+  </event>
+  <event name="Remove Enemies" id_arme="5e9f8ff0-f953-46c0-b441-6373457405bd" parent_id_arme="88842479-6ae8-4f9a-b8d1-2afec0da3b3d">
+    <if_exists name="Behemoth 3" />
+    <if_not_exists name="Kerr Loop" />
+    <destroy name="Behemoth 3" />
+  </event>
+  <event name="Remove Enemies" id_arme="68945013-6991-47b7-a803-0fce80afdc3a" parent_id_arme="88842479-6ae8-4f9a-b8d1-2afec0da3b3d">
+    <if_exists name="Behemoth 4" />
+    <if_not_exists name="Kerr Loop" />
+    <destroy name="Behemoth 4" />
+  </event>
+  <event name="Remove Enemies" id_arme="e6108a24-7ed7-4272-a3ab-e958b20a17fd" parent_id_arme="88842479-6ae8-4f9a-b8d1-2afec0da3b3d">
+    <if_exists name="Behemoth 5" />
+    <if_not_exists name="Kerr Loop" />
+    <destroy name="Behemoth 5" />
+  </event>
+  <folder_arme name="Picking Up Ripley" id_arme="f7c94ff1-9d05-498d-9d6c-26d56bebd3ca" expanded_arme="" />
+  <event name="Envoy Beams Aboard" id_arme="4285a937-6605-47e9-bf47-f2441034493d" parent_id_arme="f7c94ff1-9d05-498d-9d6c-26d56bebd3ca">
+    <if_variable name="Yesterday" comparator="EQUALS" value="19.0" />
+    <if_inside_sphere player_slot="0" centerX="60000" centerY="0" centerZ="60000" radius="3500" />
+    <set_variable name="Yesterday" value="20.0" integer="yes" />
+    <incoming_comms_text from="Envoy Ripley" type="FRIEND">I am back aboard. The mission was an outstanding success. The Torgoth upheld their word that they won't be helping us in fighting the remaining Hegemony forces, but they ARE declaring a galaxy-wide ceasefire on all USFP terrirotires, properties, and citizens! ...They even threw in an added bonus. We are going to be allowed safe passage through their territory from here on out, which means we will be able to explore areas of space that we have never seen before. This is a great day for the TSN and the USFP, and it's all thanks to you.^^History will never forget the name... Excalibur.</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Envoy Ripley on COMMS" consoles="MHWESC" player_slot="0" />
+    <set_timer name="Success" seconds="20" />
+  </event>
+  <folder_arme name="End Mission" id_arme="abdd4d96-1835-4a5f-ba2e-f9e645c82c51" expanded_arme="" />
+  <event name="Failure - Player Destroyed" id_arme="c1df03e4-84cd-44ef-ae04-e39c0f24021e" parent_id_arme="abdd4d96-1835-4a5f-ba2e-f9e645c82c51">
+    <if_variable name="End Mission" comparator="EQUALS" value="0.0" />
+    <if_not_exists name="Excalibur" />
+    <set_timer name="EndMission" seconds="20" />
+    <big_message title="MISSION FAILED" subtitle1="You have been destroyed!" subtitle2="Better luck next time..." />
+    <set_variable name="End Mission" value="1.0" integer="yes" />
+  </event>
+  <event name="Failure - Escort Destroyed" id_arme="516fff63-32b2-4ec0-a694-53853cb55c77" parent_id_arme="abdd4d96-1835-4a5f-ba2e-f9e645c82c51">
+    <if_not_exists name="TSN Excalibur" />
+    <if_exists name="Kerr Loop" />
+    <if_variable name="Yesterday" comparator="GREATER_EQUAL" value="8.0" />
+    <if_variable name="End Mission" comparator="EQUALS" value="0.0" />
+    <big_message title="MISSION FAILED" subtitle1="You were unable to protect the other ship" subtitle2="Better luck next time..." />
+    <warning_popup_message message="COMPUTER: The other Excalibur has been destroyed!" consoles="MHWESC" player_slot="0" />
+    <set_timer name="EndMission" seconds="20" />
+    <set_variable name="End Mission" value="1.0" integer="yes" />
+  </event>
+  <event name="Failure - Narendra III Destroyed by Player" id_arme="384c2098-511f-4ba0-9f7b-86112f735ab6" parent_id_arme="abdd4d96-1835-4a5f-ba2e-f9e645c82c51">
+    <if_variable name="Yesterday" comparator="LESS_EQUAL" value="7.0" />
+    <if_not_exists name="Narendra III" />
+    <if_variable name="End Mission" comparator="EQUALS" value="0.0" />
+    <big_message title="MISSION FAILED" subtitle1="You destroyed the station?! Why?!" subtitle2="Better luck next time..." />
+    <incoming_comms_text from="TSN COMMAND" sideValue="2" type="ALERT FRIEND">This will surely be seen as an act of war from the Torgoth! You have ruined all of our hard work, Excalibur. Return to USFP space, where you will be awaiting a court marshall.</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Narendra III has been destroyed!" consoles="MHWESC" player_slot="0" />
+    <set_timer name="EndMission" seconds="20" />
+    <set_variable name="End Mission" value="1.0" integer="yes" />
+  </event>
+  <event name="Failure - Narendra III Destroyed by Player" id_arme="01e79acc-2509-4d4b-b35e-7136dbc63a4b" parent_id_arme="abdd4d96-1835-4a5f-ba2e-f9e645c82c51">
+    <if_variable name="Yesterday" comparator="GREATER_EQUAL" value="20.0" />
+    <if_not_exists name="Narendra III" />
+    <if_variable name="End Mission" comparator="EQUALS" value="0.0" />
+    <big_message title="MISSION FAILED" subtitle1="You destroyed the station?! Why?!" subtitle2="Better luck next time..." />
+    <incoming_comms_text from="TSN COMMAND" sideValue="2" type="ALERT FRIEND">This will surely be seen as an act of war from the Torgoth! You have ruined all of our hard work, Excalibur. Return to USFP space, where you will be awaiting a court marshall.</incoming_comms_text>
+    <warning_popup_message message="COMPUTER: Narendra III has been destroyed!" consoles="MHWESC" player_slot="0" />
+    <set_timer name="EndMission" seconds="20" />
+    <set_variable name="End Mission" value="1.0" integer="yes" />
+  </event>
+  <event name="Success" id_arme="c345b9e1-01d6-4945-a5b1-5502c3e08645" parent_id_arme="abdd4d96-1835-4a5f-ba2e-f9e645c82c51">
+    <if_variable name="End Mission" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="Success" />
+    <set_timer name="EndMission" seconds="20" />
+    <set_variable name="End Mission" value="1.0" integer="yes" />
+    <big_message title="MISSION SUCCESS!" subtitle1="You made history today!" subtitle2="Thank you for playing Season One!" />
+  </event>
+  <event name="End Mission" id_arme="90ebb5a1-0145-4789-8505-f3603dbc17e0" parent_id_arme="abdd4d96-1835-4a5f-ba2e-f9e645c82c51">
+    <if_timer_finished name="EndMission" />
+    <if_variable name="End Mission" comparator="EQUALS" value="1.0" />
+    <end_mission />
+  </event>
+</mission_data>

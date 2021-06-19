@@ -1,0 +1,439 @@
+<mission_data version="2.7.5" background_id_arme="89ebb3fa-a157-43b9-8e99-ca42db90f0cf" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <mission_description>These Are The Voyages... Ep. II^^The Excalibur rendezvous with two TSN escort ships at Wolf 359, where it must hold off a Kralien invasion force long enough for reinforcements to arrive...^^*Recommended for experienced crews*</mission_description>
+  <!--Setting the Stage-->
+  <start id_arme="89ebb3fa-a157-43b9-8e99-ca42db90f0cf">
+    <set_difficulty_level value="8" />
+    <set_skybox_index index="5" />
+    <big_message title="These Are The Voyages..." subtitle1="Episode II" subtitle2="The Invasion of Wolf 359" />
+    <set_object_property property="nebulaIsOpaque" value="1" />
+    <set_object_property property="sensorSetting" value="2" />
+    <set_object_property property="nonPlayerSpeed" value="100" />
+    <set_object_property property="playerShields" value="100" />
+    <set_object_property property="nonPlayerShield" value="100" />
+    <set_object_property property="nonPlayerWeapon" value="100" />
+    <set_object_property property="playerWeapon" value="100" />
+    <!---->
+    <create count="50" type="asteroids" startX="100000.0" startY="0.0" startZ="60000.0" endX="40000.0" endY="0.0" endZ="0.0" randomRange="20000" randomSeed="2" />
+    <create count="250" type="nebulas" startX="100000.0" startY="0.0" startZ="20000.0" endX="0.0" endY="0.0" endZ="20000.0" randomRange="30000" randomSeed="250" />
+    <create type="player" player_slot="0" x="40000.0" y="0.0" z="80000.0" angle="330" name="Excalibur" accent_color="50" raceKeys="TSN" hullKeys="Battleship" warp="yes" jump="no" />
+    <create count="15" type="mines" startAngle="330" endAngle="430" startX="90000.0" startY="0.0" startZ="70000.0" radius="30000" />
+    <create count="20" type="mines" startAngle="300" endAngle="405" startX="30000.0" startY="0.0" startZ="70000.0" radius="30000" />
+    <!---->
+    <create type="station" x="70214.0" y="0.0" z="69411.0" name="DS 359" raceKeys="Terran" hullKeys="Command Base Station" sideValue="2" />
+    <create type="neutral" x="31070.0" y="-15.0" z="52406.0" angle="230" name="TSN Hermes" raceKeys="Terran" hullKeys="Escort" sideValue="2" />
+    <create type="neutral" x="52407.0" y="15.0" z="57700.0" angle="30" name="TSN Rhode Island" raceKeys="Terran" hullKeys="Escort" sideValue="2" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Rhode Island" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Hermes" />
+    <set_timer name="TSNCommandBriefing" seconds="5" />
+    <set_variable name="TSNCommandBriefing" value="0.0" integer="yes" />
+    <!---->
+    <set_variable name="kralienbutton" value="0.0" integer="yes" />
+    <set_variable name="CommsButton1" value="0.0" integer="yes" />
+    <set_variable name="CommsButton2" value="0.0" integer="yes" />
+    <set_variable name="CommsButton3" value="0.0" integer="yes" />
+    <set_variable name="OtherButton1" value="0.0" integer="yes" />
+    <set_comms_button text="TSN Rhode Island" />
+    <set_comms_button text="TSN Hermes" />
+    <set_comms_button text="Deep Space 359" />
+    <!---->
+    <set_timer name="SciencePrompt_1" seconds="60" />
+    <set_variable name="SciencePrompt1" value="0.0" integer="yes" />
+    <!---->
+    <set_variable name="PowerBlast" value="0.0" integer="yes" />
+    <set_variable name="TheOther" value="0.0" integer="yes" />
+    <!---->
+    <set_variable name="Invasion" value="0.0" integer="yes" />
+    <set_timer name="Invasion_1" seconds="300" />
+    <!---->
+    <set_variable name="IncomingHail" value="0.0" integer="yes" />
+    <!---->
+    <set_variable name="victory" value="0.0" integer="yes" />
+    <!---->
+    <set_variable name="EndMission" value="0.0" integer="yes" />
+  </start>
+  <folder_arme name="Story Beats" id_arme="e4b31c51-1ebb-48d3-b835-d94344c4f870" expanded_arme="" />
+  <event name="TSN Command Briefing" id_arme="5b1cd0ab-6edb-46d7-97b6-75b300b5c222" parent_id_arme="e4b31c51-1ebb-48d3-b835-d94344c4f870">
+    <if_timer_finished name="TSNCommandBriefing" />
+    <if_variable name="TSNCommandBriefing" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="COMPUTER: Review briefing on Comms." consoles="MHWESC" player_slot="0" />
+    <incoming_comms_text from="TSN COMMAND - STARDATE: 98667.31" sideValue="2" type="STATUS PLAYER FRIEND">Thanks to your discovery in the Tyken Expanse, we've determined that the Kraliens will be striking today at any moment. We aren't sure why they have chosen this course of action. Their cruisers certainly aren't anything special on their own, and we don't believe that any of their Hegemony allies are involved in this attack. Perhaps they have something big planned, and don't think they'll need the help...^^In any case, we need you to monitor the situation from here and defend Deep Space 359. Two of our scouts, the Hermes and Rhode Island, are here to follow your orders. They have set up a mine perimeter between the station and the stellar corona the Kraliens will most likely be approaching from.  The reinforcements we are sending you should arrive within the hour. Destroy all enemies you can until they arrive, take no prisoners.^ ^Good luck, Excalibur. </incoming_comms_text>
+    <set_variable name="TSNCommandBriefing" value="1.0" integer="yes" />
+  </event>
+  <folder_arme name="Comms Buttons" id_arme="df81bec1-acdd-47bc-9ecc-ced23a891cfe" expanded_arme="" />
+  <event name="Station 1" id_arme="c93ee136-3c48-48a1-8d2d-03d506e1477c" parent_id_arme="df81bec1-acdd-47bc-9ecc-ced23a891cfe">
+    <if_comms_button text="Deep Space 359" />
+    <if_variable name="CommsButton1" comparator="EQUALS" value="0.0" />
+    <incoming_comms_text from="Deep Space 359" sideValue="2" type="STATUS PLAYER STATION FRIEND">This is Commander Graves. Glad you're here, Excalibur. We heard about how you handled the conundrum in the Typhon Expanse. That was some outside of the box thinking, and clearly you can handle these outdated Kralien cruisers. We couldn't be happier that you are leading the charge today. The Kraliens want us to pay up? We'll pay up alright... We'll pay them back for all the meaningless destruction that we have had to endure at the hands of these zealots!^^If you need us to construct any weapons for you, or need repairs of any kind, just let us know and we will be happy to help.</incoming_comms_text>
+    <clear_comms_button text="Deep Space 359" />
+    <set_variable name="CommsButton1" value="1.0" integer="yes" />
+  </event>
+  <event name="Hermes 1" id_arme="c8aa0b76-0a95-4515-b178-5b696122413c" parent_id_arme="df81bec1-acdd-47bc-9ecc-ced23a891cfe">
+    <if_comms_button text="TSN Hermes" />
+    <if_variable name="CommsButton2" comparator="EQUALS" value="0.0" />
+    <set_variable name="CommsButton2" value="1.0" integer="yes" />
+    <incoming_comms_text from="TSN Hermes" type="STATUS PLAYER FRIEND">I am Captain Windsor, and this is my ship The Hermes. It isn't the toughest thing out there but she's prepared to help in any way we can today. We await your orders. Windsor out.</incoming_comms_text>
+    <clear_comms_button text="TSN Hermes" />
+  </event>
+  <event name="Rhode Island 1" id_arme="d5c58ae6-33aa-497d-8ebc-eb895df3ac72" parent_id_arme="df81bec1-acdd-47bc-9ecc-ced23a891cfe">
+    <if_comms_button text="TSN Rhode Island" />
+    <if_variable name="CommsButton3" comparator="EQUALS" value="0.0" />
+    <incoming_comms_text from="TSN Rhode Island" sideValue="2" type="SIDE STATUS PLAYER FRIEND">This is Captain Harrison of the TSN Rhode Island. I'm not sure why we were sent here instead of someone with more firepower, but we aren't afraid of some dinky Kralien ships. Awaiting orders, Excalibur. </incoming_comms_text>
+    <set_variable name="CommsButton3" value="1.0" integer="yes" />
+    <clear_comms_button text="TSN Rhode Island" />
+  </event>
+  <event name="The Other 1" id_arme="e3530d6e-3c07-494f-9837-86075d1e2a17" parent_id_arme="df81bec1-acdd-47bc-9ecc-ced23a891cfe">
+    <if_inside_box player_slot="0" leastX="0" leastZ="80000" mostX="20000" mostZ="100000" />
+    <if_variable name="Invasion" comparator="EQUALS" value="2.0" />
+    <if_variable name="OtherButton1" comparator="EQUALS" value="0.0" />
+    <set_variable name="OtherButton1" value="1.0" integer="yes" />
+    <set_comms_button text="The Other" />
+    <set_variable name="Invasion" value="3.0" integer="yes" />
+  </event>
+  <event name="The Other 2" id_arme="704d949d-4c46-4dd8-a88c-2bea24840bfb" parent_id_arme="df81bec1-acdd-47bc-9ecc-ced23a891cfe">
+    <if_comms_button text="The Other" />
+    <if_variable name="Invasion" comparator="EQUALS" value="3.0" />
+    <if_variable name="OtherButton1" comparator="EQUALS" value="1.0" />
+    <set_variable name="OtherButton1" value="2.0" integer="yes" />
+    <incoming_comms_text from="The Other" sideValue="2" type="ALERT STATUS">You child-like races of space disappoint me. I would think that as creatures whos individal existence inevitably will come to an end at some point, the concept you "humans" call "death", that you would treat your incredibly brief time in this universe with more care. I have been watching the pitiful conflicts between your USFP and these other species for some time. What used to be quite interesting has now become monotonous and most disheartening. All you do is slaughter each other. For all your technological advances you are just as primitive to your cores as you were thousands of years ago. </incoming_comms_text>
+    <clear_comms_button text="The Other" />
+    <set_comms_button text="What about The Kraliens?" />
+    <set_comms_button text="We do not care what you think of us. We will defend ourselves from you." />
+    <set_comms_button text="We are not savages. How can we prove this to you?" />
+    <set_variable name="Invasion" value="4.0" integer="yes" />
+  </event>
+  <event name="Kralien Response" id_arme="35030567-8211-4aae-878b-8db74e9d0580" parent_id_arme="df81bec1-acdd-47bc-9ecc-ced23a891cfe">
+    <if_variable name="kralienbutton" comparator="EQUALS" value="0.0" />
+    <if_comms_button text="What about The Kraliens?" />
+    <incoming_comms_text from="The Other" sideValue="2" type="ALERT STATUS ENEMY">I appeared to these Kraliens as one of their ancient gods. They demonstranted such gulibilty that it provided me with much amusement. I cannot, however, fault their militaristic course of action since there are other powers at work in the universe which lend credence to their belief that they are the landlords of space. No, silly humans, this experiment has been for you, and you are failing the test miserably.</incoming_comms_text>
+    <set_variable name="kralienbutton" value="1.0" integer="yes" />
+    <clear_comms_button text="What about The Kraliens?" />
+  </event>
+  <event name="Correct Response" id_arme="afb55265-f1af-441e-80bd-380eceb7550e" parent_id_arme="df81bec1-acdd-47bc-9ecc-ced23a891cfe">
+    <if_variable name="Invasion" comparator="EQUALS" value="4.0" />
+    <if_comms_button text="We are not savages. How can we prove this to you?" />
+    <clear_comms_button text="We are not savages. How can we prove this to you?" />
+    <incoming_comms_text from="The Other" type="ALERT STATUS FRIEND">Interesting. You wish to display that you are capable of more than just destruction? Fine. There is another wave of Kralien attack ships headed towards your position. Instead of destroying them, force their surrender. If you do, I will consider your proposal.</incoming_comms_text>
+    <clear_comms_button text="We do not care what you think of us. We will defend ourselves from you." />
+    <set_variable name="Invasion" value="5.0" integer="yes" />
+    <set_timer name="Invasion2" seconds="30" />
+  </event>
+  <folder_arme name="Helm" id_arme="1a260e79-b7df-49a0-b4f8-116063af7904" expanded_arme="" />
+  <event name="E5" id_arme="27d3a44f-cecb-4ce2-8988-3f8918675b6a" parent_id_arme="1a260e79-b7df-49a0-b4f8-116063af7904">
+    <if_inside_box player_slot="0" leastX="0" leastZ="80000" mostX="20000" mostZ="100000" />
+    <if_variable name="TheOther" comparator="EQUALS" value="1.0" />
+    <set_variable name="TheOther" value="2.0" integer="yes" />
+    <warning_popup_message message="COMPUTER: It is hailing us. It is advised we keep our distance." consoles="MH" player_slot="0" />
+  </event>
+  <event name="Closing In" id_arme="1747e742-871a-490b-acee-0c9baad04794" parent_id_arme="1a260e79-b7df-49a0-b4f8-116063af7904">
+    <if_variable name="TheOther" comparator="EQUALS" value="2.0" />
+    <if_inside_sphere player_slot="0" centerX="10000" centerY="0" centerZ="90000" radius="3500" />
+    <incoming_comms_text from="The Other" sideValue="2" type="ALERT STATUS ENEMY">That's close enough, Excalibur. Come closer and I will destroy you. Do NOT tempt me, or I will show you your own mortality.</incoming_comms_text>
+    <set_variable name="TheOther" value="3.0" integer="yes" />
+    <warning_popup_message message="THE OTHER: That's close enough, Excalibur." consoles="MHC" player_slot="0" />
+  </event>
+  <folder_arme name="Science Officer" id_arme="be9c0e67-af7c-4f14-8c17-944eb14cdc6b" expanded_arme="" />
+  <event name="Sensors 1" id_arme="4a755c6a-4afc-4baa-9fa1-41cea54baa8d" parent_id_arme="be9c0e67-af7c-4f14-8c17-944eb14cdc6b">
+    <if_timer_finished name="SciencePrompt_1" />
+    <if_variable name="SciencePrompt1" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="COMPUTER: Nothing detected on ship sensors so far." consoles="S" player_slot="0" />
+    <set_variable name="SciencePrompt1" value="1.0" integer="yes" />
+  </event>
+  <event name="The Other" id_arme="9096b4fa-55b3-409a-a295-4c9ff7a4ee99" parent_id_arme="be9c0e67-af7c-4f14-8c17-944eb14cdc6b">
+    <if_scan_level name="Unknown Energy Source" side="2" comparator="NOT" value="0" />
+    <if_variable name="IncomingHail" comparator="EQUALS" value="0.0" />
+    <if_exists name="Unknown Energy Source" />
+    <set_ship_text name="Unknown Energy Source" newname="The Other" desc="COMPUTER: Some kind of entity has appeared in sector E5. The only info sensors can ascertain from its presence is that it calls itself, &quot;The Other&quot;.  Scan again with &quot;ENTER KEY&quot;." scan_desc="It radiates an insane amount of power. It is both tangible and intangible. The Other wishes to speak with Excalibur on Comms when in range. When responding to it, proceed with caution." />
+    <warning_popup_message message="COMPUTER: Investigate sector E5." consoles="MC" player_slot="0" />
+    <set_variable name="IncomingHail" value="1.0" integer="yes" />
+  </event>
+  <folder_arme name="Invasion, First Wave" id_arme="5991c27b-acb8-4985-beb0-7a4b428c8455" expanded_arme="" />
+  <event name="First Wave Spawn" id_arme="569deee1-7127-466b-b9ee-51da2e78c002" parent_id_arme="5991c27b-acb8-4985-beb0-7a4b428c8455">
+    <if_timer_finished name="Invasion_1" />
+    <if_variable name="Invasion" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="52086.0" y="0.0" z="8609.0" angle="180" name="Kralien Battleship" raceKeys="Kralien" hullKeys="Battleship" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="70856.0" y="5.0" z="2834.0" angle="180" name="Kralien Cruiser I" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="92514.0" y="-5.0" z="3957.0" angle="180" name="Kralien Cruiser II" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="30589.0" y="10.0" z="2513.0" angle="180" name="Kralien Cruiser III" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="9091.0" y="-10.0" z="2192.0" angle="180" name="Kralien Cruiser IV" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="2" />
+    <set_special name="Kralien Battleship" ship="1" captain="1" ability="Tractor" />
+    <set_special name="Kralien Cruiser I" ship="2" captain="0" clear="yes" />
+    <set_special name="Kralien Cruiser II" ship="0" captain="1" clear="yes" />
+    <set_special name="Kralien Cruiser III" ship="1" captain="5" clear="yes" />
+    <set_special name="Kralien Cruiser IV" ship="-1" captain="1" clear="yes" />
+    <set_fleet_property property="fleetSpacing" value="1000.0" fleetIndex="2" />
+    <add_ai type="ATTACK" targetName="Excalibur" value1="1.02" name="Kralien Battleship" />
+    <add_ai type="ATTACK" targetName="DS 359" value1="1.0" name="Kralien Cruiser I" />
+    <add_ai type="ATTACK" targetName="Excalibur" value1="1.0" name="Kralien Cruiser II" />
+    <add_ai type="ATTACK" targetName="TSN Hermes" value1="1.0" name="Kralien Cruiser III" />
+    <add_ai type="ATTACK" targetName="TSN Rhode Island" value1="1.0" name="Kralien Cruiser IV" />
+    <add_ai type="DEFEND" value1="1.0" value2="20000" name="Kralien Battleship" />
+    <warning_popup_message message="COMPUTER: Enemy ships detected in sector A" consoles="MHWESC" player_slot="0" />
+    <set_variable name="Invasion" value="1.0" integer="yes" />
+  </event>
+  <folder_arme name="Defeat First Wave, Other Spawn" id_arme="dd16f18e-7f53-45a3-b552-7e160802325e" expanded_arme="" />
+  <event name="First Wave Defeated" id_arme="e816bc89-15bc-448e-9335-0ff9adacfc73" parent_id_arme="dd16f18e-7f53-45a3-b552-7e160802325e">
+    <if_not_exists name="Kralien Battleship" />
+    <if_not_exists name="Kralien Cruiser I" />
+    <if_not_exists name="Kralien Cruiser II" />
+    <if_not_exists name="Kralien Cruiser III" />
+    <if_variable name="TheOther" comparator="EQUALS" value="0.0" />
+    <if_not_exists name="Kralien Cruiser IV" />
+    <if_variable name="Invasion" comparator="EQUALS" value="1.0" />
+    <set_variable name="Invasion" value="2.0" integer="yes" />
+    <warning_popup_message message="COMPUTER: Bizarre reading in Sector E5" consoles="MS" player_slot="0" />
+    <set_variable name="TheOther" value="1.0" integer="yes" />
+    <create count="50" type="nebulas" nebType="2" startX="10000.0" startY="0.0" startZ="90000.0" radius="500" />
+    <create type="genericMesh" x="10000.0" y="0.0" z="90000.0" name="Unknown Energy Source" meshFileName="dat\asteroid.dxs" textureFileName="dat\black-hole-edge.png" colorRed="1.0" colorGreen="0.0" colorBlue="1.0" />
+  </event>
+  <folder_arme name="The Other Incorrect Keypress" id_arme="622c396a-2bda-4eee-94af-49e500e64a4c" expanded_arme="" />
+  <event name="The Wrong Keypress A (All Three)" id_arme="3faa902b-dac8-40f0-81cb-711c44f0b5be" parent_id_arme="622c396a-2bda-4eee-94af-49e500e64a4c">
+    <if_variable name="PowerBlast" comparator="EQUALS" value="0.0" />
+    <if_exists name="DS 359" />
+    <if_comms_button text="We do not care what you think of us. We will defend ourselves from you." />
+    <incoming_comms_text from="The Other" type="ALERT STATUS ENEMY">You dare to challenge me, humans? Your insolence will be punished. Let me demonstrate my knowledge of the concept of "death" and how it affects you.</incoming_comms_text>
+    <clear_comms_button text="We are not savages. How can we prove this to you?" />
+    <clear_comms_button text="We do not care what you think of us. We will defend ourselves from you." />
+    <clear_comms_button text="What about The Kraliens?" />
+    <set_variable name="PowerBlast" value="1.0" integer="yes" />
+    <set_timer name="PowerBlast" seconds="10" />
+  </event>
+  <event name="The Wrong Keypress B (Both Ships)" id_arme="c85c91df-5f79-4837-be0c-b848c32565b1" parent_id_arme="622c396a-2bda-4eee-94af-49e500e64a4c">
+    <if_variable name="PowerBlast" comparator="EQUALS" value="0.0" />
+    <if_not_exists name="DS 359" />
+    <if_exists name="TSN Hermes" />
+    <if_exists name="TSN Rhode Island" />
+    <if_comms_button text="We do not care what you think of us. We will defend ourselves from you." />
+    <clear_comms_button text="What about The Kraliens?" />
+    <clear_comms_button text="We do not care what you think of us. We will defend ourselves from you." />
+    <clear_comms_button text="We are not savages. How can we prove this to you?" />
+    <incoming_comms_text from="The Other" type="ALERT STATUS ENEMY">You dare to challenge me, humans? Your insolence will be punished. Let me demonstrate my knowledge of the concept of "death" and how it affects you.</incoming_comms_text>
+    <set_variable name="PowerBlast" value="3.0" integer="yes" />
+    <warning_popup_message message="COMPUTER: Both TSN escorts have been destroyed." consoles="MS" player_slot="0" />
+    <destroy name="TSN Rhode Island" />
+    <destroy name="TSN Hermes" />
+    <set_timer name="WeCannotAllow" seconds="10" />
+  </event>
+  <event name="The Wrong Keypress C (Hermes)" id_arme="7ff6278e-64fc-4eee-824b-bbbcde6fe6a8" parent_id_arme="622c396a-2bda-4eee-94af-49e500e64a4c">
+    <if_variable name="PowerBlast" comparator="EQUALS" value="0.0" />
+    <if_not_exists name="DS 359" />
+    <if_not_exists name="TSN Rhode Island" />
+    <if_exists name="TSN Hermes" />
+    <if_comms_button text="We do not care what you think of us. We will defend ourselves from you." />
+    <clear_comms_button text="What about The Kraliens?" />
+    <clear_comms_button text="We do not care what you think of us. We will defend ourselves from you." />
+    <clear_comms_button text="We are not savages. How can we prove this to you?" />
+    <incoming_comms_text from="The Other" type="ALERT STATUS ENEMY">You dare to challenge me, humans? Your insolence will be punished. Let me demonstrate my knowledge of the concept of "death" and how it affects you.</incoming_comms_text>
+    <set_variable name="PowerBlast" value="3.0" integer="yes" />
+    <warning_popup_message message="COMPUTER: The Hermes has been destroyed." />
+    <destroy name="TSN Hermes" />
+    <set_timer name="WeCannotAllow" seconds="10" />
+  </event>
+  <event name="The Wrong Keypress D (Rhode Island)" id_arme="c2266a6a-7035-490c-8a00-e0c2e57020f4" parent_id_arme="622c396a-2bda-4eee-94af-49e500e64a4c">
+    <if_variable name="PowerBlast" comparator="EQUALS" value="0.0" />
+    <if_not_exists name="DS 359" />
+    <if_not_exists name="TSN Hermes" />
+    <if_exists name="TSN Rhode Island" />
+    <if_comms_button text="We do not care what you think of us. We will defend ourselves from you." />
+    <clear_comms_button text="What about The Kraliens?" />
+    <clear_comms_button text="We do not care what you think of us. We will defend ourselves from you." />
+    <clear_comms_button text="We are not savages. How can we prove this to you?" />
+    <incoming_comms_text from="The Other" type="ALERT STATUS ENEMY">You dare to challenge me, humans? Your insolence will be punished. Let me demonstrate my knowledge of the concept of "death" and how it affects you.</incoming_comms_text>
+    <set_variable name="PowerBlast" value="3.0" integer="yes" />
+    <warning_popup_message message="COMPUTER: The Rhode Island has been destroyed." consoles="MS" player_slot="0" />
+    <destroy name="TSN Rhode Island" />
+    <set_timer name="WeCannotAllow" seconds="10" />
+  </event>
+  <event name="Power Blast 1" id_arme="7531c6b4-22d8-43cc-9da8-34d201eb6c9f" parent_id_arme="622c396a-2bda-4eee-94af-49e500e64a4c">
+    <if_variable name="PowerBlast" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="PowerBlast" />
+    <create count="200" type="nebulas" nebType="3" startX="10000.0" startY="0.0" startZ="90000.0" endX="70214.0" endY="0.0" endZ="69411.0" />
+    <set_variable name="PowerBlast" value="2.0" integer="yes" />
+    <warning_popup_message message="COMPUTER: Unknown energy burst directed at DS 359" consoles="MS" player_slot="0" />
+    <set_timer name="DestroyDS359" seconds="10" />
+  </event>
+  <event name="Power Blast 2" id_arme="463e6fb7-e797-44f1-af43-c01addeefbf7" parent_id_arme="622c396a-2bda-4eee-94af-49e500e64a4c">
+    <if_timer_finished name="DestroyDS359" />
+    <if_variable name="PowerBlast" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="COMPUTER: DS 359 has been destroyed." consoles="MS" player_slot="0" />
+    <destroy name="DS 359" />
+    <set_timer name="WeCannotAllow" seconds="10" />
+    <set_variable name="PowerBlast" value="3.0" integer="yes" />
+    <destroy_near nebType="3" type="nebulas" radius="100000" centerX="50000" centerY="0" centerZ="50000" />
+  </event>
+  <event name="CommsButton" id_arme="0c825eb8-0bd6-4d1e-8237-e2d37df22cc5" parent_id_arme="622c396a-2bda-4eee-94af-49e500e64a4c">
+    <if_variable name="PowerBlast" comparator="EQUALS" value="3.0" />
+    <if_timer_finished name="WeCannotAllow" />
+    <set_comms_button text="You just killed innocent people! We cannot allow you to do that!" />
+    <set_variable name="PowerBlast" value="4.0" integer="yes" />
+  </event>
+  <event name="The Other Responds" id_arme="8a5eeb72-03f0-465d-80d9-20efdf7bda3e" parent_id_arme="622c396a-2bda-4eee-94af-49e500e64a4c">
+    <if_variable name="Invasion" comparator="EQUALS" value="4.0" />
+    <if_comms_button text="You just killed innocent people! We cannot allow you to do that!" />
+    <if_variable name="PowerBlast" comparator="EQUALS" value="4.0" />
+    <incoming_comms_text from="The Other" type="ALERT STATUS ENEMY">Innocent? We'll just see how innocent. Caring about the mortality of your comrades is an admirable quality you possess, but if you truly wish to prove your innocence you'll have to show me more. There is another wave of Kralien attack ships headed towards your position. Instead of destroying them, force their surrender. If you do, I will consider your innocence.</incoming_comms_text>
+    <set_variable name="PowerBlast" value="5.0" integer="yes" />
+    <set_variable name="Invasion" value="5.0" integer="yes" />
+    <set_timer name="Invasion2" seconds="30" />
+    <clear_comms_button text="You just killed innocent people! We cannot allow you to do that!" />
+  </event>
+  <folder_arme name="Second Wave" id_arme="d98a768f-3aa6-4a53-8f8e-85f3768c6734" expanded_arme="" />
+  <event name="Spawning Second Wave" id_arme="90e6fb33-dbb8-48dc-8d2d-929d94bcf4d4" parent_id_arme="d98a768f-3aa6-4a53-8f8e-85f3768c6734">
+    <if_variable name="Invasion" comparator="EQUALS" value="5.0" />
+    <if_timer_finished name="Invasion2" />
+    <set_variable name="Invasion" value="6.0" integer="yes" />
+    <create type="enemy" x="88182.0" y="20.0" z="29465.0" angle="110" name="Kralien Dreadnought" raceKeys="Kralien" hullKeys="Dreadnought" fleetnumber="-1" />
+    <create type="enemy" x="95402.0" y="10.0" z="26256.0" angle="90" name="Kralien Cruiser V" raceKeys="Kralien" hullKeys="Cruiser" fleetnumber="1" />
+    <create type="enemy" x="88182.0" y="-10.0" z="23048.0" angle="140" name="Kralien Cruiser VI" raceKeys="Kralien" hullKeys="Cruiser" fleetnumber="3" />
+    <warning_popup_message message="COMPUTER: Enemies in sector B1" player_slot="0" />
+    <add_ai type="ATTACK" targetName="Excalibur" value1="1.0" name="Kralien Dreadnought" />
+    <add_ai type="ATTACK" targetName="Excalibur" value1="0.7" name="Kralien Cruiser V" />
+    <add_ai type="ATTACK" targetName="Excalibur" value1="0.5" name="Kralien Cruiser VI" />
+    <set_special name="Kralien Dreadnought" ship="1" captain="0" clear="yes" />
+    <set_special name="Kralien Cruiser V" ship="1" captain="0" clear="yes" />
+    <set_special name="Kralien Cruiser VI" ship="1" captain="0" clear="yes" />
+  </event>
+  <folder_arme name="Mission Failures" id_arme="c0c07f00-bf5b-41f9-ae30-df10ee2d3095" expanded_arme="" />
+  <event name="Kralien Battleship" id_arme="08f244aa-b4ea-4349-98df-f4f2d70b86e5" parent_id_arme="c0c07f00-bf5b-41f9-ae30-df10ee2d3095">
+    <if_not_exists name="Excalibur" />
+    <if_exists name="Kralien Battleship" />
+    <if_variable name="EndMission" comparator="EQUALS" value="0.0" />
+    <big_message title="MISSION FAILED" subtitle1="The Excalibur Has Been Destroyed" subtitle2="Better Luck Next Time!" />
+    <set_timer name="EndMission" seconds="20" />
+    <set_variable name="EndMission" value="1.0" integer="yes" />
+  </event>
+  <event name="Kralien Cruiser I" id_arme="6a2bf20c-58ca-4c58-86a8-400553f009a9" parent_id_arme="c0c07f00-bf5b-41f9-ae30-df10ee2d3095">
+    <if_variable name="EndMission" comparator="EQUALS" value="0.0" />
+    <if_not_exists name="Excalibur" />
+    <if_exists name="Kralien Cruiser I" />
+    <big_message title="MISSION FAILED" subtitle1="The Excalibur Has Been Destroyed" subtitle2="Better Luck Next Time!" />
+    <set_timer name="EndMission" seconds="15" />
+    <set_variable name="EndMission" value="1.0" integer="yes" />
+  </event>
+  <event name="Kralien Cruiser II" id_arme="df2807b2-bd71-472f-833b-702318584353" parent_id_arme="c0c07f00-bf5b-41f9-ae30-df10ee2d3095">
+    <if_exists name="Kralien Cruiser II" />
+    <if_not_exists name="Excalibur" />
+    <if_variable name="EndMission" comparator="EQUALS" value="0.0" />
+    <big_message title="MISSION FAILED" subtitle1="The Excalibur Has Been Destroyed" subtitle2="Better Luck Next Time!" />
+    <set_timer name="EndMission" seconds="15" />
+    <set_variable name="EndMission" value="1.0" integer="yes" />
+  </event>
+  <event name="Kralien Cruiser III" id_arme="d6fbf07a-0db5-407f-9111-f0d289341a43" parent_id_arme="c0c07f00-bf5b-41f9-ae30-df10ee2d3095">
+    <if_exists name="Kralien Cruiser III" />
+    <if_not_exists name="Excalibur" />
+    <if_variable name="EndMission" comparator="EQUALS" value="0.0" />
+    <big_message title="MISSION FAILED" subtitle1="The Excalibur Has Been Destroyed" subtitle2="Better Luck Next Time!" />
+    <set_timer name="EndMission" seconds="15" />
+    <set_variable name="EndMission" value="1.0" integer="yes" />
+  </event>
+  <event name="Kralien Cruiser IV" id_arme="0b3b42c7-92cd-4cb9-a803-dc47b1a88e5d" parent_id_arme="c0c07f00-bf5b-41f9-ae30-df10ee2d3095">
+    <if_exists name="Kralien Cruiser IV" />
+    <if_not_exists name="Excalibur" />
+    <if_variable name="EndMission" comparator="EQUALS" value="0.0" />
+    <big_message title="MISSION FAILED" subtitle1="The Excalibur Has Been Destroyed" subtitle2="Better Luck Next Time!" />
+    <set_timer name="EndMission" seconds="15" />
+    <set_variable name="EndMission" value="1.0" integer="yes" />
+  </event>
+  <event name="Getting Too Close to the Other" id_arme="39ed4955-8775-4ab4-b76b-ef1070aed751" parent_id_arme="c0c07f00-bf5b-41f9-ae30-df10ee2d3095">
+    <if_variable name="TheOther" comparator="GREATER_EQUAL" value="1.0" />
+    <if_variable name="EndMission" comparator="EQUALS" value="0.0" />
+    <if_inside_sphere name="Excalibur" centerX="10000" centerY="0" centerZ="90000" radius="1500" />
+    <destroy name="Excalibur" />
+    <big_message title="MISSION FAILED" subtitle1="The Excalibur Has Been Destroyed..." subtitle2="Better Luck Next Time!" />
+    <set_timer name="EndMission" seconds="15" />
+    <set_variable name="EndMission" value="1.0" integer="yes" />
+  </event>
+  <event name="Kralien Dreadnought 1" id_arme="1b867773-28cf-4b97-b81c-cf77014eff2f" parent_id_arme="c0c07f00-bf5b-41f9-ae30-df10ee2d3095">
+    <if_variable name="Invasion" comparator="EQUALS" value="6.0" />
+    <if_variable name="EndMission" comparator="EQUALS" value="0.0" />
+    <if_not_exists name="Kralien Dreadnought" />
+    <set_variable name="Invasion" value="7.0" integer="yes" />
+    <set_variable name="EndMission" value="1.0" integer="yes" />
+    <set_timer name="EndMission" seconds="15" />
+    <big_message title="MISSION FAILED" subtitle1="You Have Destroyed An Enemy You Were Supposed To Show Mercy..." subtitle2="Better Luck Next Time!" />
+  </event>
+  <event name="Kralien Dreadnought 2" id_arme="3eec14c8-0741-437d-81b5-a6f17a9e82cd" parent_id_arme="c0c07f00-bf5b-41f9-ae30-df10ee2d3095">
+    <if_variable name="Invasion" comparator="EQUALS" value="6.0" />
+    <if_not_exists player_slot="0" />
+    <if_exists name="Kralien Dreadnought" />
+    <if_variable name="EndMission" comparator="EQUALS" value="0.0" />
+    <set_variable name="Invasion" value="7.0" integer="yes" />
+    <set_variable name="EndMission" value="1.0" integer="yes" />
+    <set_timer name="EndMission" seconds="15" />
+    <big_message title="MISSION FAILED" subtitle1="The Excalibur Has Been Destroyed..." subtitle2="Better luck next time" />
+  </event>
+  <event name="Kralien Cruiser V 1" id_arme="b4817533-3f67-4672-9359-d34d77d4c097" parent_id_arme="c0c07f00-bf5b-41f9-ae30-df10ee2d3095">
+    <if_variable name="Invasion" comparator="EQUALS" value="6.0" />
+    <if_not_exists name="Kralien Cruiser V" />
+    <if_variable name="EndMission" comparator="EQUALS" value="0.0" />
+    <set_variable name="Invasion" value="7.0" integer="yes" />
+    <set_variable name="EndMission" value="1.0" integer="yes" />
+    <set_timer name="EndMission" seconds="15" />
+    <big_message title="MISSION FAILED" subtitle1="You Have Destroyed An Enemy You Were Supposed To Show Mercy..." subtitle2="Better luck next time" />
+  </event>
+  <event name="Kralien Cruiser V 2" id_arme="bccf894c-9ef6-41db-8712-87bd9e074adc" parent_id_arme="c0c07f00-bf5b-41f9-ae30-df10ee2d3095">
+    <if_variable name="Invasion" comparator="EQUALS" value="6.0" />
+    <if_exists name="Kralien Cruiser V" />
+    <if_not_exists player_slot="0" />
+    <if_variable name="EndMission" comparator="EQUALS" value="0.0" />
+    <set_variable name="Invasion" value="7.0" integer="yes" />
+    <set_variable name="EndMission" value="1.0" integer="yes" />
+    <set_timer name="EndMission" seconds="15" />
+    <big_message title="MISSION FAILED" subtitle1="The Excalibur Has Been Destroyed..." subtitle2="Better luck next time" />
+  </event>
+  <event name="Kralien Cruiser VI 1" id_arme="745c4568-c525-4db2-929c-352e202b7ab4" parent_id_arme="c0c07f00-bf5b-41f9-ae30-df10ee2d3095">
+    <if_variable name="EndMission" comparator="EQUALS" value="0.0" />
+    <if_variable name="Invasion" comparator="EQUALS" value="6.0" />
+    <if_not_exists name="Kralien Cruiser VI" />
+    <set_variable name="Invasion" value="7.0" integer="yes" />
+    <set_variable name="EndMission" value="1.0" integer="yes" />
+    <set_timer name="EndMission" seconds="15" />
+    <big_message title="MISSION FAILED" subtitle1="You Have Destroyed An Enemy You Were Supposed To Show Mercy..." subtitle2="Better luck next time" />
+  </event>
+  <event name="Kralien Cruiser VI 2" id_arme="da194058-4988-4337-86d6-e4177d69ae6f" parent_id_arme="c0c07f00-bf5b-41f9-ae30-df10ee2d3095">
+    <if_variable name="EndMission" comparator="EQUALS" value="0.0" />
+    <if_variable name="Invasion" comparator="EQUALS" value="6.0" />
+    <if_not_exists player_slot="0" />
+    <if_exists name="Kralien Cruiser VI" />
+    <set_variable name="Invasion" value="7.0" integer="yes" />
+    <set_variable name="EndMission" value="1.0" integer="yes" />
+    <set_timer name="EndMission" seconds="15" />
+    <big_message title="MISSION FAILED" subtitle1="The Excalibur Has Been Destroyed..." subtitle2="Better luck next time" />
+  </event>
+  <event name="Game Over Screen" id_arme="888db245-75af-40ae-9f98-f596592237f9" parent_id_arme="c0c07f00-bf5b-41f9-ae30-df10ee2d3095">
+    <if_variable name="EndMission" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="EndMission" />
+    <end_mission />
+  </event>
+  <folder_arme name="Success" id_arme="d275b1c9-f518-4888-b940-8048344d89d1" expanded_arme="" />
+  <event name="Enemies Surrender" id_arme="a329788f-97cd-4f17-8992-5babe1ec7759" parent_id_arme="d275b1c9-f518-4888-b940-8048344d89d1">
+    <if_object_property property="hasSurrendered" name="Kralien Dreadnought" comparator="EQUALS" value="1" />
+    <if_object_property property="hasSurrendered" name="Kralien Cruiser V" comparator="EQUALS" value="1" />
+    <if_object_property property="hasSurrendered" name="Kralien Cruiser VI" comparator="EQUALS" value="1" />
+    <if_variable name="victory" comparator="EQUALS" value="0.0" />
+    <destroy name="The Other" />
+    <destroy_near type="nebulas" radius="20000" centerX="10000" centerY="0" centerZ="90000" />
+    <destroy name="Unknown Energy Source" />
+    <incoming_comms_text from="The Other" type="ALERT STATUS PLAYER FRIEND">Impressive. Perhaps... there is more to you humans than meets the eye. I look forward to learning more about you. Stay out of trouble. You will encounter enemies more savage than yourself in the future, I am sure of it. In those situations you will obviously have to do what is necessary to defend yourselves, but I urge you to to spread peace throughout the universe in your travels instead of destruction.^^Until next time.</incoming_comms_text>
+    <set_variable name="victory" value="1.0" integer="yes" />
+    <set_timer name="victory" seconds="20" />
+    <create type="neutral" x="55776.0" y="0.0" z="91229.0" angle="0" name="TSN Defiant" raceKeys="Terran" hullKeys="Destroyer" sideValue="2" fleetnumber="0" />
+    <create type="neutral" x="47273.0" y="0.0" z="92069.0" angle="0" name="TSN Titan" raceKeys="Terran" hullKeys="Destroyer" sideValue="2" fleetnumber="0" />
+    <create type="neutral" x="66043.0" y="0.0" z="93909.0" angle="0" name="TSN Valor" raceKeys="Terran" hullKeys="Destroyer" sideValue="2" fleetnumber="0" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Defiant" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Titan" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="TSN Valor" />
+    <warning_popup_message message="COMPUTER: The Other is hailing us. Reinforcements have arrived." consoles="MSC" player_slot="0" />
+  </event>
+  <event name="Mission Success" id_arme="018e8655-3e87-4331-93c7-cae651196c03" parent_id_arme="d275b1c9-f518-4888-b940-8048344d89d1">
+    <if_variable name="EndMission" comparator="EQUALS" value="0.0" />
+    <if_timer_finished name="victory" />
+    <set_variable name="EndMission" value="1.0" integer="yes" />
+    <set_timer name="EndMission" seconds="15" />
+    <big_message title="MISSION SUCCESS!" subtitle1="You stopped the Kralien attack, and reasoned with The Other!" subtitle2="Next Episode: Diplomatic Orders" />
+  </event>
+  <event name="End Mission" id_arme="9cd750d7-1e00-449d-9274-c0f6720c26e0" parent_id_arme="d275b1c9-f518-4888-b940-8048344d89d1">
+    <if_variable name="EndMission" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="EndMission" />
+    <end_mission />
+  </event>
+</mission_data>
