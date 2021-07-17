@@ -1,5 +1,5 @@
 <mission_data version="2.7.5" background_id_arme="a59135e3-9c0e-49aa-8603-3fba5826a9ae" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
-  <mission_description>A new path has been found to the distant Eaton sector; a reconnaissance mission is critical.^Multi-ship mission for up to 8 ships.</mission_description>
+  <mission_description>Earth Command wants the Eaton sector cleared of hostiles...without revealing it was their doing.^^Suggested Ship: Pirate Strongbow^Compatible for up to 8 ships.</mission_description>
   <start id_arme="a59135e3-9c0e-49aa-8603-3fba5826a9ae">
     <set_variable name="System Build" value="-1.0" integer="yes" />
     <set_difficulty_level value="7" />
@@ -13,7 +13,7 @@
     <set_object_property property="playerShields" value="100" />
     <create type="station" x="48000.0" y="51.0" z="84000.0" name="Listening Post 1" hullID="1000" />
     <create type="neutral" x="48600.0" y="0.0" z="84050.0" angle="0" name="TSN Long Haul" hullID="1503" />
-    <create type="player" player_slot="0" x="5000.0" y="0.0" z="5000.0" hullID="14" />
+    <create type="player" player_slot="0" x="5000.0" y="0.0" z="5000.0" hullID="4" />
     <!--Specified Enemy starting points.  Enable randomized points below if desired.-->
     <set_variable name="HarulkX" value="75052.0" integer="yes" />
     <set_variable name="HarulkY" value="41030.0" integer="yes" />
@@ -54,7 +54,64 @@
     <set_timer name="start_mission_timer_1" seconds="10" />
     <set_variable name="Mission" value="-4.0" integer="yes" />
   </start>
-  <folder_arme name="Comms Buttons" id_arme="a7d452d2-6bbe-4d8f-a9c0-98d210f378bc" />
+  <folder_arme name="GM Testing Controls" id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530" expanded_arme="" />
+  <event name="Event 564" id_arme="d74a09de-0e66-47cb-8e64-d1be67a92437" parent_id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530">
+    <if_variable name="GM Button" comparator="EQUALS" value="0.0" />
+    <set_gm_button text="Contact Reset" />
+    <set_gm_button text="Move to..." />
+    <set_gm_button text="Destroy Target" />
+    <set_gm_button text="Sensors Block" />
+    <set_gm_button text="Sensors Unblock" />
+    <set_variable name="GM Button" value="1.0" integer="yes" />
+  </event>
+  <event name="Destroy Target" id_arme="bfabed30-b099-4782-ab86-c923d384cc7f" parent_id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530">
+    <if_gm_button text="Destroy Target" />
+    <destroy use_gm_selection="" />
+    <set_gm_button text="Destroy Target" />
+  </event>
+  <event name="Move Players" id_arme="9463172b-cd37-4740-ac56-26512f964852" parent_id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530">
+    <if_gm_button text="Move to..." />
+    <set_to_gm_position player_slot="0" distance="0" angle="0" />
+    <set_to_gm_position player_slot="1" distance="500" angle="0" />
+    <set_to_gm_position player_slot="2" distance="500" angle="180" />
+    <set_to_gm_position player_slot="3" distance="500" angle="90" />
+    <set_to_gm_position player_slot="4" distance="500" angle="270" />
+    <set_to_gm_position player_slot="5" distance="1000" angle="0" />
+    <set_to_gm_position player_slot="6" distance="1000" angle="180" />
+    <set_to_gm_position player_slot="7" distance="1000" angle="90" />
+    <set_gm_button text="Move to..." />
+  </event>
+  <event name="Sensors Blocked" id_arme="eab3ce07-cc1d-4c08-9382-45ae859f9829" parent_id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530">
+    <if_gm_button text="Sensors Block" />
+    <set_object_property property="nebulaIsOpaque" value="1" />
+    <set_gm_button text="Sensors Block" />
+  </event>
+  <event name="Sensors Unblocked" id_arme="a9ab9be2-e7b3-4777-ac82-bdf458b748d8" parent_id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530">
+    <if_gm_button text="Sensors Unblock" />
+    <set_object_property property="nebulaIsOpaque" value="0" />
+    <set_gm_button text="Sensors Unblock" />
+  </event>
+  <event name="Communications reset" id_arme="a7e961e3-394a-4de3-85b4-5a6e7fc52b7f" parent_id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530">
+    <if_gm_button text="Contact Reset" />
+    <set_variable name="NebPierce" value="0.0" integer="yes" />
+    <set_object_property property="sideValue" value="1" name="Hole in the Wall" />
+    <set_variable name="Nebula" value="0.0" integer="yes" />
+    <set_variable name="PirateHunt" value="0.0" integer="yes" />
+    <set_variable name="Sell" value="0.0" integer="yes" />
+    <set_variable name="Help" value="0.0" integer="yes" />
+    <set_variable name="Help" value="0.0" integer="yes" />
+    <set_variable name="Threat" value="0.0" integer="yes" />
+    <set_variable name="What" value="0.0" integer="yes" />
+    <set_variable name="XimniRecovery" value="0.0" integer="yes" />
+    <set_variable name="Contact" value="0.0" integer="yes" />
+    <set_variable name="Coyote" value="0.0" integer="yes" />
+    <set_variable name="Deny" value="0.0" integer="yes" />
+    <set_variable name="Trinh" value="0.0" integer="yes" />
+    <set_variable name="Trinh" value="0.0" integer="yes" />
+    <set_object_property property="nebulaIsOpaque" value="1" />
+    <set_gm_button text="Contact Reset" />
+  </event>
+  <folder_arme name="Comms Buttons" id_arme="a7d452d2-6bbe-4d8f-a9c0-98d210f378bc" expanded_arme="" />
   <event name="Buttons Master Reset" id_arme="3c3eccdc-899f-44d0-9345-3a53f93a38f8" parent_id_arme="a7d452d2-6bbe-4d8f-a9c0-98d210f378bc">
     <if_object_property property="systemCurCoolantTactical" player_slot="0" comparator="EQUALS" value="8" />
     <if_object_property property="systemCurEnergyTactical" player_slot="0" comparator="EQUALS" value="0.0" />
@@ -730,13 +787,13 @@
     <set_object_property property="positionY" value="0.0" player_slot="7" />
     <set_variable name="Player7" value="1.0" integer="yes" />
   </event>
-  <folder_arme name="Delayed Start Mission Briefing" id_arme="ea6643a1-9be7-40f0-a0ac-e35c85df0924" />
+  <folder_arme name="Delayed Start Mission Briefing" id_arme="ea6643a1-9be7-40f0-a0ac-e35c85df0924" expanded_arme="" />
   <event name="Mission Announce" id_arme="c9e7e6ce-ff58-4a59-83b3-7e485db5b8b6" parent_id_arme="ea6643a1-9be7-40f0-a0ac-e35c85df0924">
     <if_timer_finished name="start_mission_timer_1" />
     <if_variable name="Mission" comparator="EQUALS" value="-4.0" />
     <if_exists player_slot="0" />
     <if_variable name="Player0" comparator="EQUALS" value="1.0" />
-    <incoming_comms_text from="Command HQ" type="SIDE STATION FRIEND">Decryption Complete...^This is Sector Command.  ^^The following information is classified as top-secret.  This is a black-ops mission.^^You have been provided with captured pirate vessels and forged transponder signals.^^Your instructions are to jump to the Eaton Sector and contact the independent pirate base known as the Hole in the Wall.  Intel believes they may cooperate with a false-flag invasion of the sector.^^Your goal is to secure cooperation from the Hole in the Wall in staging the complete annihilation of enemy forces at the hands of "maurading pirates."^^You are authorized to take any actions necessary to secure the pirate's assistance.^^The Long Haul will accompany you to provide limited refit support.^^Should you or any of your crew be captured or killed, TSN Command will disavow all knowledge of your actions.^^Due to your mission's nature, there will be no further communication.^^Good luck.</incoming_comms_text>
+    <incoming_comms_text from="Command HQ" type="SIDE STATION FRIEND">Decryption Complete...^This is Sector Command.  ^^The following information is classified as top-secret.  This is a black-ops mission.^^You have been provided with captured pirate vessels and forged transponder signals.^^Your instructions are to jump to the Eaton Sector and contact the independent pirate base known as the Hole in the Wall.^^Your goal is to secure the pirate's cooperation in staging the complete annihilation of enemy forces at the hands of "maurading pirates."^^You are authorized to take all actions necessary to secure the pirate's assistance.^^The Long Haul will accompany you to provide limited refit support.^^Should you or any of your crew be captured or killed, Earth will disavow all knowledge of your actions.^^Due to your mission's nature, there will be no further communication.^^Good luck.</incoming_comms_text>
     <set_timer name="start_mission_timer_1" seconds="15" />
     <set_variable name="Mission" value="-3.0" integer="yes" />
   </event>
@@ -745,7 +802,7 @@
     <if_variable name="Mission" comparator="EQUALS" value="-3.0" />
     <if_exists player_slot="0" />
     <if_variable name="Player0" comparator="EQUALS" value="1.0" />
-    <incoming_comms_text from="Command HQ" type="SIDE STATION FRIEND">Current Mission Paramters:^Objective 1: Jump to Eaton Sector.^Objective 2: Rendezvous with the Hole in the Wall and secure cooperation.^Objective 3: Eliminate all enemy forces under "False Flag." Use extreme prejudice.^^Note: No further communication from Command will follow.^^BEARING to Eaton Sector: 180</incoming_comms_text>
+    <incoming_comms_text from="Command HQ" type="SIDE STATION FRIEND">Current Mission Paramters:^Objective 1: Jump to Eaton Sector.^Objective 2: Rendezvous with the Hole in the Wall and secure cooperation.^Objective 3: Eliminate all enemy forces with extreme prejudice. Leave no survivors.^^Note: No further communication from Command will follow.^^Prepare for system jump.^^BEARING TO EATON SECTOR: 180</incoming_comms_text>
     <set_comms_button text="Initiate Jump" />
     <set_variable name="Mission" value="-2.0" integer="yes" />
   </event>
@@ -970,6 +1027,8 @@
   </event>
   <event name="Follow Orders" id_arme="0324b73f-47eb-404a-9982-1447dc821a67" parent_id_arme="8d8d85de-d75a-48fc-8694-110d8f23f898">
     <if_variable name="System Build" comparator="EQUALS" value="6.0" />
+    <set_object_property property="surrenderChance" value="100" name="O01" />
+    <set_ship_text name="O01" class="Transport" desc="Altered vessel configuration detected." scan_desc="Converted for educational purposes.   Carrying a load of Skaraan children." />
     <clear_ai name="Farbolt" />
     <set_object_property property="exitPointX" value="FarboltX" name="Farbolt" />
     <set_object_property property="exitPointY" value="FarboltY" name="Farbolt" />
@@ -1166,7 +1225,6 @@
     <clear_ai name="O01" />
     <add_ai type="SPCL_AI" name="O01" />
     <add_ai type="TRY_TO_BECOME_LEADER" name="O01" />
-    <set_ship_text name="O01" desc="Altered vessel configuration detected." scan_desc="Vessel has been converted for educational purposes, and is carrying a load of Skaraan children." />
     <add_ai type="LEADER_LEADS" name="O01" />
     <add_ai type="FOLLOW_LEADER" name="O01" />
     <add_ai type="LAUNCH_FIGHTERS" value1="8000" name="O01" />
@@ -1262,14 +1320,14 @@
     <!--<create type="enemy" x="71186.0" y="0.0" z="11958.0" angle="0" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="18" />-->
     <!--<create type="enemy" x="75361.0" y="0.0" z="8247.0" angle="0" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="18" />-->
     <!--<create type="enemy" x="74433.0" y="0.0" z="14896.0" angle="0" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="18" />-->
+    <!--<create type="enemy" x="72732.0" y="0.0" z="9020.0" angle="0" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="18" />-->
     <!--<create type="enemy" x="23248.0" y="0.0" z="73505.0" angle="0" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="19" />-->
     <!--<create type="enemy" x="16753.0" y="0.0" z="73505.0" angle="0" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="19" />-->
     <!--<create type="enemy" x="20155.0" y="0.0" z="69948.0" angle="0" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="19" />-->
-    <!--<create type="enemy" x="87454.0" y="0.0" z="87763.0" angle="63.4" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="20" />-->
     <!--<create type="enemy" x="22165.0" y="0.0" z="71649.0" angle="0" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="19" />-->
     <!--<create type="enemy" x="18918.0" y="0.0" z="71494.0" angle="0" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="19" />-->
     <!--<create type="enemy" x="85753.0" y="0.0" z="85907.0" angle="68.4" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="20" />-->
-    <!--<create type="enemy" x="72732.0" y="0.0" z="9020.0" angle="0" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="18" />-->
+    <!--<create type="enemy" x="87454.0" y="0.0" z="87763.0" angle="63.4" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="20" />-->
     <!--<create type="enemy" x="84207.0" y="0.0" z="88845.0" angle="49.8" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="20" />-->
     <!--<create type="enemy" x="88382.0" y="0.0" z="85134.0" angle="76.2" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="20" />-->
     <!--<create type="enemy" x="87454.0" y="0.0" z="91783.0" angle="49.3" raceKeys="Arvonian" hullKeys="fighter" fleetnumber="20" />-->
@@ -1328,7 +1386,7 @@
     <set_timer name="start_mission_timer_1" seconds="30" />
     <set_variable name="Mission" value="2.0" integer="yes" />
   </event>
-  <folder_arme name="Enemy Movement Changes" id_arme="9e6d6aac-c337-47a8-991e-724d2862ce19" expanded_arme="" />
+  <folder_arme name="Enemy Movement Changes" id_arme="9e6d6aac-c337-47a8-991e-724d2862ce19" />
   <event name="Q33 to Station 1" id_arme="7d964f32-803a-48f8-a2d2-d173513b5a63" parent_id_arme="9e6d6aac-c337-47a8-991e-724d2862ce19">
     <if_exists name="Q33" />
     <if_variable name="TargetQ" comparator="EQUALS" value="1.0" />
@@ -3368,8 +3426,12 @@
     <set_variable name="PirateBase" value="2.0" integer="yes" />
   </event>
   <event name="2nd wave Enemies" id_arme="3e96fe7d-4127-41f3-a558-0c721e278d91">
+    <if_timer_finished name="Wave" />
     <if_variable name="Wave" comparator="EQUALS" value="2.0" />
-    <set_variable name="EnemyFind" value="1.0" integer="yes" />
+    <create type="enemy" x="45361.0" y="0.0" z="86958.0" angle="0" raceKeys="Skaraan" hullKeys="Defiler Enforcer Executor" fleetnumber="-1" />
+    <create type="enemy" x="49846.0" y="0.0" z="86494.0" angle="0" raceKeys="Skaraan" hullKeys="Defiler Enforcer Executor" fleetnumber="-1" />
+    <create type="enemy" x="45594.0" y="0.0" z="90592.0" angle="0" raceKeys="Skaraan" hullKeys="Defiler Enforcer Executor" fleetnumber="-1" />
+    <create type="enemy" x="50079.0" y="0.0" z="90128.0" angle="0" raceKeys="Skaraan" hullKeys="Defiler Enforcer Executor" fleetnumber="-1" />
     <set_variable name="Wave" value="3.0" integer="yes" />
   </event>
   <folder_arme name="Contacting the Hole in the Wall" id_arme="7168279d-e502-450b-bd21-ff2618cc085c" expanded_arme="" />
@@ -3497,7 +3559,7 @@
     <clear_comms_button text="CANCEL" />
     <set_variable name="Contact" value="1.0" integer="yes" />
   </event>
-  <folder_arme name="Renewal Notice" id_arme="5c0ea779-e76e-43a4-b5da-f32600a17a84" parent_id_arme="7168279d-e502-450b-bd21-ff2618cc085c" expanded_arme="" />
+  <folder_arme name="Renewal Notice" id_arme="5c0ea779-e76e-43a4-b5da-f32600a17a84" parent_id_arme="7168279d-e502-450b-bd21-ff2618cc085c" />
   <event name="Hole in the Wall Destroyed" id_arme="f63f653a-f790-491c-a47c-548f6b7ef59e" parent_id_arme="5c0ea779-e76e-43a4-b5da-f32600a17a84">
     <if_variable name="PirateBase" comparator="GREATER_EQUAL" value="2.0" />
     <if_variable name="PirateBaseDestroyed" comparator="EQUALS" value="0.0" />
@@ -3520,7 +3582,7 @@
     <clear_comms_button text="Decline (Ship 8)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <set_variable name="PirateBaseDestroyed" value="1.0" integer="yes" />
   </event>
-  <folder_arme name="Ship 0" id_arme="a9ac3994-cfdb-458e-812e-6b1710696ab1" parent_id_arme="5c0ea779-e76e-43a4-b5da-f32600a17a84" />
+  <folder_arme name="Ship 0" id_arme="a9ac3994-cfdb-458e-812e-6b1710696ab1" parent_id_arme="5c0ea779-e76e-43a4-b5da-f32600a17a84" expanded_arme="" />
   <event name="Out of Excchange Range Artemis 2" id_arme="fd2c4470-c568-4da0-aa1e-57c617bc1f46" parent_id_arme="a9ac3994-cfdb-458e-812e-6b1710696ab1">
     <if_distance player_slot1="0" name2="Hole in the Wall" comparator="GREATER" value="2500.0" />
     <if_variable name="Scam0" comparator="GREATER" value="0.0" />
@@ -4094,7 +4156,7 @@
     <clear_comms_button text="Decline (Ship 7)" sideValue="2">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</clear_comms_button>
     <set_variable name="Scam6" value="7.0" integer="yes">Heeeey there...^Looks like your ship went a little, "boom-boom."^^If you're interested in doing some business, we'd be happy to make a trade with you.^^Gen-u-ine TSN equipment.^^Think about it, and drop by when you make up your mind.</set_variable>
   </event>
-  <folder_arme name="Ship 7" id_arme="f616f7a2-0481-49ee-906e-2cb65b4abc3b" parent_id_arme="5c0ea779-e76e-43a4-b5da-f32600a17a84" expanded_arme="" />
+  <folder_arme name="Ship 7" id_arme="f616f7a2-0481-49ee-906e-2cb65b4abc3b" parent_id_arme="5c0ea779-e76e-43a4-b5da-f32600a17a84" />
   <event name="Out of Excchange Range Artemis 2" id_arme="f805a258-a7e2-4250-8e76-b429a177a9ae" parent_id_arme="f616f7a2-0481-49ee-906e-2cb65b4abc3b">
     <if_distance player_slot1="7" name2="Hole in the Wall" comparator="GREATER" value="2500.0" />
     <if_variable name="Scam7" comparator="GREATER" value="0.0" />
@@ -4192,10 +4254,18 @@
     <if_timer_finished name="ResponseDelay" />
     <if_variable name="Contact" comparator="EQUALS" value="4.0" />
     <if_variable name="Help" comparator="EQUALS" value="7.0" />
-    <incoming_comms_text from="Hole in the Wall" type="ALERT STATION ENEMY">Transfer received, thank you very much.^^We'll let you dock now, and give you access to some special scanning tech, but we've got one more test before moving on with our favor.^^There's a rival pirate fleet gathering in the nebula near Sector B2.  Go eliminate them for us--and don't let the Skaraans know what you're doing.^^Take care of that, and we'll work with you.</incoming_comms_text>
+    <incoming_comms_text from="Hole in the Wall" type="ALERT STATION">Transfer received, thank you very much.^^We'll let you dock, and use some special scanning tech--but we've got one more test before moving on with our favor.^^There's a rival pirate fleet gathering in the nebula near Sector B2.  We'll give you some extra tags to help you out.^</incoming_comms_text>
     <set_object_property property="sideValue" value="2" name="Hole in the Wall" />
     <set_object_property property="missileStoresEMP" value="0.0" name="Hole in the Wall" />
     <set_object_property property="missileStoresMine" value="0.0" name="Hole in the Wall" />
+    <addto_object_property value="5.0" property="countTag" player_slot="0" />
+    <addto_object_property value="5.0" property="countTag" player_slot="1" />
+    <addto_object_property value="5.0" property="countTag" player_slot="2" />
+    <addto_object_property value="5.0" property="countTag" player_slot="3" />
+    <addto_object_property value="5.0" property="countTag" player_slot="4" />
+    <addto_object_property value="5.0" property="countTag" player_slot="5" />
+    <addto_object_property value="5.0" property="countTag" player_slot="6" />
+    <addto_object_property value="5.0" property="countTag" player_slot="7" />
     <set_object_property property="pirateRepWithStations" value="1" player_slot="0">Finally finished, have you?  Took you long enough.^^Congratulations--it looks like you're competent enough to defeat a handful of purring kittens.^^Unimpressive as that is, maybe you have enough talent aboard to assist us with a pet project.^^We'd like you to...liberate something from the Skaraans.</set_object_property>
     <set_object_property property="pirateRepWithStations" value="1" player_slot="1">Finally finished, have you?  Took you long enough.^^Congratulations--it looks like you're competent enough to defeat a handful of purring kittens.^^Unimpressive as that is, maybe you have enough talent aboard to assist us with a pet project.^^We'd like you to...liberate something from the Skaraans.</set_object_property>
     <set_object_property property="pirateRepWithStations" value="1" player_slot="2">Finally finished, have you?  Took you long enough.^^Congratulations--it looks like you're competent enough to defeat a handful of purring kittens.^^Unimpressive as that is, maybe you have enough talent aboard to assist us with a pet project.^^We'd like you to...liberate something from the Skaraans.</set_object_property>
@@ -4274,7 +4344,7 @@
     <if_timer_finished name="ResponseDelay" />
     <if_variable name="Contact" comparator="EQUALS" value="4.0" />
     <if_variable name="Help" comparator="EQUALS" value="2.0" />
-    <incoming_comms_text from="Hole in the Wall" type="ALERT STATION ENEMY">This is Admiral Trinh.^I understand that you were openly asking for our assistance against the Skaraans.  First, you're fools.^^Second, I already know why you are asking.  Earth Command wants to eliminate the Skaraan presence in this sector and pin the blame on unaffiliated forces.^^It's a dirty and cheap move--exactly the kind of thing you'd expect from government-sanctioned pirates.  It'll cost you, but if you can do us a small favor we won't interfere and are willing to vacate the sector.</incoming_comms_text>
+    <incoming_comms_text from="Hole in the Wall" type="ALERT STATION ENEMY">This is Captain Jack Cross.^I understand that you were openly asking for assistance against the Skaraans.  ^^You're clearly fools.  Earth Command wants to secretly eliminate the Skaraan presence in this sector and pin the blame on pirate forces so they can move in to ensure "security."  Do you really think they'll let you return home afterward?^^Oh, well; not my problem.^^It'll cost you something, but if you'll do us a small favor, I think we can help.</incoming_comms_text>
     <set_comms_button text="How much, and what favor?" />
     <set_comms_button text="Assist us or die, pirate scum!" />
     <set_variable name="Help" value="3.0" integer="yes" />
@@ -4283,7 +4353,7 @@
     <if_timer_finished name="ResponseDelay" />
     <if_variable name="Contact" comparator="EQUALS" value="4.0" />
     <if_variable name="Help" comparator="EQUALS" value="1.0" />
-    <incoming_comms_text from="Hole in the Wall" type="ALERT STATION ENEMY">Really?  How refreshing--some actual honesty.^^I'll check with the folks in charge to see if anyone's willing to talk to you...but unless you're willing to part with some rum and weapons, I doubt it.</incoming_comms_text>
+    <incoming_comms_text from="Hole in the Wall" type="ALERT STATION ENEMY">Really?  How refreshing--some actual honesty.^^I'll ask someone in charge if they're willing to talk to you...but you'd better be willing to part with some rum.</incoming_comms_text>
     <set_timer name="ResponseDelay" seconds="15" />
     <set_variable name="Help" value="2.0" integer="yes" />
   </event>
@@ -4304,11 +4374,30 @@
     <set_timer name="ResponseDelay" seconds="10" />
     <set_variable name="XimniRecovery" value="4.0" integer="yes" />
   </event>
+  <event name="Honest Threat" id_arme="62e351d1-d7ce-44b2-b4c5-bf5eab5d23e6" parent_id_arme="b9de88b1-5df3-4ed0-b2aa-d6bf26346e6a">
+    <if_comms_button text="Assist us or die, pirate scum!" />
+    <if_variable name="Contact" comparator="EQUALS" value="4.0" />
+    <if_variable name="What" comparator="EQUALS" value="6.0" />
+    <if_variable name="XimniRecovery" comparator="EQUALS" value="3.0" />
+    <clear_comms_button text="Assist us or die, pirate scum!" />
+    <clear_comms_button text="Tell us more." />
+    <incoming_comms_text from="Hole in the Wall" type="ALERT STATION ENEMY">Seriously?^^Here's a counter-proposal: You die, and we forget this little exchange ever happened.^^Perhaps I'll send your space-bloated corpses back to TSN Intel with a "you're welcome" note.  We'll be raising the average IQ of the fleet for them.^^Shark Bait--Look lively and deploy the defense grid!</incoming_comms_text>
+    <create type="enemy" x="HoleX+300" y="0.0" z="HoleZ+300" name="Trinh" hullID="130" sideValue="1" />
+    <create type="enemy" x="HoleX-300" y="0.0" z="HoleZ-300" name="Trinh " hullID="130" sideValue="1" />
+    <create type="enemy" x="HoleX" y="0.0" z="HoleZ-300" name="Trinh  " hullID="130" sideValue="1" />
+    <set_object_property property="sideValue" value="1" name="Hole in the Wall" />
+    <set_object_property property="canShoot" value="1" name="Hole in the Wall" />
+    <set_timer name="Threatened" seconds="5" />
+    <set_variable name="Threat" value="1.0" integer="yes" />
+    <set_variable name="What" value="0.0" integer="yes" />
+    <set_variable name="Trinh" value="1.0" integer="yes" />
+  </event>
   <event name="Ximni Task Assign" id_arme="6e46ca7f-89c8-4d44-84f6-671a15a2b9d3" parent_id_arme="b9de88b1-5df3-4ed0-b2aa-d6bf26346e6a">
     <if_timer_finished name="ResponseDelay" />
     <if_variable name="Contact" comparator="EQUALS" value="4.0" />
     <if_variable name="XimniRecovery" comparator="EQUALS" value="2.0" />
     <set_comms_button text="Tell us more." />
+    <set_comms_button text="Assist us or die, pirate scum!" />
     <set_variable name="XimniRecovery" value="3.0" integer="yes" />
   </event>
   <event name="Small Favor Accept" id_arme="3e4b2395-9091-48a3-bbeb-efa6473ef9e9" parent_id_arme="b9de88b1-5df3-4ed0-b2aa-d6bf26346e6a">
@@ -4316,12 +4405,11 @@
     <if_variable name="Contact" comparator="EQUALS" value="4.0" />
     <if_variable name="What" comparator="EQUALS" value="5.0" />
     <if_variable name="XimniRecovery" comparator="EQUALS" value="1.0" />
-    <if_comms_button text="What 'small favor?'" />
     <set_timer name="ResponseDelay" seconds="4" />
-    <incoming_comms_text from="Hole in the Wall" type="ALERT STATION ENEMY">Oh, it's nothing compared to what the TSN wants, and is mostly a matter of sentimentality.^^There's something the Skaraans have in their possession which we'd like to see...liberated.</incoming_comms_text>
     <clear_comms_button text="Offer to destroy something." />
     <clear_comms_button text="Offer to sell something" />
     <clear_comms_button text="What 'small favor?'" />
+    <incoming_comms_text from="Hole in the Wall" type="ALERT STATION ENEMY">Oh, it's nothing compared to what the TSN wants, and is mostly a matter of sentimentality.^^There's something the Skaraans have in their possession which we'd like to see...liberated.</incoming_comms_text>
     <set_variable name="What" value="6.0" integer="yes" />
     <set_variable name="XimniRecovery" value="2.0" integer="yes" />
   </event>
@@ -4374,8 +4462,16 @@
     <if_timer_finished name="ResponseDelay" />
     <if_variable name="Contact" comparator="EQUALS" value="4.0" />
     <if_variable name="What" comparator="EQUALS" value="5.0" />
-    <if_comms_button text="Offer to destroy something." />
-    <incoming_comms_text from="Hole in the Wall" type="ALERT STATION ENEMY">Interesting offer--for a start.^^Ok.  There's an rival pirate fleet gathering in the nebula near Sector B2.  We'll let your science officer access our sensor grid for a few minutes to help out.^^Go eliminate them for us.^^Take care of that, and we'll consider working with you.</incoming_comms_text>
+    <incoming_comms_text from="Hole in the Wall" type="ALERT STATION ENEMY">Interesting offer--for a start.^^Ok.  There's an rival pirate fleet gathering in the nebula near Sector B2.  We'll let your science officer access our sensor grid for a few minutes and give you some extra tags to help out.^^Go eliminate them for us.^^Take care of that, and we'll consider working with you.</incoming_comms_text>
+    <warning_popup_message message="Ordinance Added" consoles="WC" />
+    <addto_object_property value="5.0" property="countTag" player_slot="0" />
+    <addto_object_property value="5.0" property="countTag" player_slot="1" />
+    <addto_object_property value="5.0" property="countTag" player_slot="2" />
+    <addto_object_property value="5.0" property="countTag" player_slot="3" />
+    <addto_object_property value="5.0" property="countTag" player_slot="4" />
+    <addto_object_property value="5.0" property="countTag" player_slot="5" />
+    <addto_object_property value="5.0" property="countTag" player_slot="6" />
+    <addto_object_property value="5.0" property="countTag" player_slot="7" />
     <set_variable name="What" value="6.0" integer="yes" />
     <set_variable name="PirateHunt" value="2.0" integer="yes" />
     <set_variable name="NebPierce" value="1.0" integer="yes" />
@@ -4397,7 +4493,7 @@
     <if_variable name="What" comparator="EQUALS" value="5.0" />
     <if_variable name="Sell" comparator="EQUALS" value="1.0" />
     <set_timer name="ResponseDelay" seconds="4" />
-    <incoming_comms_text from="Hole in the Wall" type="ALERT STATION ENEMY">Um, let me think--No.  We wouldn't trust anything you sent not to explode upon delivery.^^But there is something we do want.  A sentimental token we would like to see...liberated from the Skaraans, as it were.</incoming_comms_text>
+    <incoming_comms_text from="Hole in the Wall" type="ALERT STATION ENEMY">Do you honestly think we'd trust anything you sent not to explode upon delivery?^^But there is something we would like.  It's a small, sentimental token, but one we would like to... "liberate" from the Skaraans, as it were.</incoming_comms_text>
     <set_variable name="What" value="6.0" integer="yes" />
     <set_variable name="Sell" value="2.0" integer="yes" />
     <set_variable name="XimniRecovery" value="2.0" integer="yes" />
@@ -4417,7 +4513,7 @@
     <if_timer_finished name="ResponseDelay" />
     <if_variable name="Contact" comparator="EQUALS" value="4.0" />
     <if_variable name="What" comparator="EQUALS" value="2.0" />
-    <incoming_comms_text from="Hole in the Wall" type="ALERT STATION ENEMY">This is Admiral Trinh.^I understand that you were trying to bribe my Comms officer.  This is unacceptable behavior and will not be tolerated: All bribes go through me first.^^We know why you are here.  TSN Command wants to eliminate the Skaraan presence in this sector, pin the blame on unaffiliated forces, and even get our help in the process.^^It's a dirty, cheap move, and one we will not condone... unless you can do us a small favor.</incoming_comms_text>
+    <incoming_comms_text from="Hole in the Wall" type="ALERT STATION ENEMY">This is Captain Jack Cross.^I understand that you were trying to bribe my Comms officer.  This is unacceptable behavior and will not be tolerated: All bribes go through me first.^^We know why you are here.  TSN Command wants to eliminate the Skaraan presence in this sector, pin the blame on pirates, and even get our help in the process.^^It's a dirty, cheap move, and one we will happily condone if you do us a small favor.</incoming_comms_text>
     <set_comms_button text="Offer to destroy something." />
     <set_comms_button text="Offer to sell something" />
     <set_comms_button text="What 'small favor?'" />
@@ -4427,7 +4523,7 @@
     <if_timer_finished name="ResponseDelay" />
     <if_variable name="Contact" comparator="EQUALS" value="4.0" />
     <if_variable name="What" comparator="EQUALS" value="1.0" />
-    <incoming_comms_text from="Hole in the Wall" type="ALERT STATION ENEMY">Seriously?  No one's ever asked me that before...not without being on the pointy end of a torpedo.^^Philosophically I suppose it depends on who's asking, doesn't it?  But in my case: three kegs of authentic Earth rum, some highly agreeable company, and a printing press for Rigellian tourist visas.  Can you manage that?^^Oh...you mean the folks in charge.  Of course you do.  I'll go see if anyone's willing to talk to you...but they're still going to want the rum.</incoming_comms_text>
+    <incoming_comms_text from="Hole in the Wall" type="ALERT STATION ENEMY">Seriously?  No one's ever asked me that before...not without being on the pointy end of a torpedo.^^Three kegs of authentic Earth rum, some highly agreeable company, and a printing press for Rigellian tourist visas.  In that order.^^Oh...you mean the folks in charge.  Of course you do.  I'll see if someone wants to talk to you--but I still want the rum.</incoming_comms_text>
     <set_timer name="ResponseDelay" seconds="30" />
     <set_variable name="What" value="2.0" integer="yes" />
   </event>
@@ -4562,7 +4658,7 @@
     <warning_popup_message message="Nebula Scanning Active..." consoles="MESC" />
     <set_variable name="NebPierce" value="15.0" integer="yes" />
   </event>
-  <folder_arme name="Threat Issued to Pirates" id_arme="8a223ce4-7292-4919-96cf-318b5b6e1a14" parent_id_arme="7168279d-e502-450b-bd21-ff2618cc085c" />
+  <folder_arme name="Threat Issued to Pirates" id_arme="8a223ce4-7292-4919-96cf-318b5b6e1a14" parent_id_arme="7168279d-e502-450b-bd21-ff2618cc085c" expanded_arme="" />
   <event name="Howler Surrender Deny Reset" id_arme="9fae3a6f-ae28-4dd5-800c-654975d6958c" parent_id_arme="8a223ce4-7292-4919-96cf-318b5b6e1a14">
     <if_exists name="Lone Howler" />
     <if_variable name="Deny" comparator="EQUALS" value="2.0" />
@@ -4609,7 +4705,7 @@
     <if_variable name="Threat" comparator="LESS_EQUAL" value="5.0" />
     <if_variable name="Jump" comparator="LESS" value="2.0" />
     <if_variable name="PirateBase" comparator="GREATER_EQUAL" value="2.0" />
-    <incoming_comms_text from="Lone Howler" sideValue="2" type="ALERT ENEMY">That's it; we're out of here.  Activate cloaking devices and prepare to jump sector for fallback rendezvous.^^Tell Greybeard to sell the new defensive systems to the Skaraans instead of--^...Hey, who left the comms circuit open?^--click--</incoming_comms_text>
+    <incoming_comms_text from="Lone Howler" sideValue="2" type="ALERT ENEMY">That's it; we're out of here.  Activate cloaking devices and prepare to jump sector for fallback rendezvous.^^Tell Greybeard he can sell the new scanning systems to the Skaraans.</incoming_comms_text>
     <destroy name="Hole in the Wall" />
     <destroy name="Lone Howler" />
     <destroy name="La Danza Macabra" />
@@ -4722,15 +4818,6 @@
     <set_special name="Barbarous" ship="0" ability="HET" />
     <set_special name="Last Rites" ship="0" ability="ShldDrain" />
     <set_special name="Last Rites" ship="0" ability="LowVis" />
-    <set_object_property property="sensorSetting" value="3" />
-    <warning_popup_message message="Extreme Sensor Disruption!" consoles="MS" player_slot="0" />
-    <warning_popup_message message="Extreme Sensor Disruption!" consoles="MS" player_slot="1" />
-    <warning_popup_message message="Extreme Sensor Disruption!" consoles="MS" player_slot="2" />
-    <warning_popup_message message="Extreme Sensor Disruption!" consoles="MS" player_slot="3" />
-    <warning_popup_message message="Extreme Sensor Disruption!" consoles="MS" player_slot="4" />
-    <warning_popup_message message="Extreme Sensor Disruption!" consoles="MS" player_slot="5" />
-    <warning_popup_message message="Extreme Sensor Disruption!" consoles="MS" player_slot="6" />
-    <warning_popup_message message="Extreme Sensor Disruption!" consoles="MS" player_slot="7" />
     <set_variable name="Threat" value="5.0" integer="yes" />
   </event>
   <event name="Pirate Fleet Arrives" id_arme="c6e491d0-b311-4a85-ba5a-d44d69657bf0" parent_id_arme="8a223ce4-7292-4919-96cf-318b5b6e1a14">
@@ -5068,7 +5155,7 @@
     <if_variable name="Threat" comparator="EQUALS" value="0.0" />
     <clear_comms_button text="CONFIRM: We're deserters" />
     <clear_comms_button text="CANCEL" />
-    <incoming_comms_text from="Hole in the Wall" type="ALERT STATION ENEMY">Oh, really?^^We don't like people with no sense of honor around here.^^Neo--activate the defense grid and call in the cavalry!</incoming_comms_text>
+    <incoming_comms_text from="Hole in the Wall" type="ALERT STATION ENEMY">Oh, really?^^We don't like people with no sense of honor around here.^^Battle stations everyone!  Activate the defense grid and call in the cavalry!</incoming_comms_text>
     <create type="enemy" x="HoleX+300" y="0.0" z="HoleZ+300" name="Trinh" hullID="130" sideValue="1" />
     <create type="enemy" x="HoleX-300" y="0.0" z="HoleZ-300" name="Trinh " hullID="130" sideValue="1" />
     <create type="enemy" x="HoleX" y="0.0" z="HoleZ-300" name="Trinh  " hullID="130" sideValue="1" />
@@ -5081,7 +5168,7 @@
   <folder_arme name="Ximni Recovery" id_arme="def7b7f1-c3ff-4567-8cb0-c8144348f987" parent_id_arme="7168279d-e502-450b-bd21-ff2618cc085c" />
   <event name="Recovery Proposal" id_arme="6ca4eb10-351b-4d47-870d-3ca0c5263375" parent_id_arme="def7b7f1-c3ff-4567-8cb0-c8144348f987">
     <if_variable name="XimniRecovery" comparator="EQUALS" value="4.0" />
-    <incoming_comms_text from="Hole in the Wall" type="STATUS STATION FRIEND">Alright, here's the situation.^^The Skaraans have recently captured a Ximni scout ship, the Farbolt.  They were unable to crack the command codes, and have brought her here to scuttle.^^Normally we wouldn't care, but this particular ship belongs to the legendary Ximni Ranger fleet.   It is, in fact, Ranger 1, and my chief engineer used to serve onboard the Farbolt.  He has demanded that we return her home safely.^^Pirates aren't known for sentimentality, but angry engineers are terrifying.  Hence our little favor.^^We want you to take a few...specialists...behind Skaraan lines.  Find the Farbolt, drop them off, and run interference until they can repair it and return to base.  Do that, and we'll help you clear the sector.^^What do you say?</incoming_comms_text>
+    <incoming_comms_text from="Hole in the Wall" type="STATUS STATION FRIEND">Alright, here's the situation.^^The Skaraans have recently captured a Ximni scout ship, the Farbolt.  They were unable to crack the command codes, and have brought her here to scuttle.^^Normally we wouldn't care, but this particular ship belongs to the legendary Ximni Ranger fleet.   It is, in fact, Ranger 1, and my chief engineer used to serve onboard the Farbolt.  He has demanded that we return her home safely.^^We want you to take a few...specialists...behind Skaraan lines.  Find the Farbolt, drop them off, and run interference until they can repair it and return to base.  Do that, and we'll help you clear the sector.^^What do you say?</incoming_comms_text>
     <set_timer name="ResponseDelay" seconds="5" />
     <set_variable name="XimniRecovery" value="5.0" integer="yes" />
   </event>
@@ -5336,7 +5423,34 @@
     <warning_popup_message message="Boarding interrupted..." consoles="MC" player_slot="7">Excellent; scholars and gentlemen, you are.^^We'll load the needed repair equipment onto any ship which docks with the Hole in the Wall.^^Once one of you is in proximity to the Farbolt, you'll have to stay nearby for about a minute while transfers are being made.^^Then you'll have to protect the ship until it can return to us.^^We can also scramble the Skaraan sensor system to give you a bit of breathing room, but it'll be limited.  You tell us when.</warning_popup_message>
     <set_variable name="Load7" value="0.0" integer="yes" />
   </event>
-  <folder_arme name="Farbolt Recovery" id_arme="d08ae57a-a483-4156-b14e-2bc61dda04b2" expanded_arme="" />
+  <folder_arme name="Farbolt Recovery" id_arme="d08ae57a-a483-4156-b14e-2bc61dda04b2" />
+  <event name="Farbolt Destroyed" id_arme="5079feaf-864b-42e4-9eeb-ec75af0d51ca" parent_id_arme="d08ae57a-a483-4156-b14e-2bc61dda04b2">
+    <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
+    <if_not_exists name="Farbolt" />
+    <if_variable name="XimniRecovery" comparator="LESS" value="9.0" />
+    <if_variable name="XimniRecovery" comparator="GREATER" value="1.0" />
+    <set_timer name="Boarding" seconds="20" />
+    <incoming_comms_text from="Hole in the Wall" type="SIDE STATION">The Farbolt has been destroyed.  There is no reason for us to stay.^^We are vacating the system, and have sent your location to a rival pirate fleet.^^Have a nice day.</incoming_comms_text>
+    <play_sound_now filename="dat\jumpWarmup.wav" />
+    <warning_popup_message message="Massive Jump Drive signature detected" consoles="MS" />
+    <destroy name="Liberty 1" />
+    <destroy name="Liberty 2" />
+    <destroy name="Liberty 3" />
+    <destroy name="Liberty 4" />
+    <destroy name="Liberty 5" />
+    <destroy name="Liberty 6" />
+    <destroy name="Liberty 7" />
+    <destroy name="Liberty 8" />
+    <destroy name="Trinh " />
+    <destroy name="Trinh" />
+    <destroy name="Trinh  " />
+    <destroy name="Last Rites" />
+    <destroy name="Vulgar Unicorn" />
+    <destroy name="Farbolt" />
+    <destroy name="Hole in the Wall" />
+    <set_variable name="XimniRecovery" value="11.0" integer="yes" />
+    <set_variable name="Jump" value="3.0" integer="yes" />
+  </event>
   <folder_arme name="Per Ship Deploys" id_arme="2c1af008-c768-4862-8e84-a934f0681b31" parent_id_arme="d08ae57a-a483-4156-b14e-2bc61dda04b2" />
   <event name="Farbolt Deploy Distance Cancel 0" id_arme="e2d00c43-19aa-4ef4-b30a-cb999b8ae24d" parent_id_arme="2c1af008-c768-4862-8e84-a934f0681b31">
     <if_variable name="Jump" comparator="EQUALS" value="0.0" />
@@ -6213,7 +6327,8 @@
   <event name="Jump to Station" id_arme="949062a3-f5dd-4575-90b4-1603e3db7fa7" parent_id_arme="d08ae57a-a483-4156-b14e-2bc61dda04b2">
     <if_variable name="Jump" comparator="EQUALS" value="2.0" />
     <if_timer_finished name="Boarding" />
-    <set_timer name="Boarding" seconds="15" />
+    <if_exists name="Hole in the Wall" />
+    <set_timer name="Boarding" seconds="20" />
     <warning_popup_message message="Jump drive engaged" consoles="S" />
     <play_sound_now filename="dat\jumpWarmup.wav" />
     <set_relative_position name2="Farbolt" distance="600" angle="250" name1="Hole in the Wall" />
@@ -6228,6 +6343,7 @@
     <set_object_property property="exitPointX" value="0.0" name="Farbolt" />
     <set_object_property property="exitPointY" value="0.0" name="Farbolt" />
     <set_object_property property="exitPointZ" value="0.0" name="Farbolt" />
+    <incoming_comms_text from="Hole in the Wall" type="ALERT STATION FRIEND">Ah...Very nice.  An actual Ximni Ranger.  Thank you for delivering her safely--we have plans for this beauty.^^Now, as for our promise to help you out... We changed our minds.  We are pirates, after all.^^But don't worry; we sent an...invitation...on your behalf.  The recipients will be arriving soon, and should be quite convincing as an attack fleet.  We'll even leave a handful of automated ships to help with scanning.^^Mr. Kim--inform the fleet we are moving out, and engage the station's jump drive.</incoming_comms_text>
     <!--<create type="neutral" x="HoleX+300" y="0.0" z="HoleZ+300" name="Trinh" hullID="130" sideValue="2" />-->
     <!--<create type="neutral" x="HoleX-300" y="0.0" z="HoleZ-300" name="Trinh " hullID="130" sideValue="2" />-->
     <!--<create type="neutral" x="HoleX" y="0.0" z="HoleZ-300" name="Trinh  " hullID="130" sideValue="2" />-->
@@ -6243,11 +6359,34 @@
     <set_variable name="XimniRecovery" value="9.0" integer="yes" />
     <set_variable name="Jump" value="3.0" integer="yes" />
   </event>
+  <event name="Jump to Station Hole in Wall destroyed" id_arme="52e5c5e5-a0bb-487e-b1bc-5239a766d570" parent_id_arme="d08ae57a-a483-4156-b14e-2bc61dda04b2">
+    <if_variable name="Jump" comparator="EQUALS" value="2.0" />
+    <if_timer_finished name="Boarding" />
+    <if_not_exists name="Hole in the Wall" />
+    <set_timer name="Boarding" seconds="20" />
+    <warning_popup_message message="Jump drive engaged" consoles="S" />
+    <play_sound_now filename="dat\jumpWarmup.wav" />
+    <set_object_property property="positionX" value="HoleX" name="Farbolt" />
+    <set_object_property property="positionZ" value="HoleZ" name="Farbolt" />
+    <set_relative_position name2="Liberty 1" distance="600" angle="85" name1="Farbolt" />
+    <set_relative_position name2="Liberty 2" distance="600" angle="350" name1="Farbolt" />
+    <set_relative_position name2="Liberty 3" distance="600" angle="300" name1="Farbolt" />
+    <set_relative_position name2="Liberty 4" distance="600" angle="200" name1="Farbolt" />
+    <set_relative_position name2="Liberty 5" distance="600" angle="150" name1="Farbolt" />
+    <set_relative_position name2="Liberty 6" distance="600" angle="100" name1="Farbolt" />
+    <set_relative_position name2="Liberty 7" distance="600" angle="50" name1="Farbolt" />
+    <set_relative_position name2="Liberty 8" distance="600" angle="0" name1="Farbolt" />
+    <set_object_property property="exitPointX" value="0.0" name="Farbolt" />
+    <set_object_property property="exitPointY" value="0.0" name="Farbolt" />
+    <set_object_property property="exitPointZ" value="0.0" name="Farbolt" />
+    <incoming_comms_text from="Lone Howler" type="ALERT STATION FRIEND">So...you managed to recover the Ranger.^^Too bad for you that it came at the cost of our home.^^We sent an...invitation...on your behalf.  The recipients will be arriving soon, and should be quite convincing as an attack fleet.  Have fun.^^Mr. Kim--inform the fleet we are moving out.</incoming_comms_text>
+    <set_variable name="XimniRecovery" value="10.0" integer="yes" />
+    <set_variable name="Jump" value="3.0" integer="yes" />
+  </event>
   <event name="Launch Assisting Fleet" id_arme="56732cb6-97b2-438d-9529-18083e67c502" parent_id_arme="d08ae57a-a483-4156-b14e-2bc61dda04b2">
     <if_variable name="XimniRecovery" comparator="EQUALS" value="9.0" />
     <if_timer_finished name="Boarding" />
-    <set_timer name="Boarding" seconds="10" />
-    <incoming_comms_text from="Hole in the Wall" type="ALERT STATION FRIEND">Ah...Very nice.  An actual Ximni Ranger.  Thank you for delivering her safely--we have plans for this beauty.^^Now, as for our promise to help you out... We changed our minds.  We are pirates, after all.^^But don't worry; we sent an...invitation...on your behalf.  The recipients will be arriving soon, and should be quite convincing as an attack fleet.  We'll even leave a handful of automated ships to help with scanning.^^Mr. Kim--inform the fleet we are moving out, and engage the station's jump drive.</incoming_comms_text>
+    <set_timer name="Boarding" seconds="20" />
     <clear_comms_button text="Activate Nebula Pierce" />
     <set_object_property property="nebulaIsOpaque" value="0.0" />
     <create type="neutral" x="HoleX+300" y="0.0" z="HoleZ+300" name="Trinh" hullID="130" sideValue="2" />
@@ -6265,6 +6404,7 @@
   <event name="Hole in the Wall Exit" id_arme="3126d1a6-2ed5-4896-92cc-2523b09ff9b9" parent_id_arme="d08ae57a-a483-4156-b14e-2bc61dda04b2">
     <if_variable name="Jump" comparator="EQUALS" value="3.0" />
     <if_variable name="XimniRecovery" comparator="EQUALS" value="10.0" />
+    <if_exists name="Hole in the Wall" />
     <if_timer_finished name="Boarding" />
     <incoming_comms_text from="Hole in the Wall" type="SIDE STATION FRIEND">One last word of advice:^^Don't let either of our capital ships be destroyed or you'll probably regret it.</incoming_comms_text>
     <set_timer name="Boarding" seconds="20" />
@@ -6293,6 +6433,26 @@
     <destroy name="Liberty 8" />
     <destroy name="Farbolt" />
     <destroy name="Hole in the Wall" />
+    <set_variable name="XimniRecovery" value="11.0" integer="yes" />
+  </event>
+  <event name="Hole in the Wall Exit" id_arme="b0fd722a-b0b5-473c-9eab-c50980dc5bf0" parent_id_arme="d08ae57a-a483-4156-b14e-2bc61dda04b2">
+    <if_variable name="Jump" comparator="EQUALS" value="3.0" />
+    <if_variable name="XimniRecovery" comparator="EQUALS" value="10.0" />
+    <if_not_exists name="Hole in the Wall" />
+    <if_timer_finished name="Boarding" />
+    <incoming_comms_text from="Lone Howler" type="SIDE FRIEND">One last word of advice:^^Don't go home, or you'll probably regret it.</incoming_comms_text>
+    <set_timer name="Boarding" seconds="20" />
+    <play_sound_now filename="dat\jumpWarmup.wav" />
+    <warning_popup_message message="Massive Jump Drive signature detected" consoles="MS" />
+    <destroy name="Liberty 1" />
+    <destroy name="Liberty 2" />
+    <destroy name="Liberty 3" />
+    <destroy name="Liberty 4" />
+    <destroy name="Liberty 5" />
+    <destroy name="Liberty 6" />
+    <destroy name="Liberty 7" />
+    <destroy name="Liberty 8" />
+    <destroy name="Farbolt" />
     <set_variable name="XimniRecovery" value="11.0" integer="yes" />
   </event>
   <event name="Nebula Blocks Sensors Unicorn" id_arme="88098acd-0625-4c4f-8594-1f046597920e" parent_id_arme="d08ae57a-a483-4156-b14e-2bc61dda04b2">
@@ -6328,26 +6488,71 @@
     <create type="enemy" x="HoleX+TempX" y="0.0" z="HoleZ+TempY" angle="180" name="Brawler" hullID="15" sideValue="3" fleetnumber="1" />
     <set_variable name="TempY" randomIntLow="3000" randomIntHigh="8000" integer="yes" />
     <set_variable name="TempX" randomIntLow="3000" randomIntHigh="8000" integer="yes" />
-    <create type="enemy" x="ShinhartX+TempX" y="0.0" z="ShinhartY+TempZ" angle="180" name="Brimstone" hullID="2002" sideValue="3" fleetnumber="2" />
+    <create type="enemy" x="ShinhartX-TempX" y="0.0" z="ShinhartY-TempY" angle="180" name="Brimstone" hullID="2002" sideValue="3" fleetnumber="2" />
     <set_variable name="TempY" randomIntLow="3000" randomIntHigh="8000" integer="yes" />
     <set_variable name="TempX" randomIntLow="3000" randomIntHigh="8000" integer="yes" />
-    <create type="enemy" x="ShinhartX+TempX" y="0.0" z="ShinhartY+TempZ" angle="180" name="Sacrificed Goat" raceKeys="standard" hullKeys="small medium large" sideValue="3" fleetnumber="2" />
+    <create type="enemy" x="ShinhartX-TempX" y="0.0" z="ShinhartY-TempY" angle="180" name="Sacrificed Goat" raceKeys="standard" hullKeys="small medium large" sideValue="3" fleetnumber="2" />
     <set_variable name="TempY" randomIntLow="3000" randomIntHigh="8000" integer="yes" />
     <set_variable name="TempX" randomIntLow="3000" randomIntHigh="8000" integer="yes" />
-    <create type="enemy" x="ShinhartX+TempX" y="0.0" z="ShinhartY+TempZ" angle="180" name="Sulfurous Mass" hullID="14" sideValue="3" fleetnumber="2" />
+    <create type="enemy" x="ShinhartX-TempX" y="0.0" z="ShinhartY-TempY" angle="180" name="Sulfurous Mass" hullID="14" sideValue="3" fleetnumber="2" />
     <create type="enemy" x="71031.0" y="0.0" z="33144.0" angle="90" name="Spicy Tomato" hullID="14" sideValue="3" fleetnumber="10" />
     <create type="enemy" x="70435.0" y="0.0" z="30377.0" angle="90" name="Shard" hullID="15" sideValue="3" fleetnumber="10" />
-    <create type="enemy" x="68435.0" y="0.0" z="29377.0" angle="90" name="Pot Hunter" hullID="16" sideValue="1" fleetnumber="10" />
+    <create type="enemy" x="68435.0" y="0.0" z="29377.0" angle="90" name="Pot Hunter" hullID="16" sideValue="3" fleetnumber="10" />
     <create type="enemy" x="69215.0" y="0.0" z="34497.0" angle="90" name="Sherd" hullID="14" sideValue="3" fleetnumber="10" />
     <create type="enemy" x="73445.0" y="0.0" z="31377.0" angle="90" name="Gnat" hullID="130" sideValue="3" fleetnumber="10" />
     <create type="enemy" x="62435.0" y="0.0" z="32777.0" angle="90" name="Irksome" hullID="15" sideValue="3" fleetnumber="10" />
+    <set_timer name="Boarding" seconds="45" />
     <set_variable name="XimniRecovery" value="12.0" integer="yes" />
+  </event>
+  <event name="Skaraan Reinforcement Fleet" id_arme="74c63494-4b71-4474-91ff-265b9489492b" parent_id_arme="d08ae57a-a483-4156-b14e-2bc61dda04b2">
+    <if_variable name="Jump" comparator="EQUALS" value="3.0" />
+    <if_variable name="XimniRecovery" comparator="EQUALS" value="12.0" />
+    <if_timer_finished name="Boarding" />
+    <warning_popup_message message="Enemy Ship Signatures Detected" consoles="MS" />
+    <set_variable name="TempY" randomIntLow="70000" randomIntHigh="80000" integer="yes" />
+    <set_variable name="TempX" randomIntLow="80000" randomIntHigh="90000" integer="yes" />
+    <create type="enemy" x="TempX" y="0.0" z="TempY" angle="90" hullID="3001" sideValue="1" fleetnumber="2" />
+    <set_variable name="TempX" randomIntLow="80000" randomIntHigh="90000" integer="yes" />
+    <set_variable name="TempY" randomIntLow="70000" randomIntHigh="80000" integer="yes" />
+    <create type="enemy" x="TempX" y="0.0" z="TempY" angle="90" hullID="4001" sideValue="1" fleetnumber="2" />
+    <set_variable name="TempX" randomIntLow="80000" randomIntHigh="90000" integer="yes" />
+    <set_variable name="TempY" randomIntLow="70000" randomIntHigh="80000" integer="yes" />
+    <create type="enemy" x="TempX" y="0.0" z="TempY" angle="90" hullID="4002" sideValue="1" fleetnumber="2" />
+    <set_variable name="TempX" randomIntLow="80000" randomIntHigh="90000" integer="yes" />
+    <set_variable name="TempY" randomIntLow="70000" randomIntHigh="80000" integer="yes" />
+    <create type="enemy" x="TempX" y="0.0" z="TempY" angle="90" hullID="3002" sideValue="1" fleetnumber="2" />
+    <set_variable name="TempX" randomIntLow="80000" randomIntHigh="90000" integer="yes" />
+    <set_variable name="TempY" randomIntLow="70000" randomIntHigh="80000" integer="yes" />
+    <create type="enemy" x="TempX" y="0.0" z="TempY" angle="90" hullID="2000" sideValue="1" fleetnumber="2" />
+    <set_variable name="TempX" randomIntLow="80000" randomIntHigh="90000" integer="yes" />
+    <set_variable name="TempY" randomIntLow="70000" randomIntHigh="80000" integer="yes" />
+    <create type="enemy" x="TempX" y="0.0" z="TempY" angle="90" hullID="2000" sideValue="1" fleetnumber="2" />
+    <set_variable name="TempY" randomIntLow="10000" randomIntHigh="30000" integer="yes" />
+    <set_variable name="TempX" randomIntLow="80000" randomIntHigh="90000" integer="yes" />
+    <create type="enemy" x="TempX" y="0.0" z="TempY" angle="90" raceKeys="Kralien" hullKeys="small medium large" sideValue="1" fleetnumber="4" />
+    <set_variable name="TempY" randomIntLow="10000" randomIntHigh="30000" integer="yes" />
+    <set_variable name="TempX" randomIntLow="80000" randomIntHigh="90000" integer="yes" />
+    <create type="enemy" x="TempX" y="0.0" z="TempY" angle="90" raceKeys="Kralien" hullKeys="small medium large" sideValue="1" fleetnumber="4" />
+    <set_variable name="TempY" randomIntLow="10000" randomIntHigh="30000" integer="yes" />
+    <set_variable name="TempX" randomIntLow="80000" randomIntHigh="90000" integer="yes" />
+    <create type="enemy" x="TempX" y="0.0" z="TempY" angle="90" raceKeys="Kralien" hullKeys="small medium large" sideValue="1" fleetnumber="4" />
+    <set_variable name="TempY" randomIntLow="10000" randomIntHigh="30000" integer="yes" />
+    <set_variable name="TempX" randomIntLow="80000" randomIntHigh="90000" integer="yes" />
+    <create type="enemy" x="TempX" y="0.0" z="TempY" angle="90" raceKeys="Kralien" hullKeys="small medium large" sideValue="1" fleetnumber="4" />
+    <set_variable name="TempY" randomIntLow="10000" randomIntHigh="30000" integer="yes" />
+    <set_variable name="TempX" randomIntLow="80000" randomIntHigh="90000" integer="yes" />
+    <create type="enemy" x="TempX" y="0.0" z="TempY" angle="90" raceKeys="Kralien" hullKeys="small medium large" sideValue="1" fleetnumber="4" />
+    <set_variable name="TempY" randomIntLow="10000" randomIntHigh="30000" integer="yes" />
+    <set_variable name="TempX" randomIntLow="80000" randomIntHigh="90000" integer="yes" />
+    <create type="enemy" x="TempX" y="0.0" z="TempY" angle="90" raceKeys="Kralien" hullKeys="small medium large" sideValue="1" fleetnumber="4" />
+    <set_variable name="XimniRecovery" value="13.0" integer="yes" />
   </event>
   <event name="Base 1 Destroyed" id_arme="adfc5873-26c0-4a5f-bb95-0271a54772cf">
     <if_not_exists name="Harulk" />
     <if_variable name="Base" comparator="NOT" value="1.0" />
     <if_variable name="Alerted" comparator="LESS" value="3.0" />
     <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
+    <incoming_comms_text from="Skaraan Command" type="ENEMY">All hands--destroy the Pirate vessels!</incoming_comms_text>
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="A24" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="K43" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="B15" />
@@ -6373,6 +6578,7 @@
     <if_not_exists name="Partib" />
     <if_variable name="Base" comparator="NOT" value="1.0" />
     <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
+    <incoming_comms_text from="Skaraan Command" type="ENEMY">All hands--destroy the Pirate vessels!</incoming_comms_text>
     <set_variable name="Base" value="1.0" integer="yes" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="A24" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="K43" />
@@ -6398,6 +6604,7 @@
     <if_variable name="Base" comparator="NOT" value="1.0" />
     <if_variable name="Alerted" comparator="LESS" value="3.0" />
     <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
+    <incoming_comms_text from="Skaraan Command" type="ENEMY">All hands--destroy the Pirate vessels!</incoming_comms_text>
     <set_variable name="Base" value="1.0" integer="yes" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="A24" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="K43" />
@@ -6423,6 +6630,7 @@
     <if_variable name="Base" comparator="NOT" value="1.0" />
     <if_variable name="Alerted" comparator="LESS" value="3.0" />
     <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
+    <incoming_comms_text from="Skaraan Command" type="ENEMY">All hands--destroy the Pirate vessels!</incoming_comms_text>
     <set_variable name="Base" value="1.0" integer="yes" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="A24" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="K43" />
@@ -6443,11 +6651,12 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="D94" />
     <set_variable name="Alerted" value="3.0" integer="yes" />
   </event>
-  <event name="Base 3 Destroyed" id_arme="623b3b72-1504-4124-b38a-e37ca9b224d4">
+  <event name="Base 5 Destroyed" id_arme="623b3b72-1504-4124-b38a-e37ca9b224d4">
     <if_not_exists name="Shinhart" />
     <if_variable name="Base" comparator="NOT" value="1.0" />
     <if_variable name="Alerted" comparator="LESS" value="3.0" />
     <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
+    <incoming_comms_text from="Skaraan Command" type="ENEMY">All hands--destroy the Pirate vessels!</incoming_comms_text>
     <set_variable name="Base" value="1.0" integer="yes" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="A24" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="K43" />
@@ -6468,12 +6677,13 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="D94" />
     <set_variable name="Alerted" value="3.0" integer="yes" />
   </event>
-  <event name="Base 3 Destroyed" id_arme="dfa6bbde-8292-45a2-9adb-941eadcc3396">
+  <event name="Base 6 Destroyed" id_arme="dfa6bbde-8292-45a2-9adb-941eadcc3396">
     <if_not_exists name="Q'tim" />
     <if_variable name="Base" comparator="NOT" value="1.0" />
     <if_variable name="Alerted" comparator="LESS" value="3.0" />
     <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
     <set_variable name="Base" value="1.0" integer="yes" />
+    <incoming_comms_text from="Skaraan Command" type="ENEMY">All hands--destroy the Pirate vessels!</incoming_comms_text>
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="A24" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="K43" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="B15" />
@@ -6492,6 +6702,35 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="E81" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="D94" />
     <set_variable name="Alerted" value="3.0" integer="yes" />
+  </event>
+  <folder_arme name="Ships Neutral to Enemies" id_arme="c951a0a6-e98a-4613-9910-4e1a51b85310" expanded_arme="" />
+  <event name="T1000 Behavior" id_arme="9fe94ae6-b772-43b3-8ebe-e3a298930c15" parent_id_arme="c951a0a6-e98a-4613-9910-4e1a51b85310">
+    <if_exists name="T1000" />
+    <if_variable name="Alerted" comparator="EQUALS" value="3.0" />
+    <if_variable name="TargetT" comparator="EQUALS" value="8.0" />
+    <add_ai type="CHASE_PLAYER" name="T1000" />
+    <set_variable name="TargetT" value="9.0" integer="yes" />
+  </event>
+  <event name="T1000" id_arme="05d6e116-7cb9-4875-8170-439c56f3466d" parent_id_arme="c951a0a6-e98a-4613-9910-4e1a51b85310">
+    <if_scan_level name="T1000" side="2" comparator="EQUALS" value="0" />
+    <if_exists name="T1000" />
+    <if_variable name="Alerted" comparator="GREATER_EQUAL" value="2.0" />
+    <if_variable name="TargetT" comparator="LESS" value="8.0" />
+    <create type="enemy" x="0.0" y="10000.0" z="0.0" name="T1000x" raceKeys="Skaraan" hullKeys="medium" />
+    <copy_object_property property="angle" name1="T1000" name2="T1000x" />
+    <copy_object_property property="pitch" name1="T1000" name2="T1000x" />
+    <copy_object_property property="shieldStateBack" name1="T1000" name2="T1000x" />
+    <copy_object_property property="throttle" name1="T1000" name2="T1000x" />
+    <copy_object_property property="positionX" name1="T1000" name2="T1000x" />
+    <copy_object_property property="positionZ" name1="T1000" name2="T1000x" />
+    <destroy name="T1000" />
+    <set_object_property property="positionY" value="0.0" name="T1000X" />
+    <set_ship_text name="T1000X" newname="T1000" />
+    <set_special name="T1000" />
+    <set_special name="T1000" />
+    <set_special name="T1000" clear="yes" ability="Stealth" />
+    <set_special name="T1000" clear="yes" ability="Cloak" />
+    <set_variable name="TargetT" value="8.0" integer="yes" />
   </event>
   <event name="Enemy Alerted Ship Destroyed" id_arme="2d441a62-cded-4bbb-9752-0507ca050e84">
     <if_fleet_count comparator="LESS" value="16.0" sideValue="1" />
@@ -6516,152 +6755,328 @@
     <add_ai type="CHASE_PLAYER" value1="10000" value2="5000" name="D94" />
     <set_variable name="Alerted" value="2.0" integer="yes" />
   </event>
-  <event name="1st wave Enemies" id_arme="193760b0-c0bc-4d2c-9260-bf459dd4267e">
+  <event name="1st wave Enemies School Destroyed" id_arme="193760b0-c0bc-4d2c-9260-bf459dd4267e">
     <if_variable name="Wave" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Wave" />
+    <create type="enemy" x="91908.0" y="0.0" z="46752.0" angle="0" raceKeys="Skaraan" hullKeys="Defiler Enforcer Executor" fleetnumber="-1" />
+    <create type="enemy" x="86031.0" y="0.0" z="87268.0" angle="0" raceKeys="Skaraan" hullKeys="Defiler Enforcer Executor" fleetnumber="-1" />
+    <create type="enemy" x="92217.0" y="0.0" z="52783.0" angle="0" raceKeys="Skaraan" hullKeys="Defiler Enforcer Executor" fleetnumber="-1" />
+    <create type="enemy" x="89897.0" y="0.0" z="49845.0" angle="0" raceKeys="Skaraan" hullKeys="Defiler Enforcer Executor" fleetnumber="-1" />
+    <create type="enemy" x="11495.0" y="0.0" z="87731.0" angle="0" raceKeys="Skaraan" hullKeys="Defiler Enforcer Executor" fleetnumber="-1" />
+    <set_timer name="Wave" seconds="10" />
     <set_variable name="Wave" value="2.0" integer="yes" />
   </event>
+  <event name="School Ship Destroyed" id_arme="54a4c646-95fc-4e72-8714-a06d78a99da1">
+    <if_not_exists name="O01" />
+    <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
+    <if_variable name="Wave" comparator="EQUALS" value="0.0" />
+    <incoming_comms_text from="Skaraan Command" type="ENEMY">All hands--seek and destroy the Pirate vessels!^They are attacking civilians and children!</incoming_comms_text>
+    <set_timer name="Wave" seconds="10" />
+    <set_variable name="Alerted" value="2.0" integer="yes" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="D94" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="E81" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="V42" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="G13" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="T1000" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="O01" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="U85" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="F21" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="R17" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="Q33" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="C67" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="N00" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="M30" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="J98" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="B15" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="K43" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="A24" />
+    <set_variable name="Wave" value="1.0" integer="yes" />
+  </event>
   <folder_arme name="End Conditions" id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f" expanded_arme="" />
-  <disabled_event name="Mission All Complete" id_arme="c4b659bd-6763-4f5b-962a-c3e928734092" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
-    <if_variable name="End" comparator="EQUALS" value="0.0" />
-    <if_exists name="Hole in the Wall" />
-    <if_not_exists name="F" />
-    <if_not_exists name="H" />
-    <if_not_exists name="J" />
-    <if_not_exists name="C" />
-    <if_not_exists name="D" />
-    <if_not_exists name="M" />
-    <if_not_exists name="N" />
-    <if_not_exists name="P" />
-    <if_not_exists name="Q" />
-    <if_not_exists name="T" />
-    <if_not_exists name="U" />
-    <if_not_exists name="V" />
-    <if_not_exists name="X" />
-    <if_not_exists name="Y" />
-    <if_not_exists name="EE" />
-    <if_not_exists name="HH" />
-    <if_not_exists name="KK" />
-    <if_not_exists name="MM" />
-    <if_not_exists name="NN" />
-    <if_not_exists name="UU" />
-    <if_not_exists name="VV" />
-    <if_variable name="Alerted" comparator="EQUALS" value="0.0" />
-    <if_variable name="Explore" comparator="EQUALS" value="1.0" />
-    <if_variable name="CommsPlaced" comparator="GREATER_EQUAL" value="12.0" />
-    <if_variable name="SensorProgress" comparator="EQUALS" value="3.0" />
-    <if_variable name="TagTotal" comparator="EQUALS" value="17.0" />
+  <event name="Denoument Start" id_arme="a835da74-b4b6-488a-b488-656c3d9b1d4d" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
+    <if_timer_finished name="start_mission_timer_1" />
+    <if_variable name="Denoument" comparator="EQUALS" value="1.0" />
+    <big_message title="Mission Complete" subtitle1="All Enemies Eliminated" subtitle2="Congratulations" />
+    <incoming_comms_text from="Command HQ" type="SIDE STATION FRIEND">Mission complete.^Return to base for debriefing.</incoming_comms_text>
+    <set_comms_button text="Initiate Jump" />
+    <set_comms_button text="End Game" />
+    <set_variable name="Denoument" value="2.0" integer="yes" />
+  </event>
+  <event name="Mission Failed" id_arme="30b5078a-a911-40df-8893-8087cfa89a43" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
+    <if_variable name="failed" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="start_mission_timer_1" />
+    <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
+    <set_timer name="End" seconds="10" />
+    <warning_popup_message message="Mission Failed" consoles="MHWESCOF" />
+    <incoming_comms_text from="HQ Command" type="ALERT SIDE STATION">Surviving witnesses have identified you as responsible for war crimes in the Eaton sector.  ^^You are hereby banished from Terran space.</incoming_comms_text>
+    <set_variable name="failed" value="2.0" integer="yes" />
     <set_variable name="End" value="1.0" integer="yes" />
-    <set_timer name="End" seconds="15" />
-    <big_message title="Mission Success!" subtitle1="All ships tagged, bases located, and nebula explored." subtitle2="Return to Base." />
-  </disabled_event>
-  <disabled_event name="Mission Complete Enemy Engaged" id_arme="5eaf057d-b303-4c9f-b2cb-19397c5a932f" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
+  </event>
+  <event name="Enemies Surrendered" id_arme="a460b2fc-fb06-413e-9a9c-a41cae1d0557" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
+    <if_variable name="Denoument" comparator="EQUALS" value="0.0" />
+    <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
+    <if_fleet_count comparator="EQUALS" value="0.0" sideValue="3" />
+    <if_fleet_count comparator="EQUALS" value="0.0" sideValue="1" />
+    <if_fleet_count comparator="GREATER_EQUAL" value="1.0" sideValue="1" countSurrendered="1" />
+    <if_not_exists name="Hole in the Wall" />
+    <if_not_exists name="O01" />
+    <if_not_exists name="Q'tim" />
+    <if_not_exists name="Chrithon" />
+    <if_not_exists name="Shinhart" />
+    <if_not_exists name="Harulk" />
+    <if_not_exists name="Andar" />
+    <if_not_exists name="Partib" />
+    <set_timer name="start_mission_timer_1" seconds="10" />
+    <set_variable name="failed" value="1.0" integer="yes" />
+  </event>
+  <event name="Enemies Surrendered" id_arme="e1675cee-6a3f-4bf8-9254-0b7b9e6e688a" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
+    <if_variable name="Denoument" comparator="EQUALS" value="0.0" />
+    <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
+    <if_fleet_count comparator="EQUALS" value="0.0" sideValue="3" />
+    <if_fleet_count comparator="EQUALS" value="0.0" sideValue="1" />
+    <if_fleet_count comparator="GREATER_EQUAL" value="1.0" sideValue="3" countSurrendered="1" />
+    <if_not_exists name="Hole in the Wall" />
+    <if_not_exists name="O01" />
+    <if_not_exists name="Chrithon" />
+    <if_not_exists name="Shinhart" />
+    <if_not_exists name="Harulk" />
+    <if_not_exists name="Andar" />
+    <if_not_exists name="Partib" />
+    <set_timer name="start_mission_timer_1" seconds="10" />
+    <set_variable name="failed" value="1.0" integer="yes" />
+  </event>
+  <event name="Enemies Destroyed, Transport Surrendered" id_arme="88ab0c57-8381-4980-911f-449d574ae54a" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
+    <if_variable name="Denoument" comparator="EQUALS" value="0.0" />
+    <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
+    <if_fleet_count comparator="EQUALS" value="0.0" sideValue="3" countSurrendered="1" />
+    <if_fleet_count comparator="EQUALS" value="0.0" sideValue="1" />
+    <if_fleet_count comparator="EQUALS" value="1.0" sideValue="1" countSurrendered="1" />
+    <if_not_exists name="Hole in the Wall" />
+    <if_exists name="O01" />
+    <if_not_exists name="Q'tim" />
+    <if_not_exists name="Chrithon" />
+    <if_not_exists name="Shinhart" />
+    <if_not_exists name="Harulk" />
+    <if_not_exists name="Andar" />
+    <if_not_exists name="Partib" />
+    <set_variable name="failed" value="0.0" integer="yes" />
+    <set_timer name="start_mission_timer_1" seconds="10" />
+    <set_variable name="Denoument" value="1.0" integer="yes" />
+  </event>
+  <event name="All enemies destroyed" id_arme="d002e8db-1be6-464c-9a15-07117a424800" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
+    <if_variable name="Denoument" comparator="EQUALS" value="0.0" />
+    <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
+    <if_fleet_count comparator="EQUALS" value="0.0" sideValue="3" countSurrendered="1" />
+    <if_fleet_count comparator="EQUALS" value="0.0" sideValue="1" countSurrendered="1" />
+    <if_not_exists name="Hole in the Wall" />
+    <if_not_exists name="Q'tim" />
+    <if_not_exists name="Chrithon" />
+    <if_not_exists name="Shinhart" />
+    <if_not_exists name="Harulk" />
+    <if_not_exists name="Andar" />
+    <if_not_exists name="Partib" />
+    <set_variable name="failed" value="0.0" integer="yes" />
+    <set_timer name="start_mission_timer_1" seconds="10" />
+    <warning_popup_message message="All Enemy Signatures Eliminated" consoles="MS" />
+    <set_variable name="Denoument" value="1.0" integer="yes" />
+  </event>
+  <event name="Ship Qualities" id_arme="14b99fba-0d68-4e34-8723-8883e3bb71ff" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
+    <if_variable name="Denoument" comparator="EQUALS" value="5.0" />
+    <warning_popup_message message="Updating Sensor Map..." consoles="MHWESCOF" />
+    <set_special name="Bisby" ship="0" ability="Tractor" />
+    <set_special name="Monitor" ship="1" ability="AntiTorp" />
+    <set_special name="Collins" ability="Tractor" />
+    <set_special name="Canter" ability="Warp" />
+    <set_special name="Canter" ability="HET" />
+    <set_special name="Canter" ability="Tractor" />
+    <set_special name="Canter" ability="AntiMine" />
+    <set_special name="Kerley" ability="HET" />
+    <set_special name="Kerley" ability="Warp" />
+    <set_special name="Kerley" ability="LowVis" />
+    <set_special name="Kerley" ability="AntiMine" />
+    <set_special name="Kerley" ability="AntiTorp" />
+    <set_special name="Kerley" ability="ShldReset" />
+    <set_special name="Kerley" ability="ShldDrain" />
+    <set_special name="Kerley" ability="ShldVamp" />
+    <set_special name="Zola" ability="HET" />
+    <set_special name="Zola" ability="Tractor" />
+    <set_special name="Zola" ability="Drones" />
+    <set_special name="Gambit" ability="AntiTorp" />
+    <set_special name="Gambit" ability="Tractor" />
+    <set_special name="Gambit" ability="HET" />
+    <set_special name="Gambit" ability="Warp" />
+    <set_special name="Gambit" ability="AntiMine" />
+    <set_special name="Gambit" ability="Drones" />
+    <set_special name="Gecko" ability="Tractor" />
+    <set_special name="Gecko" ability="Drones" />
+    <set_special name="Gecko" ability="AntiMine" />
+    <set_special name="Gecko" ability="AntiTorp" />
+    <set_special name="Gecko" ability="HET" />
+    <set_special name="Gecko" ability="Warp" />
+    <set_special name="Gatsby" ability="Tractor" />
+    <set_special name="Bridgerton" ability="Tractor" />
+    <set_special name="Bridgerton" ability="Drones" />
+    <set_special name="Thunderfall" ability="Tractor" />
+    <set_special name="Thunderfall" ability="HET" />
+    <set_special name="Thunderfall" ability="AntiMine" />
+    <set_special name="Thunderfall" ability="AntiTorp" />
+    <set_special name="Thunderfall" ability="ShldDrain" />
+    <set_special name="Anvil" ability="Tractor" />
+    <set_special name="Anvil" ability="AntiMine" />
+    <set_special name="Anvil" ability="AntiTorp" />
+    <set_special name="Anvil" ability="HET" />
+    <set_special name="Ghost" ability="AntiMine" />
+    <set_special name="Ghost" ability="AntiTorp" />
+    <set_special name="Ghost" ability="Tractor" />
+    <set_special name="Ghost" ability="HET" />
+    <set_special name="Ghost" ability="Warp" />
+    <set_special name="Ghost" ability="ShldReset" />
+    <set_special name="Ghost" ability="Drones" />
+    <set_special name="Clifford" captain="2" ability="HET" />
+    <set_special name="Clifford" captain="2" ability="Warp" />
+    <set_special name="Clifford" captain="2" ability="AntiMine" />
+    <set_special name="Bernoulli" ability="HET" />
+    <set_special name="Bernoulli" ability="Warp" />
+    <set_special name="Bernoulli" ability="Tractor" />
+    <set_special name="Bernoulli" ability="Drones" />
+    <set_special name="Nabisco" ability="AntiTorp" />
+    <set_special name="Nabisco" ability="AntiMine" />
+    <set_special name="Takai" ship="0" ability="HET" />
+    <set_variable name="Denoument" value="6.0" integer="yes" />
+  </event>
+  <event name="System Recreated" id_arme="4e63c641-ebbe-4a63-bd2a-312dbf457265" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
+    <if_variable name="Denoument" comparator="EQUALS" value="4.0" />
+    <if_timer_finished name="Jump" />
+    <warning_popup_message message="Updating Sensor Map..." consoles="MHWESCOF" />
+    <create type="station" x="48000.0" y="51.0" z="84000.0" name="Listening Post 1" hullID="1000" sideValue="1" />
+    <create type="enemy" x="46135.0" y="51.0" z="85412.0" angle="0" name="Bisby" hullID="1000" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="51856.0" y="51.0" z="99484.0" angle="0" name="Monitor" hullID="4" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="50310.0" y="51.0" z="99639.0" angle="0" name="Collins" hullID="5" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="49537.0" y="51.0" z="98247.0" angle="0" name="Canter" hullID="11" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="47062.0" y="51.0" z="97628.0" angle="0" name="Kerley" hullID="1" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="48000.0" y="51.0" z="99000.0" angle="0" name="Zola" hullID="5" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="50928.0" y="51.0" z="97938.0" angle="0" name="Gambit" hullID="11" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="45516.0" y="51.0" z="98247.0" angle="0" name="Gecko" hullID="11" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="48299.0" y="51.0" z="95927.0" angle="0" name="Gatsby" hullID="4" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="46444.0" y="51.0" z="98865.0" angle="0" name="Bridgerton" hullID="4" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="49073.0" y="51.0" z="96082.0" angle="0" name="Thunderfall" hullID="11" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="44743.0" y="51.0" z="99020.0" angle="0" name="Anvil" hullID="13" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="50000.0" y="51.0" z="85412.0" angle="0" name="Ghost" hullID="12" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="45516.0" y="51.0" z="94845.0" angle="0" name="Clifford" hullID="100" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="51702.0" y="51.0" z="96082.0" angle="0" name="Bernoulli" hullID="2" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="43660.0" y="51.0" z="96855.0" angle="0" name="Nabisco" hullID="7" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="47681.0" y="51.0" z="94845.0" angle="0" name="Takai" hullID="0" sideValue="1" fleetnumber="2" />
+    <incoming_comms_text from="Command HQ" type="ALERT STATION ENEMY FRIEND">All ships, destroy the pirate vessels!</incoming_comms_text>
+    <set_variable name="Denoument" value="5.0" integer="yes" />
+  </event>
+  <event name="Commencing Jump" id_arme="f9b5005a-2667-4c4e-9c41-125186b5f6d6" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
+    <if_variable name="Denoument" comparator="EQUALS" value="3.0" />
+    <if_timer_finished name="Jump" />
+    <warning_popup_message message="Commmencing Jump..." consoles="MHWESCOF" />
+    <destroy name="TSN Long Haul" />
+    <destroy name="O01" />
+    <destroy name="Falcon" />
+    <destroy name="Sharp" />
+    <destroy name="Last Rites" />
+    <destroy name="Vulgar Unicorn" />
+    <destroy name="Trinh" />
+    <destroy name="Trinh " />
+    <destroy name="Trinh  " />
+    <destroy name="TSN Long Haul" />
+    <set_object_property property="angle" value="3.142" player_slot="0" />
+    <set_object_property property="positionX" value="50000.0" player_slot="0" />
+    <set_object_property property="positionZ" value="99000.0" player_slot="0" />
+    <set_object_property property="positionY" value="0.0" player_slot="0" />
+    <set_object_property property="positionX" value="50600.0" player_slot="1" />
+    <set_object_property property="angle" value="3.142" player_slot="1" />
+    <set_object_property property="positionZ" value="99000.0" player_slot="1" />
+    <set_object_property property="positionY" value="0.0" player_slot="1" />
+    <set_object_property property="positionX" value="49400.0" player_slot="2" />
+    <set_object_property property="angle" value="3.142" player_slot="2" />
+    <set_object_property property="positionZ" value="99000.0" player_slot="2" />
+    <set_object_property property="positionY" value="3.142" player_slot="2" />
+    <set_object_property property="positionX" value="51200.0" player_slot="3" />
+    <set_object_property property="angle" value="0.0" player_slot="3" />
+    <set_object_property property="positionZ" value="99000.0" player_slot="3" />
+    <set_object_property property="positionY" value="0.0" player_slot="3" />
+    <set_object_property property="positionX" value="48800.0" player_slot="4" />
+    <set_object_property property="angle" value="3.142" player_slot="4" />
+    <set_object_property property="positionZ" value="99000.0" player_slot="4" />
+    <set_object_property property="positionY" value="0.0" player_slot="4" />
+    <set_object_property property="positionX" value="50000.0" player_slot="5" />
+    <set_object_property property="angle" value="3.142" player_slot="5" />
+    <set_object_property property="positionZ" value="98400.0" player_slot="5" />
+    <set_object_property property="positionY" value="0.0" player_slot="5" />
+    <set_object_property property="positionX" value="50600.0" player_slot="6" />
+    <set_object_property property="angle" value="3.142" player_slot="6" />
+    <set_object_property property="positionZ" value="98400.0" player_slot="6" />
+    <set_object_property property="positionY" value="0.0" player_slot="6" />
+    <set_object_property property="positionX" value="49400.0" player_slot="7" />
+    <set_object_property property="angle" value="3.142" player_slot="7" />
+    <set_object_property property="positionZ" value="98400.0" player_slot="7" />
+    <set_object_property property="positionY" value="0.0" player_slot="7" />
+    <destroy_near type="nebulas" radius="100000" centerX="50000.0" centerY="0.0" centerZ="50000.0" />
+    <destroy_near type="nebulas" radius="100000" centerX="75000.0" centerY="0.0" centerZ="75000.0" />
+    <destroy_near type="nebulas" radius="100000" centerX="75000.0" centerY="0.0" centerZ="25000.0" />
+    <destroy_near type="nebulas" radius="100000" centerX="25000.0" centerY="0.0" centerZ="75000.0" />
+    <destroy_near type="nebulas" radius="100000" centerX="25000.0" centerY="0.0" centerZ="25000.0" />
+    <destroy_near type="asteroids" radius="100000" centerX="50000.0" centerY="0.0" centerZ="50000.0" />
+    <destroy_near type="asteroids" radius="100000" centerX="75000.0" centerY="0.0" centerZ="75000.0" />
+    <destroy_near type="asteroids" radius="100000" centerX="75000.0" centerY="0.0" centerZ="25000.0" />
+    <destroy_near type="asteroids" radius="100000" centerX="25000.0" centerY="0.0" centerZ="75000.0" />
+    <destroy_near type="asteroids" radius="100000" centerX="25000.0" centerY="0.0" centerZ="25000.0" />
+    <destroy_near type="mines" radius="100000" centerX="50000.0" centerY="0.0" centerZ="50000.0" />
+    <destroy_near type="mines" radius="100000" centerX="75000.0" centerY="0.0" centerZ="75000.0" />
+    <destroy_near type="mines" radius="100000" centerX="75000.0" centerY="0.0" centerZ="25000.0" />
+    <destroy_near type="mines" radius="100000" centerX="25000.0" centerY="0.0" centerZ="75000.0" />
+    <destroy_near type="mines" radius="100000" centerX="25000.0" centerY="0.0" centerZ="25000.0" />
+    <destroy_near type="drones" radius="100000" centerX="50000.0" centerY="0.0" centerZ="50000.0" />
+    <destroy_near type="drones" radius="100000" centerX="75000.0" centerY="0.0" centerZ="75000.0" />
+    <destroy_near type="drones" radius="100000" centerX="75000.0" centerY="0.0" centerZ="25000.0" />
+    <destroy_near type="drones" radius="100000" centerX="25000.0" centerY="0.0" centerZ="75000.0" />
+    <destroy_near type="drones" radius="100000" centerX="25000.0" centerY="0.0" centerZ="25000.0" />
+    <destroy_near type="all" radius="50000" centerX="0.0" centerY="0.0" centerZ="0.0" />
+    <destroy_near type="all" radius="50000" centerX="50000.0" centerY="0.0" centerZ="0.0" />
+    <destroy_near type="all" radius="50000" centerX="100000.0" centerY="0.0" centerZ="0.0" />
+    <set_object_property property="warpState" value="0.0" player_slot="0" />
+    <set_object_property property="warpState" value="0.0" player_slot="1" />
+    <set_object_property property="warpState" value="0.0" player_slot="2" />
+    <set_object_property property="warpState" value="0.0" player_slot="3" />
+    <set_object_property property="warpState" value="0.0" player_slot="4" />
+    <set_object_property property="warpState" value="0.0" player_slot="5" />
+    <set_object_property property="warpState" value="0.0" player_slot="6" />
+    <set_object_property property="warpState" value="0.0" player_slot="7" />
+    <set_object_property property="throttle" value="0.0" player_slot="0" />
+    <set_object_property property="throttle" value="0.0" player_slot="1" />
+    <set_object_property property="throttle" value="0.0" player_slot="2" />
+    <set_object_property property="throttle" value="0.0" player_slot="3" />
+    <set_object_property property="throttle" value="0.0" player_slot="4" />
+    <set_object_property property="throttle" value="0.0" player_slot="5" />
+    <set_object_property property="throttle" value="0.0" player_slot="6" />
+    <set_object_property property="throttle" value="0.0" player_slot="7" />
+    <set_variable name="Denoument" value="4.0" integer="yes" />
+  </event>
+  <event name="Jump to Sector Pressed" id_arme="e1e5ace5-0318-4c79-92ff-5fa1c05c5daa" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
+    <if_variable name="Denoument" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="Initiate Jump" />
+    <warning_popup_message message="Initiating Sector Jump..." consoles="MHWESCOF" />
+    <incoming_comms_text from="Command HQ" type="SIDE STATUS ENEMY">To all vessels in the Eaton System:^^The USN now claims this sector as a protectorate.^^Any Pirate ships in Earth-controlled space will be destroyed on sight.</incoming_comms_text>
+    <set_timer name="Jump" seconds="7" />
+    <clear_comms_button text="Initiate Jump" />
+    <clear_comms_button text="End Game" />
+    <set_variable name="Denoument" value="3.0" integer="yes" />
+  </event>
+  <event name="USN Fleet Destroyed" id_arme="a13979dc-8a7b-474c-97ec-080e330bd0c0" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
+    <if_fleet_count comparator="EQUALS" value="0.0" sideValue="1" />
+    <if_variable name="Denoument" comparator="GREATER_EQUAL" value="6.0" />
     <if_variable name="End" comparator="EQUALS" value="0.0" />
-    <if_fleet_count comparator="LESS" value="17.0" sideValue="1" countSurrendered="1" />
-    <if_exists name="Hole in the Wall" />
-    <if_not_exists name="F" />
-    <if_not_exists name="H" />
-    <if_not_exists name="J" />
-    <if_not_exists name="C" />
-    <if_not_exists name="D" />
-    <if_not_exists name="M" />
-    <if_not_exists name="N" />
-    <if_not_exists name="P" />
-    <if_not_exists name="Q" />
-    <if_not_exists name="T" />
-    <if_not_exists name="U" />
-    <if_not_exists name="V" />
-    <if_not_exists name="X" />
-    <if_not_exists name="Y" />
-    <if_not_exists name="EE" />
-    <if_not_exists name="HH" />
-    <if_not_exists name="KK" />
-    <if_not_exists name="MM" />
-    <if_not_exists name="NN" />
-    <if_not_exists name="UU" />
-    <if_not_exists name="VV" />
-    <if_variable name="Explore" comparator="EQUALS" value="1.0" />
-    <if_variable name="CommsPlaced" comparator="GREATER_EQUAL" value="12.0" />
-    <if_variable name="SensorProgress" comparator="EQUALS" value="3.0" />
-    <if_variable name="TagTotal" comparator="EQUALS" value="17.0" />
-    <if_variable name="Alerted" comparator="NOT" value="3.0" />
+    <set_timer name="End" seconds="15" />
+    <warning_popup_message message="All enemies destroyed.  Title: Terrorist" consoles="MHWESCOF" />
+    <big_message title="Scorched Earth" subtitle1="You are now galactic outlaws." />
+    <incoming_comms_text from="Command HQ" type="SIDE STATUS ENEMY">We will hunt you down.</incoming_comms_text>
     <set_variable name="End" value="1.0" integer="yes" />
-    <set_timer name="End" seconds="15" />
-    <big_message title="Partial Success!" subtitle1="System explored and interference cleared.  Enemy engaged." subtitle2="Return to Base." />
-  </disabled_event>
-  <disabled_event name="Mission Partial Incomplete tagging" id_arme="e3ea3cbb-780d-4624-8584-63f1e0a8e620" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
-    <if_variable name="End" comparator="EQUALS" value="0.0" />
-    <if_fleet_count comparator="LESS" value="17.0" sideValue="1" countSurrendered="1" />
-    <if_exists name="Harulk" />
-    <if_exists name="Hole in the Wall" />
-    <if_exists name="Partib" />
-    <if_exists name="Andar" />
-    <if_exists name="Chrithon" />
-    <if_exists name="Shinhart" />
-    <if_exists name="Q'tim" />
-    <if_not_exists name="E" />
-    <if_not_exists name="F" />
-    <if_not_exists name="H" />
-    <if_not_exists name="G" />
-    <if_not_exists name="I" />
-    <if_not_exists name="J" />
-    <if_not_exists name="A" />
-    <if_not_exists name="B" />
-    <if_not_exists name="C" />
-    <if_not_exists name="D" />
-    <if_not_exists name="K" />
-    <if_not_exists name="L" />
-    <if_not_exists name="M" />
-    <if_not_exists name="N" />
-    <if_not_exists name="O" />
-    <if_not_exists name="P" />
-    <if_not_exists name="Q" />
-    <if_not_exists name="R" />
-    <if_not_exists name="S" />
-    <if_not_exists name="T" />
-    <if_not_exists name="U" />
-    <if_not_exists name="V" />
-    <if_not_exists name="W" />
-    <if_not_exists name="X" />
-    <if_not_exists name="Y" />
-    <if_not_exists name="Z" />
-    <if_not_exists name="BB" />
-    <if_not_exists name="AA" />
-    <if_not_exists name="CC" />
-    <if_not_exists name="DD" />
-    <if_not_exists name="EE" />
-    <if_not_exists name="FF" />
-    <if_not_exists name="GG" />
-    <if_not_exists name="HH" />
-    <if_not_exists name="JJ" />
-    <if_not_exists name="KK" />
-    <if_not_exists name="LL" />
-    <if_not_exists name="MM" />
-    <if_not_exists name="NN" />
-    <if_not_exists name="OO" />
-    <if_not_exists name="QQ" />
-    <if_not_exists name="RR" />
-    <if_not_exists name="TT" />
-    <if_not_exists name="UU" />
-    <if_not_exists name="VV" />
-    <if_variable name="Explore" comparator="EQUALS" value="1.0" />
-    <if_variable name="CommsPlaced" comparator="GREATER_EQUAL" value="12.0" />
-    <if_variable name="SensorProgress" comparator="EQUALS" value="3.0" />
-    <if_variable name="TagTotal" comparator="NOT" value="17.0" />
-    <set_variable name="End" value="1.0" integer="yes" />
-    <set_timer name="End" seconds="15" />
-    <big_message title="Partial Success!" subtitle1="System explored and interference cleared.  Tagging incomplete and enemy engaged." subtitle2="Return to Base." />
-  </disabled_event>
-  <disabled_event name="Mission Failed Base and Enemies Destroyed" id_arme="6f88b3ef-7169-4a3f-8c14-2b2c0450dc1c" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
-    <if_variable name="End" comparator="EQUALS" value="0.0" />
-    <if_fleet_count comparator="LESS" value="17.0" sideValue="1" countSurrendered="1" />
-    <if_variable name="System Build" comparator="GREATER_EQUAL" value="8.0" />
-    <if_variable name="Alerted" comparator="EQUALS" value="3.0" />
-    <set_variable name="End" value="1.0" integer="yes" />
-    <set_timer name="End" seconds="15" />
-    <big_message title="Mission Abort!" subtitle1="Station destroyed.  Enemy forces on high alert." subtitle2="Return to Base." />
-  </disabled_event>
-  <disabled_event name="Mission Failed Players Destroyed" id_arme="4148eb51-cc28-4d96-bc1c-293e9191f5d0" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
-    <if_variable name="End" comparator="EQUALS" value="0.0" />
+  </event>
+  <event name="All Players Destroyed" id_arme="adfd6d42-bcda-4369-a9c3-d3297fbc4e08" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
     <if_not_exists player_slot="0" />
     <if_not_exists player_slot="1" />
     <if_not_exists player_slot="2" />
@@ -6670,14 +7085,27 @@
     <if_not_exists player_slot="5" />
     <if_not_exists player_slot="6" />
     <if_not_exists player_slot="7" />
-    <if_variable name="System Build" comparator="GREATER_EQUAL" value="8.0" />
+    <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
+    <if_variable name="End" comparator="EQUALS" value="0.0" />
+    <set_timer name="End" seconds="8" />
+    <warning_popup_message message="All players destroyed" consoles="MHWESCOF" />
     <set_variable name="End" value="1.0" integer="yes" />
+  </event>
+  <event name="End Pressed" id_arme="1ef31cd1-fb35-4559-b347-aaf25f3f196a" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
+    <if_variable name="End" comparator="EQUALS" value="0.0" />
+    <if_variable name="Denoument" comparator="EQUALS" value="2.0" />
+    <if_comms_button text="End Game" />
+    <clear_comms_button text="Initiate Jump" />
     <set_timer name="End" seconds="15" />
-    <big_message title="Mission Failed!" subtitle1="All player ships destroyed." />
-  </disabled_event>
-  <disabled_event name="End Mission" id_arme="f24706d5-49cf-45ac-a4cf-7f3db724e5a4" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
+    <warning_popup_message message="All ships destroyed." consoles="MHWESCOF" />
+    <big_message title="Mission Complete" subtitle1="All Enemies Eliminated" subtitle2="...but can you ever return home?" />
+    <incoming_comms_text from="Command HQ" type="SIDE STATUS ENEMY">To all Pirate vessels in the Eaton system:^^The USN has now claimed this sector as a protectorate.^^If you enter or are found in Earth-controlled space again, you will be destroyed on sight.</incoming_comms_text>
+    <clear_comms_button text="End Game" />
+    <set_variable name="End" value="1.0" integer="yes" />
+  </event>
+  <event name="End Mission" id_arme="f24706d5-49cf-45ac-a4cf-7f3db724e5a4" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
     <if_variable name="End" comparator="EQUALS" value="1.0" />
     <if_timer_finished name="End" />
     <end_mission />
-  </disabled_event>
+  </event>
 </mission_data>
