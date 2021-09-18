@@ -1,0 +1,1437 @@
+<mission_data version="2.7.5" background_id_arme="6058b81a-2075-4255-a7ef-f7718c8febb7" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <mission_description>The system has been targeted for conquest...and the enemy will never stop.^Features endless waves and variable upgrade options.^Multi-ship compatible; ship, name, &amp; level selectable.^By Neal Schlein, for Artemis 2.7.5 (version 1.3)</mission_description>
+  <start id_arme="6058b81a-2075-4255-a7ef-f7718c8febb7">
+    <create type="player" x="50000" y="0" z="50000" />
+    <create type="station" x="34010.0" y="0" z="64019.0" name="DS 3" hullID="1000" />
+    <set_skybox_index index="10" />
+    <set_object_property property="nebulaIsOpaque" value="0" />
+    <!--<set_object_property property="sensorSetting" value="0" />-->
+    <set_object_property property="nonPlayerSpeed" value="100" />
+    <set_object_property property="nonPlayerShield" value="100" />
+    <set_object_property property="nonPlayerWeapon" value="100" />
+    <set_object_property property="playerWeapon" value="100" />
+    <set_object_property property="playerShields" value="100" />
+    <set_variable name="Upgrades" value="7.0" integer="yes" />
+    <big_message title="Endless War" subtitle1="Neal Schlein" subtitle2="adventure for Artemis 2.7.5" />
+    <set_timer name="Start Round" seconds="10" />
+    <set_timer name="Evac1" seconds="10" />
+    <set_timer name="Paz" seconds="180" />
+    <set_variable name="EvacTarget" value="1.0" integer="yes" />
+    <set_variable name="PazTarget" value="1.0" integer="yes" />
+    <set_variable name="Spawn" value="1.0" integer="yes" />
+    <set_variable name="Unload" value="20.0" integer="yes" />
+    <set_variable name="Load" value="15.0" integer="yes" />
+    <set_variable name="Locate" value="0.0" integer="yes" />
+  </start>
+  <folder_arme name="GM Testing Buttons and Mission Message" id_arme="3faf7b37-4569-469a-ba7a-5661984730a6" />
+  <event name="Level 1 Pressed" id_arme="a006a215-bf95-4809-822c-df26001907e8" parent_id_arme="3faf7b37-4569-469a-ba7a-5661984730a6">
+    <if_gm_button text="Game Level/Level 1" />
+    <set_difficulty_level value="1" />
+    <warning_popup_message message="Difficulty Reset: 1" consoles="MHWESCOF" />
+    <set_gm_button text="Game Level/Level 1" />
+  </event>
+  <event name="Level 2 Pressed" id_arme="9900be45-497d-4075-be75-38687990f0ea" parent_id_arme="3faf7b37-4569-469a-ba7a-5661984730a6">
+    <if_gm_button text="Game Level/Level 2" />
+    <warning_popup_message message="Difficulty Reset: 2" consoles="MHWESCOF" />
+    <set_difficulty_level value="2" />
+    <set_gm_button text="Game Level/Level 2" />
+  </event>
+  <event name="Level 3 Pressed" id_arme="41578efa-279d-4a43-a7aa-19e7db77539d" parent_id_arme="3faf7b37-4569-469a-ba7a-5661984730a6">
+    <if_gm_button text="Game Level/Level 3" />
+    <warning_popup_message message="Difficulty Reset: 3" consoles="MHWESCOF" />
+    <set_difficulty_level value="3" />
+    <set_gm_button text="Game Level/Level 3" />
+  </event>
+  <event name="Level 4 Pressed" id_arme="96bdec3e-6429-4578-a13d-3edce288f5a0" parent_id_arme="3faf7b37-4569-469a-ba7a-5661984730a6">
+    <if_gm_button text="Game Level/Level 4" />
+    <warning_popup_message message="Difficulty Reset: 4" consoles="MHWESCOF" />
+    <set_difficulty_level value="4" />
+    <set_gm_button text="Game Level/Level 4" />
+  </event>
+  <event name="Level 5 Pressed" id_arme="630557d8-1759-4253-8302-b4d65a69ed29" parent_id_arme="3faf7b37-4569-469a-ba7a-5661984730a6">
+    <if_gm_button text="Game Level/Level 5" />
+    <warning_popup_message message="Difficulty Reset: 5" consoles="MHWESCOF" />
+    <set_difficulty_level value="5" />
+    <set_gm_button text="Game Level/Level 5" />
+  </event>
+  <event name="Level 6 Pressed" id_arme="f3de6012-8eb7-4edf-9c78-968a213c6603" parent_id_arme="3faf7b37-4569-469a-ba7a-5661984730a6">
+    <if_gm_button text="Game Level/Level 6" />
+    <warning_popup_message message="Difficulty Reset: 6" consoles="MHWESCOF" />
+    <set_difficulty_level value="6" />
+    <set_gm_button text="Game Level/Level 6" />
+  </event>
+  <event name="Level 7 Pressed" id_arme="ce528a35-ba63-4de3-9083-72e47d7bcd0a" parent_id_arme="3faf7b37-4569-469a-ba7a-5661984730a6">
+    <if_gm_button text="Game Level/Level 7" />
+    <warning_popup_message message="Difficulty Reset: 7" consoles="MHWESCOF" />
+    <set_difficulty_level value="7" />
+    <set_gm_button text="Game Level/Level 7" />
+  </event>
+  <event name="Level 8 Pressed" id_arme="f026fc96-7e0e-47cd-b6bf-1abba03fb1ff" parent_id_arme="3faf7b37-4569-469a-ba7a-5661984730a6">
+    <if_gm_button text="Game Level/Level 8" />
+    <warning_popup_message message="Difficulty Reset: 8" consoles="MHWESCOF" />
+    <set_difficulty_level value="8" />
+    <set_gm_button text="Game Level/Level 8" />
+  </event>
+  <event name="Level 9 Pressed" id_arme="d834b7ec-3004-465c-a685-bf364b7ff494" parent_id_arme="3faf7b37-4569-469a-ba7a-5661984730a6">
+    <if_gm_button text="Game Level/Level 9" />
+    <warning_popup_message message="Difficulty Reset: 9" consoles="MHWESCOF" />
+    <set_difficulty_level value="9" />
+    <set_gm_button text="Game Level/Level 9" />
+  </event>
+  <event name="Level 10 Pressed" id_arme="22534d57-712c-480c-8df1-c3558e86fd38" parent_id_arme="3faf7b37-4569-469a-ba7a-5661984730a6">
+    <if_gm_button text="Game Level/Level 10" />
+    <warning_popup_message message="Difficulty Reset: 10" consoles="MHWESCOF" />
+    <set_difficulty_level value="10" />
+    <set_gm_button text="Game Level/Level 10" />
+  </event>
+  <event name="Level 11 Pressed" id_arme="8cff26d3-3c43-4000-a7ab-ed2371b99b97" parent_id_arme="3faf7b37-4569-469a-ba7a-5661984730a6">
+    <if_gm_button text="Game Level/Level 11" />
+    <warning_popup_message message="Difficulty Reset: 11" consoles="MHWESCOF" />
+    <set_gm_button text="Game Level/Level 11" />
+    <set_difficulty_level value="11" />
+  </event>
+  <event name="UnBlock Pressed" id_arme="5f10c034-19ab-4b9d-9d94-dca4ccd5318c" parent_id_arme="3faf7b37-4569-469a-ba7a-5661984730a6">
+    <if_gm_button text="Nebula/Unblock" />
+    <warning_popup_message message="Sensors Unblocked" consoles="SCO" />
+    <set_object_property property="nebulaIsOpaque" value="0" />
+    <set_gm_button text="Nebula/Unblock" />
+  </event>
+  <event name="Nebulas Block Pressed" id_arme="9ed42097-dc18-4fa1-b8fa-17df939187c9" parent_id_arme="3faf7b37-4569-469a-ba7a-5661984730a6">
+    <if_gm_button text="Nebula/Block" />
+    <warning_popup_message message="Nebulae Blocking Sensors" consoles="SCO" />
+    <set_object_property property="nebulaIsOpaque" value="1" />
+    <set_gm_button text="Nebula/Block" />
+  </event>
+  <event name="Jump Round Reset" id_arme="0d180dba-334f-4530-8b14-c3f2e86793b1" parent_id_arme="3faf7b37-4569-469a-ba7a-5661984730a6">
+    <if_variable name="GM" comparator="EQUALS" value="5.0" />
+    <set_gm_button text="Increase Round +5" />
+    <set_variable name="GM" value="1.0" integer="yes" />
+  </event>
+  <event name="Jump Round Clear" id_arme="e98dae4a-2da7-40c1-adb6-6216545f0317" parent_id_arme="3faf7b37-4569-469a-ba7a-5661984730a6">
+    <if_variable name="GM" comparator="EQUALS" value="4.0" />
+    <set_variable name="GM" value="5.0" integer="yes" />
+  </event>
+  <event name="Jump Round Pressed" id_arme="76478b42-5389-4973-a599-79db265c85f7" parent_id_arme="3faf7b37-4569-469a-ba7a-5661984730a6">
+    <if_gm_button text="Increase Round +5" />
+    <if_variable name="GM" comparator="EQUALS" value="1.0" />
+    <set_variable name="Round" value="Round+5" integer="yes" />
+    <set_variable name="GM" value="4.0" integer="yes" />
+  </event>
+  <event name="Destroy Pressed" id_arme="247106f8-91b9-47a8-bfe4-8321c0c4fb93" parent_id_arme="3faf7b37-4569-469a-ba7a-5661984730a6">
+    <if_gm_button text="Destroy enemy" />
+    <destroy use_gm_selection="" />
+    <set_gm_button text="Destroy enemy" x="300" y="500" h="30" w="150" />
+  </event>
+  <event name="Message and GM Buttons Created" id_arme="2613da6e-5ce6-422a-925c-d525c6d4f95b" parent_id_arme="3faf7b37-4569-469a-ba7a-5661984730a6">
+    <if_timer_finished name="Start Round" />
+    <if_variable name="GM" comparator="EQUALS" value="0.0" />
+    <incoming_comms_text from="Command" type="ALERT STATION">Priority Alert!^This system has been targeted by enemy forces as a "must-take" objective.  This is being backed with a full committment of their combined fleets, and a new attack which is destabilizing local space.^^Evacuation procedures are underway; at present, you are the sole ship available for defensive operations.  ^^This is a suicide assignment.  Your goal is to defend the station and hold back enemy forces for as long as possible.  Expect ever-increasing levels of enemy intrusion.  ^^Command will be able to provide you with some support beween each enemy wave.  Choose wisely.^^Good luck.  The poets will write of you.</incoming_comms_text>
+    <set_gm_button text="Destroy enemy" x="100" y="100" h="30" w="150" />
+    <set_gm_button text="Increase Round +5" />
+    <set_gm_button text="Nebula/Block" />
+    <set_gm_button text="Nebula/Unblock" />
+    <set_gm_button text="Game Level/Level 1" />
+    <set_gm_button text="Game Level/Level 2" />
+    <set_gm_button text="Game Level/Level 3" />
+    <set_gm_button text="Game Level/Level 4" />
+    <set_gm_button text="Game Level/Level 5" />
+    <set_gm_button text="Game Level/Level 6" />
+    <set_gm_button text="Game Level/Level 7" />
+    <set_gm_button text="Game Level/Level 8" />
+    <set_gm_button text="Game Level/Level 9" />
+    <set_gm_button text="Game Level/Level 10" />
+    <set_gm_button text="Game Level/Level 11" />
+    <set_variable name="GM" value="1.0" integer="yes" />
+  </event>
+  <event name="Select Spawn Type Too small" id_arme="603cbc35-d5ed-4ac6-a2bb-d969d700992d">
+    <if_timer_finished name="Start Round" />
+    <if_variable name="Spawn" comparator="GREATER" value="0.0" />
+    <if_variable name="Type" comparator="GREATER" value="Spawn" />
+    <set_variable name="Type" randomIntLow="1" randomIntHigh="Spawn" integer="yes" />
+  </event>
+  <event name="Select Spawn Type" id_arme="ef22ca0e-8253-4487-9433-54bf7d2b0fed">
+    <if_timer_finished name="Start Round" />
+    <if_variable name="Spawn" comparator="GREATER" value="0.0" />
+    <if_variable name="Type" comparator="EQUALS" value="0.0" />
+    <set_variable name="Type" randomIntLow="1" randomIntHigh="5" integer="yes" />
+  </event>
+  <event name="Spawn Five Enemy Fleet" id_arme="6f93d5eb-4208-411f-ad4e-00d15dc8337c">
+    <if_timer_finished name="Start Round" />
+    <if_variable name="Spawn" comparator="GREATER_EQUAL" value="5.0" />
+    <if_variable name="Type" comparator="EQUALS" value="5.0" />
+    <set_variable name="TempZ" randomIntLow="1000" randomIntHigh="45000" integer="yes" />
+    <set_variable name="Base" randomIntLow="1" randomIntHigh="10" integer="yes" />
+    <set_variable name="TempX" randomIntLow="100" randomIntHigh="999" integer="yes" />
+    <set_variable name="SpawnA" value="Spawn" integer="yes" />
+    <set_variable name="SpawnB" value="Spawn-1" integer="yes" />
+    <set_variable name="SpawnC" value="Spawn-2" integer="yes" />
+    <set_variable name="SpawnD" value="Spawn-3" integer="yes" />
+    <set_variable name="SpawnE" value="Spawn-4" integer="yes" />
+    <create count="3" type="nebulas" nebType="1" startX="Base*Base*TempX" startY="0.0" startZ="TempZ" endX="Base*Base*TempX-1000" endZ="TempZ-1000" randomRange="1000" randomSeed="6" />
+    <create type="enemy" x="Base*Base*TempX" y="0.0" z="TempZ" name="Intruder |SpawnA|" raceKeys="standard support hasspecials" hullKeys="Battleship Dreadnought Carrier Cruiser Fighter Goliath Leviathan Behemoth Defiler Enforcer Executor warship" fleetnumber="Spawn" />
+    <create type="enemy" x="Base*Base*TempX+700" y="0.0" z="TempZ+700" name="Intruder |SpawnB|" raceKeys="standard support hasspecials" hullKeys="Battleship Dreadnought Carrier Cruiser Fighter Goliath Leviathan Behemoth Defiler Enforcer Executor" fleetnumber="Spawn" />
+    <create type="enemy" x="Base*Base*TempX+700" y="0.0" z="TempZ-700" name="Intruder |SpawnC|" raceKeys="standard support hasspecials" hullKeys="Battleship Dreadnought Carrier Cruiser Fighter Goliath Leviathan Behemoth Defiler Enforcer Executor warship" fleetnumber="Spawn" />
+    <create type="enemy" x="Base*Base*TempX-700" y="0.0" z="TempZ+700" name="Intruder |SpawnD|" raceKeys="standard support hasspecials" hullKeys="Battleship Dreadnought Carrier Cruiser Fighter Goliath Leviathan Behemoth Defiler Enforcer Executor" fleetnumber="Spawn" />
+    <create type="enemy" x="Base*Base*TempX-700" y="0.0" z="TempZ-700" name="Intruder |SpawnE|" raceKeys="standard support hasspecials" hullKeys="Battleship Dreadnought Carrier Cruiser Goliath Leviathan Behemoth Defiler Enforcer Executor" fleetnumber="Spawn" />
+    <set_variable name="Spawn" value="Spawn-5" integer="yes" />
+  </event>
+  <event name="Spawn Four Enemy Fleet" id_arme="96fdf3a9-eb8a-4fa0-ba76-b41443b6c08b">
+    <if_timer_finished name="Start Round" />
+    <if_variable name="Spawn" comparator="GREATER_EQUAL" value="4.0" />
+    <if_variable name="Type" comparator="EQUALS" value="4.0" />
+    <set_variable name="TempZ" randomIntLow="1000" randomIntHigh="45000" integer="yes" />
+    <set_variable name="Base" randomIntLow="1" randomIntHigh="10" integer="yes" />
+    <set_variable name="TempX" randomIntLow="100" randomIntHigh="999" integer="yes" />
+    <set_variable name="SpawnA" value="Spawn" integer="yes" />
+    <set_variable name="SpawnB" value="Spawn-1" integer="yes" />
+    <set_variable name="SpawnC" value="Spawn-2" integer="yes" />
+    <set_variable name="SpawnD" value="Spawn-3" integer="yes" />
+    <!--<create type="nebulas" startY="0.0" startZ="TempZ" nebType="2" raceKeys="enemy" hullKeys="warship" fleetnumber="Spawn" name="Intruder |SpawnA|" count="3" startX="TempX" randomRange="1000" randomSeed="6" endX="TempX-1000" endZ="TempZ-1000" />-->
+    <create type="enemy" x="Base*Base*TempX" y="0.0" z="TempZ" name="Intruder |SpawnA|" raceKeys="standard support hasspecials" hullKeys="Battleship Dreadnought Carrier Cruiser Fighter Goliath Leviathan Behemoth Defiler Enforcer Executor warship" fleetnumber="Spawn" />
+    <create type="enemy" x="Base*Base*TempX+700" y="0.0" z="TempZ+700" name="Intruder |SpawnB|" raceKeys="standard support hasspecials" hullKeys="Battleship Dreadnought Carrier Cruiser Fighter Goliath Leviathan Behemoth Defiler Enforcer Executor" fleetnumber="Spawn" />
+    <create type="enemy" x="Base*Base*TempX+700" y="0.0" z="TempZ-700" name="Intruder |SpawnC|" raceKeys="standard support hasspecials" hullKeys="Battleship Dreadnought Carrier Cruiser Fighter Goliath Leviathan Behemoth Defiler Enforcer Executor warship" fleetnumber="Spawn" />
+    <create type="enemy" x="Base*Base*TempX-700" y="0.0" z="TempZ+700" name="Intruder |SpawnD|" raceKeys="standard support hasspecials" hullKeys="Battleship Dreadnought Carrier Cruiser Fighter Goliath Leviathan Behemoth Defiler Enforcer Executor" fleetnumber="Spawn" />
+    <set_variable name="Spawn" value="Spawn-4" integer="yes" />
+  </event>
+  <event name="Spawn Three Enemy Fleet" id_arme="7db9e47f-950d-49d7-8027-7424aa5df882">
+    <if_timer_finished name="Start Round" />
+    <if_variable name="Spawn" comparator="GREATER_EQUAL" value="3.0" />
+    <if_variable name="Type" comparator="EQUALS" value="3.0" />
+    <set_variable name="TempZ" randomIntLow="1000" randomIntHigh="45000" integer="yes" />
+    <set_variable name="Base" randomIntLow="1" randomIntHigh="10" integer="yes" />
+    <set_variable name="TempX" randomIntLow="100" randomIntHigh="999" integer="yes" />
+    <set_variable name="SpawnA" value="Spawn" integer="yes" />
+    <set_variable name="SpawnB" value="Spawn-1" integer="yes" />
+    <set_variable name="SpawnC" value="Spawn-2" integer="yes" />
+    <!--<create type="nebulas" startY="0.0" startZ="TempZ" nebType="3" raceKeys="enemy" hullKeys="warship" fleetnumber="Spawn" name="Intruder |SpawnA|" count="3" startX="TempX" randomRange="1000" randomSeed="6" endX="TempX-1000" endZ="TempZ-1000" />-->
+    <create type="enemy" x="Base*Base*TempX" y="0.0" z="TempZ" name="Intruder |SpawnA|" raceKeys="standard support hasspecials" hullKeys="Battleship Dreadnought Carrier Cruiser Fighter Goliath Leviathan Behemoth Defiler Enforcer Executor warship" fleetnumber="Spawn" />
+    <create type="enemy" x="Base*Base*TempX+700" y="0.0" z="TempZ+700" name="Intruder |SpawnB|" raceKeys="standard support hasspecials" hullKeys="Battleship Dreadnought Carrier Cruiser Fighter Goliath Leviathan Behemoth Defiler Enforcer Executor" fleetnumber="Spawn" />
+    <create type="enemy" x="Base*Base*TempX+700" y="0.0" z="TempZ-700" name="Intruder |SpawnC|" raceKeys="standard support hasspecials" hullKeys="Battleship Dreadnought Carrier Cruiser Fighter Goliath Leviathan Behemoth Defiler Enforcer Executor warship" fleetnumber="Spawn" />
+    <set_variable name="Spawn" value="Spawn-3" integer="yes" />
+  </event>
+  <event name="Spawn Two Enemy Fleet" id_arme="d2f18be5-0c1a-4f87-83c4-027ed8d3e183">
+    <if_timer_finished name="Start Round" />
+    <if_variable name="Spawn" comparator="GREATER_EQUAL" value="2.0" />
+    <if_variable name="Type" comparator="EQUALS" value="2.0" />
+    <set_variable name="TempZ" randomIntLow="1000" randomIntHigh="45000" integer="yes" />
+    <set_variable name="Base" randomIntLow="1" randomIntHigh="10" integer="yes" />
+    <set_variable name="TempX" randomIntLow="100" randomIntHigh="9999" integer="yes" />
+    <set_variable name="SpawnA" value="Spawn" integer="yes" />
+    <set_variable name="SpawnB" value="Spawn-1" integer="yes" />
+    <create type="enemy" x="Base*Base*TempX" y="0.0" z="TempZ" name="Intruder |SpawnA|" raceKeys="standard support hasspecials" hullKeys="Battleship Dreadnought Carrier Cruiser Fighter Goliath Leviathan Behemoth Defiler Enforcer Executor warship" fleetnumber="Spawn" />
+    <create type="enemy" x="Base*Base*TempX+700" y="0.0" z="TempZ+700" name="Intruder |SpawnB|" raceKeys="standard support hasspecials" hullKeys="Battleship Dreadnought Carrier Cruiser Fighter Goliath Leviathan Behemoth Defiler Enforcer Executor" fleetnumber="Spawn" />
+    <!--<create type="nebulas" startY="0.0" startZ="TempZ" nebType="2" raceKeys="enemy" hullKeys="warship" fleetnumber="Spawn" name="Intruder |SpawnA|" count="3" startX="TempX" randomRange="1000" randomSeed="6" endX="TempX-1000" endZ="TempZ-1000" />-->
+    <set_variable name="Spawn" value="Spawn-2" integer="yes" />
+  </event>
+  <event name="Spawn Single Enemy Fleet" id_arme="f3b162a3-1002-45b1-837c-125ef25e0abe">
+    <if_timer_finished name="Start Round" />
+    <if_variable name="Spawn" comparator="GREATER_EQUAL" value="1.0" />
+    <if_variable name="Type" comparator="EQUALS" value="1.0" />
+    <set_variable name="Base" randomIntLow="1" randomIntHigh="10" integer="yes" />
+    <set_variable name="TempX" randomIntLow="100" randomIntHigh="9990" integer="yes" />
+    <set_variable name="TempZ" randomIntLow="1000" randomIntHigh="45000" integer="yes" />
+    <set_variable name="SpawnA" value="Spawn" integer="yes" />
+    <create type="enemy" x="Base*TempX" y="0.0" z="TempZ" name="Intruder |SpawnA|" raceKeys="standard support hasspecials" hullKeys="Battleship Dreadnought Carrier Cruiser Fighter Goliath Leviathan Behemoth Defiler Enforcer Executor warship" fleetnumber="Spawn" />
+    <!--<create type="nebulas" startY="0.0" startZ="TempZ" nebType="1" raceKeys="enemy" hullKeys="warship" fleetnumber="Spawn" name="Intruder |SpawnA|" count="3" startX="TempX" randomRange="1000" randomSeed="6" endX="TempX-1000" endZ="TempZ-1000" />-->
+    <set_variable name="Spawn" value="Spawn-1" integer="yes" />
+  </event>
+  <event name="Brainstack Enemy Ships" id_arme="e6091a51-a56e-4216-8b68-ca2a6ce848d6">
+    <if_fleet_count comparator="GREATER" value="0.0" sideValue="1" />
+    <if_timer_finished name="Start Round" />
+    <if_variable name="Type" comparator="NOT" value="0.0" />
+    <add_ai type="CHASE_OTHER_MONSTERS" value1="5000" name="Intruder |SpawnA|" />
+    <add_ai type="CHASE_OTHER_MONSTERS" value1="5000" name="Intruder |SpawnB|" />
+    <add_ai type="CHASE_OTHER_MONSTERS" value1="5000" name="Intruder |SpawnC|" />
+    <add_ai type="CHASE_OTHER_MONSTERS" value1="5000" name="Intruder |SpawnD|" />
+    <add_ai type="CHASE_OTHER_MONSTERS" value1="5000" name="Intruder |SpawnE|" />
+    <set_variable name="SpawnA" value="0.0" integer="yes" />
+    <set_variable name="SpawnB" value="0.0" integer="yes" />
+    <set_variable name="SpawnC" value="0.0" integer="yes" />
+    <set_variable name="SpawnD" value="0.0" integer="yes" />
+    <set_variable name="SpawnE" value="0.0" integer="yes" />
+    <set_variable name="Type" value="0.0" integer="yes" />
+  </event>
+  <event name="Enemies Defeated" id_arme="ebd7cb4e-62b1-4772-a19a-68cd67f1ebd4">
+    <if_timer_finished name="Start Round" />
+    <if_fleet_count comparator="EQUALS" value="0.0" sideValue="1" />
+    <if_variable name="Spawn" comparator="LESS_EQUAL" value="0.0" />
+    <if_variable name="Type" comparator="EQUALS" value="0.0" />
+    <set_timer name="Start Round" seconds="15" />
+    <set_variable name="Round" value="Round+1" integer="yes" />
+    <log text="Round |Round| Complete, all enemies destroyed." />
+    <warning_popup_message message="Wave |Round| Complete." consoles="MHWESCOF" />
+    <warning_popup_message message="Select Upgrade" consoles="C" />
+    <incoming_comms_text from="Command" type="SIDE STATUS STATION">Select Upgrade</incoming_comms_text>
+    <set_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <set_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <set_variable name="Boost" value="2.0" integer="yes" />
+    <set_variable name="BoostSelect" randomIntLow="1" randomIntHigh="Upgrades" integer="yes" />
+    <set_variable name="Feature" randomIntLow="1" randomIntHigh="100" integer="yes" />
+    <set_variable name="Sector" value="1.0" integer="yes" />
+    <!--Adjust value of next variable to change the number of enemies appearing in each round.-->
+    <set_variable name="Spawn" value="Round*2" integer="yes" />
+  </event>
+  <folder_arme name="Random Sector Event" id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6" />
+  <event name="Whale" id_arme="f33e3779-9eef-4194-9c6f-7ea1e009dffb" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_timer_finished name="RandomEffect" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Feature" comparator="GREATER" value="0.0" />
+    <if_variable name="Feature" comparator="LESS_EQUAL" value="5.0" />
+    <create type="monster" monsterType="1" x="RandomX" y="0.0" z="RandomZ" />
+    <create type="monster" monsterType="1" x="RandomX+500" y="0.0" z="RandomZ+500" />
+    <create type="monster" monsterType="1" x="RandomX+1000" y="0.0" z="RandomZ+1000" />
+    <set_variable name="RandomX" value="0.0" integer="yes" />
+    <set_variable name="RandomZ" value="0.0" integer="yes" />
+    <set_variable name="Feature" value="0.0" integer="yes" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+  </event>
+  <event name="Shark" id_arme="a72dc802-2aca-4257-b575-732426614d72" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_timer_finished name="RandomEffect" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Feature" comparator="GREATER" value="5.0" />
+    <if_variable name="Feature" comparator="LESS_EQUAL" value="9.0" />
+    <create type="monster" monsterType="2" x="RandomX" y="0.0" z="RandomZ" />
+    <set_variable name="RandomX" value="0.0" integer="yes" />
+    <set_variable name="RandomZ" value="0.0" integer="yes" />
+    <set_variable name="Feature" value="0.0" integer="yes" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+  </event>
+  <event name="Dragon" id_arme="702a0c80-835e-4078-aab3-eba203249341" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_timer_finished name="RandomEffect" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Feature" comparator="GREATER" value="9.0" />
+    <if_variable name="Feature" comparator="LESS_EQUAL" value="14.0" />
+    <create type="monster" monsterType="3" x="RandomX" y="0.0" z="RandomZ" />
+    <set_variable name="RandomX" value="0.0" integer="yes" />
+    <set_variable name="RandomZ" value="0.0" integer="yes" />
+    <set_variable name="Feature" value="0.0" integer="yes" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+  </event>
+  <event name="NSect" id_arme="4e4825b1-dd0b-4ae2-8588-9d3f670f0799" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_timer_finished name="RandomEffect" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Feature" comparator="GREATER" value="14.0" />
+    <if_variable name="Feature" comparator="LESS_EQUAL" value="16.0" />
+    <create type="monster" monsterType="6" x="RandomX" y="0.0" z="RandomZ" />
+    <set_variable name="RandomX" value="0.0" integer="yes" />
+    <set_variable name="RandomZ" value="0.0" integer="yes" />
+    <set_variable name="Feature" value="0.0" integer="yes" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+  </event>
+  <event name="Charybdis" id_arme="baba30d3-9a05-449f-8e3d-c0a20ce5373e" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_timer_finished name="RandomEffect" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Feature" comparator="GREATER" value="16.0" />
+    <if_variable name="Feature" comparator="LESS_EQUAL" value="18.0" />
+    <create type="monster" monsterType="5" x="RandomX" y="0.0" z="RandomZ" />
+    <set_variable name="RandomX" value="0.0" integer="yes" />
+    <set_variable name="RandomZ" value="0.0" integer="yes" />
+    <set_variable name="Feature" value="0.0" integer="yes" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+  </event>
+  <event name="Typhon" id_arme="c0e8084f-057a-4909-9f63-2345865973c4" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_timer_finished name="RandomEffect" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Feature" comparator="GREATER" value="18.0" />
+    <if_variable name="Feature" comparator="LESS_EQUAL" value="20.0" />
+    <create type="monster" monsterType="0" x="RandomX" y="0.0" z="RandomZ" />
+    <set_variable name="RandomX" value="0.0" integer="yes" />
+    <set_variable name="RandomZ" value="0.0" integer="yes" />
+    <set_variable name="Feature" value="0.0" integer="yes" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+  </event>
+  <event name="Nebula" id_arme="10c8bceb-f122-4f1f-8ea1-520a99866cd4" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_timer_finished name="RandomEffect" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Feature" comparator="GREATER" value="21.0" />
+    <if_variable name="Feature" comparator="LESS_EQUAL" value="30.0" />
+    <create count="10" type="nebulas" nebType="2" startX="RandomX" startY="0.0" startZ="RandomZ" radius="5000" randomRange="2000" randomSeed="Seed" />
+    <set_variable name="Seed" value="Seed+1" integer="yes" />
+    <create count="3" type="nebulas" nebType="3" startX="RandomX" startY="0.0" startZ="RandomZ" radius="1000" randomRange="2000" randomSeed="Seed" />
+    <set_variable name="RandomX" value="0.0" integer="yes" />
+    <set_variable name="RandomZ" value="0.0" integer="yes" />
+    <set_variable name="Feature" value="0.0" integer="yes" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+  </event>
+  <event name="Mines" id_arme="310b7713-b42a-4064-a643-32f60c674525" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_timer_finished name="RandomEffect" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Feature" comparator="GREATER" value="31.0" />
+    <if_variable name="Feature" comparator="LESS_EQUAL" value="40.0" />
+    <create count="10" type="mines" startX="RandomX" startY="0.0" startZ="RandomZ" radius="1000" randomRange="2000" randomSeed="Seed" />
+    <set_variable name="Seed" value="Seed+1" integer="yes" />
+    <set_variable name="RandomX" value="0.0" integer="yes" />
+    <set_variable name="RandomZ" value="0.0" integer="yes" />
+    <set_variable name="Feature" value="0.0" integer="yes" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+  </event>
+  <event name="Anomaly" id_arme="97dcbb81-9eb8-4d3e-a799-0dfc95725cd3" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_timer_finished name="RandomEffect" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Feature" comparator="GREATER_EQUAL" value="41.0" />
+    <if_variable name="Feature" comparator="LESS_EQUAL" value="45.0" />
+    <create type="Anomaly" pickupType="0" x="RandomX" y="0.0" z="RandomZ" />
+    <create type="Anomaly" pickupType="5" x="RandomX+500" y="0.0" z="RandomZ" />
+    <create type="Anomaly" pickupType="8" x="RandomX" y="0.0" z="RandomZ+500" />
+    <set_variable name="RandomX" value="0.0" integer="yes" />
+    <set_variable name="RandomZ" value="0.0" integer="yes" />
+    <set_variable name="Feature" value="0.0" integer="yes" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+  </event>
+  <event name="Anomaly" id_arme="8d0b938a-9d82-4085-9a52-f6cc0cedb2ad" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_timer_finished name="RandomEffect" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Feature" comparator="GREATER_EQUAL" value="46.0" />
+    <if_variable name="Feature" comparator="LESS_EQUAL" value="50.0" />
+    <create type="Anomaly" pickupType="6" x="RandomX" y="0.0" z="RandomZ" />
+    <create type="Anomaly" x="RandomX+500" y="0.0" z="RandomZ" />
+    <create type="Anomaly" pickupType="7" x="RandomX" y="0.0" z="RandomZ+500" />
+    <set_variable name="RandomX" value="0.0" integer="yes" />
+    <set_variable name="RandomZ" value="0.0" integer="yes" />
+    <set_variable name="Feature" value="0.0" integer="yes" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+  </event>
+  <event name="Anomaly" id_arme="4c8c2343-83f0-4f34-8d45-01060e67b3a9" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_timer_finished name="RandomEffect" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Feature" comparator="GREATER_EQUAL" value="51.0" />
+    <if_variable name="Feature" comparator="LESS_EQUAL" value="55.0" />
+    <create type="Anomaly" pickupType="3" x="RandomX" y="0.0" z="RandomZ" />
+    <create type="Anomaly" pickupType="4" x="RandomX+500" y="0.0" z="RandomZ" />
+    <create type="Anomaly" pickupType="0" x="RandomX" y="0.0" z="RandomZ+500" />
+    <set_variable name="RandomX" value="0.0" integer="yes" />
+    <set_variable name="RandomZ" value="0.0" integer="yes" />
+    <set_variable name="Feature" value="0.0" integer="yes" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+  </event>
+  <event name="Anomaly" id_arme="9743eff1-19ad-47ef-b680-eceac8c01d7b" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_timer_finished name="RandomEffect" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Feature" comparator="GREATER_EQUAL" value="56.0" />
+    <if_variable name="Feature" comparator="LESS_EQUAL" value="60.0" />
+    <create type="Anomaly" pickupType="2" x="RandomX" y="0.0" z="RandomZ" />
+    <create type="Anomaly" x="RandomX+500" y="0.0" z="RandomZ" />
+    <create type="Anomaly" pickupType="1" x="RandomX" y="0.0" z="RandomZ+500" />
+    <set_variable name="RandomX" value="0.0" integer="yes" />
+    <set_variable name="RandomZ" value="0.0" integer="yes" />
+    <set_variable name="Feature" value="0.0" integer="yes" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+  </event>
+  <event name="Black Hole" id_arme="f60038d6-1538-4d04-ae3b-83d79925fbe5" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_timer_finished name="RandomEffect" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Feature" comparator="GREATER_EQUAL" value="61.0" />
+    <if_variable name="Feature" comparator="LESS_EQUAL" value="70.0" />
+    <create type="blackHole" x="RandomX" y="0.0" z="RandomZ" />
+    <set_variable name="RandomX" value="0.0" integer="yes" />
+    <set_variable name="RandomZ" value="0.0" integer="yes" />
+    <set_variable name="Feature" value="0.0" integer="yes" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+  </event>
+  <event name="Asteroids" id_arme="85546f53-946f-494f-8756-a62658145695" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_timer_finished name="RandomEffect" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Feature" comparator="GREATER_EQUAL" value="71.0" />
+    <if_variable name="Feature" comparator="LESS_EQUAL" value="85.0" />
+    <create count="50" type="asteroids" startX="RandomX" startY="0.0" startZ="RandomZ" radius="1000" randomRange="3000" randomSeed="Seed" />
+    <set_variable name="Seed" value="Seed+1" integer="yes" />
+    <set_variable name="RandomX" value="0.0" integer="yes" />
+    <set_variable name="RandomZ" value="0.0" integer="yes" />
+    <set_variable name="Feature" value="0.0" integer="yes" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+  </event>
+  <event name="Wreck" id_arme="3dfba004-7b62-4ee4-bf5a-052edbd9baf1" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_timer_finished name="RandomEffect" />
+    <if_variable name="Sector" comparator="EQUALS" value="3.0" />
+    <if_variable name="Feature" comparator="GREATER_EQUAL" value="86.0" />
+    <if_variable name="Feature" comparator="LESS_EQUAL" value="100.0" />
+    <create type="monster" monsterType="8" age="3" x="RandomX" y="0.0" z="RandomZ" />
+    <create type="monster" monsterType="8" x="RandomX-500" y="0.0" z="RandomZ-1050" />
+    <create type="monster" monsterType="8" x="RandomX+1000" y="0.0" z="RandomZ+665" />
+    <set_variable name="RandomX" value="0.0" integer="yes" />
+    <set_variable name="RandomZ" value="0.0" integer="yes" />
+    <set_variable name="Feature" value="0.0" integer="yes" />
+    <set_variable name="Sector" value="0.0" integer="yes" />
+  </event>
+  <event name="Sector A1 Warning" id_arme="674e3100-a5d1-428b-9b5f-e26ce692d95b" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="1.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Spatial Disruption Detected:A1" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector A1.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="RandomX" randomIntLow="80000" randomIntHigh="99900" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="0" randomIntHigh="19999" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+    <set_variable name="Sector" value="3.0" integer="yes" />
+  </event>
+  <event name="Sector A2 Warning" id_arme="931937e2-e3d5-44c0-b72a-4be968e0c7e1" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="2.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Spatial Disruption Detected: A2" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector A2.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="RandomX" randomIntLow="60000" randomIntHigh="79999" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="0" randomIntHigh="19999" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+    <set_variable name="Sector" value="3.0" integer="yes" />
+  </event>
+  <event name="Sector A3 Warning" id_arme="1a8369c4-e626-436f-a33d-48ae212e7419" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="3.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Spatial Disruption Detected: A3" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector A3.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="RandomX" randomIntLow="40000" randomIntHigh="59999" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="0" randomIntHigh="19999" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+    <set_variable name="Sector" value="3.0" integer="yes" />
+  </event>
+  <event name="Sector A4 Warning" id_arme="f4a7266d-3010-40de-93c3-f565fc554a15" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="4.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Spatial Disruption Detected: A4" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector A4.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="RandomX" randomIntLow="20000" randomIntHigh="39999" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="0" randomIntHigh="19999" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+    <set_variable name="Sector" value="3.0" integer="yes" />
+  </event>
+  <event name="Sector A5 Warning" id_arme="a95411fe-33b9-4e78-8e58-18f43b7c5e6b" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="5.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Spatial Disruption Detected: A5" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector A5.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="RandomX" randomIntLow="1" randomIntHigh="19999" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="0" randomIntHigh="19999" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+    <set_variable name="Sector" value="3.0" integer="yes" />
+  </event>
+  <event name="Sector B1 Warning" id_arme="5ec8f8d4-6e85-4cf9-b7f6-d0b156bb5c4b" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="6.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Spatial Disruption Detected: B1" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector B1.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="RandomX" randomIntLow="80000" randomIntHigh="99900" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="20000" randomIntHigh="39999" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+    <set_variable name="Sector" value="3.0" integer="yes" />
+  </event>
+  <event name="Sector B2 Warning" id_arme="cbd59eca-789d-4e54-aaf5-470d1671d907" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="7.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Spatial Disruption Detected: B2" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector B2.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="RandomX" randomIntLow="60000" randomIntHigh="79999" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="20000" randomIntHigh="39999" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+    <set_variable name="Sector" value="3.0" integer="yes" />
+  </event>
+  <event name="Sector B3 Warning" id_arme="368d0de2-b40f-4d5c-9968-6df89746e355" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="8.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <set_variable name="RandomX" randomIntLow="40000" randomIntHigh="59999" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="20000" randomIntHigh="39999" integer="yes" />
+    <warning_popup_message message="Spatial Disruption Detected: B3" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector B3.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+  </event>
+  <event name="Sector B4 Warning" id_arme="5c90b33e-cfa3-481c-984f-e96dad0ce07e" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="9.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <set_variable name="RandomX" randomIntLow="20000" randomIntHigh="39999" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="20000" randomIntHigh="39999" integer="yes" />
+    <warning_popup_message message="Spatial Disruption Detected: B4" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector B4.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+  </event>
+  <event name="Sector B5 Warning" id_arme="6d17c88e-4096-4879-bd16-c6e44c1767ec" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="10.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <set_variable name="RandomX" randomIntLow="1" randomIntHigh="19999" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="20000" randomIntHigh="39999" integer="yes" />
+    <warning_popup_message message="Spatial Disruption Detected: B5" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector B5.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+  </event>
+  <event name="Sector C1 Warning" id_arme="56adc100-2e20-49eb-8c78-c8755a4bfe70" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="11.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <set_variable name="RandomZ" randomIntLow="40000" randomIntHigh="59999" integer="yes" />
+    <set_variable name="RandomX" randomIntLow="80000" randomIntHigh="99900" integer="yes" />
+    <warning_popup_message message="Spatial Disruption Detected: C1" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector C1.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+  </event>
+  <event name="Sector C2 Warning" id_arme="0e76d4c6-eebe-4769-a7c2-aa3ef32faf2e" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="12.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <set_variable name="RandomX" randomIntLow="60000" randomIntHigh="79999" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="40000" randomIntHigh="59999" integer="yes" />
+    <warning_popup_message message="Spatial Disruption Detected: C2" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector C2.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+  </event>
+  <event name="Sector C3 Warning" id_arme="f5b23f03-ca6f-47e6-b820-2cd444c3dc92" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="13.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <set_variable name="RandomX" randomIntLow="40000" randomIntHigh="59999" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="40000" randomIntHigh="59999" integer="yes" />
+    <warning_popup_message message="Spatial Disruption Detected: C3" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector C3.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+  </event>
+  <event name="Sector C4 Warning" id_arme="d7ca4d6a-3f52-4751-8aaf-4078e87c558d" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="14.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <set_variable name="RandomX" randomIntLow="20000" randomIntHigh="39999" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="40000" randomIntHigh="59999" integer="yes" />
+    <warning_popup_message message="Spatial Disruption Detected: C4" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector C4.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+  </event>
+  <event name="Sector C5 Warning" id_arme="3ea8ba1f-52dc-493f-bac4-78fb41b2c65a" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="15.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <set_variable name="RandomX" randomIntLow="1" randomIntHigh="19999" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="40000" randomIntHigh="59999" integer="yes" />
+    <warning_popup_message message="Spatial Disruption Detected: C5" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector C5.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+  </event>
+  <event name="Sector D1 Warning" id_arme="5160b9df-e5f7-4013-9a3e-f3b05d0dbb0d" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="16.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <set_variable name="RandomX" randomIntLow="80000" randomIntHigh="99900" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="60000" randomIntHigh="79999" integer="yes" />
+    <warning_popup_message message="Spatial Disruption Detected: D1" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector D1.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+  </event>
+  <event name="Sector D2 Warning" id_arme="489e3bd8-35c9-4843-b676-54fc8472f03c" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="17.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <set_variable name="RandomX" randomIntLow="60000" randomIntHigh="79999" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="60000" randomIntHigh="79999" integer="yes" />
+    <warning_popup_message message="Spatial Disruption Detected: D2" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector D2.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+  </event>
+  <event name="Sector D3 Warning" id_arme="c2ce64c6-0bed-4c2f-b0af-a51494db1532" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="18.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <set_variable name="RandomX" randomIntLow="40000" randomIntHigh="59999" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="60000" randomIntHigh="79999" integer="yes" />
+    <warning_popup_message message="Spatial Disruption Detected: D3" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector D3.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+  </event>
+  <event name="Sector D4 Warning" id_arme="07b97550-3bf0-41c5-b27d-b29eba417ce9" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="19.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <set_variable name="RandomX" randomIntLow="20000" randomIntHigh="39999" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="60000" randomIntHigh="79999" integer="yes" />
+    <warning_popup_message message="Spatial Disruption Detected: D4" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector D4.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+  </event>
+  <event name="Sector D5 Warning" id_arme="580b2d03-3914-47f3-bbeb-1e9b5d4bae18" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="20.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <set_variable name="RandomX" randomIntLow="1" randomIntHigh="19999" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="60000" randomIntHigh="79999" integer="yes" />
+    <warning_popup_message message="Spatial Disruption Detected: D5" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector D5.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+  </event>
+  <event name="Sector E1 Warning" id_arme="70b78328-4d77-4665-8544-7b2c03e3ea47" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="21.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <set_variable name="RandomX" randomIntLow="80000" randomIntHigh="99900" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="79999" randomIntHigh="99900" integer="yes" />
+    <warning_popup_message message="Spatial Disruption Detected: E1" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector E1.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+  </event>
+  <event name="Sector E2 Warning" id_arme="7e3cccf0-2fca-4882-816c-285270a22ebd" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="22.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <set_variable name="RandomX" randomIntLow="60000" randomIntHigh="79999" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="79999" randomIntHigh="99900" integer="yes" />
+    <warning_popup_message message="Spatial Disruption Detected: E2" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector E2.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+  </event>
+  <event name="Sector E3 Warning" id_arme="b19d758d-13c8-4214-8286-2bb6880a1cdd" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="23.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <set_variable name="RandomX" randomIntLow="40000" randomIntHigh="59999" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="79999" randomIntHigh="99900" integer="yes" />
+    <warning_popup_message message="Spatial Disruption Detected: E3" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector E3.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+  </event>
+  <event name="Sector E4 Warning" id_arme="b9e472b8-2d65-4af1-871e-1da4686b3490" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="24.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <set_variable name="RandomX" randomIntLow="20000" randomIntHigh="39999" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="79999" randomIntHigh="99900" integer="yes" />
+    <warning_popup_message message="Spatial Disruption Detected: E4" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector E4.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+  </event>
+  <event name="Sector E5 Warning" id_arme="2632dcd0-4c69-44b2-a785-da96921236f6" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Locate" comparator="EQUALS" value="25.0" />
+    <if_variable name="Sector" comparator="EQUALS" value="2.0" />
+    <set_variable name="RandomX" randomIntLow="1" randomIntHigh="19999" integer="yes" />
+    <set_variable name="RandomZ" randomIntLow="79999" randomIntHigh="99900" integer="yes" />
+    <warning_popup_message message="Spatial Disruption Detected: E5" consoles="MS" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">A new disruption has been detected in sector E5.^^Caution is advised.</incoming_comms_text>
+    <set_variable name="Sector" value="3.0" integer="yes" />
+    <set_variable name="Locate" value="-1.0" integer="yes" />
+  </event>
+  <event name="Set Sector Location" id_arme="924972d7-d82d-4227-9830-0c0cb5dbe280" parent_id_arme="eef93087-af9d-410e-8877-f21a8ccaf6d6">
+    <if_variable name="Sector" comparator="EQUALS" value="1.0" />
+    <set_variable name="Locate" randomIntLow="1" randomIntHigh="25" integer="yes" />
+    <set_variable name="Sector" value="2.0" integer="yes" />
+    <set_timer name="RandomEffect" seconds="10" />
+  </event>
+  <folder_arme name="Bonus Buttons" id_arme="cbe250fa-6cac-42d8-b760-3605a5d2e6e1" />
+  <event name="Bonus Shield Boost" id_arme="933247a4-5b53-48a1-99f1-48c49f7d42c5" parent_id_arme="cbe250fa-6cac-42d8-b760-3605a5d2e6e1">
+    <if_variable name="Boost" comparator="GREATER" value="0.0" />
+    <if_variable name="BoostSelect" comparator="EQUALS" value="1.0" />
+    <set_comms_button text="Shield Upgrade" sideValue="2" />
+    <warning_popup_message message="Upgrade Available" consoles="W" />
+    <set_variable name="BoostSelect" randomIntLow="1" randomIntHigh="Upgrades" integer="yes" />
+    <set_variable name="Boost" value="Boost-1" integer="yes" />
+  </event>
+  <event name="Bonus Speed Boost" id_arme="e3bc9d4b-0c7e-4443-858e-47bc7e904103" parent_id_arme="cbe250fa-6cac-42d8-b760-3605a5d2e6e1">
+    <if_variable name="Boost" comparator="GREATER" value="0.0" />
+    <if_variable name="BoostSelect" comparator="EQUALS" value="2.0" />
+    <warning_popup_message message="Upgrade Available" consoles="H" />
+    <set_comms_button text="Extra Thrusters (5%)" sideValue="2" />
+    <set_variable name="BoostSelect" randomIntLow="1" randomIntHigh="Upgrades" integer="yes" />
+    <set_variable name="Boost" value="Boost-1" integer="yes" />
+  </event>
+  <event name="Bonus Maneuver Boost" id_arme="0a4129d6-2fc0-4f36-bff3-91a5f8d6479f" parent_id_arme="cbe250fa-6cac-42d8-b760-3605a5d2e6e1">
+    <if_variable name="Boost" comparator="GREATER" value="0.0" />
+    <if_variable name="BoostSelect" comparator="EQUALS" value="3.0" />
+    <warning_popup_message message="Upgrade Available" consoles="H" />
+    <set_comms_button text="Improved Maneuvering (2%)" sideValue="2" />
+    <set_variable name="BoostSelect" randomIntLow="1" randomIntHigh="Upgrades" integer="yes" />
+    <set_variable name="Boost" value="Boost-1" integer="yes" />
+  </event>
+  <event name="Bonus Station Stocks" id_arme="ba61092d-d4a9-4705-9231-d22b524d5bf0" parent_id_arme="cbe250fa-6cac-42d8-b760-3605a5d2e6e1">
+    <if_variable name="Boost" comparator="GREATER" value="0.0" />
+    <if_variable name="BoostSelect" comparator="EQUALS" value="4.0" />
+    <set_comms_button text="Station Restock" sideValue="2" />
+    <warning_popup_message message="Upgrade Available" consoles="WF" />
+    <set_variable name="BoostSelect" randomIntLow="1" randomIntHigh="Upgrades" integer="yes" />
+    <set_variable name="Boost" value="Boost-1" integer="yes" />
+  </event>
+  <event name="Bonus Heavy Weapons" id_arme="b93d516d-964c-4382-97b5-853324f99a65" parent_id_arme="cbe250fa-6cac-42d8-b760-3605a5d2e6e1">
+    <if_variable name="Boost" comparator="GREATER" value="0.0" />
+    <if_variable name="BoostSelect" comparator="EQUALS" value="5.0" />
+    <warning_popup_message message="Upgrade Available" consoles="W" />
+    <set_comms_button text="Extra Weapons" sideValue="2" />
+    <set_variable name="BoostSelect" randomIntLow="1" randomIntHigh="Upgrades" integer="yes" />
+    <set_variable name="Boost" value="Boost-1" integer="yes" />
+  </event>
+  <event name="Bonus Coolant" id_arme="a0fc22f4-482c-41ac-91b1-50da94cc4d42" parent_id_arme="cbe250fa-6cac-42d8-b760-3605a5d2e6e1">
+    <if_variable name="Boost" comparator="GREATER" value="0.0" />
+    <if_variable name="BoostSelect" comparator="EQUALS" value="6.0" />
+    <warning_popup_message message="Upgrade Available" consoles="E" />
+    <set_comms_button text="Cooling Enhancement" sideValue="2" />
+    <set_variable name="BoostSelect" randomIntLow="1" randomIntHigh="Upgrades" integer="yes" />
+    <set_variable name="Boost" value="Boost-1" integer="yes" />
+  </event>
+  <event name="All Allied Ships In Play" id_arme="21daf187-ee2d-4a24-9512-efb15f3e5331" parent_id_arme="cbe250fa-6cac-42d8-b760-3605a5d2e6e1">
+    <if_variable name="Boost" comparator="GREATER" value="0.0" />
+    <if_variable name="BoostSelect" comparator="EQUALS" value="7.0" />
+    <if_exists name="Alamo 1" />
+    <if_exists name="Ringhold 2" />
+    <if_exists name="Watershed" />
+    <if_exists name="Boomerang" />
+    <if_exists name="Ricochet" />
+    <if_exists name="Lone Howler" />
+    <clear_comms_button text="Defense Ship (max 6)" sideValue="2" />
+    <set_variable name="BoostSelect" randomIntLow="1" randomIntHigh="Upgrades-1" integer="yes" />
+  </event>
+  <event name="Bonus Allied Ship" id_arme="56fcb925-176c-4cba-ab44-50abc69e9d1f" parent_id_arme="cbe250fa-6cac-42d8-b760-3605a5d2e6e1">
+    <if_variable name="Boost" comparator="GREATER" value="0.0" />
+    <if_variable name="BoostSelect" comparator="EQUALS" value="7.0" />
+    <warning_popup_message message="Upgrade Available" consoles="MSC" />
+    <set_comms_button text="Defense Ship (max 6)" sideValue="2" />
+    <set_variable name="BoostSelect" randomIntLow="1" randomIntHigh="Upgrades" integer="yes" />
+    <set_variable name="Boost" value="Boost-1" integer="yes" />
+  </event>
+  <folder_arme name="Bonus Selected" id_arme="684a7b30-20ae-4f34-bb73-f6d89583ac2d" />
+  <event name="Allied Ship Behavior" id_arme="1ae4604c-5dee-4602-a21b-5e7b8a603ad3" parent_id_arme="684a7b30-20ae-4f34-bb73-f6d89583ac2d">
+    <if_variable name="UpgradeSelect" comparator="EQUALS" value="1.0" />
+    <clear_comms_button text="Shield Upgrade" sideValue="2" />
+    <clear_comms_button text="Cooling Enhancement" sideValue="2" />
+    <clear_comms_button text="Defense Ship (max 6)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Extra Thrusters (5%)" sideValue="2" />
+    <clear_comms_button text="Extra Weapons" sideValue="2" />
+    <clear_comms_button text="Improved Maneuvering (2%)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Station Restock" sideValue="2" />
+    <set_special name="Lone Howler" ship="1" captain="5" ability="HET" />
+    <set_special name="Lone Howler" ship="1" captain="5" ability="Warp" />
+    <set_special name="Lone Howler" ship="1" captain="5" ability="ShldReset" />
+    <set_special name="Lone Howler" ship="1" captain="5" ability="AntiMine" />
+    <set_special name="Lone Howler" ship="1" captain="5" ability="Drones" />
+    <set_special name="Lone Howler" ship="1" captain="5" ability="ShldDrain" />
+    <set_special name="Lone Howler" ship="1" captain="5" ability="ShldVamp" />
+    <set_special name="Lone Howler" ship="1" captain="5" ability="Tractor" />
+    <add_ai type="DEFEND" value1="1000" value2="3000" name="Alamo 1" />
+    <add_ai type="DEFEND" value1="1000" value2="3000" name="Ringhold 2" />
+    <add_ai type="DEFEND" value1="1000" value2="3000" name="Watershed" />
+    <add_ai type="DEFEND" value1="1000" value2="3000" name="Boomerang" />
+    <add_ai type="DEFEND" value1="1000" value2="3000" name="Lone Howler" />
+    <add_ai type="DEFEND" value1="1000" value2="3000" name="Lone Howler" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Alamo 1" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Ringhold 2" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Watershed" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Boomerang" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Ricochet" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Lone Howler" />
+    <set_variable name="UpgradeSelect" value="2.0" integer="yes" />
+  </event>
+  <event name="Clear All" id_arme="3c81faba-0c03-4d1a-b424-8530d6e853aa" parent_id_arme="684a7b30-20ae-4f34-bb73-f6d89583ac2d">
+    <if_variable name="UpgradeSelect" comparator="GREATER_EQUAL" value="2.0" />
+    <clear_comms_button text="Shield Upgrade" sideValue="2" />
+    <clear_comms_button text="Cooling Enhancement" sideValue="2" />
+    <clear_comms_button text="Defense Ship (max 6)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Extra Thrusters (5%)" sideValue="2" />
+    <clear_comms_button text="Extra Weapons" sideValue="2" />
+    <clear_comms_button text="Improved Maneuvering (2%)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Station Restock" sideValue="2" />
+    <set_variable name="UpgradeSelect" value="0.0" integer="yes" />
+    <set_variable name="BoostSelect" value="0.0" integer="yes" />
+    <set_variable name="Boost" value="0.0" integer="yes" />
+  </event>
+  <event name="Pressed Energy Recharge" id_arme="be5d0cf1-f736-4fc2-82c5-49b5a19079a4" parent_id_arme="684a7b30-20ae-4f34-bb73-f6d89583ac2d">
+    <if_variable name="UpgradeSelect" comparator="EQUALS" value="0.0" />
+    <if_comms_button text="Recharge: 1000 Energy" />
+    <addto_object_property value="1000.0" property="energy" player_slot="0" />
+    <addto_object_property value="1000.0" property="energy" player_slot="1" />
+    <addto_object_property value="1000.0" property="energy" player_slot="2" />
+    <addto_object_property value="1000.0" property="energy" player_slot="3" />
+    <addto_object_property value="1000.0" property="energy" player_slot="4" />
+    <addto_object_property value="1000.0" property="energy" player_slot="5" />
+    <addto_object_property value="1000.0" property="energy" player_slot="6" />
+    <addto_object_property value="1000.0" property="energy" player_slot="7" />
+    <incoming_comms_text from="Power Plant" type="STATUS">Extra energy available.^^End Transmission</incoming_comms_text>
+    <warning_popup_message message="Extra Energy Available" consoles="ECO" />
+    <clear_comms_button text="Shield Upgrade" sideValue="2" />
+    <clear_comms_button text="Cooling Enhancement" sideValue="2" />
+    <clear_comms_button text="Defense Ship (max 6)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Extra Thrusters (5%)" sideValue="2" />
+    <clear_comms_button text="Extra Weapons" sideValue="2" />
+    <clear_comms_button text="Improved Maneuvering (2%)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Station Restock" sideValue="2" />
+    <set_variable name="UpgradeSelect" value="1.0" integer="yes" />
+  </event>
+  <event name="Pressed Shield Boost" id_arme="ad4d23ba-acf2-4d9b-96e3-d639b6ba52dd" parent_id_arme="684a7b30-20ae-4f34-bb73-f6d89583ac2d">
+    <if_variable name="UpgradeSelect" comparator="EQUALS" value="0.0" />
+    <if_comms_button text="Shield Upgrade" />
+    <incoming_comms_text from="Maintenance Drone" type="STATUS">Shield Tune-up Complete (20 points)^^End Transmission</incoming_comms_text>
+    <warning_popup_message message="Shield Upgrade Complete" consoles="HWO" />
+    <addto_object_property value="20.0" property="shieldMaxStateFront" player_slot="0" />
+    <addto_object_property value="20.0" property="shieldMaxStateBack" player_slot="0" />
+    <addto_object_property value="20.0" property="shieldMaxStateFront" player_slot="1" />
+    <addto_object_property value="20.0" property="shieldMaxStateBack" player_slot="1" />
+    <addto_object_property value="20.0" property="shieldMaxStateFront" player_slot="2" />
+    <addto_object_property value="20.0" property="shieldMaxStateBack" player_slot="2" />
+    <addto_object_property value="20.0" property="shieldMaxStateFront" player_slot="3" />
+    <addto_object_property value="20.0" property="shieldMaxStateBack" player_slot="3" />
+    <addto_object_property value="20.0" property="shieldMaxStateFront" player_slot="4" />
+    <addto_object_property value="20.0" property="shieldMaxStateBack" player_slot="4" />
+    <addto_object_property value="20.0" property="shieldMaxStateFront" player_slot="5" />
+    <addto_object_property value="20.0" property="shieldMaxStateBack" player_slot="5" />
+    <addto_object_property value="20.0" property="shieldMaxStateFront" player_slot="6" />
+    <addto_object_property value="20.0" property="shieldMaxStateBack" player_slot="6" />
+    <addto_object_property value="20.0" property="shieldMaxStateFront" player_slot="7" />
+    <addto_object_property value="20.0" property="shieldMaxStateBack" player_slot="7" />
+    <addto_object_property value="20.0" property="shieldMaxStateFront" name="Lone Howler" />
+    <addto_object_property value="20.0" property="shieldMaxStateBack" name="Lone Howler" />
+    <clear_comms_button text="Shield Upgrade" sideValue="2" />
+    <clear_comms_button text="Cooling Enhancement" sideValue="2" />
+    <clear_comms_button text="Defense Ship (max 6)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Extra Thrusters (5%)" sideValue="2" />
+    <clear_comms_button text="Extra Weapons" sideValue="2" />
+    <clear_comms_button text="Improved Maneuvering (2%)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Station Restock" sideValue="2" />
+    <set_variable name="UpgradeSelect" value="1.0" integer="yes" />
+  </event>
+  <event name="Pressed Speed Boost" id_arme="ab8e4836-d02a-4e48-ac3c-f95ffca5e07a" parent_id_arme="684a7b30-20ae-4f34-bb73-f6d89583ac2d">
+    <if_variable name="UpgradeSelect" comparator="EQUALS" value="0.0" />
+    <if_comms_button text="Extra Thrusters (5%)" />
+    <incoming_comms_text from="Maintenance Drone" type="STATUS">Thrusters cleaned and upgraded: 5% effeciency increase.^^End Transmission</incoming_comms_text>
+    <warning_popup_message message="Thrust Improved (5%)" consoles="HCO" />
+    <get_object_property property="topSpeed" player_slot="0" variable="TempFloat" />
+    <set_object_property property="topSpeed" value="TempFloat*1.05" player_slot="0" />
+    <get_object_property property="topSpeed" player_slot="0" variable="TempFloat" />
+    <set_object_property property="topSpeed" value="TempFloat*1.05" player_slot="1" />
+    <get_object_property property="topSpeed" player_slot="0" variable="TempFloat" />
+    <set_object_property property="topSpeed" value="TempFloat*1.05" player_slot="2" />
+    <get_object_property property="topSpeed" player_slot="0" variable="TempFloat" />
+    <set_object_property property="topSpeed" value="TempFloat*1.05" player_slot="3" />
+    <get_object_property property="topSpeed" player_slot="0" variable="TempFloat" />
+    <set_object_property property="topSpeed" value="TempFloat*1.05" player_slot="4" />
+    <get_object_property property="topSpeed" player_slot="0" variable="TempFloat" />
+    <set_object_property property="topSpeed" value="TempFloat*1.05" player_slot="5" />
+    <get_object_property property="topSpeed" player_slot="0" variable="TempFloat" />
+    <set_object_property property="topSpeed" value="TempFloat*1.05" player_slot="6" />
+    <get_object_property property="topSpeed" player_slot="0" variable="TempFloat" />
+    <set_object_property property="topSpeed" value="TempFloat*1.05" player_slot="7" />
+    <clear_comms_button text="Shield Upgrade" sideValue="2" />
+    <clear_comms_button text="Cooling Enhancement" sideValue="2" />
+    <clear_comms_button text="Defense Ship (max 6)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Extra Thrusters (5%)" sideValue="2" />
+    <clear_comms_button text="Extra Weapons" sideValue="2" />
+    <clear_comms_button text="Improved Maneuvering (2%)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Station Restock" sideValue="2" />
+    <set_variable name="UpgradeSelect" value="1.0" integer="yes" />
+  </event>
+  <event name="Bonus Maneuver Boost" id_arme="137106dc-952a-47b4-bc2e-544bf3e684a0" parent_id_arme="684a7b30-20ae-4f34-bb73-f6d89583ac2d">
+    <if_variable name="UpgradeSelect" comparator="EQUALS" value="0.0" />
+    <if_comms_button text="Improved Maneuvering (2%)" />
+    <incoming_comms_text from="Maintenance Drone" type="STATUS">Manuevering jets cleaned and upgraded: 2% effeciency increase.^^End Transmission</incoming_comms_text>
+    <warning_popup_message message="Manuevering Enhanced (2%)" consoles="HCO" />
+    <get_object_property property="turnRate" player_slot="0" variable="TempFloat" />
+    <set_object_property property="turnRate" value="TempFloat*1.02" />
+    <get_object_property property="turnRate" player_slot="1" variable="TempFloat" />
+    <set_object_property property="turnRate" value="TempFloat*1.02" />
+    <get_object_property property="turnRate" player_slot="2" variable="TempFloat" />
+    <set_object_property property="turnRate" value="TempFloat*1.02" />
+    <get_object_property property="turnRate" player_slot="3" variable="TempFloat" />
+    <set_object_property property="turnRate" value="TempFloat*1.02" />
+    <get_object_property property="turnRate" player_slot="4" variable="TempFloat" />
+    <set_object_property property="turnRate" value="TempFloat*1.02" />
+    <get_object_property property="turnRate" player_slot="5" variable="TempFloat" />
+    <set_object_property property="turnRate" value="TempFloat*1.02" />
+    <get_object_property property="turnRate" player_slot="6" variable="TempFloat" />
+    <set_object_property property="turnRate" value="TempFloat*1.02" />
+    <get_object_property property="turnRate" player_slot="7" variable="TempFloat" />
+    <set_object_property property="turnRate" value="TempFloat*1.02" />
+    <clear_comms_button text="Shield Upgrade" sideValue="2" />
+    <clear_comms_button text="Cooling Enhancement" sideValue="2" />
+    <clear_comms_button text="Defense Ship (max 6)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Extra Thrusters (5%)" sideValue="2" />
+    <clear_comms_button text="Extra Weapons" sideValue="2" />
+    <clear_comms_button text="Improved Maneuvering (2%)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Station Restock" sideValue="2" />
+    <set_variable name="UpgradeSelect" value="1.0" integer="yes" />
+  </event>
+  <event name="Bonus Station Stocks" id_arme="f23450a1-fb10-4960-917f-fe3394068b8b" parent_id_arme="684a7b30-20ae-4f34-bb73-f6d89583ac2d">
+    <if_variable name="UpgradeSelect" comparator="EQUALS" value="0.0" />
+    <if_comms_button text="Station Restock" />
+    <incoming_comms_text from="Stationmaster" type="STATUS STATION">This is DS3.  We have recieved authorization to release significant additional stocks for your use.^^Available stores have increased by:^5 Mines^5 Emps^5 Nukes^5 Homing Torpedoes^5 P-Shocks^5 Probes^5 Tags^5 Fighters</incoming_comms_text>
+    <warning_popup_message message="Station Restocked" consoles="WCOF" />
+    <addto_object_property value="5.0" property="missileStoresBeacon" name="DS 3" />
+    <addto_object_property value="5.0" property="missileStoresEMP" name="DS 3" />
+    <addto_object_property value="5.0" property="missileStoresMine" name="DS 3" />
+    <addto_object_property value="5.0" property="missileStoresHoming" name="DS 3" />
+    <addto_object_property value="5.0" property="missileStoresNuke" name="DS 3" />
+    <addto_object_property value="5.0" property="missileStoresProbe" name="DS 3" />
+    <addto_object_property value="5.0" property="missileStoresPShock" name="DS 3" />
+    <addto_object_property value="5.0" property="missileStoresTag" name="DS 3" />
+    <set_player_station_carried name="DS 3" raceKeys="TSN Ximni Pirate" hullKeys="fighter" />
+    <set_player_station_carried name="DS 3" raceKeys="TSN Ximni Pirate" hullKeys="fighter" />
+    <set_player_station_carried name="DS 3" raceKeys="TSN Ximni Pirate" hullKeys="fighter" />
+    <set_player_station_carried name="DS 3" raceKeys="TSN Ximni Pirate" hullKeys="fighter" />
+    <set_player_station_carried name="DS 3" raceKeys="TSN Ximni Pirate" hullKeys="fighter" />
+    <clear_comms_button text="Shield Upgrade" sideValue="2" />
+    <clear_comms_button text="Cooling Enhancement" sideValue="2" />
+    <clear_comms_button text="Defense Ship (max 6)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Extra Thrusters (5%)" sideValue="2" />
+    <clear_comms_button text="Extra Weapons" sideValue="2" />
+    <clear_comms_button text="Improved Maneuvering (2%)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Station Restock" sideValue="2" />
+    <set_variable name="UpgradeSelect" value="1.0" integer="yes" />
+  </event>
+  <event name="Bonus Heavy Weapons" id_arme="774bf074-49c2-40f3-b4af-5a6ca9b7cbc3" parent_id_arme="684a7b30-20ae-4f34-bb73-f6d89583ac2d">
+    <if_variable name="UpgradeSelect" comparator="EQUALS" value="0.0" />
+    <if_comms_button text="Extra Weapons" />
+    <addto_object_property value="2.0" property="countNuke" player_slot="0" />
+    <addto_object_property value="2.0" property="countEMP" player_slot="0" />
+    <addto_object_property value="2.0" property="countMine" player_slot="0" />
+    <addto_object_property value="2.0" property="countShk" player_slot="0" />
+    <addto_object_property value="2.0" property="countHoming" player_slot="0" />
+    <addto_object_property value="2.0" property="countPro" player_slot="0" />
+    <addto_object_property value="2.0" property="countTag" player_slot="0" />
+    <addto_object_property value="2.0" property="countNuke" player_slot="2" />
+    <addto_object_property value="2.0" property="countEMP" player_slot="2" />
+    <addto_object_property value="2.0" property="countMine" player_slot="2" />
+    <addto_object_property value="2.0" property="countShk" player_slot="2" />
+    <addto_object_property value="2.0" property="countHoming" player_slot="2" />
+    <addto_object_property value="2.0" property="countPro" player_slot="2" />
+    <addto_object_property value="2.0" property="countTag" player_slot="2" />
+    <addto_object_property value="2.0" property="countNuke" player_slot="3" />
+    <addto_object_property value="2.0" property="countEMP" player_slot="3" />
+    <addto_object_property value="2.0" property="countMine" player_slot="3" />
+    <addto_object_property value="2.0" property="countShk" player_slot="3" />
+    <addto_object_property value="2.0" property="countHoming" player_slot="3" />
+    <addto_object_property value="2.0" property="countPro" player_slot="3" />
+    <addto_object_property value="2.0" property="countTag" player_slot="3" />
+    <addto_object_property value="2.0" property="countNuke" player_slot="4" />
+    <addto_object_property value="2.0" property="countEMP" player_slot="4" />
+    <addto_object_property value="2.0" property="countMine" player_slot="4" />
+    <addto_object_property value="2.0" property="countShk" player_slot="4" />
+    <addto_object_property value="2.0" property="countHoming" player_slot="4" />
+    <addto_object_property value="2.0" property="countPro" player_slot="4" />
+    <addto_object_property value="2.0" property="countTag" player_slot="4" />
+    <addto_object_property value="2.0" property="countNuke" player_slot="5" />
+    <addto_object_property value="2.0" property="countEMP" player_slot="5" />
+    <addto_object_property value="2.0" property="countMine" player_slot="5" />
+    <addto_object_property value="2.0" property="countShk" player_slot="5" />
+    <addto_object_property value="2.0" property="countHoming" player_slot="5" />
+    <addto_object_property value="2.0" property="countPro" player_slot="5" />
+    <addto_object_property value="2.0" property="countTag" player_slot="5" />
+    <addto_object_property value="2.0" property="countNuke" player_slot="6" />
+    <addto_object_property value="2.0" property="countEMP" player_slot="6" />
+    <addto_object_property value="2.0" property="countMine" player_slot="6" />
+    <addto_object_property value="2.0" property="countShk" player_slot="6" />
+    <addto_object_property value="2.0" property="countHoming" player_slot="6" />
+    <addto_object_property value="2.0" property="countPro" player_slot="6" />
+    <addto_object_property value="2.0" property="countTag" player_slot="6" />
+    <addto_object_property value="2.0" property="countNuke" player_slot="7" />
+    <addto_object_property value="2.0" property="countEMP" player_slot="7" />
+    <addto_object_property value="2.0" property="countMine" player_slot="7" />
+    <addto_object_property value="2.0" property="countShk" player_slot="7" />
+    <addto_object_property value="2.0" property="countHoming" player_slot="7" />
+    <addto_object_property value="2.0" property="countPro" player_slot="7" />
+    <addto_object_property value="2.0" property="countTag" player_slot="7" />
+    <warning_popup_message message="Extra Ordinance Available" consoles="WCO" />
+    <incoming_comms_text from="Quartermaster" type="STATUS">My interns located some misplaced ordinance and have transferred it to the loading bay.^^We have gained:^2 Mines^2 Emps^2 Nukes^2 Homing Torpedoes^2 P-Shocks^3 Probes^4 Tags</incoming_comms_text>
+    <clear_comms_button text="Shield Upgrade" sideValue="2" />
+    <clear_comms_button text="Cooling Enhancement" sideValue="2" />
+    <clear_comms_button text="Defense Ship (max 6)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Extra Thrusters (5%)" sideValue="2" />
+    <clear_comms_button text="Extra Weapons" sideValue="2" />
+    <clear_comms_button text="Improved Maneuvering (2%)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Station Restock" sideValue="2" />
+    <set_variable name="UpgradeSelect" value="1.0" integer="yes" />
+  </event>
+  <event name="Bonus Coolant" id_arme="629fe788-0a7b-41c6-b5e1-26d94c952b92" parent_id_arme="684a7b30-20ae-4f34-bb73-f6d89583ac2d">
+    <if_variable name="UpgradeSelect" comparator="EQUALS" value="0.0" />
+    <if_comms_button text="Cooling Enhancement" />
+    <addto_object_property value="1.0" property="totalCoolant" player_slot="0" />
+    <addto_object_property value="1.0" property="totalCoolant" player_slot="1" />
+    <addto_object_property value="1.0" property="totalCoolant" player_slot="2" />
+    <addto_object_property value="1.0" property="totalCoolant" player_slot="3" />
+    <addto_object_property value="1.0" property="totalCoolant" player_slot="4" />
+    <addto_object_property value="1.0" property="totalCoolant" player_slot="5" />
+    <addto_object_property value="1.0" property="totalCoolant" player_slot="6" />
+    <addto_object_property value="1.0" property="totalCoolant" player_slot="7" />
+    <warning_popup_message message="Extra Coolant Added" consoles="ECO" />
+    <incoming_comms_text from="Command" type="SIDE STATUS">Your Chief Engineer has been authorized to access the ship's emergency reserve coolant.^^Hope it helps.</incoming_comms_text>
+    <clear_comms_button text="Shield Upgrade" sideValue="2" />
+    <clear_comms_button text="Cooling Enhancement" sideValue="2" />
+    <clear_comms_button text="Defense Ship (max 6)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Extra Thrusters (5%)" sideValue="2" />
+    <clear_comms_button text="Extra Weapons" sideValue="2" />
+    <clear_comms_button text="Improved Maneuvering (2%)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Station Restock" sideValue="2" />
+    <set_variable name="UpgradeSelect" value="1.0" integer="yes" />
+  </event>
+  <event name="Bonus Allied Ship" id_arme="bc329325-580e-439b-b1a2-d84d977012dc" parent_id_arme="684a7b30-20ae-4f34-bb73-f6d89583ac2d">
+    <if_variable name="UpgradeSelect" comparator="EQUALS" value="0.0" />
+    <if_comms_button text="Defense Ship (max 6)" />
+    <if_not_exists name="Alamo 1" />
+    <create type="neutral" x="10000.0" y="0.0" z="50000.0" angle="270" name="Alamo 1" raceKeys="friendly" hullKeys="warship" />
+    <warning_popup_message message="Allied Vessel Detected" consoles="SCO" />
+    <incoming_comms_text from="Alamo 1" type="FRIEND">This is the Alamo 1.^We heard you might need some assistance.^^Just tell us what to do.</incoming_comms_text>
+    <clear_comms_button text="Shield Upgrade" sideValue="2" />
+    <clear_comms_button text="Cooling Enhancement" sideValue="2" />
+    <clear_comms_button text="Defense Ship (max 6)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Extra Thrusters (5%)" sideValue="2" />
+    <clear_comms_button text="Extra Weapons" sideValue="2" />
+    <clear_comms_button text="Improved Maneuvering (2%)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Station Restock" sideValue="2" />
+    <set_variable name="UpgradeSelect" value="1.0" integer="yes" />
+  </event>
+  <event name="Bonus Allied Ship" id_arme="67dbd375-4f20-42c7-be97-7cd2d705ed7f" parent_id_arme="684a7b30-20ae-4f34-bb73-f6d89583ac2d">
+    <if_variable name="UpgradeSelect" comparator="EQUALS" value="0.0" />
+    <if_comms_button text="Defense Ship (max 6)" />
+    <if_not_exists name="Ringhold 2" />
+    <create type="neutral" x="10000.0" y="0.0" z="50000.0" angle="270" name="Ringhold 2" raceKeys="friendly" hullKeys="warship" />
+    <warning_popup_message message="Allied Vessel Detected" consoles="SCO" />
+    <incoming_comms_text from="Ringhold 2" type="FRIEND">This is Captain Mcleod of the Ringhold 2, reporting with a volunteer crew.^^We couldn't let the braggarts on the Alamo steal all the glory.</incoming_comms_text>
+    <clear_comms_button text="Shield Upgrade" sideValue="2" />
+    <clear_comms_button text="Cooling Enhancement" sideValue="2" />
+    <clear_comms_button text="Defense Ship (max 6)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Extra Thrusters (5%)" sideValue="2" />
+    <clear_comms_button text="Extra Weapons" sideValue="2" />
+    <clear_comms_button text="Improved Maneuvering (2%)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Station Restock" sideValue="2" />
+    <set_variable name="UpgradeSelect" value="1.0" integer="yes" />
+  </event>
+  <event name="Bonus Allied Ship" id_arme="708199ee-2542-4349-bc8e-a96877f645bd" parent_id_arme="684a7b30-20ae-4f34-bb73-f6d89583ac2d">
+    <if_variable name="UpgradeSelect" comparator="EQUALS" value="0.0" />
+    <if_comms_button text="Defense Ship (max 6)" />
+    <if_not_exists name="Watershed" />
+    <create type="neutral" x="10000.0" y="0.0" z="50000.0" angle="270" name="Watershed" raceKeys="friendly" hullKeys="warship" />
+    <warning_popup_message message="Allied Vessel Detected" consoles="SCO" />
+    <incoming_comms_text from="Watershed" type="FRIEND">We're here to help stem the enemy tide.  ^Just give us some guidance.</incoming_comms_text>
+    <clear_comms_button text="Shield Upgrade" sideValue="2" />
+    <clear_comms_button text="Cooling Enhancement" sideValue="2" />
+    <clear_comms_button text="Defense Ship (max 6)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Extra Thrusters (5%)" sideValue="2" />
+    <clear_comms_button text="Extra Weapons" sideValue="2" />
+    <clear_comms_button text="Improved Maneuvering (2%)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Station Restock" sideValue="2" />
+    <set_variable name="UpgradeSelect" value="1.0" integer="yes" />
+  </event>
+  <event name="Bonus Allied Ship" id_arme="686fe708-dddb-495f-90bc-944ed8dc68fc" parent_id_arme="684a7b30-20ae-4f34-bb73-f6d89583ac2d">
+    <if_variable name="UpgradeSelect" comparator="EQUALS" value="0.0" />
+    <if_comms_button text="Defense Ship (max 6)" />
+    <if_not_exists name="Boomerang" />
+    <create type="neutral" x="10000.0" y="0.0" z="50000.0" angle="270" name="Boomerang" raceKeys="friendly" hullKeys="warship" />
+    <warning_popup_message message="Allied Vessel Detected" consoles="SCO" />
+    <incoming_comms_text from="Boomerang" type="FRIEND">We're here to protect the evacuation--but we're not interested in sacrificing ourselves.</incoming_comms_text>
+    <clear_comms_button text="Shield Upgrade" sideValue="2" />
+    <clear_comms_button text="Cooling Enhancement" sideValue="2" />
+    <clear_comms_button text="Defense Ship (max 6)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Extra Thrusters (5%)" sideValue="2" />
+    <clear_comms_button text="Extra Weapons" sideValue="2" />
+    <clear_comms_button text="Improved Maneuvering (2%)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Station Restock" sideValue="2" />
+    <set_variable name="UpgradeSelect" value="1.0" integer="yes" />
+  </event>
+  <event name="Bonus Allied Ship" id_arme="83cfc62b-48f9-43a2-8b95-711a3fae77a9" parent_id_arme="684a7b30-20ae-4f34-bb73-f6d89583ac2d">
+    <if_variable name="UpgradeSelect" comparator="EQUALS" value="0.0" />
+    <if_comms_button text="Defense Ship (max 6)" />
+    <if_not_exists name="Ricochet" />
+    <create type="neutral" x="10000.0" y="0.0" z="50000.0" angle="270" name="Ricochet" raceKeys="friendly" hullKeys="warship" />
+    <warning_popup_message message="Allied Vessel Detected" consoles="SCO" />
+    <incoming_comms_text from="Ricochet" type="FRIEND">This is Acting Commander Byron.^I have a green crew here.  They're scared stiff.  Our entire command staff was lost in a battle three days ago; I'm a medical officer not a combat veteran.  We're going to need some serious direction.  </incoming_comms_text>
+    <clear_comms_button text="Shield Upgrade" sideValue="2" />
+    <clear_comms_button text="Cooling Enhancement" sideValue="2" />
+    <clear_comms_button text="Defense Ship (max 6)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Extra Thrusters (5%)" sideValue="2" />
+    <clear_comms_button text="Extra Weapons" sideValue="2" />
+    <clear_comms_button text="Improved Maneuvering (2%)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Station Restock" sideValue="2" />
+    <set_variable name="UpgradeSelect" value="1.0" integer="yes" />
+  </event>
+  <event name="Bonus Allied Ship" id_arme="39ac9948-41a0-4d96-8be8-6cecc5d91fdb" parent_id_arme="684a7b30-20ae-4f34-bb73-f6d89583ac2d">
+    <if_variable name="UpgradeSelect" comparator="EQUALS" value="0.0" />
+    <if_comms_button text="Defense Ship (max 6)" />
+    <if_not_exists name="Lone Howler" />
+    <create type="neutral" x="10000.0" y="0.0" z="50000.0" angle="270" name="Lone Howler" raceKeys="Pirate" hullKeys="carrier" sideValue="2" />
+    <warning_popup_message message="Allied Vessel Detected" consoles="SCO" />
+    <incoming_comms_text from="Lone Howler" type="FRIEND">This is Captain Belroc of the Lone Howler.^^Eaton Command got your distress message.  We're here to lend a hand, and collect any overdue library books; fines will be forgiven for those who can provide proof of death.^^Oh...and our chief Engineer, Greybeard, says "ARGGH!" Not sure what that's about, to be honest.^^Also...if you like this mission and survive, please let the Eaton Library staff know.</incoming_comms_text>
+    <clear_comms_button text="Shield Upgrade" sideValue="2" />
+    <clear_comms_button text="Cooling Enhancement" sideValue="2" />
+    <clear_comms_button text="Defense Ship (max 6)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Extra Thrusters (5%)" sideValue="2" />
+    <clear_comms_button text="Extra Weapons" sideValue="2" />
+    <clear_comms_button text="Improved Maneuvering (2%)" sideValue="2" />
+    <clear_comms_button text="Recharge: 1000 Energy" sideValue="2" />
+    <clear_comms_button text="Station Restock" sideValue="2" />
+    <set_variable name="UpgradeSelect" value="1.0" integer="yes" />
+  </event>
+  <event name="Lone Howler Boost" id_arme="c63bc8f4-fb40-4064-87b8-82c856659b8d" parent_id_arme="684a7b30-20ae-4f34-bb73-f6d89583ac2d">
+    <if_variable name="Howler" comparator="EQUALS" value="0.0" />
+    <if_exists name="Lone Howler" />
+    <set_ship_text name="Lone Howler" desc="Highly upgraded vessel." hailtext="What can we do for you?  Oh yes--return your library books, or I'll tell my teenage pilots to dock on YOUR ship!" />
+    <set_object_property property="shieldMaxStateBack" value="1000" name="Lone Howler" />
+    <set_object_property property="shieldMaxStateFront" value="1000" name="Lone Howler" />
+    <set_object_property property="shieldStateBack" value="1000" name="Lone Howler" />
+    <set_object_property property="shieldStateFront" value="1000" name="Lone Howler" />
+    <set_object_property property="triggersMines" value="0.0" name="Lone Howler" />
+    <set_variable name="Howler" value="1.0" integer="yes" />
+  </event>
+  <folder_arme name="Evac 1" id_arme="c85f98ee-a91b-4dfd-a001-e1816d971fdd" />
+  <event name="Evac 1 Reset" id_arme="e01780ab-9ca7-4890-b52a-7a5d8ebdb06d" parent_id_arme="c85f98ee-a91b-4dfd-a001-e1816d971fdd">
+    <if_variable name="EvacTarget" comparator="EQUALS" value="6.0" />
+    <if_timer_finished name="Evac1" />
+    <set_variable name="EvacTarget" value="1.0" integer="yes" />
+  </event>
+  <event name="Exit Evac 1" id_arme="1dff0f24-7213-4d1a-b183-a38cc027a33b" parent_id_arme="c85f98ee-a91b-4dfd-a001-e1816d971fdd">
+    <if_variable name="EvacTarget" comparator="EQUALS" value="5.0" />
+    <if_exists name="Evac 1" />
+    <if_inside_box name="Evac 1" leastX="0.0" leastZ="0.0" mostX="5000.0" mostZ="100000.0" />
+    <set_timer name="Evac1" seconds="Unload" />
+    <warning_popup_message message="Jump Signature Detected" consoles="MSCO" />
+    <incoming_comms_text from="Evac 1" type="SIDE STATUS FRIEND">This is Evac 1.^We have successfully jumped to safety with 75 refugees. We'll unload and come back shortly.^^Keep that transit corridor clear!^(BONUS: Shield Enhancement and 100 Energy)</incoming_comms_text>
+    <destroy name="Evac 1" />
+    <set_variable name="Rescued" value="Rescued+75" integer="yes" />
+    <log text="Evac 1 escaped with refugees aboard.  75 lives saved, total of |Rescued|." />
+    <addto_object_property value="100.0" property="energy" player_slot="0" />
+    <addto_object_property value="3.0" property="shieldMaxStateFront" player_slot="0" />
+    <addto_object_property value="3.0" property="shieldMaxStateBack" player_slot="0" />
+    <addto_object_property value="100.0" property="energy" player_slot="1" />
+    <addto_object_property value="3.0" property="shieldMaxStateFront" player_slot="1" />
+    <addto_object_property value="3.0" property="shieldMaxStateBack" player_slot="1" />
+    <addto_object_property value="100.0" property="energy" player_slot="2" />
+    <addto_object_property value="3.0" property="shieldMaxStateFront" player_slot="2" />
+    <addto_object_property value="3.0" property="shieldMaxStateBack" player_slot="2" />
+    <addto_object_property value="100.0" property="energy" player_slot="3" />
+    <addto_object_property value="3.0" property="shieldMaxStateFront" player_slot="3" />
+    <addto_object_property value="3.0" property="shieldMaxStateBack" player_slot="3" />
+    <addto_object_property value="100.0" property="energy" player_slot="4" />
+    <addto_object_property value="3.0" property="shieldMaxStateFront" player_slot="4" />
+    <addto_object_property value="3.0" property="shieldMaxStateBack" player_slot="4" />
+    <addto_object_property value="100.0" property="energy" player_slot="5" />
+    <addto_object_property value="3.0" property="shieldMaxStateFront" player_slot="5" />
+    <addto_object_property value="3.0" property="shieldMaxStateBack" player_slot="5" />
+    <addto_object_property value="100.0" property="energy" player_slot="6" />
+    <addto_object_property value="3.0" property="shieldMaxStateFront" player_slot="6" />
+    <addto_object_property value="3.0" property="shieldMaxStateBack" player_slot="6" />
+    <addto_object_property value="100.0" property="energy" player_slot="7" />
+    <addto_object_property value="3.0" property="shieldMaxStateFront" player_slot="7" />
+    <addto_object_property value="3.0" property="shieldMaxStateBack" player_slot="7" />
+    <set_variable name="EvacTarget" value="6.0" integer="yes" />
+  </event>
+  <event name="Evac 1 Destroyed with Passengers" id_arme="89246727-fd2e-4178-8f7d-45063e8e2ca5" parent_id_arme="c85f98ee-a91b-4dfd-a001-e1816d971fdd">
+    <if_not_exists name="Evac 1" />
+    <if_variable name="EvacTarget" comparator="GREATER_EQUAL" value="4.0" />
+    <if_variable name="EvacTarget" comparator="NOT" value="6.0" />
+    <warning_popup_message message="Evac 1 Destroyed" consoles="C" />
+    <log text="Evac 1 destroyed with refugees aboard.  75 lives lost." />
+    <set_variable name="EvacTarget" value="-1.0" integer="yes" />
+  </event>
+  <event name="Station to Map Edge Evac 1" id_arme="63a703c6-c6a0-41d6-b5ca-399c5ad0abd8" parent_id_arme="c85f98ee-a91b-4dfd-a001-e1816d971fdd">
+    <if_timer_finished name="Evac1" />
+    <if_exists name="Evac 1" />
+    <if_variable name="EvacTarget" comparator="EQUALS" value="4.0" />
+    <warning_popup_message message="Evac 1 Departing" consoles="C" />
+    <set_object_property property="exitPointZ" value="60000.0" name="Evac 1" />
+    <set_object_property property="exitPointX" value="0.0" name="Evac 1" />
+    <set_object_property property="exitPointY" value="0.0" name="Evac 1" />
+    <add_ai type="PROCEED_TO_EXIT" name="Evac 1" />
+    <set_variable name="EvacTarget" value="5.0" integer="yes" />
+  </event>
+  <event name="Proximity to Station Evac 1" id_arme="db9170a0-f049-4d58-a779-529a8c2f9b04" parent_id_arme="c85f98ee-a91b-4dfd-a001-e1816d971fdd">
+    <if_exists name="DS 3" />
+    <if_exists name="Evac 1" />
+    <if_distance name1="Evac 1" name2="DS 3" comparator="LESS" value="3000.0" />
+    <if_variable name="EvacTarget" comparator="EQUALS" value="3.0" />
+    <set_timer name="Evac1" seconds="Load" />
+    <incoming_comms_text from="Evac 1" type="STATUS FRIEND">We are loading personnel and equipment now...keep the enemy away from us!</incoming_comms_text>
+    <set_variable name="EvacTarget" value="4.0" integer="yes" />
+  </event>
+  <event name="Evac 1 Behavior Details" id_arme="3ad2218a-f7af-4788-837f-25adf0a81a25" parent_id_arme="c85f98ee-a91b-4dfd-a001-e1816d971fdd">
+    <if_exists name="Evac 1" />
+    <if_exists name="DS 3" />
+    <if_variable name="EvacTarget" comparator="EQUALS" value="2.0" />
+    <set_ship_text name="Evac 1" hailtext="We are clearing equipment and personelle from the station.  Keep the transit lane clear!" />
+    <set_object_property property="topSpeed" value="1.5" name="Evac 1" />
+    <set_object_property property="throttle" value="1.0" name="Evac 1" />
+    <set_object_property property="exitPointX" value="34000.0" name="Evac 1" />
+    <set_object_property property="exitPointY" value="0.0" name="Evac 1" />
+    <set_object_property property="exitPointZ" value="64190.0" name="Evac 1" />
+    <add_ai type="PROCEED_TO_EXIT" name="Evac 1" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Evac 1" />
+    <set_variable name="EvacTarget" value="3.0" integer="yes" />
+  </event>
+  <event name="Create Evac 1" id_arme="5af1e8ba-b63a-44d5-909a-538db7c98e6e" parent_id_arme="c85f98ee-a91b-4dfd-a001-e1816d971fdd">
+    <if_not_exists name="Evac 1" />
+    <if_exists name="DS 3" />
+    <if_variable name="EvacTarget" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Evac1" />
+    <create type="neutral" x="5000.0" y="0.0" z="65000.0" angle="270" name="Evac 1" hullID="1505" />
+    <set_variable name="EvacTarget" value="2.0" integer="yes" />
+  </event>
+  <folder_arme name="Dona Paz" id_arme="15ed9f9e-f1d8-487c-89c1-1b13cbc230b6" />
+  <event name="Dona Paz Rear Shield Fail" id_arme="9cae202e-571d-4668-8c94-8216d48d8447" parent_id_arme="15ed9f9e-f1d8-487c-89c1-1b13cbc230b6">
+    <if_exists name="Dona Paz" />
+    <if_object_property property="shieldStateBack" name="Dona Paz" comparator="LESS" value="10" />
+    <if_variable name="PazTarget" comparator="GREATER_EQUAL" value="1.0" />
+    <get_object_property property="positionX" name="Dona Paz" variable="PazX" />
+    <get_object_property property="positionY" name="Dona Paz" variable="PazY" />
+    <get_object_property property="positionZ" name="Dona Paz" variable="PazZ" />
+    <set_variable name="PazTarget" value="0.0" integer="yes" />
+  </event>
+  <event name="Dona Paz Front Shield Fail" id_arme="49c65e6b-4c21-4e5c-9b2d-58be8d358fea" parent_id_arme="15ed9f9e-f1d8-487c-89c1-1b13cbc230b6">
+    <if_exists name="Dona Paz" />
+    <if_object_property property="shieldStateFront" name="Dona Paz" comparator="LESS" value="10" />
+    <if_variable name="PazTarget" comparator="GREATER_EQUAL" value="1.0" />
+    <get_object_property property="positionX" name="Dona Paz" variable="PazX" />
+    <get_object_property property="positionY" name="Dona Paz" variable="PazY" />
+    <get_object_property property="positionZ" name="Dona Paz" variable="PazZ" />
+    <set_variable name="PazTarget" value="0.0" integer="yes" />
+  </event>
+  <event name="Dona Paz Mine Deploy" id_arme="2c5224d8-9007-4cbe-959e-af24bb329022" parent_id_arme="15ed9f9e-f1d8-487c-89c1-1b13cbc230b6">
+    <if_variable name="PazTarget" comparator="EQUALS" value="0.0" />
+    <if_exists name="Dona Paz" />
+    <incoming_comms_text from="Dona Paz" type="ALERT STATUS FRIEND">SOS!  SOS!  This is the Dona Paz!  We have 800 people aboard and are-- ^^(TRANSMISSION LOST)</incoming_comms_text>
+    <create count="20" type="mines" startX="PazX" startY="PazY-500.0" startZ="PazZ" radius="500" randomRange="1000" randomSeed="3" />
+    <create count="20" type="mines" startX="PazX" startY="PazY" startZ="PazZ" radius="500" randomRange="1000" randomSeed="2" />
+    <create count="20" type="mines" startX="PazX" startY="PazY+500" startZ="PazZ" radius="500" randomRange="1000" randomSeed="1" />
+    <set_variable name="PazTarget" value="-1.0" integer="yes" />
+  </event>
+  <event name="Dona Paz Destroyed with passengers" id_arme="c00e9b13-c649-4ac0-8121-1afe1100fb9f" parent_id_arme="15ed9f9e-f1d8-487c-89c1-1b13cbc230b6">
+    <if_variable name="PazTarget" comparator="EQUALS" value="-1.0" />
+    <if_not_exists name="Dona Paz" />
+    <log text="Dona Paz destroyed with over 800 souls and a full load of weaponry aboard." />
+    <set_variable name="PazTarget" value="-2.0" integer="yes" />
+  </event>
+  <event name="Paz Reset" id_arme="817dc7b8-a108-40b2-88d6-9ac744590782" parent_id_arme="15ed9f9e-f1d8-487c-89c1-1b13cbc230b6">
+    <if_variable name="PazTarget" comparator="EQUALS" value="6.0" />
+    <if_timer_finished name="Paz" />
+    <set_variable name="PazTarget" value="1.0" integer="yes" />
+  </event>
+  <event name="Exit Paz" id_arme="44a59ec3-8cca-4843-9678-60ef9e9b9942" parent_id_arme="15ed9f9e-f1d8-487c-89c1-1b13cbc230b6">
+    <if_variable name="PazTarget" comparator="EQUALS" value="5.0" />
+    <if_exists name="Dona Paz" />
+    <if_inside_box name="Dona Paz" leastX="0.0" leastZ="0.0" mostX="5000.0" mostZ="100000.0" />
+    <set_timer name="Paz" seconds="Unload" />
+    <warning_popup_message message="Jump Signature Detected" consoles="MSCO" />
+    <addto_object_property value="200.0" property="energy" player_slot="0" />
+    <addto_object_property value="5.0" property="shieldMaxStateFront" player_slot="0" />
+    <addto_object_property value="5.0" property="shieldMaxStateBack" player_slot="0" />
+    <addto_object_property value="200.0" property="energy" player_slot="1" />
+    <addto_object_property value="5.0" property="shieldMaxStateFront" player_slot="1" />
+    <addto_object_property value="5.0" property="shieldMaxStateBack" player_slot="1" />
+    <addto_object_property value="200.0" property="energy" player_slot="2" />
+    <addto_object_property value="5.0" property="shieldMaxStateFront" player_slot="2" />
+    <addto_object_property value="5.0" property="shieldMaxStateBack" player_slot="2" />
+    <addto_object_property value="200.0" property="energy" player_slot="3" />
+    <addto_object_property value="5.0" property="shieldMaxStateFront" player_slot="3" />
+    <addto_object_property value="5.0" property="shieldMaxStateBack" player_slot="3" />
+    <addto_object_property value="200.0" property="energy" player_slot="4" />
+    <addto_object_property value="5.0" property="shieldMaxStateFront" player_slot="4" />
+    <addto_object_property value="5.0" property="shieldMaxStateBack" player_slot="4" />
+    <addto_object_property value="200.0" property="energy" player_slot="5" />
+    <addto_object_property value="5.0" property="shieldMaxStateFront" player_slot="5" />
+    <addto_object_property value="5.0" property="shieldMaxStateBack" player_slot="5" />
+    <addto_object_property value="200.0" property="energy" player_slot="6" />
+    <addto_object_property value="5.0" property="shieldMaxStateFront" player_slot="6" />
+    <addto_object_property value="5.0" property="shieldMaxStateBack" player_slot="6" />
+    <addto_object_property value="200.0" property="energy" player_slot="7" />
+    <addto_object_property value="5.0" property="shieldMaxStateFront" player_slot="7" />
+    <addto_object_property value="5.0" property="shieldMaxStateBack" player_slot="7" />
+    <incoming_comms_text from="Dona Paz" type="SIDE STATUS FRIEND">This is the Dona Paz.^We have successfully jumped to safety.  We'll unload our cargo and come back for another run.^^Keep that transit corridor clear for us!^^(BONUS: Shield Enhancement and 200 Energy)</incoming_comms_text>
+    <set_variable name="Rescued" value="Rescued+835" integer="yes" />
+    <log text="The overloaded 'Dona Paz' safely returned to Eaton Sector with 835 refugees...and a load of weapons for the black market.  Total rescued: |Rescued|" />
+    <destroy name="Dona Paz" />
+    <set_variable name="PazTarget" value="6.0" integer="yes" />
+  </event>
+  <event name="Station to Map Edge Paz" id_arme="4c09f483-8204-4447-b933-57bb1389de8f" parent_id_arme="15ed9f9e-f1d8-487c-89c1-1b13cbc230b6">
+    <if_timer_finished name="Paz" />
+    <if_exists name="Dona Paz" />
+    <if_variable name="PazTarget" comparator="EQUALS" value="4.0" />
+    <warning_popup_message message="Dona Paz Departing" consoles="C" />
+    <set_ship_text name="Dona Paz" desc="Overloaded (appx. 800 life forms.)" scan_desc="Multiple warheads detected!" hailtext="We have women and children aboard!  Get us through!" />
+    <addto_object_property value="-1.0" property="missileStoresMine" name="Dona Paz" />
+    <addto_object_property value="-1.0" property="missileStoresNuke" name="Dona Paz" />
+    <addto_object_property value="-1.0" property="missileStoresEMP" name="Dona Paz" />
+    <addto_object_property value="-1.0" property="missileStoresPShock" name="Dona Paz" />
+    <set_object_property property="exitPointX" value="0.0" name="Dona Paz" />
+    <set_object_property property="exitPointY" value="0.0" name="Dona Paz" />
+    <set_object_property property="exitPointZ" value="60000.0" name="Dona Paz" />
+    <add_ai type="PROCEED_TO_EXIT" name="Dona Paz" />
+    <set_variable name="PazTarget" value="5.0" integer="yes" />
+  </event>
+  <event name="Proximity to Station Paz" id_arme="245c8300-52e5-443f-99de-78e70d6d5cf6" parent_id_arme="15ed9f9e-f1d8-487c-89c1-1b13cbc230b6">
+    <if_exists name="DS 3" />
+    <if_exists name="Dona Paz" />
+    <if_distance name1="Dona Paz" name2="DS 3" comparator="LESS" value="3000.0" />
+    <if_variable name="PazTarget" comparator="EQUALS" value="3.0" />
+    <set_timer name="Paz" seconds="Load" />
+    <incoming_comms_text from="Dona Paz" type="STATUS FRIEND">We are loading up now...keep the enemy away from us!</incoming_comms_text>
+    <set_variable name="PazTarget" value="4.0" integer="yes" />
+  </event>
+  <event name="Behavior Details Paz" id_arme="c1abf8dc-45f8-466c-bca1-2f4278db72ab" parent_id_arme="15ed9f9e-f1d8-487c-89c1-1b13cbc230b6">
+    <if_exists name="Dona Paz" />
+    <if_exists name="DS 3" />
+    <if_variable name="PazTarget" comparator="EQUALS" value="2.0" />
+    <set_ship_text name="Dona Paz" hailtext=" " />
+    <set_object_property property="topSpeed" value="1.5" name="Dona Paz" />
+    <set_object_property property="throttle" value="1.0" name="Dona Paz" />
+    <set_object_property property="exitPointX" value="34000.0" name="Dona Paz" />
+    <set_object_property property="exitPointY" value="0.0" name="Dona Paz" />
+    <set_object_property property="exitPointZ" value="64190.0" name="Dona Paz" />
+    <set_object_property property="shieldMaxStateBack" value="20" name="Dona Paz" />
+    <set_object_property property="shieldMaxStateFront" value="20" name="Dona Paz" />
+    <add_ai type="PROCEED_TO_EXIT" name="Dona Paz" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Dona Paz" />
+    <set_variable name="PazTarget" value="3.0" integer="yes" />
+  </event>
+  <event name="Create Dona Paz" id_arme="f9d1c336-f503-4e32-993a-dc0dd622da96" parent_id_arme="15ed9f9e-f1d8-487c-89c1-1b13cbc230b6">
+    <if_not_exists name="Dona Paz" />
+    <if_exists name="DS 3" />
+    <if_variable name="PazTarget" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Paz" />
+    <create type="neutral" x="5000.0" y="0.0" z="65000.0" angle="270" name="Dona Paz" hullID="1505" />
+    <set_variable name="PazTarget" value="2.0" integer="yes" />
+  </event>
+  <event name="Log Station Destroyed" id_arme="0ad7a41c-844d-4f8c-9450-1ad306b33519">
+    <if_not_exists name="DS 3" />
+    <if_variable name="Station Test" comparator="EQUALS" value="0.0" />
+    <set_variable name="PazTarget" value="4.0" integer="yes" />
+    <set_variable name="EvacTarget" value="4.0" integer="yes" />
+    <incoming_comms_text from="Command" type="ALERT SIDE STATUS">DS 3 has been destroyed; all remaining souls are presumed lost.^^We need more time to arrange defenses.  Your orders are to continue defending the system. Take out as many of them as you can!</incoming_comms_text>
+    <log text="Station DS 3 Destroyed" />
+    <set_variable name="Station Test" value="1.0" integer="yes" />
+  </event>
+  <event name="Ship Destroyed" id_arme="953110bd-6abe-47c6-933a-e4a877b76303">
+    <if_timer_finished name="Start Round" />
+    <if_not_exists player_slot="0" />
+    <if_not_exists player_slot="1" />
+    <if_not_exists player_slot="2" />
+    <if_not_exists player_slot="3" />
+    <if_not_exists player_slot="4" />
+    <if_not_exists player_slot="5" />
+    <if_not_exists player_slot="6" />
+    <if_not_exists player_slot="7" />
+    <if_variable name="End" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="Lives Saved: |Rescued|" consoles="MHWESCOF" />
+    <warning_popup_message message="Waves complete: |Round|" consoles="MHWESCOF" />
+    <big_message title="Game Over!" subtitle1="The transports saved |Rescued| souls.  Good work." subtitle2="You completed |Round| waves." />
+    <log text="Before the defense fleet was finally destroyed, |Rescued| people were transported off of DS3.  The fleet survived against |Round| waves of enemies." />
+    <set_variable name="End" value="1.0" integer="yes" />
+    <set_timer name="Defeat" seconds="10" />
+  </event>
+  <event name="End Mission" id_arme="05c958b4-9433-4c49-be87-ca86e1bffa12">
+    <if_timer_finished name="Defeat" />
+    <if_variable name="End" comparator="EQUALS" value="1.0" />
+    <end_mission />
+  </event>
+</mission_data>
