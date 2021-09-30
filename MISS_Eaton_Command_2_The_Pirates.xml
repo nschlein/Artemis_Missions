@@ -1,8 +1,7 @@
-<mission_data version="2.7.5" background_id_arme="a59135e3-9c0e-49aa-8603-3fba5826a9ae" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
-  <mission_description>Earth Command wants the Eaton sector cleared of hostiles...without revealing it was their doing.^^Suggested Ship: Pirate (any)^Multi-ship compatible.^Recommended for 2+ ships</mission_description>
+<mission_data version="2.7.5 v1.1" background_id_arme="a59135e3-9c0e-49aa-8603-3fba5826a9ae" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <mission_description>Earth Command wants the Eaton sector cleared of hostiles...without revealing it was their doing.^Suggested Ship: Pirate (any)^Level Selectable (suggested 6-7)^Multi-ship compatible^Recommended for 2+ ships</mission_description>
   <start id_arme="a59135e3-9c0e-49aa-8603-3fba5826a9ae">
     <set_variable name="System Build" value="-1.0" integer="yes" />
-    <set_difficulty_level value="7" />
     <set_skybox_index index="10" />
     <set_object_property property="nebulaIsOpaque" value="1" />
     <set_object_property property="sensorSetting" value="1" />
@@ -67,11 +66,11 @@
     <clear_comms_button text="BEGIN GAME" />
     <set_variable name="Mission" value="-4.0" integer="yes" />
   </event>
-  <folder_arme name="GM Testing Controls" id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530" />
+  <folder_arme name="GM Testing Controls" id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530" expanded_arme="" />
   <event name="Event 564" id_arme="d74a09de-0e66-47cb-8e64-d1be67a92437" parent_id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530">
     <if_variable name="GM Button" comparator="EQUALS" value="0.0" />
     <set_gm_button text="Contact Reset" y="0" />
-    <set_gm_button text="Move to..." y="200" />
+    <set_gm_button text="Surrender" y="200" />
     <set_gm_button text="Destroy Target" y="400" />
     <set_gm_button text="Sensors Block" y="600" />
     <set_gm_button text="Sensors Unblock" y="800" />
@@ -82,17 +81,10 @@
     <destroy use_gm_selection="" />
     <set_gm_button text="Destroy Target" />
   </event>
-  <event name="Move Players" id_arme="9463172b-cd37-4740-ac56-26512f964852" parent_id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530">
-    <if_gm_button text="Move to..." />
-    <set_to_gm_position player_slot="0" distance="0" angle="0" />
-    <set_to_gm_position player_slot="1" distance="500" angle="0" />
-    <set_to_gm_position player_slot="2" distance="500" angle="180" />
-    <set_to_gm_position player_slot="3" distance="500" angle="90" />
-    <set_to_gm_position player_slot="4" distance="500" angle="270" />
-    <set_to_gm_position player_slot="5" distance="1000" angle="0" />
-    <set_to_gm_position player_slot="6" distance="1000" angle="180" />
-    <set_to_gm_position player_slot="7" distance="1000" angle="90" />
-    <set_gm_button text="Move to..." />
+  <event name="Surrender Target" id_arme="9463172b-cd37-4740-ac56-26512f964852" parent_id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530">
+    <if_gm_button text="Surrender" />
+    <set_object_property property="hasSurrendered" value="1" use_gm_selection="" />
+    <set_gm_button text="Surrender" />
   </event>
   <event name="Sensors Blocked" id_arme="eab3ce07-cc1d-4c08-9382-45ae859f9829" parent_id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530">
     <if_gm_button text="Sensors Block" />
@@ -1818,7 +1810,7 @@
     <set_object_property property="positionY" value="0.0" player_slot="7" />
     <set_variable name="Player7" value="2.0" integer="yes" />
   </event>
-  <folder_arme name="Variables and System Build" id_arme="8d8d85de-d75a-48fc-8694-110d8f23f898" expanded_arme="" />
+  <folder_arme name="Variables and System Build" id_arme="8d8d85de-d75a-48fc-8694-110d8f23f898" />
   <event name="Variables, Timers" id_arme="3c3f09af-5fb6-47f2-8c66-278b8734a989" parent_id_arme="8d8d85de-d75a-48fc-8694-110d8f23f898">
     <if_variable name="Mission" comparator="EQUALS" value="0.0" />
     <!--System Build Initiation-->
@@ -4307,7 +4299,7 @@
     <if_variable name="EnemyStart" comparator="EQUALS" value="1.0" />
     <set_variable name="EnemyStart" value="2.0" integer="yes" />
   </event>
-  <folder_arme name="Hole in the Wall Behavior" id_arme="4d16c6fe-76a9-4574-937c-3f07d1bf0b0f" expanded_arme="" />
+  <folder_arme name="Hole in the Wall Behavior" id_arme="4d16c6fe-76a9-4574-937c-3f07d1bf0b0f" />
   <event name="Hole in the Wall Monster Proofing" id_arme="b81c24f6-0854-428b-889e-6c5168e77508" parent_id_arme="4d16c6fe-76a9-4574-937c-3f07d1bf0b0f">
     <if_exists name="Hole in the Wall" />
     <if_timer_finished name="MonsterProof" />
@@ -5579,7 +5571,7 @@
     <warning_popup_message message="Nebula Scanning Active..." consoles="MESC" />
     <set_variable name="NebPierce" value="15.0" integer="yes" />
   </event>
-  <folder_arme name="Threat Issued to Pirates" id_arme="8a223ce4-7292-4919-96cf-318b5b6e1a14" parent_id_arme="7168279d-e502-450b-bd21-ff2618cc085c" />
+  <folder_arme name="Threat Issued to Pirates" id_arme="8a223ce4-7292-4919-96cf-318b5b6e1a14" parent_id_arme="7168279d-e502-450b-bd21-ff2618cc085c" expanded_arme="" />
   <event name="Howler Surrender Deny Reset" id_arme="9fae3a6f-ae28-4dd5-800c-654975d6958c" parent_id_arme="8a223ce4-7292-4919-96cf-318b5b6e1a14">
     <if_exists name="Lone Howler" />
     <if_variable name="Deny" comparator="EQUALS" value="2.0" />
@@ -6383,60 +6375,92 @@
   <event name="Shinhart Defense Behavior" id_arme="112c4eca-e1d9-4a1a-bcac-e45be1cfa7be" parent_id_arme="d08ae57a-a483-4156-b14e-2bc61dda04b2">
     <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
     <if_variable name="ShinDefense" comparator="EQUALS" value="1.0" />
-    <add_ai type="GUARD_STATION" value1="20" name="Shinhart Defense 1" />
-    <add_ai type="GUARD_STATION" value1="20" name="Shinhart Defense 2" />
-    <add_ai type="GUARD_STATION" value1="20" name="Shinhart Defense 3" />
-    <add_ai type="GUARD_STATION" value1="20" name="Shinhart Defense 4" />
-    <add_ai type="CHASE_PLAYER" value1="30000" value2="30000" name="D94" />
-    <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="D94" />
+    <clear_ai name="Shinhart Defense 1" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="Shinhart Defense 1" />
+    <add_ai type="GUARD_STATION" value1="16" name="Shinhart Defense 1" />
+    <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="Shinhart Defense 1" />
+    <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="Shinhart Defense 1" />
+    <add_ai type="CHASE_ANGER" name="Shinhart Defense 1" />
+    <add_ai type="LEADER_LEADS" name="Shinhart Defense 1" />
+    <add_ai type="FOLLOW_LEADER" name="Shinhart Defense 1" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="10000" name="Shinhart Defense 1" />
+    <clear_ai name="Shinhart Defense 2" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="Shinhart Defense 2" />
+    <add_ai type="GUARD_STATION" value1="16" name="Shinhart Defense 2" />
+    <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="Shinhart Defense 2" />
+    <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="Shinhart Defense 2" />
+    <add_ai type="CHASE_ANGER" name="Shinhart Defense 2" />
+    <add_ai type="LEADER_LEADS" name="Shinhart Defense 2" />
+    <add_ai type="FOLLOW_LEADER" name="Shinhart Defense 2" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="10000" name="Shinhart Defense 2" />
+    <clear_ai name="Shinhart Defense 3" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="Shinhart Defense 3" />
+    <add_ai type="GUARD_STATION" value1="16" name="Shinhart Defense 3" />
+    <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="Shinhart Defense 3" />
+    <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="Shinhart Defense 3" />
+    <add_ai type="CHASE_ANGER" name="Shinhart Defense 3" />
+    <add_ai type="LEADER_LEADS" name="Shinhart Defense 3" />
+    <add_ai type="FOLLOW_LEADER" name="Shinhart Defense 3" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="10000" name="Shinhart Defense 3" />
+    <clear_ai name="Shinhart Defense 4" />
+    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="Shinhart Defense 4" />
+    <add_ai type="GUARD_STATION" value1="16" name="Shinhart Defense 4" />
+    <add_ai type="CHASE_AI_SHIP" value1="3000" value2="500" name="Shinhart Defense 4" />
+    <add_ai type="CHASE_PLAYER" value1="3000" value2="500" name="Shinhart Defense 4" />
+    <add_ai type="CHASE_ANGER" name="Shinhart Defense 4" />
+    <add_ai type="LEADER_LEADS" name="Shinhart Defense 4" />
+    <add_ai type="FOLLOW_LEADER" name="Shinhart Defense 4" />
+    <add_ai type="LAUNCH_FIGHTERS" value1="10000" name="Shinhart Defense 4" />
+    <add_ai type="CHASE_PLAYER" value1="15000" value2="3000" name="D94" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="2000" name="D94" />
     <add_ai type="CHASE_ANGER" name="D94" />
-    <add_ai type="CHASE_PLAYER" value1="30000" value2="30000" name="A24" />
+    <add_ai type="CHASE_PLAYER" value1="15000" value2="3000" name="A24" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="2000" name="A24" />
     <add_ai type="CHASE_ANGER" name="A24" />
-    <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="A24" />
-    <add_ai type="CHASE_PLAYER" value1="30000" value2="30000" name="K43" />
-    <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="K43" />
+    <add_ai type="CHASE_PLAYER" value1="15000" value2="3000" name="K43" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="2000" name="K43" />
     <add_ai type="CHASE_ANGER" name="K43" />
-    <add_ai type="CHASE_PLAYER" value1="30000" value2="30000" name="B15" />
-    <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="B15" />
+    <add_ai type="CHASE_PLAYER" value1="15000" value2="3000" name="B15" />
+    <add_ai type="CHASE_AI_SHIP" value1="2000" value2="5000" name="B15" />
     <add_ai type="CHASE_ANGER" name="B15" />
-    <add_ai type="CHASE_PLAYER" value1="30000" value2="30000" name="J98" />
-    <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="J98" />
+    <add_ai type="CHASE_PLAYER" value1="15000" value2="3000" name="J98" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="2000" name="J98" />
     <add_ai type="CHASE_ANGER" name="J98" />
-    <add_ai type="CHASE_PLAYER" value1="30000" value2="30000" name="M30" />
-    <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="M30" />
+    <add_ai type="CHASE_PLAYER" value1="15000" value2="3000" name="M30" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="2000" name="M30" />
     <add_ai type="CHASE_ANGER" name="M30" />
-    <add_ai type="CHASE_PLAYER" value1="30000" value2="30000" name="N00" />
-    <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="N00" />
+    <add_ai type="CHASE_PLAYER" value1="15000" value2="3000" name="N00" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="2000" name="N00" />
     <add_ai type="CHASE_ANGER" name="N00" />
-    <add_ai type="CHASE_PLAYER" value1="30000" value2="30000" name="C67" />
-    <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="C67" />
+    <add_ai type="CHASE_PLAYER" value1="15000" value2="3000" name="C67" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="2000" name="C67" />
     <add_ai type="CHASE_ANGER" name="C67" />
-    <add_ai type="CHASE_PLAYER" value1="30000" value2="30000" name="Q33" />
-    <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="Q33" />
+    <add_ai type="CHASE_PLAYER" value1="15000" value2="3000" name="Q33" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="2000" name="Q33" />
     <add_ai type="CHASE_ANGER" name="Q33" />
-    <add_ai type="CHASE_PLAYER" value1="30000" value2="30000" name="R17" />
-    <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="R17" />
+    <add_ai type="CHASE_PLAYER" value1="15000" value2="3000" name="R17" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="2000" name="R17" />
     <add_ai type="CHASE_ANGER" name="R17" />
-    <add_ai type="CHASE_PLAYER" value1="30000" value2="30000" name="F21" />
-    <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="F21" />
+    <add_ai type="CHASE_PLAYER" value1="15000" value2="3000" name="F21" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="2000" name="F21" />
     <add_ai type="CHASE_ANGER" name="F21" />
-    <add_ai type="CHASE_PLAYER" value1="30000" value2="30000" name="U85" />
-    <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="U85" />
+    <add_ai type="CHASE_PLAYER" value1="15000" value2="3000" name="U85" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="2000" name="U85" />
     <add_ai type="CHASE_ANGER" name="U85" />
-    <add_ai type="CHASE_PLAYER" value1="30000" value2="30000" name="O01" />
-    <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="O01" />
+    <add_ai type="CHASE_PLAYER" value1="15000" value2="3000" name="O01" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="2000" name="O01" />
     <add_ai type="CHASE_ANGER" name="O01" />
-    <add_ai type="CHASE_PLAYER" value1="30000" value2="30000" name="T1000" />
-    <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="T1000" />
+    <add_ai type="CHASE_PLAYER" value1="15000" value2="3000" name="T1000" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="2000" name="T1000" />
     <add_ai type="CHASE_ANGER" name="T1000" />
-    <add_ai type="CHASE_PLAYER" value1="30000" value2="30000" name="G13" />
-    <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="G13" />
+    <add_ai type="CHASE_PLAYER" value1="15000" value2="3000" name="G13" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="2000" name="G13" />
     <add_ai type="CHASE_ANGER" name="G13" />
-    <add_ai type="CHASE_PLAYER" value1="30000" value2="30000" name="V42" />
-    <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="V42" />
+    <add_ai type="CHASE_PLAYER" value1="15000" value2="3000" name="V42" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="2000" name="V42" />
     <add_ai type="CHASE_ANGER" name="V42" />
-    <add_ai type="CHASE_PLAYER" value1="30000" value2="30000" name="E81" />
-    <add_ai type="CHASE_AI_SHIP" value1="10000" value2="10000" name="E81" />
+    <add_ai type="CHASE_PLAYER" value1="15000" value2="3000" name="E81" />
+    <add_ai type="CHASE_AI_SHIP" value1="5000" value2="2000" name="E81" />
     <add_ai type="CHASE_ANGER" name="E81" />
     <set_variable name="ShinDefense" value="2.0" integer="yes" />
   </event>
@@ -6445,10 +6469,10 @@
     <if_distance player_slot1="0" name2="Shinhart" comparator="LESS" value="10000.0" />
     <if_variable name="ShinDefense" comparator="EQUALS" value="0.0" />
     <incoming_comms_text from="Shinhart Station" type="ALERT ENEMY">All ships!  We have pirates on the radar!  Repeat, pirates on radar!</incoming_comms_text>
-    <create type="enemy" x="ShinhartX-400" y="0.0" z="ShinhartY-400" name="Shinhart Defense 1" hullID="3000" fleetnumber="12" />
-    <create type="enemy" x="ShinhartX+400" y="0.0" z="ShinhartY+400" name="Shinhart Defense 2" hullID="3000" fleetnumber="12" />
-    <create type="enemy" x="ShinhartX-400" y="0.0" z="ShinhartY" name="Shinhart Defense 3" hullID="2002" fleetnumber="12" />
-    <create type="enemy" x="ShinhartX+400" y="0.0" z="ShinhartY-400" name="Shinhart Defense 4" hullID="3000" fleetnumber="13" />
+    <create type="enemy" x="ShinhartX-400" y="0.0" z="ShinhartY-400" name="Shinhart Defense 1" raceKeys="enemy standard support hasspecials" hullKeys="Fighter Goliath Defiler fighter small warship" fleetnumber="12" />
+    <create type="enemy" x="ShinhartX+400" y="0.0" z="ShinhartY+400" name="Shinhart Defense 2" raceKeys="enemy standard support hasspecials" hullKeys="Battleship Destroyer Fighter Goliath small warship" fleetnumber="12" />
+    <create type="enemy" x="ShinhartX-400" y="0.0" z="ShinhartY" name="Shinhart Defense 3" raceKeys="Kralien enemy" hullKeys="small warship medium large" fleetnumber="12" />
+    <create type="enemy" x="ShinhartX+400" y="0.0" z="ShinhartY-400" name="Shinhart Defense 4" raceKeys="Arvonian enemy hasspecials" hullKeys="fighter small medium large" fleetnumber="13" />
     <set_variable name="ShinDefense" value="1.0" integer="yes" />
   </event>
   <event name="Station Proximity Ship1" id_arme="dc49d5af-bb0a-4154-81aa-cd155087b1a6" parent_id_arme="d08ae57a-a483-4156-b14e-2bc61dda04b2">
@@ -7643,7 +7667,6 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="R17" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="F21" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="U85" />
-    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="O01" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="T1000" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="G13" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="V42" />
@@ -7670,7 +7693,6 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="R17" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="F21" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="U85" />
-    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="O01" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="T1000" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="G13" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="V42" />
@@ -7696,7 +7718,6 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="R17" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="F21" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="U85" />
-    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="O01" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="T1000" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="G13" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="V42" />
@@ -7722,7 +7743,6 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="R17" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="F21" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="U85" />
-    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="O01" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="T1000" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="G13" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="V42" />
@@ -7748,7 +7768,6 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="R17" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="F21" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="U85" />
-    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="O01" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="T1000" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="G13" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="V42" />
@@ -7774,7 +7793,6 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="R17" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="F21" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="U85" />
-    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="O01" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="T1000" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="G13" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="V42" />
@@ -7828,7 +7846,6 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="V42" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="G13" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="T1000" />
-    <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="O01" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="U85" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="F21" />
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="R17" />
@@ -7842,7 +7859,7 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="A24" />
     <set_variable name="Wave" value="1.0" integer="yes" />
   </event>
-  <folder_arme name="End Conditions" id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f" />
+  <folder_arme name="End Conditions" id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f" expanded_arme="" />
   <event name="Denoument Start" id_arme="a835da74-b4b6-488a-b488-656c3d9b1d4d" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
     <if_timer_finished name="start_mission_timer_1" />
     <if_variable name="Denoument" comparator="EQUALS" value="1.0" />
@@ -7900,15 +7917,8 @@
     <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
     <if_fleet_count comparator="EQUALS" value="0.0" sideValue="3" countSurrendered="1" />
     <if_fleet_count comparator="EQUALS" value="0.0" sideValue="1" />
-    <if_fleet_count comparator="EQUALS" value="1.0" sideValue="1" countSurrendered="1" />
     <if_not_exists name="Hole in the Wall" />
     <if_exists name="O01" />
-    <if_not_exists name="Q'tim" />
-    <if_not_exists name="Chrithon" />
-    <if_not_exists name="Shinhart" />
-    <if_not_exists name="Harulk" />
-    <if_not_exists name="Andar" />
-    <if_not_exists name="Partib" />
     <set_variable name="failed" value="0.0" integer="yes" />
     <set_timer name="start_mission_timer_1" seconds="10" />
     <set_variable name="Denoument" value="1.0" integer="yes" />
@@ -7932,7 +7942,7 @@
   </event>
   <event name="Ship Qualities" id_arme="14b99fba-0d68-4e34-8723-8883e3bb71ff" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
     <if_variable name="Denoument" comparator="EQUALS" value="5.0" />
-    <warning_popup_message message="Updating Sensor Map..." consoles="MHWESCOF" />
+    <warning_popup_message message="All Comms Terminated" consoles="MHWESCOF" />
     <set_special name="Bisby" ship="0" ability="Tractor" />
     <set_special name="Monitor" ship="1" ability="AntiTorp" />
     <set_special name="Collins" ability="Tractor" />
@@ -8016,7 +8026,7 @@
     <create type="enemy" x="51702.0" y="51.0" z="96082.0" angle="0" name="Bernoulli" hullID="2" sideValue="1" fleetnumber="2" />
     <create type="enemy" x="43660.0" y="51.0" z="96855.0" angle="0" name="Nabisco" hullID="7" sideValue="1" fleetnumber="2" />
     <create type="enemy" x="47681.0" y="51.0" z="94845.0" angle="0" name="Takai" hullID="0" sideValue="1" fleetnumber="2" />
-    <incoming_comms_text from="Command HQ" type="ALERT SIDE STATION ENEMY">All ships, destroy the pirate vessels!</incoming_comms_text>
+    <incoming_comms_text from="Command HQ" type="ALERT SIDE STATION ENEMY FRIEND">All ships, destroy the pirate vessels!</incoming_comms_text>
     <set_variable name="Denoument" value="5.0" integer="yes" />
   </event>
   <event name="Commencing Jump" id_arme="f9b5005a-2667-4c4e-9c41-125186b5f6d6" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
@@ -8148,7 +8158,7 @@
     <clear_comms_button text="Initiate Jump" />
     <set_timer name="End" seconds="15" />
     <warning_popup_message message="All ships destroyed." consoles="MHWESCOF" />
-    <big_message title="Mission Complete" subtitle1="All Enemies Eliminated" subtitle2="...but can you ever return home?" />
+    <big_message title="Mission Complete" subtitle1="All Enemies Eliminated" subtitle2="...but you can never return home." />
     <incoming_comms_text from="Command HQ" type="ALERT SIDE STATUS ENEMY">To all Pirate vessels in the Eaton system:^^The USN has now claimed this sector as a protectorate.^^If you enter or are found in Earth-controlled space again, you will be destroyed on sight.</incoming_comms_text>
     <clear_comms_button text="End Game" />
     <set_variable name="End" value="1.0" integer="yes" />
