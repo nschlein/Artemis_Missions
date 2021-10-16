@@ -66,15 +66,36 @@
     <clear_comms_button text="BEGIN GAME" />
     <set_variable name="Mission" value="-4.0" integer="yes" />
   </event>
-  <folder_arme name="GM Testing Controls" id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530" expanded_arme="" />
-  <event name="Event 564" id_arme="d74a09de-0e66-47cb-8e64-d1be67a92437" parent_id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530">
-    <if_variable name="GM Button" comparator="EQUALS" value="0.0" />
+  <folder_arme name="GM Testing Controls" id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530" />
+  <event name="GM ReSet Complete" id_arme="d74a09de-0e66-47cb-8e64-d1be67a92437" parent_id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530">
+    <if_variable name="GM Button" comparator="EQUALS" value="2.0" />
     <set_gm_button text="Contact Reset" y="0" />
     <set_gm_button text="Surrender" y="200" />
     <set_gm_button text="Destroy Target" y="400" />
     <set_gm_button text="Sensors Block" y="600" />
     <set_gm_button text="Sensors Unblock" y="800" />
     <set_variable name="GM Button" value="1.0" integer="yes" />
+  </event>
+  <event name="GM Buttons ReSet" id_arme="07a4f964-c1aa-4913-9760-711f5e892947" parent_id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530">
+    <if_variable name="GM Button" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Reset_GM" />
+    <clear_gm_button text="Contact Reset" />
+    <clear_gm_button text="Surrender" />
+    <clear_gm_button text="Destroy Target" />
+    <clear_gm_button text="Sensors Block" />
+    <clear_gm_button text="Sensors Unblock" />
+    <set_variable name="GM Button" value="2.0" integer="yes" />
+    <set_timer name="Reset_GM" seconds="60" />
+  </event>
+  <event name="Initial GM Buttons Set" id_arme="25384293-1f41-4d80-ba03-3231c584c054" parent_id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530">
+    <if_variable name="GM Button" comparator="EQUALS" value="0.0" />
+    <clear_comms_button text="Contact Reset" />
+    <set_gm_button text="Surrender" y="200" />
+    <set_gm_button text="Destroy Target" y="400" />
+    <set_gm_button text="Sensors Block" y="600" />
+    <set_gm_button text="Sensors Unblock" y="800" />
+    <set_variable name="GM Button" value="1.0" integer="yes" />
+    <set_timer name="Reset_GM" seconds="60" />
   </event>
   <event name="Destroy Target" id_arme="bfabed30-b099-4782-ab86-c923d384cc7f" parent_id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530">
     <if_gm_button text="Destroy Target" />
@@ -800,7 +821,7 @@
     <set_object_property property="positionY" value="0.0" player_slot="7" />
     <set_variable name="Player7" value="1.0" integer="yes" />
   </event>
-  <folder_arme name="Late Spawn Players" id_arme="021225e3-43f3-4987-bfd7-c3e952196596" />
+  <folder_arme name="Late Spawn Players" id_arme="021225e3-43f3-4987-bfd7-c3e952196596" expanded_arme="" />
   <event name="Late Spawn Player 1" id_arme="b76c9f41-19b6-4741-9a81-0f0e4a7c6063" parent_id_arme="021225e3-43f3-4987-bfd7-c3e952196596">
     <if_variable name="Mission" comparator="GREATER_EQUAL" value="0.0" />
     <if_variable name="Player1" comparator="EQUALS" value="0.0" />
@@ -808,6 +829,7 @@
     <warning_popup_message message="Updating Sensor Data..." consoles="MSO" player_slot="1" />
     <set_ship_text player_slot="1" newname="Unsinkable II" race="Pirate" class="Pirate" desc="Pirate" scan_desc="Pirate" />
     <warning_popup_message message="New Ship ID: Unsinkable II" consoles="MSC" player_slot="1" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="1" />
     <set_object_property property="positionX" value="50600.0" player_slot="1" />
     <set_object_property property="angle" value="0.0" player_slot="1" />
     <set_object_property property="positionZ" value="1000.0" player_slot="1" />
@@ -818,6 +840,7 @@
     <if_variable name="Mission" comparator="GREATER_EQUAL" value="0.0" />
     <if_variable name="Player2" comparator="EQUALS" value="0.0" />
     <if_exists player_slot="2" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="2" />
     <warning_popup_message message="Updating Sensor Data..." consoles="MSO" player_slot="2" />
     <set_ship_text player_slot="2" newname="Pillaging Plaque" race="Pirate" class="Pirate" desc="Pirate" scan_desc="Pirate" />
     <warning_popup_message message="New Ship ID: Pillaging Plaque" consoles="MSC" player_slot="2" />
@@ -831,6 +854,7 @@
     <if_variable name="Mission" comparator="GREATER_EQUAL" value="0.0" />
     <if_variable name="Player3" comparator="EQUALS" value="0.0" />
     <if_exists player_slot="3" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="3" />
     <warning_popup_message message="Updating Sensor Data..." consoles="MSO" player_slot="3" />
     <set_ship_text player_slot="3" newname="Abandoned Barnacle" race="Pirate" class="Pirate" desc="Pirate" scan_desc="Pirate" />
     <warning_popup_message message="New Ship ID: Abandoned Barnacle" consoles="MSC" player_slot="3" />
@@ -844,6 +868,7 @@
     <if_variable name="Mission" comparator="GREATER_EQUAL" value="0.0" />
     <if_variable name="Player4" comparator="EQUALS" value="0.0" />
     <if_exists player_slot="4" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="4" />
     <warning_popup_message message="Updating Sensor Data..." consoles="MSO" player_slot="4" />
     <set_ship_text player_slot="4" newname="Happy Rover" race="Pirate" class="Pirate" desc="Pirate" scan_desc="Pirate" />
     <warning_popup_message message="New Ship ID: Happy Rover" consoles="MSC" player_slot="5" />
@@ -857,6 +882,7 @@
     <if_variable name="Mission" comparator="GREATER_EQUAL" value="0.0" />
     <if_variable name="Player5" comparator="EQUALS" value="0.0" />
     <if_exists player_slot="5" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="5" />
     <warning_popup_message message="Updating Sensor Data..." consoles="MSO" player_slot="5" />
     <set_ship_text player_slot="5" newname="Wild Rumpus" race="Pirate" class="Pirate" desc="Pirate" scan_desc="Pirate" />
     <warning_popup_message message="New Ship ID: Wild Rumpus" consoles="MSC" player_slot="5" />
@@ -870,6 +896,7 @@
     <if_variable name="Mission" comparator="GREATER_EQUAL" value="0.0" />
     <if_variable name="Player6" comparator="EQUALS" value="0.0" />
     <if_exists player_slot="6" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="6" />
     <warning_popup_message message="Updating Sensor Data..." consoles="MSO" player_slot="6" />
     <set_ship_text player_slot="6" newname="Roaring Pumpkin" race="Pirate" class="Pirate" desc="Pirate" scan_desc="Pirate" />
     <warning_popup_message message="New Ship ID: Roaring Pumpkin" consoles="MSC" player_slot="6" />
@@ -883,6 +910,7 @@
     <if_variable name="Mission" comparator="GREATER_EQUAL" value="0.0" />
     <if_variable name="Player7" comparator="EQUALS" value="0.0" />
     <if_exists player_slot="7" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="7" />
     <warning_popup_message message="Updating Sensor Data..." consoles="MSO" player_slot="7" />
     <set_ship_text player_slot="7" newname="Fearful Minnow" race="Pirate" class="Pirate" desc="Pirate" scan_desc="Pirate" />
     <warning_popup_message message="New Ship ID: Fearful Minnow" consoles="MSC" player_slot="7" />
@@ -1040,6 +1068,7 @@
     <set_player_grid_damage value="1.0" player_slot="0" index="6" systemType="systemBackShield" countFrom="front" />
     <set_player_grid_damage value="1.0" player_slot="0" index="7" systemType="systemBackShield" countFrom="front" />
     <warning_popup_message message="Sensors Inoperative" consoles="SO" player_slot="0" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="0" />
     <set_object_property property="angle" value="0.0" player_slot="0" />
     <set_object_property property="positionX" value="50000.0" player_slot="0" />
     <set_object_property property="positionZ" value="1000.0" player_slot="0" />
@@ -1051,6 +1080,7 @@
     <if_variable name="Player1" comparator="EQUALS" value="5.0" />
     <if_exists player_slot="1" />
     <set_ship_text player_slot="1" newname="Unsinkable II" race="Pirate" class="Pirate" desc="Pirate" scan_desc="Pirate" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="1" />
     <warning_popup_message message="Emergency DamCon Robots Deployed" consoles="EO" player_slot="1" />
     <set_damcon_members value="1" team_index="0" player_slot="1" />
     <set_damcon_members value="1" team_index="1" player_slot="1" />
@@ -1140,6 +1170,7 @@
     <if_variable name="Player2" comparator="EQUALS" value="5.0" />
     <if_exists player_slot="2" />
     <set_ship_text player_slot="2" newname="Pillaging Plaque" race="Pirate" class="Pirate" desc="Pirate" scan_desc="Pirate" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="2" />
     <warning_popup_message message="Emergency DamCon Robots Deployed" consoles="EO" player_slot="2" />
     <set_damcon_members value="1" team_index="0" player_slot="2" />
     <set_damcon_members value="1" team_index="1" player_slot="2" />
@@ -1229,6 +1260,7 @@
     <if_variable name="Player3" comparator="EQUALS" value="5.0" />
     <if_exists player_slot="3" />
     <set_ship_text player_slot="3" newname="Abandoned Barnacle" race="Pirate" class="Pirate" desc="Pirate" scan_desc="Pirate" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="3" />
     <warning_popup_message message="Emergency DamCon Robots Deployed" consoles="EO" player_slot="3" />
     <set_damcon_members value="1" team_index="0" player_slot="3" />
     <set_damcon_members value="1" team_index="1" player_slot="3" />
@@ -1318,6 +1350,7 @@
     <if_variable name="Player4" comparator="EQUALS" value="5.0" />
     <if_exists player_slot="4" />
     <set_ship_text player_slot="4" newname="Happy Rover" race="Pirate" class="Pirate" desc="Pirate" scan_desc="Pirate" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="4" />
     <warning_popup_message message="Emergency DamCon Robots Deployed" consoles="EO" player_slot="4" />
     <set_damcon_members value="1" team_index="0" player_slot="4" />
     <set_damcon_members value="1" team_index="1" player_slot="4" />
@@ -1407,6 +1440,7 @@
     <if_variable name="Player5" comparator="EQUALS" value="5.0" />
     <if_exists player_slot="5" />
     <set_ship_text player_slot="5" newname="Wild Rumpus" race="Pirate" class="Pirate" desc="Pirate" scan_desc="Pirate" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="5" />
     <warning_popup_message message="Emergency DamCon Robots Deployed" consoles="EO" player_slot="5" />
     <set_damcon_members value="1" team_index="0" player_slot="5" />
     <set_damcon_members value="1" team_index="1" player_slot="5" />
@@ -1496,6 +1530,7 @@
     <if_variable name="Player6" comparator="EQUALS" value="5.0" />
     <if_exists player_slot="6" />
     <set_ship_text player_slot="6" newname="Roaring Pumpkin" race="Pirate" class="Pirate" desc="Pirate" scan_desc="Pirate" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="6" />
     <warning_popup_message message="Emergency DamCon Robots Deployed" consoles="EO" player_slot="6" />
     <set_damcon_members value="1" team_index="0" player_slot="6" />
     <set_damcon_members value="1" team_index="1" player_slot="6" />
@@ -1585,6 +1620,7 @@
     <if_variable name="Player7" comparator="EQUALS" value="5.0" />
     <if_exists player_slot="7" />
     <set_ship_text player_slot="7" newname="Fearful Minnow" race="Pirate" class="Pirate" desc="Pirate" scan_desc="Pirate" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="7" />
     <warning_popup_message message="Emergency DamCon Robots Deployed" consoles="EO" player_slot="7" />
     <set_damcon_members value="1" team_index="0" player_slot="7" />
     <set_damcon_members value="1" team_index="1" player_slot="7" />
@@ -1675,6 +1711,14 @@
     <if_variable name="Mission" comparator="EQUALS" value="-4.0" />
     <if_exists player_slot="0" />
     <if_variable name="Player0" comparator="EQUALS" value="1.0" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="0" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="1" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="2" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="3" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="4" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="5" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="6" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="7" />
     <incoming_comms_text from="Command HQ" type="SIDE STATION FRIEND">Decryption Complete...^This is Sector Command.  ^^The following information is classified as top-secret.  This is a black-ops mission.^^You have been provided with captured pirate vessels and forged transponder signals.^^Your instructions are to jump to the Eaton Sector and contact the independent pirate base known as the Hole in the Wall.^^Your goal is to secure the pirate's cooperation in staging the complete annihilation of enemy forces at the hands of "maurading pirates."^^You are authorized to take all actions necessary to secure the pirate's assistance.^^The Long Haul will accompany you to provide limited refit support.^^Should you or any of your crew be captured or killed, Earth will disavow all knowledge of your actions.^^Due to your mission's nature, there will be no further communication.^^Good luck.</incoming_comms_text>
     <set_timer name="start_mission_timer_1" seconds="15" />
     <set_variable name="Mission" value="-3.0" integer="yes" />
@@ -4332,7 +4376,7 @@
     <create type="enemy" x="50079.0" y="0.0" z="90128.0" angle="0" raceKeys="Skaraan" hullKeys="Defiler Enforcer Executor" fleetnumber="18" />
     <set_variable name="Wave" value="3.0" integer="yes" />
   </event>
-  <folder_arme name="Contacting the Hole in the Wall" id_arme="7168279d-e502-450b-bd21-ff2618cc085c" expanded_arme="" />
+  <folder_arme name="Contacting the Hole in the Wall" id_arme="7168279d-e502-450b-bd21-ff2618cc085c" />
   <event name="Proximity Test Ship 0" id_arme="12313eec-bc00-4a96-9ccf-73def1a6fd37" parent_id_arme="7168279d-e502-450b-bd21-ff2618cc085c">
     <if_variable name="Contact" comparator="EQUALS" value="0.0" />
     <if_distance player_slot1="0" name2="Hole in the Wall" comparator="LESS" value="8000.0" />
@@ -5268,7 +5312,7 @@
     <if_variable name="Contact" comparator="EQUALS" value="4.0" />
     <if_variable name="Help" comparator="EQUALS" value="1.0" />
     <incoming_comms_text from="Hole in the Wall" type="STATION">Really?  How refreshing--some actual honesty.^^I'll ask someone in charge if they're willing to talk to you...but you'd better be willing to part with some rum.</incoming_comms_text>
-    <set_timer name="ResponseDelay" seconds="15" />
+    <set_timer name="ResponseDelay" seconds="5" />
     <set_variable name="Help" value="2.0" integer="yes" />
   </event>
   <event name="CONFIRMED Help Us" id_arme="41d21fff-0690-47d5-ab5b-a0776bafe3ad" parent_id_arme="d594dafd-efa8-496b-bd86-1cabf5b520a4">
@@ -5280,12 +5324,12 @@
     <set_timer name="ResponseDelay" seconds="5" />
     <set_variable name="Help" value="1.0" integer="yes" />
   </event>
-  <folder_arme name="What do YOU Want" id_arme="b9de88b1-5df3-4ed0-b2aa-d6bf26346e6a" parent_id_arme="7168279d-e502-450b-bd21-ff2618cc085c" />
+  <folder_arme name="What do YOU Want" id_arme="b9de88b1-5df3-4ed0-b2aa-d6bf26346e6a" parent_id_arme="7168279d-e502-450b-bd21-ff2618cc085c" expanded_arme="" />
   <event name="Ximni Task Accept" id_arme="01e08a6c-449b-4f4d-8b41-b2ddfe708127" parent_id_arme="b9de88b1-5df3-4ed0-b2aa-d6bf26346e6a">
     <if_variable name="XimniRecovery" comparator="EQUALS" value="3.0" />
     <if_comms_button text="Tell us more." />
     <clear_comms_button text="Tell us more." />
-    <set_timer name="ResponseDelay" seconds="10" />
+    <set_timer name="ResponseDelay" seconds="5" />
     <set_variable name="XimniRecovery" value="4.0" integer="yes" />
   </event>
   <event name="Honest Threat" id_arme="62e351d1-d7ce-44b2-b4c5-bf5eab5d23e6" parent_id_arme="b9de88b1-5df3-4ed0-b2aa-d6bf26346e6a">
@@ -5420,7 +5464,7 @@
     <clear_comms_button text="What 'small favor?'" />
     <set_variable name="What" value="5.0" integer="yes" />
     <set_variable name="Sell" value="1.0" integer="yes" />
-    <set_timer name="ResponseDelay" seconds="4" />
+    <set_timer name="ResponseDelay" seconds="3" />
   </event>
   <event name="What Pirates want Officer" id_arme="edacbdde-0e88-4732-a339-93adf2d34ad4" parent_id_arme="b9de88b1-5df3-4ed0-b2aa-d6bf26346e6a">
     <if_timer_finished name="ResponseDelay" />
@@ -5437,7 +5481,7 @@
     <if_variable name="Contact" comparator="EQUALS" value="4.0" />
     <if_variable name="What" comparator="EQUALS" value="1.0" />
     <incoming_comms_text from="Hole in the Wall" type="STATION">Seriously?  No one's ever asked me that before...not without being on the pointy end of a torpedo.^^Three kegs of authentic Earth rum, some highly agreeable company, and a printing press for Rigellian tourist visas.  In that order.^^Oh...you mean the folks in charge.  Of course you do.  I'll see if someone wants to talk to you--but I still want the rum.</incoming_comms_text>
-    <set_timer name="ResponseDelay" seconds="30" />
+    <set_timer name="ResponseDelay" seconds="15" />
     <set_variable name="What" value="2.0" integer="yes" />
   </event>
   <event name="CONFIRMED Ask Pirates" id_arme="2df80abf-101e-43c9-b639-c1ed03dbd536" parent_id_arme="b9de88b1-5df3-4ed0-b2aa-d6bf26346e6a">
@@ -5571,7 +5615,7 @@
     <warning_popup_message message="Nebula Scanning Active..." consoles="MESC" />
     <set_variable name="NebPierce" value="15.0" integer="yes" />
   </event>
-  <folder_arme name="Threat Issued to Pirates" id_arme="8a223ce4-7292-4919-96cf-318b5b6e1a14" parent_id_arme="7168279d-e502-450b-bd21-ff2618cc085c" expanded_arme="" />
+  <folder_arme name="Threat Issued to Pirates" id_arme="8a223ce4-7292-4919-96cf-318b5b6e1a14" parent_id_arme="7168279d-e502-450b-bd21-ff2618cc085c" />
   <event name="Howler Surrender Deny Reset" id_arme="9fae3a6f-ae28-4dd5-800c-654975d6958c" parent_id_arme="8a223ce4-7292-4919-96cf-318b5b6e1a14">
     <if_exists name="Lone Howler" />
     <if_variable name="Deny" comparator="EQUALS" value="2.0" />
@@ -6082,13 +6126,13 @@
   <event name="Recovery Proposal" id_arme="6ca4eb10-351b-4d47-870d-3ca0c5263375" parent_id_arme="def7b7f1-c3ff-4567-8cb0-c8144348f987">
     <if_variable name="XimniRecovery" comparator="EQUALS" value="4.0" />
     <incoming_comms_text from="Hole in the Wall" type="SIDE STATION">Alright, here's the situation.^^The Skaraans have recently captured a Ximni scout ship, the Farbolt.  They were unable to crack the command codes, and have brought her here to scuttle.^^Normally we wouldn't care, but this particular ship belongs to the legendary Ximni Ranger fleet.   It is, in fact, Ranger 1, and my chief engineer used to serve onboard the Farbolt.  He has demanded that we return her home safely.^^We want you to take a few...specialists...behind Skaraan lines.  Find the Farbolt, drop them off, and run interference until they can repair it and return to base.  Do that, and we'll help you clear the sector.^^What do you say?</incoming_comms_text>
-    <set_timer name="ResponseDelay" seconds="5" />
+    <set_timer name="ResponseDelay" seconds="1" />
     <set_variable name="XimniRecovery" value="5.0" integer="yes" />
   </event>
   <event name="Accept or refuse option" id_arme="7f8e0f18-72bb-42f0-a449-dd6335d7c499" parent_id_arme="def7b7f1-c3ff-4567-8cb0-c8144348f987">
     <if_timer_finished name="ResponseDelay" />
     <if_variable name="XimniRecovery" comparator="EQUALS" value="5.0" />
-    <set_timer name="ResponseDelay" seconds="5" />
+    <set_timer name="ResponseDelay" seconds="3" />
     <set_comms_button text="Very well, we agree." />
     <set_comms_button text="Assist us or die, pirate scum!" />
     <set_variable name="XimniRecovery" value="6.0" integer="yes" />
@@ -6111,6 +6155,12 @@
     <set_variable name="Trinh" value="1.0" integer="yes" />
     <set_variable name="XimniRecovery" value="0.0" integer="yes" />
   </event>
+  <event name="Ximni Mission" id_arme="99562c72-500d-427c-8878-29aacbf8376b" parent_id_arme="def7b7f1-c3ff-4567-8cb0-c8144348f987">
+    <if_variable name="XimniRecovery" comparator="EQUALS" value="7.0" />
+    <if_timer_finished name="ResponseDelay" />
+    <incoming_comms_text from="Hole in the Wall" type="SIDE STATION">Excellent; scholars and gentlemen, you are.^^We'll load the needed repair equipment onto any ship which docks with the Hole in the Wall.^^Once one of you is in proximity to the Farbolt, you'll have to stay nearby for about a minute while transfers are being made.^^Then you'll have to protect the ship until it can return to us.^^We can also scramble the Skaraan sensor system to give you a bit of breathing room, but it'll be limited.  You tell us when.</incoming_comms_text>
+    <set_variable name="XimniRecovery" value="8.0" integer="yes" />
+  </event>
   <event name="Ximni Agree" id_arme="7cf13048-18f0-4907-aba9-8d71e9d0872e" parent_id_arme="def7b7f1-c3ff-4567-8cb0-c8144348f987">
     <if_timer_finished name="ResponseDelay" />
     <if_comms_button text="Very well, we agree." />
@@ -6118,14 +6168,16 @@
     <set_object_property property="sideValue" value="2" name="Hole in the Wall" />
     <clear_comms_button text="Very well, we agree." />
     <clear_comms_button text="Assist us or die, pirate scum!" />
-    <set_timer name="ResponseDelay" seconds="5" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="0" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="1" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="2" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="3" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="4" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="5" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="6" />
+    <set_object_property property="pirateRepWithStations" value="1" player_slot="7" />
+    <set_timer name="ResponseDelay" seconds="3" />
     <set_variable name="XimniRecovery" value="7.0" integer="yes" />
-  </event>
-  <event name="Ximni Mission" id_arme="99562c72-500d-427c-8878-29aacbf8376b" parent_id_arme="def7b7f1-c3ff-4567-8cb0-c8144348f987">
-    <if_variable name="XimniRecovery" comparator="EQUALS" value="7.0" />
-    <if_timer_finished name="ResponseDelay" />
-    <incoming_comms_text from="Hole in the Wall" type="SIDE STATION">Excellent; scholars and gentlemen, you are.^^We'll load the needed repair equipment onto any ship which docks with the Hole in the Wall.^^Once one of you is in proximity to the Farbolt, you'll have to stay nearby for about a minute while transfers are being made.^^Then you'll have to protect the ship until it can return to us.^^We can also scramble the Skaraan sensor system to give you a bit of breathing room, but it'll be limited.  You tell us when.</incoming_comms_text>
-    <set_variable name="XimniRecovery" value="8.0" integer="yes" />
   </event>
   <folder_arme name="Load Boarding Parties" id_arme="54ef1b91-42aa-4763-904d-21663cdb34c8" parent_id_arme="def7b7f1-c3ff-4567-8cb0-c8144348f987" />
   <event name="Load Pirates Complete 0" id_arme="de93afe8-76bb-4a3e-9f96-4398d4cd1360" parent_id_arme="54ef1b91-42aa-4763-904d-21663cdb34c8">
@@ -6344,7 +6396,7 @@
     <warning_popup_message message="Boarding interrupted..." consoles="MC" player_slot="7">Excellent; scholars and gentlemen, you are.^^We'll load the needed repair equipment onto any ship which docks with the Hole in the Wall.^^Once one of you is in proximity to the Farbolt, you'll have to stay nearby for about a minute while transfers are being made.^^Then you'll have to protect the ship until it can return to us.^^We can also scramble the Skaraan sensor system to give you a bit of breathing room, but it'll be limited.  You tell us when.</warning_popup_message>
     <set_variable name="Load7" value="0.0" integer="yes" />
   </event>
-  <folder_arme name="Farbolt Recovery" id_arme="d08ae57a-a483-4156-b14e-2bc61dda04b2" expanded_arme="" />
+  <folder_arme name="Farbolt Recovery" id_arme="d08ae57a-a483-4156-b14e-2bc61dda04b2" />
   <event name="Farbolt Destroyed" id_arme="5079feaf-864b-42e4-9eeb-ec75af0d51ca" parent_id_arme="d08ae57a-a483-4156-b14e-2bc61dda04b2">
     <if_variable name="System Build" comparator="GREATER_EQUAL" value="7.0" />
     <if_not_exists name="Farbolt" />
@@ -7859,7 +7911,7 @@
     <add_ai type="CHASE_PLAYER" value1="0" value2="0" name="A24" />
     <set_variable name="Wave" value="1.0" integer="yes" />
   </event>
-  <folder_arme name="End Conditions" id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f" expanded_arme="" />
+  <folder_arme name="End Conditions" id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f" />
   <event name="Denoument Start" id_arme="a835da74-b4b6-488a-b488-656c3d9b1d4d" parent_id_arme="6c9036f5-d836-4ffe-a118-fff92a29000f">
     <if_timer_finished name="start_mission_timer_1" />
     <if_variable name="Denoument" comparator="EQUALS" value="1.0" />
