@@ -1,9 +1,12 @@
-<!-- Disparate Measures, Written by Neal Schlein, aka Belroc, 2021.  Find me on the forums as nschlein.-->
+<!-- Invasive Measures, Written by Neal Schlein, aka Belroc, 2022.  Find me on the forums as nschlein.-->
+<!-- Part 1 of the series Measures for Measures. -->
 <!-- Multi-ship compatible mission, created to demonstrate and tesst the player_slot comms buttons in Artemis 2.7.99.-->
+<!--All ships must use stock names for proper function.  -->
 <!-- WARNING: DO NOT EDIT WITH ANY VERSION OF THE MISSION EDITOR WHICH DOES NOT SUPPPORT ARTEMIS 2.8!  It will strip the unsupported commands and make the mission non-functional.  -->
-<!-- To enable a testing mode, activate the event named "Button Testing Variables and Timers."  This automatically installs all abilities on ship 0 EXCEPT organic regeneration of DamCon teams, which can be selected at the station.  Ability removal is not supported in this mode. -->
-<mission_data version="1.0" background_id_arme="2ca412ba-9cf1-4717-b605-ccc18dca19f1" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
-  <mission_description>You are ordered to get refit with some prototype equipment.^^Suggested Ship: (any)^^Level Selectable (suggested 6-7)^^Multi-ship compatible^^GM Options</mission_description>
+<mission_data version="Artemis 2.8.1, v1.4" background_id_arme="2ca412ba-9cf1-4717-b605-ccc18dca19f1" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <mission_description>Measures for Measures Part 1^The Skaraans have developed some new technology.  Your job is to find the research station and ships, and destroy them all.^Multi-ship compatible, with per-slot mission variances^Level Selectable and GM Controls^Stock ship names required</mission_description>
+  <!--This mission requires use of pre-set ship names (in events "Launch Gravimetric Torpedo" 0-7)-->
+  <!--To use custom ship names, perform a global search for each stock name and simply Replace All-->
   <start id_arme="2ca412ba-9cf1-4717-b605-ccc18dca19f1">
     <create type="player" x="50000.0" y="0.0" z="50000.0" angle="0" />
     <set_skybox_index index="10" />
@@ -14,17 +17,17 @@
     <set_object_property property="nonPlayerWeapon" value="100" />
     <set_object_property property="playerWeapon" value="100" />
     <set_object_property property="playerShields" value="100" />
-    <big_message title="Disparate Measures" subtitle1="by Neal Schlein" subtitle2="adventure for Artemis 2.7.99" />
+    <big_message title="Disparate Measures" subtitle1="by Neal Schlein" subtitle2="adventure for Artemis 2.8.1" />
     <set_timer name="start_mission_timer_1" seconds="10" />
     <set_variable name="heatAdd" value="5.0" />
-    <set_variable name="heat_Target" value="0.01" />
     <set_variable name="BINGO" value="180.0" integer="yes" />
-    <set_variable name="Buttons" value="0.0" integer="yes" />
+    <set_variable name="Mission" value="-1.0" integer="yes" />
   </start>
   <!--These are my standard GM buttons for testing.  They reset every 60 seconds and allow surrender/destruction and toggling of nebula sensors. -->
-  <folder_arme name="GM Testing Controls" id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530" expanded_arme="" />
+  <folder_arme name="GM Testing Controls" id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530" />
   <event name="GM ReSet Complete" id_arme="d74a09de-0e66-47cb-8e64-d1be67a92437" parent_id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530">
     <if_variable name="GM Button" comparator="EQUALS" value="2.0" />
+    <set_gm_button text="Move" y="0" />
     <set_gm_button text="Surrender" y="200" />
     <set_gm_button text="Destroy Target" y="400" />
     <set_gm_button text="Sensors Block" y="600" />
@@ -34,6 +37,7 @@
   <event name="GM Buttons ReSet" id_arme="07a4f964-c1aa-4913-9760-711f5e892947" parent_id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530">
     <if_variable name="GM Button" comparator="EQUALS" value="1.0" />
     <if_timer_finished name="Reset_GM" />
+    <clear_gm_button text="Move" />
     <clear_gm_button text="Surrender" />
     <clear_gm_button text="Destroy Target" />
     <clear_gm_button text="Sensors Block" />
@@ -43,6 +47,7 @@
   </event>
   <event name="Initial GM Buttons Set" id_arme="25384293-1f41-4d80-ba03-3231c584c054" parent_id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530">
     <if_variable name="GM Button" comparator="EQUALS" value="0.0" />
+    <set_gm_button text="Move" y="0" />
     <set_gm_button text="Surrender" y="200" />
     <set_gm_button text="Destroy Target" y="400" />
     <set_gm_button text="Sensors Block" y="600" />
@@ -70,15 +75,19 @@
     <set_object_property property="nebulaIsOpaque" value="0" />
     <set_gm_button text="Sensors Unblock" />
   </event>
-  <folder_arme name="Initial Starting Sector" id_arme="0f07b7dd-78ba-44fa-ab09-f0b0603a1e39" expanded_arme="" />
+  <event name="Move Object" id_arme="7f19a9a2-b4f6-4898-959a-cfea4b4f2488" parent_id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530">
+    <if_gm_button text="Move" />
+    <set_to_gm_position use_gm_selection="" distance="0" angle="0" />
+    <set_gm_button text="Move" />
+  </event>
+  <folder_arme name="Initial Starting Sector" id_arme="0f07b7dd-78ba-44fa-ab09-f0b0603a1e39" />
   <event name="Create Initial Sector" id_arme="e7ebac4c-8a39-4b56-9d3a-d7c5c07bc97f" parent_id_arme="0f07b7dd-78ba-44fa-ab09-f0b0603a1e39">
-    <if_variable name="Mission" comparator="EQUALS" value="0.0" />
-    <incoming_comms_text from="TSN Command" sideValue="2" type="SIDE STATION">Mission Goals:^1. Destroy secret research installation.^^2. Destroy any enemy ships fitted with prototypes.</incoming_comms_text>
+    <if_variable name="Mission" comparator="EQUALS" value="-1.0" />
     <create type="station" x="22165.0" y="50.0" z="68402.0" name="DS 5" hullID="1001" sideValue="2" />
     <create type="station" x="75516.0" y="50.0" z="50773.0" name="DS 3" hullID="1004" sideValue="2" />
     <create type="station" x="81856.0" y="50.0" z="18608.0" name="DS 8" hullID="1002" sideValue="2" />
     <create type="blackHole" x="25258.0" y="0.0" z="15670.0" name="Vortep" />
-    <set_variable name="Mission" value="1.0" integer="yes" />
+    <set_variable name="Mission" value="0.0" integer="yes" />
   </event>
   <event name="Jump Complete" id_arme="136f2e24-098b-4887-9aeb-e917dfa73811" parent_id_arme="0f07b7dd-78ba-44fa-ab09-f0b0603a1e39">
     <if_variable name="Mission" comparator="EQUALS" value="4.0" />
@@ -100,6 +109,8 @@
     <set_variable name="playerStart_y" value="0.0" integer="yes" />
     <set_variable name="playerStart_z" randomIntLow="55000" randomIntHigh="85000" integer="yes" />
     <create type="neutral" x="playerStart_x" y="playerStart_y" z="playerStart_z" angle="90" name="Long Haul" raceKeys="Terran" hullKeys="Bulk Cargo cargo" sideValue="2" />
+    <create type="neutral" x="playerStart_x-500" y="playerStart_y" z="playerStart_z" angle="90" name="Falcon" hullID="100" sideValue="2" />
+    <create type="neutral" x="playerStart_x+500" y="playerStart_y" z="playerStart_z" angle="90" name="Hawk" hullID="100" sideValue="2" />
     <set_relative_position player_slot2="0" distance="2000" angle="0" name1="Long Haul" />
     <set_relative_position player_slot2="1" distance="2000" angle="20" name1="Long Haul" />
     <set_relative_position player_slot2="2" distance="2000" angle="340" name1="Long Haul" />
@@ -119,20 +130,29 @@
     <set_variable name="Mission" value="4.0" integer="yes" />
   </event>
   <event name="Start Game Pressed" id_arme="0fe342af-ec88-47b1-a0ac-712b1782c2b1" parent_id_arme="0f07b7dd-78ba-44fa-ab09-f0b0603a1e39">
-    <if_variable name="Mission" comparator="EQUALS" value="2.0" />
+    <if_variable name="Mission" comparator="LESS" value="2.0" />
     <if_comms_button text="Decrypt Message (Begin Mission)" />
     <clear_comms_button text="Decrypt Message (Begin Mission)" sideValue="2" />
     <set_comms_button text="Jump to System: Nox" sideValue="2" />
-    <incoming_comms_text from="TSN Command" sideValue="2" type="SIDE STATION">Decryption Complete^^Recently intercepted communications indicate a new enemy technology is in the final stages of development.  The main hup is a secret research station located in the Nox system.^^You are to conduct a deep-strike mission.  Destroy the station and any enemy vessels which may be fitted with prototypes.^^The TSN Long Haul will accompany you to provide refit support.</incoming_comms_text>
+    <incoming_comms_text from="TSN Command" sideValue="2" type="FRIEND SIDE">Mission Goals:^1. Destroy secret research installation.^^2. Destroy any enemy ships fitted with prototypes.</incoming_comms_text>
+    <incoming_comms_text from="TSN Command" sideValue="2" type="FRIEND SIDE">Decryption Complete^^Recently intercepted communications indicate a new enemy technology is in the final stages of development.  The site is a secret research station located in the Nox system.^^Enemy systems have been hacked so you can conduct a deep-strike mission.  Destroy the station and any enemy vessels which may be fitted with prototypes.^^The TSN Long Haul will accompany you to provide refit support.</incoming_comms_text>
     <set_variable name="Mission" value="3.0" integer="yes" />
   </event>
-  <event name="Start Game Button" id_arme="004d61f5-1493-489a-9d95-7d5eb24c35bb" parent_id_arme="0f07b7dd-78ba-44fa-ab09-f0b0603a1e39">
+  <event name="Reset Start Game Button" id_arme="004d61f5-1493-489a-9d95-7d5eb24c35bb" parent_id_arme="0f07b7dd-78ba-44fa-ab09-f0b0603a1e39">
     <if_variable name="Mission" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="start_mission_timer_1" />
+    <clear_comms_button text="Decrypt Message (Begin Mission)" sideValue="2" />
+    <set_comms_button text="Decrypt Message (Begin Mission)" sideValue="2" />
+    <set_variable name="Mission" value="0.0" integer="yes" />
+  </event>
+  <event name="Start Game Button" id_arme="5d3f852f-787d-433d-8d9c-e1d8b412bbc8" parent_id_arme="0f07b7dd-78ba-44fa-ab09-f0b0603a1e39">
+    <if_variable name="Mission" comparator="EQUALS" value="0.0" />
     <if_timer_finished name="start_mission_timer_1" />
     <if_exists player_slot="0" />
     <incoming_comms_text from="ex3d$0fad" sideValue="2" type="ALERT STATION">3s43d5ghuy^rt423d^345fddgy der4^3r54fr7jklmnw ekruei o29dl</incoming_comms_text>
     <set_comms_button text="Decrypt Message (Begin Mission)" sideValue="2" />
-    <set_variable name="Mission" value="2.0" integer="yes" />
+    <set_timer name="start_mission_timer_1" seconds="20" />
+    <set_variable name="Mission" value="1.0" integer="yes" />
   </event>
   <folder_arme name="Initial Spawn Players" id_arme="94ed05a5-1311-4c9a-9ff6-8557a2d7eb8f" parent_id_arme="0f07b7dd-78ba-44fa-ab09-f0b0603a1e39" />
   <event name="Spawn Player 0" id_arme="0d7eed4d-cb92-4a38-b995-ee2cd6343eb2" parent_id_arme="94ed05a5-1311-4c9a-9ff6-8557a2d7eb8f">
@@ -142,6 +162,7 @@
     <set_object_property property="positionX" value="81000.0" player_slot="0" />
     <set_object_property property="positionZ" value="18000.0" player_slot="0" />
     <set_object_property property="positionY" value="0.0" player_slot="0" />
+    <set_ship_text player_slot="0" newname="Artemis" />
     <set_variable name="Player0" value="1.0" integer="yes" />
   </event>
   <event name="Spawn Player 1" id_arme="ae6881d3-50b2-4243-83dd-188905d4b13f" parent_id_arme="94ed05a5-1311-4c9a-9ff6-8557a2d7eb8f">
@@ -151,6 +172,7 @@
     <set_object_property property="positionX" value="82000.0" player_slot="1" />
     <set_object_property property="positionZ" value="18000.0" player_slot="1" />
     <set_object_property property="positionY" value="0.0" player_slot="1" />
+    <set_ship_text player_slot="1" newname="Intrepid" />
     <set_variable name="Player1" value="1.0" integer="yes" />
   </event>
   <event name="Spawn Player 2" id_arme="ad0661e3-fa66-475a-b5ae-f8e3d9e36d36" parent_id_arme="94ed05a5-1311-4c9a-9ff6-8557a2d7eb8f">
@@ -160,6 +182,7 @@
     <set_object_property property="positionX" value="81000.0" player_slot="2" />
     <set_object_property property="positionZ" value="19000.0" player_slot="2" />
     <set_object_property property="positionY" value="0.0" player_slot="2" />
+    <set_ship_text player_slot="2" newname="Aegis" />
     <set_variable name="Player2" value="1.0" integer="yes" />
   </event>
   <event name="Spawn Player 3" id_arme="d782b138-2fec-4787-bcdf-b6ee5ea73ac3" parent_id_arme="94ed05a5-1311-4c9a-9ff6-8557a2d7eb8f">
@@ -169,6 +192,7 @@
     <set_object_property property="positionX" value="82000.0" player_slot="3" />
     <set_object_property property="positionZ" value="19000.0" player_slot="3" />
     <set_object_property property="positionY" value="0.0" player_slot="3" />
+    <set_ship_text player_slot="3" newname="Horatio" />
     <set_variable name="Player3" value="1.0" integer="yes" />
   </event>
   <event name="Spawn Player 4" id_arme="ee6b5cb9-bd8d-43fc-8b0b-5add350c832f" parent_id_arme="94ed05a5-1311-4c9a-9ff6-8557a2d7eb8f">
@@ -178,6 +202,7 @@
     <set_object_property property="positionX" value="82500.0" player_slot="4" />
     <set_object_property property="positionZ" value="18500.0" player_slot="4" />
     <set_object_property property="positionY" value="0.0" player_slot="4" />
+    <set_ship_text player_slot="4" newname="Excalibur" />
     <set_variable name="Player4" value="1.0" integer="yes" />
   </event>
   <event name="Spawn Player 5" id_arme="5836cb53-2e7e-48b8-8781-7890b857a8af" parent_id_arme="94ed05a5-1311-4c9a-9ff6-8557a2d7eb8f">
@@ -187,6 +212,7 @@
     <set_object_property property="positionX" value="80500.0" player_slot="5" />
     <set_object_property property="positionZ" value="18500.0" player_slot="5" />
     <set_object_property property="positionY" value="0.0" player_slot="5" />
+    <set_ship_text player_slot="5" newname="Hera" />
     <set_variable name="Player5" value="1.0" integer="yes" />
   </event>
   <event name="Spawn Player 6" id_arme="7d4c08d8-4bb0-4cbe-adfa-29bcd9286ac2" parent_id_arme="94ed05a5-1311-4c9a-9ff6-8557a2d7eb8f">
@@ -196,6 +222,7 @@
     <set_object_property property="positionX" value="83000.0" player_slot="6" />
     <set_object_property property="positionZ" value="17000.0" player_slot="6" />
     <set_object_property property="positionY" value="0.0" player_slot="6" />
+    <set_ship_text player_slot="6" newname="Ceres" />
     <set_variable name="Player6" value="1.0" integer="yes" />
   </event>
   <event name="Spawn Player 7" id_arme="fd3f9405-a15d-4a54-875a-4e159fb27f3f" parent_id_arme="94ed05a5-1311-4c9a-9ff6-8557a2d7eb8f">
@@ -205,10 +232,11 @@
     <set_object_property property="positionX" value="80000.0" player_slot="7" />
     <set_object_property property="positionZ" value="18500.0" player_slot="7" />
     <set_object_property property="positionY" value="0.0" player_slot="7" />
+    <set_ship_text player_slot="7" newname="Diana" />
     <set_variable name="Player7" value="1.0" integer="yes" />
   </event>
-  <folder_arme name="Core Trap" id_arme="121024d2-bb66-4ae9-b5ec-061ae813f848" expanded_arme="" />
-  <folder_arme name="Trithel Particles, Targeting Heat, and Warp Blocker" id_arme="ceb93f3f-50c7-41de-8bd9-65954af9fbf6" parent_id_arme="121024d2-bb66-4ae9-b5ec-061ae813f848" expanded_arme="" />
+  <folder_arme name="Core Trap" id_arme="121024d2-bb66-4ae9-b5ec-061ae813f848" />
+  <folder_arme name="Trithel Particles, Targeting Heat, and Warp Blocker" id_arme="ceb93f3f-50c7-41de-8bd9-65954af9fbf6" parent_id_arme="121024d2-bb66-4ae9-b5ec-061ae813f848" />
   <folder_arme name="Warp Blocker Warning" id_arme="58794082-a4e5-4c09-8d2b-091a2f7f5882" parent_id_arme="ceb93f3f-50c7-41de-8bd9-65954af9fbf6" />
   <event name="Warning Warp Blocker Ship 0" id_arme="be16ecea-c474-4453-8f84-c7a3756a822f" parent_id_arme="58794082-a4e5-4c09-8d2b-091a2f7f5882">
     <if_exists player_slot="0" />
@@ -225,7 +253,7 @@
     <if_outside_sphere player_slot="0" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
     <if_variable name="warpTrap" comparator="EQUALS" value="7.0" />
     <if_variable name="trithelWarning_0" comparator="EQUALS" value="1.0" />
-    <warning_popup_message message="No Trithel Detected" consoles="S" player_slot="0" />
+    <warning_popup_message message="Trithel Disipated" consoles="S" player_slot="0" />
     <warning_popup_message message="Warp Online" consoles="S" player_slot="0" />
     <set_variable name="trithelWarning_0" value="0.0" integer="yes" />
   </event>
@@ -244,7 +272,7 @@
     <if_outside_sphere player_slot="1" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
     <if_variable name="warpTrap" comparator="EQUALS" value="7.0" />
     <if_variable name="trithelWarning_1" comparator="EQUALS" value="1.0" />
-    <warning_popup_message message="No Trithel Detected" consoles="S" player_slot="1" />
+    <warning_popup_message message="Trithel Disipated" consoles="S" player_slot="1" />
     <warning_popup_message message="Warp Online" consoles="S" player_slot="1" />
     <set_variable name="trithelWarning_1" value="0.0" integer="yes" />
   </event>
@@ -263,7 +291,7 @@
     <if_outside_sphere player_slot="2" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
     <if_variable name="warpTrap" comparator="EQUALS" value="7.0" />
     <if_variable name="trithelWarning_2" comparator="EQUALS" value="1.0" />
-    <warning_popup_message message="No Trithel Detected" consoles="S" player_slot="2" />
+    <warning_popup_message message="Trithel Disipated" consoles="S" player_slot="2" />
     <warning_popup_message message="Warp Online" consoles="S" player_slot="2" />
     <set_variable name="trithelWarning_2" value="0.0" integer="yes" />
   </event>
@@ -282,7 +310,7 @@
     <if_outside_sphere player_slot="3" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
     <if_variable name="warpTrap" comparator="EQUALS" value="7.0" />
     <if_variable name="trithelWarning_3" comparator="EQUALS" value="1.0" />
-    <warning_popup_message message="No Trithel Detected" consoles="S" player_slot="3" />
+    <warning_popup_message message="Trithel Disipated" consoles="S" player_slot="3" />
     <warning_popup_message message="Warp Online" consoles="S" player_slot="3" />
     <set_variable name="trithelWarning_3" value="0.0" integer="yes" />
   </event>
@@ -301,7 +329,7 @@
     <if_outside_sphere player_slot="4" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
     <if_variable name="warpTrap" comparator="EQUALS" value="7.0" />
     <if_variable name="trithelWarning_4" comparator="EQUALS" value="1.0" />
-    <warning_popup_message message="No Trithel Detected" consoles="S" player_slot="4" />
+    <warning_popup_message message="Trithel Disipated" consoles="S" player_slot="4" />
     <warning_popup_message message="Warp Online" consoles="S" player_slot="4" />
     <set_variable name="trithelWarning_4" value="0.0" integer="yes" />
   </event>
@@ -320,7 +348,7 @@
     <if_outside_sphere player_slot="5" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
     <if_variable name="warpTrap" comparator="EQUALS" value="7.0" />
     <if_variable name="trithelWarning_5" comparator="EQUALS" value="1.0" />
-    <warning_popup_message message="No Trithel Detected" consoles="S" player_slot="5" />
+    <warning_popup_message message="Trithel Disipated" consoles="S" player_slot="5" />
     <warning_popup_message message="Warp Online" consoles="S" player_slot="5" />
     <set_variable name="trithelWarning_5" value="0.0" integer="yes" />
   </event>
@@ -339,7 +367,7 @@
     <if_outside_sphere player_slot="6" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
     <if_variable name="warpTrap" comparator="EQUALS" value="7.0" />
     <if_variable name="trithelWarning_6" comparator="EQUALS" value="1.0" />
-    <warning_popup_message message="No Trithel Detected" consoles="S" player_slot="6" />
+    <warning_popup_message message="Trithel Disipated" consoles="S" player_slot="6" />
     <warning_popup_message message="Warp Online" consoles="S" player_slot="6" />
     <set_variable name="trithelWarning_6" value="0.0" integer="yes" />
   </event>
@@ -358,16 +386,17 @@
     <if_outside_sphere player_slot="7" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
     <if_variable name="warpTrap" comparator="EQUALS" value="7.0" />
     <if_variable name="trithelWarning_7" comparator="EQUALS" value="1.0" />
-    <warning_popup_message message="No Trithel Detected" consoles="S" player_slot="7" />
+    <warning_popup_message message="Trithel Disipated" consoles="S" player_slot="7" />
     <warning_popup_message message="Warp Online" consoles="S" player_slot="7" />
     <set_variable name="trithelWarning_7" value="0.0" integer="yes" />
   </event>
-  <folder_arme name="Warp Blocked and Heat Effect" id_arme="fe342b47-0622-4ccb-9ebb-cbc4ee007573" parent_id_arme="ceb93f3f-50c7-41de-8bd9-65954af9fbf6" expanded_arme="" />
+  <folder_arme name="Warp Blocked and Heat Effect" id_arme="fe342b47-0622-4ccb-9ebb-cbc4ee007573" parent_id_arme="ceb93f3f-50c7-41de-8bd9-65954af9fbf6" />
   <event name="Warp Blocked Ship 0" id_arme="3b717f19-88f5-49ca-9c0d-c703275fc809" parent_id_arme="fe342b47-0622-4ccb-9ebb-cbc4ee007573">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
     <if_exists player_slot="0" />
+    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
     <if_inside_sphere player_slot="0" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_object_property property="warpState" player_slot="0" comparator="NOT" value="0" />
+    <if_object_property property="warpState" player_slot="0" comparator="GREATER_EQUAL" value="1" />
+    <if_object_property property="systemCurEnergyBeam" player_slot="0" comparator="LESS" value="0.73" />
     <addto_object_property value="heatAdd*(heat_Hart+heat_Vinc_2+heat_Arin)" property="systemCurHeatWarp" player_slot="0" />
     <warning_popup_message message="Warp System Failure..." consoles="E" player_slot="0" />
     <set_object_property property="warpState" value="0" player_slot="0" />
@@ -376,7 +405,8 @@
     <if_exists player_slot="1" />
     <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
     <if_inside_sphere player_slot="1" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_object_property property="warpState" player_slot="0" comparator="NOT" value="0" />
+    <if_object_property property="warpState" player_slot="1" comparator="GREATER_EQUAL" value="1" />
+    <if_object_property property="systemCurEnergyBeam" player_slot="1" comparator="LESS" value="0.73" />
     <addto_object_property value="heatAdd*(heat_Hart+heat_Vinc_2+heat_Arin)" property="systemCurHeatWarp" player_slot="1" />
     <warning_popup_message message="Warp System Failure..." consoles="E" player_slot="1" />
     <set_object_property property="warpState" value="0" player_slot="1" />
@@ -385,7 +415,8 @@
     <if_exists player_slot="2" />
     <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
     <if_inside_sphere player_slot="2" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_object_property property="warpState" player_slot="0" comparator="NOT" value="0" />
+    <if_object_property property="warpState" player_slot="2" comparator="NOT" value="0" />
+    <if_object_property property="systemCurEnergyBeam" player_slot="2" comparator="LESS" value="0.73" />
     <addto_object_property value="heatAdd*(heat_Hart+heat_Vinc_2+heat_Arin)" property="systemCurHeatWarp" player_slot="2" />
     <warning_popup_message message="Warp System Failure..." consoles="E" player_slot="2" />
     <set_object_property property="warpState" value="0" player_slot="2" />
@@ -394,7 +425,8 @@
     <if_exists player_slot="3" />
     <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
     <if_inside_sphere player_slot="3" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_object_property property="warpState" player_slot="0" comparator="NOT" value="0" />
+    <if_object_property property="warpState" player_slot="3" comparator="NOT" value="0" />
+    <if_object_property property="systemCurEnergyBeam" player_slot="3" comparator="LESS" value="0.73" />
     <addto_object_property value="heatAdd*(heat_Hart+heat_Vinc_2+heat_Arin)" property="systemCurHeatWarp" player_slot="3" />
     <warning_popup_message message="Warp System Failure..." consoles="E" player_slot="3" />
     <set_object_property property="warpState" value="0" player_slot="3" />
@@ -403,7 +435,8 @@
     <if_exists player_slot="4" />
     <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
     <if_inside_sphere player_slot="4" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_object_property property="warpState" player_slot="0" comparator="NOT" value="0" />
+    <if_object_property property="warpState" player_slot="4" comparator="NOT" value="0" />
+    <if_object_property property="systemCurEnergyBeam" player_slot="4" comparator="LESS" value="0.73" />
     <addto_object_property value="heatAdd*(heat_Hart+heat_Vinc_2+heat_Arin)" property="systemCurHeatWarp" player_slot="4" />
     <warning_popup_message message="Warp System Failure..." consoles="E" player_slot="4" />
     <set_object_property property="warpState" value="0" player_slot="4" />
@@ -412,7 +445,8 @@
     <if_exists player_slot="5" />
     <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
     <if_inside_sphere player_slot="5" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_object_property property="warpState" player_slot="0" comparator="NOT" value="0" />
+    <if_object_property property="warpState" player_slot="5" comparator="NOT" value="0" />
+    <if_object_property property="systemCurEnergyBeam" player_slot="5" comparator="LESS" value="0.73" />
     <addto_object_property value="heatAdd*(heat_Hart+heat_Vinc_2+heat_Arin)" property="systemCurHeatWarp" player_slot="5" />
     <warning_popup_message message="Warp System Failure..." consoles="E" player_slot="5" />
     <set_object_property property="warpState" value="0" player_slot="5" />
@@ -421,7 +455,8 @@
     <if_exists player_slot="6" />
     <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
     <if_inside_sphere player_slot="6" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_object_property property="warpState" player_slot="0" comparator="NOT" value="0" />
+    <if_object_property property="warpState" player_slot="6" comparator="NOT" value="0" />
+    <if_object_property property="systemCurEnergyBeam" player_slot="6" comparator="LESS" value="0.73" />
     <addto_object_property value="heatAdd*(heat_Hart+heat_Vinc_2+heat_Arin)" property="systemCurHeatWarp" player_slot="6" />
     <warning_popup_message message="Warp System Failure..." consoles="E" player_slot="6" />
     <set_object_property property="warpState" value="0" player_slot="6" />
@@ -430,227 +465,35 @@
     <if_exists player_slot="7" />
     <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
     <if_inside_sphere player_slot="7" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_object_property property="warpState" player_slot="0" comparator="NOT" value="0" />
+    <if_object_property property="warpState" player_slot="7" comparator="NOT" value="0" />
+    <if_object_property property="systemCurEnergyBeam" player_slot="7" comparator="LESS" value="0.73" />
     <addto_object_property value="heatAdd*(heat_Hart+heat_Vinc_2+heat_Arin)" property="systemCurHeatWarp" player_slot="7" />
     <warning_popup_message message="Warp System Failure..." consoles="E" player_slot="7" />
     <set_object_property property="warpState" value="0" player_slot="7" />
   </event>
-  <folder_arme name="Targeting Heat" id_arme="27faded0-4c6b-408b-aafc-b7517e271050" parent_id_arme="ceb93f3f-50c7-41de-8bd9-65954af9fbf6" />
-  <event name="Targeting Station Vinc 2 Ship 0" id_arme="fbe566d8-64f4-4bf0-8a2b-b4d5c594f63d" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="0" />
-    <if_inside_sphere player_slot="0" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="0" name="Vinc 2" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="0" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="0" />
-  </event>
-  <event name="Targeting Station Hart Ship 0" id_arme="62525365-b14c-4844-a63c-c7c9fee9c6ab" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="0" />
-    <if_inside_sphere player_slot="0" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="0" name="Hart" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="0" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="0" />
-  </event>
-  <event name="Targeting Station Arin Ship 0" id_arme="6c2c2832-3261-4c53-b691-d0d19518a434" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="0" />
-    <if_inside_sphere player_slot="0" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="0" name="Arin" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="0" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="0" />
-  </event>
-  <event name="Targeting Station Vinc 2 Ship 1" id_arme="d6bec0b6-7bd4-46f0-99e4-7eb9a3b4e44a" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="1" />
-    <if_inside_sphere player_slot="1" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="1" name="Vinc 2" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="1" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="1" />
-  </event>
-  <event name="Targeting Station Hart Ship 1" id_arme="7712b887-6cb6-47bb-906c-58dc9ce54f1a" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="1" />
-    <if_inside_sphere player_slot="1" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="1" name="Hart" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="1" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="1" />
-  </event>
-  <event name="Targeting Station Arin Ship 1" id_arme="0a8104ea-5f32-4c37-921c-9c087ed37378" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="1" />
-    <if_inside_sphere player_slot="1" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="1" name="Arin" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="1" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="1" />
-  </event>
-  <event name="Targeting Station Vinc 2 Ship 2" id_arme="c2926094-486e-4683-84de-668a50ad3389" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="2" />
-    <if_inside_sphere player_slot="2" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="2" name="Vinc 2" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="2" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="2" />
-  </event>
-  <event name="Targeting Station Hart Ship 2" id_arme="ca3e4f37-5f2f-4731-95e5-9ff56bc4d9d8" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="2" />
-    <if_inside_sphere player_slot="2" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="2" name="Hart" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="2" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="2" />
-  </event>
-  <event name="Targeting Station Arin Ship 2" id_arme="9ece5869-bd00-4d21-a0c0-867d38c435d0" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="2" />
-    <if_inside_sphere player_slot="2" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="2" name="Arin" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="2" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="2" />
-  </event>
-  <event name="Targeting Station Vinc 2 Ship 3" id_arme="fe15c9ed-0c62-4071-b7b0-0d820dc006a6" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="3" />
-    <if_inside_sphere player_slot="3" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="3" name="Vinc 2" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="3" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="3" />
-  </event>
-  <event name="Targeting Station Hart Ship 3" id_arme="46e8cb68-0225-47ee-aff4-2a00a8e78229" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="3" />
-    <if_inside_sphere player_slot="3" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="3" name="Hart" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="3" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="3" />
-  </event>
-  <event name="Targeting Station Arin Ship 3" id_arme="bb1eacc8-ec81-4f17-b381-0443cfbccbb8" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="3" />
-    <if_inside_sphere player_slot="3" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="3" name="Arin" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="3" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="3" />
-  </event>
-  <event name="Targeting Station Vinc 2 Ship 4" id_arme="88b59434-a259-451c-af45-ebedab6dbf5f" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="4" />
-    <if_inside_sphere player_slot="4" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="4" name="Vinc 2" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="4" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="4" />
-  </event>
-  <event name="Targeting Station Hart Ship 4" id_arme="2f7e369e-e6ee-438f-abef-1c7e6eaf8007" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="4" />
-    <if_inside_sphere player_slot="4" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="4" name="Hart" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="4" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="4" />
-  </event>
-  <event name="Targeting Station Arin Ship 4" id_arme="9c82f98e-f736-4fdb-9472-761953a0fc38" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="4" />
-    <if_inside_sphere player_slot="4" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="4" name="Arin" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="4" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="4" />
-  </event>
-  <event name="Targeting Station Vinc 2 Ship 5" id_arme="4030f311-b65c-45d2-a61a-081c09e3574a" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="5" />
-    <if_inside_sphere player_slot="5" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="5" name="Vinc 2" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="5" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="5" />
-  </event>
-  <event name="Targeting Station Hart Ship 5" id_arme="ee337543-1865-4c98-b56d-0ea73ac9c22f" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="5" />
-    <if_inside_sphere player_slot="5" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="5" name="Hart" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="5" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="5" />
-  </event>
-  <event name="Targeting Station Arin Ship 5" id_arme="f8a61281-df38-4347-91ba-2b9443ac3a39" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="5" />
-    <if_inside_sphere player_slot="5" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="5" name="Arin" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="5" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="5" />
-  </event>
-  <event name="Targeting Station Vinc 2 Ship 6" id_arme="5b33f140-7875-4615-bd50-a65df6ef0be4" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="6" />
-    <if_inside_sphere player_slot="6" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="6" name="Vinc 2" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="6" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="6" />
-  </event>
-  <event name="Targeting Station Hart Ship 6" id_arme="71f8b631-e389-4424-ac34-cd6fcd35535d" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="6" />
-    <if_inside_sphere player_slot="6" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="6" name="Hart" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="6" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="6" />
-  </event>
-  <event name="Targeting Station Arin Ship 6" id_arme="d5ad2a21-fe28-4250-9851-4ff63e483a41" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="6" />
-    <if_inside_sphere player_slot="6" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="6" name="Arin" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="6" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="6" />
-  </event>
-  <event name="Targeting Station Vinc 2 Ship 7" id_arme="97b1dab9-3ae4-4436-b4f6-81b018148339" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="7" />
-    <if_inside_sphere player_slot="7" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="7" name="Vinc 2" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="7" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="7" />
-  </event>
-  <event name="Targeting Station Hart Ship 7" id_arme="3c968599-e22d-473f-8e58-060c98a26bad" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="7" />
-    <if_inside_sphere player_slot="7" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="7" name="Hart" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="7" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="7" />
-  </event>
-  <event name="Targeting Station Arin Ship 7" id_arme="857e5a20-c5f2-4a03-8924-30c359a01602" parent_id_arme="27faded0-4c6b-408b-aafc-b7517e271050">
-    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
-    <if_exists player_slot="7" />
-    <if_inside_sphere player_slot="7" centerX="Station1_x" centerY="Station1_y" centerZ="Station1_z" radius="11000" />
-    <if_player_is_targeting player_slot="7" name="Arin" />
-    <addto_object_property value="heat_Target" property="systemCurCoolantTactical" player_slot="7" />
-    <warning_popup_message message="Tactical System Overload..." consoles="E" player_slot="7" />
-  </event>
   <folder_arme name="Activate Trithel Warp Blocker" id_arme="a66ece5f-fa59-4e53-a500-f3f234a0e3a9" parent_id_arme="ceb93f3f-50c7-41de-8bd9-65954af9fbf6" />
-  <event name="Warp Blocker Trap Details" id_arme="f067e85a-b9bf-4871-a49b-247fb24a3e5a" parent_id_arme="a66ece5f-fa59-4e53-a500-f3f234a0e3a9">
+  <event name="Warp Blocker Trap Sensors to Unlimited" id_arme="f067e85a-b9bf-4871-a49b-247fb24a3e5a" parent_id_arme="a66ece5f-fa59-4e53-a500-f3f234a0e3a9">
     <if_variable name="warpTrap" comparator="EQUALS" value="6.0" />
     <if_timer_finished name="warp_Down" />
     <warning_popup_message message="Sensor Callibration Complete" consoles="S" />
     <set_object_property property="sensorSetting" value="0" />
     <set_variable name="warpTrap" value="7.0" integer="yes" />
   </event>
-  <event name="Warp Blocker Trap Details" id_arme="50a83814-9bd9-4449-af9b-0f2eadf03260" parent_id_arme="a66ece5f-fa59-4e53-a500-f3f234a0e3a9">
+  <event name="Warp Blocker Trap Recalibrating Sensors" id_arme="50a83814-9bd9-4449-af9b-0f2eadf03260" parent_id_arme="a66ece5f-fa59-4e53-a500-f3f234a0e3a9">
     <if_variable name="warpTrap" comparator="EQUALS" value="5.0" />
     <if_timer_finished name="warp_Down" />
     <set_timer name="warp_Down" seconds="15" />
     <warning_popup_message message="Callibrating Sensors..." consoles="S" />
     <set_variable name="warpTrap" value="6.0" integer="yes" />
   </event>
-  <event name="Warp Blocker Trap Details" id_arme="64758db9-c332-4a7b-be27-520fcccf10f9" parent_id_arme="a66ece5f-fa59-4e53-a500-f3f234a0e3a9">
+  <event name="Warp Blocker Trap Particle Details" id_arme="64758db9-c332-4a7b-be27-520fcccf10f9" parent_id_arme="a66ece5f-fa59-4e53-a500-f3f234a0e3a9">
     <if_variable name="warpTrap" comparator="EQUALS" value="4.0" />
     <if_timer_finished name="warp_Down" />
     <set_timer name="warp_Down" seconds="10" />
-    <incoming_comms_text from="TSN Science" type="SIDE STATUS">Query Subject: Trithel Particles^^Reference: Trithel Nebula^Location: Outer Grant Sector (contested regions)^Maping Status: Unmapped (95% Incomplete)^^Notes:^1. The Trithel Nebula Contains unique particles which immediately collapse warp fields (reason unknown).  Both are named after nebula discoverer, Dr. Henry Trithel.^^2. Targeting sensors require proximity callibration within regions of Trithel particles.^^3. Sensor range is limited within the Trithel Nebula.  Use extreme caution.^^4. TSN Astrometrics theorizes that Trithel particles are the result of a uniquely massive gravimetric explosion.</incoming_comms_text>
+    <incoming_comms_text from="TSN Science" type="FRIEND SIDE">Query Subject: Trithel Particles^^Reference: Trithel Nebula^Location: Outer Grant Sector (contested regions)^Mapping Status: Unmapped (95% Incomplete)^^Notes:^1. The Trithel Nebula Contains unique particles which immediately collapse warp fields (reason unknown).  Both are named after nebula discoverer, Dr. Henry Trithel.^^2. Targeting sensors require proximity callibration within regions of Trithel particles.^^3. Sensor range is limited within the Trithel Nebula.  Use extreme caution.^^4. TSN Astrometrics theorizes that Trithel particles are the result of a uniquely massive gravimetric explosion.</incoming_comms_text>
     <set_variable name="warpTrap" value="5.0" integer="yes" />
   </event>
-  <event name="Warp Blocker Trap Details" id_arme="604f05b3-760e-4e28-8d78-fa823ef141c7" parent_id_arme="a66ece5f-fa59-4e53-a500-f3f234a0e3a9">
+  <event name="Warp Blocker Trap Particles Identified" id_arme="604f05b3-760e-4e28-8d78-fa823ef141c7" parent_id_arme="a66ece5f-fa59-4e53-a500-f3f234a0e3a9">
     <if_variable name="warpTrap" comparator="EQUALS" value="3.0" />
     <if_timer_finished name="warp_Down" />
     <set_timer name="warp_Down" seconds="15" />
@@ -786,19 +629,19 @@
     <set_variable name="warpTrap" value="1.0" integer="yes" />
   </event>
   <event name="Station Heat Factor Arin" id_arme="cde03007-bb53-4c32-8d37-a49f26cdcb1c" parent_id_arme="a66ece5f-fa59-4e53-a500-f3f234a0e3a9">
-    <if_variable name="warpTrap" comparator="EQUALS" value="1.0" />
+    <if_variable name="warpTrap" comparator="GREATER_EQUAL" value="1.0" />
     <if_not_exists name="Arin" />
     <if_variable name="heat_Arin" comparator="EQUALS" value="1.0" />
     <set_variable name="heat_Arin" value="0.0" integer="yes" />
   </event>
   <event name="Station Heat Factor Vinc 2" id_arme="15bfa0a0-403b-468e-b8c4-6bd743a2d08a" parent_id_arme="a66ece5f-fa59-4e53-a500-f3f234a0e3a9">
-    <if_variable name="warpTrap" comparator="EQUALS" value="1.0" />
+    <if_variable name="warpTrap" comparator="GREATER_EQUAL" value="1.0" />
     <if_not_exists name="Vinc 2" />
     <if_variable name="heat_Vinc_2" comparator="EQUALS" value="1.0" />
     <set_variable name="heat_Vinc_2" value="0.0" integer="yes" />
   </event>
   <event name="Station Heat Factor Hart" id_arme="9abbba34-2edb-407a-8b19-c337bee5c646" parent_id_arme="a66ece5f-fa59-4e53-a500-f3f234a0e3a9">
-    <if_variable name="warpTrap" comparator="EQUALS" value="1.0" />
+    <if_variable name="warpTrap" comparator="GREATER_EQUAL" value="1.0" />
     <if_not_exists name="Hart" />
     <if_variable name="heat_Hart" comparator="EQUALS" value="1.0" />
     <set_variable name="heat_Hart" value="0.0" integer="yes" />
@@ -829,7 +672,7 @@
     <warning_popup_message message="Warp Online" consoles="MHES" />
     <set_variable name="warpTrap" value="-3.0" integer="yes" />
   </event>
-  <folder_arme name="Enemy Spawn" id_arme="0d99876c-8747-4611-8498-1444ba0e8799" parent_id_arme="121024d2-bb66-4ae9-b5ec-061ae813f848" expanded_arme="" />
+  <folder_arme name="Enemy Spawn" id_arme="0d99876c-8747-4611-8498-1444ba0e8799" parent_id_arme="121024d2-bb66-4ae9-b5ec-061ae813f848" />
   <folder_arme name="Station Proximity" id_arme="afc1d8de-676a-4a7f-b052-3fc3090efb37" parent_id_arme="0d99876c-8747-4611-8498-1444ba0e8799" />
   <folder_arme name="Vinc 2" id_arme="6457580b-b961-40ec-ab0c-71281b3ac1e1" parent_id_arme="afc1d8de-676a-4a7f-b052-3fc3090efb37" />
   <event name="Create Station Vinc 2 Player SLOT" id_arme="8feb075e-7c21-4fff-a76c-66f811d0e627" parent_id_arme="6457580b-b961-40ec-ab0c-71281b3ac1e1">
@@ -838,7 +681,7 @@
     <if_distance player_slot1="0" name2="Vinc 2" comparator="LESS" value="825.0" />
     <if_variable name="mesh_Vinc" comparator="EQUALS" value="0.0" />
     <set_ship_text name="Vinc 2" newname="Vinc 2 DESTROY" />
-    <create type="station" x="0.0" y="1000.0" z="0.0" name="Vinc 2" raceKeys="Skaraan" hullKeys="base" />
+    <create type="station" x="0.0" y="1000.0" z="0.0" name="Vinc 2" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
     <set_variable name="mesh_Vinc" value="1.0" integer="yes" />
   </event>
   <event name="Create Station Vinc 2 Player SLOT" id_arme="f668248e-e8e5-43f5-948d-5402eec4933e" parent_id_arme="6457580b-b961-40ec-ab0c-71281b3ac1e1">
@@ -847,7 +690,7 @@
     <if_distance player_slot1="1" name2="Vinc 2" comparator="LESS" value="825.0" />
     <if_variable name="mesh_Vinc" comparator="EQUALS" value="0.0" />
     <set_ship_text name="Vinc 2" newname="Vinc 2 DESTROY" />
-    <create type="station" x="0.0" y="1000.0" z="0.0" name="Vinc 2" raceKeys="Skaraan" hullKeys="base" />
+    <create type="station" x="0.0" y="1000.0" z="0.0" name="Vinc 2" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
     <set_variable name="mesh_Vinc" value="1.0" integer="yes" />
   </event>
   <event name="Create Station Vinc 2 Player SLOT" id_arme="8934956d-6e07-4ef7-a71a-4dbcf2ed38ec" parent_id_arme="6457580b-b961-40ec-ab0c-71281b3ac1e1">
@@ -856,7 +699,7 @@
     <if_distance player_slot1="2" name2="Vinc 2" comparator="LESS" value="825.0" />
     <if_variable name="mesh_Vinc" comparator="EQUALS" value="0.0" />
     <set_ship_text name="Vinc 2" newname="Vinc 2 DESTROY" />
-    <create type="station" x="0.0" y="1000.0" z="0.0" name="Vinc 2" raceKeys="Skaraan" hullKeys="base" />
+    <create type="station" x="0.0" y="1000.0" z="0.0" name="Vinc 2" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
     <set_variable name="mesh_Vinc" value="1.0" integer="yes" />
   </event>
   <event name="Create Station Vinc 2 Player SLOT" id_arme="6771687c-d48f-4c6e-8bc3-4071bfc5ccf5" parent_id_arme="6457580b-b961-40ec-ab0c-71281b3ac1e1">
@@ -865,7 +708,7 @@
     <if_distance player_slot1="3" name2="Vinc 2" comparator="LESS" value="825.0" />
     <if_variable name="mesh_Vinc" comparator="EQUALS" value="0.0" />
     <set_ship_text name="Vinc 2" newname="Vinc 2 DESTROY" />
-    <create type="station" x="0.0" y="1000.0" z="0.0" name="Vinc 2" raceKeys="Skaraan" hullKeys="base" />
+    <create type="station" x="0.0" y="1000.0" z="0.0" name="Vinc 2" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
     <set_variable name="mesh_Vinc" value="1.0" integer="yes" />
   </event>
   <event name="Create Station Vinc 2 Player SLOT" id_arme="5252865e-3301-4f34-a047-031a61d514e1" parent_id_arme="6457580b-b961-40ec-ab0c-71281b3ac1e1">
@@ -874,7 +717,7 @@
     <if_distance player_slot1="4" name2="Vinc 2" comparator="LESS" value="825.0" />
     <if_variable name="mesh_Vinc" comparator="EQUALS" value="0.0" />
     <set_ship_text name="Vinc 2" newname="Vinc 2 DESTROY" />
-    <create type="station" x="0.0" y="1000.0" z="0.0" name="Vinc 2" raceKeys="Skaraan" hullKeys="base" />
+    <create type="station" x="0.0" y="1000.0" z="0.0" name="Vinc 2" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
     <set_variable name="mesh_Vinc" value="1.0" integer="yes" />
   </event>
   <event name="Create Station Vinc 2 Player SLOT" id_arme="01292a4b-a6ea-4cc8-a09b-fedcd2ffb261" parent_id_arme="6457580b-b961-40ec-ab0c-71281b3ac1e1">
@@ -883,7 +726,7 @@
     <if_distance player_slot1="5" name2="Vinc 2" comparator="LESS" value="825.0" />
     <if_variable name="mesh_Vinc" comparator="EQUALS" value="0.0" />
     <set_ship_text name="Vinc 2" newname="Vinc 2 DESTROY" />
-    <create type="station" x="0.0" y="1000.0" z="0.0" name="Vinc 2" raceKeys="Skaraan" hullKeys="base" />
+    <create type="station" x="0.0" y="1000.0" z="0.0" name="Vinc 2" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
     <set_variable name="mesh_Vinc" value="1.0" integer="yes" />
   </event>
   <event name="Create Station Vinc 2 Player SLOT" id_arme="daa7437d-3540-4775-89c6-b3308d90a415" parent_id_arme="6457580b-b961-40ec-ab0c-71281b3ac1e1">
@@ -892,7 +735,7 @@
     <if_distance player_slot1="6" name2="Vinc 2" comparator="LESS" value="825.0" />
     <if_variable name="mesh_Vinc" comparator="EQUALS" value="0.0" />
     <set_ship_text name="Vinc 2" newname="Vinc 2 DESTROY" />
-    <create type="station" x="0.0" y="1000.0" z="0.0" name="Vinc 2" raceKeys="Skaraan" hullKeys="base" />
+    <create type="station" x="0.0" y="1000.0" z="0.0" name="Vinc 2" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
     <set_variable name="mesh_Vinc" value="1.0" integer="yes" />
   </event>
   <event name="Create Station Vinc 2 Player SLOT" id_arme="9ba76a3c-f121-4219-a3e6-ec46c36182f1" parent_id_arme="6457580b-b961-40ec-ab0c-71281b3ac1e1">
@@ -901,7 +744,7 @@
     <if_distance player_slot1="7" name2="Vinc 2" comparator="LESS" value="825.0" />
     <if_variable name="mesh_Vinc" comparator="EQUALS" value="0.0" />
     <set_ship_text name="Vinc 2" newname="Vinc 2 DESTROY" />
-    <create type="station" x="0.0" y="1000.0" z="0.0" name="Vinc 2" raceKeys="Skaraan" hullKeys="base" />
+    <create type="station" x="0.0" y="1000.0" z="0.0" name="Vinc 2" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
     <set_variable name="mesh_Vinc" value="1.0" integer="yes" />
   </event>
   <event name="Destroy Mesh and Move Station Vinc 2" id_arme="000da662-66fc-4eee-99b9-341b4d182471" parent_id_arme="6457580b-b961-40ec-ab0c-71281b3ac1e1">
@@ -916,218 +759,251 @@
     <set_variable name="mesh_Vinc" value="2.0" integer="yes" />
   </event>
   <folder_arme name="Hart" id_arme="91e4e06f-201b-4c43-ac8f-68aa10f44271" parent_id_arme="afc1d8de-676a-4a7f-b052-3fc3090efb37" />
-  <event name="Create Station Hart Player SLOT" id_arme="eb7c23a9-81ad-4efc-adbe-94d1766d212b" parent_id_arme="91e4e06f-201b-4c43-ac8f-68aa10f44271">
-    <if_distance player_slot1="0" name2="Hart" comparator="LESS" value="825.0" />
-    <if_exists player_slot="0" />
-    <if_exists name="Hart" />
-    <if_variable name="mesh_Hart" comparator="EQUALS" value="0.0" />
-    <set_ship_text name="Hart" newname="Hart DESTROY" />
-    <create type="station" x="0.0" y="1500.0" z="0.0" name="Hart" raceKeys="Skaraan" hullKeys="base" />
-    <set_variable name="mesh_Hart" value="1.0" integer="yes" />
-  </event>
-  <event name="Create Station Hart Player SLOT" id_arme="894c7173-1f83-4d1d-ad80-090e874e6fc5" parent_id_arme="91e4e06f-201b-4c43-ac8f-68aa10f44271">
-    <if_distance player_slot1="1" name2="Hart" comparator="LESS" value="825.0" />
-    <if_exists player_slot="1" />
-    <if_exists name="Hart" />
-    <if_variable name="mesh_Hart" comparator="EQUALS" value="0.0" />
-    <set_ship_text name="Hart" newname="Hart DESTROY" />
-    <create type="station" x="0.0" y="1500.0" z="0.0" name="Hart" raceKeys="Skaraan" hullKeys="base" />
-    <set_variable name="mesh_Hart" value="1.0" integer="yes" />
-  </event>
-  <event name="Create Station Hart Player SLOT" id_arme="61f96162-2f17-4544-aec1-a909e8409ca1" parent_id_arme="91e4e06f-201b-4c43-ac8f-68aa10f44271">
-    <if_distance player_slot1="2" name2="Hart" comparator="LESS" value="825.0" />
-    <if_exists player_slot="2" />
-    <if_exists name="Hart" />
-    <if_variable name="mesh_Hart" comparator="EQUALS" value="0.0" />
-    <set_ship_text name="Hart" newname="Hart DESTROY" />
-    <create type="station" x="0.0" y="1500.0" z="0.0" name="Hart" raceKeys="Skaraan" hullKeys="base" />
-    <set_variable name="mesh_Hart" value="1.0" integer="yes" />
-  </event>
-  <event name="Create Station Hart Player SLOT" id_arme="43e10850-3e9a-4a0c-add7-d01558a33dd1" parent_id_arme="91e4e06f-201b-4c43-ac8f-68aa10f44271">
-    <if_distance player_slot1="3" name2="Hart" comparator="LESS" value="825.0" />
-    <if_exists player_slot="3" />
-    <if_exists name="Hart" />
-    <if_variable name="mesh_Hart" comparator="EQUALS" value="0.0" />
-    <set_ship_text name="Hart" newname="Hart DESTROY" />
-    <create type="station" x="0.0" y="1500.0" z="0.0" name="Hart" raceKeys="Skaraan" hullKeys="base" />
-    <set_variable name="mesh_Hart" value="1.0" integer="yes" />
-  </event>
-  <event name="Create Station Hart Player SLOT" id_arme="78a5ca09-b6db-44aa-ba6e-4b49ce62c774" parent_id_arme="91e4e06f-201b-4c43-ac8f-68aa10f44271">
-    <if_distance player_slot1="4" name2="Hart" comparator="LESS" value="825.0" />
-    <if_exists player_slot="4" />
-    <if_exists name="Hart" />
-    <if_variable name="mesh_Hart" comparator="EQUALS" value="0.0" />
-    <set_ship_text name="Hart" newname="Hart DESTROY" />
-    <create type="station" x="0.0" y="1500.0" z="0.0" name="Hart" raceKeys="Skaraan" hullKeys="base" />
-    <set_variable name="mesh_Hart" value="1.0" integer="yes" />
-  </event>
-  <event name="Create Station Hart Player SLOT" id_arme="c431b9dc-559c-4c97-8e87-d5f12db1d109" parent_id_arme="91e4e06f-201b-4c43-ac8f-68aa10f44271">
-    <if_distance player_slot1="5" name2="Hart" comparator="LESS" value="825.0" />
-    <if_exists player_slot="5" />
-    <if_exists name="Hart" />
-    <if_variable name="mesh_Hart" comparator="EQUALS" value="0.0" />
-    <set_ship_text name="Hart" newname="Hart DESTROY" />
-    <create type="station" x="0.0" y="1500.0" z="0.0" name="Hart" raceKeys="Skaraan" hullKeys="base" />
-    <set_variable name="mesh_Hart" value="1.0" integer="yes" />
-  </event>
-  <event name="Create Station Hart Player SLOT" id_arme="ef20dca5-a1ac-42d2-a8f5-4795ca50d507" parent_id_arme="91e4e06f-201b-4c43-ac8f-68aa10f44271">
-    <if_distance player_slot1="6" name2="Hart" comparator="LESS" value="825.0" />
-    <if_exists player_slot="6" />
-    <if_exists name="Hart" />
-    <if_variable name="mesh_Hart" comparator="EQUALS" value="0.0" />
-    <set_ship_text name="Hart" newname="Hart DESTROY" />
-    <create type="station" x="0.0" y="1500.0" z="0.0" name="Hart" raceKeys="Skaraan" hullKeys="base" />
-    <set_variable name="mesh_Hart" value="1.0" integer="yes" />
-  </event>
-  <event name="Create Station Hart Player SLOT" id_arme="aa224ad4-0c8c-4091-963f-03b4e1b7d0f0" parent_id_arme="91e4e06f-201b-4c43-ac8f-68aa10f44271">
-    <if_distance player_slot1="7" name2="Hart" comparator="LESS" value="825.0" />
-    <if_exists player_slot="7" />
-    <if_exists name="Hart" />
-    <if_variable name="mesh_Hart" comparator="EQUALS" value="0.0" />
-    <set_ship_text name="Hart" newname="Hart DESTROY" />
-    <create type="station" x="0.0" y="1500.0" z="0.0" name="Hart" raceKeys="Skaraan" hullKeys="base" />
-    <set_variable name="mesh_Hart" value="1.0" integer="yes" />
-  </event>
   <event name="Destroy Mesh and Move Station Hart" id_arme="188b605c-ab5c-43ec-a55b-fa40416ad5c9" parent_id_arme="91e4e06f-201b-4c43-ac8f-68aa10f44271">
     <if_exists name="Hart" />
     <if_exists name="Hart DESTROY" />
     <if_variable name="mesh_Hart" comparator="EQUALS" value="1.0" />
     <destroy name="Hart DESTROY" />
-    <set_object_property property="positionX" value="Station2_x" name="Hart" />
-    <set_object_property property="positionY" value="Station2_y" name="Hart" />
-    <set_object_property property="positionZ" value="Station2_z" name="Hart" />
+    <set_object_property property="positionX" value="Station1_x+694" name="Hart" />
+    <set_object_property property="positionY" value="Station1_y" name="Hart" />
+    <set_object_property property="positionZ" value="Station1_z+347" name="Hart" />
     <set_variable name="mesh_Hart" value="2.0" integer="yes" />
   </event>
-  <folder_arme name="Arin" id_arme="cea8eb32-9c85-452a-b1c8-b97d16ebd776" parent_id_arme="afc1d8de-676a-4a7f-b052-3fc3090efb37" />
-  <event name="Create Station Arin Player SLOT" id_arme="faf24ecb-b169-404e-b5b6-f6382811b1d5" parent_id_arme="cea8eb32-9c85-452a-b1c8-b97d16ebd776">
+  <event name="Create Station Hart Player 0" id_arme="eb7c23a9-81ad-4efc-adbe-94d1766d212b" parent_id_arme="91e4e06f-201b-4c43-ac8f-68aa10f44271">
+    <if_distance player_slot1="0" name2="Hart" comparator="LESS" value="825.0" />
     <if_exists player_slot="0" />
-    <if_exists name="Arin" />
-    <if_distance player_slot1="0" name2="Arin" comparator="LESS" value="825.0" />
-    <if_variable name="mesh_Arin" comparator="EQUALS" value="0.0" />
-    <set_ship_text name="Arin" newname="Arin DESTROY" />
-    <create type="station" x="0.0" y="2000.0" z="0.0" name="Arin" raceKeys="Skaraan" hullKeys="base" />
-    <set_variable name="mesh_Arin" value="1.0" integer="yes" />
+    <if_exists name="Hart" />
+    <if_variable name="mesh_Hart" comparator="EQUALS" value="0.0" />
+    <set_ship_text name="Hart" newname="Hart DESTROY" />
+    <create type="station" x="0.0" y="1500.0" z="0.0" name="Hart" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
+    <set_variable name="mesh_Hart" value="1.0" integer="yes" />
   </event>
-  <event name="Create Station Arin Player SLOT" id_arme="c9103459-51b9-442a-bb21-5b57232071d4" parent_id_arme="cea8eb32-9c85-452a-b1c8-b97d16ebd776">
+  <event name="Create Station Hart Player 1" id_arme="894c7173-1f83-4d1d-ad80-090e874e6fc5" parent_id_arme="91e4e06f-201b-4c43-ac8f-68aa10f44271">
+    <if_distance player_slot1="1" name2="Hart" comparator="LESS" value="825.0" />
     <if_exists player_slot="1" />
-    <if_exists name="Arin" />
-    <if_distance player_slot1="1" name2="Arin" comparator="LESS" value="825.0" />
-    <if_variable name="mesh_Arin" comparator="EQUALS" value="0.0" />
-    <set_ship_text name="Arin" newname="Arin DESTROY" />
-    <create type="station" x="0.0" y="2000.0" z="0.0" name="Arin" raceKeys="Skaraan" hullKeys="base" />
-    <set_variable name="mesh_Arin" value="1.0" integer="yes" />
+    <if_exists name="Hart" />
+    <if_variable name="mesh_Hart" comparator="EQUALS" value="0.0" />
+    <set_ship_text name="Hart" newname="Hart DESTROY" />
+    <create type="station" x="0.0" y="1500.0" z="0.0" name="Hart" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
+    <set_variable name="mesh_Hart" value="1.0" integer="yes" />
   </event>
-  <event name="Create Station Arin Player SLOT" id_arme="e37a29f3-5b7a-4117-a478-2087ed9dea69" parent_id_arme="cea8eb32-9c85-452a-b1c8-b97d16ebd776">
+  <event name="Create Station Hart Player 2" id_arme="61f96162-2f17-4544-aec1-a909e8409ca1" parent_id_arme="91e4e06f-201b-4c43-ac8f-68aa10f44271">
+    <if_distance player_slot1="2" name2="Hart" comparator="LESS" value="825.0" />
     <if_exists player_slot="2" />
-    <if_exists name="Arin" />
-    <if_distance player_slot1="2" name2="Arin" comparator="LESS" value="825.0" />
-    <if_variable name="mesh_Arin" comparator="EQUALS" value="0.0" />
-    <set_ship_text name="Arin" newname="Arin DESTROY" />
-    <create type="station" x="0.0" y="2000.0" z="0.0" name="Arin" raceKeys="Skaraan" hullKeys="base" />
-    <set_variable name="mesh_Arin" value="1.0" integer="yes" />
+    <if_exists name="Hart" />
+    <if_variable name="mesh_Hart" comparator="EQUALS" value="0.0" />
+    <set_ship_text name="Hart" newname="Hart DESTROY" />
+    <create type="station" x="0.0" y="1500.0" z="0.0" name="Hart" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
+    <set_variable name="mesh_Hart" value="1.0" integer="yes" />
   </event>
-  <event name="Create Station Arin Player SLOT" id_arme="3b7fa706-1a96-45c6-a88b-1f1dd63760e3" parent_id_arme="cea8eb32-9c85-452a-b1c8-b97d16ebd776">
+  <event name="Create Station Hart Player 3" id_arme="43e10850-3e9a-4a0c-add7-d01558a33dd1" parent_id_arme="91e4e06f-201b-4c43-ac8f-68aa10f44271">
+    <if_distance player_slot1="3" name2="Hart" comparator="LESS" value="825.0" />
     <if_exists player_slot="3" />
-    <if_exists name="Arin" />
-    <if_distance player_slot1="3" name2="Arin" comparator="LESS" value="825.0" />
-    <if_variable name="mesh_Arin" comparator="EQUALS" value="0.0" />
-    <set_ship_text name="Arin" newname="Arin DESTROY" />
-    <create type="station" x="0.0" y="2000.0" z="0.0" name="Arin" raceKeys="Skaraan" hullKeys="base" />
-    <set_variable name="mesh_Arin" value="1.0" integer="yes" />
+    <if_exists name="Hart" />
+    <if_variable name="mesh_Hart" comparator="EQUALS" value="0.0" />
+    <set_ship_text name="Hart" newname="Hart DESTROY" />
+    <create type="station" x="0.0" y="1500.0" z="0.0" name="Hart" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
+    <set_variable name="mesh_Hart" value="1.0" integer="yes" />
   </event>
-  <event name="Create Station Arin Player SLOT" id_arme="c80b4452-f367-4236-9c9a-a6dae95be4c0" parent_id_arme="cea8eb32-9c85-452a-b1c8-b97d16ebd776">
+  <event name="Create Station Hart Player 4" id_arme="78a5ca09-b6db-44aa-ba6e-4b49ce62c774" parent_id_arme="91e4e06f-201b-4c43-ac8f-68aa10f44271">
+    <if_distance player_slot1="4" name2="Hart" comparator="LESS" value="825.0" />
     <if_exists player_slot="4" />
-    <if_exists name="Arin" />
-    <if_distance player_slot1="4" name2="Arin" comparator="LESS" value="825.0" />
-    <if_variable name="mesh_Arin" comparator="EQUALS" value="0.0" />
-    <set_ship_text name="Arin" newname="Arin DESTROY" />
-    <create type="station" x="0.0" y="2000.0" z="0.0" name="Arin" raceKeys="Skaraan" hullKeys="base" />
-    <set_variable name="mesh_Arin" value="1.0" integer="yes" />
+    <if_exists name="Hart" />
+    <if_variable name="mesh_Hart" comparator="EQUALS" value="0.0" />
+    <set_ship_text name="Hart" newname="Hart DESTROY" />
+    <create type="station" x="0.0" y="1500.0" z="0.0" name="Hart" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
+    <set_variable name="mesh_Hart" value="1.0" integer="yes" />
   </event>
-  <event name="Create Station Arin Player SLOT" id_arme="dbb55518-5a6b-417a-aaf7-fdc3ae0359d8" parent_id_arme="cea8eb32-9c85-452a-b1c8-b97d16ebd776">
+  <event name="Create Station Hart Player 5" id_arme="c431b9dc-559c-4c97-8e87-d5f12db1d109" parent_id_arme="91e4e06f-201b-4c43-ac8f-68aa10f44271">
+    <if_distance player_slot1="5" name2="Hart" comparator="LESS" value="825.0" />
     <if_exists player_slot="5" />
-    <if_exists name="Arin" />
-    <if_distance player_slot1="5" name2="Arin" comparator="LESS" value="825.0" />
-    <if_variable name="mesh_Arin" comparator="EQUALS" value="0.0" />
-    <set_ship_text name="Arin" newname="Arin DESTROY" />
-    <create type="station" x="0.0" y="2000.0" z="0.0" name="Arin" raceKeys="Skaraan" hullKeys="base" />
-    <set_variable name="mesh_Arin" value="1.0" integer="yes" />
+    <if_exists name="Hart" />
+    <if_variable name="mesh_Hart" comparator="EQUALS" value="0.0" />
+    <set_ship_text name="Hart" newname="Hart DESTROY" />
+    <create type="station" x="0.0" y="1500.0" z="0.0" name="Hart" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
+    <set_variable name="mesh_Hart" value="1.0" integer="yes" />
   </event>
-  <event name="Create Station Arin Player SLOT" id_arme="2c21d37d-9903-4f23-a082-7660be1aa01f" parent_id_arme="cea8eb32-9c85-452a-b1c8-b97d16ebd776">
+  <event name="Create Station Hart Player 6" id_arme="ef20dca5-a1ac-42d2-a8f5-4795ca50d507" parent_id_arme="91e4e06f-201b-4c43-ac8f-68aa10f44271">
+    <if_distance player_slot1="6" name2="Hart" comparator="LESS" value="825.0" />
     <if_exists player_slot="6" />
-    <if_exists name="Arin" />
-    <if_distance player_slot1="6" name2="Arin" comparator="LESS" value="825.0" />
-    <if_variable name="mesh_Arin" comparator="EQUALS" value="0.0" />
-    <set_ship_text name="Arin" newname="Arin DESTROY" />
-    <create type="station" x="0.0" y="2000.0" z="0.0" name="Arin" raceKeys="Skaraan" hullKeys="base" />
-    <set_variable name="mesh_Arin" value="1.0" integer="yes" />
+    <if_exists name="Hart" />
+    <if_variable name="mesh_Hart" comparator="EQUALS" value="0.0" />
+    <set_ship_text name="Hart" newname="Hart DESTROY" />
+    <create type="station" x="0.0" y="1500.0" z="0.0" name="Hart" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
+    <set_variable name="mesh_Hart" value="1.0" integer="yes" />
   </event>
-  <event name="Create Station Arin Player SLOT" id_arme="d977c029-391b-4ecb-8307-1ad40e7822bc" parent_id_arme="cea8eb32-9c85-452a-b1c8-b97d16ebd776">
+  <event name="Create Station Hart Player 7" id_arme="aa224ad4-0c8c-4091-963f-03b4e1b7d0f0" parent_id_arme="91e4e06f-201b-4c43-ac8f-68aa10f44271">
+    <if_distance player_slot1="7" name2="Hart" comparator="LESS" value="825.0" />
     <if_exists player_slot="7" />
-    <if_exists name="Arin" />
-    <if_distance player_slot1="7" name2="Arin" comparator="LESS" value="825.0" />
-    <if_variable name="mesh_Arin" comparator="EQUALS" value="0.0" />
-    <set_ship_text name="Arin" newname="Arin DESTROY" />
-    <create type="station" x="0.0" y="2000.0" z="0.0" name="Arin" raceKeys="Skaraan" hullKeys="base" />
-    <set_variable name="mesh_Arin" value="1.0" integer="yes" />
+    <if_exists name="Hart" />
+    <if_variable name="mesh_Hart" comparator="EQUALS" value="0.0" />
+    <set_ship_text name="Hart" newname="Hart DESTROY" />
+    <create type="station" x="0.0" y="1500.0" z="0.0" name="Hart" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
+    <set_variable name="mesh_Hart" value="1.0" integer="yes" />
   </event>
+  <folder_arme name="Arin" id_arme="cea8eb32-9c85-452a-b1c8-b97d16ebd776" parent_id_arme="afc1d8de-676a-4a7f-b052-3fc3090efb37" />
   <event name="Destroy Mesh and Move Station Arin" id_arme="5282a62f-e5d3-40c6-b464-a0aea585d7c3" parent_id_arme="cea8eb32-9c85-452a-b1c8-b97d16ebd776">
     <if_exists name="Arin" />
     <if_exists name="Arin DESTROY" />
     <if_variable name="mesh_Arin" comparator="EQUALS" value="1.0" />
     <destroy name="Arin DESTROY" />
-    <set_object_property property="positionX" value="Station3_x" name="Arin" />
-    <set_object_property property="positionY" value="Station3_y" name="Arin" />
-    <set_object_property property="positionZ" value="Station3_z" name="Arin" />
+    <set_object_property property="positionX" value="Station1_x-694" name="Arin" />
+    <set_object_property property="positionY" value="Station1_y" name="Arin" />
+    <set_object_property property="positionZ" value="Station1_z+347" name="Arin" />
     <set_variable name="mesh_Arin" value="2.0" integer="yes" />
   </event>
-  <folder_arme name="Minefield Enemies" id_arme="f97d7c29-0bb4-44d8-9150-966f99651466" parent_id_arme="0d99876c-8747-4611-8498-1444ba0e8799" expanded_arme="" />
+  <event name="Create Station Arin Player 0" id_arme="faf24ecb-b169-404e-b5b6-f6382811b1d5" parent_id_arme="cea8eb32-9c85-452a-b1c8-b97d16ebd776">
+    <if_exists player_slot="0" />
+    <if_exists name="Arin" />
+    <if_distance player_slot1="0" name2="Arin" comparator="LESS" value="825.0" />
+    <if_variable name="mesh_Arin" comparator="EQUALS" value="0.0" />
+    <set_ship_text name="Arin" newname="Arin DESTROY" />
+    <create type="station" x="0.0" y="2000.0" z="0.0" name="Arin" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
+    <set_variable name="mesh_Arin" value="1.0" integer="yes" />
+  </event>
+  <event name="Create Station Arin Player 1" id_arme="c9103459-51b9-442a-bb21-5b57232071d4" parent_id_arme="cea8eb32-9c85-452a-b1c8-b97d16ebd776">
+    <if_exists player_slot="1" />
+    <if_exists name="Arin" />
+    <if_distance player_slot1="1" name2="Arin" comparator="LESS" value="825.0" />
+    <if_variable name="mesh_Arin" comparator="EQUALS" value="0.0" />
+    <set_ship_text name="Arin" newname="Arin DESTROY" />
+    <create type="station" x="0.0" y="2000.0" z="0.0" name="Arin" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
+    <set_variable name="mesh_Arin" value="1.0" integer="yes" />
+  </event>
+  <event name="Create Station Arin Player 2" id_arme="e37a29f3-5b7a-4117-a478-2087ed9dea69" parent_id_arme="cea8eb32-9c85-452a-b1c8-b97d16ebd776">
+    <if_exists player_slot="2" />
+    <if_exists name="Arin" />
+    <if_distance player_slot1="2" name2="Arin" comparator="LESS" value="825.0" />
+    <if_variable name="mesh_Arin" comparator="EQUALS" value="0.0" />
+    <set_ship_text name="Arin" newname="Arin DESTROY" />
+    <create type="station" x="0.0" y="2000.0" z="0.0" name="Arin" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
+    <set_variable name="mesh_Arin" value="1.0" integer="yes" />
+  </event>
+  <event name="Create Station Arin Player 3" id_arme="3b7fa706-1a96-45c6-a88b-1f1dd63760e3" parent_id_arme="cea8eb32-9c85-452a-b1c8-b97d16ebd776">
+    <if_exists player_slot="3" />
+    <if_exists name="Arin" />
+    <if_distance player_slot1="3" name2="Arin" comparator="LESS" value="825.0" />
+    <if_variable name="mesh_Arin" comparator="EQUALS" value="0.0" />
+    <set_ship_text name="Arin" newname="Arin DESTROY" />
+    <create type="station" x="0.0" y="2000.0" z="0.0" name="Arin" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
+    <set_variable name="mesh_Arin" value="1.0" integer="yes" />
+  </event>
+  <event name="Create Station Arin Player 4" id_arme="c80b4452-f367-4236-9c9a-a6dae95be4c0" parent_id_arme="cea8eb32-9c85-452a-b1c8-b97d16ebd776">
+    <if_exists player_slot="4" />
+    <if_exists name="Arin" />
+    <if_distance player_slot1="4" name2="Arin" comparator="LESS" value="825.0" />
+    <if_variable name="mesh_Arin" comparator="EQUALS" value="0.0" />
+    <set_ship_text name="Arin" newname="Arin DESTROY" />
+    <create type="station" x="0.0" y="2000.0" z="0.0" name="Arin" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
+    <set_variable name="mesh_Arin" value="1.0" integer="yes" />
+  </event>
+  <event name="Create Station Arin Player 5" id_arme="dbb55518-5a6b-417a-aaf7-fdc3ae0359d8" parent_id_arme="cea8eb32-9c85-452a-b1c8-b97d16ebd776">
+    <if_exists player_slot="5" />
+    <if_exists name="Arin" />
+    <if_distance player_slot1="5" name2="Arin" comparator="LESS" value="825.0" />
+    <if_variable name="mesh_Arin" comparator="EQUALS" value="0.0" />
+    <set_ship_text name="Arin" newname="Arin DESTROY" />
+    <create type="station" x="0.0" y="2000.0" z="0.0" name="Arin" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
+    <set_variable name="mesh_Arin" value="1.0" integer="yes" />
+  </event>
+  <event name="Create Station Arin Player 6" id_arme="2c21d37d-9903-4f23-a082-7660be1aa01f" parent_id_arme="cea8eb32-9c85-452a-b1c8-b97d16ebd776">
+    <if_exists player_slot="6" />
+    <if_exists name="Arin" />
+    <if_distance player_slot1="6" name2="Arin" comparator="LESS" value="825.0" />
+    <if_variable name="mesh_Arin" comparator="EQUALS" value="0.0" />
+    <set_ship_text name="Arin" newname="Arin DESTROY" />
+    <create type="station" x="0.0" y="2000.0" z="0.0" name="Arin" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
+    <set_variable name="mesh_Arin" value="1.0" integer="yes" />
+  </event>
+  <event name="Create Station Arin Player 7" id_arme="d977c029-391b-4ecb-8307-1ad40e7822bc" parent_id_arme="cea8eb32-9c85-452a-b1c8-b97d16ebd776">
+    <if_exists player_slot="7" />
+    <if_exists name="Arin" />
+    <if_distance player_slot1="7" name2="Arin" comparator="LESS" value="825.0" />
+    <if_variable name="mesh_Arin" comparator="EQUALS" value="0.0" />
+    <set_ship_text name="Arin" newname="Arin DESTROY" />
+    <create type="station" x="0.0" y="2000.0" z="0.0" name="Arin" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
+    <set_variable name="mesh_Arin" value="1.0" integer="yes" />
+  </event>
+  <folder_arme name="Minefield Enemies" id_arme="f97d7c29-0bb4-44d8-9150-966f99651466" parent_id_arme="0d99876c-8747-4611-8498-1444ba0e8799" />
   <event name="Modify Enemy Abilities Ship 0" id_arme="0fc6e1ba-96f1-484f-9b55-c2f7d713723c" parent_id_arme="f97d7c29-0bb4-44d8-9150-966f99651466">
     <if_exists name="Vinc 2" />
     <if_variable name="core_Enemy" comparator="EQUALS" value="1.0" />
+    <set_relative_position name2="Arvonian Hull" distance="500" angle="0" name1="Orvo" />
+    <set_relative_position name2="Arvonian Hull " distance="500" angle="0" name1="Mala" />
+    <set_relative_position name2="Arvonian Hull  " distance="500" angle="0" name1="Lade" />
     <set_object_property property="triggersMines" value="0.0" name="A01" />
     <set_object_property property="triggersMines" value="0.0" name="A02" />
     <set_special name="A01" clear="yes" ability="AntiMine" />
-    <set_special name="A02" clear="yes" ability="AntiMine" />
     <set_special name="A01" clear="yes" ability="Cloak" />
-    <set_special name="A02" clear="yes" ability="Cloak" />
     <set_special name="A01" clear="yes" ability="Teleport" />
-    <set_special name="A02" clear="yes" ability="Teleport" />
     <set_special name="A01" clear="yes" ability="TeleBack" />
-    <set_special name="A02" clear="yes" ability="TeleBack" />
+    <set_special name="A01" ability="Warp" />
+    <set_special name="A01" ability="HET" />
+    <set_special name="A01" ship="0" ability="Tractor" />
     <set_ship_text name="A01" desc="Unknown Hull Material" />
+    <set_object_property property="positionX" value="Station1_x-(6000.0*0.707)" name="A01" />
+    <set_object_property property="positionZ" value="Station1_z+(6000.0*0.707)" name="A01" />
+    <set_object_property property="positionY" value="0.0" name="A01" />
+    <set_special name="A02" clear="yes" ability="AntiMine" />
+    <set_special name="A02" clear="yes" ability="Cloak" />
+    <set_special name="A02" clear="yes" ability="Teleport" />
+    <set_special name="A02" clear="yes" ability="TeleBack" />
+    <set_special name="A02" ability="Warp" />
+    <set_special name="A02" ability="Tractor" />
+    <set_special name="A02" ship="1" ability="ShldReset" />
     <set_ship_text name="A02" desc="Unknown Hull Material" />
+    <set_object_property property="positionX" value="Station1_x-(7000.0*0.866)" name="A02" />
+    <set_object_property property="positionZ" value="Station1_z-(7000*.5)" name="A02" />
+    <set_object_property property="positionY" value="0.0" name="A02" />
     <set_object_property property="triggersMines" value="0.0" name="B01" />
     <set_object_property property="triggersMines" value="0.0" name="B02" />
     <set_object_property property="triggersMines" value="0.0" name="B03" />
     <set_object_property property="triggersMines" value="0.0" name="B04" />
     <set_object_property property="triggersMines" value="0.0" name="B05" />
     <set_object_property property="triggersMines" value="0.0" name="B10" />
-    <set_special name="B10" captain="0" clear="yes" ability="HET" />
+    <set_special name="B10" captain="4" clear="yes" ability="HET" />
+    <set_special name="B10" captain="4" clear="yes" ability="Tractor" />
+    <set_special name="B10" captain="4" clear="yes" ability="AntiTorp" />
+    <set_object_property property="angle" value="1.5" name="B10" />
+    <set_variable name="random_X" randomIntLow="1" randomIntHigh="6" integer="yes" />
+    <set_object_property property="positionX" value="Station1_x-(random_X*1000)" name="B10" />
+    <set_object_property property="positionZ" value="Station1_z-(7000-random_X)" name="B10" />
+    <set_object_property property="positionY" value="0.0" name="B10" />
+    <set_relative_position name2="B01" distance="400" angle="0" name1="B10" />
+    <set_relative_position name2="B02" distance="400" angle="45" name1="B10" />
+    <set_relative_position name2="B03" distance="400" angle="315" name1="B10" />
+    <set_relative_position name2="B04" distance="400" angle="90" name1="B10" />
+    <set_relative_position name2="B05" distance="400" angle="270" name1="B10" />
+    <set_object_property property="positionZ" value="Station1_z-(7000.0*0.707)" name="A02" />
+    <set_object_property property="positionY" value="0.0" name="A02" />
     <set_object_property property="triggersMines" value="0.0" name="Lade_" />
     <set_object_property property="triggersMines" value="0.0" name="Orvo_" />
     <set_object_property property="triggersMines" value="0.0" name="Mala_" />
-    <set_object_property property="positionX" value="Station1_x-6000" name="A01" />
-    <set_object_property property="positionY" value="0.0" name="A01" />
-    <set_object_property property="positionZ" value="Station1_z-7000" name="A01" />
-    <set_object_property property="positionX" value="Station1_x-8000" name="A02" />
-    <set_object_property property="positionY" value="0.0" name="A02" />
-    <set_object_property property="positionZ" value="Station1_z" name="A02" />
     <copy_object_property property="positionX" name1="Orvo" name2="Orvo_" />
     <copy_object_property property="positionZ" name1="Orvo" name2="Orvo_" />
+    <set_special name="Orvo_" ability="ShldReset" />
+    <set_special name="Orvo_" ability="HET" />
+    <set_special name="Orvo_" ability="AntiTorp" />
+    <set_special name="Orvo_" ship="1" ability="Drones" />
     <destroy name="Orvo" />
     <set_object_property property="positionY" value="0.0" name="Orvo_" />
-    <set_ship_text name="Orvo_" newname="Orvo" desc="Unknown Hull Material" />
+    <set_ship_text name="Orvo_" newname="Orvo" desc="Unknown Hull Material" scan_desc="Sensors scrambled." />
     <copy_object_property property="positionX" name1="Lade" name2="Lade_" />
     <copy_object_property property="positionZ" name1="Lade" name2="Lade_" />
+    <set_special name="Lade_" ability="ShldReset" />
+    <set_special name="Lade_" ability="HET" />
+    <set_special name="Lade_" ship="1" ability="LowVis" />
     <destroy name="Lade" />
     <set_object_property property="positionY" value="0.0" name="Lade_" />
-    <set_ship_text name="Lade_" newname="Lade" desc="Unknown Hull Material" />
+    <set_ship_text name="Lade_" newname="Lade" desc="Unknown Hull Material" scan_desc="Sensors scrambled." />
     <copy_object_property property="positionX" name1="Mala" name2="Mala_" />
     <copy_object_property property="positionZ" name1="Mala" name2="Mala_" />
+    <set_special name="Mala_" ability="ShldReset" />
+    <set_special name="Mala_" ability="HET" />
+    <set_special name="Mala_" ship="1" ability="Warp" />
     <destroy name="Mala" />
     <set_object_property property="positionY" value="0.0" name="Mala_" />
-    <set_ship_text name="Mala_" newname="Mala" desc="Unknown Hull Material" />
+    <set_ship_text name="Mala_" newname="Mala" desc="Unknown Hull Material" scan_desc="Sensors scrambled." />
     <set_ship_text name="B01" desc="Unknown Hull Material" />
     <set_ship_text name="B02" desc="Unknown Hull Material" />
     <set_ship_text name="B03" desc="Unknown Hull Material" />
@@ -1146,28 +1022,32 @@
     <create type="enemy" x="0.0" y="1500.0" z="0.0" name="B01" raceKeys="Arvonian enemy" hullKeys="fighter" fleetnumber="2" />
     <create type="enemy" x="0.0" y="2000.0" z="0.0" name="B02" raceKeys="Arvonian enemy" hullKeys="fighter" fleetnumber="2" />
     <create type="enemy" x="0.0" y="2500.0" z="0.0" name="B03" raceKeys="Arvonian enemy" hullKeys="fighter" fleetnumber="2" />
-    <!--<create type="enemy" x="0.0" y="2750.0" z="0.0" name="B04" raceKeys="Arvonian enemy" hullKeys="fighter" fleetnumber="2" />-->
-    <!--<create type="enemy" x="0.0" y="3000.0" z="0.0" name="B05" raceKeys="Arvonian enemy" hullKeys="fighter" fleetnumber="2" />-->
-    <create type="enemy" x="0.0" y="3250.0" z="0.0" name="B10" raceKeys="Kralien standard" hullKeys="small medium large" fleetnumber="2" />
+    <create type="enemy" x="0.0" y="2750.0" z="0.0" name="B04" raceKeys="Arvonian enemy" hullKeys="fighter" fleetnumber="2" />
+    <create type="enemy" x="0.0" y="3000.0" z="0.0" name="B05" raceKeys="Arvonian enemy" hullKeys="fighter" fleetnumber="2" />
+    <create type="enemy" x="0.0" y="3250.0" z="0.0" name="B10" raceKeys="Kralien Skaraan standard loner" hullKeys="small medium large" fleetnumber="2" />
+    <create type="monster" monsterType="8" age="1" x="0.0" y="0.0" z="90000.0" name="Arvonian Hull" />
+    <create type="monster" monsterType="8" age="1" x="0.0" y="0.0" z="90500.0" name="Arvonian Hull " />
+    <create type="monster" monsterType="8" age="1" x="0.0" y="0.0" z="85000.0" name="Arvonian Hull  " />
     <create type="enemy" x="0.0" y="3500.0" z="0.0" name="Lade_" raceKeys="Kralien standard" hullKeys="large" fleetnumber="1" />
     <create type="enemy" x="0.0" y="4000.0" z="0.0" name="Orvo_" raceKeys="Kralien standard" hullKeys="large" fleetnumber="1" />
     <create type="enemy" x="0.0" y="4500.0" z="0.0" name="Mala_" raceKeys="Kralien standard" hullKeys="large" fleetnumber="1" />
     <set_variable name="core_Enemy" value="1.0" integer="yes" />
   </event>
-  <folder_arme name="Per Ship Traps" id_arme="c1302e66-02ce-4de4-8076-0f9b40b0d888" />
+  <folder_arme name="Per Ship Traps" id_arme="c1302e66-02ce-4de4-8076-0f9b40b0d888" expanded_arme="" />
   <event name="Player 1 Triple Bases" id_arme="97f29721-b719-4a18-8e2b-108cbb9680c9" parent_id_arme="c1302e66-02ce-4de4-8076-0f9b40b0d888">
     <if_variable name="Player1" comparator="GREATER" value="0.0" />
     <if_variable name="Mission" comparator="GREATER_EQUAL" value="6.0" />
     <if_exists name="Vinc 2" />
     <if_variable name="multibase" comparator="EQUALS" value="0.0" />
     <set_object_property property="positionZ" value="Station1_z-693" name="Vinc 2" />
-    <create type="genericMesh" x="Station1_x-600" y="Station1_y" z="Station1_z-(694/2)" name="Arin" meshFileName="dat\skaraan-station.dxs" textureFileName="dat\skaraan_station_color.png" hullRace="Skaraan" hullType="Station" fakeShieldsFront="600" hasFakeShldFreq="0" />
-    <create type="genericMesh" x="Station1_x+600" y="Station1_y" z="Station1_z-(694/2)" name="Hart" meshFileName="dat\skaraan-station.dxs" textureFileName="dat\skaraan_station_color.png" hullRace="Skaraan" hullType="Station" fakeShieldsFront="600" hasFakeShldFreq="0" />
+    <create type="genericMesh" x="Station1_x-694" y="Station1_y" z="Station1_z+347" name="Arin" meshFileName="dat\skaraan-station.dxs" textureFileName="dat\skaraan_station_color.png" hullRace="Skaraan" hullType="Station" fakeShieldsFront="600" hasFakeShldFreq="0" colorRed="1.0" colorGreen="0.0" colorBlue="0.0" />
+    <create type="genericMesh" x="Station1_x+694" y="Station1_y" z="Station1_z+347" name="Hart" meshFileName="dat\skaraan-station.dxs" textureFileName="dat\skaraan_station_color.png" hullRace="Skaraan" hullType="Station" fakeShieldsFront="600" hasFakeShldFreq="0" colorRed="1.0" colorGreen="0.0" colorBlue="0.0" />
     <set_variable name="multibase" value="1.0" integer="yes" />
   </event>
-  <folder_arme name="Player 2 Abandoned Long Haul" id_arme="6b3245c5-4bf7-4925-bebb-5e451ea320ad" parent_id_arme="c1302e66-02ce-4de4-8076-0f9b40b0d888" />
+  <folder_arme name="Player 2 Abandoned Long Haul" id_arme="6b3245c5-4bf7-4925-bebb-5e451ea320ad" parent_id_arme="c1302e66-02ce-4de4-8076-0f9b40b0d888" expanded_arme="" />
   <event name="Player 2 Long Haul Attack Position" id_arme="f8b91085-8e17-48cf-b5c8-0ef00ce24a2b" parent_id_arme="6b3245c5-4bf7-4925-bebb-5e451ea320ad">
     <if_variable name="attack_Supply" comparator="EQUALS" value="1.0" />
+    <if_exists name="Long Haul" />
     <set_relative_position name2="D32" distance="15000" angle="300" name1="Long Haul" />
     <set_relative_position name2="E15" distance="15000" angle="60" name1="Long Haul" />
     <add_ai type="ATTACK" targetName="Long Haul" value1="1.0" name="E15" />
@@ -1179,16 +1059,48 @@
     <if_variable name="Player2" comparator="GREATER" value="0.0" />
     <if_variable name="Mission" comparator="GREATER_EQUAL" value="6.0" />
     <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
+    <if_exists name="Long Haul" />
     <if_distance name1="Long Haul" player_slot2="2" comparator="GREATER" value="40000.0" />
     <if_distance name1="Long Haul" player_slot2="0" comparator="GREATER" value="40000.0" />
     <create type="enemy" x="1000.0" y="1000.0" z="0.0" name="D32" raceKeys="Kralien standard loner hasspecials" hullKeys="small medium large" sideValue="1" />
     <create type="enemy" x="2000.0" y="1000.0" z="0.0" name="E15" raceKeys="Kralien Skaraan standard hasspecials" hullKeys="small medium" sideValue="1" />
     <set_variable name="attack_Supply" value="1.0" integer="yes" />
   </event>
-  <event name="Player 3 Long Hual Cross Midline" id_arme="52ecb082-1f9f-4620-8e80-87cd50800e7d" parent_id_arme="c1302e66-02ce-4de4-8076-0f9b40b0d888">
+  <event name="Player 2 Extra Enemies" id_arme="7884e20c-fad2-47bb-b99e-9e58fd1e9ae0" parent_id_arme="6b3245c5-4bf7-4925-bebb-5e451ea320ad">
+    <if_variable name="Player2" comparator="GREATER" value="0.0" />
+    <if_variable name="extra_2" comparator="EQUALS" value="0.0" />
+    <if_variable name="Mission" comparator="GREATER_EQUAL" value="6.0" />
+    <if_variable name="warpTrap" comparator="GREATER" value="1.0" />
+    <create type="enemy" x="Station1_x-(10000*0.7071)" y="0.0" z="Station1_z-(9800*0.7071)" name="Mongrel" raceKeys="Pirate" hullKeys="Strongbow Longbow small medium large" sideValue="1" fleetnumber="9" />
+    <create type="enemy" x="69950.0" y="0.0" z="79736.0" angle="0" raceKeys="Kralien Torgoth enemy" hullKeys="warship Battleship Behemoth Cruiser Dreadnought Goliath" fleetnumber="11" />
+    <create type="enemy" x="68403.0" y="0.0" z="82938.0" angle="0" raceKeys="Kralien Torgoth enemy" hullKeys="warship Battleship Behemoth Cruiser Dreadnought Goliath" fleetnumber="11" />
+    <create type="enemy" x="71495.0" y="0.0" z="82938.0" angle="0" raceKeys="Kralien Torgoth enemy" hullKeys="warship Battleship Behemoth Cruiser Dreadnought Goliath" fleetnumber="11" />
+    <create type="enemy" x="69485.0" y="0.0" z="76597.0" angle="0" raceKeys="Kralien Torgoth enemy" hullKeys="warship Battleship Behemoth Cruiser Dreadnought Goliath" fleetnumber="11" />
+    <create type="enemy" x="Station1_x-(12000*0.7071)" y="0.0" z="Station1_z-(9800*0.7071)" name="Draco" raceKeys="Pirate" hullKeys="Strongbow small medium large" sideValue="1" fleetnumber="9" />
+    <create type="enemy" x="Station1_x-(10000*0.7071)" y="0.0" z="Station1_z-(10000*0.7071)" name="Vulgar Unicorn" raceKeys="Pirate" hullKeys="Strongbow Longbow Brigantine small medium large" sideValue="1" fleetnumber="9" />
+    <set_variable name="extra_2" value="1.0" integer="yes" />
+  </event>
+  <folder_arme name="Player 3 Long Hual Cross Midline" id_arme="294b65c8-6904-4fc0-82c1-4a9d980df53b" parent_id_arme="c1302e66-02ce-4de4-8076-0f9b40b0d888" />
+  <event name="Player 3 Extra Enemies" id_arme="52ecb082-1f9f-4620-8e80-87cd50800e7d" parent_id_arme="294b65c8-6904-4fc0-82c1-4a9d980df53b">
+    <if_variable name="Player3" comparator="GREATER" value="0.0" />
+    <if_variable name="Mission" comparator="GREATER_EQUAL" value="6.0" />
+    <if_variable name="extra_3" comparator="EQUALS" value="0.0" />
+    <create type="enemy" x="85722.0" y="0.0" z="13659.0" angle="166.8" raceKeys="Kralien Pirate Torgoth" hullKeys="warship Battleship Cruiser Dreadnought Goliath Strongbow" sideValue="1" fleetnumber="16" />
+    <create type="enemy" x="82320.0" y="0.0" z="12731.0" angle="171.5" raceKeys="Kralien Pirate Torgoth" hullKeys="warship Battleship Cruiser Dreadnought Goliath Strongbow" sideValue="1" fleetnumber="16" />
+    <create type="enemy" x="91444.0" y="0.0" z="12577.0" angle="160" raceKeys="Kralien Pirate Torgoth" hullKeys="warship Battleship Cruiser Dreadnought Goliath Strongbow" sideValue="1" fleetnumber="16" />
+    <create type="enemy" x="88042.0" y="0.0" z="11649.0" angle="164.5" raceKeys="Kralien Pirate Torgoth" hullKeys="warship Battleship Cruiser Dreadnought Goliath Strongbow" sideValue="1" fleetnumber="16" />
+    <create type="enemy" x="17458.0" y="0.0" z="23269.0" angle="216.3" raceKeys="Kralien Torgoth enemy" hullKeys="warship Battleship Cruiser Dreadnought Goliath Strongbow" sideValue="1" fleetnumber="17" />
+    <create type="enemy" x="13656.0" y="0.0" z="23441.0" angle="220" raceKeys="Kralien Torgoth enemy" hullKeys="warship Battleship Cruiser Dreadnought Goliath Strongbow" sideValue="1" fleetnumber="17" />
+    <create type="enemy" x="17578.0" y="0.0" z="18659.0" angle="213.1" raceKeys="Kralien Torgoth enemy" hullKeys="warship Battleship Cruiser Dreadnought Goliath Strongbow" sideValue="1" fleetnumber="17" />
+    <create type="enemy" x="15258.0" y="0.0" z="20669.0" angle="216.5" raceKeys="Kralien Torgoth enemy" hullKeys="warship Battleship Cruiser Dreadnought Goliath Strongbow" sideValue="1" fleetnumber="17" />
+    <create type="enemy" x="11856.0" y="0.0" z="19741.0" angle="218.9" raceKeys="Kralien Torgoth enemy" hullKeys="warship Battleship Cruiser Dreadnought Goliath Strongbow" sideValue="1" fleetnumber="17" />
+    <set_variable name="extra_3" value="1.0" integer="yes" />
+  </event>
+  <event name="Player 3 Long Hual Cross Midline" id_arme="2b118bb5-657a-49ae-adef-08e6edf58a39" parent_id_arme="294b65c8-6904-4fc0-82c1-4a9d980df53b">
     <if_variable name="mideline_LongHaul" comparator="EQUALS" value="0.0" />
     <if_variable name="Player3" comparator="GREATER" value="0.0" />
     <if_variable name="Mission" comparator="GREATER_EQUAL" value="6.0" />
+    <if_exists name="Long Haul" />
     <if_inside_box name="Long Haul" leastX="0.0" leastZ="0.0" mostX="40000.0" mostZ="100000.0" />
     <create type="enemy" x="1000.0" y="1000.0" z="0.0" name="T84" raceKeys="Kralien standard loner hasspecials" hullKeys="small medium large" sideValue="1" />
     <create type="enemy" x="2000.0" y="1000.0" z="0.0" name="U90" raceKeys="Kralien Skaraan standard hasspecials" hullKeys="small medium" sideValue="1" />
@@ -1196,12 +1108,32 @@
     <set_relative_position name2="U90" distance="9000" angle="60" name1="Long Haul" />
     <set_variable name="mideline_LongHaul" value="1.0" integer="yes" />
   </event>
-  <event name="Player 4 Station at Entrance" id_arme="cdbec6ed-ede6-4fc6-a7cc-c5cabc99beac" parent_id_arme="c1302e66-02ce-4de4-8076-0f9b40b0d888">
+  <event name="Player 3 Long Hual Cross Midline" id_arme="362d5aa5-d36f-4a13-9016-19fad0710f3d" parent_id_arme="294b65c8-6904-4fc0-82c1-4a9d980df53b">
+    <if_variable name="mideline_LongHaul" comparator="EQUALS" value="1.0" />
+    <if_exists name="Long Haul" />
+    <if_variable name="Player3" comparator="GREATER" value="0.0" />
+    <set_relative_position name2="T84" distance="9000" angle="300" name1="Long Haul" />
+    <set_relative_position name2="U90" distance="9000" angle="60" name1="Long Haul" />
+    <set_variable name="mideline_LongHaul" value="2.0" integer="yes" />
+  </event>
+  <folder_arme name="Player 4 Entrance Guards" id_arme="ab4dc135-0f97-41f3-8501-f14a1f17b256" parent_id_arme="c1302e66-02ce-4de4-8076-0f9b40b0d888" />
+  <event name="Player 4 Station at Entrance" id_arme="cdbec6ed-ede6-4fc6-a7cc-c5cabc99beac" parent_id_arme="ab4dc135-0f97-41f3-8501-f14a1f17b256">
     <if_variable name="station_Guard" comparator="EQUALS" value="0.0" />
     <if_variable name="Player4" comparator="GREATER" value="0.0" />
     <if_variable name="Mission" comparator="GREATER_EQUAL" value="6.0" />
-    <create type="station" x="Station1_x+9000" y="0.0" z="Station1_z+9000" name="Danteder" hullID="1008" sideValue="1" />
+    <create type="station" x="Station1_x-(9000*0.7071)" y="0.0" z="Station1_z-(9000*0.7071)" name="Danteder" hullID="1008" sideValue="1" />
+    <create type="enemy" x="Station1_x-(9900*0.7071)" y="0.0" z="Station1_z-(9000*0.7071)" name="W13" hullID="5000" sideValue="1" />
+    <create type="enemy" x="Station1_x-(9000*0.7071)" y="0.0" z="Station1_z-(9900*0.7071)" name="W14" hullID="5001" sideValue="1" />
+    <create type="monster" monsterType="3" age="3" x="90825.0" y="0.0" z="70412.0" angle="0" />
     <set_variable name="station_Guard" value="1.0" integer="yes" />
+  </event>
+  <event name="Player 4 Enemy Behavior" id_arme="e5e59b1b-b629-48d6-919d-a9585e00ec1f" parent_id_arme="ab4dc135-0f97-41f3-8501-f14a1f17b256">
+    <if_variable name="station_Guard" comparator="EQUALS" value="1.0" />
+    <add_ai type="GUARD_STATION" value1="20" name="W13" />
+    <set_special name="W13" captain="4" />
+    <add_ai type="GUARD_STATION" value1="20" name="W14" />
+    <set_special name="W14" captain="0" />
+    <set_variable name="station_Guard" value="2.0" integer="yes" />
   </event>
   <event name="Player 5 Fleet from West" id_arme="d7c10fdd-a377-4193-b22a-4e5b58d2da66" parent_id_arme="c1302e66-02ce-4de4-8076-0f9b40b0d888">
     <if_variable name="Fleet" comparator="EQUALS" value="0.0" />
@@ -1210,12 +1142,12 @@
     <if_variable name="warpTrap" comparator="GREATER_EQUAL" value="4.0" />
     <create type="enemy" x="94814.0" y="0.0" z="26644.0" angle="90" raceKeys="Kralien standard" hullKeys="small medium large" fleetnumber="13" />
     <create type="enemy" x="91876.0" y="0.0" z="22932.0" angle="90" raceKeys="Kralien standard" hullKeys="small medium large" fleetnumber="13" />
-    <create type="enemy" x="92003.0" y="0.0" z="27283.0" angle="90" raceKeys="Kralien standard" hullKeys="small medium large" fleetnumber="13" />
-    <create type="enemy" x="89556.0" y="0.0" z="26025.0" angle="90" raceKeys="Kralien standard" hullKeys="small medium large" fleetnumber="13" />
+    <create type="enemy" x="92003.0" y="0.0" z="27283.0" angle="90" raceKeys="Kralien Torgoth standard whalehater" hullKeys="small medium large" fleetnumber="13" />
+    <create type="enemy" x="89556.0" y="0.0" z="26025.0" angle="90" raceKeys="Kralien Torgoth standard whalehater" hullKeys="small medium large" fleetnumber="13" />
     <create type="enemy" x="94055.0" y="0.0" z="9134.0" angle="150" raceKeys="standard" hullKeys="small medium large" fleetnumber="12" />
     <create type="enemy" x="92846.0" y="0.0" z="5484.0" angle="150" raceKeys="Kralien Torgoth standard support" hullKeys="small" fleetnumber="12" />
     <create type="enemy" x="90980.0" y="0.0" z="86830.0" angle="60" raceKeys="standard" hullKeys="small medium large" fleetnumber="14" />
-    <create type="enemy" x="91608.0" y="0.0" z="9659.0" angle="150" raceKeys="standard" hullKeys="small medium large" fleetnumber="12" />
+    <create type="enemy" x="91608.0" y="0.0" z="9659.0" angle="150" raceKeys="standard whalehater" hullKeys="small medium large" fleetnumber="12" />
     <create type="enemy" x="88642.0" y="0.0" z="87386.0" angle="60" raceKeys="standard" hullKeys="small medium large" fleetnumber="14" />
     <create type="enemy" x="90361.0" y="0.0" z="88195.0" angle="60" raceKeys="standard" hullKeys="small medium large" fleetnumber="14" />
     <set_variable name="Fleet" value="1.0" integer="yes" />
@@ -1248,7 +1180,7 @@
     <if_timer_finished name="fighters_Itawa" />
     <set_variable name="launch_Itawa" value="0.0" integer="yes" />
   </event>
-  <event name="Iawa Destroyed" id_arme="b4a2b93b-a712-4e84-b2bc-375cbafef1b0" parent_id_arme="84850aa7-30ad-4c08-abdd-b7f6034ef672">
+  <event name="Itawa Destroyed" id_arme="b4a2b93b-a712-4e84-b2bc-375cbafef1b0" parent_id_arme="84850aa7-30ad-4c08-abdd-b7f6034ef672">
     <if_not_exists name="Itawa" />
     <if_variable name="launch_Itawa" comparator="GREATER" value="0.0" />
     <add_ai type="CHASE_STATION" name="X-1" />
@@ -1857,7 +1789,7 @@
     <create type="enemy" x="350.0" y="1000.0" z="0.0" name="Z-10" hullID="3000" fleetnumber="6" />
     <set_variable name="fighter_Z-10" value="2.0" integer="yes" />
   </event>
-  <folder_arme name="Mission Sector" id_arme="e60d81c5-8951-46f6-a27d-d8159e4b70d7" expanded_arme="" />
+  <folder_arme name="Mission Sector" id_arme="e60d81c5-8951-46f6-a27d-d8159e4b70d7" />
   <event name="Mission Objectives Reminder" id_arme="a6fc45c0-5d05-4a1d-b6d3-83bfd57dbeaa" parent_id_arme="e60d81c5-8951-46f6-a27d-d8159e4b70d7">
     <if_variable name="Mission" comparator="EQUALS" value="7.0" />
     <if_timer_finished name="start_mission_timer_1" />
@@ -1869,17 +1801,17 @@
     <if_timer_finished name="start_mission_timer_1" />
     <warning_popup_message message="Sensor Distortion Detected" consoles="S" />
     <incoming_comms_text from="Hacked Signal" type="ENEMY">Sensors are recallibrated and back online.^^No enemy signatures detected.</incoming_comms_text>
-    <set_ship_text name="?" desc="Inconclusive Sensor Data" />
+    <set_ship_text name="?" desc="Inconclusive Sensor Data" scan_desc="Active signal scattering detected." />
     <set_ship_text name="Vinc 2" desc="Skaraan Starbase.  Scan interference detected.  Proximity (under 800k) required." />
-    <set_ship_text name="Orvo" desc="Heavy interference. No power detected." />
-    <set_ship_text name="Mala" desc="Heavy interference. No power detected." />
-    <set_ship_text name="Lade" desc="Heavy interference. No power detected." />
-    <set_timer name="start_mission_timer_1" seconds="60" />
+    <set_ship_text name="Orvo" desc="Heavy interference. No power detected." scan_desc="Signal scrambling detected." />
+    <set_ship_text name="Mala" desc="Heavy interference. No power detected." scan_desc="Signal scrambling detected." />
+    <set_ship_text name="Lade" desc="Heavy interference. No power detected." scan_desc="Signal scrambling detected." />
+    <set_timer name="start_mission_timer_1" seconds="30" />
     <set_variable name="Mission" value="7.0" integer="yes" />
   </event>
   <event name="Mission Create Sector" id_arme="732a83c5-c49e-4037-b087-800796e15e55" parent_id_arme="e60d81c5-8951-46f6-a27d-d8159e4b70d7">
     <if_variable name="Mission" comparator="EQUALS" value="5.0" />
-    <set_object_property property="sensorSetting" value="2" />
+    <set_object_property property="sensorSetting" value="1" />
     <set_variable name="random_X" randomIntLow="1000" randomIntHigh="9000" integer="yes" />
     <set_variable name="random_Y" randomIntLow="-100" randomIntHigh="100" integer="yes" />
     <set_variable name="random_Z" randomIntLow="1000" randomIntHigh="9000" integer="yes" />
@@ -1895,16 +1827,17 @@
     <set_variable name="random_X" randomIntLow="1000" randomIntHigh="4000" integer="yes" />
     <set_variable name="random_Y" randomIntLow="-100" randomIntHigh="100" integer="yes" />
     <set_variable name="random_Z" randomIntLow="1000" randomIntHigh="9000" integer="yes" />
-    <create type="genericMesh" x="random_X*10" y="random_Y" z="random_Z*10" name="?" meshFileName="dat\skaraan-station.dxs" textureFileName="dat\skaraan_station_color.png" hullRace="Skaraan" hullType="Station" fakeShieldsFront="600" hasFakeShldFreq="0" colorRed="0.255" colorBlue="0.255" />
+    <create type="genericMesh" x="random_X*10" y="random_Y" z="random_Z*10" name="?" meshFileName="dat\skaraan-station.dxs" textureFileName="dat\skaraan_station_color.png" hullRace="Skaraan" hullType="Station" fakeShieldsFront="600" hasFakeShldFreq="0" colorRed="0.455" colorBlue="0.255" />
+    <!--enable to change color create type="genericMesh" x="random_X*10" y="random_Y" z="random_Z*10" name="?" meshFileName="dat\skaraan-station.dxs" textureFileName="dat\skaraan_station_color.png" hullRace="Skaraan" hullType="Station" fakeShieldsFront="600" hasFakeShldFreq="0" colorRed="0.255" colorBlue="0.255" /-->
     <create count="20" type="nebulas" nebType="1" startAngle="0.0" endAngle="random_Y" startX="random_X*10" startY="random_Y" startZ="random_Z*10" radius="15000" randomRange="5000" randomSeed="45" />
     <set_variable name="Station1_x" randomIntLow="20000" randomIntHigh="40000" integer="yes" />
     <set_variable name="Station1_y" value="0.0" integer="yes" />
     <set_variable name="Station1_z" randomIntLow="1000" randomIntHigh="8500" integer="yes" />
     <set_variable name="Station1_z" value="Station1_z*10" integer="yes" />
-    <create type="genericMesh" x="Station1_x" y="Station1_y" z="Station1_z" name="Vinc 2" meshFileName="dat\skaraan-station.dxs" textureFileName="dat\skaraan_station_color.png" hullRace="Skaraan" hullType="Station" fakeShieldsFront="600" hasFakeShldFreq="0" />
-    <create type="genericMesh" x="Station1_x+1000" y="Station1_y" z="Station1_z+600" name="Orvo" meshFileName="dat\ENE_Matt3C.dxs" textureFileName="dat\ship4C_diffuse.png" hullRace="Arvonian" hullType="Carrier" fakeShieldsFront="200" fakeShieldsRear="200" hasFakeShldFreq="1" />
-    <create type="genericMesh" x="Station1_x-1000" y="Station1_y" z="Station1_z-1000" name="Mala" meshFileName="dat\ENE_Matt3C.dxs" textureFileName="dat\ship4C_diffuse.png" hullRace="Arvonian" hullType="Carrier" fakeShieldsFront="200" fakeShieldsRear="200" hasFakeShldFreq="1" />
-    <create type="genericMesh" x="Station1_x-1600" y="Station1_y" z="Station1_z+800" name="Lade" meshFileName="dat\ENE_Matt3C.dxs" textureFileName="dat\ship4C_diffuse.png" hullRace="Arvonian" hullType="Carrier" fakeShieldsFront="200" fakeShieldsRear="200" hasFakeShldFreq="1" />
+    <create type="genericMesh" x="Station1_x" y="Station1_y" z="Station1_z" name="Vinc 2" meshFileName="dat\skaraan-station.dxs" textureFileName="dat\skaraan_station_color.png" hullRace="Skaraan" hullType="Station" fakeShieldsFront="600" hasFakeShldFreq="0" colorRed="1.0" colorGreen="0.0" colorBlue="0.0" />
+    <create type="genericMesh" x="Station1_x+1000" y="Station1_y" z="Station1_z+600" name="Orvo" meshFileName="dat\ENE_Matt3C.dxs" textureFileName="dat\ship4C_diffuse.png" hullRace="Arvonian" hullType="Carrier" fakeShieldsFront="200" fakeShieldsRear="200" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="0.0" />
+    <create type="genericMesh" x="Station1_x-1000" y="Station1_y" z="Station1_z-1000" name="Mala" meshFileName="dat\ENE_Matt3C.dxs" textureFileName="dat\ship4C_diffuse.png" hullRace="Arvonian" hullType="Carrier" fakeShieldsFront="200" fakeShieldsRear="200" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="0.0" />
+    <create type="genericMesh" x="Station1_x-1600" y="Station1_y" z="Station1_z+800" name="Lade" meshFileName="dat\ENE_Matt3C.dxs" textureFileName="dat\ship4C_diffuse.png" hullRace="Arvonian" hullType="Carrier" fakeShieldsFront="200" fakeShieldsRear="200" hasFakeShldFreq="1" colorRed="1.0" colorGreen="0.0" colorBlue="0.0" />
     <create count="60" type="mines" startAngle="20.0" endAngle="-300.0" startX="Station1_x" startY="Station1_y" startZ="Station1_z" radius="5000" />
     <create count="60" type="mines" startAngle="20.0" endAngle="-300.0" startX="Station1_x" startY="Station1_y-450" startZ="Station1_z" radius="5000" />
     <create count="60" type="mines" startAngle="20.0" endAngle="-300.0" startX="Station1_x" startY="Station1_y+450" startZ="Station1_z" radius="5000" />
@@ -1935,13 +1868,13 @@
     <set_timer name="start_mission_timer_1" seconds="8" />
     <set_variable name="Mission" value="6.0" integer="yes" />
   </event>
-  <folder_arme name="Research Station Horla " id_arme="8781f4d6-5fdf-46d6-86c1-2d4f8af3fcf3" parent_id_arme="e60d81c5-8951-46f6-a27d-d8159e4b70d7" expanded_arme="" />
+  <folder_arme name="Research Station Horla " id_arme="8781f4d6-5fdf-46d6-86c1-2d4f8af3fcf3" parent_id_arme="e60d81c5-8951-46f6-a27d-d8159e4b70d7" />
   <event name="Create Station Horla Player 0" id_arme="26c74eed-6abf-4661-bd28-784d5f1c09de" parent_id_arme="8781f4d6-5fdf-46d6-86c1-2d4f8af3fcf3">
     <if_exists player_slot="0" />
     <if_exists name="?" />
     <if_distance player_slot1="0" name2="?" comparator="LESS" value="1500" />
     <if_variable name="mesh_Horla" comparator="EQUALS" value="0.0" />
-    <create type="station" x="0.0" y="1000.0" z="0.0" name="Horla" raceKeys="Skaraan" hullKeys="base" />
+    <create type="station" x="0.0" y="1000.0" z="0.0" name="Horla" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
     <set_variable name="mesh_Horla" value="1.0" integer="yes" />
   </event>
   <event name="Create Station Horla Player 1" id_arme="98456230-7232-409d-a3d6-33a96570bfd3" parent_id_arme="8781f4d6-5fdf-46d6-86c1-2d4f8af3fcf3">
@@ -1949,7 +1882,7 @@
     <if_exists name="?" />
     <if_distance player_slot1="1" name2="?" comparator="LESS" value="1500" />
     <if_variable name="mesh_Horla" comparator="EQUALS" value="0.0" />
-    <create type="station" x="0.0" y="1000.0" z="0.0" name="Horla" raceKeys="Skaraan" hullKeys="base" />
+    <create type="station" x="0.0" y="1000.0" z="0.0" name="Horla" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
     <set_variable name="mesh_Horla" value="1.0" integer="yes" />
   </event>
   <event name="Create Station Horla Player 2" id_arme="d24a4242-cf6e-4a80-883f-0b26fea95069" parent_id_arme="8781f4d6-5fdf-46d6-86c1-2d4f8af3fcf3">
@@ -1957,7 +1890,7 @@
     <if_exists name="?" />
     <if_distance player_slot1="2" name2="?" comparator="LESS" value="1500" />
     <if_variable name="mesh_Horla" comparator="EQUALS" value="0.0" />
-    <create type="station" x="0.0" y="1000.0" z="0.0" name="Horla" raceKeys="Skaraan" hullKeys="base" />
+    <create type="station" x="0.0" y="1000.0" z="0.0" name="Horla" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
     <set_variable name="mesh_Horla" value="1.0" integer="yes" />
   </event>
   <event name="Create Station Horla Player 3" id_arme="350153ab-69da-4153-952c-8dcc4ebc9431" parent_id_arme="8781f4d6-5fdf-46d6-86c1-2d4f8af3fcf3">
@@ -1965,7 +1898,7 @@
     <if_exists name="?" />
     <if_distance player_slot1="3" name2="?" comparator="LESS" value="1500" />
     <if_variable name="mesh_Horla" comparator="EQUALS" value="0.0" />
-    <create type="station" x="0.0" y="1000.0" z="0.0" name="Horla" raceKeys="Skaraan" hullKeys="base" />
+    <create type="station" x="0.0" y="1000.0" z="0.0" name="Horla" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
     <set_variable name="mesh_Horla" value="1.0" integer="yes" />
   </event>
   <event name="Create Station Horla Player 4" id_arme="e6b1c7cd-56ce-433a-ae3b-5a0c3eea98ca" parent_id_arme="8781f4d6-5fdf-46d6-86c1-2d4f8af3fcf3">
@@ -1973,7 +1906,7 @@
     <if_exists name="?" />
     <if_distance player_slot1="4" name2="?" comparator="LESS" value="1500" />
     <if_variable name="mesh_Horla" comparator="EQUALS" value="0.0" />
-    <create type="station" x="0.0" y="1000.0" z="0.0" name="Horla" raceKeys="Skaraan" hullKeys="base" />
+    <create type="station" x="0.0" y="1000.0" z="0.0" name="Horla" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
     <set_variable name="mesh_Horla" value="1.0" integer="yes" />
   </event>
   <event name="Create Station Horla Player 5" id_arme="7b41dcd5-f504-47c8-a9d9-1b6497ba1cf2" parent_id_arme="8781f4d6-5fdf-46d6-86c1-2d4f8af3fcf3">
@@ -1981,7 +1914,7 @@
     <if_exists name="?" />
     <if_distance player_slot1="5" name2="?" comparator="LESS" value="1500" />
     <if_variable name="mesh_Horla" comparator="EQUALS" value="0.0" />
-    <create type="station" x="0.0" y="1000.0" z="0.0" name="Horla" raceKeys="Skaraan" hullKeys="base" />
+    <create type="station" x="0.0" y="1000.0" z="0.0" name="Horla" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
     <set_variable name="mesh_Horla" value="1.0" integer="yes" />
   </event>
   <event name="Create Station Horla Player 6" id_arme="34197d9a-722a-46cb-a599-3394ab5852f7" parent_id_arme="8781f4d6-5fdf-46d6-86c1-2d4f8af3fcf3">
@@ -1989,7 +1922,7 @@
     <if_exists name="?" />
     <if_distance player_slot1="6" name2="?" comparator="LESS" value="1500" />
     <if_variable name="mesh_Horla" comparator="EQUALS" value="0.0" />
-    <create type="station" x="0.0" y="1000.0" z="0.0" name="Horla" raceKeys="Skaraan" hullKeys="base" />
+    <create type="station" x="0.0" y="1000.0" z="0.0" name="Horla" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
     <set_variable name="mesh_Horla" value="1.0" integer="yes" />
   </event>
   <event name="Create Station Horla Player 7" id_arme="1bed4bfd-24c6-4d4c-9729-21b777698e76" parent_id_arme="8781f4d6-5fdf-46d6-86c1-2d4f8af3fcf3">
@@ -1997,7 +1930,7 @@
     <if_exists name="?" />
     <if_distance player_slot1="7" name2="?" comparator="LESS" value="1500" />
     <if_variable name="mesh_Horla" comparator="EQUALS" value="0.0" />
-    <create type="station" x="0.0" y="1000.0" z="0.0" name="Horla" raceKeys="Skaraan" hullKeys="base" />
+    <create type="station" x="0.0" y="1000.0" z="0.0" name="Horla" raceKeys="Skaraan" hullKeys="base" sideValue="1" />
     <set_variable name="mesh_Horla" value="1.0" integer="yes" />
   </event>
   <event name="Move Horla Defense Fleet" id_arme="89d9483b-f64d-430d-9862-c3cb4c229253" parent_id_arme="8781f4d6-5fdf-46d6-86c1-2d4f8af3fcf3">
@@ -2049,12 +1982,14 @@
     <set_object_property property="angle" value="3.14" player_slot="1" />
     <set_object_property property="positionX" value="playerStart_x" player_slot="1" />
     <set_object_property property="positionY" value="0.0" player_slot="1" />
+    <set_ship_text player_slot="1" newname="Intrepid" />
     <set_variable name="Player1" value="1.0" integer="yes" />
   </event>
   <event name="Late Spawn Player 2" id_arme="20a72bfe-1114-494a-b8bd-28bb27abccf0" parent_id_arme="021225e3-43f3-4987-bfd7-c3e952196596">
     <if_variable name="Mission" comparator="GREATER_EQUAL" value="5.0" />
     <if_variable name="Player2" comparator="EQUALS" value="0.0" />
     <if_exists player_slot="2" />
+    <set_ship_text player_slot="2" newname="Aegis" />
     <warning_popup_message message="Updating Sensor Data..." consoles="MSO" player_slot="2" />
     <set_object_property property="positionX" value="playerStart_x" player_slot="2" />
     <set_object_property property="angle" value="3.14" player_slot="2" />
@@ -2066,6 +2001,7 @@
     <if_variable name="Mission" comparator="GREATER_EQUAL" value="5.0" />
     <if_variable name="Player3" comparator="EQUALS" value="0.0" />
     <if_exists player_slot="3" />
+    <set_ship_text player_slot="3" newname="Horatio" />
     <warning_popup_message message="Updating Sensor Data..." consoles="MSO" player_slot="3" />
     <set_object_property property="positionX" value="playerStart_x" player_slot="3" />
     <set_object_property property="angle" value="3.14" player_slot="3" />
@@ -2077,6 +2013,7 @@
     <if_variable name="Mission" comparator="GREATER_EQUAL" value="5.0" />
     <if_variable name="Player4" comparator="EQUALS" value="0.0" />
     <if_exists player_slot="4" />
+    <set_ship_text player_slot="4" newname="Excalibur" />
     <warning_popup_message message="Updating Sensor Data..." consoles="MSO" player_slot="4" />
     <set_object_property property="positionX" value="playerStart_x" player_slot="4" />
     <set_object_property property="angle" value="3.14" player_slot="4" />
@@ -2088,6 +2025,7 @@
     <if_variable name="Mission" comparator="GREATER_EQUAL" value="5.0" />
     <if_variable name="Player5" comparator="EQUALS" value="0.0" />
     <if_exists player_slot="5" />
+    <set_ship_text player_slot="5" newname="Hera" />
     <warning_popup_message message="Updating Sensor Data..." consoles="MSO" player_slot="5" />
     <set_object_property property="positionX" value="playerStart_x" player_slot="5" />
     <set_object_property property="angle" value="3.14" player_slot="5" />
@@ -2099,6 +2037,7 @@
     <if_variable name="Mission" comparator="GREATER_EQUAL" value="5.0" />
     <if_variable name="Player6" comparator="EQUALS" value="0.0" />
     <if_exists player_slot="6" />
+    <set_ship_text player_slot="6" newname="Ceres" />
     <warning_popup_message message="Updating Sensor Data..." consoles="MSO" player_slot="6" />
     <set_object_property property="positionX" value="playerStart_x" player_slot="6" />
     <set_object_property property="angle" value="3.14" player_slot="6" />
@@ -2110,6 +2049,7 @@
     <if_variable name="Mission" comparator="GREATER_EQUAL" value="5.0" />
     <if_variable name="Player7" comparator="EQUALS" value="0.0" />
     <if_exists player_slot="7" />
+    <set_ship_text player_slot="7" newname="Diana" />
     <warning_popup_message message="Updating Sensor Data..." consoles="MSO" player_slot="7" />
     <set_object_property property="positionX" value="playerStart_x" player_slot="7" />
     <set_object_property property="angle" value="3.14" player_slot="7" />
@@ -2157,6 +2097,7 @@
     <set_player_grid_damage value="1.0" player_slot="0" index="2" systemType="systemBackShield" countFrom="front" />
     <set_player_grid_damage value="1.0" player_slot="0" index="1" systemType="systemBackShield" countFrom="front" />
     <set_player_grid_damage value="1.0" player_slot="0" index="3" systemType="systemBackShield" countFrom="front" />
+    <set_ship_text player_slot="0" newname="Artemis" />
     <set_variable name="Player0" value="1.0" integer="yes" />
   </event>
   <event name="Destroyed Player 1" id_arme="3a3270e2-ae3e-4531-9e3b-7f934106ddb4" parent_id_arme="e6f24ee4-25ef-46c4-9d92-91010f466239">
@@ -2168,6 +2109,7 @@
   <event name="ReSpawn Player 1" id_arme="2c4dd52a-74a6-4c4f-8929-343b296a90d7" parent_id_arme="e6f24ee4-25ef-46c4-9d92-91010f466239">
     <if_variable name="Player1" comparator="EQUALS" value="2.0" />
     <if_exists player_slot="1" />
+    <set_ship_text player_slot="1" newname="Intrepid" />
     <warning_popup_message message="Systems Damaged!" consoles="MESO" player_slot="1" />
     <set_object_property property="positionZ" value="playerStart_z" player_slot="1" />
     <set_object_property property="positionX" value="playerStart_x" player_slot="1" />
@@ -2209,6 +2151,7 @@
   <event name="ReSpawn Player 2" id_arme="0ea2fb70-fe16-415e-9927-084c891e7fad" parent_id_arme="e6f24ee4-25ef-46c4-9d92-91010f466239">
     <if_variable name="Player2" comparator="EQUALS" value="2.0" />
     <if_exists player_slot="2" />
+    <set_ship_text player_slot="2" newname="Aegis" />
     <warning_popup_message message="Systems Damaged!" consoles="MESO" player_slot="2" />
     <set_object_property property="positionZ" value="playerStart_z" player_slot="2" />
     <set_object_property property="positionX" value="playerStart_x" player_slot="2" />
@@ -2250,6 +2193,7 @@
   <event name="ReSpawn Player 3" id_arme="4063a15e-4f53-4573-be0f-751f1abecbc9" parent_id_arme="e6f24ee4-25ef-46c4-9d92-91010f466239">
     <if_variable name="Player3" comparator="EQUALS" value="2.0" />
     <if_exists player_slot="3" />
+    <set_ship_text player_slot="3" newname="Horatio" />
     <warning_popup_message message="Systems Damaged!" consoles="MESO" player_slot="3" />
     <set_object_property property="positionZ" value="playerStart_z" player_slot="3" />
     <set_object_property property="positionX" value="playerStart_x" player_slot="3" />
@@ -2291,6 +2235,7 @@
   <event name="ReSpawn Player 4" id_arme="731ceddf-38ad-4508-9ca8-34714f08548f" parent_id_arme="e6f24ee4-25ef-46c4-9d92-91010f466239">
     <if_variable name="Player4" comparator="EQUALS" value="2.0" />
     <if_exists player_slot="4" />
+    <set_ship_text player_slot="4" newname="Excalibur" />
     <warning_popup_message message="Systems Damaged!" consoles="MESO" player_slot="4" />
     <set_object_property property="positionZ" value="playerStart_z" player_slot="4" />
     <set_object_property property="positionX" value="playerStart_x" player_slot="4" />
@@ -2332,6 +2277,7 @@
   <event name="ReSpawn Player 5" id_arme="42dcae1e-8091-40de-9acd-a73d39c59ff8" parent_id_arme="e6f24ee4-25ef-46c4-9d92-91010f466239">
     <if_variable name="Player5" comparator="EQUALS" value="2.0" />
     <if_exists player_slot="5" />
+    <set_ship_text player_slot="5" newname="Hera" />
     <warning_popup_message message="Systems Damaged!" consoles="MESO" player_slot="5" />
     <set_object_property property="positionZ" value="playerStart_z" player_slot="5" />
     <set_object_property property="positionX" value="playerStart_x" player_slot="5" />
@@ -2373,6 +2319,7 @@
   <event name="ReSpawn Player 6" id_arme="4eed83ed-3336-4fe5-93da-98165fa6a1f9" parent_id_arme="e6f24ee4-25ef-46c4-9d92-91010f466239">
     <if_variable name="Player6" comparator="EQUALS" value="2.0" />
     <if_exists player_slot="6" />
+    <set_ship_text player_slot="6" newname="Ceres" />
     <warning_popup_message message="Systems Damaged!" consoles="MESO" player_slot="6" />
     <set_object_property property="positionZ" value="playerStart_z" player_slot="6" />
     <set_object_property property="positionX" value="playerStart_x" player_slot="6" />
@@ -2414,6 +2361,7 @@
   <event name="ReSpawn Player 7" id_arme="293aada7-6db5-4029-934a-a3b8937ff61f" parent_id_arme="e6f24ee4-25ef-46c4-9d92-91010f466239">
     <if_variable name="Player7" comparator="EQUALS" value="2.0" />
     <if_exists player_slot="7" />
+    <set_ship_text player_slot="7" newname="Diana" />
     <warning_popup_message message="Systems Damaged!" consoles="MESO" player_slot="7" />
     <set_object_property property="positionZ" value="playerStart_z" player_slot="7" />
     <set_object_property property="positionX" value="playerStart_x" player_slot="7" />
@@ -2446,17 +2394,43 @@
     <set_player_grid_damage value="1.0" player_slot="7" index="3" systemType="systemBackShield" countFrom="front" />
     <set_variable name="Player7" value="1.0" integer="yes" />
   </event>
-  <folder_arme name="Long Haul" id_arme="5e7819b9-176c-4d55-8486-0e9835385c07" expanded_arme="" />
-  <event name="Long Haul Follow Orders" id_arme="851a750d-949b-42ed-acf9-9f34da73e418" parent_id_arme="5e7819b9-176c-4d55-8486-0e9835385c07">
+  <folder_arme name="Long Haul" id_arme="5e7819b9-176c-4d55-8486-0e9835385c07" />
+  <event name="Long Haul and Fighters Follow Orders" id_arme="851a750d-949b-42ed-acf9-9f34da73e418" parent_id_arme="5e7819b9-176c-4d55-8486-0e9835385c07">
     <if_exists name="Long Haul" />
     <if_variable name="Long_Haul" comparator="EQUALS" value="0.0" />
-    <add_ai type="FOLLOW_LEADER" name="Long Haul" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Long Haul" />
+    <add_ai type="DEFEND" value1="1000" value2="3000" name="Hawk" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Hawk" />
+    <add_ai type="DEFEND" value1="1000" value2="3000" name="Falcon" />
+    <add_ai type="FOLLOW_COMMS_ORDERS" name="Falcon" />
     <set_variable name="Long_Haul" value="1.0" integer="yes" />
   </event>
-  <folder_arme name="Long Haul Resupply" id_arme="e957dd78-a188-45a0-a245-b614e4091aee" parent_id_arme="5e7819b9-176c-4d55-8486-0e9835385c07" expanded_arme="" />
-  <event name="Refit Message and Variable and Counter Start" id_arme="39ac60bb-3b33-4fa6-be56-157f7d3bdfc7" parent_id_arme="e957dd78-a188-45a0-a245-b614e4091aee">
+  <folder_arme name="Long Haul Resupply" id_arme="e957dd78-a188-45a0-a245-b614e4091aee" parent_id_arme="5e7819b9-176c-4d55-8486-0e9835385c07" />
+  <event name="Resupply Ready" id_arme="94d81218-5ff1-416f-8e20-49c85db839aa" parent_id_arme="e957dd78-a188-45a0-a245-b614e4091aee">
+    <if_variable name="Long_Haul" comparator="EQUALS" value="2.0" />
+    <if_exists name="Long Haul" />
+    <if_timer_finished name="Resupply" />
+    <incoming_comms_text from="Long Haul" type="FRIEND SIDE">This is the Long Haul.  Your refit and resupply is ready.  ^^Just come on by to get them.</incoming_comms_text>
+    <set_variable name="resupply_0" value="3.0" integer="yes" />
+    <set_variable name="resupply_1" value="3.0" integer="yes" />
+    <set_variable name="resupply_2" value="3.0" integer="yes" />
+    <set_variable name="resupply_3" value="3.0" integer="yes" />
+    <set_variable name="resupply_4" value="3.0" integer="yes" />
+    <set_variable name="resupply_5" value="3.0" integer="yes" />
+    <set_variable name="resupply_6" value="3.0" integer="yes" />
+    <set_variable name="resupply_7" value="3.0" integer="yes" />
+    <set_timer name="Resupply" seconds="300" />
+    <set_variable name="Long_Haul" value="3.0" integer="yes" />
+  </event>
+  <event name="Resupply Ready" id_arme="4d9fd662-75e7-479f-90bb-65f0dbdb7969" parent_id_arme="e957dd78-a188-45a0-a245-b614e4091aee">
+    <if_variable name="Long_Haul" comparator="EQUALS" value="4.0" />
+    <if_exists name="Long Haul" />
+    <set_timer name="Resupply" seconds="300" />
+    <set_variable name="Long_Haul" value="2.0" integer="yes" />
+  </event>
+  <event name="Refit Info Message  and Timer Start" id_arme="39ac60bb-3b33-4fa6-be56-157f7d3bdfc7" parent_id_arme="e957dd78-a188-45a0-a245-b614e4091aee">
     <if_variable name="Long_Haul" comparator="EQUALS" value="1.0" />
-    <incoming_comms_text from="Long Haul" type="SIDE STATUS FRIEND">This is the Long Haul.  We are preparing refit supplies for the mission, and should have a new batch ready for you every five minutes.^^Just stop on by to get them.</incoming_comms_text>
+    <incoming_comms_text from="Long Haul" type="FRIEND SIDE">This is the Long Haul.  We are preparing refit supplies for the mission, and should have a new batch ready for you every five minutes.^^We will let you know when they are ready.</incoming_comms_text>
     <set_timer name="Resupply" seconds="300" />
     <set_variable name="resupply_0" value="2.0" integer="yes" />
     <set_variable name="resupply_1" value="2.0" integer="yes" />
@@ -2468,29 +2442,424 @@
     <set_variable name="resupply_7" value="2.0" integer="yes" />
     <set_variable name="Long_Haul" value="2.0" integer="yes" />
   </event>
-  <folder_arme id_arme="8a289dd5-0959-4a4f-a058-d89783b14b04" parent_id_arme="e957dd78-a188-45a0-a245-b614e4091aee" expanded_arme="" />
-  <event id_arme="94d81218-5ff1-416f-8e20-49c85db839aa" parent_id_arme="8a289dd5-0959-4a4f-a058-d89783b14b04">
-    <if_timer_finished name="Resupply" />
-    <set_comms_button text="Resupply Ship 1" />
-    <set_comms_button text="Resupply" />
-    <set_comms_button text=" Resupply" />
-    <set_comms_button text="  Resupply" />
-    <set_comms_button text="Resupply " />
-    <set_comms_button text="Resupply  " />
-    <set_comms_button text=" Resupply " />
-    <set_comms_button text="  Resupply  " />
+  <folder_arme name="Refit Buttons Ship 0" id_arme="98dda025-38f8-4855-aa6b-41a0f8cb1c2b" parent_id_arme="e957dd78-a188-45a0-a245-b614e4091aee" />
+  <event name="Remove Resupply Button Ship 0" id_arme="af5749f3-97db-490e-8843-67d0e8be7522" parent_id_arme="98dda025-38f8-4855-aa6b-41a0f8cb1c2b">
+    <if_variable name="resupply_0" comparator="EQUALS" value="4.0" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="0" />
+    <if_distance name1="Long Haul" player_slot2="0" comparator="GREATER" value="900.0" />
+    <clear_comms_button text="Resupply Artemis" player_slot="0" />
     <set_variable name="resupply_0" value="3.0" integer="yes" />
+  </event>
+  <event name="Resupply Part 2 Ship 0" id_arme="6df3d38d-7f6b-4cc1-bfb7-1d9396b0bdaa" parent_id_arme="98dda025-38f8-4855-aa6b-41a0f8cb1c2b">
+    <if_variable name="resupply_0" comparator="EQUALS" value="5.0" />
+    <if_timer_finished name="refill_0" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="0" />
+    <if_distance name1="Long Haul" player_slot2="0" comparator="LESS" value="900.0" />
+    <addto_object_property value="500.0" property="energy" player_slot="0" />
+    <set_damcon_members value="6" team_index="0" player_slot="0" />
+    <set_damcon_members value="6" team_index="1" player_slot="0" />
+    <set_damcon_members value="6" team_index="2" player_slot="0" />
+    <set_variable name="resupply_weapon" randomIntLow="2" randomIntHigh="4" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countHoming" player_slot="0" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countNuke" player_slot="0" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countEMP" player_slot="0" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="2" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countMine" player_slot="0" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countNuke" player_slot="0" />
+    <clear_comms_button text="Resupply Artemis" player_slot="0" />
+    <warning_popup_message message="Refit Complete" consoles="MC" player_slot="0" />
+    <set_variable name="resupply_0" value="2.0" integer="yes" />
+  </event>
+  <event name="Resupply Pressed Ship 0" id_arme="69ed1e41-a729-4f5b-a2b0-eef4b97f62d1" parent_id_arme="98dda025-38f8-4855-aa6b-41a0f8cb1c2b">
+    <if_variable name="resupply_0" comparator="EQUALS" value="4.0" />
+    <if_comms_button text="Resupply Artemis" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="0" />
+    <if_distance name1="Long Haul" player_slot2="0" comparator="LESS" value="900.0" />
+    <addto_object_property value="500.0" property="energy" player_slot="0" />
+    <set_timer name="refill_0" seconds="5" />
+    <clear_comms_button text="Resupply Artemis" player_slot="0" />
+    <set_variable name="resupply_0" value="5.0" integer="yes" />
+  </event>
+  <event name="Resupply Button Ship 0" id_arme="632874f8-d3bd-44e2-9c9e-f7e5a343f4c5" parent_id_arme="98dda025-38f8-4855-aa6b-41a0f8cb1c2b">
+    <if_variable name="resupply_0" comparator="EQUALS" value="3.0" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="0" />
+    <if_distance name1="Long Haul" player_slot2="0" comparator="LESS" value="900.0" />
+    <set_comms_button text="Resupply Artemis" player_slot="0" />
+    <set_variable name="resupply_0" value="4.0" integer="yes" />
+  </event>
+  <folder_arme name="Refit Buttons Ship 1" id_arme="197b6a18-bce8-4d4f-a690-551e97c6fbaa" parent_id_arme="e957dd78-a188-45a0-a245-b614e4091aee" />
+  <event name="Remove Resupply Button Ship 1" id_arme="85853941-d694-4ab0-a8ab-786ac706117d" parent_id_arme="197b6a18-bce8-4d4f-a690-551e97c6fbaa">
+    <if_variable name="resupply_1" comparator="EQUALS" value="4.0" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="1" />
+    <if_distance name1="Long Haul" player_slot2="1" comparator="GREATER" value="900.0" />
+    <clear_comms_button text="Resupply Intrepid" player_slot="1" />
     <set_variable name="resupply_1" value="3.0" integer="yes" />
+  </event>
+  <event name="Resupply Part 2 Ship 1" id_arme="87c6298c-597e-4337-ac78-b3af27c4a119" parent_id_arme="197b6a18-bce8-4d4f-a690-551e97c6fbaa">
+    <if_variable name="resupply_1" comparator="EQUALS" value="5.0" />
+    <if_timer_finished name="refill_1" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="1" />
+    <if_distance name1="Long Haul" player_slot2="1" comparator="LESS" value="900.0" />
+    <set_damcon_members value="6" team_index="0" player_slot="1" />
+    <set_damcon_members value="6" team_index="1" player_slot="1" />
+    <set_damcon_members value="6" team_index="2" player_slot="1" />
+    <addto_object_property value="500.0" property="energy" player_slot="1" />
+    <set_variable name="resupply_weapon" randomIntLow="2" randomIntHigh="4" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countHoming" player_slot="1" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countNuke" player_slot="1" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countEMP" player_slot="1" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="2" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countMine" player_slot="1" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countNuke" player_slot="1" />
+    <clear_comms_button text="Resupply Intrepid" player_slot="1" />
+    <warning_popup_message message="Refit Complete" consoles="MC" player_slot="1" />
+    <set_variable name="resupply_1" value="2.0" integer="yes" />
+  </event>
+  <event name="Resupply Pressed Ship 1" id_arme="be3083a9-90c3-4e00-ba4a-884a792f8636" parent_id_arme="197b6a18-bce8-4d4f-a690-551e97c6fbaa">
+    <if_variable name="resupply_1" comparator="EQUALS" value="4.0" />
+    <if_comms_button text="Resupply Intrepid" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="1" />
+    <if_distance name1="Long Haul" player_slot2="1" comparator="LESS" value="900.0" />
+    <addto_object_property value="500.0" property="energy" player_slot="0" />
+    <set_timer name="refill_1" seconds="5" />
+    <clear_comms_button text="Resupply Intrepid" player_slot="1" />
+    <set_variable name="resupply_1" value="5.0" integer="yes" />
+  </event>
+  <event name="Resupply Button Ship 1" id_arme="4603b3e5-4404-419d-9496-0b77e247c95d" parent_id_arme="197b6a18-bce8-4d4f-a690-551e97c6fbaa">
+    <if_variable name="resupply_1" comparator="EQUALS" value="3.0" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="1" />
+    <if_distance name1="Long Haul" player_slot2="1" comparator="LESS" value="900.0" />
+    <set_comms_button text="Resupply Intrepid" player_slot="1" />
+    <set_variable name="resupply_1" value="4.0" integer="yes" />
+  </event>
+  <folder_arme name="Refit Buttons Ship 2" id_arme="b3950132-705e-4f32-adc6-e632c99a9648" parent_id_arme="e957dd78-a188-45a0-a245-b614e4091aee" />
+  <event name="Remove Resupply Button Ship 2" id_arme="870af1e5-6c8e-4af7-be29-ffdd4c8613bd" parent_id_arme="b3950132-705e-4f32-adc6-e632c99a9648">
+    <if_variable name="resupply_2" comparator="EQUALS" value="4.0" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="2" />
+    <if_distance name1="Long Haul" player_slot2="2" comparator="GREATER" value="900.0" />
+    <clear_comms_button text="Resupply Aegis" player_slot="2" />
     <set_variable name="resupply_2" value="3.0" integer="yes" />
+  </event>
+  <event name="Resupply Part 2 Ship 2" id_arme="6b579165-ec6f-4ba4-a3ce-34dcc5852e82" parent_id_arme="b3950132-705e-4f32-adc6-e632c99a9648">
+    <if_variable name="resupply_2" comparator="EQUALS" value="5.0" />
+    <if_timer_finished name="refill_2" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="2" />
+    <if_distance name1="Long Haul" player_slot2="2" comparator="LESS" value="900.0" />
+    <set_damcon_members value="6" team_index="0" player_slot="2" />
+    <set_damcon_members value="6" team_index="1" player_slot="2" />
+    <set_damcon_members value="6" team_index="2" player_slot="2" />
+    <addto_object_property value="500.0" property="energy" player_slot="2" />
+    <set_variable name="resupply_weapon" randomIntLow="2" randomIntHigh="4" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countHoming" player_slot="2" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countNuke" player_slot="2" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countEMP" player_slot="2" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="2" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countMine" player_slot="2" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countNuke" player_slot="2" />
+    <clear_comms_button text="Resupply Aegis" player_slot="2" />
+    <warning_popup_message message="Refit Complete" consoles="MC" player_slot="2" />
+    <set_variable name="resupply_2" value="2.0" integer="yes" />
+  </event>
+  <event name="Resupply Pressed Ship 2" id_arme="c28b067f-9906-40f8-ba09-4c270377a118" parent_id_arme="b3950132-705e-4f32-adc6-e632c99a9648">
+    <if_variable name="resupply_2" comparator="EQUALS" value="4.0" />
+    <if_comms_button text="Resupply Aegis" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="2" />
+    <if_distance name1="Long Haul" player_slot2="2" comparator="LESS" value="900.0" />
+    <addto_object_property value="500.0" property="energy" player_slot="0" />
+    <set_timer name="refill_2" seconds="5" />
+    <clear_comms_button text="Resupply Aegis" player_slot="2" />
+    <set_variable name="resupply_2" value="5.0" integer="yes" />
+  </event>
+  <event name="Resupply Button Ship 2" id_arme="2e89e1f9-ddfb-4ea5-bbb1-1b7f60116d59" parent_id_arme="b3950132-705e-4f32-adc6-e632c99a9648">
+    <if_variable name="resupply_2" comparator="EQUALS" value="3.0" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="2" />
+    <if_distance name1="Long Haul" player_slot2="2" comparator="LESS" value="900.0" />
+    <set_comms_button text="Resupply Aegis" player_slot="2" />
+    <set_variable name="resupply_2" value="4.0" integer="yes" />
+  </event>
+  <folder_arme name="Refit Buttons Ship 3" id_arme="3c008334-1188-4e34-aed7-60ce2231aa65" parent_id_arme="e957dd78-a188-45a0-a245-b614e4091aee" />
+  <event name="Remove Resupply Button Ship 3" id_arme="78ed077b-4da3-4263-a2c3-127a56169072" parent_id_arme="3c008334-1188-4e34-aed7-60ce2231aa65">
+    <if_variable name="resupply_3" comparator="EQUALS" value="4.0" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="3" />
+    <if_distance name1="Long Haul" player_slot2="3" comparator="GREATER" value="900.0" />
+    <clear_comms_button text="Resupply Horatio" player_slot="3" />
     <set_variable name="resupply_3" value="3.0" integer="yes" />
+  </event>
+  <event name="Resupply Part 2 Ship 3" id_arme="1094521f-524c-4826-9ecb-3c40489d4a01" parent_id_arme="3c008334-1188-4e34-aed7-60ce2231aa65">
+    <if_variable name="resupply_3" comparator="EQUALS" value="5.0" />
+    <if_timer_finished name="refill_3" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="3" />
+    <if_distance name1="Long Haul" player_slot2="3" comparator="LESS" value="900.0" />
+    <set_damcon_members value="6" team_index="0" player_slot="3" />
+    <set_damcon_members value="6" team_index="1" player_slot="3" />
+    <set_damcon_members value="6" team_index="2" player_slot="3" />
+    <addto_object_property value="500.0" property="energy" player_slot="3" />
+    <set_variable name="resupply_weapon" randomIntLow="2" randomIntHigh="4" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countHoming" player_slot="3" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countNuke" player_slot="3" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countEMP" player_slot="3" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="2" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countMine" player_slot="3" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countNuke" player_slot="3" />
+    <clear_comms_button text="Resupply Horatio" player_slot="3" />
+    <warning_popup_message message="Refit Complete" consoles="MC" player_slot="3" />
+    <set_variable name="resupply_3" value="2.0" integer="yes" />
+  </event>
+  <event name="Resupply Pressed Ship 3" id_arme="cddfd6d4-2aa5-4acd-a5e3-91bea1f014a1" parent_id_arme="3c008334-1188-4e34-aed7-60ce2231aa65">
+    <if_variable name="resupply_3" comparator="EQUALS" value="4.0" />
+    <if_comms_button text="Resupply Horatio" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="3" />
+    <if_distance name1="Long Haul" player_slot2="3" comparator="LESS" value="900.0" />
+    <addto_object_property value="500.0" property="energy" player_slot="0" />
+    <set_timer name="refill_3" seconds="5" />
+    <clear_comms_button text="Resupply Horatio" player_slot="3" />
+    <set_variable name="resupply_3" value="5.0" integer="yes" />
+  </event>
+  <event name="Resupply Button Ship 3" id_arme="a5c6ca82-bf0c-4031-86f9-9f74bb04a473" parent_id_arme="3c008334-1188-4e34-aed7-60ce2231aa65">
+    <if_variable name="resupply_3" comparator="EQUALS" value="3.0" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="3" />
+    <if_distance name1="Long Haul" player_slot2="3" comparator="LESS" value="900.0" />
+    <set_comms_button text="Resupply Horatio" player_slot="3" />
+    <set_variable name="resupply_3" value="4.0" integer="yes" />
+  </event>
+  <folder_arme name="Refit Buttons Ship 4" id_arme="fdf14b33-0553-4fe6-904f-c53abc7a4575" parent_id_arme="e957dd78-a188-45a0-a245-b614e4091aee" />
+  <event name="Remove Resupply Button Ship 4" id_arme="17e212de-a48c-4837-8db2-723623a7d5f4" parent_id_arme="fdf14b33-0553-4fe6-904f-c53abc7a4575">
+    <if_variable name="resupply_4" comparator="EQUALS" value="4.0" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="4" />
+    <if_distance name1="Long Haul" player_slot2="4" comparator="GREATER" value="900.0" />
+    <clear_comms_button text="Resupply Excalibur" player_slot="4" />
     <set_variable name="resupply_4" value="3.0" integer="yes" />
+  </event>
+  <event name="Resupply Part 2 Ship 4" id_arme="8f2a4ea6-a9e5-4f35-b424-a61f7a0c2723" parent_id_arme="fdf14b33-0553-4fe6-904f-c53abc7a4575">
+    <if_variable name="resupply_4" comparator="EQUALS" value="5.0" />
+    <if_timer_finished name="refill_4" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="4" />
+    <if_distance name1="Long Haul" player_slot2="4" comparator="LESS" value="900.0" />
+    <set_damcon_members value="6" team_index="0" player_slot="4" />
+    <set_damcon_members value="6" team_index="1" player_slot="4" />
+    <set_damcon_members value="6" team_index="2" player_slot="4" />
+    <addto_object_property value="500.0" property="energy" player_slot="4" />
+    <set_variable name="resupply_weapon" randomIntLow="2" randomIntHigh="4" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countHoming" player_slot="4" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countNuke" player_slot="4" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countEMP" player_slot="4" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="2" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countMine" player_slot="4" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countNuke" player_slot="4" />
+    <clear_comms_button text="Resupply Excalibur" player_slot="4" />
+    <warning_popup_message message="Refit Complete" consoles="MC" player_slot="4" />
+    <set_variable name="resupply_4" value="2.0" integer="yes" />
+  </event>
+  <event name="Resupply Pressed Ship 4" id_arme="e06c867c-fa70-4297-b6fb-38fd97eb6bf1" parent_id_arme="fdf14b33-0553-4fe6-904f-c53abc7a4575">
+    <if_variable name="resupply_4" comparator="EQUALS" value="4.0" />
+    <if_comms_button text="Resupply Excalibur" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="4" />
+    <if_distance name1="Long Haul" player_slot2="4" comparator="LESS" value="900.0" />
+    <addto_object_property value="500.0" property="energy" player_slot="0" />
+    <set_timer name="refill_4" seconds="5" />
+    <clear_comms_button text="Resupply Excalibur" player_slot="4" />
+    <set_variable name="resupply_4" value="5.0" integer="yes" />
+  </event>
+  <event name="Resupply Button Ship 4" id_arme="e8a438d4-f1e7-46d3-be13-3f042cc63de7" parent_id_arme="fdf14b33-0553-4fe6-904f-c53abc7a4575">
+    <if_variable name="resupply_4" comparator="EQUALS" value="3.0" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="4" />
+    <if_distance name1="Long Haul" player_slot2="4" comparator="LESS" value="900.0" />
+    <set_comms_button text="Resupply Excalibur" player_slot="4" />
+    <set_variable name="resupply_4" value="4.0" integer="yes" />
+  </event>
+  <folder_arme name="Refit Buttons Ship 5" id_arme="f84bf873-b36d-4531-85e7-b9af5e21228a" parent_id_arme="e957dd78-a188-45a0-a245-b614e4091aee" />
+  <event name="Remove Resupply Button Ship 5" id_arme="b5499889-5c2a-4ead-aadc-592222fac1f3" parent_id_arme="f84bf873-b36d-4531-85e7-b9af5e21228a">
+    <if_variable name="resupply_5" comparator="EQUALS" value="4.0" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="5" />
+    <if_distance name1="Long Haul" player_slot2="5" comparator="GREATER" value="900.0" />
+    <clear_comms_button text="Resupply Hera" player_slot="5" />
     <set_variable name="resupply_5" value="3.0" integer="yes" />
+  </event>
+  <event name="Resupply Part 2 Ship 5" id_arme="1c14312d-65e0-4c80-8c5c-41d453855acc" parent_id_arme="f84bf873-b36d-4531-85e7-b9af5e21228a">
+    <if_variable name="resupply_5" comparator="EQUALS" value="5.0" />
+    <if_timer_finished name="refill_5" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="5" />
+    <if_distance name1="Long Haul" player_slot2="5" comparator="LESS" value="900.0" />
+    <set_damcon_members value="6" team_index="0" player_slot="5" />
+    <set_damcon_members value="6" team_index="1" player_slot="5" />
+    <set_damcon_members value="6" team_index="2" player_slot="5" />
+    <addto_object_property value="500.0" property="energy" player_slot="5" />
+    <set_variable name="resupply_weapon" randomIntLow="2" randomIntHigh="4" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countHoming" player_slot="5" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countNuke" player_slot="5" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countEMP" player_slot="5" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="2" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countMine" player_slot="5" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countNuke" player_slot="5" />
+    <clear_comms_button text="Resupply Hera" player_slot="5" />
+    <warning_popup_message message="Refit Complete" consoles="MC" player_slot="5" />
+    <set_variable name="resupply_5" value="2.0" integer="yes" />
+  </event>
+  <event name="Resupply Pressed Ship 5" id_arme="7f07d823-ef4f-4a8e-8df1-8a32656f1a41" parent_id_arme="f84bf873-b36d-4531-85e7-b9af5e21228a">
+    <if_variable name="resupply_5" comparator="EQUALS" value="4.0" />
+    <if_comms_button text="Resupply Hera" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="5" />
+    <if_distance name1="Long Haul" player_slot2="5" comparator="LESS" value="900.0" />
+    <addto_object_property value="500.0" property="energy" player_slot="0" />
+    <set_timer name="refill_5" seconds="5" />
+    <clear_comms_button text="Resupply Hera" player_slot="5" />
+    <set_variable name="resupply_5" value="5.0" integer="yes" />
+  </event>
+  <event name="Resupply Button Ship 5" id_arme="0d0769c3-dcf7-437c-8f10-ad3fdc38f2d5" parent_id_arme="f84bf873-b36d-4531-85e7-b9af5e21228a">
+    <if_variable name="resupply_5" comparator="EQUALS" value="3.0" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="5" />
+    <if_distance name1="Long Haul" player_slot2="5" comparator="LESS" value="900.0" />
+    <set_comms_button text="Resupply Hera" player_slot="5" />
+    <set_variable name="resupply_5" value="4.0" integer="yes" />
+  </event>
+  <folder_arme name="Refit Buttons Ship 6" id_arme="2fefa011-ea7b-4bc9-9900-d602969c09b2" parent_id_arme="e957dd78-a188-45a0-a245-b614e4091aee" />
+  <event name="Remove Resupply Button Ship 6" id_arme="2c69b274-66b2-4361-9a15-484159f9eba4" parent_id_arme="2fefa011-ea7b-4bc9-9900-d602969c09b2">
+    <if_variable name="resupply_6" comparator="EQUALS" value="4.0" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="6" />
+    <if_distance name1="Long Haul" player_slot2="6" comparator="GREATER" value="900.0" />
+    <clear_comms_button text="Resupply Ceres" player_slot="6" />
     <set_variable name="resupply_6" value="3.0" integer="yes" />
+  </event>
+  <event name="Resupply Part 2 Ship 6" id_arme="c5b48935-b92a-4e83-9444-1e5a78d0ebd4" parent_id_arme="2fefa011-ea7b-4bc9-9900-d602969c09b2">
+    <if_variable name="resupply_6" comparator="EQUALS" value="5.0" />
+    <if_timer_finished name="refill_6" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="6" />
+    <if_distance name1="Long Haul" player_slot2="6" comparator="LESS" value="900.0" />
+    <set_damcon_members value="6" team_index="0" player_slot="6" />
+    <set_damcon_members value="6" team_index="1" player_slot="6" />
+    <set_damcon_members value="6" team_index="2" player_slot="6" />
+    <addto_object_property value="500.0" property="energy" player_slot="6" />
+    <set_variable name="resupply_weapon" randomIntLow="2" randomIntHigh="4" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countHoming" player_slot="6" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countNuke" player_slot="6" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countEMP" player_slot="6" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="2" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countMine" player_slot="6" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countNuke" player_slot="6" />
+    <clear_comms_button text="Resupply Ceres" player_slot="6" />
+    <warning_popup_message message="Refit Complete" consoles="MC" player_slot="6" />
+    <set_variable name="resupply_6" value="2.0" integer="yes" />
+  </event>
+  <event name="Resupply Pressed Ship 6" id_arme="9e380f5c-a90e-4f87-a73e-5f11f94cdfb6" parent_id_arme="2fefa011-ea7b-4bc9-9900-d602969c09b2">
+    <if_variable name="resupply_6" comparator="EQUALS" value="4.0" />
+    <if_comms_button text="Resupply Ceres" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="6" />
+    <if_distance name1="Long Haul" player_slot2="6" comparator="LESS" value="900.0" />
+    <addto_object_property value="500.0" property="energy" player_slot="0" />
+    <set_timer name="refill_6" seconds="5" />
+    <clear_comms_button text="Resupply Ceres" player_slot="6" />
+    <set_variable name="resupply_6" value="5.0" integer="yes" />
+  </event>
+  <event name="Resupply Button Ship 6" id_arme="b67746ab-2faa-45de-af09-34b87ee57546" parent_id_arme="2fefa011-ea7b-4bc9-9900-d602969c09b2">
+    <if_variable name="resupply_6" comparator="EQUALS" value="3.0" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="6" />
+    <if_distance name1="Long Haul" player_slot2="6" comparator="LESS" value="900.0" />
+    <set_comms_button text="Resupply Ceres" player_slot="6" />
+    <set_variable name="resupply_6" value="4.0" integer="yes" />
+  </event>
+  <folder_arme name="Refit Buttons Ship 7" id_arme="8a289dd5-0959-4a4f-a058-d89783b14b04" parent_id_arme="e957dd78-a188-45a0-a245-b614e4091aee" />
+  <event name="Remove Resupply Button Ship 7" id_arme="ff29ed3d-726f-4da2-b686-089c4c2e534e" parent_id_arme="8a289dd5-0959-4a4f-a058-d89783b14b04">
+    <if_variable name="resupply_7" comparator="EQUALS" value="4.0" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="7" />
+    <if_distance name1="Long Haul" player_slot2="7" comparator="GREATER" value="900.0" />
+    <clear_comms_button text="Resupply Diana" player_slot="7" />
     <set_variable name="resupply_7" value="3.0" integer="yes" />
   </event>
-  <folder_arme name="Pariah" id_arme="490bbb76-1961-4a99-83e8-f0fbdf59d314" />
-  <folder_arme name="Pariah" id_arme="2b058ccb-5b95-40d3-ac65-3a0b27c99379" parent_id_arme="490bbb76-1961-4a99-83e8-f0fbdf59d314" expanded_arme="" />
-  <folder_arme name="Gravimetric Torpedo" id_arme="21f6a295-30ce-4d54-b368-344ecec61f35" parent_id_arme="2b058ccb-5b95-40d3-ac65-3a0b27c99379" />
+  <event name="Resupply Part 2 Ship 7" id_arme="898b3e82-43ad-4294-8be9-3405adc50c55" parent_id_arme="8a289dd5-0959-4a4f-a058-d89783b14b04">
+    <if_variable name="resupply_7" comparator="EQUALS" value="5.0" />
+    <if_timer_finished name="refill_7" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="7" />
+    <if_distance name1="Long Haul" player_slot2="7" comparator="LESS" value="900.0" />
+    <set_damcon_members value="6" team_index="0" player_slot="7" />
+    <set_damcon_members value="6" team_index="1" player_slot="7" />
+    <set_damcon_members value="6" team_index="2" player_slot="7" />
+    <addto_object_property value="500.0" property="energy" player_slot="7" />
+    <set_variable name="resupply_weapon" randomIntLow="2" randomIntHigh="4" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countHoming" player_slot="7" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countNuke" player_slot="7" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countEMP" player_slot="7" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="2" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countMine" player_slot="7" />
+    <set_variable name="resupply_weapon" randomIntLow="0" randomIntHigh="1" integer="yes" />
+    <addto_object_property value="resupply_weapon" property="countNuke" player_slot="7" />
+    <clear_comms_button text="Resupply Diana" player_slot="7" />
+    <warning_popup_message message="Refit Complete" consoles="MC" player_slot="7" />
+    <set_variable name="resupply_7" value="2.0" integer="yes" />
+  </event>
+  <event name="Resupply Pressed Ship 7" id_arme="70c61fd2-e4db-4cc9-a4a3-1e07f7ff476e" parent_id_arme="8a289dd5-0959-4a4f-a058-d89783b14b04">
+    <if_variable name="resupply_7" comparator="EQUALS" value="4.0" />
+    <if_comms_button text="Resupply Diana" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="7" />
+    <if_distance name1="Long Haul" player_slot2="7" comparator="LESS" value="900.0" />
+    <addto_object_property value="500.0" property="energy" player_slot="0" />
+    <set_timer name="refill_7" seconds="5" />
+    <clear_comms_button text="Resupply Diana" player_slot="7" />
+    <set_variable name="resupply_7" value="5.0" integer="yes" />
+  </event>
+  <event name="Resupply Button Ship 7" id_arme="6a011216-9819-4726-a843-9dd68712857f" parent_id_arme="8a289dd5-0959-4a4f-a058-d89783b14b04">
+    <if_variable name="resupply_7" comparator="EQUALS" value="3.0" />
+    <if_exists name="Long Haul" />
+    <if_exists player_slot="7" />
+    <if_distance name1="Long Haul" player_slot2="7" comparator="LESS" value="900.0" />
+    <set_comms_button text="Resupply Diana" player_slot="7" />
+    <set_variable name="resupply_7" value="4.0" integer="yes" />
+  </event>
+  <folder_arme name="Pariah" id_arme="2b058ccb-5b95-40d3-ac65-3a0b27c99379" expanded_arme="" />
+  <folder_arme name="Gravimetric Torpedo" id_arme="21f6a295-30ce-4d54-b368-344ecec61f35" parent_id_arme="2b058ccb-5b95-40d3-ac65-3a0b27c99379" expanded_arme="" />
   <folder_arme name="Torpedo Hits" id_arme="853803f7-ff23-4f6c-9bf4-2f659c3988d9" parent_id_arme="21f6a295-30ce-4d54-b368-344ecec61f35" />
   <event name="Torpedo Hits Ship 0" id_arme="d9e9f7a0-623a-4fbd-a61a-d21ddbb93ad2" parent_id_arme="853803f7-ff23-4f6c-9bf4-2f659c3988d9">
     <if_distance name1="GravTorp" player_slot2="0" comparator="LESS" value="250.0" />
@@ -2503,7 +2872,6 @@
     <addto_object_property value="-10.0" property="shieldMaxStateFront" player_slot="0" />
     <addto_object_property value="-10.0" property="shieldStateBack" player_slot="0" />
     <addto_object_property value="-10.0" property="shieldStateFront" player_slot="0" />
-    <addto_object_property value="-10.0" property="shieldMaxStateFront" player_slot="0" />
     <warning_popup_message message="Warning!" consoles="M" />
     <warning_popup_message message="Gravity Fluctuations!" consoles="M" />
     <warning_popup_message message="Max Shields Reduced" consoles="WE" player_slot="0" />
@@ -2670,61 +3038,61 @@
   </event>
   <event name="Torpedo Misses Warp Ship 0" id_arme="7fa6cc5c-b1be-450c-90e6-827803c5f3cc" parent_id_arme="548557b2-450c-456d-b056-8fdfbbfcdc4a">
     <if_exists name="   " />
-    <if_distance name1="0" player_slot2="0" comparator="LESS" value="3000.0" />
+    <if_distance player_slot1="0" name2="   " comparator="LESS" value="3000.0" />
     <if_exists player_slot="0" />
     <if_object_property property="warpState" player_slot="0" comparator="NOT" value="0" />
     <set_object_property property="warpState" value="0.0" player_slot="0" />
   </event>
   <event name="Torpedo Misses Warp Ship 1" id_arme="1220622d-2720-4a7d-9c5d-ab50be4bdee3" parent_id_arme="548557b2-450c-456d-b056-8fdfbbfcdc4a">
     <if_exists name="   " />
-    <if_distance name1="1" player_slot2="1" comparator="LESS" value="3000.0" />
+    <if_distance player_slot1="1" name2="   " comparator="LESS" value="3000.0" />
     <if_exists player_slot="1" />
     <if_object_property property="warpState" player_slot="1" comparator="NOT" value="0" />
     <set_object_property property="warpState" value="0.0" player_slot="1" />
   </event>
   <event name="Torpedo Misses Warp Ship 2" id_arme="31b63506-ca38-435d-b63c-c5cffbfcb4d9" parent_id_arme="548557b2-450c-456d-b056-8fdfbbfcdc4a">
     <if_exists name="   " />
-    <if_distance name1="2" player_slot2="2" comparator="LESS" value="3000.0" />
+    <if_distance player_slot1="2" name2="   " comparator="LESS" value="3000.0" />
     <if_exists player_slot="2" />
     <if_object_property property="warpState" player_slot="2" comparator="NOT" value="0" />
     <set_object_property property="warpState" value="0.0" player_slot="2" />
   </event>
   <event name="Torpedo Misses Warp Ship 3" id_arme="772a2d2f-ba17-423a-af80-ddda1962f402" parent_id_arme="548557b2-450c-456d-b056-8fdfbbfcdc4a">
     <if_exists name="   " />
-    <if_distance name1="3" player_slot2="3" comparator="LESS" value="3000.0" />
+    <if_distance player_slot1="3" name2="   " comparator="LESS" value="3000.0" />
     <if_exists player_slot="3" />
     <if_object_property property="warpState" player_slot="3" comparator="NOT" value="0" />
     <set_object_property property="warpState" value="0.0" player_slot="3" />
   </event>
   <event name="Torpedo Misses Warp Ship 4" id_arme="4eca16fd-f8a5-42f3-ad67-3337af1e9c15" parent_id_arme="548557b2-450c-456d-b056-8fdfbbfcdc4a">
     <if_exists name="   " />
-    <if_distance name1="4" player_slot2="4" comparator="LESS" value="3000.0" />
+    <if_distance player_slot1="4" name2="   " comparator="LESS" value="3000.0" />
     <if_exists player_slot="4" />
     <if_object_property property="warpState" player_slot="4" comparator="NOT" value="0" />
     <set_object_property property="warpState" value="0.0" player_slot="4" />
   </event>
   <event name="Torpedo Misses Warp Ship 5" id_arme="88cd3ea8-60ec-453a-94d9-449f85dac3cf" parent_id_arme="548557b2-450c-456d-b056-8fdfbbfcdc4a">
     <if_exists name="   " />
-    <if_distance name1="5" player_slot2="5" comparator="LESS" value="3000.0" />
+    <if_distance player_slot1="5" name2="   " comparator="LESS" value="3000.0" />
     <if_exists player_slot="5" />
     <if_object_property property="warpState" player_slot="5" comparator="NOT" value="0" />
     <set_object_property property="warpState" value="0.0" player_slot="5" />
   </event>
   <event name="Torpedo Misses Warp Ship 6" id_arme="dc179a18-5fab-43ec-beb1-c4d95bd18253" parent_id_arme="548557b2-450c-456d-b056-8fdfbbfcdc4a">
     <if_exists name="   " />
-    <if_distance name1="6" player_slot2="6" comparator="LESS" value="3000.0" />
+    <if_distance player_slot1="7" name2="   " comparator="LESS" value="3000.0" />
     <if_exists player_slot="6" />
     <if_object_property property="warpState" player_slot="6" comparator="NOT" value="0" />
     <set_object_property property="warpState" value="0.0" player_slot="6" />
   </event>
   <event name="Torpedo Misses Warp Ship 7" id_arme="03256d7b-212a-4e6f-b690-a4b569580b66" parent_id_arme="548557b2-450c-456d-b056-8fdfbbfcdc4a">
     <if_exists name="   " />
-    <if_distance name1="7" player_slot2="7" comparator="LESS" value="3000.0" />
+    <if_distance player_slot1="7" name2="   " comparator="LESS" value="3000.0" />
     <if_exists player_slot="7" />
     <if_object_property property="warpState" player_slot="7" comparator="NOT" value="0" />
     <set_object_property property="warpState" value="0.0" player_slot="7" />
   </event>
-  <folder_arme name="Launch Gravimetric Torpedo" id_arme="224861d3-f978-43b0-91e0-7c12407733c2" parent_id_arme="21f6a295-30ce-4d54-b368-344ecec61f35" />
+  <folder_arme name="Launch Gravimetric Torpedo" id_arme="224861d3-f978-43b0-91e0-7c12407733c2" parent_id_arme="21f6a295-30ce-4d54-b368-344ecec61f35" expanded_arme="" />
   <event name="Launch Gravimetric Torpedo Player 0" id_arme="11b64ee0-fe37-4341-ac00-35921755af8f" parent_id_arme="224861d3-f978-43b0-91e0-7c12407733c2">
     <if_exists name="Pariah" />
     <if_variable name="gravTorp_Count" comparator="NOT" value="0.0" />
@@ -2737,6 +3105,8 @@
     <copy_object_property property="positionX" name1="Pariah" name2="GravTorp" />
     <copy_object_property property="positionZ" name1="Pariah" name2="GravTorp" />
     <set_object_property property="turnRate" value="0.006" name="GravTorp" />
+    <!---->
+    <!--To use a custom ship name, change following line.-->
     <direct name="GravTorp" targetName="Artemis" scriptThrottle="1.2" />
     <set_variable name="gravTorp_Count" value="gravTorp_Count-1" integer="yes" />
     <set_variable name="gravInfo" value="1.0" integer="yes" />
@@ -2755,8 +3125,11 @@
     <copy_object_property property="positionX" name1="Pariah" name2="GravTorp" />
     <copy_object_property property="positionZ" name1="Pariah" name2="GravTorp" />
     <set_object_property property="turnRate" value="0.006" name="GravTorp" />
+    <!---->
+    <!--To use a custom ship name, change following line.-->
     <direct name="GravTorp" targetName="Intrepid" scriptThrottle="1.2" />
     <set_variable name="gravTorp_Count" value="gravTorp_Count-1" integer="yes" />
+    <set_variable name="gravInfo" value="1.0" integer="yes" />
     <set_timer name="torpedoCharged" seconds="60" />
     <set_timer name="torpedoLifespan" seconds="25" />
   </event>
@@ -2772,8 +3145,11 @@
     <copy_object_property property="positionX" name1="Pariah" name2="GravTorp" />
     <copy_object_property property="positionZ" name1="Pariah" name2="GravTorp" />
     <set_object_property property="turnRate" value="0.006" name="GravTorp" />
+    <!---->
+    <!--To use a custom ship name, change following line.-->
     <direct name="GravTorp" targetName="Aegis" scriptThrottle="1.2" />
     <set_variable name="gravTorp_Count" value="gravTorp_Count-1" integer="yes" />
+    <set_variable name="gravInfo" value="1.0" integer="yes" />
     <set_timer name="torpedoCharged" seconds="60" />
     <set_timer name="torpedoLifespan" seconds="25" />
   </event>
@@ -2789,8 +3165,11 @@
     <copy_object_property property="positionX" name1="Pariah" name2="GravTorp" />
     <copy_object_property property="positionZ" name1="Pariah" name2="GravTorp" />
     <set_object_property property="turnRate" value="0.006" name="GravTorp" />
+    <!---->
+    <!--To use a custom ship name, change following line.-->
     <direct name="GravTorp" targetName="Horatio" scriptThrottle="1.2" />
     <set_variable name="gravTorp_Count" value="gravTorp_Count-1" integer="yes" />
+    <set_variable name="gravInfo" value="1.0" integer="yes" />
     <set_timer name="torpedoCharged" seconds="60" />
     <set_timer name="torpedoLifespan" seconds="25" />
   </event>
@@ -2806,8 +3185,11 @@
     <copy_object_property property="positionX" name1="Pariah" name2="GravTorp" />
     <copy_object_property property="positionZ" name1="Pariah" name2="GravTorp" />
     <set_object_property property="turnRate" value="0.006" name="GravTorp" />
+    <!---->
+    <!--To use a custom ship name, change following line.-->
     <direct name="GravTorp" targetName="Excalibur" scriptThrottle="1.2" />
     <set_variable name="gravTorp_Count" value="gravTorp_Count-1" integer="yes" />
+    <set_variable name="gravInfo" value="1.0" integer="yes" />
     <set_timer name="torpedoCharged" seconds="60" />
     <set_timer name="torpedoLifespan" seconds="25" />
   </event>
@@ -2823,8 +3205,11 @@
     <copy_object_property property="positionX" name1="Pariah" name2="GravTorp" />
     <copy_object_property property="positionZ" name1="Pariah" name2="GravTorp" />
     <set_object_property property="turnRate" value="0.006" name="GravTorp" />
+    <!---->
+    <!--To use a custom ship name, change following line.-->
     <direct name="GravTorp" targetName="Hera" scriptThrottle="1.2" />
     <set_variable name="gravTorp_Count" value="gravTorp_Count-1" integer="yes" />
+    <set_variable name="gravInfo" value="1.0" integer="yes" />
     <set_timer name="torpedoCharged" seconds="60" />
     <set_timer name="torpedoLifespan" seconds="25" />
   </event>
@@ -2840,8 +3225,11 @@
     <copy_object_property property="positionX" name1="Pariah" name2="GravTorp" />
     <copy_object_property property="positionZ" name1="Pariah" name2="GravTorp" />
     <set_object_property property="turnRate" value="0.006" name="GravTorp" />
+    <!---->
+    <!--To use a custom ship name, change following line.-->
     <direct name="GravTorp" targetName="Ceres" scriptThrottle="1.2" />
     <set_variable name="gravTorp_Count" value="gravTorp_Count-1" integer="yes" />
+    <set_variable name="gravInfo" value="1.0" integer="yes" />
     <set_timer name="torpedoCharged" seconds="60" />
     <set_timer name="torpedoLifespan" seconds="25" />
   </event>
@@ -2857,8 +3245,11 @@
     <copy_object_property property="positionX" name1="Pariah" name2="GravTorp" />
     <copy_object_property property="positionZ" name1="Pariah" name2="GravTorp" />
     <set_object_property property="turnRate" value="0.006" name="GravTorp" />
+    <!---->
+    <!--To use a custom ship name, change following line.-->
     <direct name="GravTorp" targetName="Diana" scriptThrottle="1.2" />
     <set_variable name="gravTorp_Count" value="gravTorp_Count-1" integer="yes" />
+    <set_variable name="gravInfo" value="1.0" integer="yes" />
     <set_timer name="torpedoCharged" seconds="60" />
     <set_timer name="torpedoLifespan" seconds="25" />
   </event>
@@ -2868,26 +3259,299 @@
     <set_ship_text name="GravTorp" race="Gravimetric" class="Torpedo" desc="Trethel Particles detected.  Highly unstable." scan_desc="Analysis: will reduce shield power upon impact.  WARNING: May create extreme gravity stress upon detonation." />
     <set_variable name="gravInfo" value="2.0" integer="yes" />
   </event>
-  <event name="Pariah Modifications" id_arme="fa4f9d1f-efb4-4fdf-b08d-af8b85a89a39" parent_id_arme="490bbb76-1961-4a99-83e8-f0fbdf59d314">
+  <folder_arme name="GravTorp Explosion" id_arme="d0d602c5-0fdb-4b64-aaab-00aa0eed4acc" parent_id_arme="2b058ccb-5b95-40d3-ac65-3a0b27c99379" />
+  <event name="GravTorp Secondary Explosion" id_arme="e6674fb9-a220-4cd5-bea0-b3ca50a73211" parent_id_arme="d0d602c5-0fdb-4b64-aaab-00aa0eed4acc">
+    <if_variable name="gravTorp_Count" comparator="GREATER" value="0.0" />
+    <if_variable name="Detonate" comparator="NOT" value="0.0" />
+    <if_variable name="Pariah" comparator="EQUALS" value="4.0" />
+    <set_variable name="random_X" randomIntLow="-500*gravTorp_Count" randomIntHigh="500*gravTorp_Count" integer="yes" />
+    <set_variable name="random_Y" randomIntLow="-500" randomIntHigh="500" integer="yes" />
+    <set_variable name="random_Z" randomIntLow="-500*gravTorp_Count" randomIntHigh="500*gravTorp_Count" integer="yes" />
+    <create type="blackHole" x="Pariah_X+random_X" y="Pariah_Y+random_Y" z="Pariah_Z+random_Z" />
+    <set_variable name="gravTorp_Count" value="gravTorp_Count-1" integer="yes" />
+  </event>
+  <event name="GravTorp Explosion" id_arme="a53c2967-87db-4b39-96e2-1316f18fce00" parent_id_arme="d0d602c5-0fdb-4b64-aaab-00aa0eed4acc">
+    <if_exists name="Pariah" />
+    <if_variable name="gravTorp_Count" comparator="GREATER" value="0.0" />
+    <if_variable name="Pariah" comparator="EQUALS" value="3.0" />
+    <get_object_property property="positionX" name="Pariah" variable="Pariah_X" />
+    <get_object_property property="positionY" name="Pariah" variable="Pariah_Y" />
+    <get_object_property property="positionZ" name="Pariah" variable="Pariah_Z" />
+    <create type="blackHole" x="Pariah_X" y="Pariah_Y" z="Pariah_Z" />
+    <set_variable name="Detonate" value="gravTorp_Count" integer="yes" />
+    <warning_popup_message message="Gravimetric Explosion Detected" consoles="S" />
+    <warning_popup_message message="WARNING!" consoles="S" />
+    <set_variable name="gravTorp_Count" value="gravTorp_Count-1" integer="yes" />
+    <set_variable name="Pariah" value="4.0" integer="yes" />
+  </event>
+  <event name="Pariah GravTorp Torpedoes Damaged" id_arme="e8dfe7ce-5e3d-4e15-88c3-7e24ad35084a" parent_id_arme="d0d602c5-0fdb-4b64-aaab-00aa0eed4acc">
+    <if_exists name="Pariah" />
+    <if_object_property property="systemDamageTorpedo" name="Pariah" comparator="EQUALS" value="1.0" />
+    <if_variable name="gravTorp_Count" comparator="GREATER" value="0.0" />
+    <if_variable name="Pariah" comparator="EQUALS" value="2.0" />
+    <set_timer name="summon_Pariah" seconds="7" />
+    <warning_popup_message message="Gravimetric Explosion Detected" consoles="S" />
+    <warning_popup_message message="WARNING!" consoles="S" />
+    <set_variable name="Pariah" value="3.0" integer="yes" />
+  </event>
+  <event name="Pariah GravTorp Shields Damaged" id_arme="291c9003-3e38-4e23-abfb-7cd1c7264516" parent_id_arme="d0d602c5-0fdb-4b64-aaab-00aa0eed4acc">
+    <if_exists name="Pariah" />
+    <if_object_property property="shieldStateBack" name="Pariah" comparator="LESS" value="20" />
+    <if_object_property property="shieldMaxStateFront" name="Pariah" comparator="LESS" value="20" />
+    <if_variable name="gravTorp_Count" comparator="GREATER" value="0.0" />
+    <if_variable name="Pariah" comparator="EQUALS" value="2.0" />
+    <set_timer name="summon_Pariah" seconds="7" />
+    <set_ship_text name="Pariah" desc="Gravimetric Instability!  Trithel Particles Detected!" />
+    <warning_popup_message message="Gravimetric Explosion Detected" consoles="S" />
+    <warning_popup_message message="WARNING!" consoles="S" />
+    <set_variable name="Pariah" value="3.0" integer="yes" />
+  </event>
+  <folder_arme name="GravTorp Trithel Zone Warning" id_arme="1e4b181c-d64c-44f0-bd37-3d7623b21a29" parent_id_arme="d0d602c5-0fdb-4b64-aaab-00aa0eed4acc" />
+  <event name="Warning Warp Blocker Ship 0" id_arme="2a91f6a5-26f3-4e5a-9f69-28185a1c80d3" parent_id_arme="1e4b181c-d64c-44f0-bd37-3d7623b21a29">
+    <if_exists player_slot="0" />
+    <if_inside_sphere player_slot="0" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_variable name="trithelWarning_0" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="Trithel Overload" consoles="S" player_slot="0" />
+    <warning_popup_message message="Warp Offline" consoles="S" player_slot="0" />
+    <warning_popup_message message="Targeting Impacted" consoles="S" player_slot="0" />
+    <set_variable name="trithelWarning_0" value="1.0" integer="yes" />
+  </event>
+  <event name="Exit Warp Blocker Ship 0" id_arme="9dc40ebd-fd72-44e5-9bf0-2a35361a398a" parent_id_arme="1e4b181c-d64c-44f0-bd37-3d7623b21a29">
+    <if_exists player_slot="0" />
+    <if_outside_sphere player_slot="0" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_variable name="trithelWarning_0" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Trithel Disipated" consoles="S" player_slot="0" />
+    <warning_popup_message message="Warp Online" consoles="S" player_slot="0" />
+    <set_variable name="trithelWarning_0" value="0.0" integer="yes" />
+  </event>
+  <event name="Warning Warp Blocker Ship 1" id_arme="b6d8c0a4-1b5f-4bf8-a002-c244513d4e05" parent_id_arme="1e4b181c-d64c-44f0-bd37-3d7623b21a29">
+    <if_exists player_slot="1" />
+    <if_inside_sphere player_slot="1" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_variable name="trithelWarning_1" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="Trithel Overload" consoles="S" player_slot="1" />
+    <warning_popup_message message="Warp Offline" consoles="S" player_slot="1" />
+    <warning_popup_message message="Targeting Impacted" consoles="S" player_slot="1" />
+    <set_variable name="trithelWarning_1" value="1.0" integer="yes" />
+  </event>
+  <event name="Exit Warp Blocker Ship 1" id_arme="0183091d-a6ea-41b7-8e1f-63e2269db36f" parent_id_arme="1e4b181c-d64c-44f0-bd37-3d7623b21a29">
+    <if_exists player_slot="1" />
+    <if_outside_sphere player_slot="1" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_variable name="trithelWarning_1" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Trithel Disipated" consoles="S" player_slot="1" />
+    <warning_popup_message message="Warp Online" consoles="S" player_slot="1" />
+    <set_variable name="trithelWarning_1" value="0.0" integer="yes" />
+  </event>
+  <event name="Warning Warp Blocker Ship 2" id_arme="14ffdfc3-3f2c-4338-b94e-24314843410f" parent_id_arme="1e4b181c-d64c-44f0-bd37-3d7623b21a29">
+    <if_exists player_slot="2" />
+    <if_inside_sphere player_slot="2" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_variable name="trithelWarning_2" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="Trithel Overload" consoles="S" player_slot="2" />
+    <warning_popup_message message="Warp Offline" consoles="S" player_slot="2" />
+    <warning_popup_message message="Targeting Impacted" consoles="S" player_slot="2" />
+    <set_variable name="trithelWarning_2" value="1.0" integer="yes" />
+  </event>
+  <event name="Exit Warp Blocker Ship 2" id_arme="60f05711-5560-4227-b182-f02325679121" parent_id_arme="1e4b181c-d64c-44f0-bd37-3d7623b21a29">
+    <if_exists player_slot="2" />
+    <if_outside_sphere player_slot="2" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_variable name="trithelWarning_2" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Trithel Disipated" consoles="S" player_slot="2" />
+    <warning_popup_message message="Warp Online" consoles="S" player_slot="2" />
+    <set_variable name="trithelWarning_2" value="0.0" integer="yes" />
+  </event>
+  <event name="Warning Warp Blocker Ship 3" id_arme="1da8e302-e4a7-483b-97f6-699ed5287489" parent_id_arme="1e4b181c-d64c-44f0-bd37-3d7623b21a29">
+    <if_exists player_slot="3" />
+    <if_inside_sphere player_slot="3" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_variable name="trithelWarning_3" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="Trithel Overload" consoles="S" player_slot="3" />
+    <warning_popup_message message="Warp Offline" consoles="S" player_slot="3" />
+    <warning_popup_message message="Targeting Impacted" consoles="S" player_slot="3" />
+    <set_variable name="trithelWarning_3" value="1.0" integer="yes" />
+  </event>
+  <event name="Exit Warp Blocker Ship 3" id_arme="c93d36df-f81b-4145-9dd4-7037dc6f489b" parent_id_arme="1e4b181c-d64c-44f0-bd37-3d7623b21a29">
+    <if_exists player_slot="3" />
+    <if_outside_sphere player_slot="3" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_variable name="trithelWarning_3" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Trithel Disipated" consoles="S" player_slot="3" />
+    <warning_popup_message message="Warp Online" consoles="S" player_slot="3" />
+    <set_variable name="trithelWarning_3" value="0.0" integer="yes" />
+  </event>
+  <event name="Warning Warp Blocker Ship 4" id_arme="79e6b09b-93b6-4aee-aa16-25b1a7057327" parent_id_arme="1e4b181c-d64c-44f0-bd37-3d7623b21a29">
+    <if_exists player_slot="4" />
+    <if_inside_sphere player_slot="4" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_variable name="trithelWarning_4" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="Trithel Overload" consoles="S" player_slot="4" />
+    <warning_popup_message message="Warp Offline" consoles="S" player_slot="4" />
+    <warning_popup_message message="Targeting Impacted" consoles="S" player_slot="4" />
+    <set_variable name="trithelWarning_4" value="1.0" integer="yes" />
+  </event>
+  <event name="Exit Warp Blocker Ship 4" id_arme="484eddf0-c689-456d-bbdd-44c4098434cd" parent_id_arme="1e4b181c-d64c-44f0-bd37-3d7623b21a29">
+    <if_exists player_slot="4" />
+    <if_outside_sphere player_slot="4" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_variable name="trithelWarning_4" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Trithel Disipated" consoles="S" player_slot="4" />
+    <warning_popup_message message="Warp Online" consoles="S" player_slot="4" />
+    <set_variable name="trithelWarning_4" value="0.0" integer="yes" />
+  </event>
+  <event name="Warning Warp Blocker Ship 5" id_arme="370b9ba9-22ba-4a85-bbbb-862a8f2eb260" parent_id_arme="1e4b181c-d64c-44f0-bd37-3d7623b21a29">
+    <if_exists player_slot="5" />
+    <if_inside_sphere player_slot="5" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_variable name="trithelWarning_5" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="Trithel Overload" consoles="S" player_slot="5" />
+    <warning_popup_message message="Warp Offline" consoles="S" player_slot="5" />
+    <warning_popup_message message="Targeting Impacted" consoles="S" player_slot="5" />
+    <set_variable name="trithelWarning_5" value="1.0" integer="yes" />
+  </event>
+  <event name="Exit Warp Blocker Ship 5" id_arme="57cdf33c-f7bd-4816-8f78-2a0bf2c3b905" parent_id_arme="1e4b181c-d64c-44f0-bd37-3d7623b21a29">
+    <if_exists player_slot="5" />
+    <if_outside_sphere player_slot="5" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_variable name="trithelWarning_5" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Trithel Disipated" consoles="S" player_slot="5" />
+    <warning_popup_message message="Warp Online" consoles="S" player_slot="5" />
+    <set_variable name="trithelWarning_5" value="0.0" integer="yes" />
+  </event>
+  <event name="Warning Warp Blocker Ship 6" id_arme="1920a07d-aa48-449c-93be-eb4ec1d6f93e" parent_id_arme="1e4b181c-d64c-44f0-bd37-3d7623b21a29">
+    <if_exists player_slot="6" />
+    <if_inside_sphere player_slot="6" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_variable name="trithelWarning_6" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="Trithel Overload" consoles="S" player_slot="6" />
+    <warning_popup_message message="Warp Offline" consoles="S" player_slot="6" />
+    <warning_popup_message message="Targeting Impacted" consoles="S" player_slot="6" />
+    <set_variable name="trithelWarning_6" value="1.0" integer="yes" />
+  </event>
+  <event name="Exit Warp Blocker Ship 6" id_arme="04948a7a-245e-4370-aba6-f29ac64651d4" parent_id_arme="1e4b181c-d64c-44f0-bd37-3d7623b21a29">
+    <if_exists player_slot="6" />
+    <if_outside_sphere player_slot="6" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_variable name="trithelWarning_6" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Trithel Disipated" consoles="S" player_slot="6" />
+    <warning_popup_message message="Warp Online" consoles="S" player_slot="6" />
+    <set_variable name="trithelWarning_6" value="0.0" integer="yes" />
+  </event>
+  <event name="Warning Warp Blocker Ship 7" id_arme="4c118bd2-589e-4e2f-a3e2-838de8e91034" parent_id_arme="1e4b181c-d64c-44f0-bd37-3d7623b21a29">
+    <if_exists player_slot="7" />
+    <if_inside_sphere player_slot="7" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_variable name="trithelWarning_7" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="Trithel Overload" consoles="S" player_slot="7" />
+    <warning_popup_message message="Warp Offline" consoles="S" player_slot="7" />
+    <warning_popup_message message="Targeting Impacted" consoles="S" player_slot="7" />
+    <set_variable name="trithelWarning_7" value="1.0" integer="yes" />
+  </event>
+  <event name="Exit Warp Blocker Ship 7" id_arme="309c29c6-7d8d-49be-bfde-01d74b61ab60" parent_id_arme="1e4b181c-d64c-44f0-bd37-3d7623b21a29">
+    <if_exists player_slot="7" />
+    <if_outside_sphere player_slot="7" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_variable name="trithelWarning_7" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Trithel Disipated" consoles="S" player_slot="7" />
+    <warning_popup_message message="Warp Online" consoles="S" player_slot="7" />
+    <set_variable name="trithelWarning_7" value="0.0" integer="yes" />
+  </event>
+  <folder_arme name="Pariah Explosion Warp Stop" id_arme="6708cfc5-f9b3-4487-bc0d-f0c9982a021e" parent_id_arme="d0d602c5-0fdb-4b64-aaab-00aa0eed4acc" />
+  <event name="GravTorp Explosion Warp Stop 0" id_arme="4157351f-d150-41dc-8859-af521f5dde89" parent_id_arme="6708cfc5-f9b3-4487-bc0d-f0c9982a021e">
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_exists player_slot="0" />
+    <if_inside_sphere player_slot="0" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_object_property property="warpState" player_slot="0" comparator="NOT" value="0.0" />
+    <set_object_property property="warpState" value="0" player_slot="0" />
+    <warning_popup_message message="Trithel Particle Overload" consoles="S" player_slot="0" />
+    <warning_popup_message message="Warp Field Collapsed" consoles="MHES" player_slot="0" />
+  </event>
+  <event name="GravTorp Explosion Warp Stop 1" id_arme="f3f5c682-e855-4625-a27f-c7556e07daba" parent_id_arme="6708cfc5-f9b3-4487-bc0d-f0c9982a021e">
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_exists player_slot="1" />
+    <if_inside_sphere player_slot="1" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_object_property property="warpState" player_slot="1" comparator="NOT" value="0.0" />
+    <set_object_property property="warpState" value="0" player_slot="1" />
+    <warning_popup_message message="Trithel Particle Overload" consoles="S" player_slot="1" />
+    <warning_popup_message message="Warp Field Collapsed" consoles="MHES" player_slot="1" />
+  </event>
+  <event name="GravTorp Explosion Warp Stop 2" id_arme="00b31ee6-f650-49c0-8eb0-8fc4032a8c9c" parent_id_arme="6708cfc5-f9b3-4487-bc0d-f0c9982a021e">
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_exists player_slot="2" />
+    <if_inside_sphere player_slot="2" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_object_property property="warpState" player_slot="2" comparator="NOT" value="0.0" />
+    <set_object_property property="warpState" value="0" player_slot="2" />
+    <warning_popup_message message="Trithel Particle Overload" consoles="S" player_slot="2" />
+    <warning_popup_message message="Warp Field Collapsed" consoles="MHES" player_slot="2" />
+  </event>
+  <event name="GravTorp Explosion Warp Stop 3" id_arme="5b31e39c-f557-44a6-bcc0-ea99057f5c24" parent_id_arme="6708cfc5-f9b3-4487-bc0d-f0c9982a021e">
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_exists player_slot="3" />
+    <if_inside_sphere player_slot="3" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_object_property property="warpState" player_slot="3" comparator="NOT" value="0.0" />
+    <set_object_property property="warpState" value="0" player_slot="3" />
+    <warning_popup_message message="Trithel Particle Overload" consoles="S" player_slot="3" />
+    <warning_popup_message message="Warp Field Collapsed" consoles="MHES" player_slot="3" />
+  </event>
+  <event name="GravTorp Explosion Warp Stop 4" id_arme="5ce65b56-07e5-47d8-978c-6fc1d69dd390" parent_id_arme="6708cfc5-f9b3-4487-bc0d-f0c9982a021e">
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_exists player_slot="4" />
+    <if_inside_sphere player_slot="4" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_object_property property="warpState" player_slot="4" comparator="NOT" value="0.0" />
+    <set_object_property property="warpState" value="0" player_slot="4" />
+    <warning_popup_message message="Trithel Particle Overload" consoles="S" player_slot="4" />
+    <warning_popup_message message="Warp Field Collapsed" consoles="MHES" player_slot="4" />
+  </event>
+  <event name="GravTorp Explosion Warp Stop 5" id_arme="98c1feaf-e0c3-45dc-a87d-11e1c505719a" parent_id_arme="6708cfc5-f9b3-4487-bc0d-f0c9982a021e">
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_exists player_slot="5" />
+    <if_inside_sphere player_slot="5" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_object_property property="warpState" player_slot="5" comparator="NOT" value="0.0" />
+    <set_object_property property="warpState" value="0" player_slot="5" />
+    <warning_popup_message message="Trithel Particle Overload" consoles="S" player_slot="5" />
+    <warning_popup_message message="Warp Field Collapsed" consoles="MHES" player_slot="5" />
+  </event>
+  <event name="GravTorp Explosion Warp Stop 6" id_arme="8c40443b-b2a5-4a45-8103-df96f1156dad" parent_id_arme="6708cfc5-f9b3-4487-bc0d-f0c9982a021e">
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_exists player_slot="6" />
+    <if_inside_sphere player_slot="6" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_object_property property="warpState" player_slot="6" comparator="NOT" value="0.0" />
+    <set_object_property property="warpState" value="0" player_slot="6" />
+    <warning_popup_message message="Trithel Particle Overload" consoles="S" player_slot="6" />
+    <warning_popup_message message="Warp Field Collapsed" consoles="MHES" player_slot="6" />
+  </event>
+  <event name="GravTorp Explosion Warp Stop 7" id_arme="8856745a-ba8b-4bed-8479-eac8cbf40d6a" parent_id_arme="6708cfc5-f9b3-4487-bc0d-f0c9982a021e">
+    <if_variable name="Pariah" comparator="GREATER_EQUAL" value="3.0" />
+    <if_exists player_slot="7" />
+    <if_inside_sphere player_slot="7" centerX="Pariah_X" centerY="Pariah_Y" centerZ="Pariah_Z" radius="Detonate*1000" />
+    <if_object_property property="warpState" player_slot="7" comparator="NOT" value="0.0" />
+    <set_object_property property="warpState" value="0" player_slot="7" />
+    <warning_popup_message message="Trithel Particle Overload" consoles="S" player_slot="7" />
+    <warning_popup_message message="Warp Field Collapsed" consoles="MHES" player_slot="7" />
+  </event>
+  <event name="Pariah Modifications" id_arme="c0018ed8-bde9-4650-8f44-346d37289e01" parent_id_arme="2b058ccb-5b95-40d3-ac65-3a0b27c99379">
     <if_exists name="Pariah" />
     <if_variable name="Pariah" comparator="EQUALS" value="1.0" />
     <warning_popup_message message="Gravimetric Anomaly Detected" consoles="S" />
     <set_object_property property="triggersMines" value="0" name="Pariah" />
-    <set_ship_text name="Pariah" desc="Unknown Hull Material. Extreme Gravimetric Distortions." scan_desc="Warning: Unknown Equipment Detected!  Shield Drain, Shield Vamp, Shield Reset, HET, Anti-Torp, Tractor" />
-    <!--<set_special name="Pariah" ability="Tractor" />-->
+    <set_ship_text name="Pariah" desc="Unknown Hull Material. Extreme Gravimetric Distortions." scan_desc="Warning: Unknown Equipment Detected!  Shield Drain, Shield Vamp, Shield Reset, HET, Anti-Torp, Tractor, Drones" />
+    <set_special name="Pariah" ability="Tractor" />
     <set_special name="Pariah" ability="HET" />
     <set_special name="Pariah" ability="AntiTorp" />
     <set_special name="Pariah" ability="ShldDrain" />
     <set_special name="Pariah" ability="ShldVamp" />
     <set_special name="Pariah" ability="ShldReset" />
-    <set_special name="Pariah" clear="yes" ability="Drones" />
+    <set_special name="Pariah" ability="Drones" />
     <addto_object_property value="3000.0" property="shieldMaxStateBack" name="Pariah" />
     <addto_object_property value="3000.0" property="shieldMaxStateFront" name="Pariah" />
     <addto_object_property value="3000.0" property="shieldStateBack" name="Pariah" />
     <addto_object_property value="3000.0" property="shieldStateFront" name="Pariah" />
     <set_variable name="Pariah" value="2.0" integer="yes" />
   </event>
-  <event name="Create Pariah" id_arme="55521269-c8a9-45ea-9051-c02ab36dbcd3" parent_id_arme="490bbb76-1961-4a99-83e8-f0fbdf59d314">
+  <event name="Create Pariah" id_arme="55521269-c8a9-45ea-9051-c02ab36dbcd3" parent_id_arme="2b058ccb-5b95-40d3-ac65-3a0b27c99379">
     <if_not_exists name="Pariah" />
     <if_timer_finished name="summon_Pariah" />
     <if_variable name="Pariah" comparator="EQUALS" value="0.0" />
@@ -2896,5 +3560,125 @@
     <set_variable name="gravTorp_Count" value="10.0" integer="yes" />
     <set_variable name="Pariah" value="1.0" integer="yes" />
   </event>
-  <folder_arme name="End Mission" id_arme="2400f42f-a07c-47cd-a147-26cf4814cc87" />
+  <folder_arme name="End Mission" id_arme="2400f42f-a07c-47cd-a147-26cf4814cc87" expanded_arme="" />
+  <event name="End Game" id_arme="00c30205-3e1d-4db3-abc3-2c1e6c56168e" parent_id_arme="2400f42f-a07c-47cd-a147-26cf4814cc87">
+    <if_variable name="End" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="start_mission_timer_1" />
+    <end_mission />
+  </event>
+  <event name="All Players Destroyed" id_arme="c2202fd1-7772-4ae1-91f5-c458bd492cd3" parent_id_arme="2400f42f-a07c-47cd-a147-26cf4814cc87">
+    <if_not_exists player_slot="0" />
+    <if_not_exists player_slot="1" />
+    <if_not_exists player_slot="2" />
+    <if_not_exists player_slot="3" />
+    <if_not_exists player_slot="4" />
+    <if_not_exists player_slot="5" />
+    <if_not_exists player_slot="6" />
+    <if_not_exists player_slot="7" />
+    <if_variable name="End" comparator="EQUALS" value="0.0" />
+    <if_variable name="Mission" comparator="GREATER_EQUAL" value="8.0" />
+    <big_message title="Defeat!" subtitle1="All Player Ships Destroyed" />
+    <set_timer name="start_mission_timer_1" seconds="10" />
+    <set_variable name="End" value="1.0" integer="yes" />
+  </event>
+  <event name="Research and Prototypes Destroyed" id_arme="39dc6530-4445-4952-b908-d328f82968c1" parent_id_arme="2400f42f-a07c-47cd-a147-26cf4814cc87">
+    <if_variable name="End" comparator="EQUALS" value="0.0" />
+    <if_variable name="mesh_Horla" comparator="GREATER_EQUAL" value="2.0" />
+    <if_variable name="Pariah" comparator="GREATER" value="0.0" />
+    <if_variable name="Mission" comparator="GREATER_EQUAL" value="8.0" />
+    <if_not_exists name="Arin" />
+    <if_fleet_count comparator="NOT" value="0.0" sideValue="1" />
+    <if_not_exists name="Hart" />
+    <if_not_exists name="Vinc 2" />
+    <if_not_exists name="Orvo" />
+    <if_not_exists name="Mala" />
+    <if_not_exists name="Lade" />
+    <if_not_exists name="Pariah" />
+    <if_not_exists name="Unukane" />
+    <if_not_exists name="Z-1" />
+    <if_not_exists name="Z-2" />
+    <if_not_exists name="Z-3" />
+    <if_not_exists name="Z-4" />
+    <if_not_exists name="Z-5" />
+    <if_not_exists name="Z-6" />
+    <if_not_exists name="Z-7" />
+    <if_not_exists name="Z-8" />
+    <if_not_exists name="Z-9" />
+    <if_not_exists name="Z-10" />
+    <if_not_exists name="B01" />
+    <if_not_exists name="B02" />
+    <if_not_exists name="B03" />
+    <if_not_exists name="B04" />
+    <if_not_exists name="B05" />
+    <if_not_exists name="B10" />
+    <if_not_exists name="A01" />
+    <if_not_exists name="A02" />
+    <if_not_exists name="Horla" />
+    <if_not_exists name="Itawa" />
+    <if_not_exists name="X-1" />
+    <if_not_exists name="X-2" />
+    <if_not_exists name="X-3" />
+    <if_not_exists name="X-4" />
+    <if_not_exists name="X-5" />
+    <if_not_exists name="X-6" />
+    <if_not_exists name="X-7" />
+    <if_not_exists name="X-8" />
+    <if_not_exists name="X-9" />
+    <if_not_exists name="X-10" />
+    <if_not_exists name="?" />
+    <big_message title="Victory!" subtitle1="Station and Prototypes Destroyed" />
+    <warning_popup_message message="All Prototypes Destroyed" consoles="MHWESCOF" />
+    <set_timer name="start_mission_timer_1" seconds="10" />
+    <set_variable name="End" value="1.0" integer="yes" />
+  </event>
+  <event name="All Enemies Eliminated" id_arme="ee5ef709-7521-4455-a58a-477403a8bf88" parent_id_arme="2400f42f-a07c-47cd-a147-26cf4814cc87">
+    <if_variable name="End" comparator="EQUALS" value="0.0" />
+    <if_variable name="mesh_Horla" comparator="GREATER_EQUAL" value="2.0" />
+    <if_variable name="Pariah" comparator="GREATER" value="0.0" />
+    <if_variable name="Mission" comparator="GREATER_EQUAL" value="8.0" />
+    <if_not_exists name="Arin" />
+    <if_fleet_count comparator="EQUALS" value="0.0" sideValue="1" />
+    <if_not_exists name="Hart" />
+    <if_not_exists name="Vinc 2" />
+    <if_not_exists name="Orvo" />
+    <if_not_exists name="Mala" />
+    <if_not_exists name="Lade" />
+    <if_not_exists name="Pariah" />
+    <if_not_exists name="Unukane" />
+    <if_not_exists name="Z-1" />
+    <if_not_exists name="Z-2" />
+    <if_not_exists name="Z-3" />
+    <if_not_exists name="Z-4" />
+    <if_not_exists name="Z-5" />
+    <if_not_exists name="Z-6" />
+    <if_not_exists name="Z-7" />
+    <if_not_exists name="Z-8" />
+    <if_not_exists name="Z-9" />
+    <if_not_exists name="Z-10" />
+    <if_not_exists name="B01" />
+    <if_not_exists name="B02" />
+    <if_not_exists name="B03" />
+    <if_not_exists name="B04" />
+    <if_not_exists name="B05" />
+    <if_not_exists name="B10" />
+    <if_not_exists name="A01" />
+    <if_not_exists name="A02" />
+    <if_not_exists name="Horla" />
+    <if_not_exists name="Itawa" />
+    <if_not_exists name="X-1" />
+    <if_not_exists name="X-2" />
+    <if_not_exists name="X-3" />
+    <if_not_exists name="X-4" />
+    <if_not_exists name="X-5" />
+    <if_not_exists name="X-6" />
+    <if_not_exists name="X-7" />
+    <if_not_exists name="X-8" />
+    <if_not_exists name="X-9" />
+    <if_not_exists name="X-10" />
+    <if_not_exists name="?" />
+    <big_message title="Victory!" subtitle1="All Enemies Eliminated" />
+    <warning_popup_message message="All Enemies Eliminated" consoles="MHWESCOF" />
+    <set_timer name="start_mission_timer_1" seconds="10" />
+    <set_variable name="End" value="1.0" integer="yes" />
+  </event>
 </mission_data>
