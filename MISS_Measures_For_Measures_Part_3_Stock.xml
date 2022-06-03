@@ -1,5 +1,5 @@
 <mission_data version="2.8.1 (v1.0)" background_id_arme="92a85676-4d92-4d91-a494-82d13bfc28b5" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
-  <mission_description>Countered Measures, Part 3^^Assist a science station in critical research to understand and counter new Skaraan technology, and use some protoypes of your own.^^Stock ship names^Complexity: High^Multi-ship, level selectable, GM Controls.^(v2.8.1+ required for multi-ship play)</mission_description>
+  <mission_description>Part 3: Countered Measures^^Assist a science station in critical research to understand and counter new Skaraan technology, and use some protoypes of your own.^^Stock ship names^Complexity: High^Multi-ship, level selectable, GM Controls.^(v2.8.1+ required for multi-ship play)</mission_description>
   <start id_arme="92a85676-4d92-4d91-a494-82d13bfc28b5">
     <set_skybox_index index="10" />
     <set_object_property property="nebulaIsOpaque" value="0" />
