@@ -1,0 +1,52 @@
+Invasive Measures v 1.4
+Part 1 of the series "Measures for Measures"
+
+Compatible with Artemis versions 2.8.x*
+
+Script by Neal Schlein, aka Belroc.  Find me on the forums as nschlein
+
+Mission Description:
+Intel has determined that Skaraan forces are developing prototype weapon and defense systems in the Nox system.
+You are to destroy all research facilities and any equipped ships.
+This is a deep-strike style mission, which uses ship-specific comms buttons for refit purposes.
+**NOTE: This mission is fully playable in 2.8.0+ for multiple ships**
+
+Script Details:
+--Recommended for a moderately experienced crew.
+--Includes some basic GM options
+--Ship and Level selectable
+--Single-ship playable, multi-ship compatible mission (each ship slot adds different enemies)
+--NOTE: All ships must use stock names!
+--NOTE: Ship specific buttons are encoded, but not available in Artemis 2.8.0; mission functionality is effectively unimpaired.
+
+
+Testing Credits: 
+Evanpie, Greybeard, Gypsy, UE, Admiral VonErebos, and Captain Bennett
+
+Version History
+v1.4 Update on 06/01/2022
+v1.3 Beta Tested 5/21/2022
+v1.1 Update on 02/04/2022
+v1.0 Released January 9, 2022.  
+
+Changes in 1.4:
+--Added Scan points for fighter and probe functionality
+--Adjusted proximity scan vs. remote scan results.
+--Added Mission start reset timer
+--Added Science/Captain information points
+--Adjusted some ship strengths to adjust per/ship, and added Specials
+--Fixed GravTorp generic mesh turnRate to deltaAngle
+--Adjusted various message categories, text, and added pop-up messages
+--Added game event logging
+
+Changes in 1.3:
+--Fixed bug preventing refit from resetting
+--Adjusted message categories and text
+
+Changes in v1.2:
+--Fixed warp block not properly affecting all ship slots.
+--Cleared out disabled code.
+--Added "Move" GM command.
+
+Changes in v1.1:
+--Added ability to "counter" Trithel Particles to bring story in line with part 3, Countered Measures.
