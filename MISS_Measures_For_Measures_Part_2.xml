@@ -3,7 +3,7 @@
 <!-- WARNING: DO NOT EDIT WITH ANY VERSION OF THE MISSION EDITOR WHICH DOES NOT SUPPPORT ARTEMIS 2.8!  It will strip the unsupported commands and make the mission non-functional.  -->
 <!-- To enable a testing mode, activate the event named "Button Testing Variables and Timers."  This automatically installs all abilities on ship 0 EXCEPT organic regeneration of DamCon teams, which can be selected at the station.  Ability removal is not supported in this mode. -->
 <mission_data version="1.2" background_id_arme="2ca412ba-9cf1-4717-b605-ccc18dca19f1" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
-  <mission_description>Measures For Measures Part 2^Due to an encounter with new Skaraan weapons, you are ordered to trial some prototype equipment.^^Name and Level selectable (suggested 6-7)^Comms Buttons, GM Control Options^Multi-ship compatible (2.8.1+)*^*See read-me</mission_description>
+  <mission_description>Part 2: Disparate Measures^^Due to an encounter with new Skaraan weapons, you are ordered to trial some prototype equipment.^^Name and Level selectable (suggested 6-7)^Comms Buttons, GM Control Options^Multi-ship compatible (2.8.1+)*^*See read-me</mission_description>
   <start id_arme="2ca412ba-9cf1-4717-b605-ccc18dca19f1">
     <create type="player" x="50000.0" y="0.0" z="50000.0" angle="0" />
     <set_skybox_index index="10" />
