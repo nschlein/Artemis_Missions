@@ -4,7 +4,7 @@
 <!--All ships must use stock names for proper function.  -->
 <!-- WARNING: DO NOT EDIT WITH ANY VERSION OF THE MISSION EDITOR WHICH DOES NOT SUPPPORT ARTEMIS 2.8!  It will strip the unsupported commands and make the mission non-functional.  -->
 <mission_data version="Artemis 2.8.1, v1.4" background_id_arme="2ca412ba-9cf1-4717-b605-ccc18dca19f1" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
-  <mission_description>Measures for Measures Part 1^The Skaraans have developed some new technology.  Your job is to find the research station and ships, and destroy them all.^Multi-ship compatible, with per-slot mission variances^Level Selectable and GM Controls^Stock ship names required</mission_description>
+  <mission_description>Part 1: Invasive Measures^The Skaraans have developed some new technology.  Your job is to find the research station and ships, and destroy them all.^Multi-ship compatible, with per-slot mission variances^Level Selectable and GM Controls^Stock ship names required</mission_description>
   <!--This mission requires use of pre-set ship names (in events "Launch Gravimetric Torpedo" 0-7)-->
   <!--To use custom ship names, perform a global search for each stock name and simply Replace All-->
   <start id_arme="2ca412ba-9cf1-4717-b605-ccc18dca19f1">
