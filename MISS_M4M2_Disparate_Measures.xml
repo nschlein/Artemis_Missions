@@ -34,7 +34,7 @@
     <create type="genericMesh" x="96000.0" y="0.0" z="0.0" name="Prototypes" meshFileName="dat\generics-dodecahedron.dxs" textureFileName="dat\beacon-texture-1.png" colorRed="1.0" colorGreen="1.0" colorBlue="1.0" />
   </start>
   <!--These are my standard GM buttons for testing.  They reset every 60 seconds and allow surrender/destruction and toggling of nebula sensors. -->
-  <folder_arme name="GM Testing Controls" id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530" expanded_arme="" />
+  <folder_arme name="GM Testing Controls" id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530" />
   <event name="GM ReSet Complete" id_arme="d74a09de-0e66-47cb-8e64-d1be67a92437" parent_id_arme="7623be34-97f6-4edc-b4a8-a235fa3af530">
     <if_variable name="GM Button" comparator="EQUALS" value="2.0" />
     <set_gm_button text="Surrender" y="200" />
@@ -85,7 +85,7 @@
   <!--The following code sets up a starting sector, puts in place a button to initiate the game (so you can make sure everyone is connected), and provides the narrative framework.  It then spawns a multi-ship jump button which clears the sector and begins the mission. -->
   <!--The following code section places players on the map in the initial sector.  -->
   <!-- The following code section initiates the mission itself. -->
-  <folder_arme name="Initial Starting Sector" id_arme="0f07b7dd-78ba-44fa-ab09-f0b0603a1e39" expanded_arme="" />
+  <folder_arme name="Initial Starting Sector" id_arme="0f07b7dd-78ba-44fa-ab09-f0b0603a1e39" />
   <event name="Create Initial Sector" id_arme="e7ebac4c-8a39-4b56-9d3a-d7c5c07bc97f" parent_id_arme="0f07b7dd-78ba-44fa-ab09-f0b0603a1e39">
     <if_variable name="Mission" comparator="EQUALS" value="0.0" />
     <create type="station" x="22165.0" y="50.0" z="68402.0" name="DS 5" hullID="1001" sideValue="2" />
@@ -158,7 +158,7 @@
     <set_variable name="Mission" value="2.0" integer="yes" />
     <log text="Decoded message arrives (Mission Start)" />
   </event>
-  <folder_arme name="Initial Spawn Players" id_arme="94ed05a5-1311-4c9a-9ff6-8557a2d7eb8f" parent_id_arme="0f07b7dd-78ba-44fa-ab09-f0b0603a1e39" expanded_arme="" />
+  <folder_arme name="Initial Spawn Players" id_arme="94ed05a5-1311-4c9a-9ff6-8557a2d7eb8f" parent_id_arme="0f07b7dd-78ba-44fa-ab09-f0b0603a1e39" />
   <event name="Info Mesh 0" id_arme="ed8fcd67-4ab0-4bc2-aa67-624b3429f274" parent_id_arme="94ed05a5-1311-4c9a-9ff6-8557a2d7eb8f">
     <if_variable name="Player0" comparator="EQUALS" value="1.0" />
     <set_ship_text name="Ship 1" race=" Data" desc="No prototype installed on this ship." />
@@ -307,8 +307,8 @@
     <set_variable name="Review" value="1.0" integer="yes" />
   </event>
   <!-- - - - - - - - - - - - - - - - -->
-  <folder_arme name="Mission Sector" id_arme="e60d81c5-8951-46f6-a27d-d8159e4b70d7" expanded_arme="" />
-  <folder_arme name="Mine Immune Fighters CARRIERNAME" id_arme="28f2572e-2c7c-446f-a189-883a2bfcceaf" parent_id_arme="e60d81c5-8951-46f6-a27d-d8159e4b70d7" expanded_arme="" />
+  <folder_arme name="Mission Sector" id_arme="e60d81c5-8951-46f6-a27d-d8159e4b70d7" />
+  <folder_arme name="Mine Immune Fighters CARRIERNAME" id_arme="28f2572e-2c7c-446f-a189-883a2bfcceaf" parent_id_arme="e60d81c5-8951-46f6-a27d-d8159e4b70d7" />
   <disabled_event name="Fighters Reset Complete CARRIERNAME" id_arme="fd3de00b-d0d6-4e04-8ac7-5b4e1cd5a259" parent_id_arme="28f2572e-2c7c-446f-a189-883a2bfcceaf">
     <if_exists name="CARRIERNAME" />
     <if_variable name="launch_CARRIERNAME" comparator="EQUALS" value="4.0" />
@@ -1416,7 +1416,7 @@
     <set_variable name="Mission" value="6.0" integer="yes" />
     <log text="Arrived in Quont system" />
   </event>
-  <folder_arme name="Late Spawn Players" id_arme="021225e3-43f3-4987-bfd7-c3e952196596" parent_id_arme="e60d81c5-8951-46f6-a27d-d8159e4b70d7" expanded_arme="" />
+  <folder_arme name="Late Spawn Players" id_arme="021225e3-43f3-4987-bfd7-c3e952196596" parent_id_arme="e60d81c5-8951-46f6-a27d-d8159e4b70d7" />
   <event name="Late Spawn Player 1" id_arme="b76c9f41-19b6-4741-9a81-0f0e4a7c6063" parent_id_arme="021225e3-43f3-4987-bfd7-c3e952196596">
     <if_variable name="Mission" comparator="GREATER_EQUAL" value="4.0" />
     <if_variable name="Player1" comparator="EQUALS" value="0.0" />
@@ -1578,7 +1578,7 @@
   </disabled_event>
   <!-- The following section has two events per player slot involved in creating ship-specific options.  The first in each pair triggers if a ship undocks without making a choice and passes them to the next player to dock, the second triggers the choice offer. -->
   <folder_arme name="Per Ship Upgrade Offer Trigger and Dock Failure" id_arme="01a10fe7-45cd-46af-95e5-2e73f54eb80a" />
-  <event name="Dock Broken Upgrade Failed Slot 0" id_arme="f2cbbeb3-27b9-4d0f-91a5-0b8f08851038" parent_id_arme="fe20a302-0863-47bc-a652-d15eb036b166">
+  <event name="Dock Broken Upgrade Failed Slot 0" id_arme="f2cbbeb3-27b9-4d0f-91a5-0b8f08851038" parent_id_arme="01a10fe7-45cd-46af-95e5-2e73f54eb80a">
     <if_variable name="activeSlot" comparator="EQUALS" value="0.0" />
     <if_variable name="Choosing" comparator="GREATER" value="0.0" />
     <if_variable name="Choosing" comparator="LESS" value="2.0" />
@@ -1588,7 +1588,7 @@
     <set_variable name="Upgraded_0" value="0.0" integer="yes" />
     <set_variable name="Choosing" value="2.0" integer="yes" />
   </event>
-  <event name="Trigger Upgrade Options Slot 0" id_arme="cefd4c18-5456-4740-bfc2-a16032f8b322" parent_id_arme="fe20a302-0863-47bc-a652-d15eb036b166">
+  <event name="Trigger Upgrade Options Slot 0" id_arme="cefd4c18-5456-4740-bfc2-a16032f8b322" parent_id_arme="01a10fe7-45cd-46af-95e5-2e73f54eb80a">
     <if_variable name="activeSlot" comparator="EQUALS" value="-1.0" />
     <if_variable name="Choosing" comparator="EQUALS" value="0.0" />
     <if_variable name="Upgraded_0" comparator="EQUALS" value="0.0" />
@@ -1598,7 +1598,7 @@
     <set_variable name="Upgraded_0" value="1.0" integer="yes" />
     <set_variable name="Choosing" value="1.0" integer="yes" />
   </event>
-  <event name="Dock Broken Upgrade Failed Slot 1" id_arme="116f103b-ef07-4bdf-8be7-fb2fd0302e2a">
+  <event name="Dock Broken Upgrade Failed Slot 1" id_arme="116f103b-ef07-4bdf-8be7-fb2fd0302e2a" parent_id_arme="01a10fe7-45cd-46af-95e5-2e73f54eb80a">
     <if_variable name="activeSlot" comparator="EQUALS" value="1.0" />
     <if_variable name="Choosing" comparator="GREATER" value="0.0" />
     <if_variable name="Choosing" comparator="LESS" value="2.0" />
@@ -1608,7 +1608,7 @@
     <set_variable name="Upgraded_1" value="0.0" integer="yes" />
     <set_variable name="Choosing" value="2.0" integer="yes" />
   </event>
-  <event name="Trigger Upgrade Options Slot 1" id_arme="78200b3f-6dfd-44ee-a231-2835171f57de">
+  <event name="Trigger Upgrade Options Slot 1" id_arme="78200b3f-6dfd-44ee-a231-2835171f57de" parent_id_arme="01a10fe7-45cd-46af-95e5-2e73f54eb80a">
     <if_variable name="activeSlot" comparator="EQUALS" value="-1.0" />
     <if_variable name="Choosing" comparator="EQUALS" value="0.0" />
     <if_variable name="Upgraded_1" comparator="EQUALS" value="0.0" />
@@ -1618,7 +1618,7 @@
     <set_variable name="Upgraded_1" value="1.0" integer="yes" />
     <set_variable name="Choosing" value="1.0" integer="yes" />
   </event>
-  <event name="Dock Broken Upgrade Failed Slot 2" id_arme="5edae385-45cf-4a9e-95d2-b27ed3787c80">
+  <event name="Dock Broken Upgrade Failed Slot 2" id_arme="5edae385-45cf-4a9e-95d2-b27ed3787c80" parent_id_arme="01a10fe7-45cd-46af-95e5-2e73f54eb80a">
     <if_variable name="activeSlot" comparator="EQUALS" value="2.0" />
     <if_variable name="Choosing" comparator="GREATER" value="0.0" />
     <if_variable name="Choosing" comparator="LESS" value="2.0" />
@@ -1628,7 +1628,7 @@
     <set_variable name="Upgraded_2" value="0.0" integer="yes" />
     <set_variable name="Choosing" value="2.0" integer="yes" />
   </event>
-  <event name="Trigger Upgrade Options Slot 2" id_arme="1fb9b870-dd3c-4368-9ed6-3c07318225e9">
+  <event name="Trigger Upgrade Options Slot 2" id_arme="1fb9b870-dd3c-4368-9ed6-3c07318225e9" parent_id_arme="01a10fe7-45cd-46af-95e5-2e73f54eb80a">
     <if_variable name="activeSlot" comparator="EQUALS" value="-1.0" />
     <if_variable name="Choosing" comparator="EQUALS" value="0.0" />
     <if_variable name="Upgraded_2" comparator="EQUALS" value="0.0" />
@@ -1638,7 +1638,7 @@
     <set_variable name="Upgraded_2" value="1.0" integer="yes" />
     <set_variable name="Choosing" value="1.0" integer="yes" />
   </event>
-  <event name="Dock Broken Upgrade Failed Slot 3" id_arme="70442264-a8a4-4836-b03b-2d2803b87ba9">
+  <event name="Dock Broken Upgrade Failed Slot 3" id_arme="70442264-a8a4-4836-b03b-2d2803b87ba9" parent_id_arme="01a10fe7-45cd-46af-95e5-2e73f54eb80a">
     <if_variable name="activeSlot" comparator="EQUALS" value="3.0" />
     <if_variable name="Choosing" comparator="GREATER" value="0.0" />
     <if_variable name="Choosing" comparator="LESS" value="2.0" />
@@ -1648,7 +1648,7 @@
     <set_variable name="Upgraded_3" value="0.0" integer="yes" />
     <set_variable name="Choosing" value="2.0" integer="yes" />
   </event>
-  <event name="Trigger Upgrade Options Slot 3" id_arme="f6bfb37b-709e-4246-9f2a-1435533f2b9b">
+  <event name="Trigger Upgrade Options Slot 3" id_arme="f6bfb37b-709e-4246-9f2a-1435533f2b9b" parent_id_arme="01a10fe7-45cd-46af-95e5-2e73f54eb80a">
     <if_variable name="activeSlot" comparator="EQUALS" value="-1.0" />
     <if_variable name="Choosing" comparator="EQUALS" value="0.0" />
     <if_variable name="Upgraded_3" comparator="EQUALS" value="0.0" />
@@ -1658,7 +1658,7 @@
     <set_variable name="Upgraded_3" value="1.0" integer="yes" />
     <set_variable name="Choosing" value="1.0" integer="yes" />
   </event>
-  <event name="Dock Broken Upgrade Failed Slot 4" id_arme="bad34892-b7ef-4286-81b6-6c8eeed77c65">
+  <event name="Dock Broken Upgrade Failed Slot 4" id_arme="bad34892-b7ef-4286-81b6-6c8eeed77c65" parent_id_arme="01a10fe7-45cd-46af-95e5-2e73f54eb80a">
     <if_variable name="activeSlot" comparator="EQUALS" value="4.0" />
     <if_variable name="Choosing" comparator="GREATER" value="0.0" />
     <if_variable name="Choosing" comparator="LESS" value="2.0" />
@@ -1668,7 +1668,7 @@
     <set_variable name="Upgraded_4" value="0.0" integer="yes" />
     <set_variable name="Choosing" value="2.0" integer="yes" />
   </event>
-  <event name="Trigger Upgrade Options Slot 4" id_arme="824ae038-cf04-46f0-bc86-3cd9e1b9f7c4">
+  <event name="Trigger Upgrade Options Slot 4" id_arme="824ae038-cf04-46f0-bc86-3cd9e1b9f7c4" parent_id_arme="01a10fe7-45cd-46af-95e5-2e73f54eb80a">
     <if_variable name="activeSlot" comparator="EQUALS" value="-1.0" />
     <if_variable name="Choosing" comparator="EQUALS" value="0.0" />
     <if_variable name="Upgraded_4" comparator="EQUALS" value="0.0" />
@@ -1678,7 +1678,7 @@
     <set_variable name="Upgraded_4" value="1.0" integer="yes" />
     <set_variable name="Choosing" value="1.0" integer="yes" />
   </event>
-  <event name="Dock Broken Upgrade Failed Slot 5" id_arme="2575f0a2-9851-4665-ba66-76063618962b">
+  <event name="Dock Broken Upgrade Failed Slot 5" id_arme="2575f0a2-9851-4665-ba66-76063618962b" parent_id_arme="01a10fe7-45cd-46af-95e5-2e73f54eb80a">
     <if_variable name="activeSlot" comparator="EQUALS" value="5.0" />
     <if_variable name="Choosing" comparator="GREATER" value="0.0" />
     <if_variable name="Choosing" comparator="LESS" value="2.0" />
@@ -1688,7 +1688,7 @@
     <set_variable name="Upgraded_5" value="0.0" integer="yes" />
     <set_variable name="Choosing" value="2.0" integer="yes" />
   </event>
-  <event name="Trigger Upgrade Options Slot 5" id_arme="a8e71833-0fbf-42d7-92f0-0d49f082ded9">
+  <event name="Trigger Upgrade Options Slot 5" id_arme="a8e71833-0fbf-42d7-92f0-0d49f082ded9" parent_id_arme="01a10fe7-45cd-46af-95e5-2e73f54eb80a">
     <if_variable name="activeSlot" comparator="EQUALS" value="-1.0" />
     <if_variable name="Choosing" comparator="EQUALS" value="0.0" />
     <if_variable name="Upgraded_5" comparator="EQUALS" value="0.0" />
@@ -1698,7 +1698,7 @@
     <set_variable name="Upgraded_5" value="1.0" integer="yes" />
     <set_variable name="Choosing" value="1.0" integer="yes" />
   </event>
-  <event name="Dock Broken Upgrade Failed Slot 6" id_arme="bd52f066-f51b-4a7f-a1ed-254aaab9ab2e">
+  <event name="Dock Broken Upgrade Failed Slot 6" id_arme="bd52f066-f51b-4a7f-a1ed-254aaab9ab2e" parent_id_arme="01a10fe7-45cd-46af-95e5-2e73f54eb80a">
     <if_variable name="activeSlot" comparator="EQUALS" value="6.0" />
     <if_variable name="Choosing" comparator="GREATER" value="0.0" />
     <if_variable name="Choosing" comparator="LESS" value="2.0" />
@@ -1708,7 +1708,7 @@
     <set_variable name="Upgraded_6" value="0.0" integer="yes" />
     <set_variable name="Choosing" value="2.0" integer="yes" />
   </event>
-  <event name="Trigger Upgrade Options Slot 6" id_arme="f84d003f-656d-42e4-b224-360cb8768779">
+  <event name="Trigger Upgrade Options Slot 6" id_arme="f84d003f-656d-42e4-b224-360cb8768779" parent_id_arme="01a10fe7-45cd-46af-95e5-2e73f54eb80a">
     <if_variable name="activeSlot" comparator="EQUALS" value="-1.0" />
     <if_variable name="Choosing" comparator="EQUALS" value="0.0" />
     <if_variable name="Upgraded_6" comparator="EQUALS" value="0.0" />
@@ -1718,7 +1718,7 @@
     <set_variable name="Upgraded_6" value="1.0" integer="yes" />
     <set_variable name="Choosing" value="1.0" integer="yes" />
   </event>
-  <event name="Dock Broken Upgrade Failed Slot 7" id_arme="66f56ff0-23ab-4cac-80a2-d5d0d506ae4b">
+  <event name="Dock Broken Upgrade Failed Slot 7" id_arme="66f56ff0-23ab-4cac-80a2-d5d0d506ae4b" parent_id_arme="01a10fe7-45cd-46af-95e5-2e73f54eb80a">
     <if_variable name="activeSlot" comparator="EQUALS" value="7.0" />
     <if_variable name="Choosing" comparator="GREATER" value="0.0" />
     <if_variable name="Choosing" comparator="LESS" value="2.0" />
@@ -1728,7 +1728,7 @@
     <set_variable name="Upgraded_7" value="0.0" integer="yes" />
     <set_variable name="Choosing" value="2.0" integer="yes" />
   </event>
-  <event name="Trigger Upgrade Options Slot 7" id_arme="a38eed31-604d-4c42-99a5-203031c8cf0e">
+  <event name="Trigger Upgrade Options Slot 7" id_arme="a38eed31-604d-4c42-99a5-203031c8cf0e" parent_id_arme="01a10fe7-45cd-46af-95e5-2e73f54eb80a">
     <if_variable name="activeSlot" comparator="EQUALS" value="-1.0" />
     <if_variable name="Choosing" comparator="EQUALS" value="0.0" />
     <if_variable name="Upgraded_7" comparator="EQUALS" value="0.0" />
@@ -1739,7 +1739,7 @@
     <set_variable name="Choosing" value="1.0" integer="yes" />
   </event>
   <!-- The following code resets all choices if they were NOT selected by the current active ship. It needs to have one event per option.-->
-  <folder_arme name="Non-Chosen Upgrade Resets" id_arme="d98bb47e-a3d9-4987-abbe-cbe7c9327c4b" expanded_arme="" />
+  <folder_arme name="Non-Chosen Upgrade Resets" id_arme="d98bb47e-a3d9-4987-abbe-cbe7c9327c4b" />
   <event name="Choice Made Reset" id_arme="d34ae38b-c284-4ec4-a271-30790f392ddf" parent_id_arme="d98bb47e-a3d9-4987-abbe-cbe7c9327c4b">
     <if_variable name="Choosing" comparator="EQUALS" value="2.0" />
     <if_variable name="activeSlot" comparator="NOT" value="-1.0" />
@@ -1810,7 +1810,7 @@
     <clear_comms_button text="Install Enemy Transponder" sideValue="2" />
   </event>
   <!-- The following section spawns the offers for each upgrade; there needs to be one event for each option available to players. -->
-  <folder_arme name="Spawn Upgrade Offer Buttons" id_arme="42951af0-c650-4648-befe-825c3278f467" expanded_arme="" />
+  <folder_arme name="Spawn Upgrade Offer Buttons" id_arme="42951af0-c650-4648-befe-825c3278f467" />
   <event name="Offer Upgrade Option 1" id_arme="57ed25ae-c8f2-4238-b5ae-4b9158c3365a" parent_id_arme="42951af0-c650-4648-befe-825c3278f467">
     <if_exists name="SS Hedy Lamarr" />
     <if_docked player_slot="activeSlot" name="SS Hedy Lamarr" />
@@ -1884,8 +1884,8 @@
     <set_comms_button text="Install Enemy Transponder" player_slot="activeSlot" />
   </event>
   <!-- The following section triggers once a choice has been made; it starts a delay timer, spawns a warning, clears the comms button, and copies the activeSlot variable value so other ships can immediately initiate upgrades.  Note that a multi-ship upgrade will be unavailable until the delay timer has finished. -->
-  <folder_arme name="Upgrade Choice Made" id_arme="9f839817-37c5-4883-a9f5-0d6e09e6e4ec" expanded_arme="" />
-  <event name="Multi-Ship Upgrade Choice 1" id_arme="a7d6a690-5d21-40f3-83eb-36802375dabf" parent_id_arme="9f839817-37c5-4883-a9f5-0d6e09e6e4ec">
+  <folder_arme name="Upgrade Choice Made" id_arme="9f839817-37c5-4883-a9f5-0d6e09e6e4ec" />
+  <event name="Multi-Ship Upgrade Choice 1" id_arme="3e99cff8-51ee-481c-b6c8-956df33f5b76" parent_id_arme="9f839817-37c5-4883-a9f5-0d6e09e6e4ec">
     <if_comms_button text="Upgrade Shields" />
     <if_variable name="Choosing" comparator="EQUALS" value="1.0" />
     <set_timer name="Upgrade_1" seconds="UpgradeDelay" />
@@ -1893,25 +1893,27 @@
     <set_variable name="updateInfo" value="upgradeTaken_1+1" integer="yes" />
     <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed:  Enhanced Shield Generators^[Automatic}^^Boosts maximum front and rear shields by 20% each.  ^^Note: Do not remove if stress damage has been incurred." />
     <set_variable name="updateInfo" value="-1.0" integer="yes" />
+    <incoming_comms_text from="Tech Crew" type="STATUS">A shield booster is being installed, but we have more of them.</incoming_comms_text>
     <warning_popup_message message="Commencing Upgrade..." consoles="MC" player_slot="activeSlot" />
     <clear_comms_button text="Upgrade Shields" sideValue="2" />
     <set_variable name="Choosing" value="2.0" integer="yes" />
-    <log text="Shield Upgrade Installed" />
+    <log text="Shield upgrade installed." />
   </event>
   <event name="One-Ship Upgrade Choice 2" id_arme="a2fb6e61-a556-4543-8cb3-c4aacad95db5" parent_id_arme="9f839817-37c5-4883-a9f5-0d6e09e6e4ec">
-    <if_comms_button text="Enable Demagnetize Hull" />
+    <if_comms_button text="Enable Demagnetized Hull" />
     <if_variable name="Choosing" comparator="EQUALS" value="1.0" />
     <set_timer name="Upgrade_2" seconds="UpgradeDelay" />
     <set_variable name="upgradeTaken_2" value="activeSlot" integer="yes" />
     <set_variable name="updateInfo" value="upgradeTaken_2+1" integer="yes" />
-    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Demagnetized Hull.  Vessel will not trigger mines for ~17 seconds after activation.  3 minute reset. [Comms Activated]" />
+    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Demagnetized Hull^ CURRENT STATE: READY^[Comms Activated]^^Vessel will not trigger mines while active. ^^ Duration: ~17 seconds ^Recharge: 3 minutes" />
     <set_variable name="updateInfo" value="-1.0" integer="yes" />
+    <incoming_comms_text from="Tech Crew" type="STATUS">The Mine Bypass upgrade has been taken.</incoming_comms_text>
     <warning_popup_message message="Commencing Upgrade..." consoles="MC" player_slot="activeSlot" />
-    <clear_comms_button text="Enable Demagnetize Hull" sideValue="2" />
+    <clear_comms_button text="Enable Demagnetized Hull" sideValue="2" />
     <set_variable name="Choosing" value="2.0" integer="yes" />
-    <log text="Hull Demagnetization Installed" />
+    <log text="Hull Demagnetization upgrade installed." />
   </event>
-  <event name="Multi-Ship Upgrade Choice 3" id_arme="5656fa77-02dc-4755-ad83-4cd10078b99e" parent_id_arme="9f839817-37c5-4883-a9f5-0d6e09e6e4ec">
+  <event name="Multi-Ship Upgrade Choice 3" id_arme="45d891a8-f66a-41ac-b572-bb2d12c0f534" parent_id_arme="9f839817-37c5-4883-a9f5-0d6e09e6e4ec">
     <if_comms_button text="Upgrade Coolant" />
     <if_variable name="Choosing" comparator="EQUALS" value="1.0" />
     <set_timer name="Upgrade_3" seconds="UpgradeDelay" />
@@ -1919,12 +1921,13 @@
     <set_variable name="updateInfo" value="upgradeTaken_3+1" integer="yes" />
     <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed:  Hyper-Compressed Coolant.^[Engineering Controlled]^^Boosts total available coolant by 25%." />
     <set_variable name="updateInfo" value="-1.0" integer="yes" />
+    <incoming_comms_text from="Tech Crew" type="STATUS">We are installing an Extra Coolant module, but have more of them.</incoming_comms_text>
     <warning_popup_message message="Commencing Upgrade..." consoles="MC" player_slot="activeSlot" />
     <clear_comms_button text="Upgrade Coolant" sideValue="2" />
     <set_variable name="Choosing" value="2.0" integer="yes" />
-    <log text="Coolant Upgrade Installed" />
+    <log text="Extra Coolant upgrade installed." />
   </event>
-  <event name="One-Ship Upgrade Choice 4" id_arme="9d53b46d-c549-4eab-96bd-81d729ae9abc" parent_id_arme="9f839817-37c5-4883-a9f5-0d6e09e6e4ec">
+  <event name="One-Ship Upgrade Choice 4" id_arme="6d94e1d9-9893-4165-8c56-84b888e47901" parent_id_arme="9f839817-37c5-4883-a9f5-0d6e09e6e4ec">
     <if_comms_button text="Install Bio-weapon" />
     <if_variable name="Choosing" comparator="EQUALS" value="1.0" />
     <set_timer name="Upgrade_4" seconds="UpgradeDelay" />
@@ -1932,23 +1935,25 @@
     <set_variable name="updateInfo" value="upgradeTaken_4+1" integer="yes" />
     <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed:  Bio Pods (x4) ^[Comms Activated]^^Deploys pod with 3 Piranhas.^^Location: 600m to ship aft. ^Trigger Delay: 7 Seconds ^Requires proximity detonation, 1500m ^Reload: 30 seconds.  " />
     <set_variable name="updateInfo" value="-1.0" integer="yes" />
+    <incoming_comms_text from="Tech Crew" type="STATUS">The Bio Pods are being installed on a ship.  Glad to have them out of the cargo bay!</incoming_comms_text>
     <warning_popup_message message="Commencing Upgrade..." consoles="MC" player_slot="activeSlot" />
     <clear_comms_button text="Install Bio-weapon" sideValue="2" />
     <set_variable name="Choosing" value="2.0" integer="yes" />
-    <log text="Bio Pod Weapon Installed" />
+    <log text="Bio Pod upgrade installed." />
   </event>
-  <event name="One-Ship Upgrade Choice 5" id_arme="ee7a6cba-c919-40dd-ac7c-0b65eadc7868" parent_id_arme="9f839817-37c5-4883-a9f5-0d6e09e6e4ec">
+  <event name="One-Ship Upgrade Choice 5" id_arme="27a5e8c4-9f93-483e-aa7a-2dca2332d1d9" parent_id_arme="9f839817-37c5-4883-a9f5-0d6e09e6e4ec">
     <if_comms_button text="Install Enemy Transponder" />
     <if_variable name="Choosing" comparator="EQUALS" value="1.0" />
     <set_timer name="Upgrade_5" seconds="UpgradeDelay" />
     <set_variable name="upgradeTaken_5" value="activeSlot" integer="yes" />
     <set_variable name="updateInfo" value="upgradeTaken_5+1" integer="yes" />
-    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed:  False Transponder^[Comms Activated] ^^Masks ship signal and broadcasts enemy ID code.  ^^Duration: 7-15 seconds ^Reset: 5 minutes.  ^^WARNING: Equipped ship is treated as enemy for all purposes when active.  ^^May cause missiles or drones to re-target." />
+    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed:  False Transponder^CURRENT STATE: READY^[Comms Activated] ^^Masks ship signal and broadcasts enemy ID code.  ^^Duration: 20-30 seconds ^Reset: 5 minutes.  ^^WARNING: Equipped ship is treated as enemy for all purposes when active.  ^^May cause missiles or drones to re-target." />
     <set_variable name="updateInfo" value="-1.0" integer="yes" />
+    <incoming_comms_text from="Tech Crew" type="STATUS">The spoofed transponder is being installed on a ship.  Can't wait to see how you use it!!</incoming_comms_text>
     <warning_popup_message message="Commencing Upgrade..." consoles="MC" player_slot="activeSlot" />
     <clear_comms_button text="Install Enemy Transponder" sideValue="2" />
     <set_variable name="Choosing" value="2.0" integer="yes" />
-    <log text="False Transponder Installed" />
+    <log text="False Transponder upgrade installed." />
   </event>
   <event name="One-Ship Upgrade Choice 6" id_arme="a6c4a001-1138-468e-ab27-b01841ea66a4" parent_id_arme="9f839817-37c5-4883-a9f5-0d6e09e6e4ec">
     <if_comms_button text="Install Shield Buffer" />
@@ -1956,12 +1961,13 @@
     <set_timer name="Upgrade_6" seconds="UpgradeDelay" />
     <set_variable name="upgradeTaken_6" value="activeSlot" integer="yes" />
     <set_variable name="updateInfo" value="upgradeTaken_6+1" integer="yes" />
-    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Shield Buffer^CURRENT STATE: READY^^[Active Shields Required]^[Comms Activated]^^Buffers power in Engineering subsystems; deactivate to restore shields and energy. ^NOTE: Generates increasing heat.^NOTE: Not rated for 7+ cycles.^^Cycle Time: 5 seconds ^Energy Recovery: 10 units/cycle/cycle ^Shield Recovery: 5% averaged damage/cycle ^Reset Discharge: 15 seconds/cycle" />
+    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Shield Buffer^CURRENT STATE: READY^^[Active Shields Required]^[Comms Activated]^^Buffers power in Engineering subsystems; restores shields and energy. ^NOTE: Generates increasing heat.^NOTE: Not rated for 7+ cycles.^^Cycle Time: 10 seconds ^Energy Recovery: 10+ units/cycle ^Shield Recovery: 5% averaged damage/cycle ^Reset Discharge: 15 seconds/cycle" />
     <set_variable name="updateInfo" value="-1.0" integer="yes" />
+    <incoming_comms_text from="Tech Crew" type="STATUS">The Shield Buffer has been taken and is being installed.</incoming_comms_text>
     <warning_popup_message message="Commencing Upgrade..." consoles="MC" player_slot="activeSlot" />
     <clear_comms_button text="Install Shield Buffer" sideValue="2" />
     <set_variable name="Choosing" value="2.0" integer="yes" />
-    <log text="Shield Buffer Installed" />
+    <log text="Shield Buffer upgrade installed." />
   </event>
   <event name="One-Ship Upgrade Choice 7" id_arme="795bd350-cda7-43c3-9114-7906b6494dec" parent_id_arme="9f839817-37c5-4883-a9f5-0d6e09e6e4ec">
     <if_comms_button text="Enable Decoy Signal" />
@@ -1971,10 +1977,11 @@
     <set_variable name="updateInfo" value="upgradeTaken_7+1" integer="yes" />
     <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed:  Deploy Decoys^[Comms Activated]^^Deploy two un-armed escort &quot;ships&quot; to aft. ^Comms directable ^^Duration: 2 minute power supply, eliminated upon shield damage. ^^Note: Requires resupply at station." />
     <set_variable name="updateInfo" value="-1.0" integer="yes" />
+    <incoming_comms_text from="Tech Crew" type="STATUS">The Sensor Decoy system has been taken and is being installed.</incoming_comms_text>
     <warning_popup_message message="Commencing Upgrade..." consoles="MC" player_slot="activeSlot" />
     <clear_comms_button text="Enable Decoy Signal" sideValue="2" />
     <set_variable name="Choosing" value="2.0" integer="yes" />
-    <log text="Decoy Signal System Installed" />
+    <log text="Sensor Decoy protoype installed." />
   </event>
   <event name="One-Ship Upgrade Choice 8" id_arme="3d49c524-b720-4669-83bb-8e72695176fa" parent_id_arme="9f839817-37c5-4883-a9f5-0d6e09e6e4ec">
     <if_comms_button text="Install Angled Deflectors" />
@@ -1982,12 +1989,13 @@
     <set_timer name="Upgrade_8" seconds="UpgradeDelay" />
     <set_variable name="upgradeTaken_8" value="activeSlot" integer="yes" />
     <set_variable name="updateInfo" value="upgradeTaken_8+1" integer="yes" />
-    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Angled Deflectors^[Current State: BALANCED]^[Comms Controlled] ^^Can be Balanced, Forward, or Rear.^ Selected Shield Max is raised 50%, reverse shield reduced by 50%; transfers partial strength to active shield. ^^Mitigates gravitational damage upon reset.^^Exchange Bonus: +50% Maximum, +45% of current reverse shield strength ^^Exchange Loss: -50% Maximum, -50% reverse shield strength " />
+    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Angled Deflectors^[Current State: BALANCED]^[Comms Controlled] ^^Can be Balanced, Forward, or Rear.^ Selected Shield Max is raised 50%, reverse shield reduced by 50%; transfers partial strength to active shield. ^^Mitigates gravitational damage upon reset.^^Exchange Bonus: +50% Maximum, +45% of reverse shield strength ^^Exchange Loss: -50% Maximum, -50% to reverse shield strength " />
     <set_variable name="updateInfo" value="-1.0" integer="yes" />
+    <incoming_comms_text from="Tech Crew" type="STATUS">The Angled Shields module has been taken and is being installed.</incoming_comms_text>
     <warning_popup_message message="Commencing Upgrade..." consoles="MC" player_slot="activeSlot" />
     <clear_comms_button text="Install Angled Deflectors" sideValue="2" />
     <set_variable name="Choosing" value="2.0" integer="yes" />
-    <log text="Angled Deflectors Installed" />
+    <log text="Angled Deflectors upgrade installed." />
   </event>
   <event name="One-Ship Upgrade Choice 9" id_arme="6c43d613-74b5-496c-9f09-a03e77fd80fa" parent_id_arme="9f839817-37c5-4883-a9f5-0d6e09e6e4ec">
     <if_comms_button text="Organic Repair Circuits" />
@@ -1997,10 +2005,11 @@
     <set_variable name="updateInfo" value="upgradeTaken_9+1" integer="yes" />
     <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed:  Organic Repair Circuitry ^[Automatic]^^Damaged repair systems regenerate capacity with time.^^Rate: Restores capacity of up to 1 Damcom member/minute" />
     <set_variable name="updateInfo" value="-1.0" integer="yes" />
+    <incoming_comms_text from="Tech Crew" type="STATUS">The Organic Circuitry is being installed on a ship.</incoming_comms_text>
     <warning_popup_message message="Commencing Upgrade..." consoles="MC" player_slot="activeSlot" />
     <clear_comms_button text="Organic Repair Circuits" sideValue="2" />
     <set_variable name="Choosing" value="2.0" integer="yes" />
-    <log text="Organic Repair Circuitry Installed" />
+    <log text="Organic Repair circuits upgrade installed." />
   </event>
   <!-- The following section is for upgrades which are available to multiple ships. They spawn a completion notice, implement the upgrade effects, and reset the proper upgradeTaken_# variable to -2.  -->
   <folder_arme name="Repeat Upgrades" id_arme="7ca8fce3-3ede-4c90-b5a5-9eccc2bdb0d5" />
@@ -2083,7 +2092,7 @@
   </event>
   <!-- The following event is repeated for every station players can recharge at.  Send a message informing them of any limits.  -->
   <!--This set of events releases a wreck behind the ship which will spawn a few piranhas if approached.  -->
-  <folder_arme name="Upgrade 4: Bio Weapon" id_arme="4dc50ba2-1559-431e-a043-41f650cdc776" expanded_arme="" />
+  <folder_arme name="Upgrade 4: Bio Weapon" id_arme="4dc50ba2-1559-431e-a043-41f650cdc776" />
   <event name="Piranha Drop Ready" id_arme="93055879-9fc4-494d-8790-9c3a68971448" parent_id_arme="4dc50ba2-1559-431e-a043-41f650cdc776">
     <if_timer_finished name="Upgrade_4" />
     <if_variable name="upgradeTaken_4" comparator="GREATER_EQUAL" value="0.0" />
@@ -2151,7 +2160,7 @@
     <set_variable name="bioWeapon" value="1.0" integer="yes" />
   </event>
   <!-- The following code sets the activating ship to be the enemy side for a random length of time.  Note that stations and neutral ships WILL FIRE at the player.  -->
-  <folder_arme name="Upgrade 5: False Transponder" id_arme="d37d11ac-ac1f-4bed-a2eb-443b49cc4344" expanded_arme="" />
+  <folder_arme name="Upgrade 5: False Transponder" id_arme="d37d11ac-ac1f-4bed-a2eb-443b49cc4344" />
   <event name="Transponder Button Reset" id_arme="d2629c28-16e8-497b-99ae-4fe6bf29a68b" parent_id_arme="d37d11ac-ac1f-4bed-a2eb-443b49cc4344">
     <if_timer_finished name="Reset_FalseFlag" />
     <if_variable name="falseFlag" comparator="EQUALS" value="1.0" />
@@ -2242,16 +2251,16 @@
     <log text="False transponder activated.  Initiating False-Flag operation." />
   </event>
   <!--The following code sets up a recharge to shields and energy when shields are lowered, at the cost of heat build-up -->
-  <folder_arme name="Upgrade 6: Shield Buffer" id_arme="53debd9b-6821-470e-8e02-40bf6ebef08d" expanded_arme="" />
+  <folder_arme name="Upgrade 6: Shield Buffer" id_arme="53debd9b-6821-470e-8e02-40bf6ebef08d" />
   <event name="Shield Buffer Ready" id_arme="e66b6f48-3e9a-4730-a854-f76d9c2483ed" parent_id_arme="53debd9b-6821-470e-8e02-40bf6ebef08d">
     <if_timer_finished name="Upgrade_6" />
     <if_variable name="upgradeTaken_6" comparator="GREATER_EQUAL" value="0.0" />
     <if_variable name="upgradeTaken_6" comparator="LESS" value="9.0" />
     <if_variable name="shieldBuffer" comparator="EQUALS" value="0.0" />
     <set_variable name="updateInfo" value="upgradeTaken_6+1" integer="yes" />
-    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Shield Buffer^CURRENT STATE: READY^^[Active Shields Required]^[Comms Activated]^^Buffers power in Engineering subsystems; deactivate to restore shields and energy. ^NOTE: Generates increasing heat.^NOTE: Not rated for 7+ cycles.^^Cycle Time: 5 seconds ^Energy Recovery: 10 units/cycle/cycle ^Shield Recovery: 5% averaged damage/cycle ^Reset Discharge: 15 seconds/cycle" />
+    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Shield Buffer^CURRENT STATE: READY^^[Active Shields Required]^[Comms Activated]^^Buffers power in Engineering subsystems; restores shields and energy. ^NOTE: Generates increasing heat.^NOTE: Not rated for 7+ cycles.^^Cycle Time: 10 seconds ^Energy Recovery: 10+ units/cycle ^Shield Recovery: 5% averaged damage/cycle ^Reset Discharge: 15 seconds/cycle" />
     <set_variable name="updateInfo" value="-1.0" integer="yes" />
-    <warning_popup_message message="Shield Buffering Ready" consoles="C" player_slot="upgradeTaken_6" />
+    <warning_popup_message message="Shield Buffering Ready" consoles="MC" player_slot="upgradeTaken_6" />
     <set_comms_button text="Activate Buffer" player_slot="upgradeTaken_6" />
     <set_variable name="shieldBuffer" value="1.0" integer="yes" />
     <set_timer name="Reset_Buffer" seconds="60" />
@@ -2271,24 +2280,24 @@
     <get_object_property property="shieldStateFront" player_slot="upgradeTaken_6" variable="shieldFront_Start" />
     <set_variable name="shieldRestore" value="0.0" integer="yes" />
     <set_variable name="updateInfo" value="upgradeTaken_6+1" integer="yes" />
-    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Shield Buffer^CURRENT STATE: ACTIVE^^[Active Shields Required]^[Comms Activated]^^Buffers power in Engineering subsystems; deactivate to restore shields and energy. ^NOTE: Generates increasing heat.^NOTE: Not rated for 7+ cycles.^^Cycle Time: 5 seconds ^Energy Recovery: 10 units/cycle/cycle ^Shield Recovery: 5% averaged damage/cycle ^Reset Discharge: 15 seconds/cycle" />
+    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Shield Buffer^CURRENT STATE: ACTIVE^^[Active Shields Required]^[Comms Activated]^^Buffers power in Engineering subsystems; restores shields and energy. ^NOTE: Generates increasing heat.^NOTE: Not rated for 7+ cycles.^^Cycle Time: 10 seconds ^Energy Recovery: 10+ units/cycle ^Shield Recovery: 5% averaged damage/cycle ^Reset Discharge: 15 seconds/cycle" />
     <set_variable name="updateInfo" value="-1.0" integer="yes" />
     <warning_popup_message message="Buffering Shields..." consoles="MHWESCO" player_slot="upgradeTaken_5" />
     <clear_comms_button text="Activate Buffer" player_slot="upgradeTaken_6" />
     <set_comms_button text="Deactivate Buffer" player_slot="upgradeTaken_6" />
     <set_timer name="Buffer" seconds="5" />
     <set_variable name="shieldBuffer" value="2.0" integer="yes" />
-    <log text="Shield Buffer Activated" />
+    <log text="Shield Buffer activated." />
   </event>
   <event name="Buffer Total Shutdown" id_arme="b1758bd2-52c6-42b7-a2c6-ecab4f4967c3" parent_id_arme="53debd9b-6821-470e-8e02-40bf6ebef08d">
     <if_variable name="shieldBuffer" comparator="EQUALS" value="2.0" />
     <if_variable name="shieldRestore" comparator="EQUALS" value="8.0" />
     <if_timer_finished name="Buffer" />
     <if_object_property property="shieldsOn" player_slot="upgradeTaken_6" comparator="EQUALS" value="1" />
+    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Shield Buffer^CURRENT STATE: EMERGENCY DISCHARGE^^[Active Shields Required]^[Comms Activated]^^Buffers power in Engineering subsystems; restores shields and energy. ^NOTE: Generates increasing heat.^NOTE: Not rated for 7+ cycles.^^Cycle Time: 10 seconds ^Energy Recovery: 10+ units/cycle ^Shield Recovery: 5% averaged damage/cycle ^Reset Discharge: 15 seconds/cycle" />
     <clear_comms_button text="Deactivate Buffer" player_slot="upgradeTaken_6" />
-    <set_variable name="shieldRestore" value="-30.0" integer="yes" />
+    <set_variable name="shieldRestore" value="-14.0" integer="yes" />
     <set_variable name="updateInfo" value="upgradeTaken_6+1" integer="yes" />
-    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Shield Buffer^CURRENT STATE: OVERLOADED^^[Active Shields Required]^[Comms Activated]^^Buffers power in Engineering subsystems; deactivate to restore shields and energy. ^NOTE: Generates increasing heat.^NOTE: Not rated for 7+ cycles.^^Cycle Time: 5 seconds ^Energy Recovery: 10 units/cycle/cycle ^Shield Recovery: 5% averaged damage/cycle ^Reset Discharge: 15 seconds/cycle" />
     <set_variable name="updateInfo" value="-1.0" integer="yes" />
     <warning_popup_message message=" " consoles="E" player_slot="upgradeTaken_6" />
     <warning_popup_message message="OVERLOAD OVERLOAD OVERLOAD OVERLOAD OVERLOAD" consoles="MHWESCOF" player_slot="upgradeTaken_6" />
@@ -2309,10 +2318,10 @@
     <if_timer_finished name="Buffer" />
     <if_object_property property="shieldsOn" player_slot="upgradeTaken_6" comparator="EQUALS" value="1" />
     <set_variable name="shieldRestore" value="shieldRestore+1" integer="yes" />
-    <warning_popup_message message="Buffering Shields..." consoles="MC" player_slot="upgradeTaken_6" />
+    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Shield Buffer^CURRENT STATE: OVERLOADING^^[Active Shields Required]^[Comms Activated]^^Buffers power in Engineering subsystems; restores shields and energy. ^NOTE: Generates increasing heat.^NOTE: Not rated for 7+ cycles.^^Cycle Time: 10 seconds ^Energy Recovery: 10+ units/cycle ^Shield Recovery: 5% averaged damage/cycle ^Reset Discharge: 15 seconds/cycle" />
     <warning_popup_message message=" " consoles="E" player_slot="upgradeTaken_6" />
     <warning_popup_message message="Initiating Total Shutdown" consoles="E" player_slot="upgradeTaken_6" />
-    <warning_popup_message message="Critical Capacity!" consoles="MC" player_slot="upgradeTaken_6" />
+    <warning_popup_message message="Buffer Critical" consoles="MEC" player_slot="upgradeTaken_6" />
     <addto_object_property value="shieldRestore" property="shieldStateFront" player_slot="upgradeTaken_6" />
     <addto_object_property value="shieldRestore" property="shieldStateBack" player_slot="upgradeTaken_6" />
     <addto_object_property value="5.0" property="energy" player_slot="upgradeTaken_6" />
@@ -2324,7 +2333,8 @@
     <addto_object_property value="shieldRestore*Heat" property="systemCurHeatTorpedo" player_slot="upgradeTaken_6" />
     <addto_object_property value="shieldRestore*Heat" property="systemCurHeatTurning" player_slot="upgradeTaken_6" />
     <addto_object_property value="shieldRestore*Heat" property="systemCurHeatWarp" player_slot="upgradeTaken_6" />
-    <set_timer name="Buffer" seconds="7" />
+    <set_timer name="Buffer" seconds="cycleBuffer+2" />
+    <log text="Shield Buffer overload state." />
   </event>
   <event name="Increment Shield Storage Capacity Exceeded" id_arme="d2835a27-f1a3-4b54-9823-adda5282177d" parent_id_arme="53debd9b-6821-470e-8e02-40bf6ebef08d">
     <if_variable name="shieldBuffer" comparator="EQUALS" value="2.0" />
@@ -2332,9 +2342,9 @@
     <if_timer_finished name="Buffer" />
     <if_object_property property="shieldsOn" player_slot="upgradeTaken_6" comparator="EQUALS" value="1" />
     <set_variable name="shieldRestore" value="shieldRestore+1" integer="yes" />
-    <warning_popup_message message="Buffering Shields..." consoles="MC" player_slot="upgradeTaken_6" />
+    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Shield Buffer^CURRENT STATE: OVERLOADING^^[Active Shields Required]^[Comms Activated]^^Buffers power in Engineering subsystems; restores shields and energy. ^NOTE: Generates increasing heat.^NOTE: Not rated for 7+ cycles.^^Cycle Time: 10 seconds ^Energy Recovery: 10+ units/cycle ^Shield Recovery: 5% averaged damage/cycle ^Reset Discharge: 15 seconds/cycle" />
     <warning_popup_message message=" " consoles="E" player_slot="upgradeTaken_6" />
-    <warning_popup_message message="Buffer Capacity Exceeded" consoles="E" player_slot="upgradeTaken_6" />
+    <warning_popup_message message="Buffer Capacity Exceeded" consoles="MEC" player_slot="upgradeTaken_6" />
     <addto_object_property value="shieldRestore" property="shieldStateFront" player_slot="upgradeTaken_6" />
     <addto_object_property value="shieldRestore" property="shieldStateBack" player_slot="upgradeTaken_6" />
     <addto_object_property value="5.0" property="energy" player_slot="upgradeTaken_6" />
@@ -2346,7 +2356,8 @@
     <addto_object_property value="shieldRestore*Heat" property="systemCurHeatTorpedo" player_slot="upgradeTaken_6" />
     <addto_object_property value="shieldRestore*Heat" property="systemCurHeatTurning" player_slot="upgradeTaken_6" />
     <addto_object_property value="shieldRestore*Heat" property="systemCurHeatWarp" player_slot="upgradeTaken_6" />
-    <set_timer name="Buffer" seconds="5" />
+    <set_timer name="Buffer" seconds="cycleBuffer" />
+    <log text="Shield Buffer capacity overage" />
   </event>
   <event name="Increment Shield Storage Capacity" id_arme="3204c718-e961-4ad6-8323-9f759623699d" parent_id_arme="53debd9b-6821-470e-8e02-40bf6ebef08d">
     <if_variable name="shieldBuffer" comparator="EQUALS" value="2.0" />
@@ -2354,9 +2365,9 @@
     <if_timer_finished name="Buffer" />
     <if_object_property property="shieldsOn" player_slot="upgradeTaken_6" comparator="EQUALS" value="1" />
     <set_variable name="shieldRestore" value="shieldRestore+1" integer="yes" />
-    <warning_popup_message message="Buffering Shields..." consoles="MC" player_slot="upgradeTaken_6" />
+    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Shield Buffer^CURRENT STATE: MAXIMUM^^[Active Shields Required]^[Comms Activated]^^Buffers power in Engineering subsystems; restores shields and energy. ^NOTE: Generates increasing heat.^NOTE: Not rated for 7+ cycles.^^Cycle Time: 10 seconds ^Energy Recovery: 10+ units/cycle ^Shield Recovery: 5% averaged damage/cycle ^Reset Discharge: 15 seconds/cycle" />
     <warning_popup_message message=" " consoles="E" player_slot="upgradeTaken_6" />
-    <warning_popup_message message="Buffer Capacity Reached |shieldRestore|" consoles="E" player_slot="upgradeTaken_6" />
+    <warning_popup_message message="Buffer Capacity Reached |shieldRestore|" consoles="MEC" player_slot="upgradeTaken_6" />
     <addto_object_property value="shieldRestore" property="shieldStateFront" player_slot="upgradeTaken_6" />
     <addto_object_property value="shieldRestore" property="shieldStateBack" player_slot="upgradeTaken_6" />
     <addto_object_property value="5.0" property="energy" player_slot="upgradeTaken_6" />
@@ -2368,7 +2379,8 @@
     <addto_object_property value="shieldRestore*Heat" property="systemCurHeatTorpedo" player_slot="upgradeTaken_6" />
     <addto_object_property value="shieldRestore*Heat" property="systemCurHeatTurning" player_slot="upgradeTaken_6" />
     <addto_object_property value="shieldRestore*Heat" property="systemCurHeatWarp" player_slot="upgradeTaken_6" />
-    <set_timer name="Buffer" seconds="5" />
+    <set_timer name="Buffer" seconds="cycleBuffer" />
+    <log text="Shield Buffer safety margin reached." />
   </event>
   <event name="Increment Shield Storage" id_arme="7d3d8fad-9a3a-489b-9431-e4f993580083" parent_id_arme="53debd9b-6821-470e-8e02-40bf6ebef08d">
     <if_variable name="shieldBuffer" comparator="EQUALS" value="2.0" />
@@ -2377,8 +2389,7 @@
     <if_object_property property="shieldsOn" player_slot="upgradeTaken_6" comparator="EQUALS" value="1" />
     <set_variable name="shieldRestore" value="shieldRestore+1" integer="yes" />
     <warning_popup_message message=" " consoles="E" player_slot="upgradeTaken_6" />
-    <warning_popup_message message="Buffering Shields..." consoles="MC" player_slot="upgradeTaken_6" />
-    <warning_popup_message message="Buffering Shields...|shieldRestore|" consoles="E" player_slot="upgradeTaken_6" />
+    <warning_popup_message message="Buffering Shields...|shieldRestore|" consoles="MEC" player_slot="upgradeTaken_6" />
     <addto_object_property value="shieldRestore" property="shieldStateFront" player_slot="upgradeTaken_6" />
     <addto_object_property value="shieldRestore" property="shieldStateBack" player_slot="upgradeTaken_6" />
     <addto_object_property value="5.0" property="energy" player_slot="upgradeTaken_6" />
@@ -2390,12 +2401,12 @@
     <addto_object_property value="shieldRestore*Heat" property="systemCurHeatTorpedo" player_slot="upgradeTaken_6" />
     <addto_object_property value="shieldRestore*Heat" property="systemCurHeatTurning" player_slot="upgradeTaken_6" />
     <addto_object_property value="shieldRestore*Heat" property="systemCurHeatWarp" player_slot="upgradeTaken_6" />
-    <set_timer name="Buffer" seconds="5" />
+    <set_timer name="Buffer" seconds="cycleBuffer" />
+    <log text="Buffering shields..." />
   </event>
   <event name="Buffer Overload Failure" id_arme="470121b6-a109-458a-809e-1e7326a6355f" parent_id_arme="53debd9b-6821-470e-8e02-40bf6ebef08d">
     <if_variable name="shieldRestore" comparator="LESS" value="0.0" />
     <if_variable name="shieldBuffer" comparator="EQUALS" value="2.0" />
-    <if_object_property property="shieldsOn" player_slot="upgradeTaken_6" comparator="EQUALS" value="0" />
     <clear_comms_button text="Deactivate Buffer" player_slot="upgradeTaken_6" />
     <warning_popup_message message="Buffer Failure" consoles="MEC" player_slot="upgradeTaken_6" />
     <get_object_property property="shieldStateBack" player_slot="upgradeTaken_6" variable="shieldBack_End" />
@@ -2403,6 +2414,7 @@
     <set_variable name="Restore" value="(shieldBack_End+shieldFront_End)/-2" integer="yes" />
     <set_timer name="Buffer" seconds="2" />
     <set_variable name="shieldBuffer" value="5.0" integer="yes" />
+    <log text="Shield Buffer safety margin exceeded and system overloaded.  Total ship shutdown.  Shields and power dropped to 9, speed and warp off, all power settings to 0 until buffer discharged." />
   </event>
   <event name="Shields Dropped" id_arme="98b9eb4f-95d5-4f3e-b73e-df4697db6161" parent_id_arme="53debd9b-6821-470e-8e02-40bf6ebef08d">
     <if_variable name="shieldRestore" comparator="GREATER_EQUAL" value="0.0" />
@@ -2414,10 +2426,11 @@
     <get_object_property property="shieldStateFront" player_slot="upgradeTaken_6" variable="shieldFront_End" />
     <set_variable name="Restore" value="((shieldBack_Start-shieldBack_End)+(shieldFront_Start-shieldFront_End))/2" integer="yes" />
     <set_variable name="updateInfo" value="upgradeTaken_6+1" integer="yes" />
-    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Shield Buffer^CURRENT STATE: DISCHARGING^^[Active Shields Required]^[Comms Activated]^^Buffers power in Engineering subsystems; deactivate to restore shields and energy. ^NOTE: Generates increasing heat.^NOTE: Not rated for 7+ cycles.^^Cycle Time: 5 seconds ^Energy Recovery: 10 units/cycle/cycle ^Shield Recovery: 5% averaged damage/cycle ^Reset Discharge: 15 seconds/cycle" />
+    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Shield Buffer^CURRENT STATE: DISCHARGING^^[Active Shields Required]^[Comms Activated]^^Buffers power in Engineering subsystems; restores shields and energy. ^NOTE: Generates increasing heat.^NOTE: Not rated for 7+ cycles.^^Cycle Time: 10 seconds ^Energy Recovery: 10+ units/cycle ^Shield Recovery: 5% averaged damage/cycle ^Reset Discharge: 15 seconds/cycle" />
     <set_variable name="updateInfo" value="-1.0" integer="yes" />
     <set_timer name="Buffer" seconds="5" />
     <set_variable name="shieldBuffer" value="3.0" integer="yes" />
+    <log text="Shield Buffer deactivated (shields dropped)." />
   </event>
   <event name="Deactivate Buffer Pressed" id_arme="634fb487-3e1a-47d0-847a-158978686bdc" parent_id_arme="53debd9b-6821-470e-8e02-40bf6ebef08d">
     <if_comms_button text="Deactivate Buffer" />
@@ -2430,16 +2443,18 @@
     <get_object_property property="shieldStateFront" player_slot="upgradeTaken_6" variable="shieldFront_End" />
     <set_variable name="Restore" value="((shieldBack_Start-shieldBack_End)+(shieldFront_Start-shieldFront_End))/2" integer="yes" />
     <set_variable name="updateInfo" value="upgradeTaken_6+1" integer="yes" />
-    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Shield Buffer^CURRENT STATE: DISCHARGING^^[Active Shields Required]^[Comms Activated]^^Buffers power in Engineering subsystems; deactivate to restore shields and energy. ^NOTE: Generates increasing heat.^NOTE: Not rated for 7+ cycles.^^Cycle Time: 5 seconds ^Energy Recovery: 10 units/cycle/cycle ^Shield Recovery: 5% averaged damage/cycle ^Reset Discharge: 15 seconds/cycle" />
+    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Shield Buffer^CURRENT STATE: DISCHARGING^^[Active Shields Required]^[Comms Activated]^^Buffers power in Engineering subsystems; restores shields and energy. ^NOTE: Generates increasing heat.^NOTE: Not rated for 7+ cycles.^^Cycle Time: 10 seconds ^Energy Recovery: 10+ units/cycle ^Shield Recovery: 5% averaged damage/cycle ^Reset Discharge: 15 seconds/cycle" />
     <set_variable name="updateInfo" value="-1.0" integer="yes" />
     <set_timer name="Buffer" seconds="5" />
     <set_variable name="shieldBuffer" value="3.0" integer="yes" />
+    <log text="Shield Buffer activated (button pressed)." />
   </event>
   <event name="Shield Gain Negative Reset" id_arme="9e0949be-8f16-4e6f-b6f8-d99e81e66d32" parent_id_arme="53debd9b-6821-470e-8e02-40bf6ebef08d">
     <if_variable name="shieldBuffer" comparator="EQUALS" value="3.0" />
     <if_variable name="Restore" comparator="LESS_EQUAL" value="0.0" />
     <set_variable name="Restore" value="0.0" integer="yes" />
     <set_variable name="shieldBuffer" value="4.0" integer="yes" />
+    <log text="No shield recharge (no shield loss)." />
   </event>
   <event name="Shield Gain Positive" id_arme="87e692c2-cb8b-49d4-86b8-69bc64e8f71f" parent_id_arme="53debd9b-6821-470e-8e02-40bf6ebef08d">
     <if_variable name="shieldBuffer" comparator="EQUALS" value="3.0" />
@@ -2457,6 +2472,7 @@
     <addto_object_property value="shieldRestore*(Restore/20)" property="shieldStateBack" player_slot="upgradeTaken_6" />
     <set_timer name="Buffer" seconds="5" />
     <set_variable name="shieldBuffer" value="5.0" integer="yes" />
+    <log text="Positive shield and power recharge initiated." />
   </event>
   <event name="Buffer Discharge Delay" id_arme="87dfa749-3a23-4b4b-ab5d-03be05123edd" parent_id_arme="53debd9b-6821-470e-8e02-40bf6ebef08d">
     <if_timer_finished name="Buffer" />
@@ -2472,7 +2488,7 @@
   <event name="Buffer Discharge Overload" id_arme="5333e1a0-2114-4984-b00f-6fc389692306" parent_id_arme="53debd9b-6821-470e-8e02-40bf6ebef08d">
     <if_timer_finished name="Buffer" />
     <if_variable name="shieldBuffer" comparator="EQUALS" value="5.0" />
-    <if_variable name="shieldRestore" comparator="LESS" value="-2.0" />
+    <if_variable name="shieldRestore" comparator="LESS" value="-4.0" />
     <set_object_property property="systemCurEnergyBackShield" value="0.001" player_slot="upgradeTaken_6" />
     <set_object_property property="systemCurEnergyFrontShield" value="0.001" player_slot="upgradeTaken_6" />
     <set_object_property property="systemCurEnergyBeam" value="0.0" player_slot="upgradeTaken_6" />
@@ -2496,30 +2512,42 @@
     <addto_object_property value=".1*Restore" property="shieldStateFront" player_slot="upgradeTaken_6" />
     <addto_object_property value=".1*Restore" property="shieldStateBack" player_slot="upgradeTaken_6" />
     <warning_popup_message message="Emergency Discharge..." consoles="E" player_slot="upgradeTaken_6" />
-    <set_timer name="Buffer" seconds="1" />
+    <set_timer name="Buffer" seconds="2" />
     <set_variable name="shieldRestore" value="shieldRestore+1" integer="yes" />
-    <log text="Buffer Overloaded!" />
   </event>
   <event name="Buffer Discharge Final Overload" id_arme="58050040-7f0d-4cd9-826d-b9fe8f8b00f3" parent_id_arme="53debd9b-6821-470e-8e02-40bf6ebef08d">
     <if_timer_finished name="Buffer" />
     <if_variable name="shieldBuffer" comparator="EQUALS" value="5.0" />
     <if_variable name="shieldRestore" comparator="LESS" value="0.0" />
-    <if_variable name="shieldRestore" comparator="GREATER_EQUAL" value="-4.0" />
-    <warning_popup_message message=" " consoles="E" player_slot="upgradeTaken_6" />
-    <warning_popup_message message="Emergency Discharge Complete" consoles="E" player_slot="upgradeTaken_6" />
-    <warning_popup_message message="Systems Available" consoles="E" player_slot="upgradeTaken_6" />
-    <warning_popup_message message="Buffer Discharging..." consoles="C" player_slot="upgradeTaken_6" />
+    <if_variable name="shieldRestore" comparator="GREATER_EQUAL" value="-3.0" />
+    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Shield Buffer^CURRENT STATE: DISCHARGING^^[Active Shields Required]^[Comms Activated]^^Buffers power in Engineering subsystems; restores shields and energy. ^NOTE: Generates increasing heat.^NOTE: Not rated for 7+ cycles.^^Cycle Time: 10 seconds ^Energy Recovery: 10+ units/cycle ^Shield Recovery: 5% averaged damage/cycle ^Reset Discharge: 15 seconds/cycle" />
+    <warning_popup_message message="Buffer Discharging...[shieldRestore]" consoles="MEC" player_slot="upgradeTaken_6" />
     <set_timer name="Buffer" seconds="15" />
     <set_variable name="Restore" value="0.0" integer="yes" />
     <set_variable name="shieldRestore" value="shieldRestore+1" integer="yes" />
+  </event>
+  <event name="Buffer Discharge Final Emergency" id_arme="d922d4b9-c757-4fe3-82c2-a9d206d7a6ae" parent_id_arme="53debd9b-6821-470e-8e02-40bf6ebef08d">
+    <if_timer_finished name="Buffer" />
+    <if_variable name="shieldBuffer" comparator="EQUALS" value="5.0" />
+    <if_variable name="shieldRestore" comparator="LESS" value="0.0" />
+    <if_variable name="shieldRestore" comparator="EQUALS" value="-4.0" />
+    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Shield Buffer^CURRENT STATE: DISCHARGING^^[Active Shields Required]^[Comms Activated]^^Buffers power in Engineering subsystems; restores shields and energy. ^NOTE: Generates increasing heat.^NOTE: Not rated for 7+ cycles.^^Cycle Time: 10 seconds ^Energy Recovery: 10+ units/cycle ^Shield Recovery: 5% averaged damage/cycle ^Reset Discharge: 15 seconds/cycle" />
+    <warning_popup_message message=" " consoles="E" player_slot="upgradeTaken_6" />
+    <warning_popup_message message="Emergency Discharge Complete" consoles="E" player_slot="upgradeTaken_6" />
+    <warning_popup_message message="Systems Online" consoles="E" player_slot="upgradeTaken_6" />
+    <warning_popup_message message="Buffer Discharging...(60 seconds)" consoles="MC" player_slot="upgradeTaken_6" />
+    <set_timer name="Buffer" seconds="15" />
+    <set_variable name="Restore" value="0.0" integer="yes" />
+    <set_variable name="shieldRestore" value="-3.0" integer="yes" />
   </event>
   <event name="Discharge Complete" id_arme="3c676b09-b16d-46fb-a168-d581827e6deb" parent_id_arme="53debd9b-6821-470e-8e02-40bf6ebef08d">
     <if_timer_finished name="Buffer" />
     <if_variable name="shieldBuffer" comparator="EQUALS" value="5.0" />
     <if_variable name="shieldRestore" comparator="EQUALS" value="0.0" />
+    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Shield Buffer^CURRENT STATE: RESETTING...^^[Active Shields Required]^[Comms Activated]^^Buffers power in Engineering subsystems; restores shields and energy. ^NOTE: Generates increasing heat.^NOTE: Not rated for 7+ cycles.^^Cycle Time: 10 seconds ^Energy Recovery: 10+ units/cycle ^Shield Recovery: 5% averaged damage/cycle ^Reset Discharge: 15 seconds/cycle" />
     <set_timer name="Buffer" seconds="5" />
     <set_variable name="Restore" value="0.0" integer="yes" />
-    <warning_popup_message message="Discarge Complete" consoles="C" player_slot="upgradeTaken_6" />
+    <warning_popup_message message="Buffer Discharge Complete" consoles="MEC" player_slot="upgradeTaken_6" />
     <set_variable name="shieldBuffer" value="6.0" integer="yes" />
   </event>
   <event name="Shield Buffer Reset" id_arme="5e279a40-f848-4efa-bfe1-ff8e32260ddb" parent_id_arme="53debd9b-6821-470e-8e02-40bf6ebef08d">
@@ -2527,7 +2555,7 @@
     <if_exists player_slot="upgradeTaken_6" />
     <if_variable name="shieldBuffer" comparator="EQUALS" value="6.0" />
     <set_variable name="updateInfo" value="upgradeTaken_6+1" integer="yes" />
-    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Shield Buffer^CURRENT STATE: READY^^[Active Shields Required]^[Comms Activated]^^Buffers power in Engineering subsystems; deactivate to restore shields and energy. ^NOTE: Generates increasing heat.^NOTE: Not rated for 7+ cycles.^^Cycle Time: 5 seconds ^Energy Recovery: 10 units/cycle/cycle ^Shield Recovery: 5% averaged damage/cycle ^Reset Discharge: 15 seconds/cycle" />
+    <set_ship_text name="Ship |updateInfo|" race="Ship Data" desc="Prototype Installed: Shield Buffer^CURRENT STATE: READY^^[Active Shields Required]^[Comms Activated]^^Buffers power in Engineering subsystems; restores shields and energy. ^NOTE: Generates increasing heat.^NOTE: Not rated for 7+ cycles.^^Cycle Time: 10 seconds ^Energy Recovery: 10+ units/cycle ^Shield Recovery: 5% averaged damage/cycle ^Reset Discharge: 15 seconds/cycle" />
     <set_variable name="updateInfo" value="-1.0" integer="yes" />
     <set_timer name="Reset_Buffer" seconds="60" />
     <warning_popup_message message="Shield Buffering Ready" consoles="C" player_slot="upgradeTaken_6" />
@@ -2535,7 +2563,7 @@
     <set_variable name="shieldBuffer" value="1.0" integer="yes" />
   </event>
   <!--The following code sets up a pair of sensor decoys, changes their behavior, and destroys them after 2 minutes.  -->
-  <folder_arme name="Upgrade 7: Sensor Decoys" id_arme="b650a059-c777-4fa4-8967-2913145047e5" expanded_arme="" />
+  <folder_arme name="Upgrade 7: Sensor Decoys" id_arme="b650a059-c777-4fa4-8967-2913145047e5" />
   <event name="Decoys Ready" id_arme="7641db0b-c346-483b-b038-01f5faab7d20" parent_id_arme="b650a059-c777-4fa4-8967-2913145047e5">
     <if_timer_finished name="Upgrade_7" />
     <if_variable name="upgradeTaken_7" comparator="GREATER_EQUAL" value="0.0" />
@@ -2640,7 +2668,7 @@
   <!-- The following Code destroys the decoys as soon as they become damaged. -->
   <!--The following code sections create and position the Decoys and set behavior parameters.  -->
   <!-- The following lets players rebalance their relative shield strengthts.  -->
-  <folder_arme name="Upgrade 8: Shield Angling" id_arme="9dea1343-7df6-46f4-9b64-2939100eb3f8" expanded_arme="" />
+  <folder_arme name="Upgrade 8: Shield Angling" id_arme="9dea1343-7df6-46f4-9b64-2939100eb3f8" />
   <event name="Shield Angle Buttons Ready" id_arme="46e68735-6de3-4042-943a-3e29530708f3" parent_id_arme="9dea1343-7df6-46f4-9b64-2939100eb3f8">
     <if_timer_finished name="Upgrade_8" />
     <if_variable name="upgradeTaken_8" comparator="GREATER_EQUAL" value="0.0" />
@@ -3019,7 +3047,7 @@
   </event>
   <!-- The following code spawns and deletes buttons so ships can uninstall upgrades and try out something new. -->
   <!-- Note that due to their multi-ship nature, the shield boost and coolant boost are returned using a different system. -->
-  <folder_arme name="Remove Shielding" id_arme="2bbe5518-925b-4fa1-897b-32cf87d8917b" expanded_arme="" />
+  <folder_arme name="Remove Shielding" id_arme="2bbe5518-925b-4fa1-897b-32cf87d8917b" />
   <event name="Remove Shields Ship 0" id_arme="c794b118-e0fe-42b5-8ce0-830398a29cee" parent_id_arme="2bbe5518-925b-4fa1-897b-32cf87d8917b">
     <if_exists player_slot="0" />
     <if_variable name="Upgraded_0" comparator="EQUALS" value="10.0" />
@@ -3252,7 +3280,7 @@
     <set_comms_button text="Remove Shield Boost" player_slot="7" />
     <set_variable name="Upgraded_7" value="10.0" integer="yes" />
   </event>
-  <folder_arme name="Remove Coolant" id_arme="c770e0e1-0a09-4f68-b9c3-2ba180aa16d0" expanded_arme="" />
+  <folder_arme name="Remove Coolant" id_arme="c770e0e1-0a09-4f68-b9c3-2ba180aa16d0" />
   <event name="Drain Coolant Ship 0" id_arme="6f068afc-05c3-4e01-910f-be7c179d4040" parent_id_arme="c770e0e1-0a09-4f68-b9c3-2ba180aa16d0">
     <if_exists player_slot="0" />
     <if_variable name="Upgraded_0" comparator="EQUALS" value="13.0" />
@@ -3461,7 +3489,7 @@
     <set_comms_button text="  Drain Coolant " player_slot="7" />
     <set_variable name="Upgraded_7" value="13.0" integer="yes" />
   </event>
-  <folder_arme name="Removing Single Ship Upgrades" id_arme="e5f0f853-2d63-4499-86e1-1ee149020cf1" expanded_arme="" />
+  <folder_arme name="Removing Single Ship Upgrades" id_arme="e5f0f853-2d63-4499-86e1-1ee149020cf1" />
   <event name="Remove Docked Demagnetize Hull" id_arme="0b139c68-5984-41fb-b0ab-b6955ff8da86" parent_id_arme="e5f0f853-2d63-4499-86e1-1ee149020cf1">
     <if_exists player_slot="upgradeTaken_2" />
     <if_docked player_slot="upgradeTaken_2" not="1" name="SS Hedy Lamarr" />
@@ -3736,7 +3764,7 @@
   </event>
   <!-- The following code batch actually dismantles each upgrade.  Each undoes the upgrade's effects, resets the upgradeTaken_# to -2, and sets the ships upgraded_# value back to 0.  -->
   <!--Mission Ending Conditions  -->
-  <folder_arme name="Mission Conclusions" id_arme="befc16f7-099d-4bfa-9257-33c751271809" expanded_arme="" />
+  <folder_arme name="Mission Conclusions" id_arme="befc16f7-099d-4bfa-9257-33c751271809" />
   <event name="Destroyed Players" id_arme="5e2dfe23-32d0-44a6-8c3f-a69941914cce" parent_id_arme="befc16f7-099d-4bfa-9257-33c751271809">
     <if_variable name="End" comparator="EQUALS" value="0" />
     <if_variable name="Mission" comparator="GREATER" value="8.0" />
